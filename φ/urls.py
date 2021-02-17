@@ -18,6 +18,10 @@ urlpatterns = [
     
     path("documentation/", views.documentation, name="documentation"),
 
+    path("contact/", views.contact, name="contact"),
+
+    path("menu/", views.menu, name="menu"),
+
     path("<str:entity_TradingSymbol>/", views.analysis, name="analysis"),
 
 ]

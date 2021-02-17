@@ -67,14 +67,22 @@ def filterking(request):
 # DISCLAIMER
 def disclaimer(request):
     return render(request, "./φ/disclaimer.html")
+
+# DOCUMENTATION
+def documentation(request):
+    return render(request, "./φ/documentation.html")
     
 # ENTITIES
 def entities(request):
     return render(request, "./φ/entities.html", {
         "entities": Entity.objects.all().order_by('-TradingSymbol')
     })
-
-# DOCUMENTATION
-def documentation(request):
-    return render(request, "./φ/documentation.html")
+    
+# MENU
+def menu(request):
+    return render(request, "./φ/menu.html")
+        
+# CONTACT
+def contact(request):
+    return render(request, "./φ/contact.html")
     

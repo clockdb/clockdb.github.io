@@ -348,7 +348,7 @@
 
 </script>
 
-<Section id="φ" style="padding-bottom:7%">
+<Section id="φ" style="padding-bottom:13%">
 
     
 <!--- BUTTONS --->
@@ -455,7 +455,7 @@
                 <body></body>
                     <tr>
                         <td>
-                            <button data-page="AdditionnalInformations">
+                            <button data-page="AdditionnalInformation">
                                 Additionnal Informations
                             </button>
                         </td>
@@ -6418,6 +6418,20 @@
                         <td><input class="clock" id="GainRelatedToDisposalOrSale6" value={{ CashFlow_sixthlastyear.GainRelatedToDisposalOrSale }} onclick="HighLight()"></input></td>
                     </tr>
                     <tr>
+                        <td><h6>Accrued Employee Compensation</h6></td>
+                        <td style="color:#0d47a1; text-align:center; font-weight:bold;"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px;" id="AccruedEmployeeCompensationCheckbox"></input>
+                            <input type="checkbox" style="height: 16px;" id="AccruedEmployeeCompensationCheckbox2"></input>
+                        </td>
+                        <td><input class="clock" id="AccruedEmployeeCompensation1" style="font-weight:bold;" value={{ CashFlow_lastyear.AccruedEmployeeCompensation }} onclick="HighLight()"></input></td>
+                        <td><input class="clock" id="AccruedEmployeeCompensation2" value={{ CashFlow_secondlastyear.AccruedEmployeeCompensation }} onclick="HighLight()"></input></td>
+                        <td><input class="clock" id="AccruedEmployeeCompensation3" value={{ CashFlow_thirdlastyear.AccruedEmployeeCompensation }} onclick="HighLight()"></input></td>
+                        <td><input class="clock" id="AccruedEmployeeCompensation4" value={{ CashFlow_fourthlastyear.AccruedEmployeeCompensation }} onclick="HighLight()"></input></td>
+                        <td><input class="clock" id="AccruedEmployeeCompensation5" value={{ CashFlow_fifthlastyear.AccruedEmployeeCompensation }} onclick="HighLight()"></input></td>
+                        <td><input class="clock" id="AccruedEmployeeCompensation6" value={{ CashFlow_sixthlastyear.AccruedEmployeeCompensation }} onclick="HighLight()"></input></td>
+                    </tr>
+                    <tr>
                         <td><h6>Share Based Compensation</h6></td>
                         <td style="color:#0d47a1; text-align:center; font-weight:bold;"></td>
                         <td>
@@ -6432,18 +6446,18 @@
                         <td><input class="clock" id="ShareBasedCompensationOperatingActivities6" value={{ CashFlow_sixthlastyear.ShareBasedCompensation }} onclick="HighLight()"></input></td>
                     </tr>
                     <tr>
-                        <td><h6>Deferred Income Tax Expense (Benefit)</h6></td>
+                        <td><h6>Increase Decrease In Income Tax Expense (Benefit)</h6></td>
                         <td style="color:#0d47a1; text-align:center; font-weight:bold;"></td>
                         <td>
-                            <input type="checkbox" style="height: 16px;" id="DeferredIncomeTaxExpenseBenefitCheckbox"></input>
-                            <input type="checkbox" style="height: 16px;" id="DeferredIncomeTaxExpenseBenefitCheckbox2"></input>
+                            <input type="checkbox" style="height: 16px;" id="IncreaseDecreaseInIncomeTaxExpenseBenefitCheckbox"></input>
+                            <input type="checkbox" style="height: 16px;" id="IncreaseDecreaseInIncomeTaxExpenseBenefitCheckbox2"></input>
                         </td>
-                        <td><input class="clock" id="DeferredIncomeTaxExpenseBenefit1" style="font-weight:bold;" value={{ CashFlow_lastyear.DeferredIncomeTaxExpenseBenefit }} onclick="HighLight()"></input></td>
-                        <td><input class="clock" id="DeferredIncomeTaxExpenseBenefit2" value={{ CashFlow_secondlastyear.DeferredIncomeTaxExpenseBenefit }} onclick="HighLight()"></input></td>
-                        <td><input class="clock" id="DeferredIncomeTaxExpenseBenefit3" value={{ CashFlow_thirdlastyear.DeferredIncomeTaxExpenseBenefit }} onclick="HighLight()"></input></td>
-                        <td><input class="clock" id="DeferredIncomeTaxExpenseBenefit4" value={{ CashFlow_fourthlastyear.DeferredIncomeTaxExpenseBenefit }} onclick="HighLight()"></input></td>
-                        <td><input class="clock" id="DeferredIncomeTaxExpenseBenefit5" value={{ CashFlow_fifthlastyear.DeferredIncomeTaxExpenseBenefit }} onclick="HighLight()"></input></td>
-                        <td><input class="clock" id="DeferredIncomeTaxExpenseBenefit6" value={{ CashFlow_sixthlastyear.DeferredIncomeTaxExpenseBenefit }} onclick="HighLight()"></input></td>
+                        <td><input class="clock" id="IncreaseDecreaseInIncomeTaxExpenseBenefit1" style="font-weight:bold;" value={{ CashFlow_lastyear.IncreaseDecreaseInIncomeTaxExpenseBenefit }} onclick="HighLight()"></input></td>
+                        <td><input class="clock" id="IncreaseDecreaseInIncomeTaxExpenseBenefit2" value={{ CashFlow_secondlastyear.IncreaseDecreaseInIncomeTaxExpenseBenefit }} onclick="HighLight()"></input></td>
+                        <td><input class="clock" id="IncreaseDecreaseInIncomeTaxExpenseBenefit3" value={{ CashFlow_thirdlastyear.IncreaseDecreaseInIncomeTaxExpenseBenefit }} onclick="HighLight()"></input></td>
+                        <td><input class="clock" id="IncreaseDecreaseInIncomeTaxExpenseBenefit4" value={{ CashFlow_fourthlastyear.IncreaseDecreaseInIncomeTaxExpenseBenefit }} onclick="HighLight()"></input></td>
+                        <td><input class="clock" id="IncreaseDecreaseInIncomeTaxExpenseBenefit5" value={{ CashFlow_fifthlastyear.IncreaseDecreaseInIncomeTaxExpenseBenefit }} onclick="HighLight()"></input></td>
+                        <td><input class="clock" id="IncreaseDecreaseInIncomeTaxExpenseBenefit6" value={{ CashFlow_sixthlastyear.IncreaseDecreaseInIncomeTaxExpenseBenefit }} onclick="HighLight()"></input></td>
                     </tr>
                     <tr>
                         <td><h6>Other Non Cash Income (Expense)</h6></td>
@@ -6573,8 +6587,9 @@
                                 a = parseInt(document.getElementById('NetIncomeCashFlow1').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DepreciationDepletionAndAmortization1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('GainRelatedToDisposalOrSale1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('AccruedEmployeeCompensation1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShareBasedCompensationOperatingActivities1').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('DeferredIncomeTaxExpenseBenefit1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('IncreaseDecreaseInIncomeTaxExpenseBenefit1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OtherNonCashIncomeExpense1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInAccountsReceivable1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInInventories1').value.replaceAll(/,/g, ''));
@@ -6588,8 +6603,9 @@
                                 a = parseInt(document.getElementById('NetIncomeCashFlow2').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DepreciationDepletionAndAmortization2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('GainRelatedToDisposalOrSale2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('AccruedEmployeeCompensation2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShareBasedCompensationOperatingActivities2').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('DeferredIncomeTaxExpenseBenefit2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('IncreaseDecreaseInIncomeTaxExpenseBenefit2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OtherNonCashIncomeExpense2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInAccountsReceivable2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInInventories2').value.replaceAll(/,/g, ''));
@@ -6603,8 +6619,9 @@
                                 a = parseInt(document.getElementById('NetIncomeCashFlow3').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DepreciationDepletionAndAmortization3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('GainRelatedToDisposalOrSale3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('AccruedEmployeeCompensation3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShareBasedCompensationOperatingActivities3').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('DeferredIncomeTaxExpenseBenefit3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('IncreaseDecreaseInIncomeTaxExpenseBenefit3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OtherNonCashIncomeExpense3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInAccountsReceivable3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInInventories3').value.replaceAll(/,/g, ''));
@@ -6618,8 +6635,9 @@
                                 a = parseInt(document.getElementById('NetIncomeCashFlow4').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DepreciationDepletionAndAmortization4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('GainRelatedToDisposalOrSale4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('AccruedEmployeeCompensation4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShareBasedCompensationOperatingActivities4').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('DeferredIncomeTaxExpenseBenefit4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('IncreaseDecreaseInIncomeTaxExpenseBenefit4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OtherNonCashIncomeExpense4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInAccountsReceivable4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInInventories4').value.replaceAll(/,/g, ''));
@@ -6633,8 +6651,9 @@
                                 a = parseInt(document.getElementById('NetIncomeCashFlow5').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DepreciationDepletionAndAmortization5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('GainRelatedToDisposalOrSale5').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('AccruedEmployeeCompensation5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShareBasedCompensationOperatingActivities5').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('DeferredIncomeTaxExpenseBenefit5').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('IncreaseDecreaseInIncomeTaxExpenseBenefit5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OtherNonCashIncomeExpense5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInAccountsReceivable5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInInventories5').value.replaceAll(/,/g, ''));
@@ -6648,8 +6667,9 @@
                                 a = parseInt(document.getElementById('NetIncomeCashFlow6').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DepreciationDepletionAndAmortization6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('GainRelatedToDisposalOrSale6').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('AccruedEmployeeCompensation6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShareBasedCompensationOperatingActivities6').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('DeferredIncomeTaxExpenseBenefit6').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('IncreaseDecreaseInIncomeTaxExpenseBenefit6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OtherNonCashIncomeExpense6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInAccountsReceivable6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInInventories6').value.replaceAll(/,/g, ''));
@@ -8345,12 +8365,12 @@
             </table>
         </div>
 
-        <!--- OTHER INFORMATIONS --->
-        <div id="AdditionnalInformations">
+        <!--- ADDITIONNAL INFORMATION --->
+        <div id="AdditionnalInformation">
             <table style="border-bottom:solid #0D47A1">
                 <body>
                     <tr>
-                        <td><h3>Other Informations</h3></td>
+                        <td><h3>Additionnal Information</h3></td>
                     </tr>
                 </body>
             </table>
@@ -8364,12 +8384,12 @@
                         <td colspan="3"></td>
                         <script>
                             function DateRatios(DateRatios) {
-                                document.getElementById('DateAdditionnalInformations1').innerHTML = document.getElementById('TrialBalanceDateColumn1').value;
-                                document.getElementById('DateAdditionnalInformations2').innerHTML = document.getElementById('TrialBalanceDateColumn2').value;
-                                document.getElementById('DateAdditionnalInformations3').innerHTML = document.getElementById('TrialBalanceDateColumn3').value;
-                                document.getElementById('DateAdditionnalInformations4').innerHTML = document.getElementById('TrialBalanceDateColumn4').value;
-                                document.getElementById('DateAdditionnalInformations5').innerHTML = document.getElementById('TrialBalanceDateColumn5').value;
-                                document.getElementById('DateAdditionnalInformations6').innerHTML = document.getElementById('TrialBalanceDateColumn6').value;
+                                document.getElementById('DateAdditionnalInformation1').innerHTML = document.getElementById('TrialBalanceDateColumn1').value;
+                                document.getElementById('DateAdditionnalInformation2').innerHTML = document.getElementById('TrialBalanceDateColumn2').value;
+                                document.getElementById('DateAdditionnalInformation3').innerHTML = document.getElementById('TrialBalanceDateColumn3').value;
+                                document.getElementById('DateAdditionnalInformation4').innerHTML = document.getElementById('TrialBalanceDateColumn4').value;
+                                document.getElementById('DateAdditionnalInformation5').innerHTML = document.getElementById('TrialBalanceDateColumn5').value;
+                                document.getElementById('DateAdditionnalInformation6').innerHTML = document.getElementById('TrialBalanceDateColumn6').value;
                             };
                             window.addEventListener('DOMContentLoaded', DateRatios)
                             window.addEventListener('keyup', function() {
@@ -8379,12 +8399,12 @@
                                 }
                             })
                         </script>
-                        <td><h4 id="DateAdditionnalInformations1"></h4></td>
-                        <td><h4 id="DateAdditionnalInformations2"></h4></td>
-                        <td><h4 id="DateAdditionnalInformations3"></h4></td>
-                        <td><h4 id="DateAdditionnalInformations4"></h4></td>
-                        <td><h4 id="DateAdditionnalInformations5"></h4></td>
-                        <td><h4 id="DateAdditionnalInformations6"></h4></td>
+                        <td><h4 id="DateAdditionnalInformation1"></h4></td>
+                        <td><h4 id="DateAdditionnalInformation2"></h4></td>
+                        <td><h4 id="DateAdditionnalInformation3"></h4></td>
+                        <td><h4 id="DateAdditionnalInformation4"></h4></td>
+                        <td><h4 id="DateAdditionnalInformation5"></h4></td>
+                        <td><h4 id="DateAdditionnalInformation6"></h4></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -8924,7 +8944,7 @@
                     </tr>
                     <tr>
                         <td><h6>Interest</h6></td>
-                        <td><button data-page="AdditionnalInformations" style="text-align:center; font-weight:bold;">AI</button></td>
+                        <td><button data-page="AdditionnalInformation" style="text-align:center; font-weight:bold;">AI</button></td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="InterestCCFCheckbox"></input>
                             <input type="checkbox" style="height: 16px;" id="InterestCCFCheckbox2"></input>
@@ -9122,7 +9142,7 @@
                     </tr>
                     <tr>
                         <td><h6>Taxes</h6></td>
-                        <td><button data-page="AdditionnalInformations" style="text-align:center; font-weight:bold;">AI</button></td>
+                        <td><button data-page="AdditionnalInformation" style="text-align:center; font-weight:bold;">AI</button></td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="TaxesAdjustmentsCCFCheckbox"></input>
                             <input type="checkbox" style="height: 16px;" id="TaxesAdjustmentsCCFCheckbox2"></input>
@@ -10177,7 +10197,7 @@
                     </tr>
                     <tr>
                         <td><h6>Interest</h6></td>
-                        <td><button data-page="AdditionnalInformations" style="text-align:center; font-weight:bold;">AI</button></td>
+                        <td><button data-page="AdditionnalInformation" style="text-align:center; font-weight:bold;">AI</button></td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="InterestCICheckbox"></input>
                             <input type="checkbox" style="height: 16px;" id="InterestCICheckbox2"></input>

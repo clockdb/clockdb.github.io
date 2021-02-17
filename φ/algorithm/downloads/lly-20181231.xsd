@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!--XBRL Document Created with Wdesk from Workiva-->
+<!-- -->
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.lilly.com/20181231" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:lly="http://www.lilly.com/20181231" xmlns:nonnum="http://www.xbrl.org/dtr/type/non-numeric" xmlns:num="http://www.xbrl.org/dtr/type/numeric" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import namespace="http://fasb.org/srt/2018-01-31" schemaLocation="http://xbrl.fasb.org/srt/2018/elts/srt-2018-01-31.xsd" />
+  <xsd:import namespace="http://fasb.org/us-gaap/2018-01-31" schemaLocation="http://xbrl.fasb.org/us-gaap/2018/elts/us-gaap-2018-01-31.xsd" />
+  <xsd:import namespace="http://fasb.org/us-roles/2018-01-31" schemaLocation="http://xbrl.fasb.org/us-gaap/2018/elts/us-roles-2018-01-31.xsd" />
+  <xsd:import namespace="http://fasb.org/us-types/2018-01-31" schemaLocation="http://xbrl.fasb.org/us-gaap/2018/elts/us-types-2018-01-31.xsd" />
+  <xsd:import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd" />
+  <xsd:import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd" />
+  <xsd:import namespace="http://www.xbrl.org/2009/arcrole/fact-explanatoryFact" schemaLocation="http://www.xbrl.org/lrr/arcrole/factExplanatory-2009-12-16.xsd" />
+  <xsd:import namespace="http://www.xbrl.org/2009/role/negated" schemaLocation="http://www.xbrl.org/lrr/role/negated-2009-12-16.xsd" />
+  <xsd:import namespace="http://www.xbrl.org/2009/role/net" schemaLocation="http://www.xbrl.org/lrr/role/net-2009-12-16.xsd" />
+  <xsd:import namespace="http://www.xbrl.org/dtr/type/non-numeric" schemaLocation="http://www.xbrl.org/dtr/type/nonNumeric-2009-12-16.xsd" />
+  <xsd:import namespace="http://www.xbrl.org/dtr/type/numeric" schemaLocation="http://www.xbrl.org/dtr/type/numeric-2009-12-16.xsd" />
+  <xsd:import namespace="http://xbrl.org/2005/xbrldt" schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd" />
+  <xsd:import namespace="http://xbrl.sec.gov/country/2017-01-31" schemaLocation="http://xbrl.sec.gov/country/2017/country-2017-01-31.xsd" />
+  <xsd:import namespace="http://xbrl.sec.gov/currency/2017-01-31" schemaLocation="http://xbrl.sec.gov/currency/2017/currency-2017-01-31.xsd" />
+  <xsd:import namespace="http://xbrl.sec.gov/dei/2018-01-31" schemaLocation="https://xbrl.sec.gov/dei/2018/dei-2018-01-31.xsd" />
+  <xsd:import namespace="http://xbrl.sec.gov/exch/2018-01-31" schemaLocation="https://xbrl.sec.gov/exch/2018/exch-2018-01-31.xsd" />
+  <xsd:import namespace="http://xbrl.sec.gov/invest/2013-01-31" schemaLocation="http://xbrl.sec.gov/invest/2013/invest-2013-01-31.xsd" />
+  <xsd:import namespace="http://xbrl.sec.gov/naics/2017-01-31" schemaLocation="http://xbrl.sec.gov/naics/2017/naics-2017-01-31.xsd" />
+  <xsd:import namespace="http://xbrl.sec.gov/sic/2011-01-31" schemaLocation="http://xbrl.sec.gov/sic/2011/sic-2011-01-31.xsd" />
+  <xsd:import namespace="http://xbrl.sec.gov/stpr/2018-01-31" schemaLocation="https://xbrl.sec.gov/stpr/2018/stpr-2018-01-31.xsd" />
+  <xsd:annotation>
+    <xsd:appinfo>
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="lly-20181231_cal.xml" xlink:role="http://www.xbrl.org/2003/role/calculationLinkbaseRef" xlink:type="simple" />
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="lly-20181231_def.xml" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef" xlink:type="simple" />
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="lly-20181231_lab.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:type="simple" />
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="lly-20181231_pre.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:type="simple" />
+      <link:roleType id="AssetImpairmentRestructuringAndOtherSpecialCharges" roleURI="http://www.lilly.com/role/AssetImpairmentRestructuringAndOtherSpecialCharges">
+        <link:definition>2107100 - Disclosure - Asset Impairment, Restructuring, and Other Special Charges</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="AssetImpairmentRestructuringAndOtherSpecialChargesDetails" roleURI="http://www.lilly.com/role/AssetImpairmentRestructuringAndOtherSpecialChargesDetails">
+        <link:definition>2407402 - Disclosure - Asset Impairment, Restructuring, and Other Special Charges (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="AssetImpairmentRestructuringAndOtherSpecialChargesNarrativeDetails" roleURI="http://www.lilly.com/role/AssetImpairmentRestructuringAndOtherSpecialChargesNarrativeDetails">
+        <link:definition>2407403 - Disclosure - Asset Impairment, Restructuring, and Other Special Charges (Narrative) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="AssetImpairmentRestructuringAndOtherSpecialChargesTables" roleURI="http://www.lilly.com/role/AssetImpairmentRestructuringAndOtherSpecialChargesTables">
+        <link:definition>2307301 - Disclosure - Asset Impairment, Restructuring, and Other Special Charges (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="Borrowings" roleURI="http://www.lilly.com/role/Borrowings">
+        <link:definition>2112100 - Disclosure - Borrowings</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="BorrowingsDebtMaturitiesDetails" roleURI="http://www.lilly.com/role/BorrowingsDebtMaturitiesDetails">
+        <link:definition>2412404 - Disclosure - Borrowings (Debt maturities) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="BorrowingsLongTermDebtDetails" roleURI="http://www.lilly.com/role/BorrowingsLongTermDebtDetails">
+        <link:definition>2412402 - Disclosure - Borrowings (Long-term Debt) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="BorrowingsLongTermDebtDetailsCalc2" roleURI="http://www.lilly.com/role/BorrowingsLongTermDebtDetailsCalc2">
+        <link:definition>2412402 - Disclosure - Borrowings (Long-term Debt) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="BorrowingsNarrativeDetails" roleURI="http://www.lilly.com/role/BorrowingsNarrativeDetails">
+        <link:definition>2412403 - Disclosure - Borrowings (narrative) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="BorrowingsTables" roleURI="http://www.lilly.com/role/BorrowingsTables">
+        <link:definition>2312301 - Disclosure - Borrowings (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="CollaborationsAndOtherArrangements" roleURI="http://www.lilly.com/role/CollaborationsAndOtherArrangements">
+        <link:definition>2106100 - Disclosure - Collaborations and Other Arrangements</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="CollaborationsAndOtherArrangementsDetails" roleURI="http://www.lilly.com/role/CollaborationsAndOtherArrangementsDetails">
+        <link:definition>2406402 - Disclosure - Collaborations and Other Arrangements (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="CollaborationsAndOtherArrangementsTables" roleURI="http://www.lilly.com/role/CollaborationsAndOtherArrangementsTables">
+        <link:definition>2306301 - Disclosure - Collaborations and Other Arrangements (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ConsolidatedBalanceSheets" roleURI="http://www.lilly.com/role/ConsolidatedBalanceSheets">
+        <link:definition>1003000 - Statement - Consolidated Balance Sheets</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ConsolidatedBalanceSheetsParenthetical" roleURI="http://www.lilly.com/role/ConsolidatedBalanceSheetsParenthetical">
+        <link:definition>1003501 - Statement - Consolidated Balance Sheets (Parenthetical)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ConsolidatedStatementsOfCashFlows" roleURI="http://www.lilly.com/role/ConsolidatedStatementsOfCashFlows">
+        <link:definition>1005000 - Statement - Consolidated Statements of Cash Flows</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ConsolidatedStatementsOfComprehensiveIncomeLoss" roleURI="http://www.lilly.com/role/ConsolidatedStatementsOfComprehensiveIncomeLoss">
+        <link:definition>1002000 - Statement - Consolidated Statements of Comprehensive Income (Loss)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ConsolidatedStatementsOfComprehensiveIncomeLossParenthetical" roleURI="http://www.lilly.com/role/ConsolidatedStatementsOfComprehensiveIncomeLossParenthetical">
+        <link:definition>1002001 - Statement - Consolidated Statements of Comprehensive Income (Loss) (Parenthetical)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ConsolidatedStatementsOfOperations" roleURI="http://www.lilly.com/role/ConsolidatedStatementsOfOperations">
+        <link:definition>1001000 - Statement - Consolidated Statements of Operations</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ConsolidatedStatementsOfShareholdersEquityParenthetical" roleURI="http://www.lilly.com/role/ConsolidatedStatementsOfShareholdersEquityParenthetical">
+        <link:definition>1004001 - Statement - Consolidated Statements of Shareholders' Equity (Parenthetical)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ConsolidatedStatementsOfShareholdersEquityStatement" roleURI="http://www.lilly.com/role/ConsolidatedStatementsOfShareholdersEquityStatement">
+        <link:definition>1004000 - Statement - Consolidated Statements of Shareholders' Equity Statement</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="Contingencies" roleURI="http://www.lilly.com/role/Contingencies">
+        <link:definition>2121100 - Disclosure - Contingencies</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ContingenciesDetails" roleURI="http://www.lilly.com/role/ContingenciesDetails">
+        <link:definition>2421402 - Disclosure - Contingencies (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ContingenciesPolicies" roleURI="http://www.lilly.com/role/ContingenciesPolicies">
+        <link:definition>2221201 - Disclosure - Contingencies (Policies)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="DivestitureAndAcquisitions" roleURI="http://www.lilly.com/role/DivestitureAndAcquisitions">
+        <link:definition>2105100 - Disclosure - Divestiture and Acquisitions</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="DivestitureAndAcquisitionsDivestituresDetails" roleURI="http://www.lilly.com/role/DivestitureAndAcquisitionsDivestituresDetails">
+        <link:definition>2405402 - Disclosure - Divestiture and Acquisitions (Divestitures) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="DivestitureAndAcquisitionsPurchasePriceAllocationDetails" roleURI="http://www.lilly.com/role/DivestitureAndAcquisitionsPurchasePriceAllocationDetails">
+        <link:definition>2405404 - Disclosure - Divestiture and Acquisitions (Purchase Price Allocation) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="DivestitureAndAcquisitionsTables" roleURI="http://www.lilly.com/role/DivestitureAndAcquisitionsTables">
+        <link:definition>2305301 - Disclosure - Divestiture and Acquisitions (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="DocumentAndEntityInformation" roleURI="http://www.lilly.com/role/DocumentAndEntityInformation">
+        <link:definition>0001000 - Document - Document and Entity Information</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="FinancialInstruments" roleURI="http://www.lilly.com/role/FinancialInstruments">
+        <link:definition>2109100 - Disclosure - Financial Instruments</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="FinancialInstrumentsContractualMaturitiesDetails" roleURI="http://www.lilly.com/role/FinancialInstrumentsContractualMaturitiesDetails">
+        <link:definition>2409406 - Disclosure - Financial Instruments (Contractual Maturities) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="FinancialInstrumentsEffectOfRiskManagementDetails" roleURI="http://www.lilly.com/role/FinancialInstrumentsEffectOfRiskManagementDetails">
+        <link:definition>2409403 - Disclosure - Financial Instruments (Effect of Risk Management) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="FinancialInstrumentsFairValueMeasurementDetails" roleURI="http://www.lilly.com/role/FinancialInstrumentsFairValueMeasurementDetails">
+        <link:definition>2409404 - Disclosure - Financial Instruments (Fair Value Measurement) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="FinancialInstrumentsInvestmentPortfolioActivityDetails" roleURI="http://www.lilly.com/role/FinancialInstrumentsInvestmentPortfolioActivityDetails">
+        <link:definition>2409408 - Disclosure - Financial Instruments (Investment Portfolio Activity) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="FinancialInstrumentsNarrativeDetails" roleURI="http://www.lilly.com/role/FinancialInstrumentsNarrativeDetails">
+        <link:definition>2409409 - Disclosure - Financial Instruments (Narrative) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="FinancialInstrumentsPolicies" roleURI="http://www.lilly.com/role/FinancialInstrumentsPolicies">
+        <link:definition>2209201 - Disclosure - Financial Instruments (Policies)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="FinancialInstrumentsShortTermAndLongTermClassificationDetails" roleURI="http://www.lilly.com/role/FinancialInstrumentsShortTermAndLongTermClassificationDetails">
+        <link:definition>2409405 - Disclosure - Financial Instruments (Short-term and Long-term Classification) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="FinancialInstrumentsSummaryOfAfsUnrealizedGainlossDetails" roleURI="http://www.lilly.com/role/FinancialInstrumentsSummaryOfAfsUnrealizedGainlossDetails">
+        <link:definition>2409407 - Disclosure - Financial Instruments (Summary of AFS Unrealized Gain(Loss)) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="FinancialInstrumentsTables" roleURI="http://www.lilly.com/role/FinancialInstrumentsTables">
+        <link:definition>2309302 - Disclosure - Financial Instruments (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="GoodwillAndOtherIntangibles" roleURI="http://www.lilly.com/role/GoodwillAndOtherIntangibles">
+        <link:definition>2110100 - Disclosure - Goodwill and Other Intangibles</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="GoodwillAndOtherIntangiblesAmortizationExpenseDetails" roleURI="http://www.lilly.com/role/GoodwillAndOtherIntangiblesAmortizationExpenseDetails">
+        <link:definition>2410406 - Disclosure - Goodwill and Other Intangibles (Amortization Expense) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="GoodwillAndOtherIntangiblesDetails" roleURI="http://www.lilly.com/role/GoodwillAndOtherIntangiblesDetails">
+        <link:definition>2410403 - Disclosure - Goodwill and Other Intangibles (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="GoodwillAndOtherIntangiblesIntangiblesDetails" roleURI="http://www.lilly.com/role/GoodwillAndOtherIntangiblesIntangiblesDetails">
+        <link:definition>2410404 - Disclosure - Goodwill and Other Intangibles (Intangibles) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="GoodwillAndOtherIntangiblesNarrativeDetails" roleURI="http://www.lilly.com/role/GoodwillAndOtherIntangiblesNarrativeDetails">
+        <link:definition>2410405 - Disclosure - Goodwill and Other Intangibles (Narrative) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="GoodwillAndOtherIntangiblesPolicies" roleURI="http://www.lilly.com/role/GoodwillAndOtherIntangiblesPolicies">
+        <link:definition>2210201 - Disclosure - Goodwill and Other Intangibles (Policies)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="GoodwillAndOtherIntangiblesTables" roleURI="http://www.lilly.com/role/GoodwillAndOtherIntangiblesTables">
+        <link:definition>2310302 - Disclosure - Goodwill and Other Intangibles (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ImplementationOfNewFinancialAccountingPronouncements" roleURI="http://www.lilly.com/role/ImplementationOfNewFinancialAccountingPronouncements">
+        <link:definition>2104100 - Disclosure - Implementation of New Financial Accounting Pronouncements</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ImplementationOfNewFinancialAccountingPronouncementsDetails" roleURI="http://www.lilly.com/role/ImplementationOfNewFinancialAccountingPronouncementsDetails">
+        <link:definition>2404402 - Disclosure - Implementation of New Financial Accounting Pronouncements (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ImplementationOfNewFinancialAccountingPronouncementsTables" roleURI="http://www.lilly.com/role/ImplementationOfNewFinancialAccountingPronouncementsTables">
+        <link:definition>2304301 - Disclosure - Implementation of New Financial Accounting Pronouncements (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="IncomeTaxes" roleURI="http://www.lilly.com/role/IncomeTaxes">
+        <link:definition>2119100 - Disclosure - Income Taxes</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="IncomeTaxesCurrentAndDeferredDetails" roleURI="http://www.lilly.com/role/IncomeTaxesCurrentAndDeferredDetails">
+        <link:definition>2419404 - Disclosure - Income Taxes (Current and Deferred) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="IncomeTaxesDeferredTaxAssetAndLiabilitiesDetails" roleURI="http://www.lilly.com/role/IncomeTaxesDeferredTaxAssetAndLiabilitiesDetails">
+        <link:definition>2419405 - Disclosure - Income Taxes (Deferred tax asset and liabilities) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="IncomeTaxesNarrativeDetails" roleURI="http://www.lilly.com/role/IncomeTaxesNarrativeDetails">
+        <link:definition>2419403 - Disclosure - Income Taxes (Narrative) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="IncomeTaxesPolicies" roleURI="http://www.lilly.com/role/IncomeTaxesPolicies">
+        <link:definition>2219201 - Disclosure - Income Taxes (Policies)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="IncomeTaxesReconciliationOfIncomeTaxesDetails" roleURI="http://www.lilly.com/role/IncomeTaxesReconciliationOfIncomeTaxesDetails">
+        <link:definition>2419407 - Disclosure - Income Taxes (Reconciliation of Income Taxes) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="IncomeTaxesTables" roleURI="http://www.lilly.com/role/IncomeTaxesTables">
+        <link:definition>2319302 - Disclosure - Income Taxes (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="IncomeTaxesUnrecognizedBenefitsDetails" roleURI="http://www.lilly.com/role/IncomeTaxesUnrecognizedBenefitsDetails">
+        <link:definition>2419406 - Disclosure - Income Taxes (Unrecognized benefits) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="Inventories" roleURI="http://www.lilly.com/role/Inventories">
+        <link:definition>2108100 - Disclosure - Inventories</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="InventoriesDetails" roleURI="http://www.lilly.com/role/InventoriesDetails">
+        <link:definition>2408403 - Disclosure - Inventories (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="InventoriesPolicies" roleURI="http://www.lilly.com/role/InventoriesPolicies">
+        <link:definition>2208201 - Disclosure - Inventories (Policies)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="InventoriesTables" roleURI="http://www.lilly.com/role/InventoriesTables">
+        <link:definition>2308302 - Disclosure - Inventories (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="NarrativeDetails" roleURI="http://www.lilly.com/role/NarrativeDetails">
+        <link:definition>2405403 - Disclosure - (Narrative) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="OtherComprehensiveIncomeLoss" roleURI="http://www.lilly.com/role/OtherComprehensiveIncomeLoss">
+        <link:definition>2122100 - Disclosure - Other Comprehensive Income (Loss)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="OtherComprehensiveIncomeLossReclassificationDetails" roleURI="http://www.lilly.com/role/OtherComprehensiveIncomeLossReclassificationDetails">
+        <link:definition>2422404 - Disclosure - Other Comprehensive Income (Loss) (Reclassification) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="OtherComprehensiveIncomeLossRollForwardDetails" roleURI="http://www.lilly.com/role/OtherComprehensiveIncomeLossRollForwardDetails">
+        <link:definition>2422402 - Disclosure - Other Comprehensive Income (Loss) (Roll-forward) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="OtherComprehensiveIncomeLossTables" roleURI="http://www.lilly.com/role/OtherComprehensiveIncomeLossTables">
+        <link:definition>2322301 - Disclosure - Other Comprehensive Income (Loss) (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="OtherComprehensiveIncomeLossTaxEffectDetails" roleURI="http://www.lilly.com/role/OtherComprehensiveIncomeLossTaxEffectDetails">
+        <link:definition>2422403 - Disclosure - Other Comprehensive Income (Loss) (Tax effect) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="OtherNetIncomeExpense" roleURI="http://www.lilly.com/role/OtherNetIncomeExpense">
+        <link:definition>2123100 - Disclosure - Other-Net, (Income) Expense</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="OtherNetIncomeExpenseDetails" roleURI="http://www.lilly.com/role/OtherNetIncomeExpenseDetails">
+        <link:definition>2423402 - Disclosure - Other - Net, (Income) Expense (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="OtherNetIncomeExpenseTables" roleURI="http://www.lilly.com/role/OtherNetIncomeExpenseTables">
+        <link:definition>2323301 - Disclosure - Other - Net, (Income) Expense (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="PropertyAndEquipment" roleURI="http://www.lilly.com/role/PropertyAndEquipment">
+        <link:definition>2111100 - Disclosure - Property and Equipment</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="PropertyAndEquipmentDetails" roleURI="http://www.lilly.com/role/PropertyAndEquipmentDetails">
+        <link:definition>2411403 - Disclosure - Property and Equipment (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="PropertyAndEquipmentPolicies" roleURI="http://www.lilly.com/role/PropertyAndEquipmentPolicies">
+        <link:definition>2211201 - Disclosure - Property and Equipment (Policies)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="PropertyAndEquipmentTables" roleURI="http://www.lilly.com/role/PropertyAndEquipmentTables">
+        <link:definition>2311302 - Disclosure - Property and Equipment (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="RetirementBenefits" roleURI="http://www.lilly.com/role/RetirementBenefits">
+        <link:definition>2120100 - Disclosure - Retirement Benefits</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="RetirementBenefitsFairValueDisclosuresDetails" roleURI="http://www.lilly.com/role/RetirementBenefitsFairValueDisclosuresDetails">
+        <link:definition>2420406 - Disclosure - Retirement Benefits (Fair Value Disclosures) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="RetirementBenefitsNarrativeDetails" roleURI="http://www.lilly.com/role/RetirementBenefitsNarrativeDetails">
+        <link:definition>2420407 - Disclosure - Retirement Benefits (Narrative) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="RetirementBenefitsScheduleOfBenefitObligationsAndPlanAssetsDetails" roleURI="http://www.lilly.com/role/RetirementBenefitsScheduleOfBenefitObligationsAndPlanAssetsDetails">
+        <link:definition>2420402 - Disclosure - Retirement Benefits (Schedule of Benefit Obligations and Plan Assets) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="RetirementBenefitsScheduleOfComponentsInConsolidatedBalanceSheetsDetails" roleURI="http://www.lilly.com/role/RetirementBenefitsScheduleOfComponentsInConsolidatedBalanceSheetsDetails">
+        <link:definition>2420403 - Disclosure - Retirement Benefits (Schedule of Components in Consolidated Balance Sheets) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="RetirementBenefitsScheduleOfExpectedBenefitPaymentsContributionsAndExpenseDetails" roleURI="http://www.lilly.com/role/RetirementBenefitsScheduleOfExpectedBenefitPaymentsContributionsAndExpenseDetails">
+        <link:definition>2420405 - Disclosure - Retirement Benefits (Schedule of Expected Benefit Payments, Contributions and Expense) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="RetirementBenefitsScheduleOfWeightedAverageAssumptionsDetails" roleURI="http://www.lilly.com/role/RetirementBenefitsScheduleOfWeightedAverageAssumptionsDetails">
+        <link:definition>2420404 - Disclosure - Retirement Benefits (Schedule of Weighted Average Assumptions) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="RetirementBenefitsTables" roleURI="http://www.lilly.com/role/RetirementBenefitsTables">
+        <link:definition>2320301 - Disclosure - Retirement Benefits (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="SegmentInformation" roleURI="http://www.lilly.com/role/SegmentInformation">
+        <link:definition>2124100 - Disclosure - Segment Information</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="SegmentInformationDetails" roleURI="http://www.lilly.com/role/SegmentInformationDetails">
+        <link:definition>2424402 - Disclosure - Segment Information (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="SegmentInformationTables" roleURI="http://www.lilly.com/role/SegmentInformationTables">
+        <link:definition>2324301 - Disclosure - Segment Information (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="SelectedQuarterlyDataUnaudited" roleURI="http://www.lilly.com/role/SelectedQuarterlyDataUnaudited">
+        <link:definition>2125100 - Disclosure - Selected Quarterly Data (Unaudited)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="SelectedQuarterlyDataUnauditedDetails" roleURI="http://www.lilly.com/role/SelectedQuarterlyDataUnauditedDetails">
+        <link:definition>2425402 - Disclosure - Selected Quarterly Data (Unaudited) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="SelectedQuarterlyDataUnauditedTables" roleURI="http://www.lilly.com/role/SelectedQuarterlyDataUnauditedTables">
+        <link:definition>2325301 - Disclosure - Selected Quarterly Data (Unaudited) (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ShareholdersEquity" roleURI="http://www.lilly.com/role/ShareholdersEquity">
+        <link:definition>2117100 - Disclosure - Shareholders' Equity</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ShareholdersEquityDetails" roleURI="http://www.lilly.com/role/ShareholdersEquityDetails">
+        <link:definition>2417401 - Disclosure - Shareholders' Equity (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="StockBasedCompensation" roleURI="http://www.lilly.com/role/StockBasedCompensation">
+        <link:definition>2116100 - Disclosure - Stock-Based Compensation</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="StockBasedCompensationDetails" roleURI="http://www.lilly.com/role/StockBasedCompensationDetails">
+        <link:definition>2416403 - Disclosure - Stock-Based Compensation (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="StockBasedCompensationPolicies" roleURI="http://www.lilly.com/role/StockBasedCompensationPolicies">
+        <link:definition>2216201 - Disclosure - Stock-Based Compensation (Policies)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="StockBasedCompensationTables" roleURI="http://www.lilly.com/role/StockBasedCompensationTables">
+        <link:definition>2316302 - Disclosure - Stock-Based Compensation (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="SummaryOfSignificantAccountingPolicies" roleURI="http://www.lilly.com/role/SummaryOfSignificantAccountingPolicies">
+        <link:definition>2101100 - Disclosure - Summary of Significant Accounting Policies</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="SummaryOfSignificantAccountingPoliciesAcquisitionsDetails" roleURI="http://www.lilly.com/role/SummaryOfSignificantAccountingPoliciesAcquisitionsDetails">
+        <link:definition>2401403 - Disclosure - Summary of Significant Accounting Policies (Acquisitions) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="SummaryOfSignificantAccountingPoliciesContractLiabilitiesDetails" roleURI="http://www.lilly.com/role/SummaryOfSignificantAccountingPoliciesContractLiabilitiesDetails">
+        <link:definition>2401405 - Disclosure - Summary of Significant Accounting Policies (Contract Liabilities) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="SummaryOfSignificantAccountingPoliciesPolicies" roleURI="http://www.lilly.com/role/SummaryOfSignificantAccountingPoliciesPolicies">
+        <link:definition>2201201 - Disclosure - Summary of Significant Accounting Policies (Policies)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="SummaryOfSignificantAccountingPoliciesRevenueDetails" roleURI="http://www.lilly.com/role/SummaryOfSignificantAccountingPoliciesRevenueDetails">
+        <link:definition>2401404 - Disclosure - Summary of Significant Accounting Policies (Revenue) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="SummaryOfSignificantAccountingPoliciesTables" roleURI="http://www.lilly.com/role/SummaryOfSignificantAccountingPoliciesTables">
+        <link:definition>2301302 - Disclosure - Summary of Significant Accounting Policies (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+    </xsd:appinfo>
+  </xsd:annotation>
+  <xsd:element abstract="true" id="lly_A2013ShareRepurchaseProgramMember" name="A2013ShareRepurchaseProgramMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_A2018RepurchaseProgramMember" name="A2018RepurchaseProgramMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_ACImmuneSAMember" name="ACImmuneSAMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_ARMOBiosciencesInc.Member" name="ARMOBiosciencesInc.Member" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_AccountingStandardsUpdate201802Member" name="AccountingStandardsUpdate201802Member" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_AccumulatedNetGainLossfromCashFlowHedgesandForeignCurrencyAdjustmentIncludingPortionAttributabletoNoncontrollingInterestMember" name="AccumulatedNetGainLossfromCashFlowHedgesandForeignCurrencyAdjustmentIncludingPortionAttributabletoNoncontrollingInterestMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_AcquiredInProcessResearchAndDevelopment" name="AcquiredInProcessResearchAndDevelopment" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_AcquisitionTermsContingentConsiderationMember" name="AcquisitionTermsContingentConsiderationMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_AddDeductAbstract" name="AddDeductAbstract" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_AdjustmenttoReturnReserveMember" name="AdjustmenttoReturnReserveMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_AdociaS.AMember" name="AdociaS.AMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_AlimtaMember" name="AlimtaMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_AnimaBiotechMember" name="AnimaBiotechMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_AnimalHealthProductsMember" name="AnimalHealthProductsMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_AstraZenecaMember" name="AstraZenecaMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_AurkaPharmaMember" name="AurkaPharmaMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_AvailableforSaleSecuritiesandEquitySecuritiesFVNIRealizedGain" name="AvailableforSaleSecuritiesandEquitySecuritiesFVNIRealizedGain" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="duration" />
+  <xsd:element id="lly_AvailableforsaleSecuritiesandEquitySecuritiesFVNIRealizedLoss" name="AvailableforsaleSecuritiesandEquitySecuritiesFVNIRealizedLoss" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_BasaglarMember" name="BasaglarMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_BoehringerIngelheimVetmedicaInc.sU.S.VaccinePortfolioMember" name="BoehringerIngelheimVetmedicaInc.sU.S.VaccinePortfolioMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_BusinessCombinationRecognizedIdentifiableAssetsAcquiredandLiabilitiesAssumedOtherAssetsandLiabilitiesNet" name="BusinessCombinationRecognizedIdentifiableAssetsAcquiredandLiabilitiesAssumedOtherAssetsandLiabilitiesNet" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="instant" />
+  <xsd:element abstract="true" id="lly_BuyEuroSellUsDollarMember" name="BuyEuroSellUsDollarMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_BuyGBPSellUSDMember" name="BuyGBPSellUSDMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_BuySwissfrancsSellUSdollarMember" name="BuySwissfrancsSellUSdollarMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_BuyUSdollarSellBritishpoundMember" name="BuyUSdollarSellBritishpoundMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_BuyUSdollarSellJapaneseYenMember" name="BuyUSdollarSellJapaneseYenMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_BuyUsdSellEuroMember" name="BuyUsdSellEuroMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_CardiovascularMember" name="CardiovascularMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_CarryforwardMember" name="CarryforwardMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_CashFlowHedgeAbstract" name="CashFlowHedgeAbstract" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_CashTransferedFromSubsidiarytoParent" name="CashTransferedFromSubsidiarytoParent" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_ChugaiPharmaceuticalCompanyMember" name="ChugaiPharmaceuticalCompanyMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_CialisMember" name="CialisMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_CoLucidPharmaceuticalsMember" name="CoLucidPharmaceuticalsMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_CollaborationandOtherRevenueMember" name="CollaborationandOtherRevenueMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_CollaborativeArrangementRightsAndObligationsPercent" name="CollaborativeArrangementRightsAndObligationsPercent" nillable="true" substitutionGroup="xbrli:item" type="num:percentItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_CollaborativeArrangementRightsAndObligationsTerms" name="CollaborativeArrangementRightsAndObligationsTerms" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_ContingentConsiderationLiabilitiesAbstract" name="ContingentConsiderationLiabilitiesAbstract" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_CostOfSalesOperatingExpensesAndOtherNet" name="CostOfSalesOperatingExpensesAndOtherNet" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_CureVacAGMember" name="CureVacAGMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_CymbaltaMember" name="CymbaltaMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_CyramzaMember" name="CyramzaMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_DebtSecuritiesAvailableforsaleUnrealizedGainPosition" name="DebtSecuritiesAvailableforsaleUnrealizedGainPosition" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="instant" />
+  <xsd:element id="lly_DeferredTaxAssetFairValueAdjustments" name="DeferredTaxAssetFairValueAdjustments" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="instant" />
+  <xsd:element abstract="true" id="lly_DefineBenefitPlanOtherMember" name="DefineBenefitPlanOtherMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_DefinedBenefitPlanEstimatedFutureEmployerContributionsinNextFiscalYearMinimum" name="DefinedBenefitPlanEstimatedFutureEmployerContributionsinNextFiscalYearMinimum" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element id="lly_DefinedBenefitPlanNetPeriodicBenefitCostCreditGainLossDuetoCurtailmentandSpecialTerminationBenefits" name="DefinedBenefitPlanNetPeriodicBenefitCostCreditGainLossDuetoCurtailmentandSpecialTerminationBenefits" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="duration" />
+  <xsd:element id="lly_DefinedBenefitPlanNetPeriodicBenefitCostCreditGainLossDuetoSpecialTerminationBenefits" name="DefinedBenefitPlanNetPeriodicBenefitCostCreditGainLossDuetoSpecialTerminationBenefits" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element id="lly_DefinedBenefitPlanPercentageOfGlobalInvestmentsInPlanAssets" name="DefinedBenefitPlanPercentageOfGlobalInvestmentsInPlanAssets" nillable="true" substitutionGroup="xbrli:item" type="num:percentItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_DerivativeInstrumentsGainLossRecognized" name="DerivativeInstrumentsGainLossRecognized" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="duration" />
+  <xsd:element id="lly_DescriptionOfDerivativeActivityVolumePercent" name="DescriptionOfDerivativeActivityVolumePercent" nillable="true" substitutionGroup="xbrli:item" type="num:percentItemType" xbrli:periodType="instant" />
+  <xsd:element abstract="true" id="lly_DesignatedUnusableMember" name="DesignatedUnusableMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_DiabetesCollaborationMember" name="DiabetesCollaborationMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_DicernaPharmaceuticalsMember" name="DicernaPharmaceuticalsMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_DocumentEntityInformationAbstract" name="DocumentEntityInformationAbstract" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_DomesticandPuertoRicanContributiontoIncomebeforeIncomeTaxes" name="DomesticandPuertoRicanContributiontoIncomebeforeIncomeTaxes" nillable="true" substitutionGroup="xbrli:item" type="num:percentItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_DrReddysLabMember" name="DrReddysLabMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_EffectiveIncomeTaxRateReconciliationTaxCutsandJobsActAmount" name="EffectiveIncomeTaxRateReconciliationTaxCutsandJobsActAmount" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_EffientMember" name="EffientMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_ElancoAnimalHealthIncorporatedMember" name="ElancoAnimalHealthIncorporatedMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_EmployeeLitigationMember" name="EmployeeLitigationMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_EndocrinologyMember" name="EndocrinologyMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_EquityMethodAndOtherInvestmentsMember" name="EquityMethodAndOtherInvestmentsMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_ErbituxCollaborationandOtherRevenueMember" name="ErbituxCollaborationandOtherRevenueMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_ErbituxMember" name="ErbituxMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_ErbituxProductMember" name="ErbituxProductMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_Expiration5to20YearsMember" name="Expiration5to20YearsMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_Expirationin9YearsMember" name="Expirationin9YearsMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_Expirationwithin5yearsMember" name="Expirationwithin5yearsMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_FairValueHedgeAbstract" name="FairValueHedgeAbstract" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_FairValueRetirementBenefitsInvestmentsAxis" name="FairValueRetirementBenefitsInvestmentsAxis" nillable="true" substitutionGroup="xbrldt:dimensionItem" type="xbrli:stringItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_FairValueRetirementBenefitsInvestmentsDomain" name="FairValueRetirementBenefitsInvestmentsDomain" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_FairValueRetirementBenefitsInvestmentsValuedatNetAssetValueMember" name="FairValueRetirementBenefitsInvestmentsValuedatNetAssetValueMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_FixedIncomeFundsEmergingMarketsMember" name="FixedIncomeFundsEmergingMarketsMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_FixedIncomeFundsRepurchasedAgreementsMember" name="FixedIncomeFundsRepurchasedAgreementsMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_ForeignCurrencyDenominatedDebtMember" name="ForeignCurrencyDenominatedDebtMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_ForteoMember" name="ForteoMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_HedgedFixedRateDebtMember" name="HedgedFixedRateDebtMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_HumalogMember" name="HumalogMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_HumanPharmaceuticalProductsMember" name="HumanPharmaceuticalProductsMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_HumulinMember" name="HumulinMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_HydraBiosciencesMember" name="HydraBiosciencesMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_ImmunologyMember" name="ImmunologyMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_ImpactonEquityofSaleofNoncontrollingInterestinSubsidiary" name="ImpactonEquityofSaleofNoncontrollingInterestinSubsidiary" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="duration" />
+  <xsd:element id="lly_IncomeTaxPaymentAnticipated" name="IncomeTaxPaymentAnticipated" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="instant" />
+  <xsd:element id="lly_IncompleteAccountingProvisionalIncomeTaxExpenseBenefit" name="IncompleteAccountingProvisionalIncomeTaxExpenseBenefit" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_InternationalMember" name="InternationalMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_JapaneseAdministrativeProceedingsMember" name="JapaneseAdministrativeProceedingsMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_JardianceMember" name="JardianceMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_KeyBiosciencesDualAmylinCalcitoninReceptorAgonistsMember" name="KeyBiosciencesDualAmylinCalcitoninReceptorAgonistsMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_LongTermDebtFairValueAdjustment" name="LongTermDebtFairValueAdjustment" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="instant" />
+  <xsd:element id="lly_LossContingencyAmountofClaim" name="LossContingencyAmountofClaim" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="instant" />
+  <xsd:element id="lly_LossContingencyNumberOfLawsuits" name="LossContingencyNumberOfLawsuits" nillable="true" substitutionGroup="xbrli:item" type="xbrli:integerItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_LossContingencyNumberofDemands" name="LossContingencyNumberofDemands" nillable="true" substitutionGroup="xbrli:item" type="xbrli:integerItemType" xbrli:periodType="instant" />
+  <xsd:element id="lly_LossContingencyNumberofGenericProducts" name="LossContingencyNumberofGenericProducts" nillable="true" substitutionGroup="xbrli:item" type="xbrli:integerItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_LoxoOncologyInc.Member" name="LoxoOncologyInc.Member" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_MarketableSecuritiesMember" name="MarketableSecuritiesMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_MaturityDate2019Member" name="MaturityDate2019Member" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_MaturityDate2023Member" name="MaturityDate2023Member" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_MilestonePaymentsDevelopmentAndRegulatoryMember" name="MilestonePaymentsDevelopmentAndRegulatoryMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_MilestonePaymentsDevelopmentandRegulatoryCapitalizedCumulativeMember" name="MilestonePaymentsDevelopmentandRegulatoryCapitalizedCumulativeMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_MilestonePaymentsDevelopmentandRegulatoryCapitalizedDeferredMember" name="MilestonePaymentsDevelopmentandRegulatoryCapitalizedDeferredMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_MilestonePaymentsDevelopmentandRegulatoryCapitalizedMember" name="MilestonePaymentsDevelopmentandRegulatoryCapitalizedMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_MilestonePaymentsDevelopmentandRegulatoryExpensedMember" name="MilestonePaymentsDevelopmentandRegulatoryExpensedMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_MilestonePaymentsSalesBasedMember" name="MilestonePaymentsSalesBasedMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_MinimumNumberOfSharesToDivestForExchangeOffer" name="MinimumNumberOfSharesToDivestForExchangeOffer" nillable="true" substitutionGroup="xbrli:item" type="xbrli:sharesItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_NektarsPhaseIImmunologicalTherapyMember" name="NektarsPhaseIImmunologicalTherapyMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_NeuroscienceMember" name="NeuroscienceMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_NextCureInc.Member" name="NextCureInc.Member" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_NoExpirationMember" name="NoExpirationMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_NotesDueinMayTwentyTwentySevenMember" name="NotesDueinMayTwentyTwentySevenMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_NotesDueinMayTwentyTwentyTwoMember" name="NotesDueinMayTwentyTwentyTwoMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_NotesDueinTwentyFortySevenMember" name="NotesDueinTwentyFortySevenMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_NumberOfSharesExpectedToDivest" name="NumberOfSharesExpectedToDivest" nillable="true" substitutionGroup="xbrli:item" type="xbrli:sharesItemType" xbrli:periodType="instant" />
+  <xsd:element id="lly_NumberofCompanies" name="NumberofCompanies" nillable="true" substitutionGroup="xbrli:item" type="xbrli:integerItemType" xbrli:periodType="instant" />
+  <xsd:element id="lly_NumberofIndividuals" name="NumberofIndividuals" nillable="true" substitutionGroup="xbrli:item" type="xbrli:integerItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_NumberofNewApplication" name="NumberofNewApplication" nillable="true" substitutionGroup="xbrli:item" type="xbrli:integerItemType" xbrli:periodType="instant" />
+  <xsd:element id="lly_NumberofPatents" name="NumberofPatents" nillable="true" substitutionGroup="xbrli:item" type="xbrli:integerItemType" xbrli:periodType="instant" />
+  <xsd:element id="lly_NumberofWholesalers" name="NumberofWholesalers" nillable="true" substitutionGroup="xbrli:item" type="xbrli:integerItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_OlumiantMember" name="OlumiantMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_OncologyMember" name="OncologyMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_OtherCardiovascularMember" name="OtherCardiovascularMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_OtherEndocrinologyMember" name="OtherEndocrinologyMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_OtherEquitySecuritiesMember" name="OtherEquitySecuritiesMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_OtherForeignCountriesMember" name="OtherForeignCountriesMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_OtherImmunologyMember" name="OtherImmunologyMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_OtherNeuroscienceMember" name="OtherNeuroscienceMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_OtherOncologyMember" name="OtherOncologyMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_OtherPharmaceuticalsMember" name="OtherPharmaceuticalsMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_OutsideUnitedStatesMember" name="OutsideUnitedStatesMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_PaymentsForRepurchaseOfCommonStockInNextTwelveMonths" name="PaymentsForRepurchaseOfCommonStockInNextTwelveMonths" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_PlaintiffAppealingDecisionofCourtMember" name="PlaintiffAppealingDecisionofCourtMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_ProceedsfromIssuanceorSaleofEquityfromSubsidiary" name="ProceedsfromIssuanceorSaleofEquityfromSubsidiary" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element id="lly_ProceedsfromSaleofEquityandAvailableforSaleSecurities" name="ProceedsfromSaleofEquityandAvailableforSaleSecurities" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_ProfitAndDevelopmentAndMarketingShareMember" name="ProfitAndDevelopmentAndMarketingShareMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_PurchasedInProcessResearchAndDevelopment" name="PurchasedInProcessResearchAndDevelopment" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_ResearchAndDevelopmentExpMember" name="ResearchAndDevelopmentExpMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_RevenuefromContractPaymentTermMaximum" name="RevenuefromContractPaymentTermMaximum" nillable="true" substitutionGroup="xbrli:item" type="xbrli:durationItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_RevenuefromContractPaymentTermMinimum" name="RevenuefromContractPaymentTermMinimum" nillable="true" substitutionGroup="xbrli:item" type="xbrli:durationItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_RiskManagementInstrumentsAbstract" name="RiskManagementInstrumentsAbstract" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_SIGATechnologiesMember" name="SIGATechnologiesMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_SaleOfStockPercentageOfStockSold" name="SaleOfStockPercentageOfStockSold" nillable="true" substitutionGroup="xbrli:item" type="num:percentItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_SalesRebatesAndDiscounts" name="SalesRebatesAndDiscounts" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="instant" />
+  <xsd:element id="lly_ScheduleofAdditionalBorrowingsDisclosuresTableTextBlock" name="ScheduleofAdditionalBorrowingsDisclosuresTableTextBlock" nillable="true" substitutionGroup="xbrli:item" type="nonnum:textBlockItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_ScheduleofAdditionalIncomeTaxDisclosuresTableTextBlock" name="ScheduleofAdditionalIncomeTaxDisclosuresTableTextBlock" nillable="true" substitutionGroup="xbrli:item" type="nonnum:textBlockItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_ScheduleofAdditionalSegmentInformationDisclosuresTableTextBlock" name="ScheduleofAdditionalSegmentInformationDisclosuresTableTextBlock" nillable="true" substitutionGroup="xbrli:item" type="nonnum:textBlockItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_ScheduleofAdditionalStockBasedCompensationDisclosuresTableTextBlock" name="ScheduleofAdditionalStockBasedCompensationDisclosuresTableTextBlock" nillable="true" substitutionGroup="xbrli:item" type="nonnum:textBlockItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_SeniorNotesDueAugustTwentyEightTwentyTwentyEightMember" name="SeniorNotesDueAugustTwentyEightTwentyTwentyEightMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_SeniorNotesDueAugustTwentyEightTwentyTwentyThreeMember" name="SeniorNotesDueAugustTwentyEightTwentyTwentyThreeMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_SeniorNotesDueAugustTwentySevenTwentyTwentyOneMember" name="SeniorNotesDueAugustTwentySevenTwentyTwentyOneMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_ShareBasedCompensationArrangementByShareBasedPaymentAwardExpectedSharesToBeIssued" name="ShareBasedCompensationArrangementByShareBasedPaymentAwardExpectedSharesToBeIssued" nillable="true" substitutionGroup="xbrli:item" type="xbrli:sharesItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_SharebasedCompensationAwardsFairValueAssumptionsUsedTableTextBlock" name="SharebasedCompensationAwardsFairValueAssumptionsUsedTableTextBlock" nillable="true" substitutionGroup="xbrli:item" type="nonnum:textBlockItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_ShareholderValueAwardsMember" name="ShareholderValueAwardsMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_SigilonTherapeuticsMember" name="SigilonTherapeuticsMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_StratteraMember" name="StratteraMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_TaltzMember" name="TaltzMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_TanezumabMember" name="TanezumabMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="lly_TaxCutsAndJobsActOf2017IncompleteAccountingProvisionalIncomeTaxExpenseBenefit" name="TaxCutsAndJobsActOf2017IncompleteAccountingProvisionalIncomeTaxExpenseBenefit" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element id="lly_TaxCutsandJobsActChangeinTaxRateIncomeTaxExpenseBenefitTotal" name="TaxCutsandJobsActChangeinTaxRateIncomeTaxExpenseBenefitTotal" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element id="lly_TaxCutsandJobsActMeasurementPeriodAdjustmentIncomeTaxExpenseBenefit" name="TaxCutsandJobsActMeasurementPeriodAdjustmentIncomeTaxExpenseBenefit" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element id="lly_TaxCutsandJobsActReclassificationfromAOCItoRetainedEarningsTaxEffect" name="TaxCutsandJobsActReclassificationfromAOCItoRetainedEarningsTaxEffect" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="duration" />
+  <xsd:element id="lly_TaxCutsandJobsActof2017ChangeinTaxRateIncomeTaxExpenseBenefit" name="TaxCutsandJobsActof2017ChangeinTaxRateIncomeTaxExpenseBenefit" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element id="lly_TaxCutsandJobsActof2017DeferredTaxAssetGlobalIntangibleLowTaxedIncomeProvision" name="TaxCutsandJobsActof2017DeferredTaxAssetGlobalIntangibleLowTaxedIncomeProvision" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="instant" />
+  <xsd:element id="lly_TaxCutsandJobsActof2017IncompleteAccountingChangeinTaxRateProvisionalIncomeTaxExpenseBenefit" name="TaxCutsandJobsActof2017IncompleteAccountingChangeinTaxRateProvisionalIncomeTaxExpenseBenefit" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_TaxYears20102012Member" name="TaxYears20102012Member" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_TermFacilityMember" name="TermFacilityMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_TrajentaBIMember" name="TrajentaBIMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_TrulicityMemberMember" name="TrulicityMemberMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_UnitedStatesandEuropeMember" name="UnitedStatesandEuropeMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="lly_ZyprexaMember" name="ZyprexaMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+</xsd:schema>

@@ -5638,8 +5638,8 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     for key, value in CashFlowStatement.items():
                         d = key
                         q = [
-                            'DepreciationAndAmortization',
-                            'DepreciationDepletionAndAmortization',
+                            'Depreciation',
+                            'Amortization',
                         ]
                         b = [
                             'Acquire',
@@ -5697,6 +5697,8 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         d = key
                         q = [
                             'GainRelatedToDisposalOrSale',
+                            '(Gains)LossesOnEquityInvestments',
+                            '(Gains)LossesOnDiverstitures',
                         ]
                         b = [
                             'Acquire',
@@ -5740,6 +5742,65 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                 except:
                     pass
                 #
+                # Accrued Employee Compensation
+                try:
+                    AccruedEmployeeCompensation = []
+                    r = 0
+                    for key, value in CashFlowStatement.items():
+                        d = key
+                        q = [
+                            'Compensation',
+                        ]
+                        b = [
+                            'Acquire',
+                            'Acquisition',
+                            'Decrease',
+                            'Disposal',
+                            'DiscontinuedOperation',
+                            'Ending',
+                            'Financing',
+                            'Hedge',
+                            'Increase',
+                            'Investment',
+                            'Investing',
+                            'Operating',
+                            'Payment',
+                            'Proceeds',
+                            'Purchase',
+                            'Selling',
+                            'ShareBasedCompensation',
+                            'StockBasedCompensation',
+                        ]
+                        for l in q:
+                            if l in d:
+                                h = 'p'
+                                for p in b:
+                                    u = 0
+                                    while u < len(b):
+                                        if p in d:
+                                            h = ''
+                                        u = u + 1
+                                if h == 'p':
+                                    try:
+                                        i = 0
+                                        while CashFlowStatement[key][i] == None:
+                                            i = i + 1
+                                        ARCHvalue = CashFlowStatement[key][i]
+                                        CashFlowStatement[key][i] = None
+                                    except:
+                                        if CashFlowStatement[key] != None:
+                                            ARCHvalue = CashFlowStatement[key]
+                                            CashFlowStatement[key] = None
+                                        else:
+                                            ARCHvalue = 0
+                                    if ARCHvalue != 0:
+                                        AccruedEmployeeCompensation.append(ARCHvalue)
+                                        print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'AccruedEmployeeCompensation')
+                        r = r + 1
+                    cf.AccruedEmployeeCompensation = sum(AccruedEmployeeCompensation)
+                except:
+                    pass                
+                #
                 # share based compensation
                 try:
                     ShareBasedCompensation = []
@@ -5756,6 +5817,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             'Decrease',
                             'Disposal',
                             'DiscontinuedOperation',
+                            'Employee',
                             'Ending',
                             'Financing',
                             'Hedge',
@@ -5798,14 +5860,14 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                 except:
                     pass
                 #
-                # deferred income tax expense (benefit)
+                # increase decrease in income tax expense (benefit)
                 try:
-                    DeferredIncomeTaxExpenseBenefit = []
+                    IncreaseDecreaseInIncomeTaxExpenseBenefit = []
                     r = 0
                     for key, value in CashFlowStatement.items():
                         d = key
                         q = [
-                            'DeferredIncomeTax',
+                            'IncomeTax',
                         ]
                         b = [
                             'Payment',
@@ -5836,10 +5898,10 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                         else:
                                             ARCHvalue = 0
                                     if ARCHvalue != 0:
-                                        DeferredIncomeTaxExpenseBenefit.append(ARCHvalue)
-                                        print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'DeferredIncomeTaxExpenseBenefit')
+                                        IncreaseDecreaseInIncomeTaxExpenseBenefit.append(ARCHvalue)
+                                        print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'IncreaseDecreaseInIncomeTaxExpenseBenefit')
                         r = r + 1
-                    cf.DeferredIncomeTaxExpenseBenefit = sum(DeferredIncomeTaxExpenseBenefit)
+                    cf.IncreaseDecreaseInIncomeTaxExpenseBenefit = sum(IncreaseDecreaseInIncomeTaxExpenseBenefit)
                 except:
                     pass
                 #
@@ -6081,6 +6143,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         q = [
                             'ContractWithCustomerLiability',
                             'DeferredRevenue',
+                            'CustomerDeposits',
                         ]
                         b = [
                             'NonTrade',
@@ -6238,13 +6301,13 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         q = [
                             'Investments',
                             'MarketableSecurities',
-                            'OtherInvestments',
                             'SecuritiesDebt',
-                            'ShortTermInvestments',
+                            'TradingAsset',
                         ]
                         b = [
                             'Proceeds',
                             'Disposal',
+                            'Sell',
                         ]
                         for l in q:
                             if l in d:
@@ -6283,16 +6346,14 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     for key, value in CashFlowStatement.items():
                         d = key
                         q = [
-                            'ProceedsFromMaturitiesOfMarketableSecurities',
-                            'ProceedsFromMaturitiesPrepaymentsAndCallsOfSecurities',
-                            'ProceedsFromNonMarketableSecurities',
-                            'ProceedsFromSaleAndMaturityOfOtherInvestments',
-                            'ProceedsFromSaleOfAvailableForSaleSecuritiesDebt',
-                            'ProceedsFromSalesAndMaturitiesOfShortTermInvestments',
-                            'ProceedsFromSalesOfMarketableSecurities',
-                            'ProceedsFromSalesOfNoncurrentInvestments',
+                            'Investments',
+                            'MarketableSecurities',
+                            'Securities',
+                            'TradingAsset',
+                            'Maturities',
                         ]
                         b = [
+                            'Addition',
                             'Payment',
                             'Purchase',
                             'Acquisition',
@@ -6388,6 +6449,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             'Purchase',
                             'Acquisition',
                             'Acquire',
+                            'Addition',
                         ]
                         for l in q:
                             if l in d:
@@ -6432,9 +6494,12 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             'AcquireBusinesses',
                             'CashPaidForAcquisitions',
                             'ResearchAndDevelopment',
+                            'DiverstitureOfBusinesses',
                         ]
                         b = [
                             'Proceed',
+                            'Disposal',
+                            'Sell',
                         ]
                         for l in q:
                             if l in d:
@@ -6571,6 +6636,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         d = key
                         q = [
                             'ProceedsFromIssuanceOfCommonStock',
+                            'ProceedsFromSalesOfCommonStock',
                         ]
                         b = [
                             'Purchase',
@@ -6655,10 +6721,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     for key, value in CashFlowStatement.items():
                         d = key
                         q = [
-                            'DividendsAndDividendEquivalentsPaid',
-                            'DividendsPaid',
-                            'PaymentsForDividendsAndDividendEquivalents',
-                            'PaymentsOfDividends',
+                            'Dividend',
                         ]
                         b = [
                             'Proceeds',
@@ -6790,6 +6853,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         q = [
                             'ProceedsFromIssuanceOfLongTermDebt',
                             'ProceedsFromIssuanceOfTermDebt',
+                            'IssuanceOfTermDebt',
                         ]
                         b = [
                             'Payment',
@@ -6919,6 +6983,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         q = [
                             'ProceedsFromPaymentsForOtherFinancingActivities',
                             'NetChangeInShortTermBorrowings',
+                            'OtherFinancing',
                         ]
                         b = [
                             'Proceeds',
@@ -8106,7 +8171,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     print('Depreciation Depletion And Amortization: ' + str(cf.DepreciationDepletionAndAmortization) + ' $')
                     print('Gain Related To Disposal Or Sale: ' + str(cf.GainRelatedToDisposalOrSale) + ' $')
                     print('Share Based Compensation Operating Activities: ' + str(cf.ShareBasedCompensation) + ' $')
-                    print('Deferred Income Tax Expense (Benefit): ' + str(cf.DeferredIncomeTaxExpenseBenefit) + ' $')
+                    print('Increase Decrease In Income Tax Expense (Benefit): ' + str(cf.IncreaseDecreaseInIncomeTaxExpenseBenefit) + ' $')
                     print('Other Non Cash Income Expense: ' + str(cf.OtherNonCashIncomeExpense) + ' $')
                     print('Increase (Decrease) In Accounts Receivable: ' + str(cf.IncreaseDecreaseInAccountsReceivable) + ' $')
                     print('Increase (Decrease) In Inventories: ' + str(cf.IncreaseDecreaseInInventories) + ' $')
@@ -8125,7 +8190,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         cf.DepreciationDepletionAndAmortization,
                         cf.GainRelatedToDisposalOrSale,
                         cf.ShareBasedCompensation,
-                        cf.DeferredIncomeTaxExpenseBenefit,
+                        cf.IncreaseDecreaseInIncomeTaxExpenseBenefit,
                         cf.OtherNonCashIncomeExpense,
                         cf.IncreaseDecreaseInAccountsReceivable, 
                         cf.IncreaseDecreaseInInventories,

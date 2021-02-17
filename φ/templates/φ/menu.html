@@ -1,0 +1,31 @@
+{% extends "φ/layout.html" %}
+
+{% block body %}
+
+<!--- SCRIPT --->
+<script>       
+
+    // DOCUMENT TITLE
+    document.title = 'clockdb.com | menu'
+
+</script>
+
+<!--- ENTITIES --->
+
+<div class="text" style="padding-top: 3%;">
+
+    <ul>
+            
+        <a href="{% url 'φ:index' %}" style="padding-bottom: 3%;"><button><h4><b>Home</h4></b></button></a>
+
+        <a href="{% url 'φ:documentation' %}" style="padding-bottom: 3%;"><button><h4><b>Documentation</h4></b></button></a>
+
+        <a href="{% url 'φ:disclaimer' %}" style="padding-bottom: 3%;"><button><h4><b>Disclaimer</h4></b></button></a>
+
+        <a href="{% url 'φ:contact' %}" style="padding-bottom: 3%;"><button><h4><b>Donate</h4></b></button></a>
+
+    </ul>
+    
+</div>
+
+{% endblock %}
