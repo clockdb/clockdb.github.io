@@ -1,0 +1,61 @@
+{% extends "φ/layout.html" %}
+
+{% block body %}
+
+<!--- SCRIPT --->
+<script>       
+
+    // DOCUMENT TITLE
+    document.title = 'clockdb | filterking'
+
+</script>
+
+<!--- FILTERKING --->
+
+<Section id="φ">
+    <table>
+        <tbody>
+            <tr></tr>
+            <tr></tr>
+            <tr>
+                <td>
+                    <h2 style="border-bottom: ridge; font-weight:bold;">Entity</h2>
+                </td>
+                <td>
+                    <h2 style="border-bottom: ridge; font-weight:bold;">Clockφ</h2>
+                </td>
+                <td>
+                    <h2 style="border-bottom: ridge; font-weight:bold;">Bridgeφ</h2>
+                </td>
+            </tr>
+            <tr></tr>
+            <tr></tr>
+
+            {% for entity in entities %}
+
+            <tr>
+                <td>
+                    <a href="/{{ entity.TradingSymbol }}">
+                        <button>
+                            <h3 style="padding-bottom:7px;">{{ entity.EntityRegistrantName }} ({{ entity.TradingSymbol }})</h3>
+                            <h5 style="color:#8A9096">{{ entity.Industry }}</h5>
+                        </button>
+                    </a>                               
+                </td>
+                <td>
+                    <h3 style="text-align: center;">{{ entity.Clockφ }}%</h3>
+                </td>
+                <td>
+                    <h5>{{ entity.Bridgeφ }}</h5>
+                </td>
+            </tr>
+            <tr></tr>
+            <tr></tr>
+
+            {% endfor %}
+            
+        </tbody>
+    </table>
+</Section>
+
+{% endblock %}
