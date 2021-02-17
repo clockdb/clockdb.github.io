@@ -21,9 +21,9 @@ import xml.etree.ElementTree as ET
 
 # TradingSymbol to EntityCentralIndexKeys
 EntityCentralIndexKeys = {
-    'AAPL':    '320193',
+#    'AAPL':    '320193',
 #    'DLTR':    '935703',
-    'INTC':    '50863',
+#    'INTC':    '50863',
     'LLY':    '59478',
 #    'MNST':    '865752',
 #    'PSX':    '1534701',
@@ -7211,12 +7211,12 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                 d,
             ]
             for p in q:
-                print(p)
                 if 'SHARES IN MILLIONS' in d.upper():
                     dad = 1000000
-                if 'SHARES IN THOUSANDS' in d.upper():
+                elif 'SHARES IN THOUSANDS' in d.upper():
                     dad = 1000
-            print(dad)
+                else:
+                    dad = 1
             a.EntityCommonStockSharesOutstanding = b * dad
             #
             a.save()
