@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'clock.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.φ.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR / 'φ.sqlite3'),
     }
 }
