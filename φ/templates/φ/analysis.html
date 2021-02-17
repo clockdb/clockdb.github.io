@@ -7,6 +7,8 @@
     // DOCUMENT TITLE
     document.title = '{{ entity.TradingSymbol }} | ' + 'clockdb.com'
 
+    alert('This prototype is for demonstration purpuses only. It is your responsibility to make sure the calculation are appropriately executed. The AI is just starting to learn.')
+    
     // SINGLE-PAGE + BUTTONS
     // TO BE ADJUSTED, DOES NOT WORK PROPERLY
     window.onpopstate = function(event) {
@@ -17289,7 +17291,7 @@
 
 
 <script>
-    
+
     function Header(Header) {
         document.getElementById('EntityRegistrantName').innerHTML = '{{ entity.EntityRegistrantName }} ({{ entity.TradingSymbol }})';
         document.getElementById('Industry').innerHTML = '{{ entity.Industry }}';

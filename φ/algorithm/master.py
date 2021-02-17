@@ -22,11 +22,9 @@ import xml.etree.ElementTree as ET
 # TradingSymbol to EntityCentralIndexKeys
 EntityCentralIndexKeys = {
 #    'AAPL':    '320193',
-#    'DLTR':    '935703',
+    'DLTR':    '935703',
 #    'INTC':    '50863',
-    'LLY':    '59478',
-#    'MNST':    '865752',
-#    'PSX':    '1534701',
+#    'LLY':    '59478',
 }
 
 #
@@ -1766,6 +1764,62 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                 except:
                     pass
                 #
+                # total current liabilities
+                try:
+                    print('current liabilities')
+                    print(137*'-')
+                    #
+                    # total current liabilities
+                    try:
+                        CurrentLiabilities = []
+                        r = 0
+                        for key, value in BalanceSheet.items():
+                            if r > CurrentAssetsRank:
+                                d = key
+                                q = [
+                                    'LiabilitiesCurrent',
+                                    'CurrentLiabilities',
+                                ]
+                                b = [
+                                    'Asset',
+                                    'LongTerm',
+                                    'Noncurrent',
+                                    'NonCurrent',
+                                    'OtherCurrentLiabilit',
+                                ]
+                                for l in q:
+                                    if l in d:
+                                        h = 'p'
+                                        for p in b:
+                                            u = 0
+                                            while u < len(b):
+                                                if p in d:
+                                                    h = ''
+                                                u = u + 1
+                                        if h == 'p':
+                                            try:
+                                                i = 0
+                                                while BalanceSheet[key][i] == None:
+                                                    i = i + 1
+                                                ARCHvalue = BalanceSheet[key][i]
+                                                BalanceSheet[key][i] = None
+                                            except:
+                                                if BalanceSheet[key] != None:
+                                                    ARCHvalue = BalanceSheet[key]
+                                                    BalanceSheet[key] = None
+                                                else:
+                                                    ARCHvalue = 0
+                                            if ARCHvalue != 0:
+                                                CurrentLiabilities.append(ARCHvalue)
+                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'CurrentLiabilities')
+                                                CurrentLiabilitiesRank = r
+                            r = r + 1
+                        a.CurrentLiabilities = -sum(CurrentLiabilities)
+                    except:
+                        pass
+                except:
+                    pass
+                #
                 print('\n')
                 #
                 # cash
@@ -1998,6 +2052,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                 'Investments',
                                 'Receivable',
                                 'Securities',
+                                'Tax',
                             ]
                             for l in q:
                                 if l in d:
@@ -2305,6 +2360,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         q = [
                             'Investment',
                             'Securities',
+                            'RestrictedCash',
                         ]
                         b = [
                             'ShortTerm',
@@ -2604,38 +2660,40 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     r = 0
                     for key, value in BalanceSheet.items():
                         if r > CurrentAssetsRank:
-                            d = key
-                            q = [
-                                'DeferredTaxAssets',
-                            ]
-                            b = [
-                                'Liabilit',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while BalanceSheet[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = BalanceSheet[key][i]
-                                            BalanceSheet[key][i] = None
-                                        except:
-                                            if BalanceSheet[key] != None:
-                                                ARCHvalue = BalanceSheet[key]
-                                                BalanceSheet[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            DeferredTaxAssetsNonCurrent.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'DeferredTaxAssetsNonCurrent')
+                            if r < CurrentLiabilitiesRank:
+                                d = key
+                                q = [
+                                    'DeferredTax',
+                                    'DeferredIncome',
+                                ]
+                                b = [
+                                    'Liabilit',
+                                ]
+                                for l in q:
+                                    if l in d:
+                                        h = 'p'
+                                        for p in b:
+                                            u = 0
+                                            while u < len(b):
+                                                if p in d:
+                                                    h = ''
+                                                u = u + 1
+                                        if h == 'p':
+                                            try:
+                                                i = 0
+                                                while BalanceSheet[key][i] == None:
+                                                    i = i + 1
+                                                ARCHvalue = BalanceSheet[key][i]
+                                                BalanceSheet[key][i] = None
+                                            except:
+                                                if BalanceSheet[key] != None:
+                                                    ARCHvalue = BalanceSheet[key]
+                                                    BalanceSheet[key] = None
+                                                else:
+                                                    ARCHvalue = 0
+                                            if ARCHvalue != 0:
+                                                DeferredTaxAssetsNonCurrent.append(ARCHvalue)
+                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'DeferredTaxAssetsNonCurrent')
                         r = r + 1
                     tb.DeferredTaxAssetsNonCurrent = sum(DeferredTaxAssetsNonCurrent)
                 except:
@@ -2649,7 +2707,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         if r > CurrentAssetsRank:
                             d = key
                             q = [
-                                'OtherAssetsNoncurrent',
+                                'OtherAssets',
                                 'OtherLongTermAsset',
                                 'OtherNonCurrentAsset',
                                 'OtherNoncurrentAsset',
@@ -2689,92 +2747,27 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                 #
                 print('\n' * 3)
                 #
-            except:
-                pass
-            #
-            # total assets
-            try:
-                TotalAssets = []
-                r = 0
-                for key, value in BalanceSheet.items():
-                    if r > CurrentAssetsRank:
-                        d = key
-                        q = [
-                            'Assets',
-                        ]
-                        b = [
-                            'Deferred',
-                            'Goodwill',
-                            'Intangible',
-                            'Investment',
-                            'Liabilit',
-                            'Operating',
-                            'Other',
-                            'Property',
-                            'Tax',
-                        ]
-                        for l in q:
-                            if l in d:
-                                h = 'p'
-                                for p in b:
-                                    u = 0
-                                    while u < len(b):
-                                        if p in d:
-                                            h = ''
-                                        u = u + 1
-                                if h == 'p':
-                                    try:
-                                        i = 0
-                                        while BalanceSheet[key][i] == None:
-                                            i = i + 1
-                                        ARCHvalue = BalanceSheet[key][i]
-                                        BalanceSheet[key][i] = None
-                                    except:
-                                        if BalanceSheet[key] != None:
-                                            ARCHvalue = BalanceSheet[key]
-                                            BalanceSheet[key] = None
-                                        else:
-                                            ARCHvalue = 0
-                                    if ARCHvalue != 0:
-                                        TotalAssets.append(ARCHvalue)
-                                        print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'TotalAssets')
-                    r = r + 1
-                a.Assets = sum(TotalAssets)
                 #
-                # total asset not null
+                # total assets
                 try:
-                    if a.NonCurrentAssets == 0:
-                        a.NonCurrentAssets = a.Assets - a.CurrentAssets
-                except:
-                    pass
-                #
-                print(137*'-')
-                print('\n' * 3)
-            except:
-                pass
-            #
-            # current liabilities
-            try:
-                print('current liabilities')
-                print(137*'-')
-                #
-                # total current liabilities
-                try:
-                    CurrentLiabilities = []
+                    TotalAssets = []
                     r = 0
                     for key, value in BalanceSheet.items():
                         if r > CurrentAssetsRank:
                             d = key
                             q = [
-                                'LiabilitiesCurrent',
-                                'CurrentLiabilities',
+                                'Assets',
                             ]
                             b = [
-                                'Asset',
-                                'LongTerm',
-                                'Noncurrent',
-                                'NonCurrent',
-                                'OtherCurrentLiabilit',
+                                'Deferred',
+                                'Goodwill',
+                                'Intangible',
+                                'Investment',
+                                'Liabilit',
+                                'Operating',
+                                'Other',
+                                'Property',
+                                'Tax',
                             ]
                             for l in q:
                                 if l in d:
@@ -2799,14 +2792,23 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                             else:
                                                 ARCHvalue = 0
                                         if ARCHvalue != 0:
-                                            CurrentLiabilities.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'CurrentLiabilities')
-                                            CurrentLiabilitiesRank = r
+                                            TotalAssets.append(ARCHvalue)
+                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'TotalAssets')
                         r = r + 1
-                    a.CurrentLiabilities = -sum(CurrentLiabilities)
+                    a.Assets = sum(TotalAssets)
+                    #
+                    # total asset not null
+                    try:
+                        if a.NonCurrentAssets == 0:
+                            a.NonCurrentAssets = a.Assets - a.CurrentAssets
+                    except:
+                        pass
+                    #
+                    print(137*'-')
+                    print('\n' * 3)
                 except:
                     pass
-                #
+                    #
                 print('\n')
                 #
                 # accounts payable and accrued liabilities
@@ -3860,11 +3862,10 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     for key, value in BalanceSheet.items():
                         d = key
                         q = [
-                            'OtherLiabilitiesNoncurrent',
-                            'OtherLiabilitiesNonCurrent',
                             'OtherLongTermLiabilities',
                             'OtherNonCurrentLiabilit',
                             'OtherNoncurrentLiabilit',
+                            'OtherLiabilities',
                         ]
                         b = [
                             'Asset',
@@ -4755,6 +4756,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         'IncomeBeforeIncomeTax',
                         'IncomeBeforeProvisionForIncomeTax',
                         'IncomeBeforeTaxes',
+                        'Income(Loss)Before',
                         'IncomeLossFromContinuingOperationsBeforeIncomeTax',
                         'ProfitBeforeTax',
                     ]
