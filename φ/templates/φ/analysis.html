@@ -7,7 +7,7 @@
     // DOCUMENT TITLE
     document.title = '{{ entity.TradingSymbol }} | ' + 'clockdb.com'
 
-    alert('This prototype is for demonstration purpuses only. It is your responsibility to make sure the calculation are appropriately executed. The AI is just starting to learn.')
+    alert('This prototype is for demonstration purpuses only. It is your responsibility to make sure the calculations are appropriately executed. The AI is just starting to learn.')
     
     // SINGLE-PAGE + BUTTONS
     // TO BE ADJUSTED, DOES NOT WORK PROPERLY
@@ -6420,6 +6420,20 @@
                         <td><input class="clock" id="GainRelatedToDisposalOrSale6" value={{ CashFlow_sixthlastyear.GainRelatedToDisposalOrSale }} onclick="HighLight()"></input></td>
                     </tr>
                     <tr>
+                        <td><h6>Restructuring And Other Special Charges</h6></td>
+                        <td><button data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold;">IS</button></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px;" id="RestructuringAndOtherSpecialChargesCheckbox"></input>
+                            <input type="checkbox" style="height: 16px;" id="RestructuringAndOtherSpecialChargesCheckbox2"></input>
+                        </td>
+                        <td><input class="clock" id="RestructuringAndOtherSpecialCharges1" style="font-weight:bold;" value={{ CashFlow_lastyear.RestructuringAndOtherSpecialCharges }} onclick="HighLight()"></input></td>
+                        <td><input class="clock" id="RestructuringAndOtherSpecialCharges2" value={{ CashFlow_secondlastyear.RestructuringAndOtherSpecialCharges }} onclick="HighLight()"></input></td>
+                        <td><input class="clock" id="RestructuringAndOtherSpecialCharges3" value={{ CashFlow_thirdlastyear.RestructuringAndOtherSpecialCharges }} onclick="HighLight()"></input></td>
+                        <td><input class="clock" id="RestructuringAndOtherSpecialCharges4" value={{ CashFlow_fourthlastyear.RestructuringAndOtherSpecialCharges }} onclick="HighLight()"></input></td>
+                        <td><input class="clock" id="RestructuringAndOtherSpecialCharges5" value={{ CashFlow_fifthlastyear.RestructuringAndOtherSpecialCharges }} onclick="HighLight()"></input></td>
+                        <td><input class="clock" id="RestructuringAndOtherSpecialCharges6" value={{ CashFlow_sixthlastyear.RestructuringAndOtherSpecialCharges }} onclick="HighLight()"></input></td>
+                    </tr>
+                    <tr>
                         <td><h6>Accrued Employee Compensation</h6></td>
                         <td style="color:#0d47a1; text-align:center; font-weight:bold;"></td>
                         <td>
@@ -6589,6 +6603,7 @@
                                 a = parseInt(document.getElementById('NetIncomeCashFlow1').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DepreciationDepletionAndAmortization1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('GainRelatedToDisposalOrSale1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('RestructuringAndOtherSpecialCharges1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccruedEmployeeCompensation1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShareBasedCompensationOperatingActivities1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInIncomeTaxExpenseBenefit1').value.replaceAll(/,/g, ''));
@@ -6605,6 +6620,7 @@
                                 a = parseInt(document.getElementById('NetIncomeCashFlow2').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DepreciationDepletionAndAmortization2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('GainRelatedToDisposalOrSale2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('RestructuringAndOtherSpecialCharges2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccruedEmployeeCompensation2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShareBasedCompensationOperatingActivities2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInIncomeTaxExpenseBenefit2').value.replaceAll(/,/g, ''));
@@ -6620,7 +6636,9 @@
                                 // Third Last Year
                                 a = parseInt(document.getElementById('NetIncomeCashFlow3').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DepreciationDepletionAndAmortization3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('RestructuringAndOtherSpecialCharges3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('GainRelatedToDisposalOrSale3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('RestructuringAndOtherSpecialCharges3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccruedEmployeeCompensation3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShareBasedCompensationOperatingActivities3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInIncomeTaxExpenseBenefit3').value.replaceAll(/,/g, ''));
@@ -6636,6 +6654,7 @@
                                 // Fourth Last Year
                                 a = parseInt(document.getElementById('NetIncomeCashFlow4').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DepreciationDepletionAndAmortization4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('RestructuringAndOtherSpecialCharges4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('GainRelatedToDisposalOrSale4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccruedEmployeeCompensation4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShareBasedCompensationOperatingActivities4').value.replaceAll(/,/g, ''));
@@ -6653,6 +6672,7 @@
                                 a = parseInt(document.getElementById('NetIncomeCashFlow5').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DepreciationDepletionAndAmortization5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('GainRelatedToDisposalOrSale5').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('RestructuringAndOtherSpecialCharges5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccruedEmployeeCompensation5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShareBasedCompensationOperatingActivities5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInIncomeTaxExpenseBenefit5').value.replaceAll(/,/g, ''));
@@ -6669,6 +6689,7 @@
                                 a = parseInt(document.getElementById('NetIncomeCashFlow6').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DepreciationDepletionAndAmortization6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('GainRelatedToDisposalOrSale6').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('RestructuringAndOtherSpecialCharges6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccruedEmployeeCompensation6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShareBasedCompensationOperatingActivities6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInIncomeTaxExpenseBenefit6').value.replaceAll(/,/g, ''));
@@ -17239,18 +17260,57 @@
                                     }
                                     var time = today.getHours() + ":" + todaygetMinutes
                                     var dateTime = date+' '+time;
-                                    // Column 1
+                                    //
                                     a = document.getElementById('Validity1').innerHTML
-                                    document.getElementById('Bridgeφ1').innerHTML = a
+                                    b = document.getElementById('Validity2').innerHTML
+                                    c = document.getElementById('Validity3').innerHTML
+                                    d = document.getElementById('Validity4').innerHTML
+                                    e = document.getElementById('Validity5').innerHTML
+                                    f = document.getElementById('Validity6').innerHTML
+                                    // Column 1
+                                    if (a === b) {
+                                        if (b === c) {
+                                            g = a
+                                        } else {
+                                            g = ''
+                                        }
+                                    } else {
+                                        g = ''
+                                    }
+                                    document.getElementById('Bridgeφ1').innerHTML = g
                                     // Column 2
-                                    a = document.getElementById('Validity2').innerHTML
-                                    document.getElementById('Bridgeφ2').innerHTML = a
+                                    if (b === c) {
+                                        if (c === d) {
+                                            g = b
+                                        } else {
+                                            g = ''
+                                        }
+                                    } else {
+                                        g = ''
+                                    }
+                                    document.getElementById('Bridgeφ2').innerHTML = g
                                     // Column 3
-                                    a = document.getElementById('Validity3').innerHTML
-                                    document.getElementById('Bridgeφ3').innerHTML = a
+                                    if (c === d) {
+                                        if (d === e) {
+                                            g = c
+                                        } else {
+                                            g = ''
+                                        }
+                                    } else {
+                                        g = ''
+                                    }
+                                    document.getElementById('Bridgeφ3').innerHTML = g
                                     // Column 4
-                                    a = document.getElementById('Validity4').innerHTML
-                                    document.getElementById('Bridgeφ4').innerHTML = a
+                                    if (d === e) {
+                                        if (e === f) {
+                                            g = d
+                                        } else {
+                                            g = ''
+                                        }
+                                    } else {
+                                        g = ''
+                                    }
+                                    document.getElementById('Bridgeφ4').innerHTML = g
                                 };
                                 window.addEventListener('DOMContentLoaded', BalanceBridgeφ)
                                 window.addEventListener('keyup', function() {

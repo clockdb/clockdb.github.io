@@ -157,6 +157,7 @@ class CashFlow(models.Model):
     #
     DepreciationDepletionAndAmortization = models.IntegerField(default=0)
     GainRelatedToDisposalOrSale = models.IntegerField(default=0)
+    RestructuringAndOtherSpecialCharges = models.IntegerField(default=0)
     AccruedEmployeeCompensation = models.IntegerField(default=0)
     ShareBasedCompensation = models.IntegerField(default=0)
     IncreaseDecreaseInIncomeTaxExpenseBenefit = models.IntegerField(default=0)

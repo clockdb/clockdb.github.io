@@ -22,8 +22,7 @@ import xml.etree.ElementTree as ET
 # TradingSymbol to EntityCentralIndexKeys
 EntityCentralIndexKeys = {
 #    'AAPL':    '320193',
-    'DLTR':    '935703',
-#    'INTC':    '50863',
+    'INTC':    '50863',
 #    'LLY':    '59478',
 }
 
@@ -5744,6 +5743,57 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                 except:
                     pass
                 #
+                # Restructuring And Other Special Charges
+                try:
+                    RestructuringAndOtherSpecialCharges = []
+                    r = 0
+                    for key, value in CashFlowStatement.items():
+                        d = key
+                        q = [
+                            'Restructuring',
+                            'Special',
+                        ]
+                        b = [
+                            'Acquire',
+                            'Acquisition',
+                            'Decrease',
+                            'DiscontinuedOperation',
+                            'Ending',
+                            'Financing',
+                            'Hedge',
+                            'Increase',
+                            'Payment',
+                            'Purchase',
+                        ]
+                        for l in q:
+                            if l in d:
+                                h = 'p'
+                                for p in b:
+                                    u = 0
+                                    while u < len(b):
+                                        if p in d:
+                                            h = ''
+                                        u = u + 1
+                                if h == 'p':
+                                    try:
+                                        i = 0
+                                        while CashFlowStatement[key][i] == None:
+                                            i = i + 1
+                                        ARCHvalue = CashFlowStatement[key][i]
+                                        CashFlowStatement[key][i] = None
+                                    except:
+                                        if CashFlowStatement[key] != None:
+                                            ARCHvalue = CashFlowStatement[key]
+                                            CashFlowStatement[key] = None
+                                        else:
+                                            ARCHvalue = 0
+                                    if ARCHvalue != 0:
+                                        RestructuringAndOtherSpecialCharges.append(ARCHvalue)
+                                        print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'RestructuringAndOtherSpecialCharges')
+                        r = r + 1
+                    cf.RestructuringAndOtherSpecialCharges = sum(RestructuringAndOtherSpecialCharges)
+                except:
+                    pass#
                 # Accrued Employee Compensation
                 try:
                     AccruedEmployeeCompensation = []
@@ -5968,6 +6018,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             'Purchase',
                             'Acquisition',
                             'Acquire',
+                            'RepurchaseAgreements',
                         ]
                         for l in q:
                             if l in d:
@@ -8172,6 +8223,8 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     print('Net Income: ' + str(-a.NetIncome) + ' $')
                     print('Depreciation Depletion And Amortization: ' + str(cf.DepreciationDepletionAndAmortization) + ' $')
                     print('Gain Related To Disposal Or Sale: ' + str(cf.GainRelatedToDisposalOrSale) + ' $')
+                    print('Restructuring And Other Special Charges: ' + str(cf.RestructuringAndOtherSpecialCharges) + ' $')
+                    print('Accrued Employee Compensation: ' + str(cf.AccruedEmployeeCompensation) + ' $')
                     print('Share Based Compensation Operating Activities: ' + str(cf.ShareBasedCompensation) + ' $')
                     print('Increase Decrease In Income Tax Expense (Benefit): ' + str(cf.IncreaseDecreaseInIncomeTaxExpenseBenefit) + ' $')
                     print('Other Non Cash Income Expense: ' + str(cf.OtherNonCashIncomeExpense) + ' $')
@@ -8191,6 +8244,8 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         -a.NetIncome,
                         cf.DepreciationDepletionAndAmortization,
                         cf.GainRelatedToDisposalOrSale,
+                        cf.RestructuringAndOtherSpecialCharges,
+                        cf.AccruedEmployeeCompensation,
                         cf.ShareBasedCompensation,
                         cf.IncreaseDecreaseInIncomeTaxExpenseBenefit,
                         cf.OtherNonCashIncomeExpense,
