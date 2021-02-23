@@ -1,0 +1,8 @@
+{ name: 'APPLE INC. (AAPL)' , url: './AAPL'},
+{ name: 'COCA COLA CO (KO)' , url: './KO'},
+{ name: 'ELI LILLY & CO (LLY)' , url: './LLY'},
+{ name: 'INTEL CORP (INTC)' , url: './INTC'},
+{ name: 'INTERNATIONAL BUSINESS MACHINES CORP (IBM)' , url: './IBM'},
+{ name: 'MCDONALDS CORP (MCD)' , url: './MCD'},
+{ name: 'VALERO ENERGY CORP/TX (VLO)' , url: './VLO'},
+{ name: 'WALMART INC. (WMT)' , url: './WMT'},

@@ -76,6 +76,7 @@ class AuditData(models.Model):
     OperatingIncome = models.IntegerField(default=0)
     IncomeBeforeTaxes = models.IntegerField(default=0)
     NetIncome = models.IntegerField(default=0)
+    NetIncomeAttributableToNonControllingInterest = models.IntegerField(default=0)
     #
     AnomalyGrossMargin = models.IntegerField(default=0)
     AnomalyOperatingExpenses = models.IntegerField(default=0)
@@ -100,12 +101,14 @@ class AuditData(models.Model):
     CommonShares = models.IntegerField(default=0)
     RetainedEarnings = models.IntegerField(default=0)
     AccumulatedOtherComprehensiveIncome = models.IntegerField(default=0)
+    TreasuryShares = models.IntegerField(default=0)
     EmployeeBenefitTrust = models.IntegerField(default=0)
     NonControllingInterests = models.IntegerField(default=0)
     #
     AnomalyCommonShares = models.IntegerField(default=0)
     AnomalyRetainedEarnings = models.IntegerField(default=0)
     AnomalyAccumulatedOtherComprehensiveIncome = models.IntegerField(default=0)
+    AnomalyTreasuryShares = models.IntegerField(default=0)
     AnomalyEmployeeBenefitTrust = models.IntegerField(default=0)
     AnomalyNonControllingInterests = models.IntegerField(default=0)
     #
@@ -129,6 +132,7 @@ class AuditData(models.Model):
     #
     NormalizedTheoricalInterestCharge = models.IntegerField(default=0)
     TheoricalTaxRate = models.FloatField(default=0)
+    TheoricalOperatingIncomeAttributableToNonControllingInterests = models.FloatField(default=0) 
     #
     #
     def __str__(self):
@@ -189,6 +193,7 @@ class CashFlow(models.Model):
     PaymentsForTaxesRelatedToNetShareSettlementOfEquityAward = models.IntegerField(default=0)
     ProceedsFromIssuanceOfLongTermDebt = models.IntegerField(default=0)
     RepaymentsOfLongTermDebt = models.IntegerField(default=0)
+    NetChangeInShortTermBorrowings = models.IntegerField(default=0)
     ProceedsFromRepaymentsOfCommercialPaper = models.IntegerField(default=0)
     OtherFinancingActivities = models.IntegerField(default=0)
     #
@@ -236,14 +241,16 @@ class TrialBalance(models.Model):
     #
     # Non-Current Assets - Trial Balance
     #
+    LongTermReceivables = models.IntegerField(default=0)
+    DeferredCharges = models.IntegerField(default=0)
     Investments = models.IntegerField(default=0)
     PropertyPlantAndEquipment = models.IntegerField(default=0)
-    PropertyUnderCapitalLeaseAndFinancingObligations = models.IntegerField(default=0)
     OperatingLeaseRightOfUseAssets = models.IntegerField(default=0)
     FinanceLeaseRightOfUseAssets = models.IntegerField(default=0)
     IntangibleAssets = models.IntegerField(default=0)
     Goodwill = models.IntegerField(default=0)
     DeferredTaxAssetsNonCurrent = models.IntegerField(default=0)
+    DefinedBenefitPensionAndOtherSimilarPlans = models.IntegerField(default=0)
     OtherNonCurrentAssets = models.IntegerField(default=0)
     DiscontinuedOperations = models.IntegerField(default=0)
     #
@@ -282,7 +289,7 @@ class TrialBalance(models.Model):
     #
     # Stockholders Equity - Trial Balance
     #
-    # Common Shares
+    # common shares
     CommonSharesBeginning = models.IntegerField(default=0)
     CommonStockIssued = models.IntegerField(default=0)
     ShareBasedCompensation = models.IntegerField(default=0)
@@ -296,6 +303,10 @@ class TrialBalance(models.Model):
     #
     # accumulated other comprehensive income
     AccumulatedOtherComprehensiveIncomeBeginning = models.IntegerField(default=0)
+    #
+    # treasury shares
+    TreasurySharesBeginning = models.IntegerField(default=0)
+    PurchaseAndSellOfTreasuryShares = models.IntegerField(default=0)
     #
     # employee benefit trust
     EmployeeBenefitTrustBeginning = models.IntegerField(default=0)

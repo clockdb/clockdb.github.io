@@ -75,7 +75,7 @@ def documentation(request):
 # ENTITIES
 def entities(request):
     return render(request, "./φ/entities.html", {
-        "entities": Entity.objects.all().order_by('-TradingSymbol')
+        "entities": Entity.objects.all().order_by('TradingSymbol')
     })
     
 # MENU
