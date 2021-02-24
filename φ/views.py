@@ -3,10 +3,6 @@ from django.shortcuts import render
 from .models import *
 import datetime
 
-# INDEX
-def index(request):
-    return render(request, "./φ/index.html")
-
 # ANALYSIS
 def analysis(request, entity_TradingSymbol):
     # ENTITY
@@ -58,10 +54,10 @@ def analysis(request, entity_TradingSymbol):
         "AuditData_sixthlastyear": AuditData_sixthlastyear,
     })
 
-# FILTERKING
-def filterking(request):
-    return render(request, "./φ/filterking.html", {
-        "entities": Entity.objects.all().order_by('EntityRegistrantName')
+# INDEX
+def index(request):
+    return render(request, "./φ/index.html", {
+        "entities": Entity.objects.all().order_by('-Clockφ')
     })
 
 # DISCLAIMER

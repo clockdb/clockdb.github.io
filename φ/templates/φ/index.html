@@ -1,27 +1,61 @@
 {% extends "φ/layout.html" %}
+
 {% block body %}
 
+<!--- SCRIPT --->
+<script>       
 
-<!-- Header -->
+    // DOCUMENT TITLE
+    document.title = 'clockdb.com | home'
 
+</script>
 
-<div class="text" style="padding:8%">
+<!--- HOME --->
 
+<Section id="φ" style='padding-bottom:27%'>
+    <table>
+        <tbody>
+            <tr></tr>
+            <tr></tr>
+            <tr>
+                <td colspan='2'>
+                    <h2 style="border-bottom: ridge; font-weight:bold;">Entity</h2>
+                </td>
+                <td>
+                    <h2 style="border-bottom: ridge; font-weight:bold;">Valuation Ratio</h2>
+                </td>
+                <td>
+                    <h2 style="border-bottom: ridge; font-weight:bold;">Change</h2>
+                </td>
+            </tr>
+            <tr></tr>
+            <tr></tr>
 
-    <img src="/static/img/logo.jpg" style="padding-bottom:57px; height:70px;">
+            {% for entity in entities %}
 
-    <h3>data processing, audit, business valuation</h3>
+            <tr>
+                <td colspan='2'>
+                    <a href="/{{ entity.TradingSymbol }}">
+                        <button>
+                            <h3 style="padding-bottom:7px;">{{ entity.EntityRegistrantName }} ({{ entity.TradingSymbol }})</h3>
+                            <h5 style="color:#8A9096">{{ entity.Industry }}</h5>
+                        </button>
+                    </a>                               
+                </td>
+                <td>
+                    <h3 style="text-align: center; <percentage>">{{ entity.Clockφ }} %</h3>
+                </td>
+                <td>
+                    <h3 style="text-align: center;">{{ entity.ClockφChange }} pp</h3>
+                </td>
+            </tr>
+            <tr></tr>
+            <tr></tr>
 
-    <h3>our goal is to democratize access to financial literature and equity.</h3>
-
-    <h3>this is my way for locating smart investments in a single line of python and javascript.</h3>
-
-    <h3>corporations' earning power is key to sustainability and growth.</h3>
-    
-    <h3>contact me <font style="color:#0D47A1">@</font> <a href="mailto:clockdb@protonmail.ch" style="color:black">clockdb@gmail.com</a></h3>
-
-
-</div>
-
+            {% endfor %}
+            
+        </tbody>
+    </table>
+</Section>
 
 {% endblock %}

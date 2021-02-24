@@ -7,8 +7,6 @@
     // DOCUMENT TITLE
     document.title = '{{ entity.TradingSymbol }} | ' + 'clockdb.com'
 
-    alert('This prototype is for demonstration purpuses only. It is your responsibility to make sure the calculations are appropriately executed. The AI is still learning.')
-    
     // SINGLE-PAGE + BUTTONS
     // TO BE ADJUSTED, DOES NOT WORK PROPERLY
     window.onpopstate = function(event) {
@@ -36,19 +34,14 @@
     document.addEventListener('keydown', (event) => {
         if (event.keyCode === 13) {
             event.preventDefault();
-            // DEFINES POPULATION OF INPUTS
             allinputs = document.querySelectorAll('input')
-            // DEFINES CURRENT POSITION
             position = event.target
-            // FORMULAS
             if (position.value[0] === "=") {
                 formulas = position.value.slice(1);
                 position.value = eval(formulas)
             }
-            // DEFINES ROOT OF ROW
             row = position.id.slice(0, -1)
             column = position.id.slice(-1)
-            // QUANTIFY THE NUMBER OF CELL IN THE ROW
             if (event.shiftKey) {
                 k = -2
                 g = -1
@@ -62,7 +55,6 @@
                     n = n + g
                 }
             }
-            // DEFINES AND MOVES TO THE APPROPRIATE ROW
             for(let i = 0; i < allinputs.length; i++) {
                 if (position === allinputs[i]) {
                     h = k + i + n
@@ -121,19 +113,14 @@
     document.addEventListener('keydown', (event) => {
         if (event.keyCode === 38) {
             event.preventDefault();
-            // DEFINES POPULATION OF INPUTS
             allinputs = document.querySelectorAll('input')
-            // DEFINES CURRENT POSITION
             position = event.target
-            // FORMULAS
             if (position.value[0] === "=") {
                 formulas = position.value.slice(1);
                 position.value = eval(formulas)
             }
-            // DEFINES ROOT OF ROW
             row = position.id.slice(0, -1)
             column = position.id.slice(-1)
-            // QUANTIFY THE NUMBER OF CELL IN THE ROW
             k = -2
             n = 0
             for(let i = 0; i < allinputs.length; i++) {
@@ -141,7 +128,6 @@
                     n = n - 1
                 }
             }
-            // DEFINES AND MOVES TO THE APPROPRIATE ROW
             for(let i = 0; i < allinputs.length; i++) {
                 if (position === allinputs[i]) {
                     h = k + i + n
@@ -199,19 +185,14 @@
     document.addEventListener('keydown', (event) => {
         if (event.keyCode === 40) {
             event.preventDefault();
-            // DEFINES POPULATION OF INPUTS
             allinputs = document.querySelectorAll('input')
-            // DEFINES CURRENT POSITION
             position = event.target
-            // FORMULAS
             if (position.value[0] === "=") {
                 formulas = position.value.slice(1);
                 position.value = eval(formulas)
             }
-            // DEFINES ROOT OF ROW
             row = position.id.slice(0, -1)
             column = position.id.slice(-1)
-            // QUANTIFY THE NUMBER OF CELL IN THE ROW
             k = 2
             n = 0
             for(let i = 0; i < allinputs.length; i++) {
@@ -219,7 +200,6 @@
                     n = n + 1
                 }
             }
-            // DEFINES AND MOVES TO THE APPROPRIATE ROW
             for(let i = 0; i < allinputs.length; i++) {
                 if (position === allinputs[i]) {
                     h = k + i + n
@@ -276,9 +256,7 @@
     // TABULATION
     document.addEventListener('keydown', (event) => {
         if (event.keyCode === 9) {
-            // DEFINES CURRENT POSITION
             position = event.target
-            // FORMULAS
             if (position.value[0] === "=") {
                 formulas = position.value.slice(1);
                 position.value = eval(formulas)
@@ -375,8 +353,13 @@
                         </button>
                     </td>
                     <td>
-                        <button data-page="Opinion">
+                        <button data-page="Opinion" name="Opinion">
                             <h2>Opinion</h2>
+                        </button>
+                    </td>
+                    <td>
+                        <button data-page="Graph">
+                            <h2>Graph</h2>
                         </button>
                     </td>
                 </tr>
@@ -503,9 +486,14 @@
                             </button>
                         </td>
                         <td>
-                            <button data-page="Anomalies">
+                            <button data-page="AuditDetailed">
                                 Anomalies
                             </button>
+                        </td>
+                        <td>
+                            <button data-page="AuditSummary">
+                                Summary
+                            </button>   
                         </td>
                     </tr>
                 </tbody>
@@ -542,29 +530,6 @@
                         <td>
                             <button data-page="ProcedureAnnualStockholdersEquity">
                                 Stockholders Equity
-                            </button>   
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-
-        </div>
-
-        <!--- ANOMALIES --->
-        <div id="Anomalies">      
-
-            <!--- ANOMALIES BUTTONS --->
-            <table style="border-bottom: ridge;">
-                <tbody>
-                    <tr>
-                        <td>
-                            <button data-page="AuditDetailed">
-                                Detailed
-                            </button>
-                        </td>
-                        <td>
-                            <button data-page="AuditSummary">
-                                Summary
                             </button>   
                         </td>
                     </tr>
@@ -16499,6 +16464,56 @@
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">(f)</td>
                         <td style="text-align:left;" colspan="20">The number of shares (units) outstanding of each of registrant's common stock (classes of capital or other ownership interests) as stated on the cover of related periodic report.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--- GRAPH --->
+        <div id="Graph">
+            <table style="border-bottom:solid #0D47A1">
+                <body>
+                    <tr>
+                        <td><h3>Graph</h3></td>
+                    </tr>
+                </body>
+            </table>
+            <table style="border-bottom:solid #0D47A1">
+                <tbody>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
+
+                        <td style='text-align:center;'>
+
+                            <canvas id='Chart'>
+
+
+
+                            </canvas>
+
+                        </td>
+                        
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                </tbody>
+            </table>
+            <table>
+                <tbody>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
+                        <td style="color:#0d47a1; text-align:left; font-weight:bold;">(a)</td>
+                        <td style="text-align:left;" colspan="20">***</td>
                     </tr>
                 </tbody>
             </table>

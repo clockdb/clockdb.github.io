@@ -4,6 +4,11 @@ from φ.models import *
 from bs4 import BeautifulSoup
 from io import StringIO
 from datetime import date
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from urllib.request import urlopen
 import collections
 import csv
@@ -8777,6 +8782,36 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
         #
         print(137 * '-')
         print('\n' * 3)
+    #
+    # get valuation ratio
+    #
+    driver = webdriver.Chrome('C:\\Program Files (x86)\\chromedriver.exe')
+    #
+    url = 'http://127.0.0.1:8000/' + TradingSymbol + '/'
+    #
+    driver.get(url)
+    #
+    try:
+        link = WebDriverWait(driver, 15).until(
+            EC.presence_of_element_located((By.NAME, "Opinion"))
+        )
+        link.click()
+    except:
+        pass
+    #
+    Bridge = driver.find_element_by_id("Bridgeφ1").text
+    ValuationRatio = driver.find_element_by_id("Clockφ1").text
+    ValuationRatioPriorPeriod = driver.find_element_by_id("Clockφ2").text
+    #
+    driver.quit()
+    #
+    if len(Bridge) == 98:
+        e.Clockφ = int(float(ValuationRatio.strip('%')))
+        e.ClockφChange = int(ValuationRatio.strip('%')) - int(ValuationRatioPriorPeriod.strip('%'))
+    else:
+        e.Clockφ = '-'
+    #
+    e.save()
     #
     #
     # save entity and update date time

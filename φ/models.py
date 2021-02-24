@@ -14,7 +14,8 @@ class Entity(models.Model):
     SecurityExchangeName = models.CharField(max_length=55, default=0)
     Regulator = models.CharField(max_length=3)
     Update = models.CharField(max_length=13, default=0)
-    Clockφ = models.FloatField(default=0)
+    Clockφ = models.IntegerField(default=0)
+    ClockφChange = models.IntegerField(default=0)
     Bridgeφ = models.CharField(max_length=100, default=0)
     #
     lastquarter = models.CharField(max_length=13, default=0)
