@@ -35,16 +35,24 @@
                 z-index: 10;
             }
             nav .label a {
-                font-size: 23px;
+                font-size: 37px;
                 color: white;
                 background-color: #0D47A1;
                 font-weight: bold;
                 text-shadow: 0.8px 0.8px black;
-                padding-left: 1%;
-                padding-right: 1%;
             }
             nav .label a:hover {
                 color: #696969;
+            }
+            nav .label h5 {
+                margin-left: 4%;
+                padding-top: 17px;
+                position:fixed;
+            }
+            nav .label h6 {
+                margin-left:94%;
+                padding-top:19px;
+                position:fixed;
             }
             input {
                 font-family: 'Dubai';
@@ -62,6 +70,24 @@
             }
             input:focus {
                 outline: none;
+            }
+            @media (max-width: 599px) {
+                nav .label a {
+                    font-size: 27px;
+                }
+                nav .label h5 {
+                    margin-left: 7%;
+                    padding-top:21px;
+                }
+                nav .label h6 {
+                    margin-left:90%;
+                    padding-top:23px;
+                }
+                input {
+                    font-size: 23px;
+                    width: 65%;
+                    margin-left: 17.5%;
+                }
             }
             /* Search */
             ul a {
@@ -82,6 +108,12 @@
             ul a:hover {
                 color: #696969;
             }
+            @media (max-width: 599px) {
+                ul a {
+                    font-size: 17px;
+                    padding: 27px;
+                }
+            }
             /* Text */
             .text {
                 text-align: center;
@@ -89,7 +121,7 @@
             }
             .text h1 {
                 font-family: 'Verdana';
-                font-size: 59px;          
+                font-size: 59px;
                 letter-spacing: 0.59rem;
                 font-weight: bold;  
                 text-align: center;
@@ -133,6 +165,9 @@
                 letter-spacing: 0.2rem;
                 padding-top: 0.2%;
             }
+            .text a {
+                padding-bottom: 2%;
+            }
             .text p {
                 font-size: 1rem;
                 font-weight: 400;                
@@ -141,7 +176,8 @@
                 width: 80%;
                 margin-left: 10%;
                 margin-right: 10%;
-                padding-bottom: 27px
+                padding-bottom: 27px;
+                text-align: justify;
             }
             .text div {
                 font-weight: 300;
@@ -163,6 +199,11 @@
             button:hover {
                 font-weight: bold;
                 color: #696969;
+            }
+            @media (max-width: 599px) {
+                .text a {
+                    padding-bottom: 7%;
+                }
             }
             /* φ Section */
             #φ h1 {
@@ -266,21 +307,9 @@
                 display: none;
                 padding-bottom: 117px;
             }
-            #filterking table {
-                table-layout: fixed ;
-                width: 80% ;
-                margin-right: auto;
-                margin-left: auto;
-                border-spacing: 17px;
-                text-align: right;
-                vertical-align: middle;
-                padding: 1px;
-                border-right: 1px;
-            }
             #φ canvas {
                 width: 100% ;
                 height: 100% ;
-                border: 1px solid black;
                 margin-right: auto;
                 margin-left: auto;
                 border-spacing: 17px;
@@ -311,6 +340,65 @@
                 font-size: 17px;
                 transition: all .5s ease-out;
             }
+            @media (max-width: 599px) {
+                #φ h1 {
+                    font-size: 17px;
+                }
+                #φ h2 {
+                    font-size: 12px;
+                }
+                #φ h3 {
+                    font-size: 13px;
+                }
+                #φ h4 {
+                    font-size: 13px;
+                }
+                #φ h5 {
+                    font-size: 9px;
+                }
+                #φ h6 {
+                    font-size: 0.8rem;
+                }
+                #φ table {
+                    border-spacing: 10px;
+                    padding: 1px;
+                    border-right: 1px;
+                }
+                #φ td {
+                    font-size: 12px;
+                    padding-top: 3px;
+                    padding-bottom: 3px;
+                }
+                #φ button {
+                    font-size: 13px;
+                    padding-top: 13px;
+                    padding-bottom: 13px;
+                }
+                #φ input {
+                    font-size: 12px;
+                    padding-right:10px; 
+                }
+                #φ div {
+                    font-size: 11px;
+                    padding-bottom: 117px;
+                }
+                #φ canvas {
+                    width: 100% ;
+                    height: 100% ;
+                    border-spacing: 17px;
+                }
+                input#Calculator {
+                    width:8%; 
+                    padding-right:10px; 
+                }
+                input:hover#Calculator {
+                    font-size: 17px;
+                }
+                input:focus#Calculator {
+                    width:24%;
+                    font-size: 17px;
+                }
+            }
         </style>
 
     </head>
@@ -331,32 +419,13 @@
 
         <label class="label">
         
-            <a href="{% url 'φ:index' %}">
-
-                <h6 style="
-                    margin-left:94%; 
-                    padding-top:15px; 
-                    font-size:29px; 
-                    position:fixed;">
-
-                    db
-
-                </h6>
-
-            </a>
+            <a href="{% url 'φ:menu' %}"><h5>
+                ≡
+            </h5></a>
         
-            <a href="{% url 'φ:menu' %}">
-
-                <h6 style="margin-left:4%;
-                    padding-top:15px;
-                    font-size:29px;
-                    position:fixed;">
-
-                    ≡
-
-                </h6>
-
-            </a>
+            <a href="{% url 'φ:index' %}"><h6>
+                db
+            </h6></a>
 
         </label>
         

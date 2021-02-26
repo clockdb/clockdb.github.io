@@ -1,0 +1,953 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<!-- DFS ActiveDisclosure(SM) XBRL Schema Document - http://www.dfsco.com/financial-services/ -->
+<!-- Creation Date      : 2019-02-28T01:16:17.6659582+00:00 -->
+<!-- Version            : 3.3.6989.14284 -->
+<!-- Package ID         : 02fe2ea92854473c9c31ea085db1ad72 -->
+<!-- Copyright (c) 2019 Donnelley Financial, LLC. All Rights Reserved. -->
+<schema xmlns:nonnum="http://www.xbrl.org/dtr/type/non-numeric" xmlns:num="http://www.xbrl.org/dtr/type/numeric" xmlns:us-types="http://fasb.org/us-types/2018-01-31" xmlns:stpr="http://xbrl.sec.gov/stpr/2018-01-31" xmlns:srt-types="http://fasb.org/srt-types/2018-01-31" xmlns:naics="http://xbrl.sec.gov/naics/2017-01-31" xmlns:invest="http://xbrl.sec.gov/invest/2013-01-31" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:srt="http://fasb.org/srt/2018-01-31" xmlns:cbg="http://www.cbre.com/20181231" xmlns:us-gaap="http://fasb.org/us-gaap/2018-01-31" xmlns:dei="http://xbrl.sec.gov/dei/2018-01-31" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:country="http://xbrl.sec.gov/country/2017-01-31" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:currency="http://xbrl.sec.gov/currency/2017-01-31" xmlns:exch="http://xbrl.sec.gov/exch/2018-01-31" xmlns:sic="http://xbrl.sec.gov/sic/2011-01-31" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.cbre.com/20181231" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd" namespace="http://www.xbrl.org/2003/instance" />
+  <import schemaLocation="http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd" namespace="http://www.xbrl.org/2003/linkbase" />
+  <import schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd" namespace="http://xbrl.org/2005/xbrldt" />
+  <import schemaLocation="https://xbrl.sec.gov/dei/2018/dei-2018-01-31.xsd" namespace="http://xbrl.sec.gov/dei/2018-01-31" />
+  <import schemaLocation="http://xbrl.fasb.org/us-gaap/2018/elts/us-gaap-2018-01-31.xsd" namespace="http://fasb.org/us-gaap/2018-01-31" />
+  <import schemaLocation="http://xbrl.fasb.org/srt/2018/elts/srt-2018-01-31.xsd" namespace="http://fasb.org/srt/2018-01-31" />
+  <import schemaLocation="http://xbrl.fasb.org/us-gaap/2018/elts/us-types-2018-01-31.xsd" namespace="http://fasb.org/us-types/2018-01-31" />
+  <import schemaLocation="http://www.xbrl.org/dtr/type/numeric-2009-12-16.xsd" namespace="http://www.xbrl.org/dtr/type/numeric" />
+  <import schemaLocation="http://www.xbrl.org/dtr/type/nonNumeric-2009-12-16.xsd" namespace="http://www.xbrl.org/dtr/type/non-numeric" />
+  <import schemaLocation="http://xbrl.fasb.org/srt/2018/elts/srt-types-2018-01-31.xsd" namespace="http://fasb.org/srt-types/2018-01-31" />
+  <import schemaLocation="http://xbrl.sec.gov/country/2017/country-2017-01-31.xsd" namespace="http://xbrl.sec.gov/country/2017-01-31" />
+  <import schemaLocation="https://xbrl.sec.gov/currency/2017/currency-2017-01-31.xsd" namespace="http://xbrl.sec.gov/currency/2017-01-31" />
+  <import schemaLocation="https://xbrl.sec.gov/exch/2018/exch-2018-01-31.xsd" namespace="http://xbrl.sec.gov/exch/2018-01-31" />
+  <import schemaLocation="https://xbrl.sec.gov/invest/2013/invest-2013-01-31.xsd" namespace="http://xbrl.sec.gov/invest/2013-01-31" />
+  <import schemaLocation="https://xbrl.sec.gov/naics/2017/naics-2017-01-31.xsd" namespace="http://xbrl.sec.gov/naics/2017-01-31" />
+  <import schemaLocation="https://xbrl.sec.gov/sic/2011/sic-2011-01-31.xsd" namespace="http://xbrl.sec.gov/sic/2011-01-31" />
+  <import schemaLocation="https://xbrl.sec.gov/stpr/2018/stpr-2018-01-31.xsd" namespace="http://xbrl.sec.gov/stpr/2018-01-31" />
+  <annotation>
+    <appinfo>
+      <link:roleType id="TemplateLink" roleURI="http://www.cbre.com/20181231/role/TemplateLink" xmlns:link="http://www.xbrl.org/2003/linkbase">
+        <link:definition>00000 - Document - Template Link</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="cbg-20181231_cal.xml" xlink:role="http://www.xbrl.org/2003/role/calculationLinkbaseRef" xlink:title="Calculation Links, all" xlink:type="simple" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" />
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="cbg-20181231_def.xml" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef" xlink:title="Definition Links, all" xlink:type="simple" />
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="cbg-20181231_lab.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:title="Label Links, all" xlink:type="simple" />
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="cbg-20181231_pre.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:title="Presentation Links, all" xlink:type="simple" />
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DocumentDocumentAndEntityInformation" id="Role_DocumentDocumentAndEntityInformation">
+        <link:definition>100000 - Document - Document and Entity Information</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/StatementConsolidatedBalanceSheets" id="Role_StatementConsolidatedBalanceSheets">
+        <link:definition>100010 - Statement - Consolidated Balance Sheets</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/StatementConsolidatedBalanceSheetsParenthetical" id="Role_StatementConsolidatedBalanceSheetsParenthetical">
+        <link:definition>100020 - Statement - Consolidated Balance Sheets (Parenthetical)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/StatementConsolidatedStatementsOfOperations" id="Role_StatementConsolidatedStatementsOfOperations">
+        <link:definition>100030 - Statement - Consolidated Statements of Operations</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/StatementConsolidatedStatementsOfComprehensiveIncome" id="Role_StatementConsolidatedStatementsOfComprehensiveIncome">
+        <link:definition>100040 - Statement - Consolidated Statements of Comprehensive Income</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/StatementConsolidatedStatementsOfComprehensiveIncomeParenthetical" id="Role_StatementConsolidatedStatementsOfComprehensiveIncomeParenthetical">
+        <link:definition>100050 - Statement - Consolidated Statements of Comprehensive Income (Parenthetical)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/StatementConsolidatedStatementsOfCashFlows" id="Role_StatementConsolidatedStatementsOfCashFlows">
+        <link:definition>100060 - Statement - Consolidated Statements of Cash Flows</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/StatementConsolidatedStatementsOfCashFlowsParenthetical" id="Role_StatementConsolidatedStatementsOfCashFlowsParenthetical">
+        <link:definition>100070 - Statement - Consolidated Statements of Cash Flows (Parenthetical)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/StatementConsolidatedStatementsOfEquity" id="Role_StatementConsolidatedStatementsOfEquity">
+        <link:definition>100080 - Statement - Consolidated Statements of Equity</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureNatureOfOperations" id="Role_DisclosureNatureOfOperations">
+        <link:definition>100090 - Disclosure - Nature of Operations</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureSignificantAccountingPolicies" id="Role_DisclosureSignificantAccountingPolicies">
+        <link:definition>100100 - Disclosure - Significant Accounting Policies</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureNewAccountingPronouncements" id="Role_DisclosureNewAccountingPronouncements">
+        <link:definition>100110 - Disclosure - New Accounting Pronouncements</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureFacilitysourceAcquisition" id="Role_DisclosureFacilitysourceAcquisition">
+        <link:definition>100120 - Disclosure - FacilitySource Acquisition</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureWarehouseReceivablesWarehouseLinesOfCredit" id="Role_DisclosureWarehouseReceivablesWarehouseLinesOfCredit">
+        <link:definition>100130 - Disclosure - Warehouse Receivables &amp; Warehouse Lines of Credit</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureVariableInterestEntitiesVies" id="Role_DisclosureVariableInterestEntitiesVies">
+        <link:definition>100140 - Disclosure - Variable Interest Entities (VIEs)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureFairValueMeasurements" id="Role_DisclosureFairValueMeasurements">
+        <link:definition>100150 - Disclosure - Fair Value Measurements</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosurePropertyAndEquipment" id="Role_DisclosurePropertyAndEquipment">
+        <link:definition>100160 - Disclosure - Property and Equipment</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureGoodwillAndOtherIntangibleAssets" id="Role_DisclosureGoodwillAndOtherIntangibleAssets">
+        <link:definition>100170 - Disclosure - Goodwill and Other Intangible Assets</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureInvestmentsInUnconsolidatedSubsidiaries" id="Role_DisclosureInvestmentsInUnconsolidatedSubsidiaries">
+        <link:definition>100180 - Disclosure - Investments in Unconsolidated Subsidiaries</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureLongTermDebtAndShortTermBorrowings" id="Role_DisclosureLongTermDebtAndShortTermBorrowings">
+        <link:definition>100190 - Disclosure - Long-Term Debt and Short-Term Borrowings</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureCommitmentsAndContingencies" id="Role_DisclosureCommitmentsAndContingencies">
+        <link:definition>100200 - Disclosure - Commitments and Contingencies</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureEmployeeBenefitPlans" id="Role_DisclosureEmployeeBenefitPlans">
+        <link:definition>100210 - Disclosure - Employee Benefit Plans</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureIncomeTaxes" id="Role_DisclosureIncomeTaxes">
+        <link:definition>100220 - Disclosure - Income Taxes</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureStockholdersEquity" id="Role_DisclosureStockholdersEquity">
+        <link:definition>100230 - Disclosure - Stockholders&apos; Equity</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureIncomePerShareInformation" id="Role_DisclosureIncomePerShareInformation">
+        <link:definition>100240 - Disclosure - Income Per Share Information</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureRevenueFromContractsWithCustomers" id="Role_DisclosureRevenueFromContractsWithCustomers">
+        <link:definition>100250 - Disclosure - Revenue from Contracts with Customers</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureSegments" id="Role_DisclosureSegments">
+        <link:definition>100260 - Disclosure - Segments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureRelatedPartyTransactions" id="Role_DisclosureRelatedPartyTransactions">
+        <link:definition>100270 - Disclosure - Related Party Transactions</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureGuarantorAndNonguarantorFinancialStatements" id="Role_DisclosureGuarantorAndNonguarantorFinancialStatements">
+        <link:definition>100280 - Disclosure - Guarantor and Nonguarantor Financial Statements</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureSubsequentEvent" id="Role_DisclosureSubsequentEvent">
+        <link:definition>100290 - Disclosure - Subsequent Event</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureScheduleIIValuationAndQualifyingAccounts" id="Role_DisclosureScheduleIIValuationAndQualifyingAccounts">
+        <link:definition>100300 - Disclosure - Schedule II - Valuation and Qualifying Accounts</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureSignificantAccountingPoliciesPolicies" id="Role_DisclosureSignificantAccountingPoliciesPolicies">
+        <link:definition>100310 - Disclosure - Significant Accounting Policies (Policies)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureSignificantAccountingPoliciesTables" id="Role_DisclosureSignificantAccountingPoliciesTables">
+        <link:definition>100320 - Disclosure - Significant Accounting Policies (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureNewAccountingPronouncementsTables" id="Role_DisclosureNewAccountingPronouncementsTables">
+        <link:definition>100330 - Disclosure - New Accounting Pronouncements (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureFacilitysourceAcquisitionTables" id="Role_DisclosureFacilitysourceAcquisitionTables">
+        <link:definition>100340 - Disclosure - FacilitySource Acquisition (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureWarehouseReceivablesWarehouseLinesOfCreditTables" id="Role_DisclosureWarehouseReceivablesWarehouseLinesOfCreditTables">
+        <link:definition>100350 - Disclosure - Warehouse Receivables &amp; Warehouse Lines of Credit (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureVariableInterestEntitiesViesTables" id="Role_DisclosureVariableInterestEntitiesViesTables">
+        <link:definition>100360 - Disclosure - Variable Interest Entities (VIEs) (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureFairValueMeasurementsTables" id="Role_DisclosureFairValueMeasurementsTables">
+        <link:definition>100370 - Disclosure - Fair Value Measurements (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosurePropertyAndEquipmentTables" id="Role_DisclosurePropertyAndEquipmentTables">
+        <link:definition>100380 - Disclosure - Property and Equipment (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureGoodwillAndOtherIntangibleAssetsTables" id="Role_DisclosureGoodwillAndOtherIntangibleAssetsTables">
+        <link:definition>100390 - Disclosure - Goodwill and Other Intangible Assets (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureInvestmentsInUnconsolidatedSubsidiariesTables" id="Role_DisclosureInvestmentsInUnconsolidatedSubsidiariesTables">
+        <link:definition>100400 - Disclosure - Investments in Unconsolidated Subsidiaries (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureLongTermDebtAndShortTermBorrowingsTables" id="Role_DisclosureLongTermDebtAndShortTermBorrowingsTables">
+        <link:definition>100410 - Disclosure - Long-Term Debt and Short-Term Borrowings (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureCommitmentsAndContingenciesTables" id="Role_DisclosureCommitmentsAndContingenciesTables">
+        <link:definition>100420 - Disclosure - Commitments and Contingencies (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureEmployeeBenefitPlansTables" id="Role_DisclosureEmployeeBenefitPlansTables">
+        <link:definition>100430 - Disclosure - Employee Benefit Plans (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureIncomeTaxesTables" id="Role_DisclosureIncomeTaxesTables">
+        <link:definition>100440 - Disclosure - Income Taxes (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureIncomePerShareInformationTables" id="Role_DisclosureIncomePerShareInformationTables">
+        <link:definition>100450 - Disclosure - Income Per Share Information (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureRevenueFromContractsWithCustomersTables" id="Role_DisclosureRevenueFromContractsWithCustomersTables">
+        <link:definition>100460 - Disclosure - Revenue from Contracts with Customers (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureSegmentsTables" id="Role_DisclosureSegmentsTables">
+        <link:definition>100470 - Disclosure - Segments (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureGuarantorAndNonguarantorFinancialStatementsTables" id="Role_DisclosureGuarantorAndNonguarantorFinancialStatementsTables">
+        <link:definition>100480 - Disclosure - Guarantor and Nonguarantor Financial Statements (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureNatureOfOperationsAdditionalInformationDetail" id="Role_DisclosureNatureOfOperationsAdditionalInformationDetail">
+        <link:definition>100490 - Disclosure - Nature of Operations - Additional Information (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureSignificantAccountingPoliciesAdditionalInformationDetail" id="Role_DisclosureSignificantAccountingPoliciesAdditionalInformationDetail">
+        <link:definition>100500 - Disclosure - Significant Accounting Policies - Additional Information (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureSignificantAccountingPoliciesScheduleOfLoanServicingRightsRecognizedDetail" id="Role_DisclosureSignificantAccountingPoliciesScheduleOfLoanServicingRightsRecognizedDetail">
+        <link:definition>100510 - Disclosure - Significant Accounting Policies - Schedule of Loan Servicing Rights Recognized (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureSignificantAccountingPoliciesScheduleOfAssumptionsUsedInMeasuringFairValueOfServicingAssetsDetail" id="Role_DisclosureSignificantAccountingPoliciesScheduleOfAssumptionsUsedInMeasuringFairValueOfServicingAssetsDetail">
+        <link:definition>100520 - Disclosure - Significant Accounting Policies - Schedule of Assumptions Used in Measuring Fair Value of Servicing Assets (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureNewAccountingPronouncementsAdditionalInformationDetail" id="Role_DisclosureNewAccountingPronouncementsAdditionalInformationDetail">
+        <link:definition>100530 - Disclosure - New Accounting Pronouncements - Additional Information (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureNewAccountingPronouncementsScheduleOfAdoptionOfNewRevenueRecognitionGuidanceOnFinancialStatementConsolidatedBalanceSheetDetails" id="Role_DisclosureNewAccountingPronouncementsScheduleOfAdoptionOfNewRevenueRecognitionGuidanceOnFinancialStatementConsolidatedBalanceSheetDetails">
+        <link:definition>100540 - Disclosure - New Accounting Pronouncements - Schedule of Adoption of New Revenue Recognition Guidance on Financial Statement - Consolidated Balance Sheet (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureNewAccountingPronouncementsScheduleOfAdoptionOfNewRevenueRecognitionGuidanceOnFinancialStatementConsolidatedStatementsOfOperationsDetails" id="Role_DisclosureNewAccountingPronouncementsScheduleOfAdoptionOfNewRevenueRecognitionGuidanceOnFinancialStatementConsolidatedStatementsOfOperationsDetails">
+        <link:definition>100550 - Disclosure - New Accounting Pronouncements - Schedule of Adoption of New Revenue Recognition Guidance on Financial Statement - Consolidated Statements of Operations (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureFacilitysourceAcquisitionAdditionalInformationDetail" id="Role_DisclosureFacilitysourceAcquisitionAdditionalInformationDetail">
+        <link:definition>100560 - Disclosure - FacilitySource Acquisition - Additional Information (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureFacilitysourceAcquisitionSummaryOfExcessPurchasePriceOverEstimatedFairValueOfNetAssetsAcquiredDetail" id="Role_DisclosureFacilitysourceAcquisitionSummaryOfExcessPurchasePriceOverEstimatedFairValueOfNetAssetsAcquiredDetail">
+        <link:definition>100570 - Disclosure - FacilitySource Acquisition - Summary of Excess Purchase Price Over Estimated Fair Value of Net Assets Acquired (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureFacilitysourceAcquisitionSummaryOfAggregateEstimatedFairValueOfAssetsAcquiredAndLiabilitiesAssumedDetail" id="Role_DisclosureFacilitysourceAcquisitionSummaryOfAggregateEstimatedFairValueOfAssetsAcquiredAndLiabilitiesAssumedDetail">
+        <link:definition>100580 - Disclosure - FacilitySource Acquisition - Summary of Aggregate Estimated Fair Value of Assets Acquired and Liabilities Assumed (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureFacilitysourceAcquisitionSummaryOfPreliminaryEstimateOfAmortizableIntangibleAssetsAndDepreciableComputerSoftwareAcquiredDetail" id="Role_DisclosureFacilitysourceAcquisitionSummaryOfPreliminaryEstimateOfAmortizableIntangibleAssetsAndDepreciableComputerSoftwareAcquiredDetail">
+        <link:definition>100590 - Disclosure - FacilitySource Acquisition - Summary of Preliminary Estimate of Amortizable Intangible Assets and Depreciable Computer Software Acquired (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureFacilitysourceAcquisitionCertainAdjustmentsToUnauditedProFormaResultsDetail" id="Role_DisclosureFacilitysourceAcquisitionCertainAdjustmentsToUnauditedProFormaResultsDetail">
+        <link:definition>100600 - Disclosure - FacilitySource Acquisition - Certain Adjustments to Unaudited Pro Forma Results (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureFacilitysourceAcquisitionSummaryOfProFormaResultsPreparedForComparativePurposesDetail" id="Role_DisclosureFacilitysourceAcquisitionSummaryOfProFormaResultsPreparedForComparativePurposesDetail">
+        <link:definition>100610 - Disclosure - FacilitySource Acquisition - Summary of Pro Forma Results Prepared for Comparative Purposes (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureWarehouseReceivablesWarehouseLinesOfCreditScheduleOfWarehouseReceivablesDetail" id="Role_DisclosureWarehouseReceivablesWarehouseLinesOfCreditScheduleOfWarehouseReceivablesDetail">
+        <link:definition>100620 - Disclosure - Warehouse Receivables &amp; Warehouse Lines of Credit - Schedule of Warehouse Receivables (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureWarehouseReceivablesWarehouseLinesOfCreditSummaryOfWarehouseLinesOfCreditInPlaceDetail" id="Role_DisclosureWarehouseReceivablesWarehouseLinesOfCreditSummaryOfWarehouseLinesOfCreditInPlaceDetail">
+        <link:definition>100630 - Disclosure - Warehouse Receivables &amp; Warehouse Lines of Credit - Summary of Warehouse Lines of Credit in Place (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureWarehouseReceivablesWarehouseLinesOfCreditSummaryOfWarehouseLinesOfCreditInPlaceParentheticalDetail" id="Role_DisclosureWarehouseReceivablesWarehouseLinesOfCreditSummaryOfWarehouseLinesOfCreditInPlaceParentheticalDetail">
+        <link:definition>100640 - Disclosure - Warehouse Receivables &amp; Warehouse Lines of Credit - Summary of Warehouse Lines of Credit in Place (Parenthetical) (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureWarehouseReceivablesWarehouseLinesOfCreditAdditionalInformationDetail" id="Role_DisclosureWarehouseReceivablesWarehouseLinesOfCreditAdditionalInformationDetail">
+        <link:definition>100650 - Disclosure - Warehouse Receivables &amp; Warehouse Lines of Credit - Additional Information (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureVariableInterestEntitiesViesScheduleOfMaximumExposureToLossDetail" id="Role_DisclosureVariableInterestEntitiesViesScheduleOfMaximumExposureToLossDetail">
+        <link:definition>100660 - Disclosure - Variable Interest Entities (VIEs) - Schedule of Maximum Exposure to Loss (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureFairValueMeasurementsAdditionalInformationDetail" id="Role_DisclosureFairValueMeasurementsAdditionalInformationDetail">
+        <link:definition>100670 - Disclosure - Fair Value Measurements - Additional Information (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureFairValueMeasurementsFairValueOfAssetsAndLiabilitiesMeasuredAtFairValueOnRecurringBasisDetail" id="Role_DisclosureFairValueMeasurementsFairValueOfAssetsAndLiabilitiesMeasuredAtFairValueOnRecurringBasisDetail">
+        <link:definition>100680 - Disclosure - Fair Value Measurements - Fair Value of Assets and Liabilities Measured at Fair Value on Recurring Basis (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosurePropertyAndEquipmentSummaryOfPropertyAndEquipmentDetail" id="Role_DisclosurePropertyAndEquipmentSummaryOfPropertyAndEquipmentDetail">
+        <link:definition>100690 - Disclosure - Property and Equipment - Summary of Property and Equipment (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosurePropertyAndEquipmentAdditionalInformationDetail" id="Role_DisclosurePropertyAndEquipmentAdditionalInformationDetail">
+        <link:definition>100700 - Disclosure - Property and Equipment - Additional Information (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureGoodwillAndOtherIntangibleAssetsScheduleOfChangesInGoodwillBySegmentDetail" id="Role_DisclosureGoodwillAndOtherIntangibleAssetsScheduleOfChangesInGoodwillBySegmentDetail">
+        <link:definition>100710 - Disclosure - Goodwill and Other Intangible Assets - Schedule of Changes in Goodwill by Segment (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureGoodwillAndOtherIntangibleAssetsAdditionalInformationDetail" id="Role_DisclosureGoodwillAndOtherIntangibleAssetsAdditionalInformationDetail">
+        <link:definition>100720 - Disclosure - Goodwill and Other Intangible Assets - Additional Information (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureGoodwillAndOtherIntangibleAssetsScheduleOfIntangibleAssetsDetail" id="Role_DisclosureGoodwillAndOtherIntangibleAssetsScheduleOfIntangibleAssetsDetail">
+        <link:definition>100730 - Disclosure - Goodwill and Other Intangible Assets - Schedule of Intangible Assets (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureInvestmentsInUnconsolidatedSubsidiariesAdditionalInformationDetail" id="Role_DisclosureInvestmentsInUnconsolidatedSubsidiariesAdditionalInformationDetail">
+        <link:definition>100740 - Disclosure - Investments In Unconsolidated Subsidiaries - Additional information (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureInvestmentsInUnconsolidatedSubsidiariesScheduleOfCondensedFinancialInformationOfEquityMethodInvestmentsDetail" id="Role_DisclosureInvestmentsInUnconsolidatedSubsidiariesScheduleOfCondensedFinancialInformationOfEquityMethodInvestmentsDetail">
+        <link:definition>100750 - Disclosure - Investments in Unconsolidated Subsidiaries - Schedule of Condensed Financial Information of Equity Method Investments (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureLongTermDebtAndShortTermBorrowingsScheduleOfLongTermDebtAndShortTermBorrowingsDetail" id="Role_DisclosureLongTermDebtAndShortTermBorrowingsScheduleOfLongTermDebtAndShortTermBorrowingsDetail">
+        <link:definition>100760 - Disclosure - Long-Term Debt and Short-Term Borrowings - Schedule of Long-Term Debt and Short-Term Borrowings (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureLongTermDebtAndShortTermBorrowingsScheduleOfLongTermDebtAndShortTermBorrowingsParentheticalDetail" id="Role_DisclosureLongTermDebtAndShortTermBorrowingsScheduleOfLongTermDebtAndShortTermBorrowingsParentheticalDetail">
+        <link:definition>100770 - Disclosure - Long-Term Debt and Short-Term Borrowings - Schedule of Long-Term Debt and Short-Term Borrowings (Parenthetical) (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureLongTermDebtAndShortTermBorrowingsAdditionalInformationDetail" id="Role_DisclosureLongTermDebtAndShortTermBorrowingsAdditionalInformationDetail">
+        <link:definition>100780 - Disclosure - Long-Term Debt and Short-Term Borrowings - Additional Information (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureLongTermDebtAndShortTermBorrowingsLongTermDebtAdditionalInformationDetail" id="Role_DisclosureLongTermDebtAndShortTermBorrowingsLongTermDebtAdditionalInformationDetail">
+        <link:definition>100790 - Disclosure - Long-Term Debt and Short-Term Borrowings - Long-Term Debt - Additional Information (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureLongTermDebtAndShortTermBorrowingsShortTermDebtAdditionalInformationDetail" id="Role_DisclosureLongTermDebtAndShortTermBorrowingsShortTermDebtAdditionalInformationDetail">
+        <link:definition>100800 - Disclosure - Long-Term Debt and Short-Term Borrowings - Short-Term Debt - Additional Information (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureLongTermDebtAndShortTermBorrowingsRevolvingCreditFacilityAdditionalInformationDetail" id="Role_DisclosureLongTermDebtAndShortTermBorrowingsRevolvingCreditFacilityAdditionalInformationDetail">
+        <link:definition>100810 - Disclosure - Long-Term Debt and Short-Term Borrowings - Revolving Credit Facility - Additional Information (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureCommitmentsAndContingenciesAdditionalInformationDetail" id="Role_DisclosureCommitmentsAndContingenciesAdditionalInformationDetail">
+        <link:definition>100820 - Disclosure - Commitments and Contingencies - Additional Information (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureCommitmentsAndContingenciesScheduleByYearOfFutureMinimumLeasePaymentsForNoncancelableOperatingLeasesDetail" id="Role_DisclosureCommitmentsAndContingenciesScheduleByYearOfFutureMinimumLeasePaymentsForNoncancelableOperatingLeasesDetail">
+        <link:definition>100830 - Disclosure - Commitments and Contingencies - Schedule by Year of Future Minimum Lease Payments for Noncancelable Operating Leases (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureCommitmentsAndContingenciesCompositionOfTotalRentalExpenseUnderNoncancelableDetail" id="Role_DisclosureCommitmentsAndContingenciesCompositionOfTotalRentalExpenseUnderNoncancelableDetail">
+        <link:definition>100840 - Disclosure - Commitments and Contingencies - Composition of Total Rental Expense Under Noncancelable (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureEmployeeBenefitPlansAdditionalInformationDetail" id="Role_DisclosureEmployeeBenefitPlansAdditionalInformationDetail">
+        <link:definition>100850 - Disclosure - Employee Benefit Plans - Additional Information (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureEmployeeBenefitPlansScheduleOfFairValueOfTSRPerformanceRsusDetail" id="Role_DisclosureEmployeeBenefitPlansScheduleOfFairValueOfTSRPerformanceRsusDetail">
+        <link:definition>100860 - Disclosure - Employee Benefit Plans - Schedule of Fair Value of TSR Performance RSUs (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureEmployeeBenefitPlansScheduleOfNonVestedStockAwardsDetail" id="Role_DisclosureEmployeeBenefitPlansScheduleOfNonVestedStockAwardsDetail">
+        <link:definition>100870 - Disclosure - Employee Benefit Plans - Schedule of Non-Vested Stock Awards (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureIncomeTaxesComponentsOfIncomeBeforeProvisionForIncomeTaxesDetail" id="Role_DisclosureIncomeTaxesComponentsOfIncomeBeforeProvisionForIncomeTaxesDetail">
+        <link:definition>100880 - Disclosure - Income Taxes - Components of Income Before Provision for Income Taxes (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureIncomeTaxesTaxProvisionBenefitDetail" id="Role_DisclosureIncomeTaxesTaxProvisionBenefitDetail">
+        <link:definition>100890 - Disclosure - Income Taxes - Tax Provision (Benefit) (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureIncomeTaxesReconciliationOfPreTaxIncomeDetail" id="Role_DisclosureIncomeTaxesReconciliationOfPreTaxIncomeDetail">
+        <link:definition>100900 - Disclosure - Income Taxes - Reconciliation of Pre-Tax Income (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureIncomeTaxesAdditionalInformationDetail" id="Role_DisclosureIncomeTaxesAdditionalInformationDetail">
+        <link:definition>100910 - Disclosure - Income Taxes - Additional Information (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureIncomeTaxesTemporaryTaxEffectsDetail" id="Role_DisclosureIncomeTaxesTemporaryTaxEffectsDetail">
+        <link:definition>100920 - Disclosure - Income Taxes - Temporary Tax Effects (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureIncomeTaxesUnrecognizedTaxBenefitsDetail" id="Role_DisclosureIncomeTaxesUnrecognizedTaxBenefitsDetail">
+        <link:definition>100930 - Disclosure - Income Taxes - Unrecognized Tax Benefits (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureStockholdersEquityAdditionalInformationDetail" id="Role_DisclosureStockholdersEquityAdditionalInformationDetail">
+        <link:definition>100940 - Disclosure - Stockholders&apos; Equity - Additional Information (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureIncomePerShareInformationCalculationOfIncomePerShareDetail" id="Role_DisclosureIncomePerShareInformationCalculationOfIncomePerShareDetail">
+        <link:definition>100950 - Disclosure - Income Per Share Information - Calculation of Income Per Share (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureIncomePerShareInformationAdditionalInformationDetail" id="Role_DisclosureIncomePerShareInformationAdditionalInformationDetail">
+        <link:definition>100960 - Disclosure - Income Per Share Information - Additional Information (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureRevenueFromContractsWithCustomersDisaggregationOfRevenueFromContractsWithCustomersDetail" id="Role_DisclosureRevenueFromContractsWithCustomersDisaggregationOfRevenueFromContractsWithCustomersDetail">
+        <link:definition>100970 - Disclosure - Revenue from Contracts with Customers - Disaggregation of Revenue from Contracts with Customers (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureRevenueFromContractsWithCustomersAdditionalInformationDetail" id="Role_DisclosureRevenueFromContractsWithCustomersAdditionalInformationDetail">
+        <link:definition>100980 - Disclosure - Revenue from Contracts with Customers - Additional Information (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureSegmentsSummarizedFinancialInformationBySegmentDetail" id="Role_DisclosureSegmentsSummarizedFinancialInformationBySegmentDetail">
+        <link:definition>100990 - Disclosure - Segments - Summarized Financial Information by Segment (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureSegmentsAdjustedEBITDACalculationBySegmentDetail" id="Role_DisclosureSegmentsAdjustedEBITDACalculationBySegmentDetail">
+        <link:definition>101000 - Disclosure - Segments - Adjusted EBITDA Calculation by Segment (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureSegmentsAdjustedEBITDACalculationBySegmentParentheticalDetail" id="Role_DisclosureSegmentsAdjustedEBITDACalculationBySegmentParentheticalDetail">
+        <link:definition>101010 - Disclosure - Segments - Adjusted EBITDA Calculation by Segment (Parenthetical) (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureSegmentsScheduleOfCapitalExpendituresBySegmentDetail" id="Role_DisclosureSegmentsScheduleOfCapitalExpendituresBySegmentDetail">
+        <link:definition>101020 - Disclosure - Segments - Schedule of Capital Expenditures by Segment (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureSegmentsScheduleOfIdentifiableAssetsBySegmentDetail" id="Role_DisclosureSegmentsScheduleOfIdentifiableAssetsBySegmentDetail">
+        <link:definition>101030 - Disclosure - Segments - Schedule of Identifiable Assets by Segment (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureSegmentsScheduleOfInvestmentsInUnconsolidatedSubsidiariesBySegmentDetail" id="Role_DisclosureSegmentsScheduleOfInvestmentsInUnconsolidatedSubsidiariesBySegmentDetail">
+        <link:definition>101040 - Disclosure - Segments - Schedule of Investments in Unconsolidated Subsidiaries by Segment (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureSegmentsSummaryOfGeographicInformationDetail" id="Role_DisclosureSegmentsSummaryOfGeographicInformationDetail">
+        <link:definition>101050 - Disclosure - Segments - Summary of Geographic Information (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureSegmentsAdditionalInformationDetail" id="Role_DisclosureSegmentsAdditionalInformationDetail">
+        <link:definition>101060 - Disclosure - Segments - Additional Information (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureRelatedPartyTransactionsAdditionalInformationDetail" id="Role_DisclosureRelatedPartyTransactionsAdditionalInformationDetail">
+        <link:definition>101070 - Disclosure - Related Party Transactions - Additional Information (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureGuarantorAndNonguarantorFinancialStatementsCondensedConsolidatingBalanceSheetDetail" id="Role_DisclosureGuarantorAndNonguarantorFinancialStatementsCondensedConsolidatingBalanceSheetDetail">
+        <link:definition>101080 - Disclosure - Guarantor and Nonguarantor Financial Statements - Condensed Consolidating Balance Sheet (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureGuarantorAndNonguarantorFinancialStatementsCondensedConsolidatingBalanceSheetParentheticalDetail" id="Role_DisclosureGuarantorAndNonguarantorFinancialStatementsCondensedConsolidatingBalanceSheetParentheticalDetail">
+        <link:definition>101090 - Disclosure - Guarantor and Nonguarantor Financial Statements - Condensed Consolidating Balance Sheet (Parenthetical) (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureGuarantorAndNonguarantorFinancialStatementsCondensedConsolidatingStatementOfOperationsDetail" id="Role_DisclosureGuarantorAndNonguarantorFinancialStatementsCondensedConsolidatingStatementOfOperationsDetail">
+        <link:definition>101100 - Disclosure - Guarantor and Nonguarantor Financial Statements - Condensed Consolidating Statement of Operations (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureGuarantorAndNonguarantorFinancialStatementsCondensedConsolidatingStatementOfComprehensiveIncomeLossDetail" id="Role_DisclosureGuarantorAndNonguarantorFinancialStatementsCondensedConsolidatingStatementOfComprehensiveIncomeLossDetail">
+        <link:definition>101110 - Disclosure - Guarantor and Nonguarantor Financial Statements - Condensed Consolidating Statement of Comprehensive Income (Loss) (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureGuarantorAndNonguarantorFinancialStatementsCondensedConsolidatingStatementOfCashFlowsDetail" id="Role_DisclosureGuarantorAndNonguarantorFinancialStatementsCondensedConsolidatingStatementOfCashFlowsDetail">
+        <link:definition>101120 - Disclosure - Guarantor and Nonguarantor Financial Statements - Condensed Consolidating Statement of Cash Flows (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureSubsequentEventsAdditionalInformationDetail" id="Role_DisclosureSubsequentEventsAdditionalInformationDetail">
+        <link:definition>101130 - Disclosure - Subsequent Events - Additional Information (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.cbre.com/20181231/taxonomy/role/DisclosureScheduleIIValuationAndQualifyingAccountsDetail" id="Role_DisclosureScheduleIIValuationAndQualifyingAccountsDetail">
+        <link:definition>101140 - Disclosure - Schedule II - Valuation and Qualifying Accounts (Detail)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+    </appinfo>
+  </annotation>
+  <element id="cbg_LoanReceivableMortgageWarehouseLendingCurrent" name="LoanReceivableMortgageWarehouseLendingCurrent" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_InterestIncome" name="InterestIncome" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_IncomeLossBeforeNetInterestExpenseWriteOffOfFinancingCostsIncomeTaxesDepreciationAndAmortization" name="IncomeLossBeforeNetInterestExpenseWriteOffOfFinancingCostsIncomeTaxesDepreciationAndAmortization" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_InvestmentsInAndAdvanceToConsolidatedSubsidiaries" name="InvestmentsInAndAdvanceToConsolidatedSubsidiaries" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_LongTermDebtExcludingLoansPayable" name="LongTermDebtExcludingLoansPayable" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_RoyaltyAndManagementServiceIncomeExpense" name="RoyaltyAndManagementServiceIncomeExpense" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_IncomeLossFromConsolidatedSubsidiaries" name="IncomeLossFromConsolidatedSubsidiaries" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_OtherComprehensiveIncomeMinimumPensionLiabilityNetAdjustmentsNetOfTax" name="OtherComprehensiveIncomeMinimumPensionLiabilityNetAdjustmentsNetOfTax" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_PurchaseOfEquitySecurities" name="PurchaseOfEquitySecurities" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_ProceedsFromSaleOfEquitySecurities" name="ProceedsFromSaleOfEquitySecurities" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_ProceedsFromNotesPayableOnRealEstate" name="ProceedsFromNotesPayableOnRealEstate" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_RepaymentOfNotesPayableOnRealEstate" name="RepaymentOfNotesPayableOnRealEstate" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_DocumentAndEntityInformationAbstract" name="DocumentAndEntityInformationAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_OtherComprehensiveIncomeDefinedBenefitPlansTaxes" name="OtherComprehensiveIncomeDefinedBenefitPlansTaxes" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_ReclassificationFromAOCIToRetainedEarningsPeriodTax" name="ReclassificationFromAOCIToRetainedEarningsPeriodTax" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_GainsLossesOnDispositionOfRealEstateHeldForInvestment" name="GainsLossesOnDispositionOfRealEstateHeldForInvestment" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_IncreaseDecreaseInWarehouseLinesOfCredit" name="IncreaseDecreaseInWarehouseLinesOfCredit" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_SecuritiesPurchasedToCoverShortSales" name="SecuritiesPurchasedToCoverShortSales" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_IncreaseDecreaseInReceivablesPrepaidExpensesAndOtherAssetsIncludingContractAssets" name="IncreaseDecreaseInReceivablesPrepaidExpensesAndOtherAssetsIncludingContractAssets" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_CashPaidDuringPeriodForAbstract" name="CashPaidDuringPeriodForAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_FivePercentSeniorNotesMember" name="FivePercentSeniorNotesMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_MinorityInterestIncreaseFromContributionsFromNoncontrollingInterestHolders" name="MinorityInterestIncreaseFromContributionsFromNoncontrollingInterestHolders" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_AdjustmentsToAdditionalPaidInCapitalReclassificationOfStockIncentivePlanAwardFromEquityAwardToLiabilityAward" name="AdjustmentsToAdditionalPaidInCapitalReclassificationOfStockIncentivePlanAwardFromEquityAwardToLiabilityAward" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_WarehouseReceivablesAndWarehouseLinesOfCreditTextBlock" name="WarehouseReceivablesAndWarehouseLinesOfCreditTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_WarehouseReceivablesAndWarehouseLinesOfCreditAbstract" name="WarehouseReceivablesAndWarehouseLinesOfCreditAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_FiduciaryFundsPolicyPolicyTextBlock" name="FiduciaryFundsPolicyPolicyTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_ComprehensiveIncomeLossPolicyTextBlock" name="ComprehensiveIncomeLossPolicyTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_WarehouseReceivablesPolicyTextBlock" name="WarehouseReceivablesPolicyTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_ScheduleOfAssumptionsUsedInMeasuringFairValueOfServicingAssetsTableTextBlock" name="ScheduleOfAssumptionsUsedInMeasuringFairValueOfServicingAssetsTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_AccountingForBrokerDrawsPolicyTextBlock" name="AccountingForBrokerDrawsPolicyTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_SelfInsurancePolicyTextBlock" name="SelfInsurancePolicyTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_BusinessCombinationGoodwillTableTextBlock" name="BusinessCombinationGoodwillTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_ScheduleOfFiniteLivedIntangibleAssetsAndPropertyAndEquipmentAcquiredAsPartOfBusinessCombinationTableTextBlock" name="ScheduleOfFiniteLivedIntangibleAssetsAndPropertyAndEquipmentAcquiredAsPartOfBusinessCombinationTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_BusinessAcquisitionAdjustmentsToProFormaInformationTableTextBlock" name="BusinessAcquisitionAdjustmentsToProFormaInformationTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_ScheduleOfWarehouseReceivablesRollforwardTableTextBlock" name="ScheduleOfWarehouseReceivablesRollforwardTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_ScheduleOfFiniteLivedAndIndefiniteLivedIntangibleAssetsTableTextBlock" name="ScheduleOfFiniteLivedAndIndefiniteLivedIntangibleAssetsTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_ScheduleOfSummarizedFinancialReportingInformationBySegmentTableTextBlock" name="ScheduleOfSummarizedFinancialReportingInformationBySegmentTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_ScheduleOfFinancialReportingInformationToCalculateEBITDABySegmentTableTextBlock" name="ScheduleOfFinancialReportingInformationToCalculateEBITDABySegmentTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_ScheduleOfCapitalExpendituresBySegmentTableTextBlock" name="ScheduleOfCapitalExpendituresBySegmentTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_ScheduleOfIdentifiableAssetsBySegmentTableTextBlock" name="ScheduleOfIdentifiableAssetsBySegmentTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_ScheduleOfInvestmentsInUnconsolidatedSubsidiariesBySegmentTableTextBlock" name="ScheduleOfInvestmentsInUnconsolidatedSubsidiariesBySegmentTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_NumberOfOffices" name="NumberOfOffices" type="xbrli:positiveIntegerItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_ScheduleOfDescriptionOfBusinessLineItems" name="ScheduleOfDescriptionOfBusinessLineItems" type="xbrli:stringItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_ScheduleOfDescriptionOfBusinessTable" name="ScheduleOfDescriptionOfBusinessTable" type="xbrli:stringItemType" substitutionGroup="xbrldt:hypercubeItem" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_SummaryOfSignificantAccountingPoliciesLineItems" name="SummaryOfSignificantAccountingPoliciesLineItems" type="xbrli:stringItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_SummaryOfSignificantAccountingPoliciesTable" name="SummaryOfSignificantAccountingPoliciesTable" type="xbrli:stringItemType" substitutionGroup="xbrldt:hypercubeItem" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_AmortizationOfInternalUseSoftwareMember" name="AmortizationOfInternalUseSoftwareMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_EnterpriseClassSoftwareAndServersMember" name="EnterpriseClassSoftwareAndServersMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_GoodwillAndOtherIntangibleAssetsMember" name="GoodwillAndOtherIntangibleAssetsMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_TwoThousandFifteenCreditAgreementMember" name="TwoThousandFifteenCreditAgreementMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_TrancheATermLoanFacilityMember" name="TrancheATermLoanFacilityMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_OperatingAdministrativeAndOtherExpensesMember" name="OperatingAdministrativeAndOtherExpensesMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_CashUnavailableForGeneralCorporateUse" name="CashUnavailableForGeneralCorporateUse" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_FiduciaryFunds" name="FiduciaryFunds" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_AmortizationPeriodOfFinancingCostsMaximum" name="AmortizationPeriodOfFinancingCostsMaximum" type="xbrli:durationItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_DebtIssuanceCostsIncurredCurrentYear" name="DebtIssuanceCostsIncurredCurrentYear" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_OwnershipInterestInRealEstateProperty" name="OwnershipInterestInRealEstateProperty" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" />
+  <element id="cbg_BusinessAcquisitionEquityInterestAcquired" name="BusinessAcquisitionEquityInterestAcquired" type="xbrli:sharesItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_FacilitySourceHoldingsLLCMember" name="FacilitySourceHoldingsLLCMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_FSWPHoldcoIncMember" name="FSWPHoldcoIncMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedCurrentAssetsPrepaidExpenses" name="BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedCurrentAssetsPrepaidExpenses" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedCurrentLiabilitiesAccountsPayableAndAccruedExpenses" name="BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedCurrentLiabilitiesAccountsPayableAndAccruedExpenses" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedCurrentLiabilitiesAccruedBonusAndProfitSharing" name="BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedCurrentLiabilitiesAccruedBonusAndProfitSharing" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedCurrentLiabilitiesCompensationAndEmployeeBenefitsPayable" name="BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedCurrentLiabilitiesCompensationAndEmployeeBenefitsPayable" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedLineOfCreditAndTermLoan" name="BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedLineOfCreditAndTermLoan" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_BusinessAcquisitionsIncrementalDepreciationExpense" name="BusinessAcquisitionsIncrementalDepreciationExpense" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_BusinessAcquisitionsIncrementalAmortizationExpense" name="BusinessAcquisitionsIncrementalAmortizationExpense" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_BusinessAcquisitionsIncrementalInterestExpense" name="BusinessAcquisitionsIncrementalInterestExpense" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_BusinessAcquisitionsRemovalOfTaxImpact" name="BusinessAcquisitionsRemovalOfTaxImpact" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_BusinessAcquisitionsRemovalOfDirectCosts" name="BusinessAcquisitionsRemovalOfDirectCosts" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_BusinessAcquisitionProFormaEarningsPerShareBasicAbstract" name="BusinessAcquisitionProFormaEarningsPerShareBasicAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_BusinessAcquisitionProFormaEarningsPerShareDilutedAbstract" name="BusinessAcquisitionProFormaEarningsPerShareDilutedAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_SaleOfMortgageLoansHeldForSale" name="SaleOfMortgageLoansHeldForSale" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_NetIncreaseDecreaseInMortgageServicingRightsIncludedInWarehouseReceivables" name="NetIncreaseDecreaseInMortgageServicingRightsIncludedInWarehouseReceivables" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_LineOfCreditFacilityExpirationTerm" name="LineOfCreditFacilityExpirationTerm" type="xbrli:stringItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_WarehouseReceivablesAndWarehouseLinesOfCreditLineItems" name="WarehouseReceivablesAndWarehouseLinesOfCreditLineItems" type="xbrli:stringItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_WarehouseReceivablesAndWarehouseLinesOfCreditTable" name="WarehouseReceivablesAndWarehouseLinesOfCreditTable" type="xbrli:stringItemType" substitutionGroup="xbrldt:hypercubeItem" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_JPMorganMember" name="JPMorganMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_FannieMaeASAPProgramMember" name="FannieMaeASAPProgramMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_TDBankMember" name="TDBankMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_BankOfAmericaMember" name="BankOfAmericaMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_CapitalOneMember" name="CapitalOneMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_WarehouseLineOfCreditOneMember" name="WarehouseLineOfCreditOneMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_WarehouseLineOfCreditTwoMember" name="WarehouseLineOfCreditTwoMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_WarehouseLineOfCreditThreeMember" name="WarehouseLineOfCreditThreeMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_WarehouseLineOfCreditFourMember" name="WarehouseLineOfCreditFourMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_WarehouseLineOfCreditFiveMember" name="WarehouseLineOfCreditFiveMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_WarehouseLineOfCreditSixMember" name="WarehouseLineOfCreditSixMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_LineOfCreditLondonInterBankOfferRateFloor" name="LineOfCreditLondonInterBankOfferRateFloor" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_LineOfCreditFacilityIncreaseInMaximumBorrowingCapacity" name="LineOfCreditFacilityIncreaseInMaximumBorrowingCapacity" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_VariableInterestEntityEntityMaximumLossExposureAmountInvestmentsInAffiliatesSubsidiariesAssociatesAndJointVentures" name="VariableInterestEntityEntityMaximumLossExposureAmountInvestmentsInAffiliatesSubsidiariesAssociatesAndJointVentures" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_VariableInterestEntityEntityMaximumLossExposureAmountOtherCurrentAssets" name="VariableInterestEntityEntityMaximumLossExposureAmountOtherCurrentAssets" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_VariableInterestEntityEntityMaximumLossExposureAmountCommitmentsToInvestmentInFutureRealEstateInvestment" name="VariableInterestEntityEntityMaximumLossExposureAmountCommitmentsToInvestmentInFutureRealEstateInvestment" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_SeniorTermLoanMember" name="SeniorTermLoanMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_FourPointEightSevenFiveSeniorNotesMember" name="FourPointEightSevenFiveSeniorNotesMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_FivePointTwoFivePercentSeniorNotesMember" name="FivePointTwoFivePercentSeniorNotesMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_SeniorTermLoans" name="SeniorTermLoans" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_NotesPayableOnRealEstate" name="NotesPayableOnRealEstate" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_EquipmentUnderCapitalLeasesMember" name="EquipmentUnderCapitalLeasesMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_AmericasSegmentMember" name="AmericasSegmentMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_EMEASegmentMember" name="EMEASegmentMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_AsiaPacificSegmentMember" name="AsiaPacificSegmentMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_GlobalInvestmentManagementMember" name="GlobalInvestmentManagementMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_DevelopmentServicesMember" name="DevelopmentServicesMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_NumberOfSoftwareServiceAcquired" name="NumberOfSoftwareServiceAcquired" type="xbrli:integerItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_NewEnglandJointVentureMember" name="NewEnglandJointVentureMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_InteractiveVisualizationTechnologiesMember" name="InteractiveVisualizationTechnologiesMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_TechnologySolutionsMember" name="TechnologySolutionsMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_MortgageServicingRightsMember" name="MortgageServicingRightsMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_GlobalWorkplaceSolutionsMember" name="GlobalWorkplaceSolutionsMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_ManagementContractsMember" name="ManagementContractsMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_OtherAmortizableIntangibleAssetsMember" name="OtherAmortizableIntangibleAssetsMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_InvestmentManagementPropertyManagementBrokerageAndOtherProfessionalServicesMember" name="InvestmentManagementPropertyManagementBrokerageAndOtherProfessionalServicesMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_OtherServicesMember" name="OtherServicesMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_EquityMethodSummarizedFinancialInformationAssetsLiabilitiesMinorityInterest" name="EquityMethodSummarizedFinancialInformationAssetsLiabilitiesMinorityInterest" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_EquityMethodInvestmentSummarizedFinancialInformationOperatingProfitLoss" name="EquityMethodInvestmentSummarizedFinancialInformationOperatingProfitLoss" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_SeniorSecuredTermLoanMember" name="SeniorSecuredTermLoanMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_OtherLongTermDebtMember" name="OtherLongTermDebtMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_DebtInstrumentMaturityDateYear" name="DebtInstrumentMaturityDateYear" type="xbrli:gYearItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_DebtInstrumentMaturityMonthYear" name="DebtInstrumentMaturityMonthYear" type="xbrli:gYearMonthItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_TermLoanFacilityMember" name="TermLoanFacilityMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_TwoThousandSeventeenCreditAgreementMember" name="TwoThousandSeventeenCreditAgreementMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_InterestRateSwapAgreementExpiredOnOctoberTwoTwoThousandAndSeventeenMember" name="InterestRateSwapAgreementExpiredOnOctoberTwoTwoThousandAndSeventeenMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_InterestRateSwapAgreementExpiringOnSeptemberTwoThousandAndNineteenMember" name="InterestRateSwapAgreementExpiringOnSeptemberTwoThousandAndNineteenMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_FivePointZeroZeroPercentSeniorNotesDueMarchFifteenTwoThousandTwentyThreeMember" name="FivePointZeroZeroPercentSeniorNotesDueMarchFifteenTwoThousandTwentyThreeMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_MaximumLeverageRatio" name="MaximumLeverageRatio" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_LongTermDebtPercentageSpreadOverFixedInterestRate" name="LongTermDebtPercentageSpreadOverFixedInterestRate" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_LongTermDebtPercentageSpreadOverDailyInterestRate" name="LongTermDebtPercentageSpreadOverDailyInterestRate" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_InterestRateSwapContractExpirationDate" name="InterestRateSwapContractExpirationDate" type="xbrli:gYearMonthItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_DebtInstrumentIssuePriceAsPercentageOfFaceValue" name="DebtInstrumentIssuePriceAsPercentageOfFaceValue" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_PercentageOfLongTermDebtAvailableForRedemption" name="PercentageOfLongTermDebtAvailableForRedemption" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_AccruedInterestPercentage" name="AccruedInterestPercentage" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_DebtInstrumentRedemptionCharges" name="DebtInstrumentRedemptionCharges" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_MinimumCoverageRatioOfEarningsBeforeInterestTaxDepreciationAndAmortizationToInterestExpenseExpressedInPercentage" name="MinimumCoverageRatioOfEarningsBeforeInterestTaxDepreciationAndAmortizationToInterestExpenseExpressedInPercentage" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_MaximumLeverageRatioOfDebtToEarningsBeforeInterestTaxDepreciationAndAmortizationExpressedInPercentage" name="MaximumLeverageRatioOfDebtToEarningsBeforeInterestTaxDepreciationAndAmortizationExpressedInPercentage" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_MaximumLeverageRatioDuringFirstFourQuarterThatQualifiedAcquisitionIsConsummated" name="MaximumLeverageRatioDuringFirstFourQuarterThatQualifiedAcquisitionIsConsummated" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_CoverageRatioOfEarningsBeforeInterestTaxDepreciationAndAmortizationToInterestExpenseExpressedInPercentage" name="CoverageRatioOfEarningsBeforeInterestTaxDepreciationAndAmortizationToInterestExpenseExpressedInPercentage" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" />
+  <element id="cbg_LeverageRatioOfDebtToEarningsBeforeInterestTaxDepreciationAndAmortizationExpressedInPercentage" name="LeverageRatioOfDebtToEarningsBeforeInterestTaxDepreciationAndAmortizationExpressedInPercentage" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" />
+  <element id="cbg_CanadianAustralianAndNewZealandSubsidiariesMember" name="CanadianAustralianAndNewZealandSubsidiariesMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_UnitedKingdomSubsidiaryMember" name="UnitedKingdomSubsidiaryMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_FundedLoanSubjectToLossSharingArrangementsMember" name="FundedLoanSubjectToLossSharingArrangementsMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_MultifamilySmallBalanceLoanProgramMember" name="MultifamilySmallBalanceLoanProgramMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_FundedLoanNotSubjectToLossSharingArrangementsMember" name="FundedLoanNotSubjectToLossSharingArrangementsMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_FundedLoanPrincipalAmountOutstanding" name="FundedLoanPrincipalAmountOutstanding" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_LoanLossSharingReserve" name="LoanLossSharingReserve" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_AssetsAvailableForRecourse" name="AssetsAvailableForRecourse" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_LineOfCreditFacilityLatestExpirationDate" name="LineOfCreditFacilityLatestExpirationDate" type="xbrli:gYearMonthItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_GuarantorObligationsMaximumExposureUndiscounted" name="GuarantorObligationsMaximumExposureUndiscounted" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_PercentageOfEquityInRealEstateInvestment" name="PercentageOfEquityInRealEstateInvestment" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_CommitmentsToInvestmentInFutureRealEstateInvestment" name="CommitmentsToInvestmentInFutureRealEstateInvestment" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_CommitmentsToInvestmentInUnconsolidatedEntity" name="CommitmentsToInvestmentInUnconsolidatedEntity" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_MaximumPerformanceBasedCashAward" name="MaximumPerformanceBasedCashAward" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_UnissuedSharesFromPreviousStockPlan" name="UnissuedSharesFromPreviousStockPlan" type="xbrli:sharesItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" />
+  <element id="cbg_TwoThousandSeventeenStockIncentivePlanMember" name="TwoThousandSeventeenStockIncentivePlanMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_TwoThousandTwelveStockIncentivePlanMember" name="TwoThousandTwelveStockIncentivePlanMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_EmployeeStockOptionAndStockAppreciationRightsMember" name="EmployeeStockOptionAndStockAppreciationRightsMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_TimeBasedVestingMember" name="TimeBasedVestingMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_PerformanceBasedVestingMember" name="PerformanceBasedVestingMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_EmployeesMember" name="EmployeesMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_ShareholderReturnMember" name="ShareholderReturnMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_EarningPerShareMember" name="EarningPerShareMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_SeniorBrokersMember" name="SeniorBrokersMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_NonvestedStockAwardsMember" name="NonvestedStockAwardsMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_AnnualBaseSalaryOneMember" name="AnnualBaseSalaryOneMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_AnnualBaseSalaryTwoMember" name="AnnualBaseSalaryTwoMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_SharebasedCompensationArrangementBySharebasedPaymentPercentageOfTargetRestrictedStockUnit" name="SharebasedCompensationArrangementBySharebasedPaymentPercentageOfTargetRestrictedStockUnit" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" />
+  <element id="cbg_NumberOfTradingTermRequiredForPurposesOfMeasuringShareholderReturnBasedOnAverageClosingPriceOfCommonStockImmediatelyPrecedingGrantDate" name="NumberOfTradingTermRequiredForPurposesOfMeasuringShareholderReturnBasedOnAverageClosingPriceOfCommonStockImmediatelyPrecedingGrantDate" type="xbrli:durationItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_BonusExpense" name="BonusExpense" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_PercentageVestPerYearEmployed" name="PercentageVestPerYearEmployed" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_DefinedContributionPlanMinimumAnnualContributionPerEmployeeAmount" name="DefinedContributionPlanMinimumAnnualContributionPerEmployeeAmount" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_PercentOfEmployeeInvestmentInDefinedBenefitPlan" name="PercentOfEmployeeInvestmentInDefinedBenefitPlan" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_NumberOfShareHeldAsInvestmentByParticipantUnderDefinedContributionPlan" name="NumberOfShareHeldAsInvestmentByParticipantUnderDefinedContributionPlan" type="xbrli:sharesItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_NumberOfDefinedContributionPlans" name="NumberOfDefinedContributionPlans" type="xbrli:integerItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_EffectiveIncomeTaxRateReconciliationAcquisitionRelatedCosts" name="EffectiveIncomeTaxRateReconciliationAcquisitionRelatedCosts" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_IncomeTaxLineItems" name="IncomeTaxLineItems" type="xbrli:stringItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_IncomeTaxTable" name="IncomeTaxTable" type="xbrli:stringItemType" substitutionGroup="xbrldt:hypercubeItem" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_IncomeTaxesPayableMember" name="IncomeTaxesPayableMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_NonCurrentTaxLiabilitiesMember" name="NonCurrentTaxLiabilitiesMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_ForeignCurrencyTranslationAndTaxRateChangesMember" name="ForeignCurrencyTranslationAndTaxRateChangesMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_EarningOfUSAndForeignSubsidiariesMember" name="EarningOfUSAndForeignSubsidiariesMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_USNetOperatingLossUtilizationMember" name="USNetOperatingLossUtilizationMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_ForeignNetOperatingLossUtilizationMember" name="ForeignNetOperatingLossUtilizationMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_ValuationAllowanceAndForeignNetOperatingLossDeferredTaxAssetMember" name="ValuationAllowanceAndForeignNetOperatingLossDeferredTaxAssetMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_ForeignNetOperatingLossMember" name="ForeignNetOperatingLossMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_SettlementOfFederalTaxAuditsTaxYearMember" name="SettlementOfFederalTaxAuditsTaxYearMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_TaxCutsAndJobsActOf2017IncompleteAccountingProvisionalIncomeTaxExpenseBenefit" name="TaxCutsAndJobsActOf2017IncompleteAccountingProvisionalIncomeTaxExpenseBenefit" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_EffectiveIncomeTaxRateReconciliationTaxCutsAndJobsActTransitionTaxOnAccumulatedForeignEarningsForCashAndOtherNetCurrentAssetsPercent" name="EffectiveIncomeTaxRateReconciliationTaxCutsAndJobsActTransitionTaxOnAccumulatedForeignEarningsForCashAndOtherNetCurrentAssetsPercent" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_TaxCutsAndJobsActOf2017ChangeInTaxRateIncomeTaxExpenseBenefit" name="TaxCutsAndJobsActOf2017ChangeInTaxRateIncomeTaxExpenseBenefit" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_EffectiveIncomeTaxRateReconciliationTaxCutsAndJobsActTransitionTaxOnAccumulatedForeignEarningsOnRemainingEarningsPercent" name="EffectiveIncomeTaxRateReconciliationTaxCutsAndJobsActTransitionTaxOnAccumulatedForeignEarningsOnRemainingEarningsPercent" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_TaxCutsAndJobsActOf2017IncompleteAccountingChangeInTaxRateProvisionalIncomeTaxExpenseBenefit" name="TaxCutsAndJobsActOf2017IncompleteAccountingChangeInTaxRateProvisionalIncomeTaxExpenseBenefit" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_TaxCutsAndJobsActOf2017IncompleteAccountingTransitionTaxOnUnremittedForeignEarningsProvisionalIncomeTaxExpense" name="TaxCutsAndJobsActOf2017IncompleteAccountingTransitionTaxOnUnremittedForeignEarningsProvisionalIncomeTaxExpense" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_TaxCutsAndJobsActOf2017IncompleteAccountingDecreaseInProvisionalIncomeTaxExpenseBenefit" name="TaxCutsAndJobsActOf2017IncompleteAccountingDecreaseInProvisionalIncomeTaxExpenseBenefit" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_TaxCutsAndJobsActOf2017CompleteAccountingProvisionalIncomeTaxExpenseBenefit" name="TaxCutsAndJobsActOf2017CompleteAccountingProvisionalIncomeTaxExpenseBenefit" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_TaxCutsAndJobsActOf2017PaymentOfTransitionTaxInstallmentsPeriod" name="TaxCutsAndJobsActOf2017PaymentOfTransitionTaxInstallmentsPeriod" type="xbrli:durationItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_TaxCutsAndJobsActOf2017PaymentOfTransitionTaxExpiryYear" name="TaxCutsAndJobsActOf2017PaymentOfTransitionTaxExpiryYear" type="xbrli:gYearItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_TaxCutsAndJobsActOf2017CompleteAccountingTransitionTaxForProvisionalIncomeTaxExpenseLiability" name="TaxCutsAndJobsActOf2017CompleteAccountingTransitionTaxForProvisionalIncomeTaxExpenseLiability" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_DeferredTaxLiabilitiesRevenueRecognition" name="DeferredTaxLiabilitiesRevenueRecognition" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_DeferredTaxAssetsAndLiabilitiesInUnconsolidatedAffiliatesAndPartnership" name="DeferredTaxAssetsAndLiabilitiesInUnconsolidatedAffiliatesAndPartnership" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_ExpirationDateOfFederalAndStateNetOperatingLossCarryforwards" name="ExpirationDateOfFederalAndStateNetOperatingLossCarryforwards" type="xbrli:gYearItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_UnrecognizedTaxBenefitsNetOfFederalBenefitReceivedFromStatePositions" name="UnrecognizedTaxBenefitsNetOfFederalBenefitReceivedFromStatePositions" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_UnrecognizedTaxBenefitsIncreaseDecreasesResultingFromForeignCurrencyTranslation" name="UnrecognizedTaxBenefitsIncreaseDecreasesResultingFromForeignCurrencyTranslation" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_GrossUnrecognizedTaxBenefitsReleasedDueToSettlements" name="GrossUnrecognizedTaxBenefitsReleasedDueToSettlements" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_ExpirationOfFederalTaxYear" name="ExpirationOfFederalTaxYear" type="xbrli:gYearItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_UnrecognizedTaxBenefitsIncomeTaxPenaltiesAndInterestAccruedNetOfFederalTaxBenefits" name="UnrecognizedTaxBenefitsIncomeTaxPenaltiesAndInterestAccruedNetOfFederalTaxBenefits" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_EquityLineItems" name="EquityLineItems" type="xbrli:stringItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_EquityTable" name="EquityTable" type="xbrli:stringItemType" substitutionGroup="xbrldt:hypercubeItem" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_IncrementalCommonSharesAttributableToStockOptions" name="IncrementalCommonSharesAttributableToStockOptions" type="xbrli:sharesItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="cbg_OccupierOutsourcingMember" name="OccupierOutsourcingMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_LeasingMember" name="LeasingMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_SalesContractsMember" name="SalesContractsMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_PropertyManagementMember" name="PropertyManagementMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_ValuationMember" name="ValuationMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_CommercialMortgageOriginationMember" name="CommercialMortgageOriginationMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_RealEstateDevelopmentServicesMember" name="RealEstateDevelopmentServicesMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_LoanServicingMember" name="LoanServicingMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_OtherRevenueMember" name="OtherRevenueMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_CommercialMortgageOriginationLoanServicingAndOtherRevenuesMember" name="CommercialMortgageOriginationLoanServicingAndOtherRevenuesMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_CapitalizedTransitionCosts" name="CapitalizedTransitionCosts" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_AdjustedEarningsBeforeInterestTaxesDepreciationAndAmortization" name="AdjustedEarningsBeforeInterestTaxesDepreciationAndAmortization" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_CarriedInterestIncentiveCompensationReversal" name="CarriedInterestIncentiveCompensationReversal" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="cbg_ContractTerminationCosts" name="ContractTerminationCosts" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="cbg_AllOtherCountriesMember" name="AllOtherCountriesMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_EmployeesOtherThanExecutiveOfficersMember" name="EmployeesOtherThanExecutiveOfficersMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="cbg_CbRichardEllisServicesIncMember" name="CbRichardEllisServicesIncMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+</schema>

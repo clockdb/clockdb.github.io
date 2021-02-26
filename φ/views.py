@@ -78,7 +78,7 @@ def entities(request):
 def menu(request):
     return render(request, "./φ/menu.html")
         
-# CONTACT
-def contact(request):
-    return render(request, "./φ/contact.html")
+# ABOUT
+def about(request):
+    return render(request, "./φ/about.html")
     
