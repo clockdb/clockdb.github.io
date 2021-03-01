@@ -25,15 +25,8 @@ import requests
 import urllib
 import xml.etree.ElementTree as ET
 
-
 # TradingSymbol to EntityCentralIndexKeys
 EntityCentralIndexKeys = {
-    'EMN': '915389',
-    'ETN': '1551182',
-    'EBAY': '1065088',
-    'ECL': '31462',
-    'EIX': '827052',
-    'EW': '1099800',
     'EA': '712515',
     'EMR': '32604',
     'ENPH': '1463101',
@@ -377,7 +370,7 @@ EntityCentralIndexKeys = {
     'ZTS': '1555280',
     'CBRE': '1138118',
     'KMX': '1170010',
-    ###
+    #################################################################################
     'MMM': '66740',
     'ABT': '1800',
     'ABBV': '1551152',
@@ -532,6 +525,12 @@ EntityCentralIndexKeys = {
     'DRE': '783280',
     'DD': '1666700',
     'DXC': '1688568',
+    'EMN': '915389',
+    'ETN': '1551182',
+    'EBAY': '1065088',
+    'ECL': '31462',
+    'EIX': '827052',
+    'EW': '1099800',
 }
 
 #
@@ -8016,21 +8015,27 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         q = 0
                         p = ''
                         while q < 9:
-                            while p == '':
+                            if p == '':
+                                print(p)
                                 try:
                                     d = datetime.datetime.strptime(tb.FilingDate, '%Y-%m-%d')
                                     d = d - datetime.timedelta(days=q)
                                     d = str(d)[:10]
                                     b = requests.get('https://api.marketstack.com/v1/tickers/' + TradingSymbol + '/eod/' + d, params)
                                     stockprice = b.json()['close']
-                                    p = 'h'
+                                    print(stockprice)
+                                    if stockprice != 0:
+                                        p = 'h'
                                 except:
                                     pass
-                                q = q + 1
+                            else:
+                                pass
                             q = q + 1
+                        print(p)
                         if p == 'h':
                             try:
                                 a.StockPrice = stockprice
+                                print(a.StockPrice)
                                 a.save()
                             except:
                                 pass
