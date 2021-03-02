@@ -28,6 +28,7 @@ def analysis(request, entity_TradingSymbol):
     AuditData_fourthlastyear = AuditData.objects.get(TradingSymbol=entity_TradingSymbol, Period="fourthlastyear")
     AuditData_fifthlastyear = AuditData.objects.get(TradingSymbol=entity_TradingSymbol, Period="fifthlastyear")
     AuditData_sixthlastyear = AuditData.objects.get(TradingSymbol=entity_TradingSymbol, Period="sixthlastyear")
+    #
     return render(request, "./φ/analysis.html", {
         #
         "entity": entity,

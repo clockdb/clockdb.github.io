@@ -8,8 +8,8 @@
     document.title = '{{ entity.TradingSymbol }} | ' + 'clockdb.com'
 
     // SINGLE-PAGE + BUTTONS
-    // TO BE ADJUSTED, DOES NOT WORK PROPERLY
     window.onpopstate = function(event) {
+        console.log(event.state.page);
         showPage(event.state.page);
     }
     ////
@@ -15834,7 +15834,7 @@
                                     format: "number"
                                 })
                                 a = parseInt(document.getElementById('OperatingIncome1').innerHTML.replaceAll(/,/g, ''));
-                                document.getElementById('ContinuingOperationsMaterialityThreshold').innerHTML = numUSD.format(Math.abs(a) * 0.05);
+                                document.getElementById('ContinuingOperationsMaterialityThreshold').innerHTML = numUSD.format(Math.round(Math.abs(a) * 0.05));
                             };
                             window.addEventListener('DOMContentLoaded', BalanceContinuingOperationsMaterialityThreshold)
                             window.addEventListener('keyup', function() {
