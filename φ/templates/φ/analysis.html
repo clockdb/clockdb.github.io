@@ -301,13 +301,7 @@
                 }
             }
         })       
-        // F5 REFRESH
-        window.addEventListener('keydown', (event) => {
-            if (event.key === 'F5') {
-                event.preventDefault();
-            }
-        });
-
+        
     // CTRL + S (SAVE)
     document.addEventListener('keydown', function(event) {
         if (event.code == 'KeyS' && (event.ctrlKey || event.metaKey)) {
@@ -374,11 +368,6 @@
                 <tbody>
                     <tr>
                         <td>
-                            <button data-page="AnnualCashFlow">
-                                Cash Flow Statements
-                            </button>
-                        </td>
-                        <td>
                             <button data-page="AnnualBalanceSheets">
                                 Balance Sheets
                             </button>
@@ -396,6 +385,11 @@
                         <td>
                             <button data-page="AnnualStockholdersEquity">
                                 Stockholders' Equity
+                            </button>
+                        </td>
+                        <td>
+                            <button data-page="AnnualCashFlow">
+                                Cash Flow
                             </button>
                         </td>
                         <td>
@@ -503,11 +497,6 @@
                 <tbody>
                     <tr>
                         <td>
-                            <button data-page="ProcedureAnnualCashFlow">
-                                Cash Flow
-                            </button>
-                        </td>
-                        <td>
                             <button data-page="ProcedureAnnualBalanceSheets">
                                 Balance Sheets
                             </button>   
@@ -526,6 +515,11 @@
                             <button data-page="ProcedureAnnualStockholdersEquity">
                                 Stockholders Equity
                             </button>   
+                        </td>
+                        <td>
+                            <button data-page="ProcedureAnnualCashFlow">
+                                Cash Flow
+                            </button>
                         </td>
                     </tr>
                 </tbody>
@@ -10198,6 +10192,65 @@
                         <td><input class="clock" id="ProceedsFromIssuanceOfCommonStock5" value={{ CashFlow_fifthlastyear.ProceedsFromIssuanceOfCommonStock }} onclick="HighLight()"></input></td>
                         <td><input class="clock" id="ProceedsFromIssuanceOfCommonStock6" value={{ CashFlow_sixthlastyear.ProceedsFromIssuanceOfCommonStock }} onclick="HighLight()"></input></td>
                     </tr>
+                    <tr id='ProceedsFromStockOptionExercicesRow'>
+                        <td><h6>Proceeds From Stock Option Exercices</h6></td>
+                        <td><button data-page="AnnualStockholdersEquity" style="text-align:center; font-weight:bold;">SE</button></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px;" id="ProceedsFromStockOptionExercicesCheckbox"></input>
+                            <input type="checkbox" style="height: 16px;" id="ProceedsFromStockOptionExercicesCheckbox2"></input>
+                        </td>
+                        <script>
+                            function ProceedsFromStockOptionExercicesRow(ProceedsFromStockOptionExercicesRow) {
+                                z = 0
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('ProceedsFromStockOptionExercices1').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('ProceedsFromStockOptionExercices2').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('ProceedsFromStockOptionExercices3').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('ProceedsFromStockOptionExercices4').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('ProceedsFromStockOptionExercices5').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('ProceedsFromStockOptionExercices6').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                if (z == 6) {
+                                    document.getElementById('ProceedsFromStockOptionExercicesRow').style.display = 'none';
+                                }
+                            };
+                            window.addEventListener('DOMContentLoaded', ProceedsFromStockOptionExercicesRow)
+                            window.addEventListener('keyup', function() {
+                                var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
+                                if (event.keyCode in formulakeylist) {
+                                    ProceedsFromStockOptionExercicesRow();
+                                }
+                            })
+                        </script>
+                        <td><input class="clock" id="ProceedsFromStockOptionExercices1" style="font-weight:bold;" value={{ CashFlow_lastyear.ProceedsFromStockOptionExercices }} onclick="HighLight()"></input></td>
+                        <td><input class="clock" id="ProceedsFromStockOptionExercices2" value={{ CashFlow_secondlastyear.ProceedsFromStockOptionExercices }} onclick="HighLight()"></input></td>
+                        <td><input class="clock" id="ProceedsFromStockOptionExercices3" value={{ CashFlow_thirdlastyear.ProceedsFromStockOptionExercices }} onclick="HighLight()"></input></td>
+                        <td><input class="clock" id="ProceedsFromStockOptionExercices4" value={{ CashFlow_fourthlastyear.ProceedsFromStockOptionExercices }} onclick="HighLight()"></input></td>
+                        <td><input class="clock" id="ProceedsFromStockOptionExercices5" value={{ CashFlow_fifthlastyear.ProceedsFromStockOptionExercices }} onclick="HighLight()"></input></td>
+                        <td><input class="clock" id="ProceedsFromStockOptionExercices6" value={{ CashFlow_sixthlastyear.ProceedsFromStockOptionExercices }} onclick="HighLight()"></input></td>
+                    </tr>
                     <tr id='PaymentsRelatedToTaxWithholdingForShareBasedCompensationRow'>
                         <td><h6>Payments Related To Tax Withholding For Share Based Compensation</h6></td>
                         <td></td>
@@ -10744,6 +10797,7 @@
                                 // Last Year
                                 a = parseInt(document.getElementById('FinanceLeasePrincipalPayments1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ProceedsFromIssuanceOfCommonStock1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ProceedsFromStockOptionExercices1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PaymentsRelatedToTaxWithholdingForShareBasedCompensation1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PaymentsForRepurchaseOfCommonStock1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PaymentsOfDividends1').value.replaceAll(/,/g, ''));
@@ -10758,6 +10812,7 @@
                                 // Second Last Year
                                 a = parseInt(document.getElementById('FinanceLeasePrincipalPayments2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ProceedsFromIssuanceOfCommonStock2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ProceedsFromStockOptionExercices2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PaymentsRelatedToTaxWithholdingForShareBasedCompensation2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PaymentsForRepurchaseOfCommonStock2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PaymentsOfDividends2').value.replaceAll(/,/g, ''));
@@ -10772,6 +10827,7 @@
                                 // Third Last Year
                                 a = parseInt(document.getElementById('FinanceLeasePrincipalPayments3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ProceedsFromIssuanceOfCommonStock3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ProceedsFromStockOptionExercices3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PaymentsRelatedToTaxWithholdingForShareBasedCompensation3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PaymentsForRepurchaseOfCommonStock3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PaymentsOfDividends3').value.replaceAll(/,/g, ''));
@@ -10786,6 +10842,7 @@
                                 // Fourth Last Year
                                 a = parseInt(document.getElementById('FinanceLeasePrincipalPayments4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ProceedsFromIssuanceOfCommonStock4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ProceedsFromStockOptionExercices4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PaymentsRelatedToTaxWithholdingForShareBasedCompensation4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PaymentsForRepurchaseOfCommonStock4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PaymentsOfDividends4').value.replaceAll(/,/g, ''));
@@ -10800,6 +10857,7 @@
                                 // Fifth Last Year
                                 a = parseInt(document.getElementById('FinanceLeasePrincipalPayments5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ProceedsFromIssuanceOfCommonStock5').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ProceedsFromStockOptionExercices5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PaymentsRelatedToTaxWithholdingForShareBasedCompensation5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PaymentsForRepurchaseOfCommonStock5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PaymentsOfDividends5').value.replaceAll(/,/g, ''));
@@ -10814,6 +10872,7 @@
                                 // Sixth Last Year
                                 a = parseInt(document.getElementById('FinanceLeasePrincipalPayments6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ProceedsFromIssuanceOfCommonStock6').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ProceedsFromStockOptionExercices6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PaymentsRelatedToTaxWithholdingForShareBasedCompensation6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PaymentsForRepurchaseOfCommonStock6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PaymentsOfDividends6').value.replaceAll(/,/g, ''));
@@ -12133,6 +12192,42 @@
                     <tr></tr>
                     <tr></tr>
                     <tr>
+                        <td><h6>Reinvestment Of Maintenance</h6></td>
+                        <td style="color:#0d47a1; text-align:center; font-weight:bold;">db</td>
+                        <td>
+                            <input type="checkbox" style="height: 16px;" id="ReinvestmentOfMaintenanceCheckbox"></input>
+                            <input type="checkbox" style="height: 16px;" id="ReinvestmentOfMaintenanceCheckbox2"></input>
+                        </td>
+                        <script>
+                            function ReinvestmentOfMaintenance(ReinvestmentOfMaintenance) {      
+                                var numUSD = new Intl.NumberFormat("en-US", {
+                                    format: "number",
+                                })
+                                // Last Year
+                                a = parseInt(document.getElementById('PaymentsToAcquirePropertyPlantAndEquipment1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PaymentsToAcquirePropertyPlantAndEquipment2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PaymentsToAcquirePropertyPlantAndEquipment3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PaymentsToAcquirePropertyPlantAndEquipment4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PaymentsToAcquirePropertyPlantAndEquipment5').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PaymentsToAcquirePropertyPlantAndEquipment6').value.replaceAll(/,/g, ''));
+                                a = a / 6
+                                document.getElementById('ReinvestmentOfMaintenance1').value = numUSD.format(Math.round(a));
+                                document.getElementById('ReinvestmentOfMaintenance2').value = numUSD.format(Math.round(a));
+                                document.getElementById('ReinvestmentOfMaintenance3').value = numUSD.format(Math.round(a));
+                                document.getElementById('ReinvestmentOfMaintenance4').value = numUSD.format(Math.round(a));
+                                document.getElementById('ReinvestmentOfMaintenance5').value = numUSD.format(Math.round(a));
+                                document.getElementById('ReinvestmentOfMaintenance6').value = numUSD.format(Math.round(a));
+                            };
+                            window.addEventListener('DOMContentLoaded', ReinvestmentOfMaintenance)
+                        </script>
+                        <td><input id="ReinvestmentOfMaintenance1" class="clock" style="font-weight:bold;" value=0></input></td>
+                        <td><input id="ReinvestmentOfMaintenance2" class="clock" value=0></input></td>
+                        <td><input id="ReinvestmentOfMaintenance3" class="clock" value=0></input></td>
+                        <td><input id="ReinvestmentOfMaintenance4" class="clock" value=0></input></td>
+                        <td><input id="ReinvestmentOfMaintenance5" class="clock" value=0></input></td>
+                        <td><input id="ReinvestmentOfMaintenance6" class="clock" value=0></input></td>
+                    </tr>
+                    <tr>
                         <td><h6>Theorical Interest Charge</h6></td>
                         <td style="color:#0d47a1; text-align:center; font-weight:bold;">db</td>
                         <td>
@@ -12228,10 +12323,10 @@
                             <input type="checkbox" style="height: 16px;" id="TotalAssetsExpectedReturnCheckbox"></input>
                             <input type="checkbox" style="height: 16px;" id="TotalAssetsExpectedReturnCheckbox2"></input>
                         </td>
-                        <td><input value=0.0455 class="clockrate" id="TotalAssetsExpectedReturnColumn1" style="font-weight:bold;" onclick="HighLight()"></input></td>
-                        <td><input value=0.0455 class="clockrate" id="TotalAssetsExpectedReturnColumn2" onclick="HighLight()"></input></td>
-                        <td><input value=0.0455 class="clockrate" id="TotalAssetsExpectedReturnColumn3" onclick="HighLight()"></input></td>
-                        <td><input value=0.0455 class="clockrate" id="TotalAssetsExpectedReturnColumn4" onclick="HighLight()"></input></td>
+                        <td><input value=0.12 class="clockrate" id="TotalAssetsExpectedReturnColumn1" style="font-weight:bold;" onclick="HighLight()"></input></td>
+                        <td><input value=0.12 class="clockrate" id="TotalAssetsExpectedReturnColumn2" onclick="HighLight()"></input></td>
+                        <td><input value=0.12 class="clockrate" id="TotalAssetsExpectedReturnColumn3" onclick="HighLight()"></input></td>
+                        <td><input value=0.12 class="clockrate" id="TotalAssetsExpectedReturnColumn4" onclick="HighLight()"></input></td>
                     </tr>
                     <tr>
                         <td><h6>Weighted Average Cost Of Total Assets</h6></td>
@@ -12315,7 +12410,7 @@
                         <td class="clockrate" id="WeightedAverageCostOfTotalAssetsColumn4" onclick="HighLight()"></td>
                     </tr>
                     <tr>
-                        <td><h6>Risk Related To Volatility Of Return On Total Assets</h6></td>
+                        <td><h6>Risk Related To Volatility Of Total Assets</h6></td>
                         <td style="color:#0d47a1; text-align:center; font-weight:bold;">(c)</td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="RiskRelatedToVolatilityOfReturnOnTotalAssetsCheckbox"></input>
@@ -12443,16 +12538,8 @@
                                     maximumFractionDigits: 2
                                 })
                                 //
-                                r = parseFloat(document.getElementById('ReturnOnAssets1').innerHTML.replaceAll(/,/g, ''));
-                                r = r - parseFloat(document.getElementById('ReturnOnAssets2').innerHTML.replaceAll(/,/g, ''));
-                                //
-                                s = parseFloat(document.getElementById('ReturnOnAssets2').innerHTML.replaceAll(/,/g, ''));
-                                s = s - parseFloat(document.getElementById('ReturnOnAssets3').innerHTML.replaceAll(/,/g, ''));
-                                //
-                                t = parseFloat(document.getElementById('ReturnOnAssets3').innerHTML.replaceAll(/,/g, ''));
-                                t = t - parseFloat(document.getElementById('ReturnOnAssets4').innerHTML.replaceAll(/,/g, ''));
-                                //
-                                g = (r/100 + s/100 + t/100) / 3
+                                r = parseInt(document.getElementById('TotalAssets1').innerHTML.replaceAll(/,/g, ''));
+                                g = (r - parseInt(document.getElementById('TotalAssets6').innerHTML.replaceAll(/,/g, ''))) / (r * 6);
                                 //
                                 document.getElementById('ExpectedGrowthColumn1').innerHTML = numUSD.format(-g);
                                 document.getElementById('ExpectedGrowthColumn2').innerHTML = numUSD.format(-g);
@@ -12773,7 +12860,7 @@
                     </tr>
                     <tr>
                         <td><h6>Reinvestment Of Maintenance</h6></td>
-                        <td><button data-page="AnnualCashFlow" style="text-align:center; font-weight:bold;">CF</button></td>
+                        <td><button data-page="AdditionnalInformation" style="text-align:center; font-weight:bold;">AI</button></td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="AnnualReinvestmentOfMaintenanceCCFCheckbox"></input>
                             <input type="checkbox" style="height: 16px;" id="AnnualReinvestmentOfMaintenanceCCFCheckbox2"></input>
@@ -12784,22 +12871,22 @@
                                     format: "number"
                                 });                                
                                 // Last Year
-                                a = parseInt(document.getElementById('PaymentsToAcquirePropertyPlantAndEquipment1').value.replaceAll(/,/g, ''));
+                                a = parseInt(document.getElementById('ReinvestmentOfMaintenance1').value.replaceAll(/,/g, ''));
                                 document.getElementById('AnnualReinvestmentOfMaintenanceCCFColumn1').innerHTML = numUSD.format(a);
                                 // Second Last Year
-                                a = parseInt(document.getElementById('PaymentsToAcquirePropertyPlantAndEquipment2').value.replaceAll(/,/g, ''));
+                                a = parseInt(document.getElementById('ReinvestmentOfMaintenance2').value.replaceAll(/,/g, ''));
                                 document.getElementById('AnnualReinvestmentOfMaintenanceCCFColumn2').innerHTML = numUSD.format(a);
                                 // Third Last Year
-                                a = parseInt(document.getElementById('PaymentsToAcquirePropertyPlantAndEquipment3').value.replaceAll(/,/g, ''));
+                                a = parseInt(document.getElementById('ReinvestmentOfMaintenance3').value.replaceAll(/,/g, ''));
                                 document.getElementById('AnnualReinvestmentOfMaintenanceCCFColumn3').innerHTML = numUSD.format(a);
                                 // Fourth Last Year
-                                a = parseInt(document.getElementById('PaymentsToAcquirePropertyPlantAndEquipment4').value.replaceAll(/,/g, ''));
+                                a = parseInt(document.getElementById('ReinvestmentOfMaintenance4').value.replaceAll(/,/g, ''));
                                 document.getElementById('AnnualReinvestmentOfMaintenanceCCFColumn4').innerHTML = numUSD.format(a);
                                 // Fifth Last Year
-                                a = parseInt(document.getElementById('PaymentsToAcquirePropertyPlantAndEquipment5').value.replaceAll(/,/g, ''));
+                                a = parseInt(document.getElementById('ReinvestmentOfMaintenance5').value.replaceAll(/,/g, ''));
                                 document.getElementById('AnnualReinvestmentOfMaintenanceCCFColumn5').innerHTML = numUSD.format(a);
                                 // Sixth Last Year
-                                a = parseInt(document.getElementById('PaymentsToAcquirePropertyPlantAndEquipment6').value.replaceAll(/,/g, ''));
+                                a = parseInt(document.getElementById('ReinvestmentOfMaintenance6').value.replaceAll(/,/g, ''));
                                 document.getElementById('AnnualReinvestmentOfMaintenanceCCFColumn6').innerHTML = numUSD.format(a);
                             };
                             window.addEventListener('DOMContentLoaded', AnnualReinvestmentOfMaintenanceCCF)
@@ -13519,7 +13606,7 @@
                     </tr>
                     <tr>
                         <td><h6>Value Accruing To Minority Shareholders</h6></td>
-                        <td style="color:#0d47a1; text-align:center; font-weight:bold;">(n)</td>
+                        <td><button data-page="AdditionnalInformation" style="text-align:center; font-weight:bold;">AI</button></td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="ValueAccruingToMinorityShareholdersCCFCheckbox"></input>
                             <input type="checkbox" style="height: 16px;" id="ValueAccruingToMinorityShareholdersCCFCheckbox2"></input>
@@ -13563,7 +13650,7 @@
                     </tr>
                     <tr>
                         <td><h6><b>Common Shares Fair Value</b></h6></td>
-                        <td style="color:#0d47a1; text-align:center; font-weight:bold;">(o)</td>
+                        <td style="color:#0d47a1; text-align:center; font-weight:bold;">(n)</td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="CommonSharesValueCCFCheckbox"></input>
                             <input type="checkbox" style="height: 16px;" id="CommonSharesValueCCFCheckbox2"></input>
@@ -13615,7 +13702,7 @@
                     <tr></tr>
                     <tr>
                         <td><h6><b>Fair Value Of Identifiable Assets</b></h6></td>
-                        <td style="color:#0d47a1; text-align:center; font-weight:bold;">(p)</td>
+                        <td style="color:#0d47a1; text-align:center; font-weight:bold;">(o)</td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="NetAssetsCCFCheckbox"></input>
                             <input type="checkbox" style="height: 16px;" id="NetAssetsCCFCheckbox2"></input>
@@ -13643,7 +13730,7 @@
                     </tr>
                     <tr>
                         <td><h6><b>Goodwill Fair Value</b></h6></td>
-                        <td style="color:#0d47a1; text-align:center; font-weight:bold;">(q)</td>
+                        <td style="color:#0d47a1; text-align:center; font-weight:bold;">(p)</td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="GoodwillFairValueCCFCheckbox"></input>
                             <input type="checkbox" style="height: 16px;" id="GoodwillFairValueCCFCheckbox2"></input>
@@ -13764,19 +13851,19 @@
                         <td style="text-align:justify;" colspan="20" ><b>Value Accruing To Preferred Shareholders:</b> The amount that would have to be paid to reimburse the preferred shareholders in full.</td>
                     </tr>
                     <tr>
-                        <td style="color:#0d47a1; text-align:left; font-weight:bold;">(n)</td>
+                        <td style="color:#0d47a1; text-align:left; font-weight:bold;">AI</td>
                         <td style="text-align:justify;" colspan="20" ><b>Value Accruing To Minority Shareholders:</b> The value of shares accruing to non-controlling shareholders.</td>
                     </tr>
                     <tr>
-                        <td style="color:#0d47a1; text-align:left; font-weight:bold;">(o)</td>
+                        <td style="color:#0d47a1; text-align:left; font-weight:bold;">(n)</td>
                         <td style="text-align:justify;" colspan="20" ><b>Common Shares Fair Value:</b> Net asset value after considreation of value accruing to preferred and minority shareholders.</td>
                     </tr>
                     <tr>
-                        <td style="color:#0d47a1; text-align:left; font-weight:bold;">(p)</td>
+                        <td style="color:#0d47a1; text-align:left; font-weight:bold;">(o)</td>
                         <td style="text-align:justify;" colspan="20" ><b>Fair Value Of Identifiable Assets:</b> The sum of commercial value of each asset that could be separetely disposed of.</td>
                     </tr>
                     <tr>
-                        <td style="color:#0d47a1; text-align:left; font-weight:bold;">(q)</td>
+                        <td style="color:#0d47a1; text-align:left; font-weight:bold;">(p)</td>
                         <td style="text-align:justify;" colspan="20" ><b>Goodwill Fair Value:</b> Excess of intrinsic value over the fair value of net identifiable assets. </td>
                     </tr>
                 </tbody>
@@ -14616,7 +14703,7 @@
                     </tr>
                     <tr>
                         <td><h6>Value Accruing To Minority Shareholders</h6></td>
-                        <td style="color:#0d47a1; text-align:center; font-weight:bold;">(n)</td>
+                        <td><button data-page="AdditionnalInformation" style="text-align:center; font-weight:bold;">AI</button></td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="ValueAccruingToMinorityShareholdersCICheckbox"></input>
                             <input type="checkbox" style="height: 16px;" id="ValueAccruingToMinorityShareholdersCICheckbox2"></input>
@@ -14660,7 +14747,7 @@
                     </tr>
                     <tr>
                         <td><h6><b>Common Shares Fair Value</b></h6></td>
-                        <td style="color:#0d47a1; text-align:center; font-weight:bold;">(o)</td>
+                        <td style="color:#0d47a1; text-align:center; font-weight:bold;">(n)</td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="CommonSharesValueCICheckbox"></input>
                             <input type="checkbox" style="height: 16px;" id="CommonSharesValueCICheckbox2"></input>
@@ -14712,7 +14799,7 @@
                     <tr></tr>
                     <tr>
                         <td><h6><b>Fair Value Of Identifiable Assets</b></h6></td>
-                        <td style="color:#0d47a1; text-align:center; font-weight:bold;">(p)</td>
+                        <td style="color:#0d47a1; text-align:center; font-weight:bold;">(o)</td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="NetAssetsCICheckbox"></input>
                             <input type="checkbox" style="height: 16px;" id="NetAssetsCICheckbox2"></input>
@@ -14740,7 +14827,7 @@
                     </tr>
                     <tr>
                         <td><h6><b>Goodwill Fair Value</b></h6></td>
-                        <td style="color:#0d47a1; text-align:center; font-weight:bold;">(q)</td>
+                        <td style="color:#0d47a1; text-align:center; font-weight:bold;">(p)</td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="GoodwillFairValueCICheckbox"></input>
                             <input type="checkbox" style="height: 16px;" id="GoodwillFairValueCICheckbox2"></input>
@@ -14861,19 +14948,19 @@
                         <td style="text-align:justify;" colspan="20" ><b>Value Accruing To Preferred Shareholders:</b> The amount that would have to be paid to reimburse the preferred shareholders in full.</td>
                     </tr>
                     <tr>
-                        <td style="color:#0d47a1; text-align:left; font-weight:bold;">(n)</td>
+                        <td style="color:#0d47a1; text-align:left; font-weight:bold;">AI</td>
                         <td style="text-align:justify;" colspan="20" ><b>Value Accruing To Minority Shareholders:</b> The value of shares accruing to non-controlling shareholders.</td>
                     </tr>
                     <tr>
-                        <td style="color:#0d47a1; text-align:left; font-weight:bold;">(o)</td>
+                        <td style="color:#0d47a1; text-align:left; font-weight:bold;">(n)</td>
                         <td style="text-align:justify;" colspan="20" ><b>Common Shares Fair Value:</b> Net asset value after considreation of value accruing to preferred and minority shareholders.</td>
                     </tr>
                     <tr>
-                        <td style="color:#0d47a1; text-align:left; font-weight:bold;">(p)</td>
+                        <td style="color:#0d47a1; text-align:left; font-weight:bold;">(o)</td>
                         <td style="text-align:justify;" colspan="20" ><b>Fair Value Of Identifiable Assets:</b> The sum of commercial value of each asset that could be separetely disposed of.</td>
                     </tr>
                     <tr>
-                        <td style="color:#0d47a1; text-align:left; font-weight:bold;">(q)</td>
+                        <td style="color:#0d47a1; text-align:left; font-weight:bold;">(p)</td>
                         <td style="text-align:justify;" colspan="20" ><b>Goodwill Fair Value:</b> Excess of intrinsic value over the fair value of net identifiable assets. </td>
                     </tr>
                 </tbody>
@@ -15212,7 +15299,7 @@
                                 d = parseInt(document.getElementById('WeightCCF1').value.replaceAll(/,/g, ''));
                                 g = Math.round((a * b / (b + d)) + (c * d / (b + d)));
                                 h = parseInt(document.getElementById('BalanceSheetsStockholdersEquity1').innerHTML.replaceAll(/,/g, ''));
-                                i = Math.max(g, h)
+                                i = Math.max(g, h, 0)
                                 document.getElementById('IntrinsicValues1').innerHTML = numUSD.format(i)
                                 // Column 2
                                 a = parseInt(document.getElementById('IntrinsicValuesCI2').innerHTML.replaceAll(/,/g, ''));
@@ -15221,7 +15308,7 @@
                                 d = parseInt(document.getElementById('WeightCCF2').value.replaceAll(/,/g, ''));
                                 g = Math.round((a * b / (b + d)) + (c * d / (b + d)));
                                 h = parseInt(document.getElementById('BalanceSheetsStockholdersEquity2').innerHTML.replaceAll(/,/g, ''));
-                                i = Math.max(g, h)
+                                i = Math.max(g, h, 0)
                                 document.getElementById('IntrinsicValues2').innerHTML = numUSD.format(i)
                                 // Column 3
                                 a = parseInt(document.getElementById('IntrinsicValuesCI3').innerHTML.replaceAll(/,/g, ''));
@@ -15230,7 +15317,7 @@
                                 d = parseInt(document.getElementById('WeightCCF3').value.replaceAll(/,/g, ''));
                                 g = Math.round((a * b / (b + d)) + (c * d / (b + d)));
                                 h = parseInt(document.getElementById('BalanceSheetsStockholdersEquity3').innerHTML.replaceAll(/,/g, ''));
-                                i = Math.max(g, h)
+                                i = Math.max(g, h, 0)
                                 document.getElementById('IntrinsicValues3').innerHTML = numUSD.format(i)
                                 // Column 4
                                 a = parseInt(document.getElementById('IntrinsicValuesCI4').innerHTML.replaceAll(/,/g, ''));
@@ -15239,7 +15326,7 @@
                                 d = parseInt(document.getElementById('WeightCCF4').value.replaceAll(/,/g, ''));
                                 g = Math.round((a * b / (b + d)) + (c * d / (b + d)));
                                 h = parseInt(document.getElementById('BalanceSheetsStockholdersEquity4').innerHTML.replaceAll(/,/g, ''));
-                                i = Math.max(g, h)
+                                i = Math.max(g, h, 0)
                                 document.getElementById('IntrinsicValues4').innerHTML = numUSD.format(i)
                             };
                             window.addEventListener('DOMContentLoaded', BalanceIntrinsicValues)
@@ -17202,12 +17289,12 @@
                             <input type="checkbox" style="height: 16px;" id="Checkbox"></input>
                             <input type="checkbox" style="height: 16px;" id="Checkbox2"></input>
                         </td>
-                        <td style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.3.4.1" style="font-weight:bold;" value={{ AuditData_lastyear.AnomalyStockholdersEquity }}></input></td>
-                        <td style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.3.4.2" value={{ AuditData_secondlastyear.AnomalyStockholdersEquity }}></input></td>
-                        <td style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.3.4.3" value={{ AuditData_thirdlastyear.AnomalyStockholdersEquity }}></input></td>
-                        <td style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.3.4.4" value={{ AuditData_fourthlastyear.AnomalyStockholdersEquity }}></input></td>
-                        <td style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.3.4.5" value={{ AuditData_fifthlastyear.AnomalyStockholdersEquity }}></input></td>
-                        <td style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.3.4.6" value={{ AuditData_sixthlastyear.AnomalyStockholdersEquity }}></input></td>
+                        <td style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.3.5.1" style="font-weight:bold;" value={{ AuditData_lastyear.AnomalyStockholdersEquity }}></input></td>
+                        <td style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.3.5.2" value={{ AuditData_secondlastyear.AnomalyStockholdersEquity }}></input></td>
+                        <td style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.3.5.3" value={{ AuditData_thirdlastyear.AnomalyStockholdersEquity }}></input></td>
+                        <td style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.3.5.4" value={{ AuditData_fourthlastyear.AnomalyStockholdersEquity }}></input></td>
+                        <td style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.3.5.5" value={{ AuditData_fifthlastyear.AnomalyStockholdersEquity }}></input></td>
+                        <td style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.3.5.6" value={{ AuditData_sixthlastyear.AnomalyStockholdersEquity }}></input></td>
                     </tr>
                 </body>
             </table>
@@ -17893,7 +17980,7 @@
                         <td style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.2.3.6" value={{ AuditData_sixthlastyear.AnomalyOperatingIncome }}></input></td>
                     </tr>
                     <tr>
-                        <td style="text-align:left;">Non Operating Income</td>
+                        <td style="text-align:left;">Income (Loss) Before Taxes</td>
                         <td style="text-align:center; font-weight:bold;">db</td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="Checkbox"></input>
@@ -19038,22 +19125,28 @@
                                 })
                                 header = '-'
                                 // Last Year
-                                a = parseInt(document.getElementById('PRO-1.2.3.1').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-1.2.3.1').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.1.1').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesCurrentAssets1').innerHTML = numUSD.format(a);
                                 // Second Last Year
-                                a = parseInt(document.getElementById('PRO-1.2.3.2').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-1.2.3.2').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.1.2').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesCurrentAssets2').innerHTML = numUSD.format(a);
                                 // Third Last Year
-                                a = parseInt(document.getElementById('PRO-1.2.3.3').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-1.2.3.3').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.1.3').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesCurrentAssets3').innerHTML = numUSD.format(a);
                                 // Fourth Last Year
-                                a = parseInt(document.getElementById('PRO-1.2.3.4').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-1.2.3.4').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.1.4').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesCurrentAssets4').innerHTML = numUSD.format(a);
                                 // Fifth Last Year
-                                a = parseInt(document.getElementById('PRO-1.2.3.5').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-1.2.3.5').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.1.5').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesCurrentAssets5').innerHTML = numUSD.format(a);
                                 // Sixth Last Year
-                                a = parseInt(document.getElementById('PRO-1.2.3.6').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-1.2.3.6').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.1.6').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesCurrentAssets6').innerHTML = numUSD.format(a);
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAnomaliesCurrentAssets)
@@ -19084,22 +19177,28 @@
                                     format: "number"
                                 })
                                 // Last Year
-                                a = parseInt(document.getElementById('PRO-1.2.6.1').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-1.2.6.1').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.2.1').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesNonCurrentAssets1').innerHTML = numUSD.format(a);
                                 // Second Last Year
-                                a = parseInt(document.getElementById('PRO-1.2.6.2').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-1.2.6.2').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.2.2').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesNonCurrentAssets2').innerHTML = numUSD.format(a);
                                 // Third Last Year
-                                a = parseInt(document.getElementById('PRO-1.2.6.3').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-1.2.6.3').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.2.3').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesNonCurrentAssets3').innerHTML = numUSD.format(a);
                                 // Fourth Last Year
-                                a = parseInt(document.getElementById('PRO-1.2.6.4').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-1.2.6.4').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.2.4').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesNonCurrentAssets4').innerHTML = numUSD.format(a);
                                 // Fifth Last Year
-                                a = parseInt(document.getElementById('PRO-1.2.6.5').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-1.2.6.5').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.2.5').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesNonCurrentAssets5').innerHTML = numUSD.format(a);
                                 // Sixth Last Year
-                                a = parseInt(document.getElementById('PRO-1.2.6.6').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-1.2.6.6').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.2.6').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesNonCurrentAssets6').innerHTML = numUSD.format(a);
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAnomaliesNonCurrentAssets)
@@ -19130,22 +19229,28 @@
                                     format: "number"
                                 })
                                 // Last Year
-                                a = parseInt(document.getElementById('PRO-1.2.9.1').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-1.2.9.1').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.3.1').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesCurrentLiabilities1').innerHTML = numUSD.format(a);
                                 // Second Last Year
-                                a = parseInt(document.getElementById('PRO-1.2.9.2').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-1.2.9.2').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.3.2').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesCurrentLiabilities2').innerHTML = numUSD.format(a);
                                 // Third Last Year
-                                a = parseInt(document.getElementById('PRO-1.2.9.3').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-1.2.9.3').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.3.3').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesCurrentLiabilities3').innerHTML = numUSD.format(a);
                                 // Fourth Last Year
-                                a = parseInt(document.getElementById('PRO-1.2.9.4').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-1.2.9.4').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.3.4').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesCurrentLiabilities4').innerHTML = numUSD.format(a);
                                 // Fifth Last Year
-                                a = parseInt(document.getElementById('PRO-1.2.9.5').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-1.2.9.5').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.3.5').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesCurrentLiabilities5').innerHTML = numUSD.format(a);
                                 // Fifth Last Year
-                                a = parseInt(document.getElementById('PRO-1.2.9.6').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-1.2.9.6').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.3.6').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesCurrentLiabilities6').innerHTML = numUSD.format(a);
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAnomaliesCurrentLiabilities)
@@ -19176,22 +19281,28 @@
                                     format: "number"
                                 })
                                 // Last Year
-                                a = parseInt(document.getElementById('PRO-1.2.12.1').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-1.2.12.1').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.4.1').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesNonCurrentLiabilities1').innerHTML = numUSD.format(a);
                                 // Second Last Year
-                                a = parseInt(document.getElementById('PRO-1.2.12.2').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-1.2.12.2').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.4.2').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesNonCurrentLiabilities2').innerHTML = numUSD.format(a);
                                 // Third Last Year
-                                a = parseInt(document.getElementById('PRO-1.2.12.3').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-1.2.12.3').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.4.3').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesNonCurrentLiabilities3').innerHTML = numUSD.format(a);
                                 // Fourth Last Year
-                                a = parseInt(document.getElementById('PRO-1.2.12.4').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-1.2.12.4').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.4.4').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesNonCurrentLiabilities4').innerHTML = numUSD.format(a);
                                 // Fifth Last Year
-                                a = parseInt(document.getElementById('PRO-1.2.12.5').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-1.2.12.5').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.4.5').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesNonCurrentLiabilities5').innerHTML = numUSD.format(a);
                                 // Sixth Last Year
-                                a = parseInt(document.getElementById('PRO-1.2.12.6').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-1.2.12.6').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.4.6').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesNonCurrentLiabilities6').innerHTML = numUSD.format(a);
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAnomaliesNonCurrentLiabilities)
@@ -19222,22 +19333,28 @@
                                     format: "number"
                                 })
                                 // Last Year
-                                a = parseInt(document.getElementById('PRO-1.2.15.1').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-1.2.15.1').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.5.1').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesStockholdersEquity1').innerHTML = numUSD.format(a);
                                 // Second Last Year
-                                a = parseInt(document.getElementById('PRO-1.2.15.2').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-1.2.15.2').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.5.2').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesStockholdersEquity2').innerHTML = numUSD.format(a);
                                 // Third Last Year
-                                a = parseInt(document.getElementById('PRO-1.2.15.3').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-1.2.15.3').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.5.3').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesStockholdersEquity3').innerHTML = numUSD.format(a);
                                 // Fourth Last Year
-                                a = parseInt(document.getElementById('PRO-1.2.15.4').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-1.2.15.4').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.5.4').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesStockholdersEquity4').innerHTML = numUSD.format(a);
                                 // Fifth Last Year
-                                a = parseInt(document.getElementById('PRO-1.2.15.5').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-1.2.15.5').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.5.5').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesStockholdersEquity5').innerHTML = numUSD.format(a);
                                 // Sixth Last Year
-                                a = parseInt(document.getElementById('PRO-1.2.15.6').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-1.2.15.6').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.5.6').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesStockholdersEquity6').innerHTML = numUSD.format(a);
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAnomaliesStockholdersEquity)
@@ -19341,22 +19458,28 @@
                                 })
                                 header = '-'
                                 // Last Year
-                                a = parseInt(document.getElementById('PRO-2.1.3.1').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-2.1.3.1').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.1.1').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesGrossMargin1').innerHTML = numUSD.format(a);
                                 // Second Last Year
-                                a = parseInt(document.getElementById('PRO-2.1.3.2').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-2.1.3.2').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.1.2').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesGrossMargin2').innerHTML = numUSD.format(a);
                                 // Third Last Year
-                                a = parseInt(document.getElementById('PRO-2.1.3.3').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-2.1.3.3').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.1.3').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesGrossMargin3').innerHTML = numUSD.format(a);
                                 // Fourth Last Year
-                                a = parseInt(document.getElementById('PRO-2.1.3.4').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-2.1.3.4').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.1.4').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesGrossMargin4').innerHTML = numUSD.format(a);
                                 // Fifth Last Year
-                                a = parseInt(document.getElementById('PRO-2.1.3.5').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-2.1.3.5').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.1.5').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesGrossMargin5').innerHTML = numUSD.format(a);
                                 // Sixth Last Year
-                                a = parseInt(document.getElementById('PRO-2.1.3.6').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-2.1.3.6').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.1.6').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesGrossMargin6').innerHTML = numUSD.format(a);
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAnomaliesGrossMargin)
@@ -19387,22 +19510,28 @@
                                     format: "number"
                                 })
                                 // Last Year
-                                a = parseInt(document.getElementById('PRO-2.1.6.1').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-2.1.6.1').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.1.1').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesOperatingIncome1').innerHTML = numUSD.format(a);
                                 // Second Last Year
-                                a = parseInt(document.getElementById('PRO-2.1.6.2').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-2.1.6.2').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.1.2').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesOperatingIncome2').innerHTML = numUSD.format(a);
                                 // Third Last Year
-                                a = parseInt(document.getElementById('PRO-2.1.6.3').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-2.1.6.3').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.1.3').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesOperatingIncome3').innerHTML = numUSD.format(a);
                                 // Fourth Last Year
-                                a = parseInt(document.getElementById('PRO-2.1.6.4').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-2.1.6.4').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.1.4').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesOperatingIncome4').innerHTML = numUSD.format(a);
                                 // Fifth Last Year
-                                a = parseInt(document.getElementById('PRO-2.1.6.5').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-2.1.6.5').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.1.5').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesOperatingIncome5').innerHTML = numUSD.format(a);
                                 // Sixth Last Year
-                                a = parseInt(document.getElementById('PRO-2.1.6.6').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-2.1.6.6').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.1.6').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesOperatingIncome6').innerHTML = numUSD.format(a);
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAnomaliesOperatingMargin)
@@ -19433,22 +19562,28 @@
                                     format: "number"
                                 })
                                 // Last Year
-                                a = parseInt(document.getElementById('PRO-2.1.9.1').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-2.1.9.1').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.3.1').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesIncomeLossBeforeTaxes1').innerHTML = numUSD.format(a);
                                 // Second Last Year
-                                a = parseInt(document.getElementById('PRO-2.1.9.2').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-2.1.9.2').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.3.2').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesIncomeLossBeforeTaxes2').innerHTML = numUSD.format(a);
                                 // Third Last Year
-                                a = parseInt(document.getElementById('PRO-2.1.9.3').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-2.1.9.3').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.3.3').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesIncomeLossBeforeTaxes3').innerHTML = numUSD.format(a);
                                 // Fourth Last Year
-                                a = parseInt(document.getElementById('PRO-2.1.9.4').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-2.1.9.4').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.3.4').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesIncomeLossBeforeTaxes4').innerHTML = numUSD.format(a);
                                 // Fifth Last Year
-                                a = parseInt(document.getElementById('PRO-2.1.9.5').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-2.1.9.5').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.3.5').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesIncomeLossBeforeTaxes5').innerHTML = numUSD.format(a);
                                 // Sixth Last Year
-                                a = parseInt(document.getElementById('PRO-2.1.9.6').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-2.1.9.6').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.3.6').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesIncomeLossBeforeTaxes6').innerHTML = numUSD.format(a);
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAnomaliesIncomeBeforeTaxes)
@@ -19479,22 +19614,28 @@
                                     format: "number"
                                 })
                                 // Last Year
-                                a = parseInt(document.getElementById('PRO-2.1.12.1').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-2.1.12.1').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.4.1').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesNetIncome1').innerHTML = numUSD.format(a);
                                 // Second Last Year
-                                a = parseInt(document.getElementById('PRO-2.1.12.2').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-2.1.12.2').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.4.2').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesNetIncome2').innerHTML = numUSD.format(a);
                                 // Third Last Year
-                                a = parseInt(document.getElementById('PRO-2.1.12.3').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-2.1.12.3').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.4.3').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesNetIncome3').innerHTML = numUSD.format(a);
                                 // Fourth Last Year
-                                a = parseInt(document.getElementById('PRO-2.1.12.4').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-2.1.12.4').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.4.4').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesNetIncome4').innerHTML = numUSD.format(a);
                                 // Fifth Last Year
-                                a = parseInt(document.getElementById('PRO-2.1.12.5').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-2.1.12.5').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.4.5').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesNetIncome5').innerHTML = numUSD.format(a);
                                 // Sixth Last Year
-                                a = parseInt(document.getElementById('PRO-2.1.12.6').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-2.1.12.6').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.4.6').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesNetIncome6').innerHTML = numUSD.format(a);
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAnomaliesNetIncome)
@@ -19527,22 +19668,28 @@
                                     format: "number"
                                 })
                                 // Last Year
-                                a = parseInt(document.getElementById('PRO-3.1.3.1').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-3.1.3.1').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-3.2.1.1').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesComprehensiveIncome1').innerHTML = numUSD.format(a);
                                 // Second Last Year
-                                a = parseInt(document.getElementById('PRO-3.1.3.2').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-3.1.3.2').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-3.2.1.2').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesComprehensiveIncome2').innerHTML = numUSD.format(a);
                                 // Third Last Year
-                                a = parseInt(document.getElementById('PRO-3.1.3.3').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-3.1.3.3').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-3.2.1.3').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesComprehensiveIncome3').innerHTML = numUSD.format(a);
                                 // Fourth Last Year
-                                a = parseInt(document.getElementById('PRO-3.1.3.4').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-3.1.3.4').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-3.2.1.4').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesComprehensiveIncome4').innerHTML = numUSD.format(a);
                                 // Fifth Last Year
-                                a = parseInt(document.getElementById('PRO-3.1.3.5').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-3.1.3.5').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-3.2.1.5').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesComprehensiveIncome5').innerHTML = numUSD.format(a);
                                 // Sixth Last Year
-                                a = parseInt(document.getElementById('PRO-3.1.3.6').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.abs(parseInt(document.getElementById('PRO-3.1.3.6').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-3.2.1.6').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesComprehensiveIncome6').innerHTML = numUSD.format(a);
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAnomaliesComprehensiveIncome)
@@ -19627,6 +19774,85 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
+                    <tr></tr>
+                    <tr>
+                        <td style="text-align: left;"><h6><b>Stockholder's Equity</b></h6></td>
+                        <td><button data-page="ProcedureAnnualStockholdersEquity" style="text-align:center; font-weight:bold;">Pro</button></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px;" id="Checkbox"></input>
+                            <input type="checkbox" style="height: 16px;" id="Checkbox2"></input>
+                        </td>
+                        <script>
+                            function BalanceStockholdersEquityAnomalies(BalanceStockholdersEquityAnomalies) {
+                                var numUSD = new Intl.NumberFormat("en-US", {
+                                    format: "number"
+                                })
+                                // Last Year
+                                a = Math.abs(parseInt(document.getElementById('PRO-4.1.3.1').innerHTML.replaceAll(/,/g, '')));
+                                a = a + parseInt(document.getElementById('PRO-4.2.1.1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PRO-4.2.2.1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PRO-4.2.3.1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PRO-4.2.4.1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PRO-4.2.5.1').value.replaceAll(/,/g, ''));
+                                document.getElementById('TotalAnomaliesStockholdersEquity1').innerHTML = numUSD.format(a);
+                                // Second Last Year
+                                a = Math.abs(parseInt(document.getElementById('PRO-4.1.3.2').innerHTML.replaceAll(/,/g, '')));
+                                a = a + parseInt(document.getElementById('PRO-4.2.1.2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PRO-4.2.2.2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PRO-4.2.3.2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PRO-4.2.4.2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PRO-4.2.5.2').value.replaceAll(/,/g, ''));
+                                document.getElementById('TotalAnomaliesStockholdersEquity2').innerHTML = numUSD.format(a);
+                                // Third Last Year
+                                a = Math.abs(parseInt(document.getElementById('PRO-4.1.3.3').innerHTML.replaceAll(/,/g, '')));
+                                a = a + parseInt(document.getElementById('PRO-4.2.1.3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PRO-4.2.2.3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PRO-4.2.3.3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PRO-4.2.4.3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PRO-4.2.5.3').value.replaceAll(/,/g, ''));
+                                document.getElementById('TotalAnomaliesStockholdersEquity3').innerHTML = numUSD.format(a);
+                                // Fourth Last Year
+                                a = Math.abs(parseInt(document.getElementById('PRO-4.1.3.4').innerHTML.replaceAll(/,/g, '')));
+                                a = a + parseInt(document.getElementById('PRO-4.2.1.4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PRO-4.2.2.4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PRO-4.2.3.4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PRO-4.2.4.4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PRO-4.2.5.4').value.replaceAll(/,/g, ''));
+                                document.getElementById('TotalAnomaliesStockholdersEquity4').innerHTML = numUSD.format(a);
+                                // Fifth Last Year
+                                a = Math.abs(parseInt(document.getElementById('PRO-4.1.3.5').innerHTML.replaceAll(/,/g, '')));
+                                a = a + parseInt(document.getElementById('PRO-4.2.1.5').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PRO-4.2.2.5').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PRO-4.2.3.5').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PRO-4.2.4.5').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PRO-4.2.5.5').value.replaceAll(/,/g, ''));
+                                document.getElementById('TotalAnomaliesStockholdersEquity5').innerHTML = numUSD.format(a);
+                                // Sixth Last Year
+                                a = Math.abs(parseInt(document.getElementById('PRO-4.1.3.6').innerHTML.replaceAll(/,/g, '')));
+                                a = a + parseInt(document.getElementById('PRO-4.2.1.6').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PRO-4.2.2.6').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PRO-4.2.3.6').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PRO-4.2.4.6').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PRO-4.2.5.6').value.replaceAll(/,/g, ''));
+                                document.getElementById('TotalAnomaliesStockholdersEquity6').innerHTML = numUSD.format(a);
+                            };
+                            window.addEventListener('DOMContentLoaded', BalanceStockholdersEquityAnomalies)
+                            window.addEventListener('keyup', function() {
+                                var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
+                                if (event.keyCode in formulakeylist) {
+                                    BalanceStockholdersEquityAnomalies();
+                                }
+                            })
+                        </script>
+                        <td class="account" id="TotalAnomaliesStockholdersEquity1" style="border-bottom:double black; font-weight:bold;"></td>
+                        <td class="account" id="TotalAnomaliesStockholdersEquity2" style="border-bottom:double black;"></td>
+                        <td class="account" id="TotalAnomaliesStockholdersEquity3" style="border-bottom:double black;"></td>
+                        <td class="account" id="TotalAnomaliesStockholdersEquity4" style="border-bottom:double black;"></td>
+                        <td class="account" id="TotalAnomaliesStockholdersEquity5" style="border-bottom:double black;"></td>
+                        <td class="account" id="TotalAnomaliesStockholdersEquity6" style="border-bottom:double black;"></td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
                     <tr>
                         <td><h6><b>Cash Flow</b></h6></td>
                     </tr>
@@ -19644,21 +19870,39 @@
                                 })
                                 // Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-5.1.3.1').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.1.1').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.2.1').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.3.1').value.replaceAll(/,/g, '')));
                                 document.getElementById('TotalAnomaliesCashFlow1').innerHTML = numUSD.format(a);
                                 // Second Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-5.1.3.2').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.1.2').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.2.2').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.3.2').value.replaceAll(/,/g, '')));
                                 document.getElementById('TotalAnomaliesCashFlow2').innerHTML = numUSD.format(a);
                                 // Third Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-5.1.3.3').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.1.3').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.2.3').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.3.3').value.replaceAll(/,/g, '')));
                                 document.getElementById('TotalAnomaliesCashFlow3').innerHTML = numUSD.format(a);
                                 // Fourth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-5.1.3.4').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.1.4').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.2.4').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.3.4').value.replaceAll(/,/g, '')));
                                 document.getElementById('TotalAnomaliesCashFlow4').innerHTML = numUSD.format(a);
                                 // Fifth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-5.1.3.5').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.1.5').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.2.5').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.3.5').value.replaceAll(/,/g, '')));
                                 document.getElementById('TotalAnomaliesCashFlow5').innerHTML = numUSD.format(a);
                                 // Sixth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-5.1.3.6').innerHTML.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.1.6').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.2.6').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.3.6').value.replaceAll(/,/g, '')));
                                 document.getElementById('TotalAnomaliesCashFlow6').innerHTML = numUSD.format(a);
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAnomaliesCash)
@@ -19914,6 +20158,52 @@
                             <td class="account" id="IncomeAnomalySummary6" style="border-bottom-style:ridge;"></td>
                         </tr>
                         <tr>
+                            <td><h6><b>Stockholder's Equity</b></h6></td>
+                            <td><button data-page="AuditDetailed" style="text-align:center; font-weight:bold;">A</button></td>
+                            <td>
+                                <input type="checkbox" style="height: 16px;" id="Checkbox"></input>
+                                <input type="checkbox" style="height: 16px;" id="Checkbox2"></input>
+                            </td>
+                            <script>
+                                function StockholdersEquityAnomalySummary(StockholdersEquityAnomalySummary) {
+                                    var numUSD = new Intl.NumberFormat("en-US", {
+                                        format: "number"
+                                    })
+                                    // Last Year
+                                    a = parseInt(document.getElementById('TotalAnomaliesStockholdersEquity1').innerHTML.replaceAll(/,/g, ''));
+                                    document.getElementById('StockholdersEquityAnomalySummary1').innerHTML = numUSD.format(a);
+                                    // Second Last Year
+                                    a = parseInt(document.getElementById('TotalAnomaliesStockholdersEquity2').innerHTML.replaceAll(/,/g, ''));
+                                    document.getElementById('StockholdersEquityAnomalySummary2').innerHTML = numUSD.format(a);
+                                    // Third Last Year
+                                    a = parseInt(document.getElementById('TotalAnomaliesStockholdersEquity3').innerHTML.replaceAll(/,/g, ''));
+                                    document.getElementById('StockholdersEquityAnomalySummary3').innerHTML = numUSD.format(a);
+                                    // Fourth Last Year
+                                    a = parseInt(document.getElementById('TotalAnomaliesStockholdersEquity4').innerHTML.replaceAll(/,/g, ''));
+                                    document.getElementById('StockholdersEquityAnomalySummary4').innerHTML = numUSD.format(a);
+                                    // Fifth Last Year
+                                    a = parseInt(document.getElementById('TotalAnomaliesStockholdersEquity5').innerHTML.replaceAll(/,/g, ''));
+                                    document.getElementById('StockholdersEquityAnomalySummary5').innerHTML = numUSD.format(a);
+                                    // Sixth Last Year
+                                    a = parseInt(document.getElementById('TotalAnomaliesStockholdersEquity6').innerHTML.replaceAll(/,/g, ''));
+                                    document.getElementById('StockholdersEquityAnomalySummary6').innerHTML = numUSD.format(a);
+                                };
+                                window.addEventListener('DOMContentLoaded', StockholdersEquityAnomalySummary)
+                                window.addEventListener('keyup', function() {
+                                    var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
+                                    if (event.keyCode in formulakeylist) {
+                                        StockholdersEquityAnomalySummary();
+                                    }
+                                })
+                            </script>
+                            <td class="account" id="StockholdersEquityAnomalySummary1" style="border-bottom-style:ridge; font-weight:bold;"></td>
+                            <td class="account" id="StockholdersEquityAnomalySummary2" style="border-bottom-style:ridge;"></td>
+                            <td class="account" id="StockholdersEquityAnomalySummary3" style="border-bottom-style:ridge;"></td>
+                            <td class="account" id="StockholdersEquityAnomalySummary4" style="border-bottom-style:ridge;"></td>
+                            <td class="account" id="StockholdersEquityAnomalySummary5" style="border-bottom-style:ridge;"></td>
+                            <td class="account" id="StockholdersEquityAnomalySummary6" style="border-bottom-style:ridge;"></td>
+                        </tr>
+                        <tr>
                             <td><h6><b>Cash Flow</b></h6></td>
                             <td><button data-page="AuditDetailed" style="text-align:center; font-weight:bold;">A</button></td>
                             <td>
@@ -19970,47 +20260,53 @@
                                         format: "number"
                                     })
                                     // Last Year
-                                    a = Math.abs(parseInt(document.getElementById('AccountingEquationAnomalySummary1').innerHTML.replaceAll(/,/g, '')));
-                                    b = Math.abs(parseInt(document.getElementById('TotalAnomaliesBalanceSheets1').innerHTML.replaceAll(/,/g, '')));
-                                    c = Math.abs(parseInt(document.getElementById('TotalAnomaliesIncomeStatement1').innerHTML.replaceAll(/,/g, '')));
-                                    d = Math.abs(parseInt(document.getElementById('TotalAnomaliesCashFlow1').innerHTML.replaceAll(/,/g, '')));
-                                    e = Math.abs(parseInt(document.getElementById('TrialBalanceAnomalySummary1').innerHTML.replaceAll(/,/g, '')));
-                                    document.getElementById('AnomaliesWorstCaseScenario1').innerHTML = numUSD.format(Math.max(a, b, c, d, e))
+                                    a = Math.abs(parseInt(document.getElementById('TrialBalanceAnomalySummary1').innerHTML.replaceAll(/,/g, '')));
+                                    b = Math.abs(parseInt(document.getElementById('AccountingEquationAnomalySummary1').innerHTML.replaceAll(/,/g, '')));
+                                    c = Math.abs(parseInt(document.getElementById('BalanceSheetsAnomalySummary1').innerHTML.replaceAll(/,/g, '')));
+                                    d = Math.abs(parseInt(document.getElementById('IncomeAnomalySummary1').innerHTML.replaceAll(/,/g, '')));
+                                    e = Math.abs(parseInt(document.getElementById('StockholdersEquityAnomalySummary1').innerHTML.replaceAll(/,/g, '')));
+                                    f = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary1').innerHTML.replaceAll(/,/g, '')));
+                                    document.getElementById('AnomaliesWorstCaseScenario1').innerHTML = numUSD.format(Math.max(a, b, c, d, e, f))
                                     // Second Last Year
-                                    a = Math.abs(parseInt(document.getElementById('AccountingEquationAnomalySummary2').innerHTML.replaceAll(/,/g, '')));
-                                    b = Math.abs(parseInt(document.getElementById('TotalAnomaliesBalanceSheets2').innerHTML.replaceAll(/,/g, '')));
-                                    c = Math.abs(parseInt(document.getElementById('TotalAnomaliesIncomeStatement2').innerHTML.replaceAll(/,/g, '')));
-                                    d = Math.abs(parseInt(document.getElementById('TotalAnomaliesCashFlow2').innerHTML.replaceAll(/,/g, '')));
-                                    e = Math.abs(parseInt(document.getElementById('TrialBalanceAnomalySummary2').innerHTML.replaceAll(/,/g, '')));
-                                    document.getElementById('AnomaliesWorstCaseScenario2').innerHTML = numUSD.format(Math.max(a, b, c, d, e))
+                                    a = Math.abs(parseInt(document.getElementById('TrialBalanceAnomalySummary2').innerHTML.replaceAll(/,/g, '')));
+                                    b = Math.abs(parseInt(document.getElementById('AccountingEquationAnomalySummary2').innerHTML.replaceAll(/,/g, '')));
+                                    c = Math.abs(parseInt(document.getElementById('BalanceSheetsAnomalySummary2').innerHTML.replaceAll(/,/g, '')));
+                                    d = Math.abs(parseInt(document.getElementById('IncomeAnomalySummary2').innerHTML.replaceAll(/,/g, '')));
+                                    e = Math.abs(parseInt(document.getElementById('StockholdersEquityAnomalySummary2').innerHTML.replaceAll(/,/g, '')));
+                                    f = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary2').innerHTML.replaceAll(/,/g, '')));
+                                    document.getElementById('AnomaliesWorstCaseScenario2').innerHTML = numUSD.format(Math.max(a, b, c, d, e, f))
                                     // Third Last Year
-                                    a = Math.abs(parseInt(document.getElementById('AccountingEquationAnomalySummary3').innerHTML.replaceAll(/,/g, '')));
-                                    b = Math.abs(parseInt(document.getElementById('TotalAnomaliesBalanceSheets3').innerHTML.replaceAll(/,/g, '')));
-                                    c = Math.abs(parseInt(document.getElementById('TotalAnomaliesIncomeStatement3').innerHTML.replaceAll(/,/g, '')));
-                                    d = Math.abs(parseInt(document.getElementById('TotalAnomaliesCashFlow3').innerHTML.replaceAll(/,/g, '')));
-                                    e = Math.abs(parseInt(document.getElementById('TrialBalanceAnomalySummary3').innerHTML.replaceAll(/,/g, '')));
-                                    document.getElementById('AnomaliesWorstCaseScenario3').innerHTML = numUSD.format(Math.max(a, b, c, d, e))
+                                    a = Math.abs(parseInt(document.getElementById('TrialBalanceAnomalySummary3').innerHTML.replaceAll(/,/g, '')));
+                                    b = Math.abs(parseInt(document.getElementById('AccountingEquationAnomalySummary3').innerHTML.replaceAll(/,/g, '')));
+                                    c = Math.abs(parseInt(document.getElementById('BalanceSheetsAnomalySummary3').innerHTML.replaceAll(/,/g, '')));
+                                    d = Math.abs(parseInt(document.getElementById('IncomeAnomalySummary3').innerHTML.replaceAll(/,/g, '')));
+                                    e = Math.abs(parseInt(document.getElementById('StockholdersEquityAnomalySummary3').innerHTML.replaceAll(/,/g, '')));
+                                    f = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary3').innerHTML.replaceAll(/,/g, '')));
+                                    document.getElementById('AnomaliesWorstCaseScenario3').innerHTML = numUSD.format(Math.max(a, b, c, d, e, f))
                                     // Fourth Last Year
-                                    a = Math.abs(parseInt(document.getElementById('AccountingEquationAnomalySummary4').innerHTML.replaceAll(/,/g, '')));
-                                    b = Math.abs(parseInt(document.getElementById('TotalAnomaliesBalanceSheets4').innerHTML.replaceAll(/,/g, '')));
-                                    c = Math.abs(parseInt(document.getElementById('TotalAnomaliesIncomeStatement4').innerHTML.replaceAll(/,/g, '')));
-                                    d = Math.abs(parseInt(document.getElementById('TotalAnomaliesCashFlow4').innerHTML.replaceAll(/,/g, '')));
-                                    e = Math.abs(parseInt(document.getElementById('TrialBalanceAnomalySummary4').innerHTML.replaceAll(/,/g, '')));
-                                    document.getElementById('AnomaliesWorstCaseScenario4').innerHTML = numUSD.format(Math.max(a, b, c, d, e))
+                                    a = Math.abs(parseInt(document.getElementById('TrialBalanceAnomalySummary4').innerHTML.replaceAll(/,/g, '')));
+                                    b = Math.abs(parseInt(document.getElementById('AccountingEquationAnomalySummary4').innerHTML.replaceAll(/,/g, '')));
+                                    c = Math.abs(parseInt(document.getElementById('BalanceSheetsAnomalySummary4').innerHTML.replaceAll(/,/g, '')));
+                                    d = Math.abs(parseInt(document.getElementById('IncomeAnomalySummary4').innerHTML.replaceAll(/,/g, '')));
+                                    e = Math.abs(parseInt(document.getElementById('StockholdersEquityAnomalySummary4').innerHTML.replaceAll(/,/g, '')));
+                                    f = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary4').innerHTML.replaceAll(/,/g, '')));
+                                    document.getElementById('AnomaliesWorstCaseScenario4').innerHTML = numUSD.format(Math.max(a, b, c, d, e, f))
                                     // Fifth Last Year
-                                    a = Math.abs(parseInt(document.getElementById('AccountingEquationAnomalySummary5').innerHTML.replaceAll(/,/g, '')));
-                                    b = Math.abs(parseInt(document.getElementById('TotalAnomaliesBalanceSheets5').innerHTML.replaceAll(/,/g, '')));
-                                    c = Math.abs(parseInt(document.getElementById('TotalAnomaliesIncomeStatement5').innerHTML.replaceAll(/,/g, '')));
-                                    d = Math.abs(parseInt(document.getElementById('TotalAnomaliesCashFlow5').innerHTML.replaceAll(/,/g, '')));
-                                    e = Math.abs(parseInt(document.getElementById('TrialBalanceAnomalySummary5').innerHTML.replaceAll(/,/g, '')));
-                                    document.getElementById('AnomaliesWorstCaseScenario5').innerHTML = numUSD.format(Math.max(a, b, c, d, e))
+                                    a = Math.abs(parseInt(document.getElementById('TrialBalanceAnomalySummary5').innerHTML.replaceAll(/,/g, '')));
+                                    b = Math.abs(parseInt(document.getElementById('AccountingEquationAnomalySummary5').innerHTML.replaceAll(/,/g, '')));
+                                    c = Math.abs(parseInt(document.getElementById('BalanceSheetsAnomalySummary5').innerHTML.replaceAll(/,/g, '')));
+                                    d = Math.abs(parseInt(document.getElementById('IncomeAnomalySummary5').innerHTML.replaceAll(/,/g, '')));
+                                    e = Math.abs(parseInt(document.getElementById('StockholdersEquityAnomalySummary5').innerHTML.replaceAll(/,/g, '')));
+                                    f = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary5').innerHTML.replaceAll(/,/g, '')));
+                                    document.getElementById('AnomaliesWorstCaseScenario5').innerHTML = numUSD.format(Math.max(a, b, c, d, e, f))
                                     // Sixth Last Year
-                                    a = Math.abs(parseInt(document.getElementById('AccountingEquationAnomalySummary6').innerHTML.replaceAll(/,/g, '')));
-                                    b = Math.abs(parseInt(document.getElementById('TotalAnomaliesBalanceSheets6').innerHTML.replaceAll(/,/g, '')));
-                                    c = Math.abs(parseInt(document.getElementById('TotalAnomaliesIncomeStatement6').innerHTML.replaceAll(/,/g, '')));
-                                    d = Math.abs(parseInt(document.getElementById('TotalAnomaliesCashFlow6').innerHTML.replaceAll(/,/g, '')));
-                                    e = Math.abs(parseInt(document.getElementById('TrialBalanceAnomalySummary6').innerHTML.replaceAll(/,/g, '')));
-                                    document.getElementById('AnomaliesWorstCaseScenario6').innerHTML = numUSD.format(Math.max(a, b, c, d, e))
+                                    a = Math.abs(parseInt(document.getElementById('TrialBalanceAnomalySummary6').innerHTML.replaceAll(/,/g, '')));
+                                    b = Math.abs(parseInt(document.getElementById('AccountingEquationAnomalySummary6').innerHTML.replaceAll(/,/g, '')));
+                                    c = Math.abs(parseInt(document.getElementById('BalanceSheetsAnomalySummary6').innerHTML.replaceAll(/,/g, '')));
+                                    d = Math.abs(parseInt(document.getElementById('IncomeAnomalySummary6').innerHTML.replaceAll(/,/g, '')));
+                                    e = Math.abs(parseInt(document.getElementById('StockholdersEquityAnomalySummary6').innerHTML.replaceAll(/,/g, '')));
+                                    f = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary6').innerHTML.replaceAll(/,/g, '')));
+                                    document.getElementById('AnomaliesWorstCaseScenario6').innerHTML = numUSD.format(Math.max(a, b, c, d, e, f))
                                 };
                                 window.addEventListener('DOMContentLoaded', WorstCaseScenario)
                                 window.addEventListener('keyup', function() {
@@ -20272,14 +20568,20 @@
 
     function Puck(Puck) {
         //
+        document.getElementById('o').innerHTML = '';
+        //
         a = parseInt(document.getElementById('Clockφ1').innerHTML) / 100
         //
         b = document.getElementById('Validity1').innerHTML
+        c = document.getElementById('Validity2').innerHTML
+        d = document.getElementById('Validity3').innerHTML
         //
         if (b.length === 98) {
-            document.getElementById('o').innerHTML = '⬤';
-        } else {
-            document.getElementById('o').innerHTML = '';
+            if (c.length === 98) {
+                if (d.length === 98) {
+                    document.getElementById('o').innerHTML = '⬤';
+                }
+            }
         }
         //
         if (a > 0.7) {

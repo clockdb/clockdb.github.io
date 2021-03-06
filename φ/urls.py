@@ -10,6 +10,8 @@ urlpatterns = [
     
     path("", views.index, name="index"),
 
+    path("anomalies/", views.anomalies, name="anomalies"),
+    
     path("disclaimer/", views.disclaimer, name="disclaimer"),
 
     path("entities/", views.entities, name="entities"),

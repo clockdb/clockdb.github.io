@@ -66,7 +66,6 @@ EntityCentralIndexKeys = {
     'BK': '1390777',
     'BAX': '10456',
     'BDX': '10795',
-    #N/A
     'BBY': '764478',
     'BIO': '12208',
     'BIIB': '875045',
@@ -79,7 +78,6 @@ EntityCentralIndexKeys = {
     'BMY': '14272',
     'AVGO': '1730168',
     'BR': '1383312',
-    #N/A
     'CHRW': '1043277',
     'COG': '858470',
     'CDNS': '813672',
