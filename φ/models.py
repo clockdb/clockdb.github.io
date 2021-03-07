@@ -184,6 +184,7 @@ class CashFlow(models.Model):
     PaymentsToAcquirePropertyPlantAndEquipment = models.IntegerField(default=0)
     ProceedsFromDisposalsOfPropertyAndEquipment = models.IntegerField(default=0)
     PaymentsToAcquireBusinessesAndIntangibles = models.IntegerField(default=0)
+    ProceedsFromDisposalsOfBusinessesAndIntangibles = models.IntegerField(default=0)
     OtherInvestingActivities = models.IntegerField(default=0)
     #
     # Financing Activities - Cash Flow

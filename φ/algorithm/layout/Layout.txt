@@ -1,0 +1,3 @@
+{ name: 'ELI LILLY & CO (LLY)' , url: './LLY'},
+{ name: 'FACEBOOK INC (FB)' , url: './FB'},
+{ name: 'MCDONALDS CORP (MCD)' , url: './MCD'},

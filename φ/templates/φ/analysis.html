@@ -549,6 +549,13 @@
                         <h4 id="Region" style="font-size:13px; color:rgb(73, 73, 73); font-weight:bold; text-align: right;"></h4>
                     </td>
                 </tr>
+                <tr></tr>
+                <tr></tr>
+                <tr>
+                    <td>
+                        <h4 id="p" style="font-family:Apple; font-style:italic; font-size:13px; color:rgb(73, 73, 73); font-weight:bold; text-align: right;"></h4>
+                    </td>
+                </tr>
             </tbody>
         </table>
 
@@ -9927,6 +9934,65 @@
                         <td><input class="clock" id="PaymentsToAcquireBusinessesAndIntangibles5" value={{ CashFlow_fifthlastyear.PaymentsToAcquireBusinessesAndIntangibles }} onclick="HighLight()"></input></td>
                         <td><input class="clock" id="PaymentsToAcquireBusinessesAndIntangibles6" value={{ CashFlow_sixthlastyear.PaymentsToAcquireBusinessesAndIntangibles }} onclick="HighLight()"></input></td>
                     </tr>
+                    <tr id='ProceedsFromDisposalsOfBusinessesAndIntangiblesRow'>
+                        <td><h6>Proceeds From Disposals Of Businesses And Intangibles</h6></td>
+                        <td></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px;" id="ProceedsFromDisposalsOfBusinessesAndIntangiblesCheckbox"></input>
+                            <input type="checkbox" style="height: 16px;" id="ProceedsFromDisposalsOfBusinessesAndIntangiblesCheckbox2"></input>
+                        </td>
+                        <script>
+                            function ProceedsFromDisposalsOfBusinessesAndIntangiblesRow(ProceedsFromDisposalsOfBusinessesAndIntangiblesRow) {
+                                z = 0
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('ProceedsFromDisposalsOfBusinessesAndIntangibles1').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('ProceedsFromDisposalsOfBusinessesAndIntangibles2').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('ProceedsFromDisposalsOfBusinessesAndIntangibles3').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('ProceedsFromDisposalsOfBusinessesAndIntangibles4').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('ProceedsFromDisposalsOfBusinessesAndIntangibles5').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('ProceedsFromDisposalsOfBusinessesAndIntangibles6').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                if (z == 6) {
+                                    document.getElementById('ProceedsFromDisposalsOfBusinessesAndIntangiblesRow').style.display = 'none';
+                                }
+                            };
+                            window.addEventListener('DOMContentLoaded', ProceedsFromDisposalsOfBusinessesAndIntangiblesRow)
+                            window.addEventListener('keyup', function() {
+                                var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
+                                if (event.keyCode in formulakeylist) {
+                                    ProceedsFromDisposalsOfBusinessesAndIntangiblesRow();
+                                }
+                            })
+                        </script>
+                        <td><input class="clock" id="ProceedsFromDisposalsOfBusinessesAndIntangibles1" style="font-weight:bold;" value={{ CashFlow_lastyear.ProceedsFromDisposalsOfBusinessesAndIntangibles }} onclick="HighLight()"></input></td>
+                        <td><input class="clock" id="ProceedsFromDisposalsOfBusinessesAndIntangibles2" value={{ CashFlow_secondlastyear.ProceedsFromDisposalsOfBusinessesAndIntangibles }} onclick="HighLight()"></input></td>
+                        <td><input class="clock" id="ProceedsFromDisposalsOfBusinessesAndIntangibles3" value={{ CashFlow_thirdlastyear.ProceedsFromDisposalsOfBusinessesAndIntangibles }} onclick="HighLight()"></input></td>
+                        <td><input class="clock" id="ProceedsFromDisposalsOfBusinessesAndIntangibles4" value={{ CashFlow_fourthlastyear.ProceedsFromDisposalsOfBusinessesAndIntangibles }} onclick="HighLight()"></input></td>
+                        <td><input class="clock" id="ProceedsFromDisposalsOfBusinessesAndIntangibles5" value={{ CashFlow_fifthlastyear.ProceedsFromDisposalsOfBusinessesAndIntangibles }} onclick="HighLight()"></input></td>
+                        <td><input class="clock" id="ProceedsFromDisposalsOfBusinessesAndIntangibles6" value={{ CashFlow_sixthlastyear.ProceedsFromDisposalsOfBusinessesAndIntangibles }} onclick="HighLight()"></input></td>
+                    </tr>
                     <tr id='OtherInvestingActivitiesRow'>
                         <td><h6>Others</h6></td>
                         <td></td>
@@ -10004,6 +10070,7 @@
                                 a = a + parseInt(document.getElementById('PaymentsToAcquirePropertyPlantAndEquipment1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ProceedsFromDisposalsOfPropertyAndEquipment1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PaymentsToAcquireBusinessesAndIntangibles1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ProceedsFromDisposalsOfBusinessesAndIntangibles1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OtherInvestingActivities1').value.replaceAll(/,/g, ''));
                                 document.getElementById('InvestingActivitiesNote1').innerHTML = numUSD.format(Math.round(a));
                                 document.getElementById('InvestingActivities1').innerHTML = numUSD.format(Math.round(a));
@@ -10013,6 +10080,7 @@
                                 a = a + parseInt(document.getElementById('PaymentsToAcquirePropertyPlantAndEquipment2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ProceedsFromDisposalsOfPropertyAndEquipment2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PaymentsToAcquireBusinessesAndIntangibles2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ProceedsFromDisposalsOfBusinessesAndIntangibles2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OtherInvestingActivities2').value.replaceAll(/,/g, ''));
                                 document.getElementById('InvestingActivitiesNote2').innerHTML = numUSD.format(Math.round(a));
                                 document.getElementById('InvestingActivities2').innerHTML = numUSD.format(Math.round(a));
@@ -10022,6 +10090,7 @@
                                 a = a + parseInt(document.getElementById('PaymentsToAcquirePropertyPlantAndEquipment3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ProceedsFromDisposalsOfPropertyAndEquipment3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PaymentsToAcquireBusinessesAndIntangibles3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ProceedsFromDisposalsOfBusinessesAndIntangibles3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OtherInvestingActivities3').value.replaceAll(/,/g, ''));
                                 document.getElementById('InvestingActivitiesNote3').innerHTML = numUSD.format(Math.round(a));
                                 document.getElementById('InvestingActivities3').innerHTML = numUSD.format(Math.round(a));
@@ -10031,6 +10100,7 @@
                                 a = a + parseInt(document.getElementById('PaymentsToAcquirePropertyPlantAndEquipment4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ProceedsFromDisposalsOfPropertyAndEquipment4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PaymentsToAcquireBusinessesAndIntangibles4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ProceedsFromDisposalsOfBusinessesAndIntangibles4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OtherInvestingActivities4').value.replaceAll(/,/g, ''));
                                 document.getElementById('InvestingActivitiesNote4').innerHTML = numUSD.format(Math.round(a));
                                 document.getElementById('InvestingActivities4').innerHTML = numUSD.format(Math.round(a));
@@ -10040,6 +10110,7 @@
                                 a = a + parseInt(document.getElementById('PaymentsToAcquirePropertyPlantAndEquipment5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ProceedsFromDisposalsOfPropertyAndEquipment5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PaymentsToAcquireBusinessesAndIntangibles5').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ProceedsFromDisposalsOfBusinessesAndIntangibles5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OtherInvestingActivities5').value.replaceAll(/,/g, ''));
                                 document.getElementById('InvestingActivitiesNote5').innerHTML = numUSD.format(Math.round(a));
                                 document.getElementById('InvestingActivities5').innerHTML = numUSD.format(Math.round(a));
@@ -10049,6 +10120,7 @@
                                 a = a + parseInt(document.getElementById('PaymentsToAcquirePropertyPlantAndEquipment6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ProceedsFromDisposalsOfPropertyAndEquipment6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PaymentsToAcquireBusinessesAndIntangibles6').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ProceedsFromDisposalsOfBusinessesAndIntangibles6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OtherInvestingActivities6').value.replaceAll(/,/g, ''));
                                 document.getElementById('InvestingActivitiesNote6').innerHTML = numUSD.format(Math.round(a));
                                 document.getElementById('InvestingActivities6').innerHTML = numUSD.format(Math.round(a));
@@ -13283,7 +13355,7 @@
                         <td id="CapitalizedCharacteristicCashFlowColumn6"></td>
                     </tr>
                     <tr>
-                        <td><h6>Excess Working Capital</h6></td>
+                        <td><h6>Excess (Insufficiancy) Working Capital</h6></td>
                         <td style="color:#0d47a1; text-align:center; font-weight:bold;">(f)</td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="ExcessWorkingCapitalCCFCheckbox"></input>
@@ -13820,7 +13892,7 @@
                     </tr>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">(f)</td>
-                        <td style="text-align:justify;" colspan="20" ><b>Excess Working Capital:</b> The excess of current assets over a factor of current liabilities required to maintain operating activities. By default the factor is set to 1.2 but might be different from one industry to another.</td>
+                        <td style="text-align:justify;" colspan="20" ><b>Excess (Insufficiancy) Working Capital:</b> The excess of current assets over a factor of current liabilities required to maintain operating activities. By default the factor is set to 1.2 but might be different from one industry to another.</td>
                     </tr>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">(g)</td>
@@ -14368,7 +14440,7 @@
                         <td id="CapitalizedCharacteristicIncomeBeforeInterestAfterTaxesColumn6"></td>
                     </tr>
                     <tr>
-                        <td><h6>Excess Working Capital</h6></td>
+                        <td><h6>Excess (Insufficiancy) Working Capital</h6></td>
                         <td style="color:#0d47a1; text-align:center; font-weight:bold;">(f)</td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="ExcessWorkingCapitalCICheckbox"></input>
@@ -14917,7 +14989,7 @@
                     </tr>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">(f)</td>
-                        <td style="text-align:justify;" colspan="20" ><b>Excess Working Capital:</b> The excess of current assets over a factor of current liabilities required to maintain operating activities. By default the factor is set to 1.2 but might be different from one industry to another.</td>
+                        <td style="text-align:justify;" colspan="20" ><b>Excess (Insufficiancy) Working Capital:</b> The excess of current assets over a factor of current liabilities required to maintain operating activities. By default the factor is set to 1.2 but might be different from one industry to another.</td>
                     </tr>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">(g)</td>
@@ -15941,7 +16013,7 @@
                                     format: "number"
                                 })
                                 a = parseInt(document.getElementById('BalanceSheetsStockholdersEquity1').innerHTML.replaceAll(/,/g, ''));
-                                document.getElementById('NetAssetMaterialityThreshold').innerHTML = numUSD.format(a * 0.05);
+                                document.getElementById('NetAssetMaterialityThreshold').innerHTML = numUSD.format(Math.round(Math.abs(a * 0.05)));
                             };
                             window.addEventListener('DOMContentLoaded', BalanceNetAssetMaterialityThreshold)
                             window.addEventListener('keyup', function() {
@@ -16009,7 +16081,7 @@
                                 c = parseInt(document.getElementById('ContinuingOperationsMaterialityThreshold').innerHTML.replaceAll(/,/g, ''));
                                 d = parseInt(document.getElementById('RevenuesMaterialityThreshold').innerHTML.replaceAll(/,/g, ''));
                                 e = parseInt(document.getElementById('NetAssetMaterialityThreshold').innerHTML.replaceAll(/,/g, ''));
-                                document.getElementById('MaterialityThresholdValue').innerHTML = numUSD.format(Math.min(b, Math.abs(c), d, e));
+                                document.getElementById('MaterialityThresholdValue').innerHTML = numUSD.format(Math.max(850000000, Math.min(b, Math.abs(c), d, e)));
                             };
                             window.addEventListener('DOMContentLoaded', BalanceMaterialityThresholdValue)
                             window.addEventListener('keyup', function() {
@@ -18179,28 +18251,28 @@
                                 })
                                 // Last Year
                                 a = parseInt(document.getElementById('PRO-3.1.1.1').innerHTML.replaceAll(/,/g, ''));
-                                b = parseInt(document.getElementById('PRO-3.1.2.1').value.replaceAll(/,/g, ''));
-                                document.getElementById('PRO-3.1.3.1').innerHTML = numUSD.format((a - b));
+                                a = a - parseInt(document.getElementById('PRO-3.1.2.1').value.replaceAll(/,/g, ''));
+                                document.getElementById('PRO-3.1.3.1').innerHTML = numUSD.format((a));
                                 // Second Last Year
                                 a = parseInt(document.getElementById('PRO-3.1.1.2').innerHTML.replaceAll(/,/g, ''));
-                                b = parseInt(document.getElementById('PRO-3.1.2.2').value.replaceAll(/,/g, ''));
-                                document.getElementById('PRO-3.1.3.2').innerHTML = numUSD.format((a - b));
+                                a = a - parseInt(document.getElementById('PRO-3.1.2.2').value.replaceAll(/,/g, ''));
+                                document.getElementById('PRO-3.1.3.2').innerHTML = numUSD.format((a));
                                 // Third Last Year
                                 a = parseInt(document.getElementById('PRO-3.1.1.3').innerHTML.replaceAll(/,/g, ''));
-                                b = parseInt(document.getElementById('PRO-3.1.2.3').value.replaceAll(/,/g, ''));
-                                document.getElementById('PRO-3.1.3.3').innerHTML = numUSD.format((a - b));
+                                a = a - parseInt(document.getElementById('PRO-3.1.2.3').value.replaceAll(/,/g, ''));
+                                document.getElementById('PRO-3.1.3.3').innerHTML = numUSD.format((a));
                                 // Fourth Last Year
                                 a = parseInt(document.getElementById('PRO-3.1.1.4').innerHTML.replaceAll(/,/g, ''));
-                                b = parseInt(document.getElementById('PRO-3.1.2.4').value.replaceAll(/,/g, ''));
-                                document.getElementById('PRO-3.1.3.4').innerHTML = numUSD.format((a - b));
+                                a = a - parseInt(document.getElementById('PRO-3.1.2.4').value.replaceAll(/,/g, ''));
+                                document.getElementById('PRO-3.1.3.4').innerHTML = numUSD.format((a));
                                 // Fifth Last Year
                                 a = parseInt(document.getElementById('PRO-3.1.1.5').innerHTML.replaceAll(/,/g, ''));
-                                b = parseInt(document.getElementById('PRO-3.1.2.5').value.replaceAll(/,/g, ''));
-                                document.getElementById('PRO-3.1.3.5').innerHTML = numUSD.format((a - b));
+                                a = a - parseInt(document.getElementById('PRO-3.1.2.5').value.replaceAll(/,/g, ''));
+                                document.getElementById('PRO-3.1.3.5').innerHTML = numUSD.format((a));
                                 // Sixth Last Year
                                 a = parseInt(document.getElementById('PRO-3.1.1.6').innerHTML.replaceAll(/,/g, ''));
-                                b = parseInt(document.getElementById('PRO-3.1.2.6').value.replaceAll(/,/g, ''));
-                                document.getElementById('PRO-3.1.3.6').innerHTML = numUSD.format((a - b));
+                                a = a - parseInt(document.getElementById('PRO-3.1.2.6').value.replaceAll(/,/g, ''));
+                                document.getElementById('PRO-3.1.3.6').innerHTML = numUSD.format((a));
                             };
                             window.addEventListener('DOMContentLoaded', BalanceComprehensiveIncomeAnomalies)
                             window.addEventListener('keyup', function() {
@@ -18219,88 +18291,6 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
-                </body>
-            </table>
-            <table>
-                <body>
-                    <tr></tr>
-                    <tr></tr>
-                    <tr></tr>
-                    <tr></tr>
-                    <tr>
-                        <td style="padding-top:47px"><h6><b>PROCEDURE 3.2</b></h6></td>
-                    </tr>
-                    <tr>
-                       <td style="text-align:left">The components of the other comprehensive income are appropriately classified.</td>
-                    </tr>
-                    <tr></tr>
-                    <tr>
-                        <td><h6><b>ASSERTIONS</b></h6></td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:left">Classification.</td>
-                    </tr>
-                </body>
-            </table>
-            <table>
-                <body>
-                    <tr></tr>
-                    <tr></tr>
-                    <tr></tr>
-                    <tr></tr>
-                    <tr>
-                        <td colspan="3"></td>
-                        <script>
-                            function DateProcedureAnnualComprehensiveIncomei(DateProcedureAnnualComprehensiveIncomei) {
-                                document.getElementById('DateProcedureAnnualComprehensiveIncomei1').innerHTML = document.getElementById('TrialBalanceDateColumn1').value;
-                                document.getElementById('DateProcedureAnnualComprehensiveIncomei2').innerHTML = document.getElementById('TrialBalanceDateColumn2').value;
-                                document.getElementById('DateProcedureAnnualComprehensiveIncomei3').innerHTML = document.getElementById('TrialBalanceDateColumn3').value;
-                                document.getElementById('DateProcedureAnnualComprehensiveIncomei4').innerHTML = document.getElementById('TrialBalanceDateColumn4').value;
-                                document.getElementById('DateProcedureAnnualComprehensiveIncomei5').innerHTML = document.getElementById('TrialBalanceDateColumn5').value;
-                                document.getElementById('DateProcedureAnnualComprehensiveIncomei6').innerHTML = document.getElementById('TrialBalanceDateColumn6').value;
-                            };
-                            window.addEventListener('DOMContentLoaded', DateProcedureAnnualComprehensiveIncomei)
-                            window.addEventListener('keyup', function() {
-                                var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
-                                if (event.keyCode in formulakeylist) {
-                                    DateProcedureAnnualComprehensiveIncomei();
-                                }
-                            })
-                        </script>
-                        <td><h4 id="DateProcedureAnnualComprehensiveIncomei1"></h4></td>
-                        <td><h4 id="DateProcedureAnnualComprehensiveIncomei2"></h4></td>
-                        <td><h4 id="DateProcedureAnnualComprehensiveIncomei3"></h4></td>
-                        <td><h4 id="DateProcedureAnnualComprehensiveIncomei4"></h4></td>
-                        <td><h4 id="DateProcedureAnnualComprehensiveIncomei5"></h4></td>
-                        <td><h4 id="DateProcedureAnnualComprehensiveIncomei6"></h4></td>
-                    </tr>
-                    <tr></tr>
-                    <tr></tr>
-                    <tr>
-                        <td colspan='3'></td>
-                        <td style="text-align:center"><a href={{ TrialBalance_lastyear.Link }} target="blank" style="color:#0D47A1;"><b>Filings</b></a>
-                        <td style="text-align:center"><a href={{ TrialBalance_secondlastyear.Link }} target="blank" style="color:#0D47A1;"><b>Filings</b></a>
-                        <td style="text-align:center"><a href={{ TrialBalance_thirdlastyear.Link }} target="blank" style="color:#0D47A1;"><b>Filings</b></a>
-                        <td style="text-align:center"><a href={{ TrialBalance_fourthlastyear.Link }} target="blank" style="color:#0D47A1;"><b>Filings</b></a>
-                        <td style="text-align:center"><a href={{ TrialBalance_fifthlastyear.Link }} target="blank" style="color:#0D47A1;"><b>Filings</b></a>
-                        <td style="text-align:center"><a href={{ TrialBalance_sixthlastyear.Link }} target="blank" style="color:#0D47A1;"><b>Filings</b></a>   
-                    </tr>
-                    <tr></tr>
-                    <tr></tr>
-                    <tr>
-                        <td style="text-align:left;">Other Comprehensive Income</td>
-                        <td style="text-align:center; font-weight:bold;">db</td>
-                        <td>
-                            <input type="checkbox" style="height: 16px;" id="Checkbox"></input>
-                            <input type="checkbox" style="height: 16px;" id="Checkbox2"></input>
-                        </td>
-                        <td style="border-bottom-style:ridge;"><input class="clock" id="PRO-3.2.1.1" style="font-weight:bold;" value={{ AuditData_lastyear.AnomalyOtherComprehensiveIncome }}></input></td>
-                        <td style="border-bottom-style:ridge;"><input class="clock" id="PRO-3.2.1.2" value={{ AuditData_secondlastyear.AnomalyOtherComprehensiveIncome }}></input></td>
-                        <td style="border-bottom-style:ridge;"><input class="clock" id="PRO-3.2.1.3" value={{ AuditData_thirdlastyear.AnomalyOtherComprehensiveIncome }}></input></td>
-                        <td style="border-bottom-style:ridge;"><input class="clock" id="PRO-3.2.1.4" value={{ AuditData_fourthlastyear.AnomalyOtherComprehensiveIncome }}></input></td>
-                        <td style="border-bottom-style:ridge;"><input class="clock" id="PRO-3.2.1.5" value={{ AuditData_fifthlastyear.AnomalyOtherComprehensiveIncome }}></input></td>
-                        <td style="border-bottom-style:ridge;"><input class="clock" id="PRO-3.2.1.6" value={{ AuditData_sixthlastyear.AnomalyOtherComprehensiveIncome }}></input></td>
-                    </tr>
                 </body>
             </table>
         </div>
@@ -18404,6 +18394,7 @@
                                 a = a + parseInt(document.getElementById('ShareBasedCompensation1').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared1').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonStockRepurchasedAndRetired1').innerHTML.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PurchaseAndSellOfTreasuryShares1').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('EffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts1').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetainedEarningsOthers1').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonControllingInterestsOthers1').innerHTML.replaceAll(/,/g, ''));
@@ -18417,6 +18408,7 @@
                                 a = a + parseInt(document.getElementById('ShareBasedCompensation2').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared2').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonStockRepurchasedAndRetired2').innerHTML.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PurchaseAndSellOfTreasuryShares2').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('EffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts2').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetainedEarningsOthers2').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonControllingInterestsOthers2').innerHTML.replaceAll(/,/g, ''));
@@ -18430,6 +18422,7 @@
                                 a = a + parseInt(document.getElementById('ShareBasedCompensation3').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared3').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonStockRepurchasedAndRetired3').innerHTML.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PurchaseAndSellOfTreasuryShares3').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('EffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts3').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetainedEarningsOthers3').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonControllingInterestsOthers3').innerHTML.replaceAll(/,/g, ''));
@@ -18443,6 +18436,7 @@
                                 a = a + parseInt(document.getElementById('ShareBasedCompensation4').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared4').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonStockRepurchasedAndRetired4').innerHTML.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PurchaseAndSellOfTreasuryShares4').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('EffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts4').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetainedEarningsOthers4').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonControllingInterestsOthers4').innerHTML.replaceAll(/,/g, ''));
@@ -18456,6 +18450,7 @@
                                 a = a + parseInt(document.getElementById('ShareBasedCompensation5').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared5').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonStockRepurchasedAndRetired5').innerHTML.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PurchaseAndSellOfTreasuryShares5').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('EffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts5').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetainedEarningsOthers5').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonControllingInterestsOthers5').innerHTML.replaceAll(/,/g, ''));
@@ -18469,6 +18464,7 @@
                                 a = a + parseInt(document.getElementById('ShareBasedCompensation6').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared6').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonStockRepurchasedAndRetired6').innerHTML.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('PurchaseAndSellOfTreasuryShares6').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('EffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts6').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetainedEarningsOthers6').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonControllingInterestsOthers6').innerHTML.replaceAll(/,/g, ''));
@@ -19669,27 +19665,21 @@
                                 })
                                 // Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-3.1.3.1').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-3.2.1.1').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesComprehensiveIncome1').innerHTML = numUSD.format(a);
                                 // Second Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-3.1.3.2').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-3.2.1.2').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesComprehensiveIncome2').innerHTML = numUSD.format(a);
                                 // Third Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-3.1.3.3').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-3.2.1.3').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesComprehensiveIncome3').innerHTML = numUSD.format(a);
                                 // Fourth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-3.1.3.4').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-3.2.1.4').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesComprehensiveIncome4').innerHTML = numUSD.format(a);
                                 // Fifth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-3.1.3.5').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-3.2.1.5').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesComprehensiveIncome5').innerHTML = numUSD.format(a);
                                 // Sixth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-3.1.3.6').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-3.2.1.6').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesComprehensiveIncome6').innerHTML = numUSD.format(a);
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAnomaliesComprehensiveIncome)
@@ -19771,85 +19761,6 @@
                         <td id="TotalAnomaliesIncomeStatement4" style="border-bottom:double black"></td>
                         <td id="TotalAnomaliesIncomeStatement5" style="border-bottom:double black"></td>
                         <td id="TotalAnomaliesIncomeStatement6" style="border-bottom:double black"></td>
-                    </tr>
-                    <tr></tr>
-                    <tr></tr>
-                    <tr></tr>
-                    <tr>
-                        <td style="text-align: left;"><h6><b>Stockholder's Equity</b></h6></td>
-                        <td><button data-page="ProcedureAnnualStockholdersEquity" style="text-align:center; font-weight:bold;">Pro</button></td>
-                        <td>
-                            <input type="checkbox" style="height: 16px;" id="Checkbox"></input>
-                            <input type="checkbox" style="height: 16px;" id="Checkbox2"></input>
-                        </td>
-                        <script>
-                            function BalanceStockholdersEquityAnomalies(BalanceStockholdersEquityAnomalies) {
-                                var numUSD = new Intl.NumberFormat("en-US", {
-                                    format: "number"
-                                })
-                                // Last Year
-                                a = Math.abs(parseInt(document.getElementById('PRO-4.1.3.1').innerHTML.replaceAll(/,/g, '')));
-                                a = a + parseInt(document.getElementById('PRO-4.2.1.1').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('PRO-4.2.2.1').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('PRO-4.2.3.1').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('PRO-4.2.4.1').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('PRO-4.2.5.1').value.replaceAll(/,/g, ''));
-                                document.getElementById('TotalAnomaliesStockholdersEquity1').innerHTML = numUSD.format(a);
-                                // Second Last Year
-                                a = Math.abs(parseInt(document.getElementById('PRO-4.1.3.2').innerHTML.replaceAll(/,/g, '')));
-                                a = a + parseInt(document.getElementById('PRO-4.2.1.2').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('PRO-4.2.2.2').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('PRO-4.2.3.2').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('PRO-4.2.4.2').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('PRO-4.2.5.2').value.replaceAll(/,/g, ''));
-                                document.getElementById('TotalAnomaliesStockholdersEquity2').innerHTML = numUSD.format(a);
-                                // Third Last Year
-                                a = Math.abs(parseInt(document.getElementById('PRO-4.1.3.3').innerHTML.replaceAll(/,/g, '')));
-                                a = a + parseInt(document.getElementById('PRO-4.2.1.3').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('PRO-4.2.2.3').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('PRO-4.2.3.3').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('PRO-4.2.4.3').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('PRO-4.2.5.3').value.replaceAll(/,/g, ''));
-                                document.getElementById('TotalAnomaliesStockholdersEquity3').innerHTML = numUSD.format(a);
-                                // Fourth Last Year
-                                a = Math.abs(parseInt(document.getElementById('PRO-4.1.3.4').innerHTML.replaceAll(/,/g, '')));
-                                a = a + parseInt(document.getElementById('PRO-4.2.1.4').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('PRO-4.2.2.4').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('PRO-4.2.3.4').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('PRO-4.2.4.4').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('PRO-4.2.5.4').value.replaceAll(/,/g, ''));
-                                document.getElementById('TotalAnomaliesStockholdersEquity4').innerHTML = numUSD.format(a);
-                                // Fifth Last Year
-                                a = Math.abs(parseInt(document.getElementById('PRO-4.1.3.5').innerHTML.replaceAll(/,/g, '')));
-                                a = a + parseInt(document.getElementById('PRO-4.2.1.5').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('PRO-4.2.2.5').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('PRO-4.2.3.5').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('PRO-4.2.4.5').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('PRO-4.2.5.5').value.replaceAll(/,/g, ''));
-                                document.getElementById('TotalAnomaliesStockholdersEquity5').innerHTML = numUSD.format(a);
-                                // Sixth Last Year
-                                a = Math.abs(parseInt(document.getElementById('PRO-4.1.3.6').innerHTML.replaceAll(/,/g, '')));
-                                a = a + parseInt(document.getElementById('PRO-4.2.1.6').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('PRO-4.2.2.6').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('PRO-4.2.3.6').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('PRO-4.2.4.6').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('PRO-4.2.5.6').value.replaceAll(/,/g, ''));
-                                document.getElementById('TotalAnomaliesStockholdersEquity6').innerHTML = numUSD.format(a);
-                            };
-                            window.addEventListener('DOMContentLoaded', BalanceStockholdersEquityAnomalies)
-                            window.addEventListener('keyup', function() {
-                                var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
-                                if (event.keyCode in formulakeylist) {
-                                    BalanceStockholdersEquityAnomalies();
-                                }
-                            })
-                        </script>
-                        <td class="account" id="TotalAnomaliesStockholdersEquity1" style="border-bottom:double black; font-weight:bold;"></td>
-                        <td class="account" id="TotalAnomaliesStockholdersEquity2" style="border-bottom:double black;"></td>
-                        <td class="account" id="TotalAnomaliesStockholdersEquity3" style="border-bottom:double black;"></td>
-                        <td class="account" id="TotalAnomaliesStockholdersEquity4" style="border-bottom:double black;"></td>
-                        <td class="account" id="TotalAnomaliesStockholdersEquity5" style="border-bottom:double black;"></td>
-                        <td class="account" id="TotalAnomaliesStockholdersEquity6" style="border-bottom:double black;"></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -20158,52 +20069,6 @@
                             <td class="account" id="IncomeAnomalySummary6" style="border-bottom-style:ridge;"></td>
                         </tr>
                         <tr>
-                            <td><h6><b>Stockholder's Equity</b></h6></td>
-                            <td><button data-page="AuditDetailed" style="text-align:center; font-weight:bold;">A</button></td>
-                            <td>
-                                <input type="checkbox" style="height: 16px;" id="Checkbox"></input>
-                                <input type="checkbox" style="height: 16px;" id="Checkbox2"></input>
-                            </td>
-                            <script>
-                                function StockholdersEquityAnomalySummary(StockholdersEquityAnomalySummary) {
-                                    var numUSD = new Intl.NumberFormat("en-US", {
-                                        format: "number"
-                                    })
-                                    // Last Year
-                                    a = parseInt(document.getElementById('TotalAnomaliesStockholdersEquity1').innerHTML.replaceAll(/,/g, ''));
-                                    document.getElementById('StockholdersEquityAnomalySummary1').innerHTML = numUSD.format(a);
-                                    // Second Last Year
-                                    a = parseInt(document.getElementById('TotalAnomaliesStockholdersEquity2').innerHTML.replaceAll(/,/g, ''));
-                                    document.getElementById('StockholdersEquityAnomalySummary2').innerHTML = numUSD.format(a);
-                                    // Third Last Year
-                                    a = parseInt(document.getElementById('TotalAnomaliesStockholdersEquity3').innerHTML.replaceAll(/,/g, ''));
-                                    document.getElementById('StockholdersEquityAnomalySummary3').innerHTML = numUSD.format(a);
-                                    // Fourth Last Year
-                                    a = parseInt(document.getElementById('TotalAnomaliesStockholdersEquity4').innerHTML.replaceAll(/,/g, ''));
-                                    document.getElementById('StockholdersEquityAnomalySummary4').innerHTML = numUSD.format(a);
-                                    // Fifth Last Year
-                                    a = parseInt(document.getElementById('TotalAnomaliesStockholdersEquity5').innerHTML.replaceAll(/,/g, ''));
-                                    document.getElementById('StockholdersEquityAnomalySummary5').innerHTML = numUSD.format(a);
-                                    // Sixth Last Year
-                                    a = parseInt(document.getElementById('TotalAnomaliesStockholdersEquity6').innerHTML.replaceAll(/,/g, ''));
-                                    document.getElementById('StockholdersEquityAnomalySummary6').innerHTML = numUSD.format(a);
-                                };
-                                window.addEventListener('DOMContentLoaded', StockholdersEquityAnomalySummary)
-                                window.addEventListener('keyup', function() {
-                                    var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
-                                    if (event.keyCode in formulakeylist) {
-                                        StockholdersEquityAnomalySummary();
-                                    }
-                                })
-                            </script>
-                            <td class="account" id="StockholdersEquityAnomalySummary1" style="border-bottom-style:ridge; font-weight:bold;"></td>
-                            <td class="account" id="StockholdersEquityAnomalySummary2" style="border-bottom-style:ridge;"></td>
-                            <td class="account" id="StockholdersEquityAnomalySummary3" style="border-bottom-style:ridge;"></td>
-                            <td class="account" id="StockholdersEquityAnomalySummary4" style="border-bottom-style:ridge;"></td>
-                            <td class="account" id="StockholdersEquityAnomalySummary5" style="border-bottom-style:ridge;"></td>
-                            <td class="account" id="StockholdersEquityAnomalySummary6" style="border-bottom-style:ridge;"></td>
-                        </tr>
-                        <tr>
                             <td><h6><b>Cash Flow</b></h6></td>
                             <td><button data-page="AuditDetailed" style="text-align:center; font-weight:bold;">A</button></td>
                             <td>
@@ -20264,7 +20129,6 @@
                                     b = Math.abs(parseInt(document.getElementById('AccountingEquationAnomalySummary1').innerHTML.replaceAll(/,/g, '')));
                                     c = Math.abs(parseInt(document.getElementById('BalanceSheetsAnomalySummary1').innerHTML.replaceAll(/,/g, '')));
                                     d = Math.abs(parseInt(document.getElementById('IncomeAnomalySummary1').innerHTML.replaceAll(/,/g, '')));
-                                    e = Math.abs(parseInt(document.getElementById('StockholdersEquityAnomalySummary1').innerHTML.replaceAll(/,/g, '')));
                                     f = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary1').innerHTML.replaceAll(/,/g, '')));
                                     document.getElementById('AnomaliesWorstCaseScenario1').innerHTML = numUSD.format(Math.max(a, b, c, d, e, f))
                                     // Second Last Year
@@ -20272,7 +20136,6 @@
                                     b = Math.abs(parseInt(document.getElementById('AccountingEquationAnomalySummary2').innerHTML.replaceAll(/,/g, '')));
                                     c = Math.abs(parseInt(document.getElementById('BalanceSheetsAnomalySummary2').innerHTML.replaceAll(/,/g, '')));
                                     d = Math.abs(parseInt(document.getElementById('IncomeAnomalySummary2').innerHTML.replaceAll(/,/g, '')));
-                                    e = Math.abs(parseInt(document.getElementById('StockholdersEquityAnomalySummary2').innerHTML.replaceAll(/,/g, '')));
                                     f = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary2').innerHTML.replaceAll(/,/g, '')));
                                     document.getElementById('AnomaliesWorstCaseScenario2').innerHTML = numUSD.format(Math.max(a, b, c, d, e, f))
                                     // Third Last Year
@@ -20280,7 +20143,6 @@
                                     b = Math.abs(parseInt(document.getElementById('AccountingEquationAnomalySummary3').innerHTML.replaceAll(/,/g, '')));
                                     c = Math.abs(parseInt(document.getElementById('BalanceSheetsAnomalySummary3').innerHTML.replaceAll(/,/g, '')));
                                     d = Math.abs(parseInt(document.getElementById('IncomeAnomalySummary3').innerHTML.replaceAll(/,/g, '')));
-                                    e = Math.abs(parseInt(document.getElementById('StockholdersEquityAnomalySummary3').innerHTML.replaceAll(/,/g, '')));
                                     f = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary3').innerHTML.replaceAll(/,/g, '')));
                                     document.getElementById('AnomaliesWorstCaseScenario3').innerHTML = numUSD.format(Math.max(a, b, c, d, e, f))
                                     // Fourth Last Year
@@ -20288,7 +20150,6 @@
                                     b = Math.abs(parseInt(document.getElementById('AccountingEquationAnomalySummary4').innerHTML.replaceAll(/,/g, '')));
                                     c = Math.abs(parseInt(document.getElementById('BalanceSheetsAnomalySummary4').innerHTML.replaceAll(/,/g, '')));
                                     d = Math.abs(parseInt(document.getElementById('IncomeAnomalySummary4').innerHTML.replaceAll(/,/g, '')));
-                                    e = Math.abs(parseInt(document.getElementById('StockholdersEquityAnomalySummary4').innerHTML.replaceAll(/,/g, '')));
                                     f = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary4').innerHTML.replaceAll(/,/g, '')));
                                     document.getElementById('AnomaliesWorstCaseScenario4').innerHTML = numUSD.format(Math.max(a, b, c, d, e, f))
                                     // Fifth Last Year
@@ -20296,7 +20157,6 @@
                                     b = Math.abs(parseInt(document.getElementById('AccountingEquationAnomalySummary5').innerHTML.replaceAll(/,/g, '')));
                                     c = Math.abs(parseInt(document.getElementById('BalanceSheetsAnomalySummary5').innerHTML.replaceAll(/,/g, '')));
                                     d = Math.abs(parseInt(document.getElementById('IncomeAnomalySummary5').innerHTML.replaceAll(/,/g, '')));
-                                    e = Math.abs(parseInt(document.getElementById('StockholdersEquityAnomalySummary5').innerHTML.replaceAll(/,/g, '')));
                                     f = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary5').innerHTML.replaceAll(/,/g, '')));
                                     document.getElementById('AnomaliesWorstCaseScenario5').innerHTML = numUSD.format(Math.max(a, b, c, d, e, f))
                                     // Sixth Last Year
@@ -20304,7 +20164,6 @@
                                     b = Math.abs(parseInt(document.getElementById('AccountingEquationAnomalySummary6').innerHTML.replaceAll(/,/g, '')));
                                     c = Math.abs(parseInt(document.getElementById('BalanceSheetsAnomalySummary6').innerHTML.replaceAll(/,/g, '')));
                                     d = Math.abs(parseInt(document.getElementById('IncomeAnomalySummary6').innerHTML.replaceAll(/,/g, '')));
-                                    e = Math.abs(parseInt(document.getElementById('StockholdersEquityAnomalySummary6').innerHTML.replaceAll(/,/g, '')));
                                     f = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary6').innerHTML.replaceAll(/,/g, '')));
                                     document.getElementById('AnomaliesWorstCaseScenario6').innerHTML = numUSD.format(Math.max(a, b, c, d, e, f))
                                 };
@@ -20569,6 +20428,7 @@
     function Puck(Puck) {
         //
         document.getElementById('o').innerHTML = '';
+        document.getElementById('p').innerHTML = '';
         //
         a = parseInt(document.getElementById('Clockφ1').innerHTML) / 100
         //
@@ -20580,6 +20440,7 @@
             if (c.length === 98) {
                 if (d.length === 98) {
                     document.getElementById('o').innerHTML = '⬤';
+                    document.getElementById('p').innerHTML = 'Philippe Dube, CPA auditor, D. Fisc.';
                 }
             }
         }
