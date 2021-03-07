@@ -27,14 +27,14 @@ import xml.etree.ElementTree as ET
 
 # TradingSymbol to EntityCentralIndexKeys
 EntityCentralIndexKeys = {
-    'AAPL':    '320193',
+#    'AAPL':    '320193',
 #    'FB':     '1326801',
 #    'GLW':    '24741',
 #    'GME':    '1326380',
 #    'IBM':    '51143',
 #    'INTC':    '50863',
 #    'KO':    '21344',
-#    'LLY':    '59478',
+    'LLY':    '59478',
 #    'MCD':     '63908',
 #    'VLO':    '1035002',
 #    'WMT':    '104169',

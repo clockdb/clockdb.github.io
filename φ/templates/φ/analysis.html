@@ -12395,10 +12395,10 @@
                             <input type="checkbox" style="height: 16px;" id="TotalAssetsExpectedReturnCheckbox"></input>
                             <input type="checkbox" style="height: 16px;" id="TotalAssetsExpectedReturnCheckbox2"></input>
                         </td>
-                        <td><input value=0.12 class="clockrate" id="TotalAssetsExpectedReturnColumn1" style="font-weight:bold;" onclick="HighLight()"></input></td>
-                        <td><input value=0.12 class="clockrate" id="TotalAssetsExpectedReturnColumn2" onclick="HighLight()"></input></td>
-                        <td><input value=0.12 class="clockrate" id="TotalAssetsExpectedReturnColumn3" onclick="HighLight()"></input></td>
-                        <td><input value=0.12 class="clockrate" id="TotalAssetsExpectedReturnColumn4" onclick="HighLight()"></input></td>
+                        <td><input value=0.04 class="clockrate" id="TotalAssetsExpectedReturnColumn1" style="font-weight:bold;" onclick="HighLight()"></input></td>
+                        <td><input value=0.04 class="clockrate" id="TotalAssetsExpectedReturnColumn2" onclick="HighLight()"></input></td>
+                        <td><input value=0.04 class="clockrate" id="TotalAssetsExpectedReturnColumn3" onclick="HighLight()"></input></td>
+                        <td><input value=0.04 class="clockrate" id="TotalAssetsExpectedReturnColumn4" onclick="HighLight()"></input></td>
                     </tr>
                     <tr>
                         <td><h6>Weighted Average Cost Of Total Assets</h6></td>
@@ -12674,25 +12674,25 @@
                                 a = a + parseFloat(document.getElementById('CostOfTotalAssetsAccruingToCommonSharesStockholdersColumn1').innerHTML)/100;
                                 a = a + parseFloat(document.getElementById('ExpectedGrowthColumn1').innerHTML)/100;
                                 a = a + parseFloat(document.getElementById('OtherRateSubstractionColumn1').value)/100;
-                                document.getElementById('CapitalizationRateColumn1').innerHTML = numUSD.format(a);
+                                document.getElementById('CapitalizationRateColumn1').innerHTML = numUSD.format(Math.max(0.021, a));
                                 // Column 2
                                 a = parseFloat(document.getElementById('CapitalizationRateBeforeGrowthColumn2').innerHTML)/100;
                                 a = a + parseFloat(document.getElementById('CostOfTotalAssetsAccruingToCommonSharesStockholdersColumn2').innerHTML)/100;
                                 a = a + parseFloat(document.getElementById('ExpectedGrowthColumn2').innerHTML)/100;
                                 a = a + parseFloat(document.getElementById('OtherRateSubstractionColumn2').value)/100;
-                                document.getElementById('CapitalizationRateColumn2').innerHTML = numUSD.format(a);
+                                document.getElementById('CapitalizationRateColumn2').innerHTML = numUSD.format(Math.max(0.021, a));
                                 // Column 3
                                 a = parseFloat(document.getElementById('CapitalizationRateBeforeGrowthColumn3').innerHTML)/100;
                                 a = a + parseFloat(document.getElementById('CostOfTotalAssetsAccruingToCommonSharesStockholdersColumn3').innerHTML)/100;
                                 a = a + parseFloat(document.getElementById('ExpectedGrowthColumn3').innerHTML)/100;
                                 a = a + parseFloat(document.getElementById('OtherRateSubstractionColumn3').value)/100;
-                                document.getElementById('CapitalizationRateColumn3').innerHTML = numUSD.format(a);
+                                document.getElementById('CapitalizationRateColumn3').innerHTML = numUSD.format(Math.max(0.021, a));
                                 // Column 4
                                 a = parseFloat(document.getElementById('CapitalizationRateBeforeGrowthColumn4').innerHTML)/100;
                                 a = a + parseFloat(document.getElementById('CostOfTotalAssetsAccruingToCommonSharesStockholdersColumn4').innerHTML)/100;
                                 a = a + parseFloat(document.getElementById('ExpectedGrowthColumn4').innerHTML)/100;
                                 a = a + parseFloat(document.getElementById('OtherRateSubstractionColumn4').value)/100;
-                                document.getElementById('CapitalizationRateColumn4').innerHTML = numUSD.format(a);
+                                document.getElementById('CapitalizationRateColumn4').innerHTML = numUSD.format(Math.max(0.021, a));
                             };
                             window.addEventListener('DOMContentLoaded', BalanceCapitalizationRate)
                             window.addEventListener('keyup', function() {
@@ -12741,7 +12741,7 @@
                     </tr>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">(f)</td>
-                        <td style="text-align:justify;" colspan="20" ><b>Capitalization Rate:</b> The rate used to determine the multiple of characteristic or expected profit or cash flows.</td>
+                        <td style="text-align:justify;" colspan="20" ><b>Capitalization Rate:</b> The rate used to determine the multiple of characteristic or expected profit or cash flows. As a default, the minimum value is 2.1%</td>
                     </tr>
                 </tbody>
             </table>
@@ -15719,7 +15719,7 @@
                     <tr></tr>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">(a)</td>
-                        <td style="text-align:left;" colspan="20">Audit Opinion of the web application over the financial statements reproduced in the database from the reading of the sec database.</td>
+                        <td style="text-align:left;" colspan="20">My opinion over the integrity of the financial statements reproduced in the database from the reading of the sec database.</td>
                     </tr>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">(b)</td>
@@ -20129,43 +20129,43 @@
                                     b = Math.abs(parseInt(document.getElementById('AccountingEquationAnomalySummary1').innerHTML.replaceAll(/,/g, '')));
                                     c = Math.abs(parseInt(document.getElementById('BalanceSheetsAnomalySummary1').innerHTML.replaceAll(/,/g, '')));
                                     d = Math.abs(parseInt(document.getElementById('IncomeAnomalySummary1').innerHTML.replaceAll(/,/g, '')));
-                                    f = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary1').innerHTML.replaceAll(/,/g, '')));
-                                    document.getElementById('AnomaliesWorstCaseScenario1').innerHTML = numUSD.format(Math.max(a, b, c, d, e, f))
+                                    e = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary1').innerHTML.replaceAll(/,/g, '')));
+                                    document.getElementById('AnomaliesWorstCaseScenario1').innerHTML = numUSD.format(Math.max(a, b, c, d, e))
                                     // Second Last Year
                                     a = Math.abs(parseInt(document.getElementById('TrialBalanceAnomalySummary2').innerHTML.replaceAll(/,/g, '')));
                                     b = Math.abs(parseInt(document.getElementById('AccountingEquationAnomalySummary2').innerHTML.replaceAll(/,/g, '')));
                                     c = Math.abs(parseInt(document.getElementById('BalanceSheetsAnomalySummary2').innerHTML.replaceAll(/,/g, '')));
                                     d = Math.abs(parseInt(document.getElementById('IncomeAnomalySummary2').innerHTML.replaceAll(/,/g, '')));
-                                    f = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary2').innerHTML.replaceAll(/,/g, '')));
-                                    document.getElementById('AnomaliesWorstCaseScenario2').innerHTML = numUSD.format(Math.max(a, b, c, d, e, f))
+                                    e = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary2').innerHTML.replaceAll(/,/g, '')));
+                                    document.getElementById('AnomaliesWorstCaseScenario2').innerHTML = numUSD.format(Math.max(a, b, c, d, e))
                                     // Third Last Year
                                     a = Math.abs(parseInt(document.getElementById('TrialBalanceAnomalySummary3').innerHTML.replaceAll(/,/g, '')));
                                     b = Math.abs(parseInt(document.getElementById('AccountingEquationAnomalySummary3').innerHTML.replaceAll(/,/g, '')));
                                     c = Math.abs(parseInt(document.getElementById('BalanceSheetsAnomalySummary3').innerHTML.replaceAll(/,/g, '')));
                                     d = Math.abs(parseInt(document.getElementById('IncomeAnomalySummary3').innerHTML.replaceAll(/,/g, '')));
-                                    f = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary3').innerHTML.replaceAll(/,/g, '')));
-                                    document.getElementById('AnomaliesWorstCaseScenario3').innerHTML = numUSD.format(Math.max(a, b, c, d, e, f))
+                                    e = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary3').innerHTML.replaceAll(/,/g, '')));
+                                    document.getElementById('AnomaliesWorstCaseScenario3').innerHTML = numUSD.format(Math.max(a, b, c, d, e))
                                     // Fourth Last Year
                                     a = Math.abs(parseInt(document.getElementById('TrialBalanceAnomalySummary4').innerHTML.replaceAll(/,/g, '')));
                                     b = Math.abs(parseInt(document.getElementById('AccountingEquationAnomalySummary4').innerHTML.replaceAll(/,/g, '')));
                                     c = Math.abs(parseInt(document.getElementById('BalanceSheetsAnomalySummary4').innerHTML.replaceAll(/,/g, '')));
                                     d = Math.abs(parseInt(document.getElementById('IncomeAnomalySummary4').innerHTML.replaceAll(/,/g, '')));
-                                    f = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary4').innerHTML.replaceAll(/,/g, '')));
-                                    document.getElementById('AnomaliesWorstCaseScenario4').innerHTML = numUSD.format(Math.max(a, b, c, d, e, f))
+                                    e = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary4').innerHTML.replaceAll(/,/g, '')));
+                                    document.getElementById('AnomaliesWorstCaseScenario4').innerHTML = numUSD.format(Math.max(a, b, c, d, e))
                                     // Fifth Last Year
                                     a = Math.abs(parseInt(document.getElementById('TrialBalanceAnomalySummary5').innerHTML.replaceAll(/,/g, '')));
                                     b = Math.abs(parseInt(document.getElementById('AccountingEquationAnomalySummary5').innerHTML.replaceAll(/,/g, '')));
                                     c = Math.abs(parseInt(document.getElementById('BalanceSheetsAnomalySummary5').innerHTML.replaceAll(/,/g, '')));
                                     d = Math.abs(parseInt(document.getElementById('IncomeAnomalySummary5').innerHTML.replaceAll(/,/g, '')));
-                                    f = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary5').innerHTML.replaceAll(/,/g, '')));
-                                    document.getElementById('AnomaliesWorstCaseScenario5').innerHTML = numUSD.format(Math.max(a, b, c, d, e, f))
+                                    e = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary5').innerHTML.replaceAll(/,/g, '')));
+                                    document.getElementById('AnomaliesWorstCaseScenario5').innerHTML = numUSD.format(Math.max(a, b, c, d, e))
                                     // Sixth Last Year
                                     a = Math.abs(parseInt(document.getElementById('TrialBalanceAnomalySummary6').innerHTML.replaceAll(/,/g, '')));
                                     b = Math.abs(parseInt(document.getElementById('AccountingEquationAnomalySummary6').innerHTML.replaceAll(/,/g, '')));
                                     c = Math.abs(parseInt(document.getElementById('BalanceSheetsAnomalySummary6').innerHTML.replaceAll(/,/g, '')));
                                     d = Math.abs(parseInt(document.getElementById('IncomeAnomalySummary6').innerHTML.replaceAll(/,/g, '')));
-                                    f = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary6').innerHTML.replaceAll(/,/g, '')));
-                                    document.getElementById('AnomaliesWorstCaseScenario6').innerHTML = numUSD.format(Math.max(a, b, c, d, e, f))
+                                    e = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary6').innerHTML.replaceAll(/,/g, '')));
+                                    document.getElementById('AnomaliesWorstCaseScenario6').innerHTML = numUSD.format(Math.max(a, b, c, d, e))
                                 };
                                 window.addEventListener('DOMContentLoaded', WorstCaseScenario)
                                 window.addEventListener('keyup', function() {
