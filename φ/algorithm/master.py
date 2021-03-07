@@ -27,14 +27,14 @@ import xml.etree.ElementTree as ET
 
 # TradingSymbol to EntityCentralIndexKeys
 EntityCentralIndexKeys = {
-#    'AAPL':    '320193',
+    'AAPL':    '320193',
 #    'FB':     '1326801',
 #    'GLW':    '24741',
 #    'GME':    '1326380',
 #    'IBM':    '51143',
 #    'INTC':    '50863',
 #    'KO':    '21344',
-    'LLY':    '59478',
+#    'LLY':    '59478',
 #    'MCD':     '63908',
 #    'VLO':    '1035002',
 #    'WMT':    '104169',
@@ -6378,10 +6378,9 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                 d = key
                                 q = [
                                     'OtherReceivables',
-                                    'VendorNonTradeReceivables',
+                                    'NonTrade',
                                 ]
                                 b = [
-                                    'NonTrade',
                                     'Payment',
                                     'Purchase',
                                     'Acquisition',
@@ -6528,6 +6527,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                     'Other',
                                     'Miscellaneous',
                                     'Research',
+                                    'NonTrade',
                                 ]
                                 b = [
                                     'NonTrade',
@@ -7150,7 +7150,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                             PaymentsOfDividends.append(ARCHvalue)
                                             print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'PaymentsOfDividends')
                             r = r + 1
-                        cf.PaymentsOfDividends = sum(PaymentsOfDividends)
+                        cf.PaymentsOfDividends = -abs(sum(PaymentsOfDividends))
                     except:
                         pass
                     #
@@ -7343,7 +7343,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                 'CommercialPaper',
                             ]
                             b = [
-                                'Proceeds',
+                                'Acquisition',
                             ]
                             for l in q:
                                 if l in d:

@@ -15349,6 +15349,20 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
+                    <tr>
+                        <td><h5>Accuracy Of Previous Opinions</h5></td>
+                        <td></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px;" id="Checkbox"></input>
+                            <input type="checkbox" style="height: 16px;" id="Checkbox2"></input>
+                        </td>
+                        <td></td>
+                        <td id="AccuracyOfPreviousOpinions2" style="text-align:center"></td>
+                        <td id="AccuracyOfPreviousOpinions3" style="text-align:center"></td>
+                        <td id="AccuracyOfPreviousOpinions4" style="text-align:center"></td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr>
@@ -15655,7 +15669,64 @@
                                         }
                                     }
                                 }
+                                ////////////////////
+                                // ACCURACY OF PREVIOUS OPINIONS
+                                a = parseInt(document.getElementById('MarketCapitalizationColumn1').innerHTML.replaceAll(/,/g, ''));
+                                b = parseInt(document.getElementById('MarketCapitalizationColumn2').innerHTML.replaceAll(/,/g, ''));
+                                c = parseInt(document.getElementById('MarketCapitalizationColumn3').innerHTML.replaceAll(/,/g, ''));
+                                d = parseInt(document.getElementById('MarketCapitalizationColumn4').innerHTML.replaceAll(/,/g, ''));
+                                //
+                                aa = parseFloat(document.getElementById('Clockφ2').innerHTML)/100;
+                                bb = parseFloat(document.getElementById('Clockφ3').innerHTML)/100;
+                                cc = parseFloat(document.getElementById('Clockφ4').innerHTML)/100;                              
+                                // Column 2
+                                if (aa > 1) {
+                                    if (a > b) {
+                                        acca = 'accurate';
+                                    } else {
+                                        acca = 'inaccurate';
+                                    }
+                                } else {
+                                    if (a < b) {
+                                        acca = 'accurate';
+                                    } else {
+                                        acca = 'inaccurate';
+                                    }
+                                }
+                                document.getElementById('AccuracyOfPreviousOpinions2').innerHTML = acca;
+                                // Column 3
+                                if (bb > 1) {
+                                    if (b > c) {
+                                        accb = 'accurate';
+                                    } else {
+                                        accb = 'inaccurate';
+                                    }
+                                } else {
+                                    if (b < c) {
+                                        accb = 'accurate';
+                                    } else {
+                                        accb = 'inaccurate';
+                                    }
+                                }
+                                document.getElementById('AccuracyOfPreviousOpinions3').innerHTML = accb;
+                                // Column 4
+                                if (cc > 1) {
+                                    if (c > d) {
+                                        accc = 'accurate';
+                                    } else {
+                                        accc = 'inaccurate';
+                                    }
+                                } else {
+                                    if (c < d) {
+                                        accc = 'accurate';
+                                    } else {
+                                        accc = 'inaccurate';
+                                    }
+                                }
+                                document.getElementById('AccuracyOfPreviousOpinions4').innerHTML = accc;
                             }
+                            //
+                            //
                             window.addEventListener('DOMContentLoaded', BalanceClock)
                             window.addEventListener('keyup', function() {
                                 var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
@@ -20188,7 +20259,12 @@
                         <tr></tr>
                         <tr></tr>
                         <tr>
-                            <td colspan='3'><h6><b>Materiality Threshold</b></h6></td>
+                            <td><h6><b>Materiality Threshold</b></h6></td>
+                            <td><button data-page="MaterialityThreshold" style="text-align:center; font-weight:bold;">MT</button></td>
+                            <td>
+                                <input type="checkbox" style="height: 16px;" id="Checkbox"></input>
+                                <input type="checkbox" style="height: 16px;" id="Checkbox2"></input>
+                            </td>
                             <script>
                                 function BalanceAnomaliesMatherialityThreshold(BalanceAnomaliesMatherialityThreshold) {
                                     var numUSD = new Intl.NumberFormat("en-US", {
