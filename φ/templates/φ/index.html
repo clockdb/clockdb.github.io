@@ -41,8 +41,7 @@
                 <td colspan='2'>
                     <a href="/{{ entity.TradingSymbol }}">
                         <button>
-                            <h3 style="padding-bottom:7px;">{{ entity.EntityRegistrantName }} ({{ entity.TradingSymbol }})</h3>
-                            <h5 style="color:#8A9096">{{ entity.Industry }}</h5>
+                            <h3>{{ entity.EntityRegistrantName }} ({{ entity.TradingSymbol }})</h3>
                         </button>
                     </a>                               
                 </td>
@@ -53,12 +52,14 @@
                     <h2 style="text-align: center;">{{ entity.ClockφChange }} pp</h2>
                 </td>
                 <td>
-                    <h2 style="text-align: center;">{{ entity.lastyear }}</h2>
+                    <h2 style="text-align: center; font-size: 6px">{{ entity.lastyear }}</h2>
                 </td>
             </tr>
-            
-            <tr></tr>
-            <tr></tr>
+            <tr style='padding-bottom:7px;'>
+                <td colspan='4'>
+                    <h5 style="color:#8A9096;">{{ entity.Industry }}</h5>
+                </td>
+            </tr>
 
             {% endfor %}
             
