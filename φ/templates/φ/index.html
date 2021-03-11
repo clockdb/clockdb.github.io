@@ -38,29 +38,44 @@
             {% for entity in entities %}
 
             <tr>
-                <td colspan='2'>
-                    <a href="/{{ entity.TradingSymbol }}">
-                        <button>
-                            <h3>{{ entity.EntityRegistrantName }} ({{ entity.TradingSymbol }})</h3>
+                    <td colspan='2'>
+                        <a href="/{{ entity.TradingSymbol }}">
+                            <button style='padding-bottom:1px;'>
+                                <h3>{{ entity.EntityRegistrantName }} ({{ entity.TradingSymbol }})</h3>
+                            </button>
+                        </a>                               
+                    </td>
+                    <td>
+                        <a href="/{{ entity.TradingSymbol }}">
+                        <button style='padding-bottom:1px;'>
+                            <h2 style="text-align: center; <percentage>">{{ entity.Clockφ }} %</h2>
                         </button>
-                    </a>                               
-                </td>
-                <td>
-                    <h2 style="text-align: center; <percentage>">{{ entity.Clockφ }} %</h2>
-                </td>
-                <td>
-                    <h2 style="text-align: center;">{{ entity.ClockφChange }} pp</h2>
-                </td>
-                <td>
-                    <h2 style="text-align: center; font-size: 6px">{{ entity.lastyear }}</h2>
-                </td>
+                    </td>
+                    <td>
+                        <a href="/{{ entity.TradingSymbol }}">
+                            <button style='padding-bottom:1px;'>
+                                <h2 style="text-align: center;">{{ entity.ClockφChange }} pp</h2>
+                            </button>
+                    </td>
+                    <td>
+                        <a href="/{{ entity.TradingSymbol }}">
+                            <button style='padding-bottom:1px;'>
+                                <h2 style="text-align: center; font-size: 6px">{{ entity.lastyear }}</h2>
+                            </button>
+                        </a>
+                    </td>
+                </button>
             </tr>
-            <tr style='padding-bottom:7px;'>
-                <td colspan='4'>
-                    <h5 style="color:#8A9096;">{{ entity.Industry }}</h5>
-                </td>
+            <tr >
+                    <td colspan='4'>
+                        <a href="/{{ entity.TradingSymbol }}">
+                            <button style="padding-top: 1px; padding-bottom: 18px">
+                                <h5 style="color:#8A9096;">{{ entity.Industry }}</h5>
+                            </button>
+                        </a>
+                    </td>
             </tr>
-
+            
             {% endfor %}
             
         </tbody>
