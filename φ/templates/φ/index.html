@@ -17,7 +17,7 @@
         <tbody>
 
             <tr>
-                <td colspan='3' style="border-bottom: ridge;">
+                <td colspan='2' style="border-bottom: ridge;">
                     <h2 style="font-weight:bold;">Entity</h2>
                 </td>
                 <td style="border-bottom: ridge;" >
@@ -26,7 +26,7 @@
                 <td style="border-bottom: ridge;">
                     <h2 style="font-weight:bold;">+/-</h2>
                 </td>
-                <td style="border-bottom: ridge;" colspan='2'>
+                <td style="border-bottom: ridge;">
                     <h2 style="font-weight:bold;">Fiscal Year</h2>
                 </td>
             </tr>
@@ -37,7 +37,7 @@
             {% for entity in entities %}
 
             <tr>
-                    <td colspan='3'>
+                    <td colspan='2'>
                         <a href="/{{ entity.TradingSymbol }}">
                             <button style='padding-bottom:0px;'>
                                 <h4 style='text-align:left;'>{{ entity.EntityRegistrantName }} ({{ entity.TradingSymbol }})</h4>
@@ -56,7 +56,7 @@
                                 <h3 style="text-align: center;">{{ entity.ClockφChange }} pp</h2>
                             </button>
                     </td>
-                    <td colspan='2'>
+                    <td>
                         <a href="/{{ entity.TradingSymbol }}">
                             <button style='padding-bottom:0px;'>
                                 <h6 style="text-align: center;">{{ entity.lastyear }}</h6>
