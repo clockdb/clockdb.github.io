@@ -30,6 +30,7 @@ EntityCentralIndexKeys = {
 #
 #    'AAPL':    '320193',
 #    'ABBV':    '1551152',
+#    'AMC':    '1411579',
 #    'AMD':     '2488',
 #    'A':       '1090872',
 #    'ALGN':    '1097149',
@@ -38,10 +39,10 @@ EntityCentralIndexKeys = {
 #    'FB':      '1326801',
 #    'IBM':     '51143',
 #    'INTC':    '50863',
-    'LLY':     '59478',
+#    'LLY':     '59478',
 #    'KO':      '21344',
 #    'GLW':     '24741',
-#    'GME':     '1326380',
+    'GME':     '1326380',
 #    'MCD':    '63908',
 #    'VLO':     '1035002',
 #    'TSLA':     '1318605',
@@ -8231,6 +8232,23 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                 #
             except:
                 pass
+            #
+            # 
+            for key, value in BalanceSheet.items():
+                print(key + ' ' + value)
+            #
+            for key, value in IncomeStatement.items():
+                print(key + ' ' + value)
+            #
+            for key, value in ComprehensiveIncomeStatement.items():
+                print(key + ' ' + value)
+            #
+            for key, value in StockholdersEquityStatement.items():
+                print(key + ' ' + value)
+            #
+            for key, value in CashFlowStatement.items():
+                print(key + ' ' + value)
+        #
         #
         print(137 * '-' * 3)
         #
@@ -8264,6 +8282,9 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                 b,
                 d,
             ]
+            #
+            print(d.upper())
+            #
             for p in q:
                 if 'SHARES IN MILLIONS' in d.upper():
                     dad = 1000000
