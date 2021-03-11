@@ -19,11 +19,11 @@
             <tr></tr>
             <tr></tr>
             <tr>
-                <td colspan='2' style="border-bottom: ridge;">
+                <td colspan='3' style="border-bottom: ridge;">
                     <h2 style="font-weight:bold;">Entity</h2>
                 </td>
                 <td style="border-bottom: ridge;" >
-                    <h2 style="font-weight:bold;">Valuation Ratio</h2>
+                    <h2 style="font-weight:bold;">Value Ratio</h2>
                 </td>
                 <td style="border-bottom: ridge;">
                     <h2 style="font-weight:bold;">Change<h6 style="text-align:center">(Percentage points)</h6></h2>
@@ -38,7 +38,7 @@
             {% for entity in entities %}
 
             <tr>
-                    <td colspan='2'>
+                    <td colspan='3'>
                         <a href="/{{ entity.TradingSymbol }}">
                             <button style='padding-bottom:1px;'>
                                 <h3>{{ entity.EntityRegistrantName }} ({{ entity.TradingSymbol }})</h3>
@@ -67,7 +67,7 @@
                 </button>
             </tr>
             <tr >
-                    <td colspan='4'>
+                    <td colspan='6'>
                         <a href="/{{ entity.TradingSymbol }}">
                             <button style="padding-top: 1px; padding-bottom: 18px">
                                 <h5 style="color:#8A9096;">{{ entity.Industry }}</h5>
