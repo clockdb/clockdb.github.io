@@ -5,16 +5,16 @@ import datetime
 
 # ANALYSIS
 def analysis(request, entity_TradingSymbol):
-    # ENTITY
+    # entity
     entity = Entity.objects.get(TradingSymbol=entity_TradingSymbol)
-    # TRIAL BALANCE
+    # trial balance
     TrialBalance_lastyear = TrialBalance.objects.get(TradingSymbol=entity_TradingSymbol, Period="lastyear")
     TrialBalance_secondlastyear = TrialBalance.objects.get(TradingSymbol=entity_TradingSymbol, Period="secondlastyear")
     TrialBalance_thirdlastyear = TrialBalance.objects.get(TradingSymbol=entity_TradingSymbol, Period="thirdlastyear")
     TrialBalance_fourthlastyear = TrialBalance.objects.get(TradingSymbol=entity_TradingSymbol, Period="fourthlastyear")
     TrialBalance_fifthlastyear = TrialBalance.objects.get(TradingSymbol=entity_TradingSymbol, Period="fifthlastyear")
     TrialBalance_sixthlastyear = TrialBalance.objects.get(TradingSymbol=entity_TradingSymbol, Period="sixthlastyear")
-    # CASH FLOW
+    # cash flow
     CashFlow_lastyear = CashFlow.objects.get(TradingSymbol=entity_TradingSymbol, Period="lastyear")
     CashFlow_secondlastyear = CashFlow.objects.get(TradingSymbol=entity_TradingSymbol, Period="secondlastyear")
     CashFlow_thirdlastyear = CashFlow.objects.get(TradingSymbol=entity_TradingSymbol, Period="thirdlastyear")
@@ -58,7 +58,7 @@ def analysis(request, entity_TradingSymbol):
 # INDEX
 def index(request):
     return render(request, "./φ/index.html", {
-        "entities": Entity.objects.all().order_by('-Clockφ').exclude(Anomalies='yes')
+        "entities": Entity.objects.all().order_by('-Clockφ')#.exclude(Anomalies='yes')
     })
 
 # ANOMALIES

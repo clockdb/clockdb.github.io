@@ -27,17 +27,25 @@ import xml.etree.ElementTree as ET
 
 # TradingSymbol to EntityCentralIndexKeys
 EntityCentralIndexKeys = {
-    'AAPL':    '320193',
-#    'FB':     '1326801',
-#    'GLW':    '24741',
-#    'GME':    '1326380',
-#    'IBM':    '51143',
+#
+#    'AAPL':    '320193',
+#    'ABBV':    '1551152',
+#    'AMD':     '2488',
+#    'A':       '1090872',
+#    'ALGN':    '1097149',
+#    'AMAT':    '6951',
+#    'ANET':    '1596532',
+#    'FB':      '1326801',
+#    'IBM':     '51143',
 #    'INTC':    '50863',
-#    'KO':    '21344',
-#    'LLY':    '59478',
-#    'MCD':     '63908',
-#    'VLO':    '1035002',
-#    'WMT':    '104169',
+    'LLY':     '59478',
+#    'KO':      '21344',
+#    'GLW':     '24741',
+#    'GME':     '1326380',
+#    'MCD':    '63908',
+#    'VLO':     '1035002',
+#    'TSLA':     '1318605',
+#    'WMT':     '104169',
 }
 
 #
@@ -878,7 +886,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
     #
     # entity
     try:
-        print(137*'-' + '\n')
+        print(137*'-')
         #
         try:
             e = Entity.objects.get(TradingSymbol=TradingSymbol)
@@ -892,7 +900,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
             #
             print('New Entity for TradingSymbol ' + TradingSymbol + ' created in φ.')
             #
-            print(137*'-' + '\n')
+            print(137*'-')
     except:
         pass
     #
@@ -902,7 +910,6 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
         #
         # UpdateFinancialStatements
         if UpdateFinancialStatements == 'yes':
-            #
             #
             # models, filings, entity information, documents, etc.
             try:
@@ -1322,7 +1329,6 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                 #
                                 except:
                                     pass
-                            #
                             except:
                                 pass
                         except:
@@ -1416,9 +1422,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                                     statements_url.append(t)
                                                     s = 'z'
                         #
-                        #
                         pprint.pprint(statements_set)
-                        #
                         #
                         # Statements data
                         statements_data = []
@@ -1477,7 +1481,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                         try:
                                             z = len(m[5].find_all('td'))
                                             x = m[5].find_all('td')[1].text
-                                            if z > 4:
+                                            if z > 3:
                                                 if x == '' :
                                                     g = t[2]
                                                 else:
@@ -1612,24 +1616,18 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             print('---Could Not Define Entity`s Period End Dates')
                     except:
                         print('---Could not extract data from urls.')
-                #
                 except:
                     print('---Could not extract tree.')
             except:
                 pass
             #
-            #
             # financial statements
             try:
-                print('\n' * 3)
                 #
                 # balance sheet
                 print('balance sheet')
-                print(137*'-' + '\n')
-                #
-                #
-                # current assets
-                try:#
+                print(137*'-')
+                try:
                     #
                     # total current assets
                     try:
@@ -1687,6 +1685,110 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         a.CurrentAssets = sum(TotalCurrentAssets)
                     except:
                         pass
+                    #                   
+                    # total non current assets
+                    try:
+                        TotalNonCurrentAssets = []
+                        r = 0
+                        for key, value in BalanceSheet.items():
+                            if r > CurrentAssetsRank:
+                                d = key
+                                q = [
+                                    'NonCurrentAsset',
+                                ]
+                                b = [
+                                    'ShortTerm',
+                                    'OtherNonCurrentAsset',
+                                ]
+                                for l in q:
+                                    if l in d:
+                                        h = 'p'
+                                        for p in b:
+                                            u = 0
+                                            while u < len(b):
+                                                if p in d:
+                                                    h = ''
+                                                u = u + 1
+                                        if h == 'p':
+                                            try:
+                                                i = 0
+                                                while BalanceSheet[key][i] == None:
+                                                    i = i + 1
+                                                ARCHvalue = BalanceSheet[key][i]
+                                                BalanceSheet[key][i] = None
+                                            except:
+                                                if BalanceSheet[key] != None:
+                                                    ARCHvalue = BalanceSheet[key]
+                                                    BalanceSheet[key] = None
+                                                else:
+                                                    ARCHvalue = 0
+                                            if ARCHvalue != 0:
+                                                TotalNonCurrentAssets.append(ARCHvalue)
+                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'TotalNonCurrentAssets')
+                            r = r + 1
+                        a.NonCurrentAssets = sum(TotalNonCurrentAssets)
+                    except:
+                        pass
+                    #
+                    # total assets
+                    try:
+                        TotalAssets = []
+                        r = 0
+                        for key, value in BalanceSheet.items():
+                            if r > CurrentAssetsRank:
+                                d = key
+                                q = [
+                                    'Assets',
+                                ]
+                                b = [
+                                    'Deferred',
+                                    'Goodwill',
+                                    'Intangible',
+                                    'Investment',
+                                    'Liabilit',
+                                    'Operating',
+                                    'Other',
+                                    'Miscellaneous',
+                                    'Property',
+                                    'Tax',
+                                ]
+                                for l in q:
+                                    if l in d:
+                                        h = 'p'
+                                        for p in b:
+                                            u = 0
+                                            while u < len(b):
+                                                if p in d:
+                                                    h = ''
+                                                u = u + 1
+                                        if h == 'p':
+                                            try:
+                                                i = 0
+                                                while BalanceSheet[key][i] == None:
+                                                    i = i + 1
+                                                ARCHvalue = BalanceSheet[key][i]
+                                                BalanceSheet[key][i] = None
+                                            except:
+                                                if BalanceSheet[key] != None:
+                                                    ARCHvalue = BalanceSheet[key]
+                                                    BalanceSheet[key] = None
+                                                else:
+                                                    ARCHvalue = 0
+                                            if ARCHvalue != 0:
+                                                TotalAssets.append(ARCHvalue)
+                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'TotalAssets')
+                                                AssetsRank = r
+                            r = r + 1
+                        a.Assets = sum(TotalAssets)
+                        #
+                        # total asset not null
+                        try:
+                            if a.NonCurrentAssets == 0:
+                                a.NonCurrentAssets = a.Assets - a.CurrentAssets
+                        except:
+                            pass
+                    except:
+                        pass
                     #
                     # total current liabilities
                     try:
@@ -1738,1752 +1840,10 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     except:
                         pass
                     #
-                    print('current assets')
-                    print(137*'-')
-                    print('\n')
-                    #
-                    # cash
-                    try:
-                        Cash = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r < CurrentAssetsRank:
-                                d = key
-                                q = [
-                                    'Cash',
-                                ]
-                                b = [
-                                    'AssetsCurrent',
-                                    'CurrentAssets',
-                                    'DeferredTax',
-                                    'DeferredIncome',
-                                    'DiscontinuedOperations',
-                                    'Inventor',
-                                    'Prepaid',
-                                    'Receivable',
-                                    'Securities',
-                                    'Total',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                Cash.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'Cash')
-                            r = r + 1
-                        tb.Cash = sum(Cash)
-                    except:
-                        pass
-                    #
-                    # short term investment
-                    try:
-                        ShortTermInvestments = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r < CurrentAssetsRank:
-                                d = key
-                                q = [
-                                    'Investment',
-                                    'Securities',
-                                    'TradingAssets',
-                                ]
-                                b = [
-                                    'AssetsCurrent',
-                                    'Cash',
-                                    'CurrentAssets',
-                                    'DeferredTax',
-                                    'DeferredIncome',
-                                    'DiscontinuedOperations',
-                                    'Inventor',
-                                    'Prepaid',
-                                    'Receivable',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                ShortTermInvestments.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'ShortTermInvestments')
-                            r = r + 1
-                        tb.ShortTermInvestments = sum(ShortTermInvestments)
-                    except:
-                        pass
-                    #
-                    # account receivable
-                    try:
-                        AccountsReceivable = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r < CurrentAssetsRank:
-                                d = key
-                                q = [
-                                    'Receivable',
-                                ]
-                                b = [
-                                    'AssetsCurrent',
-                                    'Cash',
-                                    'CurrentAssets',
-                                    'DeferredTax',
-                                    'DeferredIncome',
-                                    'DiscontinuedOperations',
-                                    'Inventor',
-                                    'Investments',
-                                    'Prepaid',
-                                    'Securities',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                AccountsReceivable.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'AccountsReceivable')
-                            r = r + 1
-                        tb.AccountsReceivable = sum(AccountsReceivable)
-                    except:
-                        pass
-                    #
-                    # inventories
-                    try:
-                        Inventories = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r < CurrentAssetsRank:
-                                d = key
-                                q = [
-                                    'Inventor',
-                                ]
-                                b = [
-                                    'AssetsCurrent',
-                                    'Cash',
-                                    'CurrentAssets',
-                                    'DeferredTax',
-                                    'DeferredIncome',
-                                    'DiscontinuedOperations',
-                                    'Investments',
-                                    'Prepaid',
-                                    'Receivable',
-                                    'Securities',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                Inventories.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'Inventories')
-                            r = r + 1
-                        tb.Inventories = sum(Inventories)
-                    except:
-                        pass
-                    #
-                    # prepaid expenses
-                    try:
-                        PrepaidExpenses = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r < CurrentAssetsRank:
-                                d = key
-                                q = [
-                                    'Prepaid',
-                                ]
-                                b = [
-                                    'AssetsCurrent',
-                                    'Cash',
-                                    'DeferredTax',
-                                    'DeferredIncome',
-                                    'DiscontinuedOperations',
-                                    'Inventor',
-                                    'Investments',
-                                    'Receivable',
-                                    'Securities',
-                                    'Tax',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                PrepaidExpenses.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'PrepaidExpenses')
-                            r = r + 1
-                        tb.PrepaidExpenses = sum(PrepaidExpenses)
-                    except:
-                        pass
-                    #
-                    # non-trade receivables
-                    try:
-                        NonTradeReceivables = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r < CurrentAssetsRank:
-                                d = key
-                                q = [
-                                    'NonTradeReceivable',
-                                    'OtherReceivable',
-                                ]
-                                b = [
-                                    'AssetsCurrent',
-                                    'Cash',
-                                    'CurrentAssets',
-                                    'DeferredTax',
-                                    'DeferredIncome',   
-                                    'DiscontinuedOperations',
-                                    'Inventor',
-                                    'Investments',
-                                    'Prepaid',
-                                    'Securities',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                NonTradeReceivables.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'NonTradeReceivables')
-                            r = r + 1
-                        tb.NonTradeReceivables = sum(NonTradeReceivables)
-                    except:
-                        pass
-                    #
-                    # deferred tax assets current
-                    try:
-                        DeferredTaxAssetsCurrent = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r < CurrentAssetsRank:
-                                d = key
-                                q = [
-                                    'DeferredTax',
-                                    'DeferredIncome',
-                                ]
-                                b = [
-                                    'AssetsCurrent',
-                                    'Cash',
-                                    'CurrentAssets', 
-                                    'DiscontinuedOperations',
-                                    'Inventor',
-                                    'Investments',
-                                    'Prepaid',
-                                    'Receivable',
-                                    'Securities',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                DeferredTaxAssetsCurrent.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'DeferredTaxAssetsCurrent')
-                            r = r + 1
-                        tb.DeferredTaxAssetsCurrent = sum(DeferredTaxAssetsCurrent)
-                    except:
-                        pass
-                    #
-                    # other current assets
-                    try:
-                        OtherCurrentAssets = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r < CurrentAssetsRank:
-                                d = key
-                                q = [
-                                    'Other',
-                                    'Miscellaneous',
-                                ]
-                                b = [
-                                    'Cash',
-                                    'DeferredTax',
-                                    'DeferredIncome',
-                                    'DiscontinuedOperations',
-                                    'Inventor',
-                                    'Investments',
-                                    'Prepaid',
-                                    'Receivable',
-                                    'Securities',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                OtherCurrentAssets.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'OtherCurrentAssets')
-                            r = r + 1
-                        tb.OtherCurrentAssets = sum(OtherCurrentAssets)
-                    except:
-                        pass
-                    #
-                    # discontinued operations current
-                    try:
-                        DiscontinuedOperationsCurrent = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r < CurrentAssetsRank:
-                                d = key
-                                q = [
-                                    'Discontinued',
-                                    'AssetsHeldForSale',
-                                    'AssetsOfBusinessesHeldForSale',
-                                ]
-                                b = [
-                                    'AssetsCurrent',
-                                    'Cash',
-                                    'CurrentAssets', 
-                                    'DeferredTax',
-                                    'DeferredIncome',
-                                    'DiscontinuedOperations',
-                                    'Inventor',
-                                    'Investments',
-                                    'Prepaid',
-                                    'Receivable',
-                                    'Securities',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                DiscontinuedOperationsCurrent.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'DiscontinuedOperationsCurrent')
-                            r = r + 1
-                        tb.DiscontinuedOperationsCurrent = sum(DiscontinuedOperationsCurrent)
-                    except:
-                        pass
-                    #
-                    print('\n' * 3)
-                    #
-                except:
-                    pass
-                #
-                print('\n' * 3)
-                #
-                # non-current assets
-                try:
-                    #
-                    print('non-current assets')
-                    print(137*'-')
-                    #
-                    # total non current assets
-                    try:
-                        TotalNonCurrentAssets = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r > CurrentAssetsRank:
-                                d = key
-                                q = [
-                                    'NonCurrentAsset',
-                                ]
-                                b = [
-                                    'ShortTerm',
-                                    'OtherNonCurrentAsset',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                TotalNonCurrentAssets.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'TotalNonCurrentAssets')
-                            r = r + 1
-                        a.NonCurrentAssets = sum(TotalNonCurrentAssets)
-                    except:
-                        pass
-                    #
-                    print('\n')
-                    #
-                    # long term receivables
-                    try:
-                        LongTermReceivables = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r > CurrentAssetsRank:
-                                d = key
-                                q = [
-                                    'Receivables',
-                                ]
-                                b = [
-                                    'ShortTerm',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                LongTermReceivables.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'LongTermReceivables')
-                            r = r + 1
-                        tb.LongTermReceivables = sum(LongTermReceivables)
-                    except:
-                        pass
-                    #
-                    print('\n')
-                    #
-                    # deferred charges
-                    try:
-                        DeferredCharges = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r > CurrentAssetsRank:
-                                d = key
-                                q = [
-                                    'DeferredCharges',
-                                    'DeferredCost',
-                                ]
-                                b = [
-                                    'ShortTerm',
-                                    'Tax',
-                                    'Income',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                DeferredCharges.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'DeferredCharges')
-                            r = r + 1
-                        tb.DeferredCharges = sum(DeferredCharges)
-                    except:
-                        pass
-                    #
-                    print('\n')
-                    #
-                    # investments
-                    try:
-                        Investments = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            d = key
-                            q = [
-                                'Investment',
-                                'Securities',
-                                'RestrictedCash',
-                            ]
-                            b = [
-                                'ShortTerm',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while BalanceSheet[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = BalanceSheet[key][i]
-                                            BalanceSheet[key][i] = None
-                                        except:
-                                            if BalanceSheet[key] != None:
-                                                ARCHvalue = BalanceSheet[key]
-                                                BalanceSheet[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            Investments.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'Investments')
-                            r = r + 1
-                        tb.Investments = sum(Investments)
-                    except:
-                        pass
-                    #
-                    # property plant and equipments
-                    try:
-                        PropertyPlantAndEquipment = []
-                        r = 0
-                        x = 0
-                        for key, value in BalanceSheet.items():
-                            if r > CurrentAssetsRank:
-                                d = key
-                                q = [
-                                    'Property',
-                                    'AccumulatedDepreciation',
-
-                                ]
-                                b = [
-                                    'UnderCapitalLease',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                if x < 2:
-                                                    PropertyPlantAndEquipment.append(ARCHvalue)
-                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'PropertyPlantAndEquipment')
-                                                x = x + 1
-                            r = r + 1
-                        tb.PropertyPlantAndEquipment = sum(PropertyPlantAndEquipment)
-                    except:
-                        pass
-                    #
-                    # operating lease right of use assets
-                    try:
-                        OperatingLeaseRightOfUseAssets = []
-                        r = 0
-                        x = 0
-                        for key, value in BalanceSheet.items():
-                            if r > CurrentAssetsRank:
-                                d = key
-                                q = [
-                                    'OperatingLease',
-                                    'OperatingRight',
-                                    'RightOfUse',
-                                ]
-                                b = [
-                                    'Liabilit',
-                                    'Due',
-                                    'Obligations',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                if x < 2:
-                                                    OperatingLeaseRightOfUseAssets.append(ARCHvalue)
-                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'OperatingLeaseRightOfUseAssets')
-                                                x = x + 1
-                            r = r + 1
-                        tb.OperatingLeaseRightOfUseAssets = sum(OperatingLeaseRightOfUseAssets)
-                    except:
-                        pass
-                    #
-                    # finance lease right of use assets
-                    try:
-                        FinanceLeaseRightOfUseAssets = []
-                        r = 0
-                        x = 0
-                        for key, value in BalanceSheet.items():
-                            if r > CurrentAssetsRank:
-                                d = key
-                                q = [
-                                    'FinanceLease',
-                                    'CapitalLease',
-                                    'AccumulatedAmortization',
-                                ]
-                                b = [
-                                    'Due',
-                                    'Liabilit',
-                                    'Obligation',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                if x < 2:
-                                                    FinanceLeaseRightOfUseAssets.append(ARCHvalue)
-                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'FinanceLeaseRightOfUseAssets')
-                                                x = x + 1
-                            r = r + 1
-                        tb.FinanceLeaseRightOfUseAssets = sum(FinanceLeaseRightOfUseAssets)
-                    except:
-                        pass
-                    #
-                    # intangible assets
-                    try:
-                        IntangibleAssets = []
-                        r = 0
-                        x = 0
-                        for key, value in BalanceSheet.items():
-                            if r > CurrentAssetsRank:
-                                d = key
-                                q = [
-                                    'Intangible',
-                                    'FranchiseRight',
-                                    'Trademarks',
-                                ]
-                                b = [
-                                    'Liabilit',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                if x < 2:
-                                                    IntangibleAssets.append(ARCHvalue)
-                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'IntangibleAssets')
-                                                x = x + 1
-                            r = r + 1
-                        tb.IntangibleAssets = sum(IntangibleAssets)
-                    except:
-                        pass
-                    #
-                    # goodwill
-                    try:
-                        Goodwill = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r > CurrentAssetsRank:
-                                d = key
-                                q = [
-                                    'Goodwill',
-                                ]
-                                b = [
-                                    'Liabilit',
-                                    'Intangible',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                Goodwill.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'Goodwill')
-                            r = r + 1
-                        tb.Goodwill = sum(Goodwill)
-                    except:
-                        pass
-                    #
-                    # deferred tax assets non current
-                    try:
-                        DeferredTaxAssetsNonCurrent = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r > CurrentAssetsRank:
-                                if r < CurrentLiabilitiesRank:
-                                    d = key
-                                    q = [
-                                        'DeferredTax',
-                                        'DeferredIncome',
-                                    ]
-                                    b = [
-                                        'Liabilit',
-                                    ]
-                                    for l in q:
-                                        if l in d:
-                                            h = 'p'
-                                            for p in b:
-                                                u = 0
-                                                while u < len(b):
-                                                    if p in d:
-                                                        h = ''
-                                                    u = u + 1
-                                            if h == 'p':
-                                                try:
-                                                    i = 0
-                                                    while BalanceSheet[key][i] == None:
-                                                        i = i + 1
-                                                    ARCHvalue = BalanceSheet[key][i]
-                                                    BalanceSheet[key][i] = None
-                                                except:
-                                                    if BalanceSheet[key] != None:
-                                                        ARCHvalue = BalanceSheet[key]
-                                                        BalanceSheet[key] = None
-                                                    else:
-                                                        ARCHvalue = 0
-                                                if ARCHvalue != 0:
-                                                    DeferredTaxAssetsNonCurrent.append(ARCHvalue)
-                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'DeferredTaxAssetsNonCurrent')
-                            r = r + 1
-                        tb.DeferredTaxAssetsNonCurrent = sum(DeferredTaxAssetsNonCurrent)
-                    except:
-                        pass
-                    #
-                    # Defined Benefit Pension And Other Similar Plans
-                    try:
-                        DefinedBenefitPensionAndOtherSimilarPlans = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r > CurrentAssetsRank:
-                                if r < CurrentLiabilitiesRank:
-                                    d = key
-                                    q = [
-                                        'Pension',
-                                    ]
-                                    b = [
-                                        'Expense',
-                                    ]
-                                    for l in q:
-                                        if l in d:
-                                            h = 'p'
-                                            for p in b:
-                                                u = 0
-                                                while u < len(b):
-                                                    if p in d:
-                                                        h = ''
-                                                    u = u + 1
-                                            if h == 'p':
-                                                try:
-                                                    i = 0
-                                                    while BalanceSheet[key][i] == None:
-                                                        i = i + 1
-                                                    ARCHvalue = BalanceSheet[key][i]
-                                                    BalanceSheet[key][i] = None
-                                                except:
-                                                    if BalanceSheet[key] != None:
-                                                        ARCHvalue = BalanceSheet[key]
-                                                        BalanceSheet[key] = None
-                                                    else:
-                                                        ARCHvalue = 0
-                                                if ARCHvalue != 0:
-                                                    DefinedBenefitPensionAndOtherSimilarPlans.append(ARCHvalue)
-                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'DefinedBenefitPensionAndOtherSimilarPlans')
-                            r = r + 1
-                        tb.DefinedBenefitPensionAndOtherSimilarPlans = sum(DefinedBenefitPensionAndOtherSimilarPlans)
-                    except:
-                        pass
-                    #
-                    # other non-current assets
-                    try:
-                        OtherNonCurrentAssets = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r > CurrentAssetsRank:
-                                d = key
-                                q = [
-                                    'OtherAssets',
-                                    'OtherLongTermAsset',
-                                    'OtherNonCurrentAsset',
-                                    'OtherNoncurrentAsset',
-                                    'Miscellaneous',
-                                    'Sundry',
-                                ]
-                                b = [
-                                    'Liabilit',
-                                    'Total',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                OtherNonCurrentAssets.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'OtherNonCurrentAssets')
-                            r = r + 1
-                        tb.OtherNonCurrentAssets = sum(OtherNonCurrentAssets)
-                    except:
-                        pass
-                    #
-                    print('\n' * 3)
-                #
-                except:
-                    pass
-                #
-                print('\n' * 3)
-                #
-                # total assets
-                try:
-                    TotalAssets = []
-                    r = 0
-                    for key, value in BalanceSheet.items():
-                        if r > CurrentAssetsRank:
-                            d = key
-                            q = [
-                                'Assets',
-                            ]
-                            b = [
-                                'Deferred',
-                                'Goodwill',
-                                'Intangible',
-                                'Investment',
-                                'Liabilit',
-                                'Operating',
-                                'Other',
-                                'Miscellaneous',
-                                'Property',
-                                'Tax',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while BalanceSheet[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = BalanceSheet[key][i]
-                                            BalanceSheet[key][i] = None
-                                        except:
-                                            if BalanceSheet[key] != None:
-                                                ARCHvalue = BalanceSheet[key]
-                                                BalanceSheet[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            TotalAssets.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'TotalAssets')
-                        r = r + 1
-                    a.Assets = sum(TotalAssets)
-                    #
-                    # total asset not null
-                    try:
-                        if a.NonCurrentAssets == 0:
-                            a.NonCurrentAssets = a.Assets - a.CurrentAssets
-                    except:
-                        pass
-                    #
-                    print(137*'-')
-                    print('\n' * 3)
-                except:
-                    pass
-                #
-                print('\n' * 3)
-                #
-                # current liabilities
-                try:
-                    #
-                    # accounts payable and accrued liabilities
-                    try:
-                        AccountsPayableAndAccruedLiabilities = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r < CurrentLiabilitiesRank:
-                                d = key
-                                q = [
-                                    'Accrued',
-                                    'Payable',
-                                    'SalesRebatesAndDiscounts',
-                                ]
-                                b = [
-                                    'Deferred',
-                                    'Employee',
-                                    'Tax',
-                                    'Dividend',
-                                    'LongTerm',
-                                    'NonCurrent',
-                                    'Noncurrent',
-                                    'Compensation',
-                                    'Payroll',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                AccountsPayableAndAccruedLiabilities.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'AccountsPayableAndAccruedLiabilities')
-                            r = r + 1
-                        tb.AccountsPayableAndAccruedLiabilities = -sum(AccountsPayableAndAccruedLiabilities)
-                    except:
-                        pass
-                    #
-                    # employee compensation current
-                    try:
-                        EmployeeCompensationCurrent = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r < CurrentLiabilitiesRank:
-                                d = key
-                                q = [
-                                    'Compensation',
-                                    'Payroll',
-                                ]
-                                b = [
-                                    'LongTerm',
-                                    'NonCurrent',
-                                    'Noncurrent',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                EmployeeCompensationCurrent.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'EmployeeCompensationCurrent')
-                            r = r + 1
-                        tb.EmployeeCompensationCurrent = -sum(EmployeeCompensationCurrent)
-                    except:
-                        pass
-                    #
-                    # operating leases current
-                    try:
-                        OperatingLeasesCurrent = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r < CurrentLiabilitiesRank:
-                                d = key
-                                q = [
-                                    'LeaseLiabilit',
-                                    'OperatingLeaseObligation',
-                                ]
-                                b = [
-                                    'Finance',
-                                    'LongTerm',
-                                    'NonCurrent',
-                                    'Noncurrent',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                OperatingLeasesCurrent.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'OperatingLeasesCurrent')
-                            r = r + 1
-                        tb.OperatingLeasesCurrent = -sum(OperatingLeasesCurrent)
-                    except:
-                        pass
-                    #
-                    # finance leases current
-                    try:
-                        FinanceLeasesCurrent = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r < CurrentLiabilitiesRank:
-                                d = key
-                                q = [
-                                    'FinanceLeaseObligation',
-                                    'CapitalLease',
-                                ]
-                                b = [
-                                    'Assets',
-                                    'LongTerm',
-                                    'NonCurrent',
-                                    'Noncurrent',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                FinanceLeasesCurrent.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'FinanceLeasesCurrent')
-                            r = r + 1
-                        tb.FinanceLeasesCurrent = -sum(FinanceLeasesCurrent)
-                    except:
-                        pass
-                    #
-                    # deferred revenue and deposits current
-                    try:
-                        DeferredRevenueAndDepositsCurrent = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r < CurrentLiabilitiesRank:
-                                d = key
-                                q = [
-                                    'ContractWithCustomerLiabilit',
-                                    'DeferredIncome',
-                                    'DeferredRevenue',
-                                ]
-                                b = [
-                                    'LongTerm',
-                                    'NonCurrent',
-                                    'Noncurrent',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                DeferredRevenueAndDepositsCurrent.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'DeferredRevenueAndDepositsCurrent')
-                            r = r + 1
-                        tb.DeferredRevenueAndDepositsCurrent = -sum(DeferredRevenueAndDepositsCurrent)
-                    except:
-                        pass
-                    #
-                    # accrued tax liabilities
-                    try:
-                        AccruedTaxLiabilities = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r < CurrentLiabilitiesRank:
-                                d = key
-                                q = [
-                                    'Taxes',
-                                ]
-                                b = [
-                                    'Deferred',
-                                    'LongTerm',
-                                    'NonCurrent',
-                                    'Noncurrent',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                AccruedTaxLiabilities.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'AccruedTaxLiabilities')
-                            r = r + 1
-                        tb.AccruedTaxLiabilities = -sum(AccruedTaxLiabilities)
-                    except:
-                        pass
-                    #
-                    # deferred tax liabilities
-                    try:
-                        DeferredTaxLiabilitiesCurrent = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r < CurrentLiabilitiesRank:
-                                d = key
-                                q = [
-                                    'Deferred',
-                                ]
-                                b = [
-                                    'Accrued',
-                                    'Charges',
-                                    'Expense',
-                                    'LongTerm',
-                                    'NonCurrent',
-                                    'Noncurrent',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                DeferredTaxLiabilitiesCurrent.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'DeferredTaxLiabilitiesCurrent')
-                            r = r + 1
-                        tb.DeferredTaxLiabilitiesCurrent = -sum(DeferredTaxLiabilitiesCurrent)
-                    except:
-                        pass
-                    #
-                    # commercial papers
-                    try:
-                        CommercialPapers = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r < CurrentLiabilitiesRank:
-                                d = key
-                                q = [
-                                    'CommercialPaper',
-                                ]
-                                b = [
-                                    'Accrued',
-                                    'Deferred',
-                                    'LongTerm',
-                                    'NonCurrent',
-                                    'Noncurrent',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                CommercialPapers.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'CommercialPapers')
-                            r = r + 1
-                        tb.CommercialPapers = -sum(CommercialPapers)
-                    except:
-                        pass
-                    #
-                    # short term borrowings
-                    try:
-                        ShortTermBorrowings = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r < CurrentLiabilitiesRank:
-                                d = key
-                                q = [
-                                    'ShortTermBorrowings',
-                                ]
-                                b = [
-                                    'Accrued',
-                                    'Deferred',
-                                    'LongTerm',
-                                    'NonCurrent',
-                                    'Noncurrent',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                ShortTermBorrowings.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'ShortTermBorrowings')
-                            r = r + 1
-                        tb.ShortTermBorrowings = -sum(ShortTermBorrowings)
-                    except:
-                        pass
-                    #
-                    # other current liabilities
-                    try:
-                        OtherCurrentLiabilities = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r < CurrentLiabilitiesRank:
-                                d = key
-                                q = [
-                                    'OtherCurrentLiabilit',
-                                ]
-                                b = [
-                                    'LongTerm',
-                                    'NonCurrent',
-                                    'Noncurrent',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                OtherCurrentLiabilities.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'OtherCurrentLiabilities')
-                            r = r + 1
-                        tb.OtherCurrentLiabilities = -sum(OtherCurrentLiabilities)
-                    except:
-                        pass
-                    #
-                    # discontinued operations
-                    try:
-                        DiscontinuedOperationsLiabilitiesCurrent = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r < CurrentLiabilitiesRank:
-                                d = key
-                                q = [
-                                    'DiscontinuedOperation',
-                                    'HeldForSale',
-                                ]
-                                b = [
-                                    'LongTerm',
-                                    'NonCurrent',
-                                    'Noncurrent',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                DiscontinuedOperationsLiabilitiesCurrent.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'DiscontinuedOperationsLiabilitiesCurrent')
-                            r = r + 1
-                        tb.DiscontinuedOperationsLiabilitiesCurrent = -sum(DiscontinuedOperationsLiabilitiesCurrent)
-                    except:
-                        pass
-                    #
-                    # dividend payable
-                    try:
-                        DividendsPayable = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r < CurrentLiabilitiesRank:
-                                d = key
-                                q = [
-                                    'DividendsPayable',
-                                    'DividendPayable',
-                                ]
-                                b = [
-                                    'LongTerm',
-                                    'NonCurrent',
-                                    'Noncurrent',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                DividendsPayable.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'DividendsPayable')
-                            r = r + 1
-                        tb.DividendsPayable = -sum(DividendsPayable)
-                    except:
-                        pass
-                    #
-                    # short term portion of long term debt
-                    try:
-                        ShortTermPortionOfLongTermDebt = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r < CurrentLiabilitiesRank:
-                                d = key
-                                q = [
-                                    'Debt'
-                                ]
-                                b = [
-                                    'Asset',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                ShortTermPortionOfLongTermDebt.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'ShortTermPortionOfLongTermDebt')
-                            r = r + 1
-                        tb.ShortTermPortionOfLongTermDebt = -sum(ShortTermPortionOfLongTermDebt)
-                    except:
-                        pass
-                except:
-                    pass
-                #
-                print('\n' * 3)
-                #
-                # non-current liabilities
-                try:
-                    #
-                    print('non-current liabilities')
-                    print(137*'-')
-                    #
                     # total non-current liabilities
                     try:
                         TotalNonCurrentLiabilities = []
+                        NonCurrentLiabilitiesRank = None
                         r = 0
                         for key, value in BalanceSheet.items():
                             d = key
@@ -3523,771 +1883,2673 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                         if ARCHvalue != 0:
                                             TotalNonCurrentLiabilities.append(ARCHvalue)
                                             print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'TotalNonCurrentLiabilities')
+                                            NonCurrentLiabilitiesRank = r
                             r = r + 1
                         a.NonCurrentLiabilities = -sum(TotalNonCurrentLiabilities)
+                        if NonCurrentLiabilitiesRank is None:
+                            a.NonCurrentLiabilities = None
+                            print('NonCurrentLiabilities set to None')
                     except:
                         pass
                     #
-                    print('\n')
-                    #
-                    # long-term debt
+                    # total liabilities
                     try:
-                        LongTermDebt = []
+                        TotalLiabilities = []
+                        LiabilitiesRank = None
                         r = 0
                         for key, value in BalanceSheet.items():
                             d = key
                             q = [
-                                'Debt',
-                            ]
-                            b = [
-                                'Asset',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while BalanceSheet[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = BalanceSheet[key][i]
-                                            BalanceSheet[key][i] = None
-                                        except:
-                                            if BalanceSheet[key] != None:
-                                                ARCHvalue = BalanceSheet[key]
-                                                BalanceSheet[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            LongTermDebt.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'LongTermDebt')
-                            r = r + 1
-                        tb.LongTermDebt = -sum(LongTermDebt)
-                    except:
-                        pass
-                    #
-                    # retirement benefits
-                    try:
-                        RetirementBenefits = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            d = key
-                            q = [
-                                'RetirementBenefits',
-                            ]
-                            b = [
-                                'Asset',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while BalanceSheet[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = BalanceSheet[key][i]
-                                            BalanceSheet[key][i] = None
-                                        except:
-                                            if BalanceSheet[key] != None:
-                                                ARCHvalue = BalanceSheet[key]
-                                                BalanceSheet[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            RetirementBenefits.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'RetirementBenefits')
-                            r = r + 1
-                        tb.RetirementBenefits = -sum(RetirementBenefits)
-                    except:
-                        pass
-                    #
-                    # operating leases non-current
-                    try:
-                        OperatingLeasesNonCurrent = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            d = key
-                            q = [
-                                'Lease',
-                            ]
-                            b = [
-                                'Asset',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while BalanceSheet[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = BalanceSheet[key][i]
-                                            BalanceSheet[key][i] = None
-                                        except:
-                                            if BalanceSheet[key] != None:
-                                                ARCHvalue = BalanceSheet[key]
-                                                BalanceSheet[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            OperatingLeasesNonCurrent.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'OperatingLeasesNonCurrent')
-                            r = r + 1
-                        tb.OperatingLeasesNonCurrent = -sum(OperatingLeasesNonCurrent)
-                    except:
-                        pass
-                    #
-                    # finance leases non-current
-                    try:
-                        FinanceLeasesNonCurrent = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            d = key
-                            q = [
-                                'FinanceLeaseObligation',
-                                'CapitalLease',
-                            ]
-                            b = [
-                                'Asset',
-                                'Right',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while BalanceSheet[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = BalanceSheet[key][i]
-                                            BalanceSheet[key][i] = None
-                                        except:
-                                            if BalanceSheet[key] != None:
-                                                ARCHvalue = BalanceSheet[key]
-                                                BalanceSheet[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            FinanceLeasesNonCurrent.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'FinanceLeasesNonCurrent')
-                            r = r + 1
-                        tb.FinanceLeasesNonCurrent = -sum(FinanceLeasesNonCurrent)
-                    except:
-                        pass
-                    #
-                    # deferred revenue and deposits non-current
-                    try:
-                        DeferredRevenueAndDepositsNonCurrent = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            d = key
-                            q = [
-                                'DeferredRevenue',
-                                'ContractLiabilities',
-                            ]
-                            b = [
-                                'Asset',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while BalanceSheet[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = BalanceSheet[key][i]
-                                            BalanceSheet[key][i] = None
-                                        except:
-                                            if BalanceSheet[key] != None:
-                                                ARCHvalue = BalanceSheet[key]
-                                                BalanceSheet[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            DeferredRevenueAndDepositsNonCurrent.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'DeferredRevenueAndDepositsNonCurrent')
-                            r = r + 1
-                        tb.DeferredRevenueAndDepositsNonCurrent = -sum(DeferredRevenueAndDepositsNonCurrent)
-                    except:
-                        pass
-                    #
-                    # Accrued Tax Liabilities Non Current
-                    try:
-                        AccruedTaxLiabilitiesNonCurrent = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            d = key
-                            q = [
-                                'IncomeTaxesPayable',
-                                'LongTermIncomeTaxes',
-                            ]
-                            b = [
-                                'Asset',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while BalanceSheet[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = BalanceSheet[key][i]
-                                            BalanceSheet[key][i] = None
-                                        except:
-                                            if BalanceSheet[key] != None:
-                                                ARCHvalue = BalanceSheet[key]
-                                                BalanceSheet[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            AccruedTaxLiabilitiesNonCurrent.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'AccruedTaxLiabilitiesNonCurrent')
-                            r = r + 1
-                        tb.AccruedTaxLiabilitiesNonCurrent = -sum(AccruedTaxLiabilitiesNonCurrent)
-                    except:
-                        pass
-                    #
-                    # deferred Tax Liabilities Non Current
-                    try:
-                        DeferredTaxLiabilitiesNonCurrent = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            d = key
-                            q = [
-                                'DeferredIncomeTax',
-                                'DeferredTaxLiabilit',
-                            ]
-                            b = [
-                                'Asset',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while BalanceSheet[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = BalanceSheet[key][i]
-                                            BalanceSheet[key][i] = None
-                                        except:
-                                            if BalanceSheet[key] != None:
-                                                ARCHvalue = BalanceSheet[key]
-                                                BalanceSheet[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            DeferredTaxLiabilitiesNonCurrent.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'DeferredTaxLiabilitiesNonCurrent')
-                            r = r + 1
-                        tb.DeferredTaxLiabilitiesNonCurrent = -sum(DeferredTaxLiabilitiesNonCurrent)
-                    except:
-                        pass
-                    #
-                    # other non-current liabilities
-                    try:
-                        OtherNonCurrentLiabilities = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            d = key
-                            q = [
-                                'OtherLongTermLiabilities',
-                                'OtherNonCurrentLiabilit',
-                                'OtherNoncurrentLiabilit',
-                                'OtherLiabilities',
-                            ]
-                            b = [
-                                'Asset',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while BalanceSheet[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = BalanceSheet[key][i]
-                                            BalanceSheet[key][i] = None
-                                        except:
-                                            if BalanceSheet[key] != None:
-                                                ARCHvalue = BalanceSheet[key]
-                                                BalanceSheet[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            OtherNonCurrentLiabilities.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'OtherNonCurrentLiabilities')
-                            r = r + 1
-                        tb.OtherNonCurrentLiabilities = -sum(OtherNonCurrentLiabilities)
-                    except:
-                        pass
-                    #
-                    # discontinued operation non current liabilities
-                    try:
-                        DiscontinuedOperationsLiabilitiesNonCurrent = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            d = key
-                            q = [
-                                'NoncurrentLiabilitiesOfDiscontinuedOperations',
-                                'NonCurrentLiabilitiesOfDiscontinuedOperations',
-                                'LiabilitiesHeldForSale',
-                            ]
-                            b = [
-                                'Asset',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while BalanceSheet[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = BalanceSheet[key][i]
-                                            BalanceSheet[key][i] = None
-                                        except:
-                                            if BalanceSheet[key] != None:
-                                                ARCHvalue = BalanceSheet[key]
-                                                BalanceSheet[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            DiscontinuedOperationsLiabilitiesNonCurrent.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'DiscontinuedOperationsLiabilitiesNonCurrent')
-                            r = r + 1
-                        tb.DiscontinuedOperationsLiabilitiesNonCurrent = -sum(DiscontinuedOperationsLiabilitiesNonCurrent)
-                    except:
-                        pass
-                    #
-                    print('\n' * 3)
-                    #
-                except:
-                    pass
-                #
-                print('\n' * 3)
-                #
-                # total liabilities
-                try:
-                    print(137*'-')
-                    TotalLiabilities = []
-                    r = 0
-                    for key, value in BalanceSheet.items():
-                        d = key
-                        q = [
-                            'Liabilit',
-                        ]
-                        b = [
-                            'Asset',
-                            'Businesses',
-                            'ContractLiabilities',
-                            'Current',
-                            'Equity',
-                            'Lease',
-                            'LiabilitiesHeldForSale',
-                            'NonCurrent',
-                            'Noncurrent',
-                            'Other',
-                            'Miscellaneous',
-                            'Payroll',
-                            'Shareholder',
-                            'Stockholder',
-                        ]
-                        for l in q:
-                            if l in d:
-                                h = 'p'
-                                for p in b:
-                                    u = 0
-                                    while u < len(b):
-                                        if p in d:
-                                            h = ''
-                                        u = u + 1
-                                if h == 'p':
-                                    try:
-                                        i = 0
-                                        while BalanceSheet[key][i] == None:
-                                            i = i + 1
-                                        ARCHvalue = BalanceSheet[key][i]
-                                        BalanceSheet[key][i] = None
-                                    except:
-                                        if BalanceSheet[key] != None:
-                                            ARCHvalue = BalanceSheet[key]
-                                            BalanceSheet[key] = None
-                                        else:
-                                            ARCHvalue = 0
-                                    if ARCHvalue != 0:
-                                        TotalLiabilities.append(ARCHvalue)
-                                        print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'TotalLiabilities')
-                            r = r + 1
-                    a.Liabilities = -sum(TotalLiabilities)
-                    #
-                    print(137*'-' + '\n' * 3)
-                except:
-                    pass
-                #
-                # shareholders' equity
-                try:
-                    print('shareholders equity')
-                    print(137*'-')
-                    #
-                    # common shares
-                    try:
-                        CommonShares = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r > CurrentLiabilitiesRank:
-                                d = key
-                                q = [
-                                    'AdditionalCapital',
-                                    'AdditionalPaidInCapital',
-                                    'CapitalInExcessOfParValue',
-                                    'CapitalSurplus',
-                                    'CommonStock',
-                                ]
-                                b = [
-                                    'Asset',
-                                    'Dividend',
-                                    'Liabilit',
-                                    'Obligation',
-                                    'Treasury',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if value != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                CommonShares.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'CommonShares')
-                            r = r + 1
-                        a.CommonShares = -sum(CommonShares)
-                    except:
-                        pass
-                    #
-                    # retained earnings
-                    try:
-                        RetainedEarnings = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r > CurrentLiabilitiesRank:
-                                d = key
-                                q = [
-                                    'Earning',
-                                    'AccumulatedDeficit',
-                                    'RetainedDeficit',
-                                ]
-                                b = [
-                                    'Asset',
-                                    'Liabilit',
-                                    'Obligation',
-                                    'Treasury',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                RetainedEarnings.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'RetainedEarnings')
-                            r = r + 1
-                        a.RetainedEarnings = -sum(RetainedEarnings)
-                    except:
-                        pass
-                    #
-                    # accumulated other comprehensive income
-                    try:
-                        AccumulatedOtherComprehensiveIncome = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r > CurrentLiabilitiesRank:
-                                d = key
-                                q = [
-                                    'AccumulatedOtherComprehensive',
-                                ]
-                                b = [
-                                    'Asset',
-                                    'Liabilit',
-                                    'Obligation',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                AccumulatedOtherComprehensiveIncome.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'AccumulatedOtherComprehensiveIncome')
-                            r = r + 1
-                        a.AccumulatedOtherComprehensiveIncome = -sum(AccumulatedOtherComprehensiveIncome)
-                    except:
-                        pass
-                    #
-                    # treasury shares
-                    try:
-                        TreasuryShares = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r > CurrentLiabilitiesRank:
-                                d = key
-                                q = [
-                                    'Treasury',
-                                ]
-                                b = [
-                                    'Asset',
-                                    'Employee',
-                                    'Liabilit',
-                                    'NonControlling',
-                                    'Noncontrolling',
-                                    'Obligation',
-                                    'RetainedEarnings',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                TreasuryShares.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'TreasuryShares')
-                            r = r + 1
-                        a.TreasuryShares = -sum(TreasuryShares)
-                    except:
-                        pass
-                    #
-                    # employee benefit trust
-                    try:
-                        EmployeeBenefitTrust = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r > CurrentLiabilitiesRank:
-                                d = key
-                                q = [
-                                    'EmployeeBenefitTrust',
-                                ]
-                                b = [
-                                    'Asset',
-                                    'Liabilit',
-                                    'Obligation',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                EmployeeBenefitTrust.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'EmployeeBenefitTrust')
-                            r = r + 1
-                        a.EmployeeBenefitTrust = -sum(EmployeeBenefitTrust)
-                    except:
-                        pass
-                    #
-                    # non controlling interests
-                    try:
-                        NonControllingInterests = []
-                        r = 0
-                        for key, value in BalanceSheet.items():
-                            if r > CurrentLiabilitiesRank:
-                                d = key
-                                q = [
-                                    'NoncontrollingInterest',
-                                ]
-                                b = [
-                                    'Asset',
-                                    'Liabilit',
-                                    'Obligation',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while BalanceSheet[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
-                                            except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                NonControllingInterests.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'NonControllingInterests')
-                            r = r + 1
-                        a.NonControllingInterests = -sum(NonControllingInterests)
-                    except:
-                        pass
-                    #
-                    # stockholders equity
-                    try:
-                        StockholdersEquity = []
-                        r = 0
-                        s = 'a'
-                        for key, value in BalanceSheet.items():
-                            d = key
-                            q = [
-                                'TotalEquity',
-                                'TotalShareholdersEquity',
-                                'TotalStockholdersEquity',
-                            ]
-                            b = [
-                                'Asset',
                                 'Liabilit',
-                                'Obligation',
                             ]
+                            b = [
+                                'Asset',
+                                'Businesses',
+                                'ContractLiabilities',
+                                'Current',
+                                'Equity',
+                                'Lease',
+                                'LiabilitiesHeldForSale',
+                                'NonCurrent',
+                                'Noncurrent',
+                                'Other',
+                                'Miscellaneous',
+                                'Payroll',
+                                'Shareholder',
+                                'Stockholder',
+                                'Tax',
+                            ]
+                            for l in q:
+                                if l in d:
+                                    h = 'p'
+                                    for p in b:
+                                        u = 0
+                                        while u < len(b):
+                                            if p in d:
+                                                h = ''
+                                            u = u + 1
+                                    if h == 'p':
+                                        try:
+                                            i = 0
+                                            while BalanceSheet[key][i] == None:
+                                                i = i + 1
+                                            ARCHvalue = BalanceSheet[key][i]
+                                            BalanceSheet[key][i] = None
+                                        except:
+                                            if BalanceSheet[key] != None:
+                                                ARCHvalue = BalanceSheet[key]
+                                                BalanceSheet[key] = None
+                                            else:
+                                                ARCHvalue = 0
+                                        if ARCHvalue != 0:
+                                            TotalLiabilities.append(ARCHvalue)
+                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'TotalLiabilities')
+                                            LiabilitiesRank = r
+                                r = r + 1
+                        a.Liabilities = -sum(TotalLiabilities)
+                        if LiabilitiesRank is None:
+                            a.Liabilities = None
+                            print('Liabilities set to None')
+                    except:
+                        pass
+                    #
+                    # total liabilities and stockholders' equity
+                    try:
+                        LiabilitiesAndStockholdersEquity = []
+                        r = 0
+                        for key, value in BalanceSheet.items():
+                            d = key
+                            q = [
+                                'LiabilitiesAndStockholders',
+                                'LiabilitiesAndEquity',
+                                'LiabilitiesAndShareholders',
+                                'LiabilitiesTemporaryEquity',
+                            ]
+                            b = [
+                                'Asset',
+                            ]
+                            for l in q:
+                                if l in d:
+                                    h = 'p'
+                                    for p in b:
+                                        u = 0
+                                        while u < len(b):
+                                            if p in d:
+                                                h = ''
+                                            u = u + 1
+                                    if h == 'p':
+                                        try:
+                                            i = 0
+                                            while BalanceSheet[key][i] == None:
+                                                i = i + 1
+                                            ARCHvalue = BalanceSheet[key][i]
+                                            BalanceSheet[key][i] = None
+                                        except:
+                                            if BalanceSheet[key] != None:
+                                                ARCHvalue = BalanceSheet[key]
+                                                BalanceSheet[key] = None
+                                            else:
+                                                ARCHvalue = 0
+                                        if ARCHvalue != 0:
+                                            LiabilitiesAndStockholdersEquity.append(ARCHvalue)
+                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'LiabilitiesAndStockholdersEquity')
+                                            LiabilitiesAndStockholdersEquityRank = r
+                            r = r + 1
+                        a.LiabilitiesAndStockholdersEquity = -sum(LiabilitiesAndStockholdersEquity)
+                    except:
+                        pass
+                    #
+                    print(137*'-')
+                    print('debugging')
+                    print(137*'-')
+                    #
+                    # debugging
+                    if a.Liabilities is None:
+                        #
+                        print('Liabilities is none')
+                        #
+                        if a.NonCurrentLiabilities is None:
+                            #
+                            print('bridge non current liabilities rank and value')
+                            #
+                            # stockholders equity
+                            try:
+                                StockholdersEquity = []
+                                r = 0
+                                for key, value in BalanceSheet.items():
+                                    d = key
+                                    q = [
+                                        'TotalEquity',
+                                        'TotalShareholdersEquity',
+                                        'TotalStockholdersEquity',
+                                    ]
+                                    b = [
+                                        'Asset',
+                                        'Liabilit',
+                                        'Obligation',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    StockholdersEquity.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'StockholdersEquity')
+                                    r = r + 1
+                                a.StockholdersEquity = -sum(StockholdersEquity)
+                            except:
+                                pass
+                            #
+                            # liabilities
+                            a.Liabilities = a.LiabilitiesAndStockholdersEquity - a.StockholdersEquity
+                            print('Total Liabilities: ' + str(a.Liabilities))
+                            #
+                            # non current liabilities
+                            a.NonCurrentLiabilities = a.Liabilities - a.CurrentLiabilities
+                            print('Non Current Liabilities: ' + str(a.NonCurrentLiabilities))
+                            #
+                        else:
+                            #
+                            # non current liabilities
+                            a.Liabilities = a.CurrentLiabilities + a.NonCurrentLiabilities
+                            a.StockholdersEquity = a.LiabilitiesAndStockholdersEquity - a.Liabilities
+                            #
+                            print('Liabilities: ' + str(a.Liabilities))
+                            print('StockholdersEquity: ' + str(a.StockholdersEquity))
+                        #
+                        # liabilities rank & method
+                        LiabilitiesRank = LiabilitiesAndStockholdersEquityRank
+                        NonCurrentLiabilitiesRankMethod = 'bridge'
+                        #
+                    else:
+                        #
+                        # stockholders equity
+                        try:
+                            print('Liabilities: ' + str(a.Liabilities))
+                            print('Non Current Liabilities: ' + str(a.NonCurrentLiabilities))
+                            print('LiabilitiesAndStockholdersEquity: ' + str(a.LiabilitiesAndStockholdersEquity))
+                            #
+                            #
+                            a.StockholdersEquity = a.LiabilitiesAndStockholdersEquity - a.Liabilities
+                            print('StockholdersEquity determined by the difference between LiabilitiesAndStockholdersEquity And Liabilities')
+                            #
+                            if a.NonCurrentLiabilities is None:
+                                a.NonCurrentLiabilities = a.Liabilities - a.CurrentLiabilities
+                                print('NonCurrentLiabilities determined by the difference between Liabilities and CurrentLiabilities')
+                                
+                        except:
+                            pass
+                    #                   
+                    tb.save()
+                    a.save()
+                    #
+                    # anomalies attributable to the SEC
+                    try:
+                        #
+                        #
+                        print(137*'-')
+                        print('anomalies attributable to the SEC')
+                        print(137*'-')
+                        #
+                        r = 0
+                        CAA = 0
+                        print('Total Current Assets: ' + str(a.CurrentAssets))
+                        for key, value in BalanceSheet.items():
+                            if r < CurrentAssetsRank:
+                                CAA = CAA + value
+                            r = r + 1
+                        print('Current Assets Components: ' + str(CAA))
+                        a.AnomalyCurrentAssetsSEC = CAA - a.CurrentAssets
+                        print('Anomaly attributable to the SEC: ' + str(a.AnomalyCurrentAssetsSEC))
+                        #
+                        #
+                        print(137*'-')
+                        r = 0
+                        NCAA = 0
+                        print('Total Non Current Assets: ' + str(a.NonCurrentAssets))
+                        for key, value in BalanceSheet.items():
+                            if r > CurrentAssetsRank:
+                                if r < AssetsRank:
+                                    skip = ''
+                                    h = [
+                                        'NetPropertyAndEquipment',
+                                        'TotalOtherAssets',
+                                    ]
+                                    for l in h:
+                                        if l in key:
+                                            skip = 'skip'    
+                                    if skip == '':
+                                        if value != None:
+                                            NCAA = NCAA + value
+                            r = r + 1
+                        print('Non Current Assets Components: ' + str(NCAA))
+                        a.AnomalyNonCurrentAssetsSEC = NCAA - a.NonCurrentAssets
+                        print('Anomaly attributable to the SEC: ' + str(a.AnomalyNonCurrentAssetsSEC))
+                        #
+                        #
+                        print(137*'-')
+                        r = 0
+                        CLA = 0
+                        print('Total Current Liabilities: ' + str(a.CurrentLiabilities))
+                        for key, value in BalanceSheet.items():
+                            if r > AssetsRank:
+                                if r < CurrentLiabilitiesRank:
+                                    CLA = CLA - value
+                            r = r + 1
+                        print('Current Liabilities Components: ' + str(CLA))
+                        a.AnomalyCurrentLiabilitiesSEC = CLA - a.CurrentLiabilities
+                        print('Anomaly attributable to the SEC: ' + str(a.AnomalyCurrentLiabilitiesSEC))
+                        #
+                        #
+                        if NonCurrentLiabilitiesRankMethod != 'bridge':
+                            print(137*'-')
+                            r = 0
+                            NCLA = 0
+                            print('Total Non Current Liabilities: ' + str(a.NonCurrentLiabilities))
+                            for key, value in BalanceSheet.items():
+                                if r > CurrentLiabilitiesRank:
+                                    if r < LiabilitiesRank:
+                                        NCLA = NCLA - value
+                                r = r + 1
+                            print('Non Current Liabilities Components: ' + str(NCLA))
+                            a.AnomalyNonCurrentLiabilitiesSEC = NCLA - (a.Liabilities - a.CurrentLiabilities)
+                            print('Anomaly attributable to the SEC: ' + str(a.AnomalyNonCurrentLiabilitiesSEC))
+                        else:
+                            a.AnomalyNonCurrentLiabilitiesSEC = 0
+                    except:
+                        pass
+                    #
+                    # current assets components
+                    try:
+                        #
+                        print(137*'-')
+                        print('current assets')
+                        print(137*'-')
+                        #
+                        # cash
+                        try:
+                            Cash = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < CurrentAssetsRank:
+                                    d = key
+                                    q = [
+                                        'Cash',
+                                    ]
+                                    b = [
+                                        'AssetsCurrent',
+                                        'CurrentAssets',
+                                        'DeferredTax',
+                                        'DeferredIncome',
+                                        'DiscontinuedOperations',
+                                        'Inventor',
+                                        'Prepaid',
+                                        'Receivable',
+                                        'Securities',
+                                        'Total',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    Cash.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'Cash')
+                                r = r + 1
+                            tb.Cash = sum(Cash)
+                        except:
+                            pass
+                        #
+                        # short term investment
+                        try:
+                            ShortTermInvestments = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < CurrentAssetsRank:
+                                    d = key
+                                    q = [
+                                        'Investment',
+                                        'Securities',
+                                        'TradingAssets',
+                                    ]
+                                    b = [
+                                        'AssetsCurrent',
+                                        'Cash',
+                                        'CurrentAssets',
+                                        'DeferredTax',
+                                        'DeferredIncome',
+                                        'DiscontinuedOperations',
+                                        'Inventor',
+                                        'Prepaid',
+                                        'Receivable',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    ShortTermInvestments.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'ShortTermInvestments')
+                                r = r + 1
+                            tb.ShortTermInvestments = sum(ShortTermInvestments)
+                        except:
+                            pass
+                        #
+                        # account receivable
+                        try:
+                            AccountsReceivable = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < CurrentAssetsRank:
+                                    d = key
+                                    q = [
+                                        'Receivable',
+                                    ]
+                                    b = [
+                                        'AssetsCurrent',
+                                        'Cash',
+                                        'CurrentAssets',
+                                        'DeferredTax',
+                                        'DeferredIncome',
+                                        'DiscontinuedOperations',
+                                        'Inventor',
+                                        'Investments',
+                                        'Prepaid',
+                                        'Securities',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    AccountsReceivable.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'AccountsReceivable')
+                                r = r + 1
+                            tb.AccountsReceivable = sum(AccountsReceivable)
+                        except:
+                            pass
+                        #
+                        # inventories
+                        try:
+                            Inventories = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < CurrentAssetsRank:
+                                    d = key
+                                    q = [
+                                        'Inventor',
+                                    ]
+                                    b = [
+                                        'AssetsCurrent',
+                                        'Cash',
+                                        'CurrentAssets',
+                                        'DeferredTax',
+                                        'DeferredIncome',
+                                        'DiscontinuedOperations',
+                                        'Investments',
+                                        'Prepaid',
+                                        'Receivable',
+                                        'Securities',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    Inventories.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'Inventories')
+                                r = r + 1
+                            tb.Inventories = sum(Inventories)
+                        except:
+                            pass
+                        #
+                        # prepaid expenses
+                        try:
+                            PrepaidExpenses = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < CurrentAssetsRank:
+                                    d = key
+                                    q = [
+                                        'Prepaid',
+                                    ]
+                                    b = [
+                                        'AssetsCurrent',
+                                        'Cash',
+                                        'DeferredTax',
+                                        'DeferredIncome',
+                                        'DiscontinuedOperations',
+                                        'Inventor',
+                                        'Investments',
+                                        'Receivable',
+                                        'Securities',
+                                        'Tax',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    PrepaidExpenses.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'PrepaidExpenses')
+                                r = r + 1
+                            tb.PrepaidExpenses = sum(PrepaidExpenses)
+                        except:
+                            pass
+                        #
+                        # non-trade receivables
+                        try:
+                            NonTradeReceivables = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < CurrentAssetsRank:
+                                    d = key
+                                    q = [
+                                        'NonTradeReceivable',
+                                        'OtherReceivable',
+                                    ]
+                                    b = [
+                                        'AssetsCurrent',
+                                        'Cash',
+                                        'CurrentAssets',
+                                        'DeferredTax',
+                                        'DeferredIncome',   
+                                        'DiscontinuedOperations',
+                                        'Inventor',
+                                        'Investments',
+                                        'Prepaid',
+                                        'Securities',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    NonTradeReceivables.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'NonTradeReceivables')
+                                r = r + 1
+                            tb.NonTradeReceivables = sum(NonTradeReceivables)
+                        except:
+                            pass
+                        #
+                        # deferred tax assets current
+                        try:
+                            DeferredTaxAssetsCurrent = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < CurrentAssetsRank:
+                                    d = key
+                                    q = [
+                                        'DeferredTax',
+                                        'DeferredIncome',
+                                    ]
+                                    b = [
+                                        'AssetsCurrent',
+                                        'Cash',
+                                        'CurrentAssets', 
+                                        'DiscontinuedOperations',
+                                        'Inventor',
+                                        'Investments',
+                                        'Prepaid',
+                                        'Receivable',
+                                        'Securities',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    DeferredTaxAssetsCurrent.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'DeferredTaxAssetsCurrent')
+                                r = r + 1
+                            tb.DeferredTaxAssetsCurrent = sum(DeferredTaxAssetsCurrent)
+                        except:
+                            pass
+                        #
+                        # other current assets
+                        try:
+                            OtherCurrentAssets = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < CurrentAssetsRank:
+                                    d = key
+                                    q = [
+                                        'Other',
+                                        'Miscellaneous',
+                                    ]
+                                    b = [
+                                        'Cash',
+                                        'DeferredTax',
+                                        'DeferredIncome',
+                                        'DiscontinuedOperations',
+                                        'Inventor',
+                                        'Investments',
+                                        'Prepaid',
+                                        'Receivable',
+                                        'Securities',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    OtherCurrentAssets.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'OtherCurrentAssets')
+                                r = r + 1
+                            tb.OtherCurrentAssets = sum(OtherCurrentAssets)
+                        except:
+                            pass
+                        #
+                        # discontinued operations current
+                        try:
+                            DiscontinuedOperationsCurrent = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < CurrentAssetsRank:
+                                    d = key
+                                    q = [
+                                        'Discontinued',
+                                        'AssetsHeldForSale',
+                                        'AssetsOfBusinessesHeldForSale',
+                                    ]
+                                    b = [
+                                        'AssetsCurrent',
+                                        'Cash',
+                                        'CurrentAssets', 
+                                        'DeferredTax',
+                                        'DeferredIncome',
+                                        'DiscontinuedOperations',
+                                        'Inventor',
+                                        'Investments',
+                                        'Prepaid',
+                                        'Receivable',
+                                        'Securities',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    DiscontinuedOperationsCurrent.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'DiscontinuedOperationsCurrent')
+                                r = r + 1
+                            tb.DiscontinuedOperationsCurrent = sum(DiscontinuedOperationsCurrent)
+                        except:
+                            pass
+                    except:
+                        pass
+                    #
+                    # non-current assets components
+                    try:
+                        #
+                        print(137*'-')
+                        print('non-current assets')
+                        print(137*'-')
+                        #
+                        # long term receivables
+                        try:
+                            LongTermReceivables = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r > CurrentAssetsRank:
+                                    if r < AssetsRank:
+                                        d = key
+                                        q = [
+                                            'Receivables',
+                                            'NotesReceivable',
+                                        ]
+                                        b = [
+                                            'ShortTerm',
+                                        ]
+                                        for l in q:
+                                            if l in d:
+                                                h = 'p'
+                                                for p in b:
+                                                    u = 0
+                                                    while u < len(b):
+                                                        if p in d:
+                                                            h = ''
+                                                        u = u + 1
+                                                if h == 'p':
+                                                    try:
+                                                        i = 0
+                                                        while BalanceSheet[key][i] == None:
+                                                            i = i + 1
+                                                        ARCHvalue = BalanceSheet[key][i]
+                                                        BalanceSheet[key][i] = None
+                                                    except:
+                                                        if BalanceSheet[key] != None:
+                                                            ARCHvalue = BalanceSheet[key]
+                                                            BalanceSheet[key] = None
+                                                        else:
+                                                            ARCHvalue = 0
+                                                    if ARCHvalue != 0:
+                                                        LongTermReceivables.append(ARCHvalue)
+                                                        print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'LongTermReceivables')
+                                r = r + 1
+                            tb.LongTermReceivables = sum(LongTermReceivables)
+                        except:
+                            pass
+                        #
+                        # deferred charges
+                        try:
+                            DeferredCharges = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r > CurrentAssetsRank:
+                                    if r < AssetsRank:
+                                        d = key
+                                        q = [
+                                            'DeferredCharges',
+                                            'DeferredCost',
+                                        ]
+                                        b = [
+                                            'ShortTerm',
+                                            'Tax',
+                                            'Income',
+                                        ]
+                                        for l in q:
+                                            if l in d:
+                                                h = 'p'
+                                                for p in b:
+                                                    u = 0
+                                                    while u < len(b):
+                                                        if p in d:
+                                                            h = ''
+                                                        u = u + 1
+                                                if h == 'p':
+                                                    try:
+                                                        i = 0
+                                                        while BalanceSheet[key][i] == None:
+                                                            i = i + 1
+                                                        ARCHvalue = BalanceSheet[key][i]
+                                                        BalanceSheet[key][i] = None
+                                                    except:
+                                                        if BalanceSheet[key] != None:
+                                                            ARCHvalue = BalanceSheet[key]
+                                                            BalanceSheet[key] = None
+                                                        else:
+                                                            ARCHvalue = 0
+                                                    if ARCHvalue != 0:
+                                                        DeferredCharges.append(ARCHvalue)
+                                                        print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'DeferredCharges')
+                                r = r + 1
+                            tb.DeferredCharges = sum(DeferredCharges)
+                        except:
+                            pass
+                        #
+                        #
+                        # investments
+                        try:
+                            Investments = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r > CurrentAssetsRank:
+                                    if r < AssetsRank:
+                                        d = key
+                                        q = [
+                                            'Investment',
+                                            'Securities',
+                                            'RestrictedCash',
+                                        ]
+                                        b = [
+                                            'ShortTerm',
+                                        ]
+                                        for l in q:
+                                            if l in d:
+                                                h = 'p'
+                                                for p in b:
+                                                    u = 0
+                                                    while u < len(b):
+                                                        if p in d:
+                                                            h = ''
+                                                        u = u + 1
+                                                if h == 'p':
+                                                    try:
+                                                        i = 0
+                                                        while BalanceSheet[key][i] == None:
+                                                            i = i + 1
+                                                        ARCHvalue = BalanceSheet[key][i]
+                                                        BalanceSheet[key][i] = None
+                                                    except:
+                                                        if BalanceSheet[key] != None:
+                                                            ARCHvalue = BalanceSheet[key]
+                                                            BalanceSheet[key] = None
+                                                        else:
+                                                            ARCHvalue = 0
+                                                    if ARCHvalue != 0:
+                                                        Investments.append(ARCHvalue)
+                                                        print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'Investments')
+                                r = r + 1
+                            tb.Investments = sum(Investments)
+                        except:
+                            pass
+                        #
+                        # property plant and equipments
+                        try:
+                            PropertyPlantAndEquipment = []
+                            r = 0
+                            x = 0
+                            for key, value in BalanceSheet.items():
+                                if r > CurrentAssetsRank:
+                                    if r < AssetsRank:
+                                        d = key
+                                        q = [
+                                            'Property',
+                                            'AccumulatedDepreciation',
+
+                                        ]
+                                        b = [
+                                            'UnderCapitalLease',
+                                        ]
+                                        for l in q:
+                                            if l in d:
+                                                h = 'p'
+                                                for p in b:
+                                                    u = 0
+                                                    while u < len(b):
+                                                        if p in d:
+                                                            h = ''
+                                                        u = u + 1
+                                                if h == 'p':
+                                                    try:
+                                                        i = 0
+                                                        while BalanceSheet[key][i] == None:
+                                                            i = i + 1
+                                                        ARCHvalue = BalanceSheet[key][i]
+                                                        BalanceSheet[key][i] = None
+                                                    except:
+                                                        if BalanceSheet[key] != None:
+                                                            ARCHvalue = BalanceSheet[key]
+                                                            BalanceSheet[key] = None
+                                                        else:
+                                                            ARCHvalue = 0
+                                                    if ARCHvalue != 0:
+                                                        if x < 2:
+                                                            PropertyPlantAndEquipment.append(ARCHvalue)
+                                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'PropertyPlantAndEquipment')
+                                                        x = x + 1
+                                r = r + 1
+                            tb.PropertyPlantAndEquipment = sum(PropertyPlantAndEquipment)
+                        except:
+                            pass
+                        #
+                        # operating lease right of use assets
+                        try:
+                            OperatingLeaseRightOfUseAssets = []
+                            r = 0
+                            x = 0
+                            for key, value in BalanceSheet.items():
+                                if r > CurrentAssetsRank:
+                                    if r < AssetsRank:
+                                        d = key
+                                        q = [
+                                            'OperatingLease',
+                                            'OperatingRight',
+                                            'RightOfUse',
+                                        ]
+                                        b = [
+                                            'Liabilit',
+                                            'Due',
+                                            'Obligations',
+                                        ]
+                                        for l in q:
+                                            if l in d:
+                                                h = 'p'
+                                                for p in b:
+                                                    u = 0
+                                                    while u < len(b):
+                                                        if p in d:
+                                                            h = ''
+                                                        u = u + 1
+                                                if h == 'p':
+                                                    try:
+                                                        i = 0
+                                                        while BalanceSheet[key][i] == None:
+                                                            i = i + 1
+                                                        ARCHvalue = BalanceSheet[key][i]
+                                                        BalanceSheet[key][i] = None
+                                                    except:
+                                                        if BalanceSheet[key] != None:
+                                                            ARCHvalue = BalanceSheet[key]
+                                                            BalanceSheet[key] = None
+                                                        else:
+                                                            ARCHvalue = 0
+                                                    if ARCHvalue != 0:
+                                                        if x < 2:
+                                                            OperatingLeaseRightOfUseAssets.append(ARCHvalue)
+                                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'OperatingLeaseRightOfUseAssets')
+                                                        x = x + 1
+                                r = r + 1
+                            tb.OperatingLeaseRightOfUseAssets = sum(OperatingLeaseRightOfUseAssets)
+                        except:
+                            pass
+                        #
+                        # finance lease right of use assets
+                        try:
+                            FinanceLeaseRightOfUseAssets = []
+                            r = 0
+                            x = 0
+                            for key, value in BalanceSheet.items():
+                                if r > CurrentAssetsRank:
+                                    if r < AssetsRank:
+                                        d = key
+                                        q = [
+                                            'FinanceLease',
+                                            'CapitalLease',
+                                            'AccumulatedAmortization',
+                                        ]
+                                        b = [
+                                            'Due',
+                                            'Liabilit',
+                                            'Obligation',
+                                        ]
+                                        for l in q:
+                                            if l in d:
+                                                h = 'p'
+                                                for p in b:
+                                                    u = 0
+                                                    while u < len(b):
+                                                        if p in d:
+                                                            h = ''
+                                                        u = u + 1
+                                                if h == 'p':
+                                                    try:
+                                                        i = 0
+                                                        while BalanceSheet[key][i] == None:
+                                                            i = i + 1
+                                                        ARCHvalue = BalanceSheet[key][i]
+                                                        BalanceSheet[key][i] = None
+                                                    except:
+                                                        if BalanceSheet[key] != None:
+                                                            ARCHvalue = BalanceSheet[key]
+                                                            BalanceSheet[key] = None
+                                                        else:
+                                                            ARCHvalue = 0
+                                                    if ARCHvalue != 0:
+                                                        if x < 2:
+                                                            FinanceLeaseRightOfUseAssets.append(ARCHvalue)
+                                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'FinanceLeaseRightOfUseAssets')
+                                                        x = x + 1
+                                r = r + 1
+                            tb.FinanceLeaseRightOfUseAssets = sum(FinanceLeaseRightOfUseAssets)
+                        except:
+                            pass
+                        #
+                        # intangible assets
+                        try:
+                            IntangibleAssets = []
+                            r = 0
+                            x = 0
+                            for key, value in BalanceSheet.items():
+                                if r > CurrentAssetsRank:
+                                    if r < AssetsRank:
+                                        d = key
+                                        q = [
+                                            'Intangible',
+                                            'FranchiseRight',
+                                            'Trademarks',
+                                        ]
+                                        b = [
+                                            'Liabilit',
+                                        ]
+                                        for l in q:
+                                            if l in d:
+                                                h = 'p'
+                                                for p in b:
+                                                    u = 0
+                                                    while u < len(b):
+                                                        if p in d:
+                                                            h = ''
+                                                        u = u + 1
+                                                if h == 'p':
+                                                    try:
+                                                        i = 0
+                                                        while BalanceSheet[key][i] == None:
+                                                            i = i + 1
+                                                        ARCHvalue = BalanceSheet[key][i]
+                                                        BalanceSheet[key][i] = None
+                                                    except:
+                                                        if BalanceSheet[key] != None:
+                                                            ARCHvalue = BalanceSheet[key]
+                                                            BalanceSheet[key] = None
+                                                        else:
+                                                            ARCHvalue = 0
+                                                    if ARCHvalue != 0:
+                                                        if x < 2:
+                                                            IntangibleAssets.append(ARCHvalue)
+                                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'IntangibleAssets')
+                                                        x = x + 1
+                                r = r + 1
+                            tb.IntangibleAssets = sum(IntangibleAssets)
+                        except:
+                            pass
+                        #
+                        # goodwill
+                        try:
+                            Goodwill = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r > CurrentAssetsRank:
+                                    if r < AssetsRank:
+                                        d = key
+                                        q = [
+                                            'Goodwill',
+                                        ]
+                                        b = [
+                                            'Liabilit',
+                                            'Intangible',
+                                        ]
+                                        for l in q:
+                                            if l in d:
+                                                h = 'p'
+                                                for p in b:
+                                                    u = 0
+                                                    while u < len(b):
+                                                        if p in d:
+                                                            h = ''
+                                                        u = u + 1
+                                                if h == 'p':
+                                                    try:
+                                                        i = 0
+                                                        while BalanceSheet[key][i] == None:
+                                                            i = i + 1
+                                                        ARCHvalue = BalanceSheet[key][i]
+                                                        BalanceSheet[key][i] = None
+                                                    except:
+                                                        if BalanceSheet[key] != None:
+                                                            ARCHvalue = BalanceSheet[key]
+                                                            BalanceSheet[key] = None
+                                                        else:
+                                                            ARCHvalue = 0
+                                                    if ARCHvalue != 0:
+                                                        Goodwill.append(ARCHvalue)
+                                                        print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'Goodwill')
+                                r = r + 1
+                            tb.Goodwill = sum(Goodwill)
+                        except:
+                            pass
+                        #
+                        # deferred tax assets non current
+                        try:
+                            DeferredTaxAssetsNonCurrent = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r > CurrentAssetsRank:
+                                    if r < AssetsRank:
+                                        d = key
+                                        q = [
+                                            'DeferredTax',
+                                            'DeferredIncome',
+                                        ]
+                                        b = [
+                                            'Liabilit',
+                                        ]
+                                        for l in q:
+                                            if l in d:
+                                                h = 'p'
+                                                for p in b:
+                                                    u = 0
+                                                    while u < len(b):
+                                                        if p in d:
+                                                            h = ''
+                                                        u = u + 1
+                                                if h == 'p':
+                                                    try:
+                                                        i = 0
+                                                        while BalanceSheet[key][i] == None:
+                                                            i = i + 1
+                                                        ARCHvalue = BalanceSheet[key][i]
+                                                        BalanceSheet[key][i] = None
+                                                    except:
+                                                        if BalanceSheet[key] != None:
+                                                            ARCHvalue = BalanceSheet[key]
+                                                            BalanceSheet[key] = None
+                                                        else:
+                                                            ARCHvalue = 0
+                                                    if ARCHvalue != 0:
+                                                        DeferredTaxAssetsNonCurrent.append(ARCHvalue)
+                                                        print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'DeferredTaxAssetsNonCurrent')
+                                r = r + 1
+                            tb.DeferredTaxAssetsNonCurrent = sum(DeferredTaxAssetsNonCurrent)
+                        except:
+                            pass
+                        #
+                        # Defined Benefit Pension And Other Similar Plans
+                        try:
+                            DefinedBenefitPensionAndOtherSimilarPlans = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r > CurrentAssetsRank:
+                                    if r < AssetsRank:
+                                        d = key
+                                        q = [
+                                            'Pension',
+                                        ]
+                                        b = [
+                                            'Expense',
+                                        ]
+                                        for l in q:
+                                            if l in d:
+                                                h = 'p'
+                                                for p in b:
+                                                    u = 0
+                                                    while u < len(b):
+                                                        if p in d:
+                                                            h = ''
+                                                        u = u + 1
+                                                if h == 'p':
+                                                    try:
+                                                        i = 0
+                                                        while BalanceSheet[key][i] == None:
+                                                            i = i + 1
+                                                        ARCHvalue = BalanceSheet[key][i]
+                                                        BalanceSheet[key][i] = None
+                                                    except:
+                                                        if BalanceSheet[key] != None:
+                                                            ARCHvalue = BalanceSheet[key]
+                                                            BalanceSheet[key] = None
+                                                        else:
+                                                            ARCHvalue = 0
+                                                    if ARCHvalue != 0:
+                                                        DefinedBenefitPensionAndOtherSimilarPlans.append(ARCHvalue)
+                                                        print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'DefinedBenefitPensionAndOtherSimilarPlans')
+                                r = r + 1
+                            tb.DefinedBenefitPensionAndOtherSimilarPlans = sum(DefinedBenefitPensionAndOtherSimilarPlans)
+                        except:
+                            pass
+                        #
+                        # other non-current assets
+                        try:
+                            OtherNonCurrentAssets = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r > CurrentAssetsRank:
+                                    if r < AssetsRank:
+                                        d = key
+                                        q = [
+                                            'OtherAssets',
+                                            'OtherLongTermAsset',
+                                            'OtherNonCurrentAsset',
+                                            'OtherNoncurrentAsset',
+                                            'Miscellaneous',
+                                            'Sundry',
+                                        ]
+                                        b = [
+                                            'Liabilit',
+                                            'Total',
+                                        ]
+                                        for l in q:
+                                            if l in d:
+                                                h = 'p'
+                                                for p in b:
+                                                    u = 0
+                                                    while u < len(b):
+                                                        if p in d:
+                                                            h = ''
+                                                        u = u + 1
+                                                if h == 'p':
+                                                    try:
+                                                        i = 0
+                                                        while BalanceSheet[key][i] == None:
+                                                            i = i + 1
+                                                        ARCHvalue = BalanceSheet[key][i]
+                                                        BalanceSheet[key][i] = None
+                                                    except:
+                                                        if BalanceSheet[key] != None:
+                                                            ARCHvalue = BalanceSheet[key]
+                                                            BalanceSheet[key] = None
+                                                        else:
+                                                            ARCHvalue = 0
+                                                    if ARCHvalue != 0:
+                                                        OtherNonCurrentAssets.append(ARCHvalue)
+                                                        print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'OtherNonCurrentAssets')
+                                r = r + 1
+                            tb.OtherNonCurrentAssets = sum(OtherNonCurrentAssets)
+                        except:
+                            pass
+                    except:
+                        pass
+                    #                   
+                    # current liabilities components
+                    try:
+                        print(137*'-')
+                        print('current liabilities')
+                        print(137*'-')
+                        #
+                        # accounts payable and accrued liabilities
+                        try:
+                            AccountsPayableAndAccruedLiabilities = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < CurrentLiabilitiesRank:
+                                    d = key
+                                    q = [
+                                        'Accrued',
+                                        'Payable',
+                                        'SalesRebatesAndDiscounts',
+                                    ]
+                                    b = [
+                                        'Deferred',
+                                        'Employee',
+                                        'Tax',
+                                        'Dividend',
+                                        'LongTerm',
+                                        'NonCurrent',
+                                        'Noncurrent',
+                                        'Compensation',
+                                        'Payroll',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    AccountsPayableAndAccruedLiabilities.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'AccountsPayableAndAccruedLiabilities')
+                                r = r + 1
+                            tb.AccountsPayableAndAccruedLiabilities = -sum(AccountsPayableAndAccruedLiabilities)
+                        except:
+                            pass
+                        #
+                        # employee compensation current
+                        try:
+                            EmployeeCompensationCurrent = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < CurrentLiabilitiesRank:
+                                    d = key
+                                    q = [
+                                        'Compensation',
+                                        'Payroll',
+                                    ]
+                                    b = [
+                                        'LongTerm',
+                                        'NonCurrent',
+                                        'Noncurrent',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    EmployeeCompensationCurrent.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'EmployeeCompensationCurrent')
+                                r = r + 1
+                            tb.EmployeeCompensationCurrent = -sum(EmployeeCompensationCurrent)
+                        except:
+                            pass
+                        #
+                        # operating leases current
+                        try:
+                            OperatingLeasesCurrent = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < CurrentLiabilitiesRank:
+                                    d = key
+                                    q = [
+                                        'LeaseLiabilit',
+                                        'OperatingLeaseObligation',
+                                    ]
+                                    b = [
+                                        'Finance',
+                                        'LongTerm',
+                                        'NonCurrent',
+                                        'Noncurrent',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    OperatingLeasesCurrent.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'OperatingLeasesCurrent')
+                                r = r + 1
+                            tb.OperatingLeasesCurrent = -sum(OperatingLeasesCurrent)
+                        except:
+                            pass
+                        #
+                        # finance leases current
+                        try:
+                            FinanceLeasesCurrent = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < CurrentLiabilitiesRank:
+                                    d = key
+                                    q = [
+                                        'FinanceLeaseObligation',
+                                        'CapitalLease',
+                                    ]
+                                    b = [
+                                        'Assets',
+                                        'LongTerm',
+                                        'NonCurrent',
+                                        'Noncurrent',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    FinanceLeasesCurrent.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'FinanceLeasesCurrent')
+                                r = r + 1
+                            tb.FinanceLeasesCurrent = -sum(FinanceLeasesCurrent)
+                        except:
+                            pass
+                        #
+                        # deferred revenue and deposits current
+                        try:
+                            DeferredRevenueAndDepositsCurrent = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < CurrentLiabilitiesRank:
+                                    d = key
+                                    q = [
+                                        'ContractWithCustomerLiabilit',
+                                        'DeferredIncome',
+                                        'DeferredRevenue',
+                                        'Deposits',
+                                        'Guarantee',
+                                    ]
+                                    b = [
+                                        'LongTerm',
+                                        'NonCurrent',
+                                        'Noncurrent',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    DeferredRevenueAndDepositsCurrent.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'DeferredRevenueAndDepositsCurrent')
+                                r = r + 1
+                            tb.DeferredRevenueAndDepositsCurrent = -sum(DeferredRevenueAndDepositsCurrent)
+                        except:
+                            pass
+                        #
+                        # accrued tax liabilities
+                        try:
+                            AccruedTaxLiabilities = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < CurrentLiabilitiesRank:
+                                    d = key
+                                    q = [
+                                        'Taxes',
+                                    ]
+                                    b = [
+                                        'Deferred',
+                                        'LongTerm',
+                                        'NonCurrent',
+                                        'Noncurrent',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    AccruedTaxLiabilities.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'AccruedTaxLiabilities')
+                                r = r + 1
+                            tb.AccruedTaxLiabilities = -sum(AccruedTaxLiabilities)
+                        except:
+                            pass
+                        #
+                        # deferred tax liabilities
+                        try:
+                            DeferredTaxLiabilitiesCurrent = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < CurrentLiabilitiesRank:
+                                    d = key
+                                    q = [
+                                        'Deferred',
+                                    ]
+                                    b = [
+                                        'Accrued',
+                                        'Charges',
+                                        'Expense',
+                                        'LongTerm',
+                                        'NonCurrent',
+                                        'Noncurrent',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    DeferredTaxLiabilitiesCurrent.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'DeferredTaxLiabilitiesCurrent')
+                                r = r + 1
+                            tb.DeferredTaxLiabilitiesCurrent = -sum(DeferredTaxLiabilitiesCurrent)
+                        except:
+                            pass
+                        #
+                        # commercial papers
+                        try:
+                            CommercialPapers = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < CurrentLiabilitiesRank:
+                                    d = key
+                                    q = [
+                                        'CommercialPaper',
+                                    ]
+                                    b = [
+                                        'Accrued',
+                                        'Deferred',
+                                        'LongTerm',
+                                        'NonCurrent',
+                                        'Noncurrent',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    CommercialPapers.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'CommercialPapers')
+                                r = r + 1
+                            tb.CommercialPapers = -sum(CommercialPapers)
+                        except:
+                            pass
+                        #
+                        # short term borrowings
+                        try:
+                            ShortTermBorrowings = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < CurrentLiabilitiesRank:
+                                    d = key
+                                    q = [
+                                        'ShortTermBorrowings',
+                                    ]
+                                    b = [
+                                        'Accrued',
+                                        'Deferred',
+                                        'LongTerm',
+                                        'NonCurrent',
+                                        'Noncurrent',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    ShortTermBorrowings.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'ShortTermBorrowings')
+                                r = r + 1
+                            tb.ShortTermBorrowings = -sum(ShortTermBorrowings)
+                        except:
+                            pass
+                        #
+                        # other current liabilities
+                        try:
+                            OtherCurrentLiabilities = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < CurrentLiabilitiesRank:
+                                    d = key
+                                    q = [
+                                        'OtherCurrentLiabilit',
+                                    ]
+                                    b = [
+                                        'LongTerm',
+                                        'NonCurrent',
+                                        'Noncurrent',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    OtherCurrentLiabilities.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'OtherCurrentLiabilities')
+                                r = r + 1
+                            tb.OtherCurrentLiabilities = -sum(OtherCurrentLiabilities)
+                        except:
+                            pass
+                        #
+                        # discontinued operations
+                        try:
+                            DiscontinuedOperationsLiabilitiesCurrent = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < CurrentLiabilitiesRank:
+                                    d = key
+                                    q = [
+                                        'DiscontinuedOperation',
+                                        'HeldForSale',
+                                    ]
+                                    b = [
+                                        'LongTerm',
+                                        'NonCurrent',
+                                        'Noncurrent',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    DiscontinuedOperationsLiabilitiesCurrent.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'DiscontinuedOperationsLiabilitiesCurrent')
+                                r = r + 1
+                            tb.DiscontinuedOperationsLiabilitiesCurrent = -sum(DiscontinuedOperationsLiabilitiesCurrent)
+                        except:
+                            pass
+                        #
+                        # dividend payable
+                        try:
+                            DividendsPayable = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < CurrentLiabilitiesRank:
+                                    d = key
+                                    q = [
+                                        'DividendsPayable',
+                                        'DividendPayable',
+                                    ]
+                                    b = [
+                                        'LongTerm',
+                                        'NonCurrent',
+                                        'Noncurrent',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    DividendsPayable.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'DividendsPayable')
+                                r = r + 1
+                            tb.DividendsPayable = -sum(DividendsPayable)
+                        except:
+                            pass
+                        #
+                        # short term portion of long term debt
+                        try:
+                            ShortTermPortionOfLongTermDebt = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < CurrentLiabilitiesRank:
+                                    d = key
+                                    q = [
+                                        'Debt'
+                                    ]
+                                    b = [
+                                        'Asset',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    ShortTermPortionOfLongTermDebt.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'ShortTermPortionOfLongTermDebt')
+                                r = r + 1
+                            tb.ShortTermPortionOfLongTermDebt = -sum(ShortTermPortionOfLongTermDebt)
+                        except:
+                            pass
+                    except:
+                        pass
+                    #                   
+                    # non-current liabilities components
+                    try:
+                        #
+                        print(137*'-')
+                        print('non-current liabilities')
+                        print(137*'-')
+                        #
+                        # long-term debt
+                        try:
+                            LongTermDebt = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < LiabilitiesRank:
+                                    d = key
+                                    q = [
+                                        'Debt',
+                                    ]
+                                    b = [
+                                        'Asset',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    LongTermDebt.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'LongTermDebt')
+                                r = r + 1
+                            tb.LongTermDebt = -sum(LongTermDebt)
+                        except:
+                            pass
+                        #
+                        # retirement benefits
+                        try:
+                            RetirementBenefits = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < LiabilitiesRank:
+                                    d = key
+                                    q = [
+                                        'RetirementBenefits',
+                                    ]
+                                    b = [
+                                        'Asset',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    RetirementBenefits.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'RetirementBenefits')
+                                r = r + 1
+                            tb.RetirementBenefits = -sum(RetirementBenefits)
+                        except:
+                            pass
+                        #
+                        # operating leases non-current
+                        try:
+                            OperatingLeasesNonCurrent = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < LiabilitiesRank:
+                                    d = key
+                                    q = [
+                                        'Lease',
+                                    ]
+                                    b = [
+                                        'Asset',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    OperatingLeasesNonCurrent.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'OperatingLeasesNonCurrent')
+                                r = r + 1
+                            tb.OperatingLeasesNonCurrent = -sum(OperatingLeasesNonCurrent)
+                        except:
+                            pass
+                        #
+                        # finance leases non-current
+                        try:
+                            FinanceLeasesNonCurrent = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < LiabilitiesRank:
+                                    d = key
+                                    q = [
+                                        'FinanceLeaseObligation',
+                                        'CapitalLease',
+                                    ]
+                                    b = [
+                                        'Asset',
+                                        'Right',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    FinanceLeasesNonCurrent.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'FinanceLeasesNonCurrent')
+                                r = r + 1
+                            tb.FinanceLeasesNonCurrent = -sum(FinanceLeasesNonCurrent)
+                        except:
+                            pass
+                        #
+                        # deferred revenue and deposits non-current
+                        try:
+                            DeferredRevenueAndDepositsNonCurrent = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < LiabilitiesRank:
+                                    d = key
+                                    q = [
+                                        'DeferredRevenue',
+                                        'ContractLiabilities',
+                                        'Guarantee',
+                                    ]
+                                    b = [
+                                        'Asset',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    DeferredRevenueAndDepositsNonCurrent.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'DeferredRevenueAndDepositsNonCurrent')
+                                r = r + 1
+                            tb.DeferredRevenueAndDepositsNonCurrent = -sum(DeferredRevenueAndDepositsNonCurrent)
+                        except:
+                            pass
+                        #
+                        # Accrued Tax Liabilities Non Current
+                        try:
+                            AccruedTaxLiabilitiesNonCurrent = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < LiabilitiesRank:
+                                    d = key
+                                    q = [
+                                        'IncomeTaxesPayable',
+                                        'LongTermIncomeTaxes',
+                                    ]
+                                    b = [
+                                        'Asset',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    AccruedTaxLiabilitiesNonCurrent.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'AccruedTaxLiabilitiesNonCurrent')
+                                r = r + 1
+                            tb.AccruedTaxLiabilitiesNonCurrent = -sum(AccruedTaxLiabilitiesNonCurrent)
+                        except:
+                            pass
+                        #
+                        # deferred Tax Liabilities Non Current
+                        try:
+                            DeferredTaxLiabilitiesNonCurrent = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < LiabilitiesRank:
+                                    d = key
+                                    q = [
+                                        'DeferredIncomeTax',
+                                        'DeferredTaxLiabilit',
+                                    ]
+                                    b = [
+                                        'Asset',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    DeferredTaxLiabilitiesNonCurrent.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'DeferredTaxLiabilitiesNonCurrent')
+                                r = r + 1
+                            tb.DeferredTaxLiabilitiesNonCurrent = -sum(DeferredTaxLiabilitiesNonCurrent)
+                        except:
+                            pass
+                        #
+                        # other non-current liabilities
+                        try:
+                            OtherNonCurrentLiabilities = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < LiabilitiesRank:
+                                    d = key
+                                    q = [
+                                        'OtherLongTermLiabilities',
+                                        'OtherNonCurrentLiabilit',
+                                        'OtherNoncurrentLiabilit',
+                                        'OtherLiabilities',
+                                    ]
+                                    b = [
+                                        'Asset',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    OtherNonCurrentLiabilities.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'OtherNonCurrentLiabilities')
+                                r = r + 1
+                            tb.OtherNonCurrentLiabilities = -sum(OtherNonCurrentLiabilities)
+                        except:
+                            pass
+                        #
+                        # discontinued operation non current liabilities
+                        try:
+                            DiscontinuedOperationsLiabilitiesNonCurrent = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r < LiabilitiesRank:
+                                    d = key
+                                    q = [
+                                        'NoncurrentLiabilitiesOfDiscontinuedOperations',
+                                        'NonCurrentLiabilitiesOfDiscontinuedOperations',
+                                        'LiabilitiesHeldForSale',
+                                    ]
+                                    b = [
+                                        'Asset',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    DiscontinuedOperationsLiabilitiesNonCurrent.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'DiscontinuedOperationsLiabilitiesNonCurrent')
+                                r = r + 1
+                            tb.DiscontinuedOperationsLiabilitiesNonCurrent = -sum(DiscontinuedOperationsLiabilitiesNonCurrent)
+                        except:
+                            pass
+                    except:
+                        pass
+                    #                   
+                    # shareholders' equity components
+                    try:
+                        print(137*'-')
+                        print('shareholders equity')
+                        print(137*'-')
+                        #
+                        # common shares
+                        try:
+                            CommonShares = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r > CurrentLiabilitiesRank:
+                                    d = key
+                                    q = [
+                                        'AdditionalCapital',
+                                        'AdditionalPaidInCapital',
+                                        'CapitalInExcessOfParValue',
+                                        'CapitalSurplus',
+                                        'CommonStock',
+                                    ]
+                                    b = [
+                                        'Asset',
+                                        'Dividend',
+                                        'Liabilit',
+                                        'Obligation',
+                                        'Treasury',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if value != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    CommonShares.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'CommonShares')
+                                r = r + 1
+                            a.CommonShares = -sum(CommonShares)
+                        except:
+                            pass
+                        #
+                        # retained earnings
+                        try:
+                            RetainedEarnings = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r > CurrentLiabilitiesRank:
+                                    d = key
+                                    q = [
+                                        'Earning',
+                                        'AccumulatedDeficit',
+                                        'RetainedDeficit',
+                                    ]
+                                    b = [
+                                        'Asset',
+                                        'Liabilit',
+                                        'Obligation',
+                                        'Treasury',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    RetainedEarnings.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'RetainedEarnings')
+                                r = r + 1
+                            a.RetainedEarnings = -sum(RetainedEarnings)
+                        except:
+                            pass
+                        #
+                        # accumulated other comprehensive income
+                        try:
+                            AccumulatedOtherComprehensiveIncome = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r > CurrentLiabilitiesRank:
+                                    d = key
+                                    q = [
+                                        'AccumulatedOtherComprehensive',
+                                    ]
+                                    b = [
+                                        'Asset',
+                                        'Liabilit',
+                                        'Obligation',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    AccumulatedOtherComprehensiveIncome.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'AccumulatedOtherComprehensiveIncome')
+                                r = r + 1
+                            a.AccumulatedOtherComprehensiveIncome = -sum(AccumulatedOtherComprehensiveIncome)
+                        except:
+                            pass
+                        #
+                        # treasury shares
+                        try:
+                            TreasuryShares = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r > CurrentLiabilitiesRank:
+                                    d = key
+                                    q = [
+                                        'Treasury',
+                                    ]
+                                    b = [
+                                        'Asset',
+                                        'Employee',
+                                        'Liabilit',
+                                        'NonControlling',
+                                        'Noncontrolling',
+                                        'Obligation',
+                                        'RetainedEarnings',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    TreasuryShares.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'TreasuryShares')
+                                r = r + 1
+                            a.TreasuryShares = -sum(TreasuryShares)
+                        except:
+                            pass
+                        #
+                        # employee benefit trust
+                        try:
+                            EmployeeBenefitTrust = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r > CurrentLiabilitiesRank:
+                                    d = key
+                                    q = [
+                                        'EmployeeBenefitTrust',
+                                    ]
+                                    b = [
+                                        'Asset',
+                                        'Liabilit',
+                                        'Obligation',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    EmployeeBenefitTrust.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'EmployeeBenefitTrust')
+                                r = r + 1
+                            a.EmployeeBenefitTrust = -sum(EmployeeBenefitTrust)
+                        except:
+                            pass
+                        #
+                        # non controlling interests
+                        try:
+                            NonControllingInterests = []
+                            r = 0
+                            for key, value in BalanceSheet.items():
+                                if r > CurrentLiabilitiesRank:
+                                    d = key
+                                    q = [
+                                        'NoncontrollingInterest',
+                                        'RedeemableNonControllingInterestInSubsidiaries',
+                                        'ConvertibleSeniorNotes',
+                                    ]
+                                    b = [
+                                        'Asset',
+                                        'Liabilit',
+                                        'Obligation',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while BalanceSheet[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = BalanceSheet[key][i]
+                                                    BalanceSheet[key][i] = None
+                                                except:
+                                                    if BalanceSheet[key] != None:
+                                                        ARCHvalue = BalanceSheet[key]
+                                                        BalanceSheet[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    NonControllingInterests.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'NonControllingInterests')
+                                r = r + 1
+                            a.NonControllingInterests = -sum(NonControllingInterests)
+                        except:
+                            pass
+                    except:
+                        pass
+                    #                   
+                except:
+                    pass
+                #
+                # income statement
+                print(137*'-')
+                print('income statement')
+                print(137*'-')
+                #
+                try:
+                    #
+                    # net income
+                    try:
+                        NetIncome = []
+                        r = 0
+                        for key, value in IncomeStatement.items():
+                            d = key
+                            q = [
+                                'Loss',
+                                'NetIncome',
+                                'NetEarning',
+                            ]
+                            b = [
+                                'Attributable',
+                                'ContinuingOperations',
+                                'CostOfGoods',
+                                'CostOfOperations',
+                                'DiscontinuedOperation',
+                                'EquityIncome(Loss)Net',
+                                'Gain',
+                                'Income(Loss)FromOperations',
+                                'LossFromOperations',
+                                'Operating',
+                                'Other',
+                                'Miscellaneous',
+                                'PerShare',
+                                'Research',
+                                'Revenue',
+                                'Sales',
+                                'Tax',
+                            ]
+                            s = 'a'
                             for l in q:
                                 if s == 'a':
                                     if l in d:
@@ -4301,218 +4563,142 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                         if h == 'p':
                                             try:
                                                 i = 0
-                                                while BalanceSheet[key][i] == None:
+                                                while IncomeStatement[key][i] == None:
                                                     i = i + 1
-                                                ARCHvalue = BalanceSheet[key][i]
-                                                BalanceSheet[key][i] = None
+                                                ARCHvalue = IncomeStatement[key][i]
+                                                IncomeStatement[key][i] = None
                                             except:
-                                                if BalanceSheet[key] != None:
-                                                    ARCHvalue = BalanceSheet[key]
-                                                    BalanceSheet[key] = None
+                                                if IncomeStatement[key] != None:
+                                                    ARCHvalue = IncomeStatement[key]
+                                                    IncomeStatement[key] = None
                                                 else:
                                                     ARCHvalue = 0
                                             if ARCHvalue != 0:
-                                                StockholdersEquity.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'StockholdersEquity')
+                                                NetIncome.append(ARCHvalue)
+                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'NetIncome')
                                                 s = 'z'
+                                                NetIncomeRank = r
                             r = r + 1
-                        a.StockholdersEquity = -sum(StockholdersEquity)
+                        a.NetIncome = -sum(NetIncome)
                     except:
                         pass
                     #
-                    print('\n' * 3)
+                    a.save()
                     #
-                except:
-                    pass
-                #
-                print(137*'-')
-                #
-                # total liabilities and stockholders' equity
-                try:
-                    LiabilitiesAndStockholdersEquity = []
-                    r = 0
-                    for key, value in BalanceSheet.items():
-                        d = key
-                        q = [
-                            'LiabilitiesAndStockholders',
-                            'LiabilitiesAndEquity',
-                            'LiabilitiesAndShareholders',
-                            'LiabilitiesTemporaryEquity',
-                        ]
-                        b = [
-                            'Asset',
-                        ]
-                        for l in q:
-                            if l in d:
-                                h = 'p'
-                                for p in b:
-                                    u = 0
-                                    while u < len(b):
-                                        if p in d:
-                                            h = ''
-                                        u = u + 1
-                                if h == 'p':
-                                    try:
-                                        i = 0
-                                        while BalanceSheet[key][i] == None:
-                                            i = i + 1
-                                        ARCHvalue = BalanceSheet[key][i]
-                                        BalanceSheet[key][i] = None
-                                    except:
-                                        if BalanceSheet[key] != None:
-                                            ARCHvalue = BalanceSheet[key]
-                                            BalanceSheet[key] = None
-                                        else:
-                                            ARCHvalue = 0
-                                    if ARCHvalue != 0:
-                                        LiabilitiesAndStockholdersEquity.append(ARCHvalue)
-                                        print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'LiabilitiesAndStockholdersEquity')
-                        r = r + 1
-                    a.LiabilitiesAndStockholdersEquity = -sum(LiabilitiesAndStockholdersEquity)
-                except:
-                    pass
-                #
-                print(137*'-' + '\n' * 3)
-                #
-                #
-                # income statement
-                print('income statement')
-                print(137*'-')
-                #
-                # net income
-                try:
-                    NetIncome = []
-                    r = 0
-                    for key, value in IncomeStatement.items():
-                        d = key
-                        q = [
-                            'Loss',
-                            'NetIncome',
-                            'NetEarning',
-                        ]
-                        b = [
-                            'Attributable',
-                            'ContinuingOperations',
-                            'CostOfGoods',
-                            'CostOfOperations',
-                            'DiscontinuedOperation',
-                            'EquityIncome(Loss)Net',
-                            'Gain',
-                            'Operating',
-                            'Other',
-                            'Miscellaneous',
-                            'PerShare',
-                            'Research',
-                            'Revenue',
-                            'Sales',
-                            'Tax',
-                        ]
-                        s = 'a'
-                        for l in q:
-                            if s == 'a':
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while IncomeStatement[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = IncomeStatement[key][i]
-                                            IncomeStatement[key][i] = None
-                                        except:
-                                            if IncomeStatement[key] != None:
-                                                ARCHvalue = IncomeStatement[key]
-                                                IncomeStatement[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            NetIncome.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'NetIncome')
-                                            s = 'z'
-                                            NetIncomeRank = r
-                        r = r + 1
-                    a.NetIncome = -sum(NetIncome)
-                except:
-                    pass
-                #
-                # gross margin
-                try:
-                    GrossMargin = []
-                    GrossMarginRank = 10
-                    r = 0
-                    for key, value in IncomeStatement.items():
-                        if r < NetIncomeRank:
-                            d = key
-                            q = [
-                                'GrossMargin',
-                                'GrossProfit',
-                            ]
-                            b = [
-                                'DiscontinuedOperation',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while IncomeStatement[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = value[i]
-                                            IncomeStatement[key][i] = None
-                                        except:
-                                            if IncomeStatement[key] != None:
-                                                ARCHvalue = IncomeStatement[key]
-                                                IncomeStatement[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            GrossMargin.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'GrossMargin')
-                                            GrossMarginRank = r
-                        r = r + 1
-                    a.GrossMargin = -abs(sum(GrossMargin))
-                except:
-                    pass
-                #
-                # sales
-                try:
-                    Sales = []
-                    r = 0
-                    TotalRevenueRank = 10
-                    for key, value in IncomeStatement.items():
-                        if r < NetIncomeRank:
-                            if r < GrossMarginRank:
-                                if r < TotalRevenueRank:
+                    # gross margin
+                    try:
+                        GrossMargin = []
+                        GrossMarginRank = 10
+                        r = 0
+                        for key, value in IncomeStatement.items():
+                            if r < NetIncomeRank:
+                                d = key
+                                q = [
+                                    'GrossMargin',
+                                    'GrossProfit',
+                                ]
+                                b = [
+                                    'DiscontinuedOperation',
+                                ]
+                                for l in q:
+                                    if l in d:
+                                        h = 'p'
+                                        for p in b:
+                                            u = 0
+                                            while u < len(b):
+                                                if p in d:
+                                                    h = ''
+                                                u = u + 1
+                                        if h == 'p':
+                                            try:
+                                                i = 0
+                                                while IncomeStatement[key][i] == None:
+                                                    i = i + 1
+                                                ARCHvalue = value[i]
+                                                IncomeStatement[key][i] = None
+                                            except:
+                                                if IncomeStatement[key] != None:
+                                                    ARCHvalue = IncomeStatement[key]
+                                                    IncomeStatement[key] = None
+                                                else:
+                                                    ARCHvalue = 0
+                                            if ARCHvalue != 0:
+                                                GrossMargin.append(ARCHvalue)
+                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'GrossMargin')
+                                                GrossMarginRank = r
+                            r = r + 1
+                        a.GrossMargin = -abs(sum(GrossMargin))
+                    except:
+                        pass
+                    #
+                    a.save()
+                    #
+                    # total sales
+                    try:
+                        Sales = []
+                        r = 0
+                        for key, value in IncomeStatement.items():
+                            if r < NetIncomeRank:
+                                if r < GrossMarginRank:
+                                        d = key
+                                        q = [
+                                            'TotalRevenue',
+                                            'TotalNetRevenue',
+                                        ]
+                                        b = [
+                                            'Cost',
+                                        ]
+                                        s = 'a'
+                                        for l in q:
+                                            if s == 'a':
+                                                if l in d:
+                                                    h = 'p'
+                                                    for p in b:
+                                                        u = 0
+                                                        while u < len(b):
+                                                            if p in d:
+                                                                h = ''
+                                                            u = u + 1
+                                                    if h == 'p':
+                                                        try:
+                                                            i = 0
+                                                            while IncomeStatement[key][i] == None:
+                                                                i = i + 1
+                                                            ARCHvalue = IncomeStatement[key][i]
+                                                            IncomeStatement[key][i] = None
+                                                        except:
+                                                            if IncomeStatement[key] != None:
+                                                                ARCHvalue = IncomeStatement[key]
+                                                                IncomeStatement[key] = None
+                                                            else:
+                                                                ARCHvalue = 0
+                                                        if ARCHvalue != 0:
+                                                            Sales.append(ARCHvalue)
+                                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'Sales')
+                                                            s = 'z'
+                            r = r + 1
+                        a.Sales = -sum(Sales)
+                    except:
+                        pass
+                    #
+                    a.save()
+                    #
+                    # total cost of sales
+                    try:
+                        CostOfSales = []
+                        r = 0
+                        TotalCostRank = 10
+                        for key, value in IncomeStatement.items():
+                            if r < NetIncomeRank:
+                                if r < GrossMarginRank:
                                     d = key
                                     q = [
-                                        'Financing',
-                                        'Membership',
-                                        'Products',
-                                        'Revenue',
-                                        'Sales',
-                                        'Services',
+                                        'TotalCost',
+                                        'TotalNetCost',
                                     ]
                                     b = [
-                                        'Cost',
-                                        'DiscontinuedOperation',
-                                        'ExciseTaxes',
-                                    ]
-                                    c = [
-                                        'TotalRevenue',
-                                        'TotalNetRevenue',
+                                        'CostOfSalesOperatingExpensesAndOther',
+                                        'CostsExpensesAndOther',
                                     ]
                                     s = 'a'
                                     for l in q:
@@ -4524,9 +4710,6 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                                     while u < len(b):
                                                         if p in d:
                                                             h = ''
-                                                        for f in c:
-                                                            if f in d:
-                                                                TotalRevenueRank = r
                                                         u = u + 1
                                                 if h == 'p':
                                                     try:
@@ -4542,23 +4725,90 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                                         else:
                                                             ARCHvalue = 0
                                                     if ARCHvalue != 0:
-                                                        Sales.append(ARCHvalue)
-                                                        print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'Sales')
+                                                        CostOfSales.append(ARCHvalue)
+                                                        print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'CostOfSales')
                                                         s = 'z'
-                        r = r + 1
-                    tb.Sales = -sum(Sales)
-                except:
-                    pass
-                #
-                # cost of sales
-                try:
-                    CostOfSales = []
-                    r = 0
-                    TotalCostRank = 10
-                    for key, value in IncomeStatement.items():
-                        if r < NetIncomeRank:
-                            if r < GrossMarginRank:
-                                if r < TotalCostRank:
+                            r = r + 1
+                        a.CostOfSales = sum(CostOfSales)
+                    except:
+                        pass
+                    #
+                    a.save()
+                    #
+                    print(137*'-')
+                    #
+                    # sales components
+                    try:
+                        Sales = []
+                        r = 0
+                        TotalRevenueRank = 10
+                        for key, value in IncomeStatement.items():
+                            if r < NetIncomeRank:
+                                if r < GrossMarginRank:
+                                        d = key
+                                        q = [
+                                            'Financing',
+                                            'Membership',
+                                            'Products',
+                                            'Revenue',
+                                            'Sales',
+                                            'Services',
+                                            'AutomotiveRevenue',
+                                        ]
+                                        b = [
+                                            'Cost',
+                                            'DiscontinuedOperation',
+                                            'ExciseTaxes',
+                                        ]
+                                        c = [
+                                            'TotalRevenue',
+                                            'TotalNetRevenue',
+                                        ]
+                                        s = 'a'
+                                        for l in q:
+                                            if s == 'a':
+                                                if l in d:
+                                                    h = 'p'
+                                                    for p in b:
+                                                        u = 0
+                                                        while u < len(b):
+                                                            if p in d:
+                                                                h = ''
+                                                            for f in c:
+                                                                if f in d:
+                                                                    TotalRevenueRank = r
+                                                            u = u + 1
+                                                    if r < TotalRevenueRank:
+                                                        if h == 'p':
+                                                            try:
+                                                                i = 0
+                                                                while IncomeStatement[key][i] == None:
+                                                                    i = i + 1
+                                                                ARCHvalue = IncomeStatement[key][i]
+                                                                IncomeStatement[key][i] = None
+                                                            except:
+                                                                if IncomeStatement[key] != None:
+                                                                    ARCHvalue = IncomeStatement[key]
+                                                                    IncomeStatement[key] = None
+                                                                else:
+                                                                    ARCHvalue = 0
+                                                            if ARCHvalue != 0:
+                                                                Sales.append(ARCHvalue)
+                                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'Sales')
+                                                                s = 'z'
+                            r = r + 1
+                        tb.Sales = -sum(Sales)
+                    except:
+                        pass
+                    #
+                    # cost of sales components
+                    try:
+                        CostOfSales = []
+                        r = 0
+                        TotalCostRank = 10
+                        for key, value in IncomeStatement.items():
+                            if r < NetIncomeRank:
+                                if r < GrossMarginRank:
                                     d = key
                                     q = [
                                         'Services',
@@ -4573,7 +4823,6 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                     b = [
                                         'CostOfSalesOperatingExpensesAndOther',
                                         'CostsExpensesAndOther',
-                                        'Total',
                                     ]
                                     c = [
                                         'TotalCost',
@@ -4593,488 +4842,509 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                                             if f in d:
                                                                 TotalCostRank = r
                                                         u = u + 1
-                                                if h == 'p':
-                                                    try:
-                                                        i = 0
-                                                        while IncomeStatement[key][i] == None:
-                                                            i = i + 1
-                                                        ARCHvalue = IncomeStatement[key][i]
-                                                        IncomeStatement[key][i] = None
-                                                    except:
-                                                        if IncomeStatement[key] != None:
-                                                            ARCHvalue = IncomeStatement[key]
-                                                            IncomeStatement[key] = None
-                                                        else:
-                                                            ARCHvalue = 0
-                                                    if ARCHvalue != 0:
-                                                        if r < TotalCostRank:
-                                                            CostOfSales.append(ARCHvalue)
-                                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'CostOfSales')
-                                                            s = 'z'
-                        r = r + 1
-                    tb.CostOfSales = sum(CostOfSales)
-                except:
-                    pass
-                #
-                # research and development
-                try:
-                    ResearchAndDevelopment = []
-                    r = 0
-                    for key, value in IncomeStatement.items():
-                        if r < NetIncomeRank:
+                                                if r < TotalCostRank:
+                                                    if h == 'p':
+                                                        try:
+                                                            i = 0
+                                                            while IncomeStatement[key][i] == None:
+                                                                i = i + 1
+                                                            ARCHvalue = IncomeStatement[key][i]
+                                                            IncomeStatement[key][i] = None
+                                                        except:
+                                                            if IncomeStatement[key] != None:
+                                                                ARCHvalue = IncomeStatement[key]
+                                                                IncomeStatement[key] = None
+                                                            else:
+                                                                ARCHvalue = 0
+                                                        if ARCHvalue != 0:
+                                                            if r < TotalCostRank:
+                                                                CostOfSales.append(ARCHvalue)
+                                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'CostOfSales')
+                                                                s = 'z'
+                            r = r + 1
+                        tb.CostOfSales = sum(CostOfSales)
+                    except:
+                        pass
+                    #
+                    print(137*'-')
+                    #
+                    # anomalies attributable to the SEC
+                    try:
+                        if a.Sales != 0:
+                            tb.Sales = a.Sales
+                        if a.CostOfSales != 0:
+                            tb.CostOfSales = a.CostOfSales
+                    except:
+                        pass
+                    #
+                    print(137*'-')
+                    #
+                    # research and development
+                    try:
+                        ResearchAndDevelopment = []
+                        r = 0
+                        for key, value in IncomeStatement.items():
+                            if r < NetIncomeRank:
+                                d = key
+                                q = [
+                                    'Research',
+                                    'Development',
+                                ]
+                                b = [
+                                    'DiscontinuedOperation',
+                                ]
+                                for l in q:
+                                    if l in d:
+                                        h = 'p'
+                                        for p in b:
+                                            u = 0
+                                            while u < len(b):
+                                                if p in d:
+                                                    h = ''
+                                                u = u + 1
+                                        if h == 'p':
+                                            try:
+                                                i = 0
+                                                while IncomeStatement[key][i] == None:
+                                                    i = i + 1
+                                                ARCHvalue = IncomeStatement[key][i]
+                                                IncomeStatement[key][i] = None
+                                            except:
+                                                if IncomeStatement[key] != None:
+                                                    ARCHvalue = IncomeStatement[key]
+                                                    IncomeStatement[key] = None
+                                                else:
+                                                    ARCHvalue = 0
+                                            if ARCHvalue != 0:
+                                                ResearchAndDevelopment.append(ARCHvalue)
+                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'ResearchAndDevelopment')
+                            r = r + 1
+                        tb.ResearchAndDevelopment = sum(ResearchAndDevelopment)
+                    except:
+                        pass
+                    #
+                    # selling general, administrative and marketing
+                    try:
+                        SellingGeneralAdministrativeAndMarketing = []
+                        r = 0
+                        for key, value in IncomeStatement.items():
+                            if r < NetIncomeRank:
+                                d = key
+                                q = [
+                                    'DepreciationAndAmortization',
+                                    'DepreciationDepletion',
+                                    'GeneralAndAdministrative',
+                                    'GeneralAdministrative',
+                                    'SellingAndAdministrative',
+                                    'OperatingExpenses',
+                                    'OtherCostAndExpensesOperating',
+                                    'OtherOperatingExpenses',
+                                    'OtherOperatingIncomeExpenses',
+                                    'Other',
+                                ]
+                                b = [
+                                    'CostOfSalesOperatingExpensesAndOtherNet',
+                                    'CostsExpensesAndOther',
+                                    'DiscontinuedOperation',
+                                    'InterestIncome',
+                                    'InterestExpense',
+                                    'NonOperating',
+                                    'OtherIncome',
+                                    'Other(Expense)Income',
+                                    'OtherNet(Income)Expense',
+                                    'Research',
+                                    'Total',
+                                ]
+                                for l in q:
+                                    if l in d:
+                                        h = 'p'
+                                        for p in b:
+                                            u = 0
+                                            while u < len(b):
+                                                if p in d:
+                                                    h = ''
+                                                u = u + 1
+                                        if h == 'p':
+                                            if '(Income)' in d:
+                                                y = -1
+                                            else:
+                                                y = 1
+                                            try:
+                                                i = 0
+                                                while IncomeStatement[key][i] == None:
+                                                    i = i + 1
+                                                ARCHvalue = abs(IncomeStatement[key][i]) * y
+                                                IncomeStatement[key][i] = None
+                                            except:
+                                                if IncomeStatement[key] != None:
+                                                    ARCHvalue = abs(IncomeStatement[key]) * y
+                                                    IncomeStatement[key] = None
+                                                else:
+                                                    ARCHvalue = 0
+                                            if ARCHvalue != 0:
+                                                SellingGeneralAdministrativeAndMarketing.append(ARCHvalue)
+                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'SellingGeneralAdministrativeAndMarketing')
+                            r = r + 1
+                        tb.SellingGeneralAdministrativeAndMarketing = sum(SellingGeneralAdministrativeAndMarketing)
+                    except:
+                        pass
+                    #
+                    # total operating income
+                    try:
+                        OperatingIncome = []
+                        r = 0
+                        for key, value in IncomeStatement.items():
+                            if r < NetIncomeRank:
+                                d = key
+                                q = [
+                                    'OperatingIncome',
+                                    'IncomeFromOperations',
+                                ]
+                                b = [
+                                    'DiscontinuedOperation',
+                                    'Research',
+                                ]
+                                for l in q:
+                                    if l in d:
+                                        h = 'p'
+                                        for p in b:
+                                            u = 0
+                                            while u < len(b):
+                                                if p in d:
+                                                    h = ''
+                                                u = u + 1
+                                        if h == 'p':
+                                            try:
+                                                i = 0
+                                                while IncomeStatement[key][i] == None:
+                                                    i = i + 1
+                                                ARCHvalue = IncomeStatement[key][i]
+                                                IncomeStatement[key][i] = None
+                                            except:
+                                                if IncomeStatement[key] != None:
+                                                    ARCHvalue = IncomeStatement[key]
+                                                    IncomeStatement[key] = None
+                                                else:
+                                                    ARCHvalue = 0
+                                            if ARCHvalue != 0:
+                                                OperatingIncome.append(ARCHvalue)
+                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'OperatingIncome')
+                            r = r + 1
+                        a.OperatingIncome = -sum(OperatingIncome)
+                    except:
+                        pass
+                    #
+                    # Asset Impairment, restructuring, and other special charges
+                    try:
+                        ImpairmentRestructuringAndOtherSpecialCharges = []
+                        r = 0
+                        for key, value in IncomeStatement.items():
+                            if r < NetIncomeRank:
+                                d = key
+                                q = [
+                                    'AssetImpairmentRestructuringAndOtherSpecialCharges',
+                                    'Contingency',
+                                    'GoodwillImpairmentCharge',
+                                    'LossOnExtinguishmentOfDebt',
+                                    'Restructuring',
+                                    'Special',
+                                ]
+                                b = [
+                                    'DiscontinuedOperation',
+                                    'Research',
+                                ]
+                                for l in q:
+                                    if l in d:
+                                        h = 'p'
+                                        for p in b:
+                                            u = 0
+                                            while u < len(b):
+                                                if p in d:
+                                                    h = ''
+                                                u = u + 1
+                                        if h == 'p':
+                                            try:
+                                                i = 0
+                                                while IncomeStatement[key][i] == None:
+                                                    i = i + 1
+                                                ARCHvalue = IncomeStatement[key][i]
+                                                IncomeStatement[key][i] = None
+                                            except:
+                                                if IncomeStatement[key] != None:
+                                                    ARCHvalue = IncomeStatement[key]
+                                                    IncomeStatement[key] = None
+                                                else:
+                                                    ARCHvalue = 0
+                                            if ARCHvalue != 0:
+                                                ImpairmentRestructuringAndOtherSpecialCharges.append(ARCHvalue)
+                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'ImpairmentRestructuringAndOtherSpecialCharges')
+                            r = r + 1
+                        tb.ImpairmentRestructuringAndOtherSpecialCharges = sum(ImpairmentRestructuringAndOtherSpecialCharges)
+                    except:
+                        pass
+                    #
+                    # non-operating income (expense)
+                    try:
+                        NonOperatingIncome = []
+                        r = 0
+                        for key, value in IncomeStatement.items():
+                            if r < NetIncomeRank:
+                                d = key
+                                q = [
+                                    'Debt',
+                                    'EquityIncome(loss)',
+                                    'EquityInNetIncome',
+                                    'Finance',
+                                    'InterestIncome',
+                                    'InterestExpense',
+                                    'NonOperating',
+                                    'OtherIncome',
+                                    'OtherNet(Income)Expense',
+                                ]
+                                b = [
+                                    'Research',
+                                ]
+                                for l in q:
+                                    if l in d:
+                                        h = 'p'
+                                        for p in b:
+                                            u = 0
+                                            while u < len(b):
+                                                if p in d:
+                                                    h = ''
+                                                u = u + 1
+                                        if h == 'p':
+                                            if '(Income)' in d:
+                                                y = -1
+                                            else:
+                                                y = 1
+                                            try:
+                                                i = 0
+                                                while IncomeStatement[key][i] == None:
+                                                    i = i + 1
+                                                ARCHvalue = abs(IncomeStatement[key][i]) * y
+                                                IncomeStatement[key][i] = None
+                                            except:
+                                                if IncomeStatement[key] != None:
+                                                    ARCHvalue = abs(IncomeStatement[key]) * y
+                                                    IncomeStatement[key] = None
+                                                else:
+                                                    ARCHvalue = 0
+                                            if ARCHvalue != 0:
+                                                NonOperatingIncome.append(ARCHvalue)
+                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'NonOperatingIncome')
+                            r = r + 1
+                        tb.NonOperatingIncome = -sum(NonOperatingIncome)
+                    except:
+                        pass
+                    #
+                    # income before taxes
+                    try:
+                        IncomeBeforeTaxes = []
+                        r = 0
+                        for key, value in IncomeStatement.items():
+                            if r < NetIncomeRank:
+                                d = key
+                                q = [
+                                    'BeforeIncomeTax',
+                                    'BeforeProvisionForIncomeTax',
+                                    'BeforeProvisionFor(BenefitFrom)IncomeTax)',
+                                    'BeforeTax',
+                                ]
+                                b = [
+                                    'DiscontinuedOperation',
+                                    'Research',
+                                ]
+                                for l in q:
+                                    if l in d:
+                                        h = 'p'
+                                        for p in b:
+                                            u = 0
+                                            while u < len(b):
+                                                if p in d:
+                                                    h = ''
+                                                u = u + 1
+                                        if h == 'p':
+                                            try:
+                                                i = 0
+                                                while IncomeStatement[key][i] == None:
+                                                    i = i + 1
+                                                ARCHvalue = IncomeStatement[key][i]
+                                                IncomeStatement[key][i] = None
+                                            except:
+                                                if IncomeStatement[key] != None:
+                                                    ARCHvalue = value
+                                                    IncomeStatement[key] = None
+                                                else:
+                                                    ARCHvalue = 0
+                                            if ARCHvalue != 0:
+                                                IncomeBeforeTaxes.append(ARCHvalue)
+                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'IncomeBeforeTaxes')
+                            r = r + 1
+                        a.IncomeBeforeTaxes = -sum(IncomeBeforeTaxes)
+                    except:
+                        pass
+                    #
+                    # income tax expense benefit
+                    try:
+                        IncomeTaxExpenseBenefit = []
+                        r = 0
+                        for key, value in IncomeStatement.items():
+                            if r < NetIncomeRank:
+                                d = key
+                                q = [
+                                    'IncomeTax',
+                                    'ProvisionForTaxes',
+                                ]
+                                b = [
+                                    'DiscontinuedOperation',
+                                    'IncomeBefore',
+                                ]
+                                for l in q:
+                                    if l in d:
+                                        h = 'p'
+                                        for p in b:
+                                            u = 0
+                                            while u < len(b):
+                                                if p in d:
+                                                    h = ''
+                                                u = u + 1
+                                        if h == 'p':
+                                            try:
+                                                i = 0
+                                                while IncomeStatement[key][i] == None:
+                                                    i = i + 1
+                                                ARCHvalue = IncomeStatement[key]
+                                                IncomeStatement[key][i] = None
+                                            except:
+                                                if IncomeStatement[key] != None:
+                                                    ARCHvalue = IncomeStatement[key]
+                                                    IncomeStatement[key] = None
+                                                else:
+                                                    ARCHvalue = 0
+                                            if ARCHvalue != 0:
+                                                if '(Benefit)' in d:
+                                                    if ARCHvalue < 1:
+                                                        y = -1
+                                                    else:
+                                                        y = 1
+                                                    ARCHvalue = abs(ARCHvalue) * y
+                                                IncomeTaxExpenseBenefit.append(ARCHvalue)
+                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'IncomeTaxExpenseBenefit')
+                            r = r + 1
+                        tb.IncomeTaxExpenseBenefit = sum(IncomeTaxExpenseBenefit)
+                    except:
+                        pass
+                    #
+                    # net Income From Discontinued Operations
+                    try:
+                        NetIncomeFromDiscontinuedOperations = []
+                        r = 0
+                        for key, value in IncomeStatement.items():
+                            if r < NetIncomeRank:
+                                d = key
+                                q = [
+                                    'LossFromDiscontinuedOperation',
+                                    'IncomeFromDiscontinuedOperation',
+                                    'Income(Loss)FromDiscontinuedOperation',
+                                ]
+                                b = [
+                                    'Research',
+                                    'PerShare',
+                                ]
+                                for l in q:
+                                    if l in d:
+                                        h = 'p'
+                                        for p in b:
+                                            u = 0
+                                            while u < len(b):
+                                                if p in d:
+                                                    h = ''
+                                                u = u + 1
+                                        if h == 'p':
+                                            try:
+                                                i = 0
+                                                while IncomeStatement[key][i] == None:
+                                                    i = i + 1
+                                                ARCHvalue = IncomeStatement[key][i]
+                                                IncomeStatement[key][i] = None
+                                            except:
+                                                if IncomeStatement[key] != None:
+                                                    ARCHvalue = IncomeStatement[key]
+                                                    IncomeStatement[key] = None
+                                                else:
+                                                    ARCHvalue = 0
+                                            if ARCHvalue != 0:
+                                                NetIncomeFromDiscontinuedOperations.append(ARCHvalue)
+                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'NetIncomeFromDiscontinuedOperations')
+                            r = r + 1
+                        tb.NetIncomeFromDiscontinuedOperations = -sum(NetIncomeFromDiscontinuedOperations)
+                    except:
+                        pass
+                    #
+                    # net income Non Controlling Interests
+                    try:
+                        NetIncomeAttributableToNonControllingInterest = []
+                        r = 0
+                        for key, value in IncomeStatement.items():
                             d = key
                             q = [
-                                'Research',
-                                'Development',
+                                'NetIncomeAttributableToMinorityInterest',
+                                'NetIncomeAttributableToNonControllingInterest',
+                                'NetIncomeAttributableToNoncontrollingInterest',
                             ]
                             b = [
+                                'CostOfGoods',
+                                'CostOfOperations',
+                                'CostOfRevenue',
+                                'CostOfSales',
                                 'DiscontinuedOperation',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while IncomeStatement[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = IncomeStatement[key][i]
-                                            IncomeStatement[key][i] = None
-                                        except:
-                                            if IncomeStatement[key] != None:
-                                                ARCHvalue = IncomeStatement[key]
-                                                IncomeStatement[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            ResearchAndDevelopment.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'ResearchAndDevelopment')
-                        r = r + 1
-                    tb.ResearchAndDevelopment = sum(ResearchAndDevelopment)
-                except:
-                    pass
-                #
-                # selling general, administrative and marketing
-                try:
-                    SellingGeneralAdministrativeAndMarketing = []
-                    r = 0
-                    for key, value in IncomeStatement.items():
-                        if r < NetIncomeRank:
-                            d = key
-                            q = [
-                                'DepreciationAndAmortization',
-                                'DepreciationDepletion',
-                                'GeneralAndAdministrative',
-                                'GeneralAdministrative',
-                                'InterestExpense',
-                                'SellingAndAdministrative',
-                                'OperatingExpenses',
-                                'OtherCostAndExpensesOperating',
-                                'OtherOperatingExpenses',
-                                'OtherOperatingIncomeExpenses',
+                                'Gain',
                                 'Other',
-                            ]
-                            b = [
-                                'CostOfSalesOperatingExpensesAndOtherNet',
-                                'CostsExpensesAndOther',
-                                'DiscontinuedOperation',
-                                'Research',
-                                'Total',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        if '(Income)' in d:
-                                            y = -1
-                                        else:
-                                            y = 1
-                                        try:
-                                            i = 0
-                                            while IncomeStatement[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = abs(IncomeStatement[key][i]) * y
-                                            IncomeStatement[key][i] = None
-                                        except:
-                                            if IncomeStatement[key] != None:
-                                                ARCHvalue = abs(IncomeStatement[key]) * y
-                                                IncomeStatement[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            SellingGeneralAdministrativeAndMarketing.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'SellingGeneralAdministrativeAndMarketing')
-                        r = r + 1
-                    tb.SellingGeneralAdministrativeAndMarketing = sum(SellingGeneralAdministrativeAndMarketing)
-                except:
-                    pass
-                #
-                # total operating income
-                try:
-                    OperatingIncome = []
-                    r = 0
-                    for key, value in IncomeStatement.items():
-                        if r < NetIncomeRank:
-                            d = key
-                            q = [
-                                'OperatingIncome',
-                                'IncomeFromOperations',
-                            ]
-                            b = [
-                                'DiscontinuedOperation',
-                                'Research',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while IncomeStatement[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = IncomeStatement[key][i]
-                                            IncomeStatement[key][i] = None
-                                        except:
-                                            if IncomeStatement[key] != None:
-                                                ARCHvalue = IncomeStatement[key]
-                                                IncomeStatement[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            OperatingIncome.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'OperatingIncome')
-                        r = r + 1
-                    a.OperatingIncome = -sum(OperatingIncome)
-                except:
-                    pass
-                #
-                # Asset Impairment, restructuring, and other special charges
-                try:
-                    ImpairmentRestructuringAndOtherSpecialCharges = []
-                    r = 0
-                    for key, value in IncomeStatement.items():
-                        if r < NetIncomeRank:
-                            d = key
-                            q = [
-                                'AssetImpairmentRestructuringAndOtherSpecialCharges',
-                                'Contingency',
-                                'GoodwillImpairmentCharge',
-                                'LossOnExtinguishmentOfDebt',
-                                'Restructuring',
-                                'Special',
-                            ]
-                            b = [
-                                'DiscontinuedOperation',
-                                'Research',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while IncomeStatement[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = IncomeStatement[key][i]
-                                            IncomeStatement[key][i] = None
-                                        except:
-                                            if IncomeStatement[key] != None:
-                                                ARCHvalue = IncomeStatement[key]
-                                                IncomeStatement[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            ImpairmentRestructuringAndOtherSpecialCharges.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'ImpairmentRestructuringAndOtherSpecialCharges')
-                        r = r + 1
-                    tb.ImpairmentRestructuringAndOtherSpecialCharges = sum(ImpairmentRestructuringAndOtherSpecialCharges)
-                except:
-                    pass
-                #
-                # non-operating income (expense)
-                try:
-                    NonOperatingIncome = []
-                    r = 0
-                    for key, value in IncomeStatement.items():
-                        if r < NetIncomeRank:
-                            d = key
-                            q = [
-                                'Debt',
-                                'EquityIncome(loss)',
-                                'EquityInNetIncome',
-                                'Finance',
-                                'InterestIncome',
-                                'InterestExpense',
-                                'NonOperating',
-                                'OtherIncome',
-                                'OtherNet(Income)Expense',
-                            ]
-                            b = [
-                                'Research',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        if '(Income)' in d:
-                                            y = -1
-                                        else:
-                                            y = 1
-                                        try:
-                                            i = 0
-                                            while IncomeStatement[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = abs(IncomeStatement[key][i]) * y
-                                            IncomeStatement[key][i] = None
-                                        except:
-                                            if IncomeStatement[key] != None:
-                                                ARCHvalue = abs(IncomeStatement[key]) * y
-                                                IncomeStatement[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            NonOperatingIncome.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'NonOperatingIncome')
-                        r = r + 1
-                    tb.NonOperatingIncome = -sum(NonOperatingIncome)
-                except:
-                    pass
-                #
-                # income before taxes
-                try:
-                    IncomeBeforeTaxes = []
-                    r = 0
-                    for key, value in IncomeStatement.items():
-                        if r < NetIncomeRank:
-                            d = key
-                            q = [
-                                'BeforeIncomeTax',
-                                'BeforeProvisionForIncomeTax',
-                                'BeforeProvisionFor(BenefitFrom)IncomeTax)',
-                                'BeforeTax',
-                            ]
-                            b = [
-                                'DiscontinuedOperation',
-                                'Research',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while IncomeStatement[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = IncomeStatement[key][i]
-                                            IncomeStatement[key][i] = None
-                                        except:
-                                            if IncomeStatement[key] != None:
-                                                ARCHvalue = value
-                                                IncomeStatement[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            IncomeBeforeTaxes.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'IncomeBeforeTaxes')
-                        r = r + 1
-                    a.IncomeBeforeTaxes = -sum(IncomeBeforeTaxes)
-                except:
-                    pass
-                #
-                # income tax expense benefit
-                try:
-                    IncomeTaxExpenseBenefit = []
-                    r = 0
-                    for key, value in IncomeStatement.items():
-                        if r < NetIncomeRank:
-                            d = key
-                            q = [
-                                'IncomeTax',
-                                'ProvisionForTaxes',
-                            ]
-                            b = [
-                                'DiscontinuedOperation',
-                                'IncomeBefore',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        if 'Refund' in d:
-                                            y = -1
-                                        else:
-                                            y = 1
-                                        try:
-                                            i = 0
-                                            while IncomeStatement[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = abs(IncomeStatement[key]) * y
-                                            IncomeStatement[key][i] = None
-                                        except:
-                                            if IncomeStatement[key] != None:
-                                                ARCHvalue = abs(IncomeStatement[key]) * y
-                                                IncomeStatement[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            IncomeTaxExpenseBenefit.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'IncomeTaxExpenseBenefit')
-                        r = r + 1
-                    tb.IncomeTaxExpenseBenefit = sum(IncomeTaxExpenseBenefit)
-                except:
-                    pass
-                #
-                # net Income From Discontinued Operations
-                try:
-                    NetIncomeFromDiscontinuedOperations = []
-                    r = 0
-                    for key, value in IncomeStatement.items():
-                        if r < NetIncomeRank:
-                            d = key
-                            q = [
-                                'LossFromDiscontinuedOperation',
-                                'IncomeFromDiscontinuedOperation',
-                                'Income(Loss)FromDiscontinuedOperation',
-                            ]
-                            b = [
-                                'Research',
+                                'Miscellaneous',
                                 'PerShare',
+                                'Research',
+                                'Revenue',
+                                'Sales',
+                                'Tax',
                             ]
+                            s = 'a'
                             for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while IncomeStatement[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = IncomeStatement[key][i]
-                                            IncomeStatement[key][i] = None
-                                        except:
-                                            if IncomeStatement[key] != None:
-                                                ARCHvalue = IncomeStatement[key]
-                                                IncomeStatement[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            NetIncomeFromDiscontinuedOperations.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'NetIncomeFromDiscontinuedOperations')
-                        r = r + 1
-                    tb.NetIncomeFromDiscontinuedOperations = -sum(NetIncomeFromDiscontinuedOperations)
+                                if s == 'a':
+                                    if l in d:
+                                        h = 'p'
+                                        for p in b:
+                                            u = 0
+                                            while u < len(b):
+                                                if p in d:
+                                                    h = ''
+                                                u = u + 1
+                                        if h == 'p':
+                                            try:
+                                                i = 0
+                                                while IncomeStatement[key][i] == None:
+                                                    i = i + 1
+                                                ARCHvalue = IncomeStatement[key][i]
+                                                IncomeStatement[key][i] = None
+                                            except:
+                                                if IncomeStatement[key] != None:
+                                                    ARCHvalue = IncomeStatement[key]
+                                                    IncomeStatement[key] = None
+                                                else:
+                                                    ARCHvalue = 0
+                                            if ARCHvalue != 0:
+                                                NetIncomeAttributableToNonControllingInterest.append(ARCHvalue)
+                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'NetIncomeAttributableToNonControllingInterest')
+                                                s = 'z'
+                            r = r + 1
+                        a.NetIncomeAttributableToNonControllingInterest = -abs(sum(NetIncomeAttributableToNonControllingInterest))
+                    except:
+                        pass
                 except:
                     pass
-                #
-                # net income Non Controlling Interests
-                try:
-                    NetIncomeAttributableToNonControllingInterest = []
-                    r = 0
-                    for key, value in IncomeStatement.items():
-                        d = key
-                        q = [
-                            'NetIncomeAttributableToMinorityInterest',
-                            'NetIncomeAttributableToNonControllingInterest',
-                            'NetIncomeAttributableToNoncontrollingInterest',
-                        ]
-                        b = [
-                            'CostOfGoods',
-                            'CostOfOperations',
-                            'CostOfRevenue',
-                            'CostOfSales',
-                            'DiscontinuedOperation',
-                            'Gain',
-                            'Other',
-                            'Miscellaneous',
-                            'PerShare',
-                            'Research',
-                            'Revenue',
-                            'Sales',
-                            'Tax',
-                        ]
-                        s = 'a'
-                        for l in q:
-                            if s == 'a':
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while IncomeStatement[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = IncomeStatement[key][i]
-                                            IncomeStatement[key][i] = None
-                                        except:
-                                            if IncomeStatement[key] != None:
-                                                ARCHvalue = IncomeStatement[key]
-                                                IncomeStatement[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            NetIncomeAttributableToNonControllingInterest.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'NetIncomeAttributableToNonControllingInterest')
-                                            s = 'z'
-                        r = r + 1
-                    a.NetIncomeAttributableToNonControllingInterest = -abs(sum(NetIncomeAttributableToNonControllingInterest))
-                except:
-                    pass
-                #
-                print('\n' * 3)
-                #
                 #
                 # comprehensive income
+                print(137*'-')
                 print('other comprehensive income')
                 print(137*'-')
                 #
@@ -5359,13 +5629,11 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         tb.IncomeTaxOnOtherComprehensiveIncome = -sum(IncomeTaxOnOtherComprehensiveIncome)
                     except:
                         pass
-                #
                 except:
                     pass
                 #
-                print('\n' * 3)
-                #
                 # stockholders equity
+                print(137*'-')
                 print("stockholders equity")
                 print(137*'-')
                 #
@@ -5393,7 +5661,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                             u = u + 1
                                     if h == 'p':
                                         if ARCHvalue != 0:
-                                            StockholdersEquityRank = r
+                                            LiabilitiesAndStockholdersEquityRank = r
                                             print('Rank: ' + str(r))
                             r = r + 1
                         tb.CommonStockIssued = -sum(CommonStockIssued)
@@ -5405,7 +5673,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         CommonStockIssued = []
                         r = 0
                         for key, value in StockholdersEquityStatement.items():
-                            if r > StockholdersEquityRank:
+                            if r > LiabilitiesAndStockholdersEquityRank:
                                 d = key
                                 q = [
                                     'CommonStockIssued',
@@ -5454,7 +5722,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         ShareBasedCompensation = []
                         r = 0
                         for key, value in StockholdersEquityStatement.items():
-                            if r > StockholdersEquityRank:
+                            if r > LiabilitiesAndStockholdersEquityRank:
                                 d = key
                                 q = [
                                     'ShareBasedCompensation',
@@ -5501,7 +5769,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         DividendsAndDividendEquivalentsDeclared = []
                         r = 0
                         for key, value in StockholdersEquityStatement.items():
-                            if r > StockholdersEquityRank:
+                            if r > LiabilitiesAndStockholdersEquityRank:
                                 d = key
                                 q = [
                                     'Dividends',
@@ -5548,7 +5816,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         DividendsDeclaredToNonControllingInterests = []
                         r = 0
                         for key, value in StockholdersEquityStatement.items():
-                            if r > StockholdersEquityRank:
+                            if r > LiabilitiesAndStockholdersEquityRank:
                                 d = key
                                 q = [
                                     'DividendsAndDividendEquivalentsDeclaredToNoncontrollingInterest',
@@ -5594,7 +5862,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         CommonStockRepurchasedAndRetired = []
                         r = 0
                         for key, value in StockholdersEquityStatement.items():
-                            if r > StockholdersEquityRank:
+                            if r > LiabilitiesAndStockholdersEquityRank:
                                 d = key
                                 q = [
                                     'AcquisitionOfCommonStockInExchangeOffer',
@@ -5647,7 +5915,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         EffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts = []
                         r = 0
                         for key, value in StockholdersEquityStatement.items():
-                            if r > StockholdersEquityRank:
+                            if r > LiabilitiesAndStockholdersEquityRank:
                                 d = key
                                 q = [
                                     'AdoptionOfNewAccountingStandardsNetOfIncomeTaxes',
@@ -5689,61 +5957,120 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         tb.EffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts = sum(EffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts)
                     except:
                         pass
-                    #
-                    print('\n' * 3)
-                    #
                 except:
                     pass
                 #
-                print('cash flow')
-                #
-                # cash beginning balance
+                # cash flow
                 print(137*'-')
+                print('cash flow')
+                print(137*'-')
+                #
                 try:
-                    CashBeginningBalance = []
-                    r = 0
-                    s = 'a'
-                    for key, value in CashFlowStatement.items():
-                        d = key
-                        q = [
-                            'Cash',
-                            'Balance',
-                        ]
-                        b = [
-                            'Acquire',
-                            'Acquisition',
-                            'AtEndOfYear',
-                            'AtYearEnd',
-                            'ChangeIn',
-                            'Decrease',
-                            'Disposal',
-                            'Distributed',
-                            'Dividends',
-                            'Effect',
-                            'End',
-                            'Exchange',
-                            'Financing',
-                            'Flows'
-                            'From',
-                            'Hedge',
-                            'Impairment',
-                            'Increase',
-                            'Investing',
-                            'Net',
-                            'NonCash',
-                            'Operating',
-                            'Paid',
-                            'Payment',
-                            'Proceeds',
-                            'Provided',
-                            'Purchase',
-                            'Received',
-                            'Restructuring',
-                            'Sale',
-                            'Selling',
-                        ]
-                        for l in q:
-                            if s == 'a':
+                    #
+                    # cash beginning balance
+                    try:
+                        CashBeginningBalance = []
+                        r = 0
+                        s = 'a'
+                        for key, value in CashFlowStatement.items():
+                            d = key
+                            q = [
+                                'Cash',
+                                'Balance',
+                            ]
+                            b = [
+                                'Acquire',
+                                'Acquisition',
+                                'AtEndOfYear',
+                                'AtYearEnd',
+                                'ChangeIn',
+                                'Decrease',
+                                'Disposal',
+                                'Distributed',
+                                'Dividends',
+                                'Effect',
+                                'End',
+                                'Exchange',
+                                'Financing',
+                                'Flows'
+                                'From',
+                                'Hedge',
+                                'Impairment',
+                                'Increase',
+                                'Investing',
+                                'Net',
+                                'NonCash',
+                                'Operating',
+                                'Paid',
+                                'Payment',
+                                'Proceeds',
+                                'Provided',
+                                'Purchase',
+                                'Received',
+                                'Restructuring',
+                                'Sale',
+                                'Selling',
+                            ]
+                            for l in q:
+                                if s == 'a':
+                                    if l in d:
+                                        h = 'p'
+                                        for p in b:
+                                            u = 0
+                                            while u < len(b):
+                                                if p in d:
+                                                    h = ''
+                                                u = u + 1
+                                        if h == 'p':
+                                            try:
+                                                i = 0
+                                                while CashFlowStatement[key][i] == None:
+                                                    i = i + 1
+                                                ARCHvalue = CashFlowStatement[key][i]
+                                                CashFlowStatement[key][i] = None
+                                            except:
+                                                if CashFlowStatement[key] != None:
+                                                    ARCHvalue = CashFlowStatement[key]
+                                                    CashFlowStatement[key] = None
+                                                else:
+                                                    ARCHvalue = 0
+                                            if ARCHvalue != 0:
+                                                CashBeginningBalance.append(ARCHvalue)
+                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'CashBeginningBalance')
+                                                s = 'z'
+                            r = r + 1
+                        cf.CashBeginningBalance = sum(CashBeginningBalance)
+                    except:
+                        pass
+                    #
+                    # effect of exchange rate on cash
+                    try:
+                        EffectOfExchangeRateOnCash = []
+                        r = 0
+                        for key, value in CashFlowStatement.items():
+                            d = key
+                            q = [
+                                'Exchange',
+                            ]
+                            b = [
+                                'Acquire',
+                                'Acquisition',
+                                'Decrease',
+                                'Disposal',
+                                'DiscontinuedOperation',
+                                'Ending',
+                                'Financing',
+                                'Hedge',
+                                'Increase',
+                                'Investment',
+                                'Investing',
+                                'Operating',
+                                'Payment',
+                                'Proceeds',
+                                'Purchase',
+                                'Selling',
+                            ]
+                            for l in q:
                                 if l in d:
                                     h = 'p'
                                     for p in b:
@@ -5766,77 +6093,12 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                             else:
                                                 ARCHvalue = 0
                                         if ARCHvalue != 0:
-                                            CashBeginningBalance.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'CashBeginningBalance')
-                                            s = 'z'
-                        r = r + 1
-                    cf.CashBeginningBalance = sum(CashBeginningBalance)
-                except:
-                    pass
-                print('\n' * 3)
-                #
-                # effect of exchange rate on cash
-                try:
-                    EffectOfExchangeRateOnCash = []
-                    r = 0
-                    for key, value in CashFlowStatement.items():
-                        d = key
-                        q = [
-                            'Exchange',
-                        ]
-                        b = [
-                            'Acquire',
-                            'Acquisition',
-                            'Decrease',
-                            'Disposal',
-                            'DiscontinuedOperation',
-                            'Ending',
-                            'Financing',
-                            'Hedge',
-                            'Increase',
-                            'Investment',
-                            'Investing',
-                            'Operating',
-                            'Payment',
-                            'Proceeds',
-                            'Purchase',
-                            'Selling',
-                        ]
-                        for l in q:
-                            if l in d:
-                                h = 'p'
-                                for p in b:
-                                    u = 0
-                                    while u < len(b):
-                                        if p in d:
-                                            h = ''
-                                        u = u + 1
-                                if h == 'p':
-                                    try:
-                                        i = 0
-                                        while CashFlowStatement[key][i] == None:
-                                            i = i + 1
-                                        ARCHvalue = CashFlowStatement[key][i]
-                                        CashFlowStatement[key][i] = None
-                                    except:
-                                        if CashFlowStatement[key] != None:
-                                            ARCHvalue = CashFlowStatement[key]
-                                            CashFlowStatement[key] = None
-                                        else:
-                                            ARCHvalue = 0
-                                    if ARCHvalue != 0:
-                                        EffectOfExchangeRateOnCash.append(ARCHvalue)
-                                        print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'EffectOfExchangeRateOnCash')
-                        r = r + 1
-                    cf.EffectOfExchangeRateOnCash = sum(EffectOfExchangeRateOnCash)
-                except:
-                    pass
-                print('\n' * 3)
-                #
-                # operating activities
-                try:
-                    print('operating activities')
-                    print(137*'-')
+                                            EffectOfExchangeRateOnCash.append(ARCHvalue)
+                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'EffectOfExchangeRateOnCash')
+                            r = r + 1
+                        cf.EffectOfExchangeRateOnCash = sum(EffectOfExchangeRateOnCash)
+                    except:
+                        pass
                     #
                     # total operating activities
                     try:
@@ -5889,693 +6151,11 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                             OperatingActivities.append(ARCHvalue)
                                             print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'OperatingActivities')
                                             OperatingActivitiesRank = r
+                                            print(str(OperatingActivitiesRank))
                             r = r + 1
                         a.OperatingActivities = sum(OperatingActivities)
-                        print('\n' * 3)
                     except:
                         pass
-                    #
-                    # depreciation depletion and amortization
-                    try:
-                        DepreciationDepletionAndAmortization = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            if r < OperatingActivitiesRank:
-                                d = key
-                                q = [
-                                    'Depreciation',
-                                    'Amortization',
-                                ]
-                                b = [
-                                    'Acquire',
-                                    'Acquisition',
-                                    'Decrease',
-                                    'Disposal',
-                                    'DiscontinuedOperation',
-                                    'Ending',
-                                    'Financing',
-                                    'Hedge',
-                                    'Increase',
-                                    'Investment',
-                                    'Investing',
-                                    'Operating',
-                                    'Payment',
-                                    'Proceeds',
-                                    'Purchase',
-                                    'Selling',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while CashFlowStatement[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = CashFlowStatement[key][i]
-                                                CashFlowStatement[key][i] = None
-                                            except:
-                                                if CashFlowStatement[key] != None:
-                                                    ARCHvalue = CashFlowStatement[key]
-                                                    CashFlowStatement[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                DepreciationDepletionAndAmortization.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'DepreciationDepletionAndAmortization')
-                            r = r + 1
-                        cf.DepreciationDepletionAndAmortization = sum(DepreciationDepletionAndAmortization)
-                    except:
-                        pass
-                    #
-                    # Gain Related To Disposal Or Sale
-                    try:
-                        GainRelatedToDisposalOrSale = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            if r < OperatingActivitiesRank:
-                                d = key
-                                q = [
-                                    'GainRelatedToDisposalOrSale',
-                                    '(Gains)Losses',
-                                    '(Gains)Losses',
-                                    '(Gains)AndLosses',
-                                    'GainOnSale',
-                                    'GainRelatedToDisposition',
-                                    'InvestmentGains',
-                                ]
-                                b = [
-                                    'Acquire',
-                                    'Acquisition',
-                                    'Decrease',
-                                    'DiscontinuedOperation',
-                                    'Ending',
-                                    'Financing',
-                                    'Hedge',
-                                    'Increase',
-                                    'Payment',
-                                    'Purchase',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while CashFlowStatement[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = CashFlowStatement[key][i]
-                                                CashFlowStatement[key][i] = None
-                                            except:
-                                                if CashFlowStatement[key] != None:
-                                                    ARCHvalue = CashFlowStatement[key]
-                                                    CashFlowStatement[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                GainRelatedToDisposalOrSale.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'GainRelatedToDisposalOrSale')
-                            r = r + 1
-                        cf.GainRelatedToDisposalOrSale = sum(GainRelatedToDisposalOrSale)
-                    except:
-                        pass
-                    #
-                    # Restructuring And Other Special Charges
-                    try:
-                        RestructuringAndOtherSpecialCharges = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            if r < OperatingActivitiesRank:
-                                d = key
-                                q = [
-                                    'Restructuring',
-                                    'Special',
-                                ]
-                                b = [
-                                    'Acquire',
-                                    'Acquisition',
-                                    'Decrease',
-                                    'DiscontinuedOperation',
-                                    'Ending',
-                                    'Financing',
-                                    'Hedge',
-                                    'Increase',
-                                    'Payment',
-                                    'Purchase',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while CashFlowStatement[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = CashFlowStatement[key][i]
-                                                CashFlowStatement[key][i] = None
-                                            except:
-                                                if CashFlowStatement[key] != None:
-                                                    ARCHvalue = CashFlowStatement[key]
-                                                    CashFlowStatement[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                RestructuringAndOtherSpecialCharges.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'RestructuringAndOtherSpecialCharges')
-                            r = r + 1
-                        cf.RestructuringAndOtherSpecialCharges = sum(RestructuringAndOtherSpecialCharges)
-                    except:
-                        pass#
-                    # Accrued Employee Compensation
-                    try:
-                        AccruedEmployeeCompensation = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            if r < OperatingActivitiesRank:
-                                d = key
-                                q = [
-                                    'Compensation',
-                                ]
-                                b = [
-                                    'Acquire',
-                                    'Acquisition',
-                                    'Decrease',
-                                    'Disposal',
-                                    'DiscontinuedOperation',
-                                    'Ending',
-                                    'Financing',
-                                    'Hedge',
-                                    'Increase',
-                                    'Investment',
-                                    'Investing',
-                                    'Operating',
-                                    'Payment',
-                                    'Proceeds',
-                                    'Purchase',
-                                    'Selling',
-                                    'ShareBasedCompensation',
-                                    'StockBasedCompensation',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while CashFlowStatement[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = CashFlowStatement[key][i]
-                                                CashFlowStatement[key][i] = None
-                                            except:
-                                                if CashFlowStatement[key] != None:
-                                                    ARCHvalue = CashFlowStatement[key]
-                                                    CashFlowStatement[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                AccruedEmployeeCompensation.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'AccruedEmployeeCompensation')
-                            r = r + 1
-                        cf.AccruedEmployeeCompensation = sum(AccruedEmployeeCompensation)
-                    except:
-                        pass                
-                    #
-                    # share based compensation
-                    try:
-                        ShareBasedCompensation = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            if r < OperatingActivitiesRank:
-                                d = key
-                                q = [
-                                    'ShareBasedCompensation',
-                                    'StockBasedCompensation',
-                                ]
-                                b = [
-                                    'Acquire',
-                                    'Acquisition',
-                                    'Decrease',
-                                    'Disposal',
-                                    'DiscontinuedOperation',
-                                    'Employee',
-                                    'Ending',
-                                    'Financing',
-                                    'Hedge',
-                                    'Increase',
-                                    'Investment',
-                                    'Investing',
-                                    'Operating',
-                                    'Payment',
-                                    'Proceeds',
-                                    'Purchase',
-                                    'Selling',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while CashFlowStatement[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = CashFlowStatement[key][i]
-                                                CashFlowStatement[key][i] = None
-                                            except:
-                                                if CashFlowStatement[key] != None:
-                                                    ARCHvalue = CashFlowStatement[key]
-                                                    CashFlowStatement[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                ShareBasedCompensation.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'ShareBasedCompensation')
-                            r = r + 1
-                        cf.ShareBasedCompensation = sum(ShareBasedCompensation)
-                    except:
-                        pass
-                    #
-                    # increase decrease in income tax expense (benefit)
-                    try:
-                        IncreaseDecreaseInIncomeTaxExpenseBenefit = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            if r < OperatingActivitiesRank:
-                                d = key
-                                q = [
-                                    'IncomeTax',
-                                ]
-                                b = [
-                                    'Payment',
-                                    'Purchase',
-                                    'Acquisition',
-                                    'Acquire',
-                                    'CashPaidFor',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while CashFlowStatement[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = CashFlowStatement[key][i]
-                                                CashFlowStatement[key][i] = None
-                                            except:
-                                                if CashFlowStatement[key] != None:
-                                                    ARCHvalue = CashFlowStatement[key]
-                                                    CashFlowStatement[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                IncreaseDecreaseInIncomeTaxExpenseBenefit.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'IncreaseDecreaseInIncomeTaxExpenseBenefit')
-                            r = r + 1
-                        cf.IncreaseDecreaseInIncomeTaxExpenseBenefit = sum(IncreaseDecreaseInIncomeTaxExpenseBenefit)
-                    except:
-                        pass
-                    #
-                    # other non cash income expense
-                    try:
-                        OtherNonCashIncomeExpense = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            if r < OperatingActivitiesRank:
-                                d = key
-                                q = [
-                                    'OtherNoncashIncomeExpense',
-                                ]
-                                b = [
-                                    'Amortization',
-                                    'Payment',
-                                    'Purchase',
-                                    'Acquisition',
-                                    'Acquire',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while CashFlowStatement[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = CashFlowStatement[key][i]
-                                                CashFlowStatement[key][i] = None
-                                            except:
-                                                if CashFlowStatement[key] != None:
-                                                    ARCHvalue = CashFlowStatement[key]
-                                                    CashFlowStatement[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                OtherNonCashIncomeExpense.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'OtherNonCashIncomeExpense')
-                            r = r + 1
-                        cf.OtherNonCashIncomeExpense = -sum(OtherNonCashIncomeExpense)
-                    except:
-                        pass
-                    #
-                    # increase (decrease) in accounts receivable
-                    try:
-                        IncreaseDecreaseInAccountsReceivable = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            if r < OperatingActivitiesRank:
-                                d = key
-                                q = [
-                                    'Receivable',
-                                ]
-                                b = [
-                                    'NonTrade',
-                                    'Payment',
-                                    'Purchase',
-                                    'Acquisition',
-                                    'Acquire',
-                                    'RepurchaseAgreements',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while CashFlowStatement[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = CashFlowStatement[key][i]
-                                                CashFlowStatement[key][i] = None
-                                            except:
-                                                if CashFlowStatement[key] != None:
-                                                    ARCHvalue = CashFlowStatement[key]
-                                                    CashFlowStatement[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                IncreaseDecreaseInAccountsReceivable.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'IncreaseDecreaseInAccountsReceivable')
-                            r = r + 1
-                        cf.IncreaseDecreaseInAccountsReceivable = sum(IncreaseDecreaseInAccountsReceivable)
-                    except:
-                        pass
-                    #
-                    # increase (decrease) in inventories
-                    try:
-                        IncreaseDecreaseInInventories = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            if r < OperatingActivitiesRank:
-                                d = key
-                                q = [
-                                    'Inventories',
-                                ]
-                                b = [
-                                    'NonTrade',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while CashFlowStatement[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = CashFlowStatement[key][i]
-                                                CashFlowStatement[key][i] = None
-                                            except:
-                                                if CashFlowStatement[key] != None:
-                                                    ARCHvalue = CashFlowStatement[key]
-                                                    CashFlowStatement[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                IncreaseDecreaseInInventories.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'IncreaseDecreaseInInventories')
-                            r = r + 1
-                        cf.IncreaseDecreaseInInventories = sum(IncreaseDecreaseInInventories)
-                    except:
-                        pass
-                    #
-                    # increase (decrease) in other receivables and prepaid expenses
-                    try:
-                        IncreaseDecreaseInOtherReceivables = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            if r < OperatingActivitiesRank:
-                                d = key
-                                q = [
-                                    'OtherReceivables',
-                                    'NonTrade',
-                                ]
-                                b = [
-                                    'Payment',
-                                    'Purchase',
-                                    'Acquisition',
-                                    'Acquire',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while CashFlowStatement[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = CashFlowStatement[key][i]
-                                                CashFlowStatement[key][i] = None
-                                            except:
-                                                if CashFlowStatement[key] != None:
-                                                    ARCHvalue = CashFlowStatement[key]
-                                                    CashFlowStatement[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                IncreaseDecreaseInOtherReceivables.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'IncreaseDecreaseInOtherReceivables')
-                            r = r + 1
-                        cf.IncreaseDecreaseInOtherReceivables = sum(IncreaseDecreaseInOtherReceivables)
-                    except:
-                        pass
-                    #
-                    # increase (decrease) in accounts payable and accrued liabilities
-                    try:
-                        IncreaseDecreaseInAccountsPayableAndAccruedLiabilities = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            if r < OperatingActivitiesRank:
-                                d = key
-                                q = [
-                                    'AccountPayable',
-                                    'AccountsPayable',
-                                    'AccruedLiabilit',
-                                    'AccruedExpenses',
-                                ]
-                                b = [
-                                    'Acquire',
-                                    'Acquisition',
-                                    'NonTrade',
-                                    'Payment',
-                                    'PropertyAndEquipmentInAccountsPayable',
-                                    'Purchase',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while CashFlowStatement[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = CashFlowStatement[key][i]
-                                                CashFlowStatement[key][i] = None
-                                            except:
-                                                if CashFlowStatement[key] != None:
-                                                    ARCHvalue = CashFlowStatement[key]
-                                                    CashFlowStatement[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                IncreaseDecreaseInAccountsPayableAndAccruedLiabilities.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'IncreaseDecreaseInAccountsPayableAndAccruedLiabilities')
-                            r = r + 1
-                        cf.IncreaseDecreaseInAccountsPayableAndAccruedLiabilities = sum(IncreaseDecreaseInAccountsPayableAndAccruedLiabilities)
-                    except:
-                        pass
-                    #
-                    # increase (decrease) in contract with customer liability
-                    try:
-                        IncreaseDecreaseInContractWithCustomerLiability = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            if r < OperatingActivitiesRank:
-                                d = key
-                                q = [
-                                    'ContractWithCustomerLiability',
-                                    'DeferredRevenue',
-                                    'CustomerDeposits',
-                                ]
-                                b = [
-                                    'NonTrade',
-                                    'Payment',
-                                    'Purchase',
-                                    'Acquisition',
-                                    'Acquire',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while CashFlowStatement[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = CashFlowStatement[key][i]
-                                                CashFlowStatement[key][i] = None
-                                            except:
-                                                if CashFlowStatement[key] != None:
-                                                    ARCHvalue = CashFlowStatement[key]
-                                                    CashFlowStatement[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                IncreaseDecreaseInContractWithCustomerLiability.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'IncreaseDecreaseInContractWithCustomerLiability')
-                            r = r + 1
-                        cf.IncreaseDecreaseInContractWithCustomerLiability = sum(IncreaseDecreaseInContractWithCustomerLiability)
-                    except:
-                        pass
-                    #
-                    # increase (decrease) in other operating activities
-                    try:
-                        IncreaseDecreaseInOtherOperatingActivities = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            if r < OperatingActivitiesRank:
-                                d = key
-                                q = [
-                                    'Other',
-                                    'Miscellaneous',
-                                    'Research',
-                                    'NonTrade',
-                                ]
-                                b = [
-                                    'NonTrade',
-                                    'Payment',
-                                    'Purchase',
-                                    'Acquisition',
-                                    'Investing',
-                                    'Financing',
-                                    'PropertyAndEquipment',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while CashFlowStatement[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = CashFlowStatement[key][i]
-                                                CashFlowStatement[key][i] = None
-                                            except:
-                                                if CashFlowStatement[key] != None:
-                                                    ARCHvalue = CashFlowStatement[key]
-                                                    CashFlowStatement[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                IncreaseDecreaseInOtherOperatingActivities.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'IncreaseDecreaseInOtherOperatingActivities')
-                            r = r + 1
-                        cf.IncreaseDecreaseInOtherOperatingActivities = sum(IncreaseDecreaseInOtherOperatingActivities)
-                    except:
-                        pass
-                except:
-                    pass
-                #
-                print('\n' * 3)
-                #
-                # investing activities
-                try:
-                    print('investing activities')
-                    print(137*'-')
                     #
                     # Total Investing Activities
                     try:
@@ -6623,888 +6203,6 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     except:
                         pass
                     #
-                    # Payments To Acquire Investment
-                    try:
-                        PaymentsToAcquireInvestments = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            if r < InvestingActivitiesRank:
-                                d = key
-                                q = [
-                                    'Investments',
-                                    'Maturities',
-                                    'Securities',
-                                    'TradingAsset',
-                                ]
-                                b = [
-                                    'Begin',
-                                    'CashAnd',
-                                    'Disposal',
-                                    'Disposition',
-                                    'End',
-                                    'Maturities',
-                                    'Proceeds',
-                                    'SaleOf',
-                                    'SalesOf',
-                                    'Sell',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while CashFlowStatement[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = CashFlowStatement[key][i]
-                                                CashFlowStatement[key][i] = None
-                                            except:
-                                                if CashFlowStatement[key] != None:
-                                                    ARCHvalue = CashFlowStatement[key]
-                                                    CashFlowStatement[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                PaymentsToAcquireInvestments.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'PaymentsToAcquireInvestments')
-                            r = r + 1
-                        cf.PaymentsToAcquireInvestments = sum(PaymentsToAcquireInvestments)
-                    except:
-                        pass
-                    #
-                    # Proceeds Of Investment
-                    try:
-                        ProceedsOfInvestments = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            if r < InvestingActivitiesRank:
-                                d = key
-                                q = [
-                                    'Investments',
-                                    'Securities',
-                                    'TradingAsset',
-                                    'Maturities',
-                                ]
-                                b = [
-                                    'Addition',
-                                    'Begin',
-                                    'CashAnd',
-                                    'End',
-                                    'Payment',
-                                    'Purchase',
-                                    'Acquisition',
-                                    'Acquire',
-                                    'PropertyAndEquipment',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while CashFlowStatement[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = CashFlowStatement[key][i]
-                                                CashFlowStatement[key][i] = None
-                                            except:
-                                                if CashFlowStatement[key] != None:
-                                                    ARCHvalue = CashFlowStatement[key]
-                                                    CashFlowStatement[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                ProceedsOfInvestments.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'ProceedsOfInvestments')
-                            r = r + 1
-                        cf.ProceedsOfInvestments = sum(ProceedsOfInvestments)
-                    except:
-                        pass
-                    #
-                    # Payments To Acquire Property Plant And Equipment
-                    try:
-                        PaymentsToAcquirePropertyPlantAndEquipment = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            if r < InvestingActivitiesRank:
-                                d = key
-                                q = [
-                                    'Property',
-                                    'CapitalExpenditures',
-                                    'DeferredTurnaroundAndCatalystCosts',
-                                ]
-                                b = [
-                                    'Proceed',
-                                    'Disposal',
-                                    'Selling',
-                                    'AccountsPayable',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while CashFlowStatement[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = CashFlowStatement[key][i]
-                                                CashFlowStatement[key][i] = None
-                                            except:
-                                                if CashFlowStatement[key] != None:
-                                                    ARCHvalue = CashFlowStatement[key]
-                                                    CashFlowStatement[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                PaymentsToAcquirePropertyPlantAndEquipment.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'PaymentsToAcquirePropertyPlantAndEquipment')
-                            r = r + 1
-                        cf.PaymentsToAcquirePropertyPlantAndEquipment = -abs(sum(PaymentsToAcquirePropertyPlantAndEquipment))
-                    except:
-                        pass
-                    #
-                    # Proceeds From Disposal of Property Plant And Equipment
-                    try:
-                        ProceedsFromDisposalsOfPropertyAndEquipment = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            if r < InvestingActivitiesRank:
-                                d = key
-                                q = [
-                                    'Property',
-                                ]
-                                b = [
-                                    'Payment',
-                                    'Purchase',
-                                    'Acquisition',
-                                    'Acquire',
-                                    'Addition',
-                                    'PropertyAndEquipmentInAccountsPayable',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while CashFlowStatement[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = CashFlowStatement[key][i]
-                                                CashFlowStatement[key][i] = None
-                                            except:
-                                                if CashFlowStatement[key] != None:
-                                                    ARCHvalue = CashFlowStatement[key]
-                                                    CashFlowStatement[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                ProceedsFromDisposalsOfPropertyAndEquipment.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'ProceedsFromDisposalsOfPropertyAndEquipment')
-                            r = r + 1
-                        cf.ProceedsFromDisposalsOfPropertyAndEquipment = sum(ProceedsFromDisposalsOfPropertyAndEquipment)
-                    except:
-                        pass
-                    #
-                    # Payments To Acquire Businesses and Intangibles Net Of Cash Acquired
-                    try:
-                        PaymentsToAcquireBusinessesAndIntangibles = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            if r < InvestingActivitiesRank:
-                                d = key
-                                q = [
-                                    'AcquireBusinesses',
-                                    'AcquisitionOfBusinesses',
-                                    'AcquisitionsNetOfCashAcquired',
-                                    'BusinessAcquisitions',
-                                    'CashPaidForAcquisitions',
-                                    'DiverstitureOfBusinesses',
-                                    'Intangible',
-                                    'PurchasesOfRestaurant',
-                                    'Software',
-                                    'StrategicInvestments',
-                                    'PendingAcquisition',
-                                ]
-                                b = [
-                                    'Proceed',
-                                    'Disposal',
-                                    'Sell',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while CashFlowStatement[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = CashFlowStatement[key][i]
-                                                CashFlowStatement[key][i] = None
-                                            except:
-                                                if CashFlowStatement[key] != None:
-                                                    ARCHvalue = CashFlowStatement[key]
-                                                    CashFlowStatement[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                PaymentsToAcquireBusinessesAndIntangibles.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'PaymentsToAcquireBusinessesAndIntangibles')
-                            r = r + 1
-                        cf.PaymentsToAcquireBusinessesAndIntangibles = sum(PaymentsToAcquireBusinessesAndIntangibles)
-                    except:
-                        pass
-                    #
-                    # Proceeds From Disposals Of Businesses and Intangibles
-                    try:
-                        ProceedsFromDisposalsOfBusinessesAndIntangibles = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            if r < InvestingActivitiesRank:
-                                d = key
-                                q = [
-                                    'SaleOfBusinesses',
-                                    'SalesOfBusinesses',
-                                    'SalesOfRestaurantBusinesses',
-                                ]
-                                b = [
-                                    'Acquisition',
-                                ]
-                                for l in q:
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while CashFlowStatement[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = CashFlowStatement[key][i]
-                                                CashFlowStatement[key][i] = None
-                                            except:
-                                                if CashFlowStatement[key] != None:
-                                                    ARCHvalue = CashFlowStatement[key]
-                                                    CashFlowStatement[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                ProceedsFromDisposalsOfBusinessesAndIntangibles.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'ProceedsFromDisposalsOfBusinessesAndIntangibles')
-                            r = r + 1
-                        cf.ProceedsFromDisposalsOfBusinessesAndIntangibles = sum(ProceedsFromDisposalsOfBusinessesAndIntangibles)
-                    except:
-                        pass
-                    #
-                    # Other Investing Activities
-                    try:
-                        OtherInvestingActivities = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            d = key
-                            q = [
-                                'Other',
-                                'Research',
-                            ]
-                            b = [
-                                'Proceeds',
-                                'AccountsPayable',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while CashFlowStatement[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = CashFlowStatement[key][i]
-                                            CashFlowStatement[key][i] = None
-                                        except:
-                                            if CashFlowStatement[key] != None:
-                                                ARCHvalue = CashFlowStatement[key]
-                                                CashFlowStatement[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            OtherInvestingActivities.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'OtherInvestingActivities')
-                            r = r + 1
-                        cf.OtherInvestingActivities = sum(OtherInvestingActivities)
-                    except:
-                        pass
-                    #
-                    print('\n' * 3)
-                    #
-                except:
-                    pass
-                #
-                # financing activities
-                try:
-
-                    print('financing activities')
-                    print(137*'-')
-                    #
-                    # Finance Lease Principal Payments
-                    try:
-                        FinanceLeasePrincipalPayments = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            d = key
-                            q = [
-                                'FinanceLease',
-                            ]
-                            b = [
-                                'Operating',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while CashFlowStatement[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = CashFlowStatement[key][i]
-                                            CashFlowStatement[key][i] = None
-                                        except:
-                                            if CashFlowStatement[key] != None:
-                                                ARCHvalue = CashFlowStatement[key]
-                                                CashFlowStatement[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            FinanceLeasePrincipalPayments.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'FinanceLeasePrincipalPayments')
-                            r = r + 1
-                        cf.FinanceLeasePrincipalPayments = sum(FinanceLeasePrincipalPayments)
-                    except:
-                        pass        
-                    #
-                    # Proceeds From Issuance Of Common Stock
-                    try:
-                        ProceedsFromIssuanceOfCommonStock = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            d = key
-                            q = [
-                                'IssuanceOfCommonStock',
-                                'SalesOfCommonStock',
-                            ]
-                            b = [
-                                'Purchase',
-                                'Payment',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while CashFlowStatement[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = CashFlowStatement[key][i]
-                                            CashFlowStatement[key][i] = None
-                                        except:
-                                            if CashFlowStatement[key] != None:
-                                                ARCHvalue = CashFlowStatement[key]
-                                                CashFlowStatement[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            ProceedsFromIssuanceOfCommonStock.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'ProceedsFromIssuanceOfCommonStock')
-                            r = r + 1
-                        cf.ProceedsFromIssuanceOfCommonStock = sum(ProceedsFromIssuanceOfCommonStock)
-                    except:
-                        pass
-                    #
-                    # Payments Related To Tax Withholding For Share Based Compensation
-                    try:
-                        PaymentsRelatedToTaxWithholdingForShareBasedCompensation = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            d = key
-                            q = [
-                                'TaxWithholdingForShareBasedCompensation',
-                                'TaxesPaidRelatedToNetShareSettlementOfEquityAwards',
-                            ]
-                            b = [
-                                'Proceeds',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while CashFlowStatement[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = CashFlowStatement[key][i]
-                                            CashFlowStatement[key][i] = None
-                                        except:
-                                            if CashFlowStatement[key] != None:
-                                                ARCHvalue = CashFlowStatement[key]
-                                                CashFlowStatement[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            PaymentsRelatedToTaxWithholdingForShareBasedCompensation.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'PaymentsRelatedToTaxWithholdingForShareBasedCompensation')
-                            r = r + 1
-                        cf.PaymentsRelatedToTaxWithholdingForShareBasedCompensation = -abs(sum(PaymentsRelatedToTaxWithholdingForShareBasedCompensation))
-                    except:
-                        pass
-                    #
-                    # Payments Of Dividends
-                    try:
-                        PaymentsOfDividends = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            d = key
-                            q = [
-                                'Dividend',
-                            ]
-                            b = [
-                                'Proceeds',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while CashFlowStatement[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = CashFlowStatement[key][i]
-                                            CashFlowStatement[key][i] = None
-                                        except:
-                                            if CashFlowStatement[key] != None:
-                                                ARCHvalue = CashFlowStatement[key]
-                                                CashFlowStatement[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            PaymentsOfDividends.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'PaymentsOfDividends')
-                            r = r + 1
-                        cf.PaymentsOfDividends = -abs(sum(PaymentsOfDividends))
-                    except:
-                        pass
-                    #
-                    # Payments For Repurchase Of Common Stock
-                    try:
-                        PaymentsForRepurchaseOfCommonStock = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            d = key
-                            q = [
-                                'CommonStockRepurchases',
-                                'PurchasesOfCommonStock',
-                                'PurchaseOfCompanyStock',
-                                'RepurchaseOfCommonStock',
-                                'RepurchasesOfCommonStock',
-                                'RepurchasesOfClassACommonStock',
-                                'TreasuryStockPurchases',
-                            ]
-                            b = [
-                                'Proceeds',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while CashFlowStatement[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = CashFlowStatement[key][i]
-                                            CashFlowStatement[key][i] = None
-                                        except:
-                                            if CashFlowStatement[key] != None:
-                                                ARCHvalue = CashFlowStatement[key]
-                                                CashFlowStatement[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            PaymentsForRepurchaseOfCommonStock.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'PaymentsForRepurchaseOfCommonStock')
-                            r = r + 1
-                        cf.PaymentsForRepurchaseOfCommonStock = sum(PaymentsForRepurchaseOfCommonStock)
-                    except:
-                        pass
-                    #
-                    # Payments For Taxes Related To Net Share Settlement Of Equity Award
-                    try:
-                        PaymentsForTaxesRelatedToNetShareSettlementOfEquityAward = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            d = key
-                            q = [
-                                'ExcessTaxBenefitsFromEquityAwards',
-                                'PaymentsForTaxesRelatedToNetShareSettlementOfEquityAward',
-                            ]
-                            b = [
-                                'Proceeds',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while CashFlowStatement[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = CashFlowStatement[key][i]
-                                            CashFlowStatement[key][i] = None
-                                        except:
-                                            if CashFlowStatement[key] != None:
-                                                ARCHvalue = CashFlowStatement[key]
-                                                CashFlowStatement[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            PaymentsForTaxesRelatedToNetShareSettlementOfEquityAward.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'PaymentsForTaxesRelatedToNetShareSettlementOfEquityAward')
-                            r = r + 1
-                        cf.PaymentsForTaxesRelatedToNetShareSettlementOfEquityAward = sum(PaymentsForTaxesRelatedToNetShareSettlementOfEquityAward)
-                    except:
-                        pass
-                    #
-                    # Proceeds From Issuance Of Long Term Debt
-                    try:
-                        ProceedsFromIssuanceOfLongTermDebt = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            d = key
-                            q = [
-                                'Debt',
-                                'FinancingIssuance',
-                            ]
-                            b = [
-                                'Payment',
-                                'Purchase',
-                                'Repayment',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while CashFlowStatement[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = CashFlowStatement[key][i]
-                                            CashFlowStatement[key][i] = None
-                                        except:
-                                            if CashFlowStatement[key] != None:
-                                                ARCHvalue = CashFlowStatement[key]
-                                                CashFlowStatement[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            ProceedsFromIssuanceOfLongTermDebt.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'ProceedsFromIssuanceOfLongTermDebt')
-                            r = r + 1
-                        cf.ProceedsFromIssuanceOfLongTermDebt = sum(ProceedsFromIssuanceOfLongTermDebt)
-                    except:
-                        pass
-                    #
-                    # Repayments Of Long Term Debt
-                    try:
-                        RepaymentsOfLongTermDebt = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            d = key
-                            q = [
-                                'Debt',
-                                'FinancingRepayments',
-                            ]
-                            b = [
-                                'Proceeds',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while CashFlowStatement[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = CashFlowStatement[key][i]
-                                            CashFlowStatement[key][i] = None
-                                        except:
-                                            if CashFlowStatement[key] != None:
-                                                ARCHvalue = CashFlowStatement[key]
-                                                CashFlowStatement[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            RepaymentsOfLongTermDebt.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'RepaymentsOfLongTermDebt')
-                            r = r + 1
-                        cf.RepaymentsOfLongTermDebt = sum(RepaymentsOfLongTermDebt)
-                    except:
-                        pass
-                    #
-                    # Proceeds From Repayments Of Commercial Paper
-                    try:
-                        ProceedsFromRepaymentsOfCommercialPaper = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            d = key
-                            q = [
-                                'CommercialPaper',
-                            ]
-                            b = [
-                                'Acquisition',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while CashFlowStatement[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = CashFlowStatement[key][i]
-                                            CashFlowStatement[key][i] = None
-                                        except:
-                                            if CashFlowStatement[key] != None:
-                                                ARCHvalue = CashFlowStatement[key]
-                                                CashFlowStatement[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            ProceedsFromRepaymentsOfCommercialPaper.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'ProceedsFromRepaymentsOfCommercialPaper')
-                            r = r + 1
-                        cf.ProceedsFromRepaymentsOfCommercialPaper = sum(ProceedsFromRepaymentsOfCommercialPaper)
-                    except:
-                        pass
-                    #
-                    # Net Change In Short Term Borrowings
-                    try:
-                        NetChangeInShortTermBorrowings = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            d = key
-                            q = [
-                                'ShortTermBorrowing',
-                            ]
-                            b = [
-                                'CommercialPaper',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while CashFlowStatement[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = CashFlowStatement[key][i]
-                                            CashFlowStatement[key][i] = None
-                                        except:
-                                            if CashFlowStatement[key] != None:
-                                                ARCHvalue = CashFlowStatement[key]
-                                                CashFlowStatement[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            NetChangeInShortTermBorrowings.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'NetChangeInShortTermBorrowings')
-                            r = r + 1
-                        cf.NetChangeInShortTermBorrowings = sum(NetChangeInShortTermBorrowings)
-                    except:
-                        pass
-                    #
-                    # Proceeds from stock option exercices
-                    try:
-                        ProceedsFromStockOptionExercices = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            d = key
-                            q = [
-                                'StockOption',
-                            ]
-                            b = [
-                                'CommercialPaper',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while CashFlowStatement[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = CashFlowStatement[key][i]
-                                            CashFlowStatement[key][i] = None
-                                        except:
-                                            if CashFlowStatement[key] != None:
-                                                ARCHvalue = CashFlowStatement[key]
-                                                CashFlowStatement[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            ProceedsFromStockOptionExercices.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'ProceedsFromStockOptionExercices')
-                            r = r + 1
-                        cf.ProceedsFromStockOptionExercices = sum(ProceedsFromStockOptionExercices)
-                    except:
-                        pass
-                    #
-                    # Other Financing Activities
-                    try:
-                        OtherFinancingActivities = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            d = key
-                            q = [
-                                'CashPooling',
-                                'Other',
-                                'Miscellaneous',
-                                'InitialPublicOffering',
-                            ]
-                            b = [
-                                'Proceeds',
-                                'AccountsPayable',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while CashFlowStatement[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = CashFlowStatement[key][i]
-                                            CashFlowStatement[key][i] = None
-                                        except:
-                                            if CashFlowStatement[key] != None:
-                                                ARCHvalue = CashFlowStatement[key]
-                                                CashFlowStatement[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            OtherFinancingActivities.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'OtherFinancingActivities')
-                            r = r + 1
-                        cf.OtherFinancingActivities = sum(OtherFinancingActivities)
-                    except:
-                        pass
-                    #
                     # Total Financing Activities
                     try:
                         FinancingActivities = []
@@ -7544,133 +6242,1997 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                         if ARCHvalue != 0:
                                             FinancingActivities.append(ARCHvalue)
                                             print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'FinancingActivities')
+                                            FinancingActivitiesRank = r
                             r = r + 1
                         a.FinancingActivities = sum(FinancingActivities)
-                        #
-                        print('\n' * 3)
+                    #
                     except:
                         pass
                     #
-                    # supplemental cash flow disclosure
-                    print('supplemental cash flow disclosure')
-                    print(137*'-' + '\n' * 3)
-                    #
-                    # Cash paid for taxes
+                    # anomalies attributable to the SEC
                     try:
-                        CashPaidForTaxes = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            d = key
-                            q = [
-                                'CashPaidForIncomeTaxes',
-                                'IncomeTaxesPaid',
-                            ]
-                            b = [
-                                'Deferred',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while CashFlowStatement[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = CashFlowStatement[key][i]
-                                            CashFlowStatement[key][i] = None
-                                        except:
-                                            if CashFlowStatement[key] != None:
-                                                ARCHvalue = CashFlowStatement[key]
-                                                CashFlowStatement[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            CashPaidForTaxes.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'CashPaidForTaxes')
-                            r = r + 1
-                        cf.CashPaidForTaxes = sum(CashPaidForTaxes)
-                    except:
-                        pass 
-                    #
-                    # Cash paid for in interest
-                    try:
-                        CashPaidForInterest = []
-                        r = 0
-                        for key, value in CashFlowStatement.items():
-                            d = key
-                            q = [
-                                'Interest',
-                            ]
-                            b = [
-                                'Deferred',
-                            ]
-                            for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while CashFlowStatement[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = CashFlowStatement[key][i]
-                                            CashFlowStatement[key][i] = None
-                                        except:
-                                            if CashFlowStatement[key] != None:
-                                                ARCHvalue = CashFlowStatement[key]
-                                                CashFlowStatement[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            CashPaidForInterest.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'CashPaidForInterest')
-                            r = r + 1
-                        cf.CashPaidForInterest = sum(CashPaidForInterest)
                         #
-                        print(137*'-' + '\n')
-                        #
-                    except:
-                        pass 
-                    #
-                    # save
-                    try:
                         try:
-                            tb.save()
+                            print(137*'-')
+                            print('Operating Activities Rank: ' + str(OperatingActivitiesRank))
+                            print('Total Operating Activities: ' + str(a.OperatingActivities))
+                            r = 0
+                            OA = 0
+                            for key, value in CashFlowStatement.items():
+                                #
+                                skip = ''
+                                if r < OperatingActivitiesRank:
+                                    #
+                                    if 'Total' in key:
+                                        skip = 'skip'
+                                    if skip == '':
+                                        if value != None:
+                                            OA = OA + value
+                                r = r + 1
                             #
-                            print("Trial Balance Saved.")
+                            print('Operating Activities Components: ' + str(OA))
+                            a.AnomalyOperatingActivitiesSEC = OA - a.OperatingActivities
+                            print('Operating anomaly attributable to the SEC: ' + str(a.AnomalyOperatingActivitiesSEC))
                         except:
                             pass
+                        #
                         try:
-                            cf.save()
-                            #
-                            print("Cash Flow Saved.")
+                            print(137*'-')
+                            print('Investing Activities Rank: ' + str(InvestingActivitiesRank))
+                            print('Total Investing Activities: ' + str(a.InvestingActivities))
+                            r = 0
+                            IA = 0
+                            for key, value in CashFlowStatement.items():
+                                if r > OperatingActivitiesRank:
+                                    if r < InvestingActivitiesRank:
+                                        if value != None:
+                                            IA = IA + value
+                                r = r + 1
+                            print('Investing Activities Components: ' + str(IA))
+                            a.AnomalyInvestingActivitiesSEC = IA - a.InvestingActivities
+                            print('Investing anomaly attributable to the SEC: ' + str(a.AnomalyInvestingActivitiesSEC))
                         except:
                             pass
+                        #
                         try:
-                            a.save()
+                            print(137*'-')
+                            print('Financing Activities Rank: ' + str(FinancingActivitiesRank))
+                            print('Total Financing Activities: ' + str(a.FinancingActivities))
+                            r = 0
+                            FA = 0
+                            for key, value in CashFlowStatement.items():
+                                if r > InvestingActivitiesRank:
+                                    if r < FinancingActivitiesRank:
+                                        if value != None:
+                                            FA = FA + value
+                                r = r + 1
+                            print('Financing Activities Components: ' + str(FA))
+                            a.AnomalyFinancingActivitiesSEC = FA - a.FinancingActivities
+                            print('Financing anomaly attributable to the SEC: ' + str(a.AnomalyFinancingActivitiesSEC))
+                        except:
+                            pass
+                    except:
+                        pass
+                    #
+                    print(137*'-')
+                    #
+                    # operating activities
+                    try:
+                        print(137*'-')
+                        print('operating activities')
+                        print(137*'-')
+                        #
+                        # depreciation depletion and amortization
+                        try:
+                            DepreciationDepletionAndAmortization = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r < OperatingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'Depreciation',
+                                        'Amortization',
+                                    ]
+                                    b = [
+                                        'Acquire',
+                                        'Acquisition',
+                                        'Debt',
+                                        'Decrease',
+                                        'Disposal',
+                                        'DiscontinuedOperation',
+                                        'Ending',
+                                        'Financing',
+                                        'Hedge',
+                                        'Increase',
+                                        'Investment',
+                                        'Investing',
+                                        'Operating',
+                                        'Payment',
+                                        'Proceeds',
+                                        'Purchase',
+                                        'Selling',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    DepreciationDepletionAndAmortization.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'DepreciationDepletionAndAmortization')
+                                r = r + 1
+                            cf.DepreciationDepletionAndAmortization = sum(DepreciationDepletionAndAmortization)
+                        except:
+                            pass
+                        #
+                        # Gain Related To Disposal Or Sale
+                        try:
+                            GainRelatedToDisposalOrSale = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r < OperatingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'GainRelatedToDisposalOrSale',
+                                        'Gain(Loss)OnDisposal',
+                                        'Gain(Loss)OnExtinguishmentOfDebt',
+                                        'Gain(Loss)OnSale',
+                                        '(Gains)Losses',
+                                        '(Gains)Losses',
+                                        '(Gains)AndLosses',
+                                        'GainOnSale',
+                                        'GainRelatedToDisposition',
+                                        'InvestmentGains',
+                                        'LossOnDisposal',
+                                        'Loss(Gain)'
+                                        'LossOnDebtConversion',
+                                    ]
+                                    b = [
+                                        'Acquire',
+                                        'Acquisition',
+                                        'Decrease',
+                                        'Ending',
+                                        'Financing',
+                                        'Hedge',
+                                        'Increase',
+                                        'Payment',
+                                        'Purchase',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    GainRelatedToDisposalOrSale.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'GainRelatedToDisposalOrSale')
+                                r = r + 1
+                            cf.GainRelatedToDisposalOrSale = sum(GainRelatedToDisposalOrSale)
+                        except:
+                            pass
+                        #
+                        # Restructuring And Other Special Charges
+                        try:
+                            RestructuringAndOtherSpecialCharges = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r < OperatingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'DebtDiscount',
+                                        'Restructuring',
+                                        'Special',
+                                    ]
+                                    b = [
+                                        'Acquire',
+                                        'Acquisition',
+                                        'Decrease',
+                                        'DiscontinuedOperation',
+                                        'Ending',
+                                        'Financing',
+                                        'Hedge',
+                                        'Increase',
+                                        'Payment',
+                                        'Purchase',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    RestructuringAndOtherSpecialCharges.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'RestructuringAndOtherSpecialCharges')
+                                r = r + 1
+                            cf.RestructuringAndOtherSpecialCharges = sum(RestructuringAndOtherSpecialCharges)
+                        except:
+                            pass
+                        #
+                        # Accrued Employee Compensation
+                        try:
+                            AccruedEmployeeCompensation = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r < OperatingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'Compensation',
+                                    ]
+                                    b = [
+                                        'Acquire',
+                                        'Acquisition',
+                                        'Decrease',
+                                        'Disposal',
+                                        'DiscontinuedOperation',
+                                        'Ending',
+                                        'Financing',
+                                        'Hedge',
+                                        'Increase',
+                                        'Investment',
+                                        'Investing',
+                                        'Operating',
+                                        'Payment',
+                                        'Proceeds',
+                                        'Purchase',
+                                        'Selling',
+                                        'ShareBasedCompensation',
+                                        'StockBasedCompensation',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    AccruedEmployeeCompensation.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'AccruedEmployeeCompensation')
+                                r = r + 1
+                            cf.AccruedEmployeeCompensation = sum(AccruedEmployeeCompensation)
+                        except:
+                            pass                
+                        #
+                        # share based compensation
+                        try:
+                            ShareBasedCompensation = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r < OperatingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'ShareBasedCompensation',
+                                        'StockBasedCompensation',
+                                    ]
+                                    b = [
+                                        'Acquire',
+                                        'Acquisition',
+                                        'Decrease',
+                                        'Disposal',
+                                        'DiscontinuedOperation',
+                                        'Employee',
+                                        'Ending',
+                                        'Financing',
+                                        'Hedge',
+                                        'Increase',
+                                        'Investment',
+                                        'Investing',
+                                        'Operating',
+                                        'Payment',
+                                        'Proceeds',
+                                        'Purchase',
+                                        'Selling',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    ShareBasedCompensation.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'ShareBasedCompensation')
+                                r = r + 1
+                            cf.ShareBasedCompensation = sum(ShareBasedCompensation)
+                        except:
+                            pass
+                        #
+                        # increase decrease in income tax expense (benefit)
+                        try:
+                            IncreaseDecreaseInIncomeTaxExpenseBenefit = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r < OperatingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'IncomeTax',
+                                        'DeferredTax',
+                                    ]
+                                    b = [
+                                        'Payment',
+                                        'Purchase',
+                                        'Acquisition',
+                                        'Acquire',
+                                        'CashPaidFor',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    IncreaseDecreaseInIncomeTaxExpenseBenefit.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'IncreaseDecreaseInIncomeTaxExpenseBenefit')
+                                r = r + 1
+                            cf.IncreaseDecreaseInIncomeTaxExpenseBenefit = sum(IncreaseDecreaseInIncomeTaxExpenseBenefit)
+                        except:
+                            pass
+                        #
+                        # other non cash income expense
+                        try:
+                            OtherNonCashIncomeExpense = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r < OperatingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'ForeignCurrency',
+                                        'NoncashIncomeExpense',
+                                        'NonCashInterest',
+                                    ]
+                                    b = [
+                                        'Amortization',
+                                        'Payment',
+                                        'Purchase',
+                                        'Acquisition',
+                                        'Acquire',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    OtherNonCashIncomeExpense.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'OtherNonCashIncomeExpense')
+                                r = r + 1
+                            cf.OtherNonCashIncomeExpense = sum(OtherNonCashIncomeExpense)
+                        except:
+                            pass
+                        #
+                        # increase (decrease) in accounts receivable
+                        try:
+                            IncreaseDecreaseInAccountsReceivable = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r < OperatingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'Receivable',
+                                    ]
+                                    b = [
+                                        'NonTrade',
+                                        'Payment',
+                                        'Purchase',
+                                        'Acquisition',
+                                        'Acquire',
+                                        'RepurchaseAgreements',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    IncreaseDecreaseInAccountsReceivable.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'IncreaseDecreaseInAccountsReceivable')
+                                r = r + 1
+                            cf.IncreaseDecreaseInAccountsReceivable = sum(IncreaseDecreaseInAccountsReceivable)
+                        except:
+                            pass
+                        #
+                        # increase (decrease) in inventories
+                        try:
+                            IncreaseDecreaseInInventories = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r < OperatingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'Inventor',
+                                    ]
+                                    b = [
+                                        'NonTrade',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    IncreaseDecreaseInInventories.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'IncreaseDecreaseInInventories')
+                                r = r + 1
+                            cf.IncreaseDecreaseInInventories = sum(IncreaseDecreaseInInventories)
+                        except:
+                            pass
+                        #
+                        # increase (decrease) in other receivables and prepaid expenses
+                        try:
+                            IncreaseDecreaseInOtherReceivables = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r < OperatingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'OtherReceivables',
+                                        'NonTrade',
+                                    ]
+                                    b = [
+                                        'Payment',
+                                        'Purchase',
+                                        'Acquisition',
+                                        'Acquire',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    IncreaseDecreaseInOtherReceivables.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'IncreaseDecreaseInOtherReceivables')
+                                r = r + 1
+                            cf.IncreaseDecreaseInOtherReceivables = sum(IncreaseDecreaseInOtherReceivables)
+                        except:
+                            pass
+                        #
+                        # increase (decrease) in accounts payable and accrued liabilities
+                        try:
+                            IncreaseDecreaseInAccountsPayableAndAccruedLiabilities = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r < OperatingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'AccountPayable',
+                                        'AccountsPayable',
+                                        'AccruedLiabilit',
+                                        'AccruedExpenses',
+                                    ]
+                                    b = [
+                                        'Acquire',
+                                        'Acquisition',
+                                        'NonTrade',
+                                        'Payment',
+                                        'PropertyAndEquipmentInAccountsPayable',
+                                        'Purchase',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    IncreaseDecreaseInAccountsPayableAndAccruedLiabilities.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'IncreaseDecreaseInAccountsPayableAndAccruedLiabilities')
+                                r = r + 1
+                            cf.IncreaseDecreaseInAccountsPayableAndAccruedLiabilities = sum(IncreaseDecreaseInAccountsPayableAndAccruedLiabilities)
+                        except:
+                            pass
+                        #
+                        # increase (decrease) in contract with customer liability
+                        try:
+                            IncreaseDecreaseInContractWithCustomerLiability = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r < OperatingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'ContractWithCustomerLiability',
+                                        'DeferredRevenue',
+                                        'CustomerDeposits',
+                                    ]
+                                    b = [
+                                        'NonTrade',
+                                        'Payment',
+                                        'Purchase',
+                                        'Acquisition',
+                                        'Acquire',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    IncreaseDecreaseInContractWithCustomerLiability.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'IncreaseDecreaseInContractWithCustomerLiability')
+                                r = r + 1
+                            cf.IncreaseDecreaseInContractWithCustomerLiability = sum(IncreaseDecreaseInContractWithCustomerLiability)
+                        except:
+                            pass
+                        #
+                        # increase (decrease) in operating lease current
+                        try:
+                            IncreaseDecreaseOperatingLeaseCurrent = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r < OperatingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'OperatingLease',
+                                    ]
+                                    b = [
+                                        'Acquisition',
+                                        'Acquire',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    IncreaseDecreaseOperatingLeaseCurrent.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'IncreaseDecreaseOperatingLeaseCurrent')
+                                r = r + 1
+                            cf.IncreaseDecreaseOperatingLeaseCurrent = sum(IncreaseDecreaseOperatingLeaseCurrent)
+                        except:
+                            pass
+                        #
+                        # increase (decrease) in other operating activities
+                        try:
+                            IncreaseDecreaseInOtherOperatingActivities = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r < OperatingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'CurrentAssetsAndCurrentLiabilit',
+                                        'DiscountedConvertible',
+                                        'Other',
+                                        'Guarantee',
+                                        'Miscellaneous',
+                                        'NonTrade',
+                                        'Research',
+                                    ]
+                                    b = [
+                                        'NonTrade',
+                                        'Payment',
+                                        'Purchase',
+                                        'Acquisition',
+                                        'Investing',
+                                        'Financing',
+                                        'PropertyAndEquipment',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    IncreaseDecreaseInOtherOperatingActivities.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'IncreaseDecreaseInOtherOperatingActivities')
+                                r = r + 1
+                            cf.IncreaseDecreaseInOtherOperatingActivities = sum(IncreaseDecreaseInOtherOperatingActivities)
+                        except:
+                            pass
+                    except:
+                        pass
+                    #
+                    # investing activities
+                    try:
+                        print(137*'-')
+                        print('investing activities')
+                        print(137*'-')
+                        #
+                        # Payments To Acquire Investment
+                        try:
+                            PaymentsToAcquireInvestments = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r < InvestingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'Investments',
+                                        'Maturities',
+                                        'Securities',
+                                        'TradingAsset',
+                                    ]
+                                    b = [
+                                        'Begin',
+                                        'CashAnd',
+                                        'Disposal',
+                                        'Disposition',
+                                        'End',
+                                        'Gain(Loss)',
+                                        'Maturities',
+                                        'Proceeds',
+                                        'SaleOf',
+                                        'SalesOf',
+                                        'Sell',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    PaymentsToAcquireInvestments.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'PaymentsToAcquireInvestments')
+                                r = r + 1
+                            cf.PaymentsToAcquireInvestments = sum(PaymentsToAcquireInvestments)
+                        except:
+                            pass
+                        #
+                        # Proceeds Of Investment
+                        try:
+                            ProceedsOfInvestments = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r < InvestingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'Investments',
+                                        'Securities',
+                                        'TradingAsset',
+                                        'Maturities',
+                                        'ReturnOfCapital',
+                                    ]
+                                    b = [
+                                        'Addition',
+                                        'Begin',
+                                        'CashAnd',
+                                        'End',
+                                        'Payment',
+                                        'Purchase',
+                                        'Acquisition',
+                                        'Acquire',
+                                        'PropertyAndEquipment',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    ProceedsOfInvestments.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'ProceedsOfInvestments')
+                                r = r + 1
+                            cf.ProceedsOfInvestments = sum(ProceedsOfInvestments)
+                        except:
+                            pass
+                        #
+                        # Payments To Acquire Property Plant And Equipment
+                        try:
+                            PaymentsToAcquirePropertyPlantAndEquipment = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r < InvestingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'Property',
+                                        'CapitalExpenditures',
+                                        'DeferredTurnaroundAndCatalystCosts',
+                                        'PurchasesOfSolarEnergySystems',
+                                    ]
+                                    b = [
+                                        'Proceed',
+                                        'Disposal',
+                                        'Selling',
+                                        'AccountsPayable',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    PaymentsToAcquirePropertyPlantAndEquipment.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'PaymentsToAcquirePropertyPlantAndEquipment')
+                                r = r + 1
+                            cf.PaymentsToAcquirePropertyPlantAndEquipment = -abs(sum(PaymentsToAcquirePropertyPlantAndEquipment))
+                        except:
+                            pass
+                        #
+                        # Proceeds From Disposal of Property Plant And Equipment
+                        try:
+                            ProceedsFromDisposalsOfPropertyAndEquipment = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r < InvestingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'Property',
+                                    ]
+                                    b = [
+                                        'Payment',
+                                        'Purchase',
+                                        'Acquisition',
+                                        'Acquire',
+                                        'Addition',
+                                        'PropertyAndEquipmentInAccountsPayable',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    ProceedsFromDisposalsOfPropertyAndEquipment.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'ProceedsFromDisposalsOfPropertyAndEquipment')
+                                r = r + 1
+                            cf.ProceedsFromDisposalsOfPropertyAndEquipment = sum(ProceedsFromDisposalsOfPropertyAndEquipment)
+                        except:
+                            pass
+                        #
+                        # Payments To Acquire Businesses and Intangibles Net Of Cash Acquired
+                        try:
+                            PaymentsToAcquireBusinessesAndIntangibles = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r < InvestingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'AcquireBusinesses',
+                                        'AcquisitionOfBusinesses',
+                                        'AcquisitionOfUndividedInterest',
+                                        'AcquisitionsNetOfCashAcquired',
+                                        'BusinessAcquisitions',
+                                        'BusinessCombinations',
+                                        'CashPaidForAcquisitions',
+                                        'DiverstitureOfBusinesses',
+                                        'Intangible',
+                                        'PeruAcquisition',
+                                        'PurchasesOfRestaurant',
+                                        'Software',
+                                        'StrategicInvestments',
+                                        'PendingAcquisition',
+                                    ]
+                                    b = [
+                                        'Proceed',
+                                        'Disposal',
+                                        'Sell',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    PaymentsToAcquireBusinessesAndIntangibles.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'PaymentsToAcquireBusinessesAndIntangibles')
+                                r = r + 1
+                            cf.PaymentsToAcquireBusinessesAndIntangibles = sum(PaymentsToAcquireBusinessesAndIntangibles)
+                        except:
+                            pass
+                        #
+                        # Proceeds From Disposals Of Businesses and Intangibles
+                        try:
+                            ProceedsFromDisposalsOfBusinessesAndIntangibles = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r < InvestingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'DivestitureOfBusinesses',
+                                        'ReverseRepurchaseAgreements',
+                                        'SaleOfBusinesses',
+                                        'SalesOfBusinesses',
+                                        'SalesOfRestaurantBusinesses',
+                                    ]
+                                    b = [
+                                        'Acquisition',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    ProceedsFromDisposalsOfBusinessesAndIntangibles.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'ProceedsFromDisposalsOfBusinessesAndIntangibles')
+                                r = r + 1
+                            cf.ProceedsFromDisposalsOfBusinessesAndIntangibles = sum(ProceedsFromDisposalsOfBusinessesAndIntangibles)
+                        except:
+                            pass
+                        #
+                        # Reveipt Of Government Grands
+                        try:
+                            ReveiptOfGovernmentGrants = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r < InvestingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'ReceiptOfGovernmentGrants',
+                                    ]
+                                    b = [
+                                        'Acquisition',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    ReveiptOfGovernmentGrants.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'ReveiptOfGovernmentGrants')
+                                r = r + 1
+                            cf.ReveiptOfGovernmentGrants = sum(ReveiptOfGovernmentGrants)
+                        except:
+                            pass
+                        #
+                        # Other Investing Activities
+                        try:
+                            OtherInvestingActivities = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r < InvestingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'Other',
+                                        'Research',
+                                        'RestrictedCash',
+                                    ]
+                                    b = [
+                                        'AccountsPayable',
+                                        'Financing',
+                                        'Proceeds',
+                                        'Repayments',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    OtherInvestingActivities.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'OtherInvestingActivities')
+                                r = r + 1
+                            cf.OtherInvestingActivities = sum(OtherInvestingActivities)
+                        except:
+                            pass
+                    except:
+                        pass
+                    #
+                    # financing activities
+                    try:
+                        print(137*'-')
+                        print('financing activities')
+                        print(137*'-')
+                        #
+                        # Finance Lease Principal Payments
+                        try:
+                            FinanceLeasePrincipalPayments = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r > InvestingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'FinanceLease',
+                                        'PrincipalPaymentsOnCapitalLeases',
+                                    ]
+                                    b = [
+                                        'Operating',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    FinanceLeasePrincipalPayments.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'FinanceLeasePrincipalPayments')
+                                r = r + 1
+                            cf.FinanceLeasePrincipalPayments = sum(FinanceLeasePrincipalPayments)
+                        except:
+                            pass        
+                        #
+                        # Proceeds From Issuance Of Common Stock
+                        try:
+                            ProceedsFromIssuanceOfCommonStock = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r > InvestingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'IssuanceOfCommonStock',
+                                        'IssuancesOfCommonStock',
+                                        'SalesOfCommonStock',
+                                    ]
+                                    b = [
+                                        'Purchase',
+                                        'Payment',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    ProceedsFromIssuanceOfCommonStock.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'ProceedsFromIssuanceOfCommonStock')
+                                r = r + 1
+                            cf.ProceedsFromIssuanceOfCommonStock = sum(ProceedsFromIssuanceOfCommonStock)
+                        except:
+                            pass
+                        #
+                        # Payments Related To Tax Withholding For Share Based Compensation
+                        try:
+                            PaymentsRelatedToTaxWithholdingForShareBasedCompensation = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r > InvestingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'TaxWithholdingForShareBasedCompensation',
+                                        'TaxesPaidRelatedToNetShareSettlementOfEquityAwards',
+                                    ]
+                                    b = [
+                                        'Proceeds',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    PaymentsRelatedToTaxWithholdingForShareBasedCompensation.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'PaymentsRelatedToTaxWithholdingForShareBasedCompensation')
+                                r = r + 1
+                            cf.PaymentsRelatedToTaxWithholdingForShareBasedCompensation = -abs(sum(PaymentsRelatedToTaxWithholdingForShareBasedCompensation))
+                        except:
+                            pass
+                        #
+                        # Payments Of Dividends
+                        try:
+                            PaymentsOfDividends = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r > InvestingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'Dividend',
+                                    ]
+                                    b = [
+                                        'Proceeds',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    PaymentsOfDividends.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'PaymentsOfDividends')
+                                r = r + 1
+                            cf.PaymentsOfDividends = -abs(sum(PaymentsOfDividends))
+                        except:
+                            pass
+                        #
+                        # Payments For Repurchase Of Common Stock
+                        try:
+                            PaymentsForRepurchaseOfCommonStock = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r > InvestingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'CommonStockRepurchases',
+                                        'PurchasesOfCommonStock',
+                                        'PurchaseOfCompanyStock',
+                                        'PurchaseOfCommonStock',
+                                        'RepurchaseOfCommonStock',
+                                        'RepurchasesOfCommonStock',
+                                        'RepurchasesOfClassACommonStock',
+                                        'TreasuryStockPurchases',
+                                    ]
+                                    b = [
+                                        'Proceeds',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    PaymentsForRepurchaseOfCommonStock.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'PaymentsForRepurchaseOfCommonStock')
+                                r = r + 1
+                            cf.PaymentsForRepurchaseOfCommonStock = sum(PaymentsForRepurchaseOfCommonStock)
+                        except:
+                            pass
+                        #
+                        # Payments For Taxes Related To Net Share Settlement Of Equity Award
+                        try:
+                            PaymentsForTaxesRelatedToNetShareSettlementOfEquityAward = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r > InvestingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'ExcessTaxBenefitsFromEquityAwards',
+                                        'PaymentsForTaxesRelatedToNetShareSettlementOfEquityAward',
+                                    ]
+                                    b = [
+                                        'Proceeds',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    PaymentsForTaxesRelatedToNetShareSettlementOfEquityAward.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'PaymentsForTaxesRelatedToNetShareSettlementOfEquityAward')
+                                r = r + 1
+                            cf.PaymentsForTaxesRelatedToNetShareSettlementOfEquityAward = sum(PaymentsForTaxesRelatedToNetShareSettlementOfEquityAward)
+                        except:
+                            pass
+                        #
+                        # Proceeds From Issuance Of Long Term Debt
+                        try:
+                            ProceedsFromIssuanceOfLongTermDebt = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r > InvestingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'Debt',
+                                        'FinancingIssuance',
+                                    ]
+                                    b = [
+                                        'Convertible',
+                                        'Payment',
+                                        'Purchase',
+                                        'Repayment',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    ProceedsFromIssuanceOfLongTermDebt.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'ProceedsFromIssuanceOfLongTermDebt')
+                                r = r + 1
+                            cf.ProceedsFromIssuanceOfLongTermDebt = sum(ProceedsFromIssuanceOfLongTermDebt)
+                        except:
+                            pass
+                        #
+                        # Repayments Of Long Term Debt
+                        try:
+                            RepaymentsOfLongTermDebt = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r > InvestingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'Debt',
+                                        'FinancingRepayments',
+                                    ]
+                                    b = [
+                                        'Proceeds',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    RepaymentsOfLongTermDebt.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'RepaymentsOfLongTermDebt')
+                                r = r + 1
+                            cf.RepaymentsOfLongTermDebt = sum(RepaymentsOfLongTermDebt)
+                        except:
+                            pass
+                        #
+                        # Proceeds From Repayments Of Commercial Paper
+                        try:
+                            ProceedsFromRepaymentsOfCommercialPaper = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r > InvestingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'CommercialPaper',
+                                    ]
+                                    b = [
+                                        'Acquisition',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    ProceedsFromRepaymentsOfCommercialPaper.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'ProceedsFromRepaymentsOfCommercialPaper')
+                                r = r + 1
+                            cf.ProceedsFromRepaymentsOfCommercialPaper = sum(ProceedsFromRepaymentsOfCommercialPaper)
+                        except:
+                            pass
+                        #
+                        # Repayments Of Convertible
+                        try:
+                            RepaymentsOfConvertible = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r > InvestingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'RepaymentsOfConvertible',
+                                        'RepaymentsOfDiscontinuedConvertible',
+                                    ]
+                                    b = [
+                                        'Issuance'
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    RepaymentsOfConvertible.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'RepaymentsOfConvertible')
+                                r = r + 1
+                            cf.RepaymentsOfConvertible = sum(RepaymentsOfConvertible)
+                        except:
+                            pass
+                        #
+                        # Issuance Of Convertible
+                        try:
+                            IssuanceOfConvertible = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r > InvestingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'IssuancesOfConvertible',
+                                    ]
+                                    b = [
+                                        'Repayment',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    IssuanceOfConvertible.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'IssuanceOfConvertible')
+                                r = r + 1
+                            cf.IssuanceOfConvertible = sum(IssuanceOfConvertible)
+                        except:
+                            pass
+                        #
+                        # Net Change In Short Term Borrowings
+                        try:
+                            NetChangeInShortTermBorrowings = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r > InvestingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'ShortTermBorrowing',
+                                        'ShortTermDebt',
+                                    ]
+                                    b = [
+                                        'CommercialPaper',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    NetChangeInShortTermBorrowings.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'NetChangeInShortTermBorrowings')
+                                r = r + 1
+                            cf.NetChangeInShortTermBorrowings = sum(NetChangeInShortTermBorrowings)
+                        except:
+                            pass
+                        #
+                        # Proceeds from stock option exercices
+                        try:
+                            ProceedsFromStockOptionExercices = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r > InvestingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'StockOption',
+                                    ]
+                                    b = [
+                                        'CommercialPaper',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    ProceedsFromStockOptionExercices.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'ProceedsFromStockOptionExercices')
+                                r = r + 1
+                            cf.ProceedsFromStockOptionExercices = sum(ProceedsFromStockOptionExercices)
+                        except:
+                            pass
+                        #
+                        # Other Financing Activities
+                        try:
+                            OtherFinancingActivities = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r > InvestingActivitiesRank:
+                                    d = key
+                                    q = [
+                                        'CashPooling',
+                                        'CollateralizedLease',
+                                        'ConvertibleNote',
+                                        'InitialPublicOffering',
+                                        'Warrants',
+                                        'NonControllingInterest',
+                                        'NoncontrollingInterest',
+                                        'Miscellaneous',
+                                        'Other',
+                                        'ResaleValueGuarantee',
+                                        'RelatedParties',
+                                        'Guarantee',
+                                    ]
+                                    b = [
+                                        'AccountsPayable',
+                                    ]
+                                    for l in q:
+                                        if l in d:
+                                            h = 'p'
+                                            for p in b:
+                                                u = 0
+                                                while u < len(b):
+                                                    if p in d:
+                                                        h = ''
+                                                    u = u + 1
+                                            if h == 'p':
+                                                try:
+                                                    i = 0
+                                                    while CashFlowStatement[key][i] == None:
+                                                        i = i + 1
+                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                    CashFlowStatement[key][i] = None
+                                                except:
+                                                    if CashFlowStatement[key] != None:
+                                                        ARCHvalue = CashFlowStatement[key]
+                                                        CashFlowStatement[key] = None
+                                                    else:
+                                                        ARCHvalue = 0
+                                                if ARCHvalue != 0:
+                                                    OtherFinancingActivities.append(ARCHvalue)
+                                                    print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'OtherFinancingActivities')
+                                r = r + 1
+                            cf.OtherFinancingActivities = sum(OtherFinancingActivities)
+                        except:
+                            pass
+                        #
+                        # supplemental cash flow disclosure
+                        print(137*'-')
+                        print('supplemental cash flow disclosure')
+                        print(137*'-')
+                        #
+                        # Cash paid for taxes
+                        try:
+                            CashPaidForTaxes = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                d = key
+                                q = [
+                                    'CashPaidForIncomeTaxes',
+                                    'IncomeTaxesPaid',
+                                ]
+                                b = [
+                                    'Deferred',
+                                ]
+                                for l in q:
+                                    if l in d:
+                                        h = 'p'
+                                        for p in b:
+                                            u = 0
+                                            while u < len(b):
+                                                if p in d:
+                                                    h = ''
+                                                u = u + 1
+                                        if h == 'p':
+                                            try:
+                                                i = 0
+                                                while CashFlowStatement[key][i] == None:
+                                                    i = i + 1
+                                                ARCHvalue = CashFlowStatement[key][i]
+                                                CashFlowStatement[key][i] = None
+                                            except:
+                                                if CashFlowStatement[key] != None:
+                                                    ARCHvalue = CashFlowStatement[key]
+                                                    CashFlowStatement[key] = None
+                                                else:
+                                                    ARCHvalue = 0
+                                            if ARCHvalue != 0:
+                                                CashPaidForTaxes.append(ARCHvalue)
+                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'CashPaidForTaxes')
+                                r = r + 1
+                            cf.CashPaidForTaxes = sum(CashPaidForTaxes)
+                        except:
+                            pass 
+                        #
+                        # Cash paid for in interest
+                        try:
+                            CashPaidForInterest = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                d = key
+                                q = [
+                                    'Interest',
+                                ]
+                                b = [
+                                    'Deferred',
+                                ]
+                                for l in q:
+                                    if l in d:
+                                        h = 'p'
+                                        for p in b:
+                                            u = 0
+                                            while u < len(b):
+                                                if p in d:
+                                                    h = ''
+                                                u = u + 1
+                                        if h == 'p':
+                                            try:
+                                                i = 0
+                                                while CashFlowStatement[key][i] == None:
+                                                    i = i + 1
+                                                ARCHvalue = CashFlowStatement[key][i]
+                                                CashFlowStatement[key][i] = None
+                                            except:
+                                                if CashFlowStatement[key] != None:
+                                                    ARCHvalue = CashFlowStatement[key]
+                                                    CashFlowStatement[key] = None
+                                                else:
+                                                    ARCHvalue = 0
+                                            if ARCHvalue != 0:
+                                                CashPaidForInterest.append(ARCHvalue)
+                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'CashPaidForInterest')
+                                r = r + 1
+                            cf.CashPaidForInterest = sum(CashPaidForInterest)
                             #
-                            print("Audit Saved.")
-                            print(137 * '-' + '\n' * 3)
+                            print(137*'-')
+                            #
+                        except:
+                            pass 
+                        #
+                        # save
+                        try:
+                            try:
+                                tb.save()
+                                #
+                                print("Trial Balance Saved.")
+                            except:
+                                pass
+                            try:
+                                cf.save()
+                                #
+                                print("Cash Flow Saved.")
+                            except:
+                                pass
+                            try:
+                                a.save()
+                                #
+                                print("Audit Saved.")
+                            except:
+                                pass
                         except:
                             pass
                     except:
                         pass
                 except:
                     pass
+                #
+                tb.save()
+                a.save()
+                #
             except:
                 pass
         #
+        print(137 * '-' * 3)
         #
         # number of shares outstanding
         try:
@@ -7714,10 +8276,9 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
             a.save()
             #
             print('number of shares outstanding: ' + str(a.EntityCommonStockSharesOutstanding))
-            print(137*'-' + '\n' * 3)
+            print(137*'-')
         except:
             pass
-        #
         #
         # stock price
         try:
@@ -7747,14 +8308,12 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         p = ''
                         while q < 9:
                             if p == '':
-                                print(p)
                                 try:
                                     d = datetime.datetime.strptime(tb.FilingDate, '%Y-%m-%d')
                                     d = d - datetime.timedelta(days=q)
                                     d = str(d)[:10]
                                     b = requests.get('https://api.marketstack.com/v1/tickers/' + TradingSymbol + '/eod/' + d, params)
                                     stockprice = b.json()['close']
-                                    print(stockprice)
                                     if stockprice != 0:
                                         p = 'h'
                                 except:
@@ -7762,11 +8321,9 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             else:
                                 pass
                             q = q + 1
-                        print(p)
                         if p == 'h':
                             try:
                                 a.StockPrice = stockprice
-                                print(a.StockPrice)
                                 a.save()
                             except:
                                 pass
@@ -7775,11 +8332,9 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                 #
                 print('stock price: ' + str(a.StockPrice))
                 #
-                print(137*'-' + '\n' * 3)
-        #
+                print(137*'-')
         except:
             pass
-        #
         #
         # save
         try:
@@ -7789,11 +8344,10 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
             a.save()
             e.save()
             #
-            print(str(e.EntityRegistrantName) + ' (' + str(e.TradingSymbol) + '), ' + str(tb.DocumentPeriodEndDate) + ' (' + str(tb.Period) + ') SEC Data Arched.' + '\n' * 3)
+            print(str(e.EntityRegistrantName) + ' (' + str(e.TradingSymbol) + '), ' + str(tb.DocumentPeriodEndDate) + ' (' + str(tb.Period) + ') SEC Data Arched.' * 3)
             #
         except:
             print('---Could not save.')
-    #
     #
     # Delete the content of the download file
     try:
@@ -7801,10 +8355,9 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
         for f in files:
             os.remove(f)
         #
-        print(137*'-' + '\n')
+        print(137*'-')
     except:
         pass
-    #
     #
     # stockholders equity beginning balances
     if BeginningBalances == 'yes':
@@ -7918,8 +8471,6 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
             tb.save()
             #
             print(137 * '-')
-            print('\n' * 3)
-    #
     #
     # anomalies & corrections
     if Regularize == 'yes':
@@ -7932,7 +8483,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
             tb = TrialBalance.objects.get(TradingSymbol=TradingSymbol, Period=scopedperiod)
             a = AuditData.objects.get(TradingSymbol=TradingSymbol, Period=scopedperiod)
             #
-            print(137*'-' + '\n')
+            print(137*'-')
             #
             try:
                 #
@@ -7973,9 +8524,11 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     print('Total: ' + str(Total))
                     Anomaly = Components - Total
                     print('Anomaly: ' + str(Anomaly))
+                    print('Anomaly attributable to the SEC: ' + str(a.AnomalyCurrentAssetsSEC))
                     #
                     tb.OtherCurrentAssets = tb.OtherCurrentAssets - Anomaly
-                    a.AnomalyCurrentAssets = Anomaly
+                    #
+                    a.AnomalyCurrentAssets = (Anomaly - a.AnomalyCurrentAssetsSEC)
                     #
                     if Anomaly != 0:
                         print(137*'-')
@@ -7985,7 +8538,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     tb.save()
                     a.save()
                     #
-                    print(137*'-' + '\n')
+                    print(137*'-')
                     #
                 except:
                     print('---Could Not Examinate Current Assets.')
@@ -8034,9 +8587,11 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     print('Total: ' + str(Total))
                     Anomaly = Components - Total
                     print('Anomaly: ' + str(Anomaly))
+                    print('Anomaly attributable to the SEC: ' + str(a.AnomalyNonCurrentAssetsSEC))
                     #
                     tb.OtherNonCurrentAssets = tb.OtherNonCurrentAssets - Anomaly
-                    a.AnomalyNonCurrentAssets = Anomaly
+                    #
+                    a.AnomalyNonCurrentAssets = (Anomaly - a.AnomalyNonCurrentAssetsSEC)
                     #
                     if Anomaly != 0:
                         print(137*'-')
@@ -8046,7 +8601,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     tb.save()
                     a.save()
                     #
-                    print(137*'-' + '\n')
+                    print(137*'-')
                     #
                 except:
                     print('---Could Not Examinate Non-Current Assets .')
@@ -8055,7 +8610,6 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                 # assets
                 print(' === Total Assets: ' + str(a.Assets) + ' $')
                 print(137*'-')
-                print('\n' * 3)
                 #
                 #
                 # current liabilities
@@ -8098,25 +8652,28 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         tb.ShortTermPortionOfLongTermDebt,
                     ]
                     Total = a.CurrentLiabilities
-                    a.AnomalyCurrentLiabilities = Anomaly
                     #
                     Components = sum(Components)
                     print('Components: ' + str(Components))
                     print('Total: ' + str(Total))
                     Anomaly = Components - Total
                     print('Anomaly: ' + str(Anomaly))
+                    print('Anomaly attributable to the SEC: ' + str(a.AnomalyCurrentLiabilities))
                     #
                     tb.OtherCurrentLiabilities = tb.OtherCurrentLiabilities - Anomaly
+                    #
+                    a.AnomalyCurrentLiabilities = (a.AnomalyCurrentLiabilitiesSEC - Anomaly) 
                     #
                     if Anomaly != 0:
                         print(137*'-')
                         #
                         print('Other Current Liabilities: ' + str(tb.OtherCurrentLiabilities))
                     #
+                    #
                     tb.save()
                     a.save()
                     #
-                    print(137*'-' + '\n')
+                    print(137*'-')
                     #
                 except:
                     print('---Could Not Examinate Current Liabilities.')
@@ -8164,9 +8721,12 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     print('Total: ' + str(Total))
                     Anomaly = Components - Total
                     print('Anomaly: ' + str(Anomaly))
+                    print('Anomaly attributable to the SEC: ' + str(a.AnomalyNonCurrentLiabilitiesSEC))
                     #
-                    tb.OtherNonCurrentLiabilities = tb.OtherNonCurrentLiabilities - Anomaly   
-                    a.AnomalyNonCurrentLiabilities = Anomaly         
+                    tb.OtherNonCurrentLiabilities = tb.OtherNonCurrentLiabilities - Anomaly  
+                    #
+                    a.AnomalyNonCurrentLiabilities = (a.AnomalyNonCurrentLiabilitiesSEC - Anomaly) 
+                    #
                     if Anomaly != 0:
                         print(137*'-')
                         #
@@ -8175,7 +8735,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     tb.save()
                     a.save()
                     #
-                    print(137*'-' + '\n')
+                    print(137*'-')
                     #
                 except:
                     print('---Could Not Examinate Non-Current Liabilities.')
@@ -8183,7 +8743,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                 #
                 # liabilities
                 print(' === Total Liabilities: ' + str(a.Liabilities) + ' $')
-                print(137*'-' + '\n' * 3)
+                print(137*'-')
                 #
                 #
                 # gross margin
@@ -8227,7 +8787,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     tb.save()
                     a.save()
                     #
-                    print(137*'-' + '\n')
+                    print(137*'-')
                     #
                 except:
                     print('---Could Not Examinate Gross Margin.')
@@ -8276,7 +8836,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     tb.save()
                     a.save()
                     #
-                    print(137*'-' + '\n')
+                    print(137*'-')
                     #
                 except:
                     print('---Could Not Examinate Operating Expenses.')
@@ -8307,7 +8867,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     tb.save()
                     a.save()
                     #
-                    print(137*'-' + '\n')
+                    print(137*'-')
                     #
                 except:
                     print('---Could Not Examinate Operating Income.')
@@ -8347,7 +8907,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         #
                         print('Non Operating Income: ' + str(tb.NonOperatingIncome))
                     #
-                    print(137*'-' + '\n')
+                    print(137*'-')
                     #
                 except:
                     print('---Could Not Examinate Income Before Taxes.')
@@ -8382,7 +8942,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     tb.save()
                     a.save()
                     #
-                    print(137*'-' + '\n')
+                    print(137*'-')
                     #
                 except:
                     print('---Could Not Examinate Net Income.')
@@ -8434,7 +8994,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     tb.save()
                     a.save()
                     #
-                    print(137*'-' + '\n')
+                    print(137*'-')
                     #
                 except:
                     print('---Could Not Examinate Other Comprehensive Income.')
@@ -8477,7 +9037,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     tb.save()
                     a.save()
                     #
-                    print(137*'-' + '\n')
+                    print(137*'-')
                     #
                 except:
                     print('---Could Not Examinate Common Shares.')
@@ -8530,7 +9090,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     tb.save()
                     a.save()
                     #
-                    print(137*'-' + '\n')
+                    print(137*'-')
                 except:
                     print('---Could Not Examinate Accumulated Other Compregensive Income (Loss).')
                 #
@@ -8579,7 +9139,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     tb.save()
                     a.save()
                     #
-                    print(137*'-' + '\n')
+                    print(137*'-')
                     #
                 except:
                     print('---Could Not Examinate Retained Earnings.')
@@ -8622,7 +9182,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     tb.save()
                     a.save()
                     #
-                    print(137*'-' + '\n')
+                    print(137*'-')
                     #
                 except:
                     print('---Could Not Examinate Non Controlling Interests.')
@@ -8667,7 +9227,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     tb.save()
                     a.save()
                     #
-                    print(137*'-' + '\n')
+                    print(137*'-')
                     #
                 except:
                     print('---Could Not Examinate Non Controlling Interests.')
@@ -8708,7 +9268,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     tb.save()
                     a.save()
                     #
-                    print(137*'-' + '\n')
+                    print(137*'-')
                     #
                 except:
                     print('---Could Not Examinate Shareholders Equity.')
@@ -8743,6 +9303,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     print('Increase (Decrease) In Other Receivables: ' + str(cf.IncreaseDecreaseInOtherReceivables) + ' $')
                     print('Increase (Decrease) In Accounts Payable: ' + str(cf.IncreaseDecreaseInAccountsPayableAndAccruedLiabilities) + ' $')
                     print('Increase (Decrease) In Contract With Customer Liability: ' + str(cf.IncreaseDecreaseInContractWithCustomerLiability) + ' $')
+                    print('Increase (Decrease) Operating Lease Current: ' + str(cf.IncreaseDecreaseOperatingLeaseCurrent) + ' $')
                     print('Increase (Decrease) In Other Operating Activities: ' + str(cf.IncreaseDecreaseInOtherOperatingActivities) + ' $')
                     print(' == Operating Activities: ' + str(a.OperatingActivities) + ' $')
                     print(137*'-')
@@ -8764,6 +9325,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         cf.IncreaseDecreaseInOtherReceivables,
                         cf.IncreaseDecreaseInAccountsPayableAndAccruedLiabilities,
                         cf.IncreaseDecreaseInContractWithCustomerLiability,
+                        cf.IncreaseDecreaseOperatingLeaseCurrent,
                         cf.IncreaseDecreaseInOtherOperatingActivities,
                     ]
                     Total = a.OperatingActivities
@@ -8774,7 +9336,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     Anomaly = Components - Total
                     print('Anomaly: ' + str(Anomaly))
                     #
-                    cf.IncreaseDecreaseInOtherOperatingActivities = cf.IncreaseDecreaseInOtherOperatingActivities - Anomaly
+                    cf.IncreaseDecreaseInOtherOperatingActivities = cf.IncreaseDecreaseInOtherOperatingActivities - (Anomaly)
                     #
                     if Anomaly != 0:
                         #
@@ -8782,12 +9344,13 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         #
                         print('Increase (Decrease) In Other Operating Activities: ' + str(cf.IncreaseDecreaseInOtherOperatingActivities))
                     #
-                    a.AnomalyOperatingActivities = Anomaly
+                    print('Anomaly Attributable To The SEC: ' + str(a.AnomalyOperatingActivitiesSEC) + ' $')
+                    a.AnomalyOperatingActivities = (Anomaly - a.AnomalyOperatingActivitiesSEC)
                     #
                     cf.save()
                     a.save()
                     #
-                    print(137*'-' + '\n')
+                    print(137*'-')
                     #
                 except:
                     print('---Could Not Examinate Operating Activities.') 
@@ -8800,6 +9363,8 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     print('Payments To Acquire Investment: ' + str(cf.PaymentsToAcquireInvestments) + ' $')
                     print('Proceeds Of Investment: ' + str(cf.ProceedsOfInvestments) + ' $')
                     print('Payments To Acquire Businesses and Intangibles, Net Of Cash Acquired: ' + str(cf.PaymentsToAcquireBusinessesAndIntangibles) + ' $')
+                    print('Proceeds From Disposals Of Businesses And Intangibles: ' + str(cf.ProceedsFromDisposalsOfBusinessesAndIntangibles) + ' $')
+                    print('Reveipt Of Government Grants: ' + str(cf.ReveiptOfGovernmentGrants) + ' $')
                     print('Other Investing Activities: ' + str(cf.OtherInvestingActivities) + ' $')
                     print(' == Investing Activities: ' + str(a.InvestingActivities) + ' $')
                     print(137*'-')
@@ -8814,6 +9379,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         cf.ProceedsOfInvestments,
                         cf.PaymentsToAcquireBusinessesAndIntangibles,
                         cf.ProceedsFromDisposalsOfBusinessesAndIntangibles,
+                        cf.ReveiptOfGovernmentGrants,
                         cf.OtherInvestingActivities,
                     ]
                     Total = a.InvestingActivities
@@ -8826,7 +9392,8 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     #
                     cf.OtherInvestingActivities = cf.OtherInvestingActivities - Anomaly
                     #
-                    a.AnomalyInvestingActivities = Anomaly
+                    print('Anomaly Attributable To The SEC: ' + str(a.AnomalyInvestingActivitiesSEC) + ' $')
+                    a.AnomalyInvestingActivities = (Anomaly - a.AnomalyInvestingActivitiesSEC)
                     #
                     if Anomaly != 0:
                         #
@@ -8837,7 +9404,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     cf.save()
                     a.save()
                     #
-                    print(137*'-' + '\n')
+                    print(137*'-')
                     #
                 except:
                     print('---Could Not Examinate Investing Activities.') 
@@ -8855,7 +9422,8 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     print('Repayments Of Long Term Debt: ' + str(cf.RepaymentsOfLongTermDebt) + ' $')
                     print('Net Change In Short Term Borrowings: ' + str(cf.NetChangeInShortTermBorrowings) + ' $')
                     print('Proceeds From Repayments Of Commercial Paper: ' + str(cf.ProceedsFromRepaymentsOfCommercialPaper) + ' $')
-                    
+                    print('Repayments Of Convertible: ' + str(cf.RepaymentsOfConvertible) + ' $')
+                    print('Issuance Of Convertible: ' + str(cf.IssuanceOfConvertible) + ' $')
                     print('Other Financing Activities: ' + str(cf.OtherFinancingActivities) + ' $')
                     print(' == Financing Activities: ' + str(a.FinancingActivities) + ' $')
                     print(137*'-')
@@ -8875,6 +9443,8 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         cf.RepaymentsOfLongTermDebt,
                         cf.NetChangeInShortTermBorrowings,
                         cf.ProceedsFromRepaymentsOfCommercialPaper,
+                        cf.RepaymentsOfConvertible,
+                        cf.IssuanceOfConvertible,
                         cf.OtherFinancingActivities,
                     ]
                     Total = a.FinancingActivities
@@ -8887,7 +9457,8 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     #
                     cf.OtherFinancingActivities = cf.OtherFinancingActivities - Anomaly
                     #
-                    a.AnomalyFinancingActivities = Anomaly
+                    print('Anomaly Attributable To The SEC: ' + str(a.AnomalyFinancingActivitiesSEC) + ' $')
+                    a.AnomalyFinancingActivities = (Anomaly - a.AnomalyFinancingActivities)
                     #
                     if Anomaly != 0:
                         #
@@ -8898,7 +9469,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     cf.save()
                     a.save()
                     #
-                    print(137*'-' + '\n')
+                    print(137*'-')
                     #
                 except:
                     print('---Could Not Examinate Financing Activities.')
@@ -8908,12 +9479,12 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                 try:
                     # cash beginning balance
                     print('=== Cash Beginning Balance: ' + str(cf.CashBeginningBalance) + ' $')
-                    print(137*'-' + '\n')
+                    print(137*'-')
                     #
                     # cash paid for interest and taxes
                     print('=== Cash Paid For Taxes: ' + str(cf.CashPaidForTaxes) + ' $')
                     print('=== Cash Paid For Interest: ' + str(cf.CashPaidForInterest) + ' $')
-                    print(137*'-' + '\n' * 3)
+                    print(137*'-')
                     #
                     cf.save()
                     a.save()
@@ -8924,7 +9495,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                 #
                 # anomalies
                 print('classification anomalies')
-                print(137*'-' + '\n')
+                print(137*'-')
                 #
                 #
                 # Balance Sheets - Audit
@@ -8936,7 +9507,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                 print('non current liabilities: ' + str(a.AnomalyNonCurrentLiabilities))
                 print('liabilities: ' + str(a.AnomalyLiabilities))
                 print('stockholders equity: ' + str(a.AnomalyStockholdersEquity))
-                print('liabilities and stockholders equity: ' + str(a.AnomalyLiabilitiesAndStockholdersEquity) + '\n')
+                print('liabilities and stockholders equity: ' + str(a.AnomalyLiabilitiesAndStockholdersEquity))
                 #
                 #
                 # Income Statements - Audit
@@ -8945,13 +9516,13 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                 print('operating expenses: ' + str(a.AnomalyOperatingExpenses))
                 print('operating income ' + str(a.AnomalyOperatingIncome))
                 print('income before taxes: ' + str(a.AnomalyIncomeBeforeTaxes))
-                print('net income: ' + str(a.AnomalyNetIncome) + '\n')
+                print('net income: ' + str(a.AnomalyNetIncome))
                 #
                 #
                 # Comprehensive Income - Audit
                 #
                 print('other comprehensinve income: ' + str(a.AnomalyOtherComprehensiveIncome))
-                print('comprehensive income: ' + str(a.AnomalyComprehensiveIncome) + '\n')
+                print('comprehensive income: ' + str(a.AnomalyComprehensiveIncome))
                 #
                 #
                 # Stockholders Equity - Audit
@@ -8960,7 +9531,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                 print('retained earnings: ' + str(a.AnomalyRetainedEarnings))
                 print('accumulated other comprehensive income: ' + str(a.AnomalyAccumulatedOtherComprehensiveIncome))
                 print('employee benefit trust: ' + str(a.AnomalyEmployeeBenefitTrust))
-                print('non controlling interests: ' + str(a.AnomalyNonControllingInterests) + '\n')
+                print('non controlling interests: ' + str(a.AnomalyNonControllingInterests))
                 #
                 #
                 # Cash Flow - Audit
@@ -8971,7 +9542,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
             #
             except:
                 pass
-            print(137*'-' + '\n')
+            print(137*'-')
             #
             #
             # Theorical Annual Interest Charge
@@ -9011,12 +9582,9 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                 pass
             #
             #
-            print('\n' * 3)
         #
         #
         print(137 * '-')
-        print('\n' * 3)
-    #
     #
     # get valuation ratio
     if UpdateRanking == 'yes':
@@ -9058,7 +9626,6 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
         #
         e.save()
     #
-    #
     # save entity and update date time
     try:
         # Time Of Update
@@ -9069,11 +9636,36 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
     except:
         print('---Could not save time of update.')
     #
-    #
     # save
     try:
         e.save()
         print('Entity ' + TradingSymbol + ' Saved.')
     except:
         print('---Could not save entity.')
+
+
+##############################################################################################################    
+
+# OUTPUT DIRECTORY
+try:
+    output_directory = './φ/algorithm/layout/'
+    # Delete the content of the download file
+    files = glob.glob('A:/arch/φ/algorithm/output/*')
+    for f in files:
+        os.remove(f)
+except:
+    print('---Could not define and clear output directory.')
+
+# LAYOUT
+entities_list = Entity.objects.all().order_by('EntityRegistrantName')
+with open(output_directory + 'layout.txt', 'a') as layout:
+    for count in range(0, len(entities_list)):
+        layout.write("{ name: '" + entities_list[count].EntityRegistrantName.replace("'", "`") + " (" + entities_list[count].TradingSymbol + ")' , url: './" + entities_list[count].TradingSymbol + "'},")
+        layout.write('\n')
+
+###############################################################################################################
+
+
+
+
 

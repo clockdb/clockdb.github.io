@@ -2,6 +2,15 @@
 from django.db import models   
 
 
+class Auditor(models.Model):
+    #
+    Name = models.CharField(max_length=93)
+    Number = models.CharField(max_length=93)
+    URL = models.CharField(max_length=93)
+    #
+    def __str__(self):
+        return f"{self.Name}"
+
 class Entity(models.Model):
     #
     EntityRegistrantName = models.CharField(max_length=93)
@@ -63,17 +72,24 @@ class AuditData(models.Model):
     LiabilitiesAndStockholdersEquity = models.IntegerField(default=0)
     #
     AnomalyCurrentAssets = models.IntegerField(default=0)
+    AnomalyCurrentAssetsSEC = models.IntegerField(default=0)
     AnomalyNonCurrentAssets = models.IntegerField(default=0)
+    AnomalyNonCurrentAssetsSEC = models.IntegerField(default=0)
     AnomalyAssets = models.IntegerField(default=0)
     AnomalyCurrentLiabilities = models.IntegerField(default=0)
+    AnomalyCurrentLiabilitiesSEC = models.IntegerField(default=0)
     AnomalyNonCurrentLiabilities = models.IntegerField(default=0)
+    AnomalyNonCurrentLiabilitiesSEC = models.IntegerField(default=0)
     AnomalyLiabilities = models.IntegerField(default=0)
     AnomalyStockholdersEquity = models.IntegerField(default=0)
+    AnomalyStockholdersEquitySEC = models.IntegerField(default=0)
     AnomalyLiabilitiesAndStockholdersEquity = models.IntegerField(default=0)
     #
     #
     # Income Statements - Audit
     #
+    Sales = models.IntegerField(default=0)
+    CostOfSales = models.IntegerField(default=0)
     GrossMargin = models.IntegerField(default=0)
     OperatingExpenses = models.IntegerField(default=0)
     OperatingIncome = models.IntegerField(default=0)
@@ -123,8 +139,11 @@ class AuditData(models.Model):
     FinancingActivities = models.IntegerField(default=0)
     #
     AnomalyOperatingActivities = models.IntegerField(default=0)
+    AnomalyOperatingActivitiesSEC = models.IntegerField(default=0)
     AnomalyInvestingActivities = models.IntegerField(default=0)
+    AnomalyInvestingActivitiesSEC = models.IntegerField(default=0)
     AnomalyFinancingActivities = models.IntegerField(default=0)
+    AnomalyFinancingActivitiesSEC = models.IntegerField(default=0)
     #
     #
     # Supplemental - Audit
@@ -175,6 +194,7 @@ class CashFlow(models.Model):
     IncreaseDecreaseInOtherReceivables = models.IntegerField(default=0)
     IncreaseDecreaseInAccountsPayableAndAccruedLiabilities = models.IntegerField(default=0)
     IncreaseDecreaseInContractWithCustomerLiability = models.IntegerField(default=0)
+    IncreaseDecreaseOperatingLeaseCurrent = models.IntegerField(default=0)
     IncreaseDecreaseInOtherOperatingActivities = models.IntegerField(default=0)
     #
     # Investing Activities - Cash Flow
@@ -185,6 +205,7 @@ class CashFlow(models.Model):
     ProceedsFromDisposalsOfPropertyAndEquipment = models.IntegerField(default=0)
     PaymentsToAcquireBusinessesAndIntangibles = models.IntegerField(default=0)
     ProceedsFromDisposalsOfBusinessesAndIntangibles = models.IntegerField(default=0)
+    ReveiptOfGovernmentGrants = models.IntegerField(default=0)
     OtherInvestingActivities = models.IntegerField(default=0)
     #
     # Financing Activities - Cash Flow
@@ -200,6 +221,8 @@ class CashFlow(models.Model):
     RepaymentsOfLongTermDebt = models.IntegerField(default=0)
     NetChangeInShortTermBorrowings = models.IntegerField(default=0)
     ProceedsFromRepaymentsOfCommercialPaper = models.IntegerField(default=0)
+    RepaymentsOfConvertible = models.IntegerField(default=0)
+    IssuanceOfConvertible = models.IntegerField(default=0)
     OtherFinancingActivities = models.IntegerField(default=0)
     #
     # Supplemental - Cash Flow
