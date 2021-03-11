@@ -26,9 +26,6 @@
                 <td style="border-bottom: ridge;">
                     <h2 style="font-weight:bold;">+/-</h2>
                 </td>
-                <td style="border-bottom: ridge;">
-                    <h2 style="font-weight:bold;">Fiscal Year</h2>
-                </td>
             </tr>
 
             <tr></tr>
@@ -46,22 +43,15 @@
                     </td>
                     <td>
                         <a href="/{{ entity.TradingSymbol }}">
-                        <button style='padding-bottom:0px;'>
-                            <h3 style="text-align:center;">{{ entity.Clockφ }}%</h2>
-                        </button>
-                    </td>
-                    <td>
-                        <a href="/{{ entity.TradingSymbol }}">
                             <button style='padding-bottom:0px;'>
-                                <h3 style="text-align: center;">{{ entity.ClockφChange }}pp</h2>
+                                <h4 style="text-align:center;">{{ entity.Clockφ }}%</h4>
                             </button>
                     </td>
                     <td>
                         <a href="/{{ entity.TradingSymbol }}">
                             <button style='padding-bottom:0px;'>
-                                <h6 style="text-align: center;">{{ entity.lastyear }}</h6>
+                                <h4 style="text-align: center;">{{ entity.ClockφChange }}pp</h4>
                             </button>
-                        </a>
                     </td>
                 </button>
             </tr>
@@ -69,7 +59,7 @@
                 <td colspan='5'>
                     <a href="/{{ entity.TradingSymbol }}">
                         <button style="padding-top: 0px; padding-bottom: 18px">
-                            <h5 style="color:#8A9096;">{{ entity.Industry }}</h5>
+                            <h5 style="color:#8A9096;">{{ entity.Industry }} | {{ entity.lastyear }}</h5>
                         </button>
                     </a>
                 </td>
