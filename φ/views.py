@@ -55,9 +55,9 @@ def analysis(request, entity_TradingSymbol):
         "AuditData_sixthlastyear": AuditData_sixthlastyear,
     })
 
-# INDEX
-def index(request):
-    return render(request, "./φ/index.html", {
+# DB
+def db(request):
+    return render(request, "./φ/db.html", {
         "entities": Entity.objects.all().order_by('-Clockφ').exclude(Anomalies='yes')
     })
 
@@ -85,7 +85,7 @@ def entities(request):
 def menu(request):
     return render(request, "./φ/menu.html")
         
-# ABOUT
-def about(request):
-    return render(request, "./φ/about.html")
+# INDEX
+def index(request):
+    return render(request, "./φ/index.html")
     

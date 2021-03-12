@@ -11,14 +11,14 @@ urlpatterns = [
     path("", views.index, name="index"),
 
     path("anomalies/", views.anomalies, name="anomalies"),
-    
+
+    path("db/", views.db, name="db"),
+
     path("disclaimer/", views.disclaimer, name="disclaimer"),
 
     path("entities/", views.entities, name="entities"),
     
     path("documentation/", views.documentation, name="documentation"),
-
-    path("about/", views.about, name="about"),
 
     path("menu/", views.menu, name="menu"),
 
