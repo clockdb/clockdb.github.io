@@ -58,7 +58,7 @@ def analysis(request, entity_TradingSymbol):
 # DB
 def db(request):
     return render(request, "./φ/db.html", {
-        "entities": Entity.objects.all().order_by('-Clockφ').exclude(Anomalies='yes')
+        "entities": Entity.objects.all().order_by('-Clockφ')#.exclude(Anomalies='yes')
     })
 
 # ANOMALIES
