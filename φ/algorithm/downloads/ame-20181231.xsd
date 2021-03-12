@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--DFS XBRL Instance Document - http://www.dfsco.com/financial-services/ - Version R3.0 - on 22-February-2019 [12:52:41] {AM}-->
+<schema targetNamespace="http://www.amtexinc.com/20181231" elementFormDefault="qualified" xmlns:ame="http://www.amtexinc.com/20181231" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xl="http://www.xbrl.org/2003/XLink" xmlns:us-gaap="http://fasb.org/us-gaap/2018-01-31" xmlns:country="http://xbrl.sec.gov/country/2017-01-31" xmlns:currency="http://xbrl.sec.gov/currency/2017-01-31" xmlns:dei="http://xbrl.sec.gov/dei/2018-01-31" xmlns:exch="http://xbrl.sec.gov/exch/2018-01-31" xmlns:invest="http://xbrl.sec.gov/invest/2013-01-31" xmlns:naics="http://xbrl.sec.gov/naics/2017-01-31" xmlns:sic="http://xbrl.sec.gov/sic/2011-01-31" xmlns:us-types="http://fasb.org/us-types/2018-01-31" xmlns:stpr="http://xbrl.sec.gov/stpr/2018-01-31" xmlns:deprecated="http://www.xbrl.org/2009/arcrole/fact-explanatoryFact" xmlns:nonnum="http://www.xbrl.org/dtr/type/non-numeric" xmlns:num="http://www.xbrl.org/dtr/type/numeric" xmlns:srt="http://fasb.org/srt/2018-01-31">
+<annotation>
+<appinfo>
+<link:roleType roleURI="http://www.amtexinc.com/role/DocumentAndEntityInformation" id="DocumentAndEntityInformation">
+<link:definition>1001 - Document - Document And Entity Information</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/ConsolidatedStatementOfIncome" id="ConsolidatedStatementOfIncome">
+<link:definition>1002 - Statement - Consolidated Statement of Income</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/ConsolidatedStatementOfComprehensiveIncome" id="ConsolidatedStatementOfComprehensiveIncome">
+<link:definition>1003 - Statement - Consolidated Statement of Comprehensive Income</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/ConsolidatedStatementOfComprehensiveIncomeParenthetical" id="ConsolidatedStatementOfComprehensiveIncomeParenthetical">
+<link:definition>1004 - Statement - Consolidated Statement of Comprehensive Income (Parenthetical)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/ConsolidatedBalanceSheet" id="ConsolidatedBalanceSheet">
+<link:definition>1005 - Statement - Consolidated Balance Sheet</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/ConsolidatedBalanceSheetParenthetical" id="ConsolidatedBalanceSheetParenthetical">
+<link:definition>1006 - Statement - Consolidated Balance Sheet (Parenthetical)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/ConsolidatedStatementOfStockholdersEquity" id="ConsolidatedStatementOfStockholdersEquity">
+<link:definition>1007 - Statement - Consolidated Statement of Stockholders' Equity</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/ConsolidatedStatementOfStockholdersEquityParenthetical" id="ConsolidatedStatementOfStockholdersEquityParenthetical">
+<link:definition>1008 - Statement - Consolidated Statement of Stockholders' Equity (Parenthetical)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/ConsolidatedStatementOfCashFlows" id="ConsolidatedStatementOfCashFlows">
+<link:definition>1009 - Statement - Consolidated Statement of Cash Flows</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/SignificantAccountingPolicies" id="SignificantAccountingPolicies">
+<link:definition>1010 - Disclosure - Significant Accounting Policies</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/RecentAccountingPronouncements" id="RecentAccountingPronouncements">
+<link:definition>1011 - Disclosure - Recent Accounting Pronouncements</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/Revenues" id="Revenues">
+<link:definition>1012 - Disclosure - Revenues</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/FairValueMeasurements" id="FairValueMeasurements">
+<link:definition>1013 - Disclosure - Fair Value Measurements</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/HedgingActivities" id="HedgingActivities">
+<link:definition>1014 - Disclosure - Hedging Activities</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/Acquisitions" id="Acquisitions">
+<link:definition>1015 - Disclosure - Acquisitions</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/GoodwillAndOtherIntangibleAssets" id="GoodwillAndOtherIntangibleAssets">
+<link:definition>1016 - Disclosure - Goodwill and Other Intangible Assets</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/OtherConsolidatedBalanceSheetInformation" id="OtherConsolidatedBalanceSheetInformation">
+<link:definition>1017 - Disclosure - Other Consolidated Balance Sheet Information</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/IncomeTaxes" id="IncomeTaxes">
+<link:definition>1018 - Disclosure - Income Taxes</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/Debt" id="Debt">
+<link:definition>1019 - Disclosure - Debt</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/ShareBasedCompensation" id="ShareBasedCompensation">
+<link:definition>1020 - Disclosure - Share-Based Compensation</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/RetirementPlansAndOtherPostretirementBenefits" id="RetirementPlansAndOtherPostretirementBenefits">
+<link:definition>1021 - Disclosure - Retirement Plans and Other Postretirement Benefits</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/Contingencies" id="Contingencies">
+<link:definition>1022 - Disclosure - Contingencies</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/LeasesAndOtherCommitments" id="LeasesAndOtherCommitments">
+<link:definition>1023 - Disclosure - Leases and Other Commitments</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/ReportableSegmentsAndGeographicAreasInformation" id="ReportableSegmentsAndGeographicAreasInformation">
+<link:definition>1024 - Disclosure - Reportable Segments and Geographic Areas Information</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/AdditionalConsolidatedIncomeStatementAndCashFlowInformation" id="AdditionalConsolidatedIncomeStatementAndCashFlowInformation">
+<link:definition>1025 - Disclosure - Additional Consolidated Income Statement and Cash Flow Information</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/StockholdersEquity" id="StockholdersEquity">
+<link:definition>1026 - Disclosure - Stockholders' Equity</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/RestructuringCharges" id="RestructuringCharges">
+<link:definition>1027 - Disclosure - Restructuring Charges</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/QuarterlyFinancialData" id="QuarterlyFinancialData">
+<link:definition>1028 - Disclosure - Quarterly Financial Data</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/SignificantAccountingPoliciesPolicies" id="SignificantAccountingPoliciesPolicies">
+<link:definition>1029 - Disclosure - Significant Accounting Policies (Policies)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/SignificantAccountingPoliciesTables" id="SignificantAccountingPoliciesTables">
+<link:definition>1030 - Disclosure - Significant Accounting Policies (Tables)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/RevenuesTables" id="RevenuesTables">
+<link:definition>1031 - Disclosure - Revenues (Tables)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/FairValueMeasurementsTables" id="FairValueMeasurementsTables">
+<link:definition>1032 - Disclosure - Fair Value Measurements (Tables)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/AcquisitionsTables" id="AcquisitionsTables">
+<link:definition>1033 - Disclosure - Acquisitions (Tables)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/GoodwillAndOtherIntangibleAssetsTables" id="GoodwillAndOtherIntangibleAssetsTables">
+<link:definition>1034 - Disclosure - Goodwill and Other Intangible Assets (Tables)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/OtherConsolidatedBalanceSheetInformationTables" id="OtherConsolidatedBalanceSheetInformationTables">
+<link:definition>1035 - Disclosure - Other Consolidated Balance Sheet Information (Tables)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/IncomeTaxesTables" id="IncomeTaxesTables">
+<link:definition>1036 - Disclosure - Income Taxes (Tables)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/DebtTables" id="DebtTables">
+<link:definition>1037 - Disclosure - Debt (Tables)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/ShareBasedCompensationTables" id="ShareBasedCompensationTables">
+<link:definition>1038 - Disclosure - Share-Based Compensation (Tables)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/RetirementPlansAndOtherPostretirementBenefitsTables" id="RetirementPlansAndOtherPostretirementBenefitsTables">
+<link:definition>1039 - Disclosure - Retirement Plans and Other Postretirement Benefits (Tables)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/ReportableSegmentsAndGeographicAreasInformationTables" id="ReportableSegmentsAndGeographicAreasInformationTables">
+<link:definition>1040 - Disclosure - Reportable Segments and Geographic Areas Information (Tables)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/RestructuringChargesTables" id="RestructuringChargesTables">
+<link:definition>1041 - Disclosure - Restructuring Charges (Tables)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/QuarterlyFinancialDataTables" id="QuarterlyFinancialDataTables">
+<link:definition>1042 - Disclosure - Quarterly Financial Data (Tables)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/SignificantAccountingPoliciesAdditionalInformationDetail" id="SignificantAccountingPoliciesAdditionalInformationDetail">
+<link:definition>1043 - Disclosure - Significant Accounting Policies - Additional Information (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/SignificantAccountingPoliciesNumberOfWeightedAverageSharesDetail" id="SignificantAccountingPoliciesNumberOfWeightedAverageSharesDetail">
+<link:definition>1044 - Disclosure - Significant Accounting Policies - Number of Weighted Average Shares (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/RecentAccountingPronouncementsAdditionalInformationDetail" id="RecentAccountingPronouncementsAdditionalInformationDetail">
+<link:definition>1045 - Disclosure - Recent Accounting Pronouncements - Additional Information (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/RevenuesOutstandingContractAssetAndLiabilityAccountsDetail" id="RevenuesOutstandingContractAssetAndLiabilityAccountsDetail">
+<link:definition>1046 - Disclosure - Revenues - Outstanding Contract Asset and (Liability) Accounts (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/RevenuesAdditionalInformationDetail" id="RevenuesAdditionalInformationDetail">
+<link:definition>1047 - Disclosure - Revenues - Additional Information (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/RevenuesInformationAboutOperationsInDifferentGeographicAreasDetail" id="RevenuesInformationAboutOperationsInDifferentGeographicAreasDetail">
+<link:definition>1048 - Disclosure - Revenues - Information about Operations in Different Geographic Areas (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/RevenuesMajorProductsAndServicesInReportableSegmentsDetail" id="RevenuesMajorProductsAndServicesInReportableSegmentsDetail">
+<link:definition>1049 - Disclosure - Revenues - Major Products and Services in Reportable Segments (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/RevenuesTimingOfRevenueRecognitionDetail" id="RevenuesTimingOfRevenueRecognitionDetail">
+<link:definition>1050 - Disclosure - Revenues - Timing of Revenue Recognition (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/RevenuesChangesInAccruedProductWarrantyObligationDetail" id="RevenuesChangesInAccruedProductWarrantyObligationDetail">
+<link:definition>1051 - Disclosure - Revenues - Changes in Accrued Product Warranty Obligation (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/FairValueMeasurementsFairValueOfAssetsMeasuredOnRecurringBasisDetail" id="FairValueMeasurementsFairValueOfAssetsMeasuredOnRecurringBasisDetail">
+<link:definition>1052 - Disclosure - Fair Value Measurements - Fair Value of Assets Measured on Recurring Basis (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/FairValueMeasurementsAdditionalInformationDetail" id="FairValueMeasurementsAdditionalInformationDetail">
+<link:definition>1053 - Disclosure - Fair Value Measurements - Additional Information (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/FairValueMeasurementsFairValueDisclosuresOfFinancialInstrumentLiabilitiesDetail" id="FairValueMeasurementsFairValueDisclosuresOfFinancialInstrumentLiabilitiesDetail">
+<link:definition>1054 - Disclosure - Fair Value Measurements - Fair Value Disclosures of Financial Instrument Liabilities (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/HedgingActivitiesAdditionalInformationDetail" id="HedgingActivitiesAdditionalInformationDetail">
+<link:definition>1055 - Disclosure - Hedging Activities - Additional Information (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/AcquisitionsAdditionalInformationDetail" id="AcquisitionsAdditionalInformationDetail">
+<link:definition>1056 - Disclosure - Acquisitions - Additional Information (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/AcquisitionsAllocationOfAggregatePurchasePriceOfAcquiredNetAssetsDetail" id="AcquisitionsAllocationOfAggregatePurchasePriceOfAcquiredNetAssetsDetail">
+<link:definition>1057 - Disclosure - Acquisitions - Allocation of Aggregate Purchase Price of Acquired Net Assets (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/AcquisitionsAllocationOfAggregatePurchasePriceOfAcquiredNetAssetsParentheticalDetail" id="AcquisitionsAllocationOfAggregatePurchasePriceOfAcquiredNetAssetsParentheticalDetail">
+<link:definition>1058 - Disclosure - Acquisitions - Allocation of Aggregate Purchase Price of Acquired Net Assets (Parenthetical) (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/GoodwillAndOtherIntangibleAssetsChangesInCarryingAmountsOfGoodwillBySegmentDetail" id="GoodwillAndOtherIntangibleAssetsChangesInCarryingAmountsOfGoodwillBySegmentDetail">
+<link:definition>1059 - Disclosure - Goodwill and Other Intangible Assets - Changes in Carrying Amounts of Goodwill by Segment (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/GoodwillAndOtherIntangibleAssetsOtherIntangibleAssetsDetail" id="GoodwillAndOtherIntangibleAssetsOtherIntangibleAssetsDetail">
+<link:definition>1060 - Disclosure - Goodwill and Other Intangible Assets - Other Intangible Assets (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/GoodwillAndIntangibleAssetsAdditionalInformationDetail" id="GoodwillAndIntangibleAssetsAdditionalInformationDetail">
+<link:definition>1061 - Disclosure - Goodwill and Intangible Assets - Additional Information (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/OtherConsolidatedBalanceSheetInformationOtherConsolidatedBalanceSheetInformationDetail" id="OtherConsolidatedBalanceSheetInformationOtherConsolidatedBalanceSheetInformationDetail">
+<link:definition>1062 - Disclosure - Other Consolidated Balance Sheet Information - Other Consolidated Balance Sheet Information (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/IncomeTaxesComponentsOfIncomeBeforeIncomeTaxesAndDetailsOfProvisionForIncomeTaxesDetail" id="IncomeTaxesComponentsOfIncomeBeforeIncomeTaxesAndDetailsOfProvisionForIncomeTaxesDetail">
+<link:definition>1063 - Disclosure - Income Taxes - Components of Income before Income Taxes and Details of Provision for Income Taxes (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/IncomeTaxesComponentsOfDeferredTaxAssetLiabilityDetail" id="IncomeTaxesComponentsOfDeferredTaxAssetLiabilityDetail">
+<link:definition>1064 - Disclosure - Income Taxes - Components of Deferred Tax (Asset) Liability (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/IncomeTaxesReconciliationOfEffectiveTaxRateToUSFederalStatutoryRateDetail" id="IncomeTaxesReconciliationOfEffectiveTaxRateToUSFederalStatutoryRateDetail">
+<link:definition>1065 - Disclosure - Income Taxes - Reconciliation of Effective Tax Rate to U.S. Federal Statutory Rate (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/IncomeTaxesAdditionalInformationDetail" id="IncomeTaxesAdditionalInformationDetail">
+<link:definition>1066 - Disclosure - Income Taxes - Additional Information (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/IncomeTaxesReconciliationOfLiabilityForUncertainTaxPositionsDetail" id="IncomeTaxesReconciliationOfLiabilityForUncertainTaxPositionsDetail">
+<link:definition>1067 - Disclosure - Income Taxes - Reconciliation of Liability for Uncertain Tax Positions (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/DebtLongTermDebtDetail" id="DebtLongTermDebtDetail">
+<link:definition>1068 - Disclosure - Debt - Long-term Debt (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/DebtLongTermDebtParentheticalDetail" id="DebtLongTermDebtParentheticalDetail">
+<link:definition>1069 - Disclosure - Debt - Long-term Debt (Parenthetical) (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/DebtAdditionalInformationDetail" id="DebtAdditionalInformationDetail">
+<link:definition>1070 - Disclosure - Debt - Additional Information (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/DebtAdditionalInformation1Detail" id="DebtAdditionalInformation1Detail">
+<link:definition>1071 - Disclosure - Debt - Additional Information 1 (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/DebtAdditionalInformation2Detail" id="DebtAdditionalInformation2Detail">
+<link:definition>1072 - Disclosure - Debt - Additional Information 2 (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/ShareBasedCompensationAdditionalInformationDetail" id="ShareBasedCompensationAdditionalInformationDetail">
+<link:definition>1073 - Disclosure - Share-Based Compensation - Additional Information (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/ShareBasedCompensationTotalShareBasedCompensationExpenseDetail" id="ShareBasedCompensationTotalShareBasedCompensationExpenseDetail">
+<link:definition>1074 - Disclosure - Share-Based Compensation - Total Share-Based Compensation Expense (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/ShareBasedCompensationWeightedAverageAssumptionsUsedForEstimatingFairValuesOfStockOptionsGrantedDetail" id="ShareBasedCompensationWeightedAverageAssumptionsUsedForEstimatingFairValuesOfStockOptionsGrantedDetail">
+<link:definition>1075 - Disclosure - Share-Based Compensation - Weighted Average Assumptions Used for Estimating Fair Values of Stock Options Granted (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/ShareBasedCompensationSummaryOfStockOptionActivityAndRelatedInformationDetail" id="ShareBasedCompensationSummaryOfStockOptionActivityAndRelatedInformationDetail">
+<link:definition>1076 - Disclosure - Share-Based Compensation - Summary of Stock Option Activity and Related Information (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/ShareBasedCompensationSummaryOfNonvestedStockOptionActivityAndRelatedInformationDetail" id="ShareBasedCompensationSummaryOfNonvestedStockOptionActivityAndRelatedInformationDetail">
+<link:definition>1077 - Disclosure - Share-Based Compensation - Summary of Nonvested Stock Option Activity and Related Information (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/ShareBasedCompensationSummaryOfNonvestedRestrictedStockActivityAndRelatedInformationDetail" id="ShareBasedCompensationSummaryOfNonvestedRestrictedStockActivityAndRelatedInformationDetail">
+<link:definition>1078 - Disclosure - Share-Based Compensation - Summary of Nonvested Restricted Stock Activity and Related Information (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/RetirementPlansAndOtherPostretirementBenefitsAdditionalInformationDetail" id="RetirementPlansAndOtherPostretirementBenefitsAdditionalInformationDetail">
+<link:definition>1079 - Disclosure - Retirement Plans and Other Postretirement Benefits - Additional Information (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/RetirementPlansAndOtherPostretirementBenefitsNetProjectedBenefitObligationAndFairValueOfPlanAssetsForFundedAndUnfundedDefinedBenefitPlansDetail" id="RetirementPlansAndOtherPostretirementBenefitsNetProjectedBenefitObligationAndFairValueOfPlanAssetsForFundedAndUnfundedDefinedBenefitPlansDetail">
+<link:definition>1080 - Disclosure - Retirement Plans and Other Postretirement Benefits - Net Projected Benefit Obligation and Fair Value of Plan Assets for Funded and Unfunded Defined Benefit Plans (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/RetirementPlansAndOtherPostretirementBenefitsAccumulatedBenefitObligationAboDetail" id="RetirementPlansAndOtherPostretirementBenefitsAccumulatedBenefitObligationAboDetail">
+<link:definition>1081 - Disclosure - Retirement Plans and Other Postretirement Benefits - Accumulated Benefit Obligation ("ABO") (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/RetirementPlansAndOtherPostretirementBenefitsWeightedAverageAssumptionsUsedToDetermineBenefitObligationsDetail" id="RetirementPlansAndOtherPostretirementBenefitsWeightedAverageAssumptionsUsedToDetermineBenefitObligationsDetail">
+<link:definition>1082 - Disclosure - Retirement Plans and Other Postretirement Benefits - Weighted Average Assumptions Used to Determine Benefit Obligations (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/RetirementPlansAndOtherPostretirementBenefitsFairValueOfPlanAssetsDetail" id="RetirementPlansAndOtherPostretirementBenefitsFairValueOfPlanAssetsDetail">
+<link:definition>1083 - Disclosure - Retirement Plans and Other Postretirement Benefits - Fair Value of Plan Assets (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/RetirementPlansAndOtherPostretirementBenefitsFairValueOfPlanAssetsForForeignDefinedBenefitPensionPlansDetail" id="RetirementPlansAndOtherPostretirementBenefitsFairValueOfPlanAssetsForForeignDefinedBenefitPensionPlansDetail">
+<link:definition>1084 - Disclosure - Retirement Plans and Other Postretirement Benefits - Fair Value of Plan Assets for Foreign Defined Benefit Pension Plans (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/RetirementPlansAndOtherPostretirementBenefitsSummaryOfChangesOfFairValueOfForeignPlansInvestmentsUsingSignificantUnobservableInputsDetail" id="RetirementPlansAndOtherPostretirementBenefitsSummaryOfChangesOfFairValueOfForeignPlansInvestmentsUsingSignificantUnobservableInputsDetail">
+<link:definition>1085 - Disclosure - Retirement Plans and Other Postretirement Benefits - Summary of Changes of Fair Value of Foreign Plans' Investments Using Significant Unobservable Inputs (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/RetirementPlansAndOtherPostretirementBenefitsDefinedBenefitPlanPlansWithBenefitObligationsInExcessOfPlanAssetsDetail" id="RetirementPlansAndOtherPostretirementBenefitsDefinedBenefitPlanPlansWithBenefitObligationsInExcessOfPlanAssetsDetail">
+<link:definition>1086 - Disclosure - Retirement Plans and Other Postretirement Benefits - Defined Benefit Plan, Plans with Benefit Obligations in Excess of Plan Assets (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/RetirementPlansAndOtherPostretirementBenefitsFundedStatusOfPlanAndAmountsRecognizedInBalanceSheetDetail" id="RetirementPlansAndOtherPostretirementBenefitsFundedStatusOfPlanAndAmountsRecognizedInBalanceSheetDetail">
+<link:definition>1087 - Disclosure - Retirement Plans and Other Postretirement Benefits - Funded Status of Plan and Amounts Recognized in Balance Sheet (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/RetirementPlansAndOtherPostretirementBenefitsAmountsRecognizedInAccumulatedOtherComprehensiveIncomeNetOfTaxesDetail" id="RetirementPlansAndOtherPostretirementBenefitsAmountsRecognizedInAccumulatedOtherComprehensiveIncomeNetOfTaxesDetail">
+<link:definition>1088 - Disclosure - Retirement Plans and Other Postretirement Benefits - Amounts Recognized in Accumulated Other Comprehensive Income, Net of Taxes (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/RetirementPlansAndOtherPostretirementBenefitsComponentsOfNetPeriodicPensionBenefitExpenseIncomeDetail" id="RetirementPlansAndOtherPostretirementBenefitsComponentsOfNetPeriodicPensionBenefitExpenseIncomeDetail">
+<link:definition>1089 - Disclosure - Retirement Plans and Other Postretirement Benefits - Components of Net Periodic Pension Benefit Expense (Income) (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/RetirementPlansAndOtherPostretirementBenefitsWeightedAverageAssumptionsUsedToDetermineNetPeriodicPensionBenefitExpenseDetail" id="RetirementPlansAndOtherPostretirementBenefitsWeightedAverageAssumptionsUsedToDetermineNetPeriodicPensionBenefitExpenseDetail">
+<link:definition>1090 - Disclosure - Retirement Plans and Other Postretirement Benefits - Weighted Average Assumptions Used to Determine Net Periodic Pension Benefit Expense (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/ContingenciesAdditionalInformationDetail" id="ContingenciesAdditionalInformationDetail">
+<link:definition>1091 - Disclosure - Contingencies - Additional Information (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/LeasesAndOtherCommitmentsAdditionalInformationDetail" id="LeasesAndOtherCommitmentsAdditionalInformationDetail">
+<link:definition>1092 - Disclosure - Leases and Other Commitments - Additional Information (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/ReportableSegmentsAndGeographicAreasInformationAdditionalInformationDetail" id="ReportableSegmentsAndGeographicAreasInformationAdditionalInformationDetail">
+<link:definition>1093 - Disclosure - Reportable Segments and Geographic Areas Information - Additional Information (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/ReportableSegmentsAndGeographicAreasInformationReportableSegmentFinancialInformationDetail" id="ReportableSegmentsAndGeographicAreasInformationReportableSegmentFinancialInformationDetail">
+<link:definition>1094 - Disclosure - Reportable Segments and Geographic Areas Information - Reportable Segment Financial Information (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/ReportableSegmentsAndGeographicAreasInformationReportableSegmentFinancialInformationParentheticalDetail" id="ReportableSegmentsAndGeographicAreasInformationReportableSegmentFinancialInformationParentheticalDetail">
+<link:definition>1095 - Disclosure - Reportable Segments and Geographic Areas Information - Reportable Segment Financial Information (Parenthetical) (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/ReportableSegmentsAndGeographicAreasInformationInformationAboutCompanysOperationsInDifferentGeographicAreasDetail" id="ReportableSegmentsAndGeographicAreasInformationInformationAboutCompanysOperationsInDifferentGeographicAreasDetail">
+<link:definition>1096 - Disclosure - Reportable Segments and Geographic Areas Information - Information about Company's Operations in Different Geographic Areas (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/AdditionalConsolidatedIncomeStatementAndCashFlowInformationAdditionalInformationDetail" id="AdditionalConsolidatedIncomeStatementAndCashFlowInformationAdditionalInformationDetail">
+<link:definition>1097 - Disclosure - Additional Consolidated Income Statement and Cash Flow Information - Additional Information (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/StockholdersEquityAdditionalInformationDetail" id="StockholdersEquityAdditionalInformationDetail">
+<link:definition>1098 - Disclosure - Stockholders' Equity - Additional Information (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/RestructuringChargesAdditionalInformationDetail" id="RestructuringChargesAdditionalInformationDetail">
+<link:definition>1099 - Disclosure - Restructuring Charges - Additional Information (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/RestructuringChargesScheduleOfAccruedLiabilitiesInCompanysConsolidatedBalanceSheetIncludedAmountsRelatedToRestructuringChargesDetail" id="RestructuringChargesScheduleOfAccruedLiabilitiesInCompanysConsolidatedBalanceSheetIncludedAmountsRelatedToRestructuringChargesDetail">
+<link:definition>1100 - Disclosure - Restructuring Charges - Schedule of Accrued Liabilities in Company's Consolidated Balance Sheet Included Amounts Related to Restructuring Charges (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/QuarterlyFinancialDataQuarterlyFinancialDataDetail" id="QuarterlyFinancialDataQuarterlyFinancialDataDetail">
+<link:definition>1101 - Disclosure - Quarterly Financial Data - Quarterly Financial Data (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/QuarterlyFinancialDataQuarterlyFinancialDataParentheticalDetail" id="QuarterlyFinancialDataQuarterlyFinancialDataParentheticalDetail">
+<link:definition>1102 - Disclosure - Quarterly Financial Data - Quarterly Financial Data (Parenthetical) (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://www.amtexinc.com/role/RevenuesInformationAboutOperationsInDifferentGeographicAreasParentheticalDetail" id="RevenuesInformationAboutOperationsInDifferentGeographicAreasParentheticalDetail">
+<link:definition>1103 - Disclosure - Revenues - Information about Operations in Different Geographic Areas (Parenthetical) (Detail)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+</link:roleType>
+<link:linkbaseRef xlink:type="simple" xlink:href="ame-20181231_pre.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" />
+<link:linkbaseRef xlink:type="simple" xlink:href="ame-20181231_def.xml" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" />
+<link:linkbaseRef xlink:type="simple" xlink:href="ame-20181231_lab.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" />
+<link:linkbaseRef xlink:type="simple" xlink:href="ame-20181231_cal.xml" xlink:role="http://www.xbrl.org/2003/role/calculationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" />
+</appinfo>
+</annotation>
+<import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd" />
+<import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd" />
+<import namespace="http://xbrl.org/2005/xbrldt" schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd" />
+<import namespace="http://fasb.org/us-gaap/2018-01-31" schemaLocation="http://xbrl.fasb.org/us-gaap/2018/elts/us-gaap-2018-01-31.xsd" />
+<import namespace="http://xbrl.sec.gov/invest/2013-01-31" schemaLocation="http://xbrl.sec.gov/invest/2013/invest-2013-01-31.xsd" />
+<import namespace="http://xbrl.sec.gov/country/2017-01-31" schemaLocation="http://xbrl.sec.gov/country/2017/country-2017-01-31.xsd" />
+<import namespace="http://xbrl.sec.gov/currency/2017-01-31" schemaLocation="http://xbrl.sec.gov/currency/2017/currency-2017-01-31.xsd" />
+<import namespace="http://xbrl.sec.gov/exch/2018-01-31" schemaLocation="https://xbrl.sec.gov/exch/2018/exch-2018-01-31.xsd" />
+<import namespace="http://xbrl.sec.gov/naics/2017-01-31" schemaLocation="http://xbrl.sec.gov/naics/2017/naics-2017-01-31.xsd" />
+<import namespace="http://xbrl.sec.gov/sic/2011-01-31" schemaLocation="http://xbrl.sec.gov/sic/2011/sic-2011-01-31.xsd" />
+<import namespace="http://xbrl.sec.gov/stpr/2018-01-31" schemaLocation="https://xbrl.sec.gov/stpr/2018/stpr-2018-01-31.xsd" />
+<import namespace="http://www.xbrl.org/2009/role/negated" schemaLocation="http://www.xbrl.org/lrr/role/negated-2009-12-16.xsd" />
+<import namespace="http://www.xbrl.org/2009/role/net" schemaLocation="http://www.xbrl.org/lrr/role/net-2009-12-16.xsd" />
+<import namespace="http://www.xbrl.org/2009/arcrole/fact-explanatoryFact" schemaLocation="http://www.xbrl.org/lrr/arcrole/factExplanatory-2009-12-16.xsd" />
+<import namespace="http://xbrl.sec.gov/dei/2018-01-31" schemaLocation="https://xbrl.sec.gov/dei/2018/dei-2018-01-31.xsd" />
+<import namespace="http://www.xbrl.org/dtr/type/numeric" schemaLocation="http://www.xbrl.org/dtr/type/numeric-2009-12-16.xsd" />
+<import namespace="http://www.xbrl.org/dtr/type/non-numeric" schemaLocation="http://www.xbrl.org/dtr/type/nonNumeric-2009-12-16.xsd" />
+<import namespace="http://fasb.org/us-types/2018-01-31" schemaLocation="http://xbrl.fasb.org/us-gaap/2018/elts/us-types-2018-01-31.xsd" />
+<import namespace="http://fasb.org/srt/2018-01-31" schemaLocation="http://xbrl.fasb.org/srt/2018/elts/srt-2018-01-31.xsd" />
+<element name="DocumentAndEntityInformationAbstract" type="xbrli:stringItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_DocumentAndEntityInformationAbstract" substitutionGroup="xbrli:item" />
+<element name="ProceedsFromSaleOfFacilities" type="xbrli:monetaryItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_ProceedsFromSaleOfFacilities" substitutionGroup="xbrli:item" xbrli:balance="debit" />
+<element name="GainLossOnSaleOfFacilities" type="xbrli:monetaryItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_GainLossOnSaleOfFacilities" substitutionGroup="xbrli:item" xbrli:balance="credit" />
+<element name="IncreaseDecreaseInInventoriesAndOtherCurrentAssets" type="xbrli:monetaryItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_IncreaseDecreaseInInventoriesAndOtherCurrentAssets" substitutionGroup="xbrli:item" xbrli:balance="credit" />
+<element name="IncreaseDecreaseInPayablesAccrualsAndIncomeTaxes" type="xbrli:monetaryItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_IncreaseDecreaseInPayablesAccrualsAndIncomeTaxes" substitutionGroup="xbrli:item" xbrli:balance="debit" />
+<element name="OtherConsolidatedBalanceSheetInformationTextBlock" type="nonnum:textBlockItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_OtherConsolidatedBalanceSheetInformationTextBlock" substitutionGroup="xbrli:item" />
+<element name="CashEquivalentsSecuritiesAndOtherInvestmentsPolicyTextBlock" type="nonnum:textBlockItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_CashEquivalentsSecuritiesAndOtherInvestmentsPolicyTextBlock" substitutionGroup="xbrli:item" />
+<element name="DefinitionOfBusinessPolicyTextBlock" type="nonnum:textBlockItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_DefinitionOfBusinessPolicyTextBlock" substitutionGroup="xbrli:item" />
+<element name="FinancialInstrumentsAndForeignCurrencyTransactionsAndTranslationsPolicyTextBlock" type="nonnum:textBlockItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_FinancialInstrumentsAndForeignCurrencyTransactionsAndTranslationsPolicyTextBlock" substitutionGroup="xbrli:item" />
+<element name="ScopeOfModificationToEmployeeShareBasedPaymentAccountingPolicyTextBlock" type="nonnum:textBlockItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_ScopeOfModificationToEmployeeShareBasedPaymentAccountingPolicyTextBlock" substitutionGroup="xbrli:item" />
+<element name="ShippingAndHandlingCostsPolicyTextBlock" type="nonnum:textBlockItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_ShippingAndHandlingCostsPolicyTextBlock" substitutionGroup="xbrli:item" />
+<element name="ComponentsOfIncomeBeforeIncomeTaxesAndProvisionForIncomeTaxesTableTextBlock" type="nonnum:textBlockItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_ComponentsOfIncomeBeforeIncomeTaxesAndProvisionForIncomeTaxesTableTextBlock" substitutionGroup="xbrli:item" />
+<element name="USDefinedBenefitPensionPlansMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_USDefinedBenefitPensionPlansMember" substitutionGroup="xbrli:item" />
+<element name="NetPeriodicPensionBenefitExpenseMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_NetPeriodicPensionBenefitExpenseMember" substitutionGroup="xbrli:item" />
+<element name="AccumulatedBenefitObligationTableTextBlock" type="nonnum:textBlockItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_AccumulatedBenefitObligationTableTextBlock" substitutionGroup="xbrli:item" />
+<element name="SignificantAccountingPoliciesTable" type="xbrli:stringItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_SignificantAccountingPoliciesTable" substitutionGroup="xbrldt:hypercubeItem" />
+<element name="PatentsAndTechnologyMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_PatentsAndTechnologyMember" substitutionGroup="xbrli:item" />
+<element name="SignificantAccountingPoliciesLineItems" type="xbrli:stringItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_SignificantAccountingPoliciesLineItems" substitutionGroup="xbrli:item" />
+<element name="CashEquivalentMaturityPeriod" type="us-types:durationStringItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_CashEquivalentMaturityPeriod" substitutionGroup="xbrli:item" />
+<element name="ElectronicInstrumentsGroupMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_ElectronicInstrumentsGroupMember" substitutionGroup="xbrli:item" />
+<element name="ElectromechanicalGroupMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_ElectromechanicalGroupMember" substitutionGroup="xbrli:item" />
+<element name="NetIncreaseDecreaseInContractWithCustomerAssetsLiabilities" type="xbrli:monetaryItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_NetIncreaseDecreaseInContractWithCustomerAssetsLiabilities" substitutionGroup="xbrli:item" xbrli:balance="credit" />
+<element name="PeriodForProductWarranty" type="xbrli:durationItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_PeriodForProductWarranty" substitutionGroup="xbrli:item" />
+<element name="TotalAssetsMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_TotalAssetsMember" substitutionGroup="xbrli:item" />
+<element name="TotalLiabilitiesMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_TotalLiabilitiesMember" substitutionGroup="xbrli:item" />
+<element name="OtherMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_OtherMember" substitutionGroup="xbrli:item" />
+<element name="OtherForeignCountriesMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_OtherForeignCountriesMember" substitutionGroup="xbrli:item" />
+<element name="InternationalMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_InternationalMember" substitutionGroup="xbrli:item" />
+<element name="ProcessAndAnalyticalInstrumentationMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_ProcessAndAnalyticalInstrumentationMember" substitutionGroup="xbrli:item" />
+<element name="AerospaceAndPowerMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_AerospaceAndPowerMember" substitutionGroup="xbrli:item" />
+<element name="AutomationAndEngineeredSolutionsMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_AutomationAndEngineeredSolutionsMember" substitutionGroup="xbrli:item" />
+<element name="WarrantyAccrualsAdjustmentsRelatedToNewBusinessesAndOther" type="xbrli:monetaryItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_WarrantyAccrualsAdjustmentsRelatedToNewBusinessesAndOther" substitutionGroup="xbrli:item" xbrli:balance="credit" />
+<element name="NumberOfForwardContractsOutstanding" type="xbrli:integerItemType" abstract="false" xbrli:periodType="instant" nillable="true" id="ame_NumberOfForwardContractsOutstanding" substitutionGroup="xbrli:item" />
+<element name="BritishPoundDenominatedLoansMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_BritishPoundDenominatedLoansMember" substitutionGroup="xbrli:item" />
+<element name="EuroLoanMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_EuroLoanMember" substitutionGroup="xbrli:item" />
+<element name="PercentageOfEffectivenessOnNetInvestmentHedges" type="num:percentItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_PercentageOfEffectivenessOnNetInvestmentHedges" substitutionGroup="xbrli:item" />
+<element name="RaulandBorgMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_RaulandBorgMember" substitutionGroup="xbrli:item" />
+<element name="TwoThousandAndSeventeenConsolidatedAcquisitionMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_TwoThousandAndSeventeenConsolidatedAcquisitionMember" substitutionGroup="xbrli:item" />
+<element name="TwoThousandAndSixteenConsolidatedAcquisitionMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_TwoThousandAndSixteenConsolidatedAcquisitionMember" substitutionGroup="xbrli:item" />
+<element name="TwoThousandAndEighteenConsolidatedAcquisitionMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_TwoThousandAndEighteenConsolidatedAcquisitionMember" substitutionGroup="xbrli:item" />
+<element name="PurchasedTechnologyMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_PurchasedTechnologyMember" substitutionGroup="xbrli:item" />
+<element name="BusinessAcquisitionPurchasePriceAllocationNetWorkingCapitalAndOther" type="xbrli:monetaryItemType" abstract="false" xbrli:periodType="instant" nillable="true" id="ame_BusinessAcquisitionPurchasePriceAllocationNetWorkingCapitalAndOther" substitutionGroup="xbrli:item" xbrli:balance="debit" />
+<element name="OtherAcquisitionMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_OtherAcquisitionMember" substitutionGroup="xbrli:item" />
+<element name="TelularAcquisitionMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_TelularAcquisitionMember" substitutionGroup="xbrli:item" />
+<element name="AllowancesForPossibleLossesOnAccountsAbstract" type="xbrli:stringItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_AllowancesForPossibleLossesOnAccountsAbstract" substitutionGroup="xbrli:item" />
+<element name="CompositionOfDeferredTaxAssetsAndLiabilitiesTable" type="xbrli:stringItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_CompositionOfDeferredTaxAssetsAndLiabilitiesTable" substitutionGroup="xbrldt:hypercubeItem" />
+<element name="NonCurrentAssetsMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_NonCurrentAssetsMember" substitutionGroup="xbrli:item" />
+<element name="NonCurrentMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_NonCurrentMember" substitutionGroup="xbrli:item" />
+<element name="ScheduleOfIncomeTaxLineItems" type="xbrli:stringItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_ScheduleOfIncomeTaxLineItems" substitutionGroup="xbrli:item" />
+<element name="NoncurrentDeferredTaxassetLiabilityAbstract" type="xbrli:stringItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_NoncurrentDeferredTaxassetLiabilityAbstract" substitutionGroup="xbrli:item" />
+<element name="DeferredTaxAssetLiabilityGrossNoncurrent" type="xbrli:monetaryItemType" abstract="false" xbrli:periodType="instant" nillable="true" id="ame_DeferredTaxAssetLiabilityGrossNoncurrent" substitutionGroup="xbrli:item" xbrli:balance="debit" />
+<element name="DeferredTaxAssetsLiabilitiesNoncurrentOtherNet" type="xbrli:monetaryItemType" abstract="false" xbrli:periodType="instant" nillable="true" id="ame_DeferredTaxAssetsLiabilitiesNoncurrentOtherNet" substitutionGroup="xbrli:item" xbrli:balance="debit" />
+<element name="DeferredTaxLiabilitiesPrepaidPensionCostBenefit" type="xbrli:monetaryItemType" abstract="false" xbrli:periodType="instant" nillable="true" id="ame_DeferredTaxLiabilitiesPrepaidPensionCostBenefit" substitutionGroup="xbrli:item" xbrli:balance="credit" />
+<element name="EffectiveIncomeTaxRateReconciliationTaxCreditsFromManufacturingAndExportsPercent" type="num:percentItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_EffectiveIncomeTaxRateReconciliationTaxCreditsFromManufacturingAndExportsPercent" substitutionGroup="xbrli:item" />
+<element name="EffectiveIncomeTaxRateReconciliationUncertainTaxItemsPercent" type="num:percentItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_EffectiveIncomeTaxRateReconciliationUncertainTaxItemsPercent" substitutionGroup="xbrli:item" />
+<element name="EffectiveIncomeTaxRateReconciliationTaxCreditsOnForeignEarnings" type="num:percentItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_EffectiveIncomeTaxRateReconciliationTaxCreditsOnForeignEarnings" substitutionGroup="xbrli:item" />
+<element name="AmountOfTaxInterestAndPenaltiesClassifiedAsNoncurrentLiability" type="xbrli:monetaryItemType" abstract="false" xbrli:periodType="instant" nillable="true" id="ame_AmountOfTaxInterestAndPenaltiesClassifiedAsNoncurrentLiability" substitutionGroup="xbrli:item" xbrli:balance="debit" />
+<element name="IncreaseDecreaseOfIncomeTaxExpenseDueToUnrecognizedTaxBenefits" type="xbrli:monetaryItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_IncreaseDecreaseOfIncomeTaxExpenseDueToUnrecognizedTaxBenefits" substitutionGroup="xbrli:item" xbrli:balance="debit" />
+<element name="PercentageOfTaxLiabilityAttributableToDomesticCountry" type="num:percentItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_PercentageOfTaxLiabilityAttributableToDomesticCountry" substitutionGroup="xbrli:item" />
+<element name="TaxCutsAndJobsActOf2017ChangeInTaxRateDeferredTaxLiabilityProvisionalIncomeTaxBenefit" type="xbrli:monetaryItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_TaxCutsAndJobsActOf2017ChangeInTaxRateDeferredTaxLiabilityProvisionalIncomeTaxBenefit" substitutionGroup="xbrli:item" xbrli:balance="credit" />
+<element name="TaxCutsAndJobsActOf2017ProvisionalIncomeTaxExpenseBenefit" type="xbrli:monetaryItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_TaxCutsAndJobsActOf2017ProvisionalIncomeTaxExpenseBenefit" substitutionGroup="xbrli:item" xbrli:balance="debit" />
+<element name="TaxCutsAndJobsActOf2017TransitionTaxForAccumulatedForeignEarningsProvisionalIncomeTaxExpense" type="xbrli:monetaryItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_TaxCutsAndJobsActOf2017TransitionTaxForAccumulatedForeignEarningsProvisionalIncomeTaxExpense" substitutionGroup="xbrli:item" xbrli:balance="debit" />
+<element name="UnrecognizedTaxBenefitsIncomeTaxPenaltiesAndInterestExpenseBenefit" type="xbrli:monetaryItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_UnrecognizedTaxBenefitsIncomeTaxPenaltiesAndInterestExpenseBenefit" substitutionGroup="xbrli:item" xbrli:balance="debit" />
+<element name="EffectiveIncomeTaxRateReconciliationNondeductibleExpenseInterestExpenseAmount" type="xbrli:monetaryItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_EffectiveIncomeTaxRateReconciliationNondeductibleExpenseInterestExpenseAmount" substitutionGroup="xbrli:item" xbrli:balance="debit" />
+<element name="BritishPoundFourPointSixEightPercentSeniorNoteDueSeptemberTwoThousandTwentyMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_BritishPoundFourPointSixEightPercentSeniorNoteDueSeptemberTwoThousandTwentyMember" substitutionGroup="xbrli:item" />
+<element name="BritishPoundTwoPointFiveNinePercentSeniorNoteDueNovemberTwoThousandTwentyEightMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_BritishPoundTwoPointFiveNinePercentSeniorNoteDueNovemberTwoThousandTwentyEightMember" substitutionGroup="xbrli:item" />
+<element name="BritishPoundTwoPointSevenZeroPercentSeniorNoteDueNovemberTwoThousandThirtyOneMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_BritishPoundTwoPointSevenZeroPercentSeniorNoteDueNovemberTwoThousandThirtyOneMember" substitutionGroup="xbrli:item" />
+<element name="EuroOnePointFiveThreePercentSeniorNoteDueOctoberTwoThousandTwentyEightMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_EuroOnePointFiveThreePercentSeniorNoteDueOctoberTwoThousandTwentyEightMember" substitutionGroup="xbrli:item" />
+<element name="EuroOnePointThreeFourPercentSeniorNoteDueOctoberTwoThousandTwentySixMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_EuroOnePointThreeFourPercentSeniorNoteDueOctoberTwoThousandTwentySixMember" substitutionGroup="xbrli:item" />
+<element name="FourPointFourFivePercentDueAugustTwoThousandThirtyFiveMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_FourPointFourFivePercentDueAugustTwoThousandThirtyFiveMember" substitutionGroup="xbrli:item" />
+<element name="OtherPrincipallyForeignMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_OtherPrincipallyForeignMember" substitutionGroup="xbrli:item" />
+<element name="SeniorNotesSevenPointOneEightPercentDueDecemberTwoThousandEighteenMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_SeniorNotesSevenPointOneEightPercentDueDecemberTwoThousandEighteenMember" substitutionGroup="xbrli:item" />
+<element name="SeniorNotesSevenPointZeroEightPercentDueSeptemberTwoThousandEighteenMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_SeniorNotesSevenPointZeroEightPercentDueSeptemberTwoThousandEighteenMember" substitutionGroup="xbrli:item" />
+<element name="SeniorNotesSixPointThreeFivePercentDueJulyTwoThousandEighteenMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_SeniorNotesSixPointThreeFivePercentDueJulyTwoThousandEighteenMember" substitutionGroup="xbrli:item" />
+<element name="SeniorNotesSixPointThreeZeroPercentDueDecemberTwoThousandNineteenMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_SeniorNotesSixPointThreeZeroPercentDueDecemberTwoThousandNineteenMember" substitutionGroup="xbrli:item" />
+<element name="SeniorNotesThreePointEightThreePercentDueSeptemberTwoThousandTwentySixMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_SeniorNotesThreePointEightThreePercentDueSeptemberTwoThousandTwentySixMember" substitutionGroup="xbrli:item" />
+<element name="SeniorNotesThreePointNineEightPercentDueSeptemberTwoThousandTwentyNineMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_SeniorNotesThreePointNineEightPercentDueSeptemberTwoThousandTwentyNineMember" substitutionGroup="xbrli:item" />
+<element name="SeniorNotesThreePointSevenThreePercentDueSeptemberTwoThousandTwentyFourMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_SeniorNotesThreePointSevenThreePercentDueSeptemberTwoThousandTwentyFourMember" substitutionGroup="xbrli:item" />
+<element name="SwissFrancTwoPointFourFourPercentSeniorNoteDueDecemberTwoThousandTwentyOneMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_SwissFrancTwoPointFourFourPercentSeniorNoteDueDecemberTwoThousandTwentyOneMember" substitutionGroup="xbrli:item" />
+<element name="ThreePointNineOnePercentDueJuneTwoThousandTwentyFiveMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_ThreePointNineOnePercentDueJuneTwoThousandTwentyFiveMember" substitutionGroup="xbrli:item" />
+<element name="ThreePointNineSixPercentDueAugustTwoThousandTwentyFiveMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_ThreePointNineSixPercentDueAugustTwoThousandTwentyFiveMember" substitutionGroup="xbrli:item" />
+<element name="SeniorNotesFourPointOneEightPercentDueDecemberTwoThousendTwentyFiveMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_SeniorNotesFourPointOneEightPercentDueDecemberTwoThousendTwentyFiveMember" substitutionGroup="xbrli:item" />
+<element name="SeniorNotesFourPointThreeTwoPercentDueDecemberTwoThousendTwentySevenMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_SeniorNotesFourPointThreeTwoPercentDueDecemberTwoThousendTwentySevenMember" substitutionGroup="xbrli:item" />
+<element name="SeniorNotesFourPointThreeSevenPercentDueDecemberTwoThousendTwentyEightMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_SeniorNotesFourPointThreeSevenPercentDueDecemberTwoThousendTwentyEightMember" substitutionGroup="xbrli:item" />
+<element name="SeniorNotesOnePointSevenOnePercentDueDecemberTwoThousendTwentySavenMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_SeniorNotesOnePointSevenOnePercentDueDecemberTwoThousendTwentySavenMember" substitutionGroup="xbrli:item" />
+<element name="RevolvingCreditFacilityBorrowingsMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_RevolvingCreditFacilityBorrowingsMember" substitutionGroup="xbrli:item" />
+<element name="SeniorNotesSixPointTwoZeroPercentDueDecemberTwoThousandSeventeenMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_SeniorNotesSixPointTwoZeroPercentDueDecemberTwoThousandSeventeenMember" substitutionGroup="xbrli:item" />
+<element name="SeniorNotesSixPointThreeFivePercentDueSeptemberTwoThousandEighteenMemberMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_SeniorNotesSixPointThreeFivePercentDueSeptemberTwoThousandEighteenMemberMember" substitutionGroup="xbrli:item" />
+<element name="OnePointFiveThreePercentDueOctoberTwoThousandTwentyEightMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_OnePointFiveThreePercentDueOctoberTwoThousandTwentyEightMember" substitutionGroup="xbrli:item" />
+<element name="OnePointThreeFourPercentDueOctoberTwoThousandTwentySixMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_OnePointThreeFourPercentDueOctoberTwoThousandTwentySixMember" substitutionGroup="xbrli:item" />
+<element name="TwoPointFiveNinePercentDueNovemberTwoThousandTwentyEightMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_TwoPointFiveNinePercentDueNovemberTwoThousandTwentyEightMember" substitutionGroup="xbrli:item" />
+<element name="TwoPointSevenZeroPercentDueNovemberTwoThousandThirtyOneMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_TwoPointSevenZeroPercentDueNovemberTwoThousandThirtyOneMember" substitutionGroup="xbrli:item" />
+<element name="ForeignSubsidiariesMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_ForeignSubsidiariesMember" substitutionGroup="xbrli:item" />
+<element name="AdditionalBorrowingCapacityUnderRevolvingCreditFacility" type="xbrli:monetaryItemType" abstract="false" xbrli:periodType="instant" nillable="true" id="ame_AdditionalBorrowingCapacityUnderRevolvingCreditFacility" substitutionGroup="xbrli:item" xbrli:balance="credit" />
+<element name="PerformanceRestrictedStockUnitsMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_PerformanceRestrictedStockUnitsMember" substitutionGroup="xbrli:item" />
+<element name="OfficersAndKeyManagementEmployeesMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_OfficersAndKeyManagementEmployeesMember" substitutionGroup="xbrli:item" />
+<element name="RestrictedStockGrantedPriorDateMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_RestrictedStockGrantedPriorDateMember" substitutionGroup="xbrli:item" />
+<element name="NonEmployeeDirectorsRestrictedStockMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_NonEmployeeDirectorsRestrictedStockMember" substitutionGroup="xbrli:item" />
+<element name="PerformanceRestrictedStockUnitExpense" type="xbrli:monetaryItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_PerformanceRestrictedStockUnitExpense" substitutionGroup="xbrli:item" xbrli:balance="debit" />
+<element name="AssumedRateOfReturnNextYear" type="num:percentItemType" abstract="false" xbrli:periodType="instant" nillable="true" id="ame_AssumedRateOfReturnNextYear" substitutionGroup="xbrli:item" />
+<element name="DefinedBenefitPlanContributionsByEmployerEmployeeMatch" type="xbrli:monetaryItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_DefinedBenefitPlanContributionsByEmployerEmployeeMatch" substitutionGroup="xbrli:item" />
+<element name="DefinedContributionPlanEmployerContributionMaximumPercentage" type="num:percentItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_DefinedContributionPlanEmployerContributionMaximumPercentage" substitutionGroup="xbrli:item" />
+<element name="DefinedContributionPlanEmployerContributionMinimumPercentage" type="num:percentItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_DefinedContributionPlanEmployerContributionMinimumPercentage" substitutionGroup="xbrli:item" />
+<element name="DefinedContributionPlanMaximumEmployerContributionAsPercentageOfEligibleCompensation" type="num:percentItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_DefinedContributionPlanMaximumEmployerContributionAsPercentageOfEligibleCompensation" substitutionGroup="xbrli:item" />
+<element name="DefinedContributionPlanMinimumEmployerContributionAsPercentageOfEligibleCompensation" type="num:percentItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_DefinedContributionPlanMinimumEmployerContributionAsPercentageOfEligibleCompensation" substitutionGroup="xbrli:item" />
+<element name="PercentageOfEquitySecuritiesInCompanyCommonStockIncludedInPlanAssets" type="num:percentItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_PercentageOfEquitySecuritiesInCompanyCommonStockIncludedInPlanAssets" substitutionGroup="xbrli:item" />
+<element name="MarketShareOfTreasuryStockHeld" type="xbrli:sharesItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_MarketShareOfTreasuryStockHeld" substitutionGroup="xbrli:item" />
+<element name="MarketValueOfTreasuryStockHeld" type="xbrli:monetaryItemType" abstract="false" xbrli:periodType="instant" nillable="true" id="ame_MarketValueOfTreasuryStockHeld" substitutionGroup="xbrli:item" xbrli:balance="credit" />
+<element name="CashAndOtherSecuritiesMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_CashAndOtherSecuritiesMember" substitutionGroup="xbrli:item" />
+<element name="FundedPlansMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_FundedPlansMember" substitutionGroup="xbrli:item" />
+<element name="UnfundedPlansMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_UnfundedPlansMember" substitutionGroup="xbrli:item" />
+<element name="CorporateCommonStockMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_CorporateCommonStockMember" substitutionGroup="xbrli:item" />
+<element name="CorporateDebtSecuritiesPreferredMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_CorporateDebtSecuritiesPreferredMember" substitutionGroup="xbrli:item" />
+<element name="InvestmentsMeasuredAtNetAssetValueMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_InvestmentsMeasuredAtNetAssetValueMember" substitutionGroup="xbrli:item" />
+<element name="RegisteredInvestmentCompaniesMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_RegisteredInvestmentCompaniesMember" substitutionGroup="xbrli:item" />
+<element name="UsGovernmentSecuritiesMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_UsGovernmentSecuritiesMember" substitutionGroup="xbrli:item" />
+<element name="LifeInsuranceMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_LifeInsuranceMember" substitutionGroup="xbrli:item" />
+<element name="DefinedBenefitPlanAmortizationAbstract" type="xbrli:stringItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_DefinedBenefitPlanAmortizationAbstract" substitutionGroup="xbrli:item" />
+<element name="ForeignPlansAndOther" type="xbrli:monetaryItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_ForeignPlansAndOther" substitutionGroup="xbrli:item" xbrli:balance="debit" />
+<element name="HccMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_HccMember" substitutionGroup="xbrli:item" />
+<element name="NumberOfNonOwnedSitesCompanyIsIdentifiedAsDeMinimisParty" type="xbrli:integerItemType" abstract="false" xbrli:periodType="instant" nillable="true" id="ame_NumberOfNonOwnedSitesCompanyIsIdentifiedAsDeMinimisParty" substitutionGroup="xbrli:item" />
+<element name="NumberOfNonOwnedSitesCompanyIsNamedPotentiallyResponsibleParty" type="xbrli:integerItemType" abstract="false" xbrli:periodType="instant" nillable="true" id="ame_NumberOfNonOwnedSitesCompanyIsNamedPotentiallyResponsibleParty" substitutionGroup="xbrli:item" />
+<element name="LeasesExpireYear" type="xbrli:gYearItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_LeasesExpireYear" substitutionGroup="xbrli:item" />
+<element name="CorporateAdministrativeAndOtherExpenses" type="xbrli:monetaryItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_CorporateAdministrativeAndOtherExpenses" substitutionGroup="xbrli:item" xbrli:balance="debit" />
+<element name="InterestAndOtherExpensesNet" type="xbrli:monetaryItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_InterestAndOtherExpensesNet" substitutionGroup="xbrli:item" xbrli:balance="debit" />
+<element name="AcquiredPropertyPlantAndEquipment" type="xbrli:monetaryItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_AcquiredPropertyPlantAndEquipment" substitutionGroup="xbrli:item" xbrli:balance="debit" />
+<element name="CondensedConsolidatingFinancialInformationAbstract" type="xbrli:stringItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_CondensedConsolidatingFinancialInformationAbstract" substitutionGroup="xbrli:item" />
+<element name="ShareholdersEquityTable" type="xbrli:stringItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_ShareholdersEquityTable" substitutionGroup="xbrldt:hypercubeItem" />
+<element name="ShareholdersEquityLineItems" type="xbrli:stringItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_ShareholdersEquityLineItems" substitutionGroup="xbrli:item" />
+<element name="CommonStockDividendRatePercentageIncrease" type="num:percentItemType" abstract="false" xbrli:periodType="instant" nillable="true" id="ame_CommonStockDividendRatePercentageIncrease" substitutionGroup="xbrli:item" />
+<element name="ReductionInNetIncomeDueToRestructuring" type="xbrli:monetaryItemType" abstract="false" xbrli:periodType="duration" nillable="true" id="ame_ReductionInNetIncomeDueToRestructuring" substitutionGroup="xbrli:item" xbrli:balance="debit" />
+<element name="FourthQuarterOfTwoThousandAndFifteenRestructuringMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_FourthQuarterOfTwoThousandAndFifteenRestructuringMember" substitutionGroup="xbrli:item" />
+<element name="FourthQuarterOfTwoThousandAndSixteenRestructuringMember" type="nonnum:domainItemType" abstract="true" xbrli:periodType="duration" nillable="true" id="ame_FourthQuarterOfTwoThousandAndSixteenRestructuringMember" substitutionGroup="xbrli:item" />
+</schema>
