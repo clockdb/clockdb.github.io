@@ -1,0 +1,946 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<!-- RRD ActiveDisclosure(SM) XBRL Schema Document - http://www.financial.rrd.com/ -->
+<!-- Creation Date      : 2016-11-22T10:18:45.2138425+00:00 -->
+<!-- Version            : 2.3.8.1 -->
+<!-- Package ID         : ABABC22F448DADE5F3D3B70980D57D35-0000052988-001608 -->
+<!-- Copyright (c) 2016 R. R. Donnelley &amp; Sons Company. All Rights Reserved. -->
+<schema xmlns:nonnum="http://www.xbrl.org/dtr/type/non-numeric" xmlns:num="http://www.xbrl.org/dtr/type/numeric" xmlns:us-types="http://fasb.org/us-types/2016-01-31" xmlns:stpr="http://xbrl.sec.gov/stpr/2011-01-31" xmlns:naics="http://xbrl.sec.gov/naics/2011-01-31" xmlns:sic="http://xbrl.sec.gov/sic/2011-01-31" xmlns:invest="http://xbrl.sec.gov/invest/2013-01-31" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:us-gaap="http://fasb.org/us-gaap/2016-01-31" xmlns:dei="http://xbrl.sec.gov/dei/2014-01-31" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:country="http://xbrl.sec.gov/country/2016-01-31" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:currency="http://xbrl.sec.gov/currency/2016-01-31" xmlns:exch="http://xbrl.sec.gov/exch/2016-01-31" xmlns:jec="http://www.jacobs.com/20160930" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.jacobs.com/20160930" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd" namespace="http://www.xbrl.org/2003/instance" />
+  <import schemaLocation="http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd" namespace="http://www.xbrl.org/2003/linkbase" />
+  <import schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd" namespace="http://xbrl.org/2005/xbrldt" />
+  <import schemaLocation="http://www.xbrl.org/dtr/type/numeric-2009-12-16.xsd" namespace="http://www.xbrl.org/dtr/type/numeric" />
+  <import schemaLocation="http://www.xbrl.org/dtr/type/nonNumeric-2009-12-16.xsd" namespace="http://www.xbrl.org/dtr/type/non-numeric" />
+  <import schemaLocation="http://xbrl.fasb.org/us-gaap/2016/elts/us-types-2016-01-31.xsd" namespace="http://fasb.org/us-types/2016-01-31" />
+  <import schemaLocation="http://xbrl.fasb.org/us-gaap/2016/elts/us-gaap-2016-01-31.xsd" namespace="http://fasb.org/us-gaap/2016-01-31" />
+  <import schemaLocation="http://xbrl.sec.gov/dei/2014/dei-2014-01-31.xsd" namespace="http://xbrl.sec.gov/dei/2014-01-31" />
+  <import schemaLocation="http://xbrl.sec.gov/country/2016/country-2016-01-31.xsd" namespace="http://xbrl.sec.gov/country/2016-01-31" />
+  <import schemaLocation="http://xbrl.sec.gov/currency/2016/currency-2016-01-31.xsd" namespace="http://xbrl.sec.gov/currency/2016-01-31" />
+  <import schemaLocation="http://xbrl.sec.gov/exch/2016/exch-2016-01-31.xsd" namespace="http://xbrl.sec.gov/exch/2016-01-31" />
+  <import schemaLocation="http://xbrl.sec.gov/invest/2013/invest-2013-01-31.xsd" namespace="http://xbrl.sec.gov/invest/2013-01-31" />
+  <import schemaLocation="http://xbrl.sec.gov/naics/2011/naics-2011-01-31.xsd" namespace="http://xbrl.sec.gov/naics/2011-01-31" />
+  <import schemaLocation="http://xbrl.sec.gov/sic/2011/sic-2011-01-31.xsd" namespace="http://xbrl.sec.gov/sic/2011-01-31" />
+  <import schemaLocation="http://xbrl.sec.gov/stpr/2011/stpr-2011-01-31.xsd" namespace="http://xbrl.sec.gov/stpr/2011-01-31" />
+  <annotation>
+    <appinfo>
+      <link:roleType id="TemplateLink" roleURI="http://www.jacobs.com/20160930/role/TemplateLink" xmlns:link="http://www.xbrl.org/2003/linkbase">
+        <link:definition>00000 - Document - Template Link</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="jec-20160930_cal.xml" xlink:role="http://www.xbrl.org/2003/role/calculationLinkbaseRef" xlink:title="Calculation Links, all" xlink:type="simple" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" />
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="jec-20160930_def.xml" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef" xlink:title="Definition Links, all" xlink:type="simple" />
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="jec-20160930_lab.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:title="Label Links, all" xlink:type="simple" />
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="jec-20160930_pre.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:title="Presentation Links, all" xlink:type="simple" />
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DocumentDocumentAndEntityInformation" id="Role_DocumentDocumentAndEntityInformation">
+        <link:definition>100000 - Document - Document And Entity Information</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/StatementConsolidatedBalanceSheets" id="Role_StatementConsolidatedBalanceSheets">
+        <link:definition>100010 - Statement - Consolidated Balance Sheets</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/StatementConsolidatedBalanceSheetsParenthetical" id="Role_StatementConsolidatedBalanceSheetsParenthetical">
+        <link:definition>100020 - Statement - Consolidated Balance Sheets (Parenthetical)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/StatementConsolidatedStatementsOfEarnings" id="Role_StatementConsolidatedStatementsOfEarnings">
+        <link:definition>100030 - Statement - Consolidated Statements of Earnings</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/StatementConsolidatedStatementsOfComprehensiveIncome" id="Role_StatementConsolidatedStatementsOfComprehensiveIncome">
+        <link:definition>100040 - Statement - Consolidated Statements Of Comprehensive Income</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/StatementConsolidatedStatementsOfStockholdersEquity" id="Role_StatementConsolidatedStatementsOfStockholdersEquity">
+        <link:definition>100050 - Statement - Consolidated Statements of Stockholders&apos; Equity</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/StatementConsolidatedStatementsOfStockholdersEquityParenthetical" id="Role_StatementConsolidatedStatementsOfStockholdersEquityParenthetical">
+        <link:definition>100060 - Statement - Consolidated Statements of Stockholders&apos; Equity (Parenthetical)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/StatementConsolidatedStatementsOfCashFlows" id="Role_StatementConsolidatedStatementsOfCashFlows">
+        <link:definition>100070 - Statement - Consolidated Statements of Cash Flows</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureDescriptionOfBusinessAndBasisOfPresentation" id="Role_DisclosureDescriptionOfBusinessAndBasisOfPresentation">
+        <link:definition>100080 - Disclosure - Description Of Business And Basis Of Presentation</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureSignificantAccountingPolicies" id="Role_DisclosureSignificantAccountingPolicies">
+        <link:definition>100090 - Disclosure - Significant Accounting Policies</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureEmployeeStockPurchaseAndStockOptionPlans" id="Role_DisclosureEmployeeStockPurchaseAndStockOptionPlans">
+        <link:definition>100100 - Disclosure - Employee Stock Purchase and Stock Option Plans</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureEarningsPerShare" id="Role_DisclosureEarningsPerShare">
+        <link:definition>100110 - Disclosure - Earnings Per Share</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureRestructuringCharges" id="Role_DisclosureRestructuringCharges">
+        <link:definition>100120 - Disclosure - Restructuring Charges</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureBorrowings" id="Role_DisclosureBorrowings">
+        <link:definition>100130 - Disclosure - Borrowings</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosurePensionAndOtherPostretirementBenefitPlans" id="Role_DisclosurePensionAndOtherPostretirementBenefitPlans">
+        <link:definition>100140 - Disclosure - Pension and Other Postretirement Benefit Plans</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureOtherComprehensiveIncome" id="Role_DisclosureOtherComprehensiveIncome">
+        <link:definition>100150 - Disclosure - Other Comprehensive Income</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureSavingsAndDeferredCompensationPlans" id="Role_DisclosureSavingsAndDeferredCompensationPlans">
+        <link:definition>100160 - Disclosure - Savings and Deferred Compensation Plans</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureIncomeTaxes" id="Role_DisclosureIncomeTaxes">
+        <link:definition>100170 - Disclosure - Income Taxes</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureCommitmentsAndContingenciesAndDerivativeFinancialInstruments" id="Role_DisclosureCommitmentsAndContingenciesAndDerivativeFinancialInstruments">
+        <link:definition>100180 - Disclosure - Commitments and Contingencies, and Derivative Financial Instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureContractualGuaranteesLitigationInvestigationsAndInsurance" id="Role_DisclosureContractualGuaranteesLitigationInvestigationsAndInsurance">
+        <link:definition>100190 - Disclosure - Contractual Guarantees, Litigation, Investigations, And Insurance</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureCommonAndPreferredStock" id="Role_DisclosureCommonAndPreferredStock">
+        <link:definition>100200 - Disclosure - Common And Preferred Stock</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureOtherFinancialInformation" id="Role_DisclosureOtherFinancialInformation">
+        <link:definition>100210 - Disclosure - Other Financial Information</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureSegmentInformation" id="Role_DisclosureSegmentInformation">
+        <link:definition>100220 - Disclosure - Segment Information</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureSelectedQuarterlyInformationUnaudited" id="Role_DisclosureSelectedQuarterlyInformationUnaudited">
+        <link:definition>100230 - Disclosure - Selected Quarterly Information - Unaudited</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureDefinitions" id="Role_DisclosureDefinitions">
+        <link:definition>100240 - Disclosure - Definitions</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureSignificantAccountingPoliciesPolicies" id="Role_DisclosureSignificantAccountingPoliciesPolicies">
+        <link:definition>100250 - Disclosure - Significant Accounting Policies (Policies)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureDescriptionOfBusinessAndBasisOfPresentationTables" id="Role_DisclosureDescriptionOfBusinessAndBasisOfPresentationTables">
+        <link:definition>100260 - Disclosure - Description Of Business And Basis Of Presentation (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureSignificantAccountingPoliciesTables" id="Role_DisclosureSignificantAccountingPoliciesTables">
+        <link:definition>100270 - Disclosure - Significant Accounting Policies (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureEmployeeStockPurchaseAndStockOptionPlansTables" id="Role_DisclosureEmployeeStockPurchaseAndStockOptionPlansTables">
+        <link:definition>100280 - Disclosure - Employee Stock Purchase and Stock Option Plans (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureEarningsPerShareTables" id="Role_DisclosureEarningsPerShareTables">
+        <link:definition>100290 - Disclosure - Earnings Per Share (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureRestructuringChargesTables" id="Role_DisclosureRestructuringChargesTables">
+        <link:definition>100300 - Disclosure - Restructuring Charges (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureBorrowingsTables" id="Role_DisclosureBorrowingsTables">
+        <link:definition>100310 - Disclosure - Borrowings (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosurePensionAndOtherPostretirementPensionPlansTables" id="Role_DisclosurePensionAndOtherPostretirementPensionPlansTables">
+        <link:definition>100320 - Disclosure - Pension and Other Postretirement Pension Plans (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureOtherComprehensiveIncomeTables" id="Role_DisclosureOtherComprehensiveIncomeTables">
+        <link:definition>100330 - Disclosure - Other Comprehensive Income (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureSavingsAndDeferredCompensationPlansTables" id="Role_DisclosureSavingsAndDeferredCompensationPlansTables">
+        <link:definition>100340 - Disclosure - Savings and Deferred Compensation Plans (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureIncomeTaxesTables" id="Role_DisclosureIncomeTaxesTables">
+        <link:definition>100350 - Disclosure - Income Taxes (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureCommitmentsAndContingenciesAndDerivativeFinancialInstrumentsTables" id="Role_DisclosureCommitmentsAndContingenciesAndDerivativeFinancialInstrumentsTables">
+        <link:definition>100360 - Disclosure - Commitments and Contingencies, and Derivative Financial Instruments (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureOtherFinancialInformationTables" id="Role_DisclosureOtherFinancialInformationTables">
+        <link:definition>100370 - Disclosure - Other Financial Information (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureSegmentInformationTables" id="Role_DisclosureSegmentInformationTables">
+        <link:definition>100380 - Disclosure - Segment Information (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureSelectedQuarterlyInformationUnauditedTables" id="Role_DisclosureSelectedQuarterlyInformationUnauditedTables">
+        <link:definition>100390 - Disclosure - Selected Quarterly Information - Unaudited (Tables)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureDescriptionOfBusinessAndBasisOfPresentationRevenuesRealizedFromEachOfTheseTypesOfContractsDetails" id="Role_DisclosureDescriptionOfBusinessAndBasisOfPresentationRevenuesRealizedFromEachOfTheseTypesOfContractsDetails">
+        <link:definition>100400 - Disclosure - Description of Business and Basis of Presentation (Revenues Realized from Each of These Types of Contracts) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureSignificantAccountingPoliciesPassThroughCostsIncludedInRevenuesDetails" id="Role_DisclosureSignificantAccountingPoliciesPassThroughCostsIncludedInRevenuesDetails">
+        <link:definition>100410 - Disclosure - Significant Accounting Policies (Pass-Through Costs Included in Revenues) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureSignificantAccountingPoliciesNarrativeDetails" id="Role_DisclosureSignificantAccountingPoliciesNarrativeDetails">
+        <link:definition>100420 - Disclosure - Significant Accounting Policies (Narrative) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureSignificantAccountingPoliciesComponentsOfGoodwillByReportingUnitsDetails" id="Role_DisclosureSignificantAccountingPoliciesComponentsOfGoodwillByReportingUnitsDetails">
+        <link:definition>100430 - Disclosure - Significant Accounting Policies (Components of Goodwill by Reporting Units) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureSignificantAccountingPoliciesScheduleOfAcquiredIntangibleAssetsDetails" id="Role_DisclosureSignificantAccountingPoliciesScheduleOfAcquiredIntangibleAssetsDetails">
+        <link:definition>100440 - Disclosure - Significant Accounting Policies (Schedule of Acquired Intangible Assets) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureSignificantAccountingPoliciesStockBasedCompensationDetails" id="Role_DisclosureSignificantAccountingPoliciesStockBasedCompensationDetails">
+        <link:definition>100450 - Disclosure - Significant Accounting Policies (Stock-based Compensation) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureSignificantAccountingPoliciesFairValueAssumptionsOfOptionGrantDateAwardDetails" id="Role_DisclosureSignificantAccountingPoliciesFairValueAssumptionsOfOptionGrantDateAwardDetails">
+        <link:definition>100460 - Disclosure - Significant Accounting Policies (Fair Value Assumptions of Option Grant Date Award) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureSignificantAccountingPoliciesBasisToDetermineEarnedRelativeTSRRestrictedStockUnitsDetails" id="Role_DisclosureSignificantAccountingPoliciesBasisToDetermineEarnedRelativeTSRRestrictedStockUnitsDetails">
+        <link:definition>100470 - Disclosure - Significant Accounting Policies (Basis to Determine Earned Relative TSR Restricted Stock Units) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureSignificantAccountingPoliciesFairValueAssumptionsOfEarnedRelativeTSRRestrictedStockUnitsDetails" id="Role_DisclosureSignificantAccountingPoliciesFairValueAssumptionsOfEarnedRelativeTSRRestrictedStockUnitsDetails">
+        <link:definition>100480 - Disclosure - Significant Accounting Policies (Fair Value Assumptions of Earned Relative TSR Restricted Stock Units) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureSignificantAccountingPoliciesBasisToDetermineEarnedNetEarningsGrowthRestrictedStockUnitsDetails" id="Role_DisclosureSignificantAccountingPoliciesBasisToDetermineEarnedNetEarningsGrowthRestrictedStockUnitsDetails">
+        <link:definition>100490 - Disclosure - Significant Accounting Policies (Basis to Determine Earned Net Earnings Growth Restricted Stock Units) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureSignificantAccountingPoliciesBasisToDetermineEPSPerformanceMultiplierDetails" id="Role_DisclosureSignificantAccountingPoliciesBasisToDetermineEPSPerformanceMultiplierDetails">
+        <link:definition>100500 - Disclosure - Significant Accounting Policies (Basis to Determine EPS Performance Multiplier) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureEmployeeStockPurchaseAndStockOptionPlansStockIssuanceActivityUnder1989ESPPAndGESPPDetails" id="Role_DisclosureEmployeeStockPurchaseAndStockOptionPlansStockIssuanceActivityUnder1989ESPPAndGESPPDetails">
+        <link:definition>100510 - Disclosure - Employee Stock Purchase and Stock Option Plans (Stock Issuance Activity Under the 1989 ESPP and the GESPP) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureEmployeeStockPurchaseAndStockOptionPlansStockPurchaseAndStockOptionPlansInformationOn1999PlansDetails" id="Role_DisclosureEmployeeStockPurchaseAndStockOptionPlansStockPurchaseAndStockOptionPlansInformationOn1999PlansDetails">
+        <link:definition>100520 - Disclosure - Employee Stock Purchase and Stock Option Plans (Stock Purchase and Stock Option Plans Information on the 1999 Plans) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureEmployeeStockPurchaseAndStockOptionPlansFairValueOfSharesVestedDetails" id="Role_DisclosureEmployeeStockPurchaseAndStockOptionPlansFairValueOfSharesVestedDetails">
+        <link:definition>100530 - Disclosure - Employee Stock Purchase and Stock Option Plans (Fair Value of Shares Vested) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureEmployeeStockPurchaseAndStockOptionPlansTotalPreTaxCompensationCostRelatingToShareBasedPaymentsIncludedInAccompanyingConsolidatedStatementsOfEarningsDetails" id="Role_DisclosureEmployeeStockPurchaseAndStockOptionPlansTotalPreTaxCompensationCostRelatingToShareBasedPaymentsIncludedInAccompanyingConsolidatedStatementsOfEarningsDetails">
+        <link:definition>100540 - Disclosure - Employee Stock Purchase and Stock Option Plans (Total Pre-Tax Compensation Cost Relating to Share-Based Payments Included in the Accompanying Consolidated Statements of Earnings) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureEmployeeStockPurchaseAndStockOptionPlansInformationRegardingOptionsOutstandingAndOptionsExercisableDetails" id="Role_DisclosureEmployeeStockPurchaseAndStockOptionPlansInformationRegardingOptionsOutstandingAndOptionsExercisableDetails">
+        <link:definition>100550 - Disclosure - Employee Stock Purchase and Stock Option Plans (Information Regarding Options Outstanding, and Options Exercisable) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureEmployeeStockPurchaseAndStockOptionPlansStockOptionActivityUnder1999PlansAnd1981PlanDetails" id="Role_DisclosureEmployeeStockPurchaseAndStockOptionPlansStockOptionActivityUnder1999PlansAnd1981PlanDetails">
+        <link:definition>100560 - Disclosure - Employee Stock Purchase and Stock Option Plans (Stock Option Activity Under the 1999 Plans and the 1981 Plan) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureEmployeeStockPurchaseAndStockOptionPlansTotalIntrinsicValueOfOptionsExercisedDetails" id="Role_DisclosureEmployeeStockPurchaseAndStockOptionPlansTotalIntrinsicValueOfOptionsExercisedDetails">
+        <link:definition>100570 - Disclosure - Employee Stock Purchase and Stock Option Plans (Total Intrinsic Value of Options Exercised) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureEmployeeStockPurchaseAndStockOptionPlansInformationRegardingStockOptionPlansDetails" id="Role_DisclosureEmployeeStockPurchaseAndStockOptionPlansInformationRegardingStockOptionPlansDetails">
+        <link:definition>100580 - Disclosure - Employee Stock Purchase and Stock Option Plans (Information Regarding Stock Option Plans) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureEmployeeStockPurchaseAndStockOptionPlansNumberOfSharesOfRestrictedStockAndRestrictedStockUnitsIssuedUnder1999PlansDetails" id="Role_DisclosureEmployeeStockPurchaseAndStockOptionPlansNumberOfSharesOfRestrictedStockAndRestrictedStockUnitsIssuedUnder1999PlansDetails">
+        <link:definition>100590 - Disclosure - Employee Stock Purchase and Stock Option Plans (Number of Shares of Restricted Stock and Restricted Stock Units Issued Under the 1999 Plans) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureEarningsPerShareDetails" id="Role_DisclosureEarningsPerShareDetails">
+        <link:definition>100600 - Disclosure - Earnings Per Share (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureEarningsPerShareNarrativeDetails" id="Role_DisclosureEarningsPerShareNarrativeDetails">
+        <link:definition>100610 - Disclosure - Earnings Per Share (Narrative) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureRestructuringChargesSummaryOf2015RestructuringImpactOnReportableSegmentsDetails" id="Role_DisclosureRestructuringChargesSummaryOf2015RestructuringImpactOnReportableSegmentsDetails">
+        <link:definition>100620 - Disclosure - Restructuring Charges - Summary of 2015 Restructuring Impact on the Reportable Segments (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureBorrowingsNarrativeDetails" id="Role_DisclosureBorrowingsNarrativeDetails">
+        <link:definition>100630 - Disclosure - Borrowings (Narrative) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureBorrowingsScheduleOfLongTermRevolvingCreditFacilityDetails" id="Role_DisclosureBorrowingsScheduleOfLongTermRevolvingCreditFacilityDetails">
+        <link:definition>100640 - Disclosure - Borrowings (Schedule of Long-Term Revolving Credit Facility) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureBorrowingsScheduleOfAdditionalInformational2014FacilityDetails" id="Role_DisclosureBorrowingsScheduleOfAdditionalInformational2014FacilityDetails">
+        <link:definition>100650 - Disclosure - Borrowings (Schedule of Additional Informational 2014 Facility) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureBorrowingsScheduleOfInterestPaidDetails" id="Role_DisclosureBorrowingsScheduleOfInterestPaidDetails">
+        <link:definition>100660 - Disclosure - Borrowings (Schedule of Interest Paid) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosurePensionAndOtherPostretirementPensionPlansNarrativeDetails" id="Role_DisclosurePensionAndOtherPostretirementPensionPlansNarrativeDetails">
+        <link:definition>100670 - Disclosure - Pension and Other Postretirement Pension Plans (Narrative) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosurePensionAndOtherPostretirementPensionPlansScheduleOfChangeInPlansCombinedNetBenefitObligationDetails" id="Role_DisclosurePensionAndOtherPostretirementPensionPlansScheduleOfChangeInPlansCombinedNetBenefitObligationDetails">
+        <link:definition>100680 - Disclosure - Pension and Other Postretirement Pension Plans (Schedule of Change in Plans&apos; Combined Net Benefit Obligation) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosurePensionAndOtherPostretirementPensionPlansScheduleOfChangeInCombinedFairValueOfPlansAssetsDetails" id="Role_DisclosurePensionAndOtherPostretirementPensionPlansScheduleOfChangeInCombinedFairValueOfPlansAssetsDetails">
+        <link:definition>100690 - Disclosure - Pension and Other Postretirement Pension Plans (Schedule of Change in Combined Fair Value of the Plans&apos; Assets) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosurePensionAndOtherPostretirementPensionPlansReconciliationOfCombinedFundedStatusOfPlansAndRecognizedInConsolidatedBalanceSheetDetails" id="Role_DisclosurePensionAndOtherPostretirementPensionPlansReconciliationOfCombinedFundedStatusOfPlansAndRecognizedInConsolidatedBalanceSheetDetails">
+        <link:definition>100700 - Disclosure - Pension and Other Postretirement Pension Plans (Reconciliation of Combined Funded Status of Plans and Recognized in Consolidated Balance Sheet) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosurePensionAndOtherPostretirementPensionPlansAccumulatedBenefitObligationDetails" id="Role_DisclosurePensionAndOtherPostretirementPensionPlansAccumulatedBenefitObligationDetails">
+        <link:definition>100710 - Disclosure - Pension and Other Postretirement Pension Plans (Accumulated Benefit Obligation) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosurePensionAndOtherPostretirementPensionPlansScheduleOfAmountRecognizedInAccompanyingBalanceSheetsDetails" id="Role_DisclosurePensionAndOtherPostretirementPensionPlansScheduleOfAmountRecognizedInAccompanyingBalanceSheetsDetails">
+        <link:definition>100720 - Disclosure - Pension and Other Postretirement Pension Plans (Schedule of Amount Recognized in Accompanying Balance Sheets) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosurePensionAndOtherPostretirementPensionPlansScheduleOfSignificantActuarialAssumptionsInDeterminingFundedStatusAndBenefitCostDetails" id="Role_DisclosurePensionAndOtherPostretirementPensionPlansScheduleOfSignificantActuarialAssumptionsInDeterminingFundedStatusAndBenefitCostDetails">
+        <link:definition>100730 - Disclosure - Pension and Other Postretirement Pension Plans (Schedule of Significant Actuarial Assumptions in Determining the Funded Status and Benefit Cost) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosurePensionAndOtherPostretirementPensionPlansScheduleOfPensionPlansRecognizedInAccumulatedOtherComprehensiveLossDetails" id="Role_DisclosurePensionAndOtherPostretirementPensionPlansScheduleOfPensionPlansRecognizedInAccumulatedOtherComprehensiveLossDetails">
+        <link:definition>100740 - Disclosure - Pension and Other Postretirement Pension Plans (Schedule of Pension Plans Recognized in Accumulated Other Comprehensive Loss) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosurePensionAndOtherPostretirementPensionPlansScheduleOfPensionPlansRecordedInAccumulatedOtherComprehensiveLossNotYetRecognizedAsComponentOfNetPeriodicPensionCostDetails" id="Role_DisclosurePensionAndOtherPostretirementPensionPlansScheduleOfPensionPlansRecordedInAccumulatedOtherComprehensiveLossNotYetRecognizedAsComponentOfNetPeriodicPensionCostDetails">
+        <link:definition>100750 - Disclosure - Pension and Other Postretirement Pension Plans (Schedule of Pension Plans Recorded in Accumulated Other Comprehensive Loss Not Yet Recognized as Component of Net Periodic Pension Cost) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosurePensionAndOtherPostretirementPensionPlansScheduleOfAccumulatedComprehensiveIncomeAmortizedAgainstEarningsInNextYearDetails" id="Role_DisclosurePensionAndOtherPostretirementPensionPlansScheduleOfAccumulatedComprehensiveIncomeAmortizedAgainstEarningsInNextYearDetails">
+        <link:definition>100760 - Disclosure - Pension and Other Postretirement Pension Plans (Schedule of Accumulated Comprehensive Income Amortized Against Earnings in the Next Year) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosurePensionAndOtherPostretirementPensionPlansScheduleOfWeightedAverageMeasurementOfAssetsAndLiabilitiesDetails" id="Role_DisclosurePensionAndOtherPostretirementPensionPlansScheduleOfWeightedAverageMeasurementOfAssetsAndLiabilitiesDetails">
+        <link:definition>100770 - Disclosure - Pension and Other Postretirement Pension Plans (Schedule of Weighted Average Measurement of Assets and Liabilities) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosurePensionAndOtherPostretirementPensionPlansScheduleOfFairValueOfPensionPlanAssetsDetails" id="Role_DisclosurePensionAndOtherPostretirementPensionPlansScheduleOfFairValueOfPensionPlanAssetsDetails">
+        <link:definition>100780 - Disclosure - Pension and Other Postretirement Pension Plans (Schedule of Fair Value of Pension Plan Assets) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosurePensionAndOtherPostretirementPensionPlansSummaryOfChangesInFairValueOfPlansLevel3AssetsDetails" id="Role_DisclosurePensionAndOtherPostretirementPensionPlansSummaryOfChangesInFairValueOfPlansLevel3AssetsDetails">
+        <link:definition>100790 - Disclosure - Pension and Other Postretirement Pension Plans (Summary of Changes in the Fair Value of the Plans&apos; Level 3 Assets) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosurePensionAndOtherPostretirementPensionPlansAnticipatedCashContributionsDetails" id="Role_DisclosurePensionAndOtherPostretirementPensionPlansAnticipatedCashContributionsDetails">
+        <link:definition>100800 - Disclosure - Pension and Other Postretirement Pension Plans (Anticipated Cash Contributions) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosurePensionAndOtherPostretirementPensionPlansScheduleOfExpectedPaymentsToParticipantsInPensionPlanDetails" id="Role_DisclosurePensionAndOtherPostretirementPensionPlansScheduleOfExpectedPaymentsToParticipantsInPensionPlanDetails">
+        <link:definition>100810 - Disclosure - Pension and Other Postretirement Pension Plans (Schedule of Expected Payments to Participants in Pension Plan) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosurePensionAndOtherPostretirementPensionPlansScheduleOfComponentsOfNetPeriodicPensionCostRecognizedDetails" id="Role_DisclosurePensionAndOtherPostretirementPensionPlansScheduleOfComponentsOfNetPeriodicPensionCostRecognizedDetails">
+        <link:definition>100820 - Disclosure - Pension and Other Postretirement Pension Plans (Schedule of Components of Net Periodic Pension Cost Recognized) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosurePensionAndOtherPostretirementPensionPlansScheduleOfContributionToMultiemployerPensionPlansDetails" id="Role_DisclosurePensionAndOtherPostretirementPensionPlansScheduleOfContributionToMultiemployerPensionPlansDetails">
+        <link:definition>100830 - Disclosure - Pension and Other Postretirement Pension Plans (Schedule of Contribution to Multiemployer Pension Plans) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureOtherComprehensiveIncomeDetails" id="Role_DisclosureOtherComprehensiveIncomeDetails">
+        <link:definition>100840 - Disclosure - Other Comprehensive Income (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureSavingsAndDeferredCompensationPlansSavingsPlansDetails" id="Role_DisclosureSavingsAndDeferredCompensationPlansSavingsPlansDetails">
+        <link:definition>100850 - Disclosure - Savings and Deferred Compensation Plans (Savings Plans) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureSavingsAndDeferredCompensationPlansDeferredCompensationPlansDetails" id="Role_DisclosureSavingsAndDeferredCompensationPlansDeferredCompensationPlansDetails">
+        <link:definition>100860 - Disclosure - Savings and Deferred Compensation Plans (Deferred Compensation Plans) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureIncomeTaxesConsolidatedIncomeTaxExpenseDetails" id="Role_DisclosureIncomeTaxesConsolidatedIncomeTaxExpenseDetails">
+        <link:definition>100870 - Disclosure - Income Taxes (Consolidated Income Tax Expense) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureIncomeTaxesComponentsOfNetDeferredTaxAssetsDetails" id="Role_DisclosureIncomeTaxesComponentsOfNetDeferredTaxAssetsDetails">
+        <link:definition>100880 - Disclosure - Income Taxes (Components of Net Deferred Tax Assets) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureIncomeTaxesNarrativeDetails" id="Role_DisclosureIncomeTaxesNarrativeDetails">
+        <link:definition>100890 - Disclosure - Income Taxes (Narrative) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureIncomeTaxesIncomeTaxBenefitsRealizedFromExerciseOfNonqualifiedStockOptionsAndDisqualifyingDispositionsOfStockSoldUnderOurEmployeeStockPurchasePlansDetails" id="Role_DisclosureIncomeTaxesIncomeTaxBenefitsRealizedFromExerciseOfNonqualifiedStockOptionsAndDisqualifyingDispositionsOfStockSoldUnderOurEmployeeStockPurchasePlansDetails">
+        <link:definition>100900 - Disclosure - Income Taxes (Income Tax Benefits Realized from the Exercise of Nonqualified Stock Options, and Disqualifying Dispositions of Stock Sold Under our Employee Stock Purchase Plans) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureIncomeTaxesIncomeTaxExpenseInConsolidatedStatementsOfEarningsDetails" id="Role_DisclosureIncomeTaxesIncomeTaxExpenseInConsolidatedStatementsOfEarningsDetails">
+        <link:definition>100910 - Disclosure - Income Taxes (Income Tax Expense In Consolidated Statements Of Earnings) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureIncomeTaxesIncomeTaxPaymentsDetails" id="Role_DisclosureIncomeTaxesIncomeTaxPaymentsDetails">
+        <link:definition>100920 - Disclosure - Income Taxes (Income Tax Payments) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureIncomeTaxesComponentsOfOurConsolidatedEarningsBeforeTaxesDetails" id="Role_DisclosureIncomeTaxesComponentsOfOurConsolidatedEarningsBeforeTaxesDetails">
+        <link:definition>100930 - Disclosure - Income Taxes (Components of our Consolidated Earnings Before Taxes) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureIncomeTaxesReconciliationOfUnrecognizedTaxBenefitsDetails" id="Role_DisclosureIncomeTaxesReconciliationOfUnrecognizedTaxBenefitsDetails">
+        <link:definition>100940 - Disclosure - Income Taxes (Reconciliation of Unrecognized Tax Benefits) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureCommitmentsAndContingenciesAndDerivativeFinancialInstrumentsNarrativeDetails" id="Role_DisclosureCommitmentsAndContingenciesAndDerivativeFinancialInstrumentsNarrativeDetails">
+        <link:definition>100950 - Disclosure - Commitments And Contingencies, And Derivative Financial Instruments (Narrative) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureCommitmentsAndContingenciesAndDerivativeFinancialInstrumentsCommitmentsUnderOperatingLeasesDetails" id="Role_DisclosureCommitmentsAndContingenciesAndDerivativeFinancialInstrumentsCommitmentsUnderOperatingLeasesDetails">
+        <link:definition>100960 - Disclosure - Commitments And Contingencies, And Derivative Financial Instruments (Commitments Under Operating Leases) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureCommitmentsAndContingenciesAndDerivativeFinancialInstrumentsRentExpenseAndSubleaseIncomeDetails" id="Role_DisclosureCommitmentsAndContingenciesAndDerivativeFinancialInstrumentsRentExpenseAndSubleaseIncomeDetails">
+        <link:definition>100970 - Disclosure - Commitments And Contingencies, And Derivative Financial Instruments (Rent Expense And Sublease Income) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureCommitmentsAndContingenciesAndDerivativeFinancialInstrumentsSignificantTermsOfTheLeaseDetails" id="Role_DisclosureCommitmentsAndContingenciesAndDerivativeFinancialInstrumentsSignificantTermsOfTheLeaseDetails">
+        <link:definition>100980 - Disclosure - Commitments And Contingencies, And Derivative Financial Instruments (Significant Terms Of The Lease) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureContractualGuaranteesLitigationInvestigationsAndInsuranceNarrativeDetails" id="Role_DisclosureContractualGuaranteesLitigationInvestigationsAndInsuranceNarrativeDetails">
+        <link:definition>100990 - Disclosure - Contractual Guarantees, Litigation, Investigations, and Insurance (Narrative) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureCommonAndPreferredStockDetails" id="Role_DisclosureCommonAndPreferredStockDetails">
+        <link:definition>101000 - Disclosure - Common and Preferred Stock (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureOtherFinancialInformationComponentsOfReceivablesDetails" id="Role_DisclosureOtherFinancialInformationComponentsOfReceivablesDetails">
+        <link:definition>101010 - Disclosure - Other Financial Information (Components of Receivables) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureOtherFinancialInformationNarrativeDetails" id="Role_DisclosureOtherFinancialInformationNarrativeDetails">
+        <link:definition>101020 - Disclosure - Other Financial Information (Narrative) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureOtherFinancialInformationPropertyEquipmentAndImprovementsNetDetails" id="Role_DisclosureOtherFinancialInformationPropertyEquipmentAndImprovementsNetDetails">
+        <link:definition>101030 - Disclosure - Other Financial Information (Property, Equipment and Improvements, Net) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureOtherFinancialInformationMiscellaneousNoncurrentAssetsDetails" id="Role_DisclosureOtherFinancialInformationMiscellaneousNoncurrentAssetsDetails">
+        <link:definition>101040 - Disclosure - Other Financial Information (Miscellaneous Noncurrent Assets) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureOtherFinancialInformationComponentsOfAccruedLiabilitiesDetails" id="Role_DisclosureOtherFinancialInformationComponentsOfAccruedLiabilitiesDetails">
+        <link:definition>101050 - Disclosure - Other Financial Information (Components of Accrued Liabilities) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureOtherFinancialInformationComponentsOfOtherDeferredLiabilitiesDetails" id="Role_DisclosureOtherFinancialInformationComponentsOfOtherDeferredLiabilitiesDetails">
+        <link:definition>101060 - Disclosure - Other Financial Information (Components of Other Deferred Liabilities) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureOtherFinancialInformationComponentsOfTotalAccumulatedOtherComprehensiveLossDetails" id="Role_DisclosureOtherFinancialInformationComponentsOfTotalAccumulatedOtherComprehensiveLossDetails">
+        <link:definition>101070 - Disclosure - Other Financial Information (Components of Total Accumulated Other Comprehensive Loss) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureOtherFinancialInformationSupplementalCashFlowInformationDetails" id="Role_DisclosureOtherFinancialInformationSupplementalCashFlowInformationDetails">
+        <link:definition>101080 - Disclosure - Other Financial Information (Supplemental Cash Flow Information) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureSegmentInformationNarrativeDetails" id="Role_DisclosureSegmentInformationNarrativeDetails">
+        <link:definition>101090 - Disclosure - Segment Information (Narrative) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureSegmentInformationScheduleOfTotalRevenuesOperatingProfitAndTotalAssetForReportingSegmentDetails" id="Role_DisclosureSegmentInformationScheduleOfTotalRevenuesOperatingProfitAndTotalAssetForReportingSegmentDetails">
+        <link:definition>101100 - Disclosure - Segment Information - Schedule of Total Revenues, Operating Profit and Total Asset for Reporting Segment (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureSegmentInformationFinancialInformationByGeographicAreaDetails" id="Role_DisclosureSegmentInformationFinancialInformationByGeographicAreaDetails">
+        <link:definition>101110 - Disclosure - Segment Information (Financial Information by Geographic Area) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureSegmentInformationRevenuesEarnedDirectlyOrIndirectlyFromUSFederalGovernmentAndItsAgenciesDetails" id="Role_DisclosureSegmentInformationRevenuesEarnedDirectlyOrIndirectlyFromUSFederalGovernmentAndItsAgenciesDetails">
+        <link:definition>101120 - Disclosure - Segment Information (Revenues Earned Directly or Indirectly from the U.S. Federal Government and its Agencies) (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureSelectedQuarterlyInformationUnauditedDetails" id="Role_DisclosureSelectedQuarterlyInformationUnauditedDetails">
+        <link:definition>101130 - Disclosure - Selected Quarterly Information - Unaudited (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.jacobs.com/20160930/taxonomy/role/DisclosureDefinitionsDetails" id="Role_DisclosureDefinitionsDetails">
+        <link:definition>101140 - Disclosure - Definitions (Details)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+    </appinfo>
+  </annotation>
+  <element id="jec_OtherComprehensiveIncomeReclassificationOfDefinedBenefitPlansPriorServiceCostRecognizedInNetPeriodicBenefitCostNetOfTax" name="OtherComprehensiveIncomeReclassificationOfDefinedBenefitPlansPriorServiceCostRecognizedInNetPeriodicBenefitCostNetOfTax" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="jec_OtherComprehensiveIncomeDefinedBenefitPlanNetOfTax" name="OtherComprehensiveIncomeDefinedBenefitPlanNetOfTax" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="jec_OtherComprehensiveIncomeReclassificationOfDefinedBenefitPlansNetOfTax" name="OtherComprehensiveIncomeReclassificationOfDefinedBenefitPlansNetOfTax" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="jec_DefinedBenefitPlanBeforeCurtailmentsOrSettlementsCharges" name="DefinedBenefitPlanBeforeCurtailmentsOrSettlementsCharges" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="jec_DefinedBenefitPlanCurtailmentsSettlementsCharges" name="DefinedBenefitPlanCurtailmentsSettlementsCharges" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="jec_DocumentAndEntityInformationAbstract" name="DocumentAndEntityInformationAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_CapitalStockAbstract" name="CapitalStockAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_NoncontrollingInterestIncreaseDecreaseFromBusinessCombination" name="NoncontrollingInterestIncreaseDecreaseFromBusinessCombination" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="jec_StockIssuedDuringPeriodDeferredIncomeTaxExpenseBenefit" name="StockIssuedDuringPeriodDeferredIncomeTaxExpenseBenefit" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="jec_ExcessTaxExpenseBenefitFromShareBasedCompensationOperatingActivities" name="ExcessTaxExpenseBenefitFromShareBasedCompensationOperatingActivities" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="jec_DeferredGainLossOnSyntheticLease" name="DeferredGainLossOnSyntheticLease" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="jec_IncreaseDecreaseInLongTermReceivable" name="IncreaseDecreaseInLongTermReceivable" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="jec_ExcessTaxExpenseBenefitFromShareBasedCompensationFinancingActivities" name="ExcessTaxExpenseBenefitFromShareBasedCompensationFinancingActivities" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="jec_StockPurchaseAndStockOptionPlansDisclosureTextBlock" name="StockPurchaseAndStockOptionPlansDisclosureTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_SavingsAndDeferredCompensationPlansTextBlock" name="SavingsAndDeferredCompensationPlansTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_SavingsAndDeferredCompensationPlansAbstract" name="SavingsAndDeferredCompensationPlansAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_CommitmentsAndContingenciesAndDerivativeFinancialInstrumentsTextBlock" name="CommitmentsAndContingenciesAndDerivativeFinancialInstrumentsTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_CommitmentsAndContingenciesAndDerivativeFinancialInstrumentsAbstract" name="CommitmentsAndContingenciesAndDerivativeFinancialInstrumentsAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_ContractualGuaranteesLitigationInvestigationsAndInsuranceTextBlock" name="ContractualGuaranteesLitigationInvestigationsAndInsuranceTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ContractualGuaranteesLitigationInvestigationsAndInsuranceAbstract" name="ContractualGuaranteesLitigationInvestigationsAndInsuranceAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_CommonAndPreferredStockTextBlock" name="CommonAndPreferredStockTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_OtherFinancialInformationTextBlock" name="OtherFinancialInformationTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_OtherFinancialInformationAbstract" name="OtherFinancialInformationAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_DefinitionsTextBlock" name="DefinitionsTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_DefinitionsAbstract" name="DefinitionsAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_RevenueAccountingForContractsAndUseOfJointVenturesPolicyPolicyTextBlock" name="RevenueAccountingForContractsAndUseOfJointVenturesPolicyPolicyTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ReceivablesAndBillingsInExcessOfCostsPolicyPolicyTextBlock" name="ReceivablesAndBillingsInExcessOfCostsPolicyPolicyTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ScheduleOfPassThroughCostsIncludedInRevenuesTableTextBlock" name="ScheduleOfPassThroughCostsIncludedInRevenuesTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ScheduleOfFairValueOfOptionGrantDateAwardsTableTextBlock" name="ScheduleOfFairValueOfOptionGrantDateAwardsTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_UnitBasisForEarnedRelativeTsrRestrictedStockTableTextBlock" name="UnitBasisForEarnedRelativeTsrRestrictedStockTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ScheduleOfFairValueAssumptionsForEarnedRelativeTsrRestrictedStockUnitsTableTextBlock" name="ScheduleOfFairValueAssumptionsForEarnedRelativeTsrRestrictedStockUnitsTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_UnitBasisForEarnedNetEarningsGrowthRestrictedStockUnitsTableTextBlock" name="UnitBasisForEarnedNetEarningsGrowthRestrictedStockUnitsTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_UnitBasisForEPSGrowthPerformanceMultiplierTableTextBlock" name="UnitBasisForEPSGrowthPerformanceMultiplierTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_StockIncentivePlansMember" name="StockIncentivePlansMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_ScheduleOfIntrinsicValueOfOptionsTableTextBlock" name="ScheduleOfIntrinsicValueOfOptionsTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ScheduleOfInformationOptionsOutstandingAndExercisableTableTextBlock" name="ScheduleOfInformationOptionsOutstandingAndExercisableTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ScheduleOfInterestExpensesTableTextBlock" name="ScheduleOfInterestExpensesTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ChangeInPlansCombinedNetBenefitObligationsTableTextBlock" name="ChangeInPlansCombinedNetBenefitObligationsTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ScheduleOfDefinedBenefitChangeInCombinedFairValueOfPlanAssetsTableTextBlock" name="ScheduleOfDefinedBenefitChangeInCombinedFairValueOfPlanAssetsTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ScheduleOfReconciliationOfCombinedFundedStatusOfPlansAndRecognizedInConsolidatedBalanceSheetTableTextBlock" name="ScheduleOfReconciliationOfCombinedFundedStatusOfPlansAndRecognizedInConsolidatedBalanceSheetTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ScheduleOfAmountRecognizedInAccompanyingBalanceSheetTableTextBlock" name="ScheduleOfAmountRecognizedInAccompanyingBalanceSheetTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ScheduleOfSignificantActuarialAssumptionsInDeterminingFundedStatusPlanTableTextBlock" name="ScheduleOfSignificantActuarialAssumptionsInDeterminingFundedStatusPlanTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ScheduleOfPensionPlansRecognizedInAccumulatedOtherComprehensiveLossTableTextBlock" name="ScheduleOfPensionPlansRecognizedInAccumulatedOtherComprehensiveLossTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ScheduleOfPensionPlansRecordedInAccumulatedOtherComprehensiveLossNotYetRecognizedAsComponentOfNetPeriodicPensionCostTableTextBlock" name="ScheduleOfPensionPlansRecordedInAccumulatedOtherComprehensiveLossNotYetRecognizedAsComponentOfNetPeriodicPensionCostTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ScheduleOfAccumulatedComprehensiveIncomeAmortizedAgainstEarningsInNextYearTableTextBlock" name="ScheduleOfAccumulatedComprehensiveIncomeAmortizedAgainstEarningsInNextYearTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ScheduleOfWeightedAverageMeasurementOfAssetsAndLiabilitiesTableTextBlock" name="ScheduleOfWeightedAverageMeasurementOfAssetsAndLiabilitiesTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ScheduleOfFairValueOfPensionPlanAssetsTableTextBlock" name="ScheduleOfFairValueOfPensionPlanAssetsTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_SummaryOfChangesInFairValueOfPlansLevelThreeAssetsTableTextBlock" name="SummaryOfChangesInFairValueOfPlansLevelThreeAssetsTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_AnticipatedCashContributionsTableTextBlock" name="AnticipatedCashContributionsTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ScheduleOfExpectedPaymentsToParticipantsInPensionPlanTableTextBlock" name="ScheduleOfExpectedPaymentsToParticipantsInPensionPlanTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ScheduleOfComponentsOfNetPeriodicPensionCostRecognizedTableTextBlock" name="ScheduleOfComponentsOfNetPeriodicPensionCostRecognizedTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ScheduleOfContributionToMultiemployerDefinedBenefitPlansTableTextBlock" name="ScheduleOfContributionToMultiemployerDefinedBenefitPlansTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ScheduleOfDefinedContributionPlansDisclosuresTableTextBlock" name="ScheduleOfDefinedContributionPlansDisclosuresTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_IncomeTaxBenefitStockBasedCompensationTableTextBlock" name="IncomeTaxBenefitStockBasedCompensationTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_IncomeTaxExpenseInConsolidatedStatementsOfEarningsTableTextBlock" name="IncomeTaxExpenseInConsolidatedStatementsOfEarningsTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_IncomeTaxPaymentsTableTextBlock" name="IncomeTaxPaymentsTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ScheduleOfRentExpenseAndSubleaseIncomeTableTextBlock" name="ScheduleOfRentExpenseAndSubleaseIncomeTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_OtherDeferredLiabilitiesTableTextBlock" name="OtherDeferredLiabilitiesTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ScheduleOfRevenueEarnedPercentageTableTextBlock" name="ScheduleOfRevenueEarnedPercentageTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_RevenueFromCostReimbursableContractsPercentage" name="RevenueFromCostReimbursableContractsPercentage" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_RevenueFromFixedPriceContractsPercentage" name="RevenueFromFixedPriceContractsPercentage" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_BasisOfPresentationLineItems" name="BasisOfPresentationLineItems" type="xbrli:stringItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_BasisOfPresentationTable" name="BasisOfPresentationTable" type="xbrli:stringItemType" substitutionGroup="xbrldt:hypercubeItem" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_FrequencyOfFiscalYearWithAdditionalFiscalWeek" name="FrequencyOfFiscalYearWithAdditionalFiscalWeek" type="xbrli:durationItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_NumberOfOperatingAndReportingStructureOfBusiness" name="NumberOfOperatingAndReportingStructureOfBusiness" type="xbrli:integerItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_PassThroughCostsIncludedInRevenues" name="PassThroughCostsIncludedInRevenues" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="jec_SignificantAccountingPoliciesLineItems" name="SignificantAccountingPoliciesLineItems" type="xbrli:stringItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_SignificantAccountingPoliciesTable" name="SignificantAccountingPoliciesTable" type="xbrli:stringItemType" substitutionGroup="xbrldt:hypercubeItem" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_EarnedRelativeTSRRestrictedStockUnitsMember" name="EarnedRelativeTSRRestrictedStockUnitsMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_EarnedNetEarningsGrowthRestrictedStockUnitsMember" name="EarnedNetEarningsGrowthRestrictedStockUnitsMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_April12012ToMarch312013Member" name="April12012ToMarch312013Member" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_April12012ToMarch312014Member" name="April12012ToMarch312014Member" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_AverageNetEarningsGrowthAxis" name="AverageNetEarningsGrowthAxis" type="xbrli:stringItemType" substitutionGroup="xbrldt:dimensionItem" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_AverageNetEarningsGrowthDomain" name="AverageNetEarningsGrowthDomain" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_BetweenFivePercentAndTenPercentMember" name="BetweenFivePercentAndTenPercentMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_BetweenTenPercentAndFifteenPercentMember" name="BetweenTenPercentAndFifteenPercentMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_BetweenFifteenPercentAndTwentyPercentMember" name="BetweenFifteenPercentAndTwentyPercentMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_EPSGrowthRateMember" name="EPSGrowthRateMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_FiscalYearTwoThousandAndSixteenMember" name="FiscalYearTwoThousandAndSixteenMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_FiscalYearTwoThousandAndSeventeenMember" name="FiscalYearTwoThousandAndSeventeenMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_BetweenFourPercentAndSevenPointFivePercentMember" name="BetweenFourPercentAndSevenPointFivePercentMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_BetweenSevenPointFivePercentAndFifteenPercentMember" name="BetweenSevenPointFivePercentAndFifteenPercentMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_AerospaceAndTechnologyMember" name="AerospaceAndTechnologyMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_BuildingsAndInfrastructureMember" name="BuildingsAndInfrastructureMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_IndustrialMember" name="IndustrialMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_PetroleumAndChemicalsMember" name="PetroleumAndChemicalsMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_AcquisitionsAndPurchaseAccountingAdjustments" name="AcquisitionsAndPurchaseAccountingAdjustments" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="jec_ExcludingInvestmentInAWEManagementLtdMember" name="ExcludingInvestmentInAWEManagementLtdMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_RestrictedStockAndRestrictedStockUnitsMember" name="RestrictedStockAndRestrictedStockUnitsMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfIncentiveAwardPlans" name="ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfIncentiveAwardPlans" type="xbrli:integerItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_EmployeeAwardsMember" name="EmployeeAwardsMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_DirectorAwardsMember" name="DirectorAwardsMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_PerformancePeriodForMeetingCertainPerformanceTargets" name="PerformancePeriodForMeetingCertainPerformanceTargets" type="xbrli:durationItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsTsrPerformanceMultiplierRuleDeterminationPeriod" name="ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsTsrPerformanceMultiplierRuleDeterminationPeriod" type="xbrli:durationItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsVestingRuleNumberOfCalendarPeriodAverageClosingCommonStockPriceEndingOnAwardDate" name="ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsVestingRuleNumberOfCalendarPeriodAverageClosingCommonStockPriceEndingOnAwardDate" type="xbrli:durationItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsVestingRuleNumberOfCalendarPeriodAverageClosingPriceEndingOnLastDayOfPerformancePeriod" name="ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsVestingRuleNumberOfCalendarPeriodAverageClosingPriceEndingOnLastDayOfPerformancePeriod" type="xbrli:durationItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsTsrPerformanceMultiplier" name="ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsTsrPerformanceMultiplier" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_CompanyTSRPercentileRankAxis" name="CompanyTSRPercentileRankAxis" type="xbrli:stringItemType" substitutionGroup="xbrldt:dimensionItem" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_CompanyTSRPercentileRankDomain" name="CompanyTSRPercentileRankDomain" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_Below30ThPercentileMember" name="Below30ThPercentileMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_ThirtiethPercentileMember" name="ThirtiethPercentileMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_FiftiethPercentileMember" name="FiftiethPercentileMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_SeventiethPercentileOrAboveMember" name="SeventiethPercentileOrAboveMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsUnitBasisRulePercentOfTargetRestrictedStockUnits" name="ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsUnitBasisRulePercentOfTargetRestrictedStockUnits" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ShareBasedCompensationArrangementByShareBasedPaymentAwardUnitBasisRuleNetEarningsAverageGrowthThresholdPercentForMultiplierToBeDeterminedUsingStraightLineInterpolation" name="ShareBasedCompensationArrangementByShareBasedPaymentAwardUnitBasisRuleNetEarningsAverageGrowthThresholdPercentForMultiplierToBeDeterminedUsingStraightLineInterpolation" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsNetEarningsGrowthPerformanceMultiplier" name="ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsNetEarningsGrowthPerformanceMultiplier" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_LessThanFivePercentMember" name="LessThanFivePercentMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_FivePercentMember" name="FivePercentMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_TenPercentMember" name="TenPercentMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_FifteenPercentMember" name="FifteenPercentMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_TwentyPercentMember" name="TwentyPercentMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_EarningPerShareBasedAwardsMaturityDate" name="EarningPerShareBasedAwardsMaturityDate" type="xbrli:dateItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsEPSPerformanceMultiplier" name="ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsEPSPerformanceMultiplier" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_LessThanFourPercentMember" name="LessThanFourPercentMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_FourPercentMember" name="FourPercentMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_SevenPointFivePercentMember" name="SevenPointFivePercentMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_TwentyPercentOrGreaterMember" name="TwentyPercentOrGreaterMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_ShareBasedCompensationArrangementByShareBasedPaymentAwardUnitBasisRuleEPSPercentForMultiplierToBeDeterminedUsingStraightLineInterpolation" name="ShareBasedCompensationArrangementByShareBasedPaymentAwardUnitBasisRuleEPSPercentForMultiplierToBeDeterminedUsingStraightLineInterpolation" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_NewAccountingPronouncementOrChangeInAccountingPrincipleRetrospectiveEffectOfIncreaseInNoncurrentDeferredTaxAssets" name="NewAccountingPronouncementOrChangeInAccountingPrincipleRetrospectiveEffectOfIncreaseInNoncurrentDeferredTaxAssets" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="jec_NewAccountingPronouncementOrChangeInAccountingPrincipleRetrospectiveEffectOfDecreaseInMiscellaneousNoncurrentAssets" name="NewAccountingPronouncementOrChangeInAccountingPrincipleRetrospectiveEffectOfDecreaseInMiscellaneousNoncurrentAssets" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="jec_EmployeeRightToPurchaseStockAtDiscountRate" name="EmployeeRightToPurchaseStockAtDiscountRate" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" />
+  <element id="jec_NineteenEightyNineEmployeeStockPurchasePlanMember" name="NineteenEightyNineEmployeeStockPurchasePlanMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_GlobalEmployeeStockPurchasePlanMember" name="GlobalEmployeeStockPurchasePlanMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_AggregatePurchasePricePaidForSharesSold" name="AggregatePurchasePricePaidForSharesSold" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="jec_AggregateNumberOfSharesSold" name="AggregateNumberOfSharesSold" type="xbrli:sharesItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_NineteenNinetyNineStockIncentivePlanMember" name="NineteenNinetyNineStockIncentivePlanMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_NineteenNinetyNineOutsideDirectorStockPlanMember" name="NineteenNinetyNineOutsideDirectorStockPlanMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_OtherThanOptionStockAppreciationRightsSARSMember" name="OtherThanOptionStockAppreciationRightsSARSMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardNumberOfSharesFungibleShareBasis" name="ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardNumberOfSharesFungibleShareBasis" type="xbrli:sharesItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardNumberOfSharesNonFungibleShareBasis" name="ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardNumberOfSharesNonFungibleShareBasis" type="xbrli:sharesItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ServiceConditionMember" name="ServiceConditionMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_ServiceMarketAndPerformanceConditionsMember" name="ServiceMarketAndPerformanceConditionsMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_CompensationShareBased" name="CompensationShareBased" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="jec_RangeOfExercisePricesFromThirtyTwoPointFiveOneToThirtySevenPointZeroThreeMember" name="RangeOfExercisePricesFromThirtyTwoPointFiveOneToThirtySevenPointZeroThreeMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_RangeOfExercisePricesFromThirtySevenPointFourThreeToFortySixPointThreeSevenMember" name="RangeOfExercisePricesFromThirtySevenPointFourThreeToFortySixPointThreeSevenMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_RangeOfExercisePricesFromFortySevenPointOneOneToFiftyFivePointFiveThreeMember" name="RangeOfExercisePricesFromFortySevenPointOneOneToFiftyFivePointFiveThreeMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_RangeOfExercisePricesFromSixtyPointZeroEightToEightyPointSixThreeMember" name="RangeOfExercisePricesFromSixtyPointZeroEightToEightyPointSixThreeMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_ShareBasedCompensationSharesAuthorizedUnderStockOptionPlansExercisedPriceRangeLowerRangeLimit" name="ShareBasedCompensationSharesAuthorizedUnderStockOptionPlansExercisedPriceRangeLowerRangeLimit" type="num:perShareItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_ShareBasedCompensationSharesAuthorizedUnderStockOptionPlansExercisedPriceRangeUpperRangeLimit" name="ShareBasedCompensationSharesAuthorizedUnderStockOptionPlansExercisedPriceRangeUpperRangeLimit" type="num:perShareItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_RestrictedStockNonFungibleMember" name="RestrictedStockNonFungibleMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_RestrictedStockUnitsNonFungibleMember" name="RestrictedStockUnitsNonFungibleMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_RestrictedStockFungibleMember" name="RestrictedStockFungibleMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_RestrictedStockUnitsFungibleMember" name="RestrictedStockUnitsFungibleMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_OtherLoanAgreementsMember" name="OtherLoanAgreementsMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_RevolvingCreditFacilityOneBillionSixHundredMillionMember" name="RevolvingCreditFacilityOneBillionSixHundredMillionMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_CommittedAndUncommittedLetterOfCreditFacilityMember" name="CommittedAndUncommittedLetterOfCreditFacilityMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_EurocurrencyInterestRateMember" name="EurocurrencyInterestRateMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_BaseInterestRateMember" name="BaseInterestRateMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_SubfacilityOfSwinglineLoansMember" name="SubfacilityOfSwinglineLoansMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_RevolvingCreditFacilityOneBillionTwoHundredTenMillionMember" name="RevolvingCreditFacilityOneBillionTwoHundredTenMillionMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_NumberOfTranchesInRevolvingCreditFacility" name="NumberOfTranchesInRevolvingCreditFacility" type="xbrli:integerItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_LineOfCreditFacilityAccordionFeaturePotentialBorrowingCapacity" name="LineOfCreditFacilityAccordionFeaturePotentialBorrowingCapacity" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="jec_LineOfCreditWeightedAverageInterestRate" name="LineOfCreditWeightedAverageInterestRate" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_DefinedBenefitPlanPeriodOfAnnualAverageReturnsUsedInReturnOnPlanAssetsSimulationModel" name="DefinedBenefitPlanPeriodOfAnnualAverageReturnsUsedInReturnOnPlanAssetsSimulationModel" type="xbrli:durationItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_DefinedBenefitPlanActuarialGainsLossesRelatedToBenefitObligation" name="DefinedBenefitPlanActuarialGainsLossesRelatedToBenefitObligation" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="jec_DefinedBenefitPlanCurtailmentsAndSettlements" name="DefinedBenefitPlanCurtailmentsAndSettlements" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="jec_DefinedBenefitPlanTransfers" name="DefinedBenefitPlanTransfers" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="jec_DefinedBenefitPlanCurtailmentsAndSettlementsPlanAssets" name="DefinedBenefitPlanCurtailmentsAndSettlementsPlanAssets" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="jec_PensionAndOtherPostretirementDefinedBenefitPlansAssetsCurrent" name="PensionAndOtherPostretirementDefinedBenefitPlansAssetsCurrent" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="jec_PensionPlanAmountsRecognizedInAccumulatedOtherComprehensiveIncomeLossArisingDuringPeriodAbstract" name="PensionPlanAmountsRecognizedInAccumulatedOtherComprehensiveIncomeLossArisingDuringPeriodAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_PensionPlanAmountsRecognizedInAccumulatedOtherComprehensiveIncomeLossReclassificationAdjustmentsAbstract" name="PensionPlanAmountsRecognizedInAccumulatedOtherComprehensiveIncomeLossReclassificationAdjustmentsAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeNetGainsLossesNetOfTax" name="DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeNetGainsLossesNetOfTax" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="jec_DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeNetPriorServiceCostCreditNetOfTax" name="DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeNetPriorServiceCostCreditNetOfTax" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="jec_DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeNetOfTax" name="DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeNetOfTax" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="jec_OtherPlanAssetsMember" name="OtherPlanAssetsMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_USDomesticEquitiesMember" name="USDomesticEquitiesMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_OverseasEquitiesMember" name="OverseasEquitiesMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_USDomesticBondsMember" name="USDomesticBondsMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_OverseasBondsMember" name="OverseasBondsMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_InsuranceContractsMember" name="InsuranceContractsMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_DefinedBenefitPlanSales" name="DefinedBenefitPlanSales" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="jec_ExpectedPensionContributions" name="ExpectedPensionContributions" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="jec_DefinedBenefitPlanEstimatedFutureEmployerContributionsInYearsSixThroughTen" name="DefinedBenefitPlanEstimatedFutureEmployerContributionsInYearsSixThroughTen" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="jec_EuropeAndAustraliaMember" name="EuropeAndAustraliaMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_DefinedContributionPlanSavingsPlansContributions" name="DefinedContributionPlanSavingsPlansContributions" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="jec_DeferredTaxAssetsTaxDeferredExpenseCompensationAndBenefitsOtherEmployeeBenefits" name="DeferredTaxAssetsTaxDeferredExpenseCompensationAndBenefitsOtherEmployeeBenefits" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="jec_DeferredTaxLiabilitiesDepreciationAndAmortization" name="DeferredTaxLiabilitiesDepreciationAndAmortization" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="jec_ExpiringBetween2017and2036Member" name="ExpiringBetween2017and2036Member" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_NoExpirationDateMember" name="NoExpirationDateMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_EffectiveIncomeTaxRateReconciliationForeignCurrencyTransactionExpenseBenefit" name="EffectiveIncomeTaxRateReconciliationForeignCurrencyTransactionExpenseBenefit" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="jec_IncomeTaxReconciliationAdditionalForeignTaxCredits" name="IncomeTaxReconciliationAdditionalForeignTaxCredits" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="jec_DeferredTaxAssetRevaluation" name="DeferredTaxAssetRevaluation" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="jec_AmountOfForeignSubsidiaryEarningsExpectedToBePermanentlyReinvested" name="AmountOfForeignSubsidiaryEarningsExpectedToBePermanentlyReinvested" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="jec_EstimatedPeriodOfUnrecognizedTaxBenefits" name="EstimatedPeriodOfUnrecognizedTaxBenefits" type="xbrli:durationItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_NetAggregateFutureLeasePayments" name="NetAggregateFutureLeasePayments" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="jec_SeparateCommittedAndUncommittedLetterOfCreditFacilitiesMember" name="SeparateCommittedAndUncommittedLetterOfCreditFacilitiesMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_OperatingLeasesFutureMinimumPaymentsDueIncludingSubleaseIncome" name="OperatingLeasesFutureMinimumPaymentsDueIncludingSubleaseIncome" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="jec_NetRent" name="NetRent" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="jec_EndOfOperatingLeaseTerm" name="EndOfOperatingLeaseTerm" type="xbrli:gYearItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_EndOfTermLeasePurchaseOption" name="EndOfTermLeasePurchaseOption" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="jec_LossContingencyMinimumNumberOfInsurersWithPossibleInabilityToFulfillInsuranceObligations" name="LossContingencyMinimumNumberOfInsurersWithPossibleInabilityToFulfillInsuranceObligations" type="xbrli:integerItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_MotivaEnterprisesLLCvBechtelJacobsCEPPortArthurJointVentureMember" name="MotivaEnterprisesLLCvBechtelJacobsCEPPortArthurJointVentureMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_NuiPhaoMiningCompanyMember" name="NuiPhaoMiningCompanyMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_JudicialCouncilOfCaliforniaUnpaidFeesMember" name="JudicialCouncilOfCaliforniaUnpaidFeesMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_JudicialCouncilOfCaliforniaDisgorgedFeesMember" name="JudicialCouncilOfCaliforniaDisgorgedFeesMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_NumberOfCapitalStockClasses" name="NumberOfCapitalStockClasses" type="xbrli:integerItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_OtherInformationAboutReceivablesAbstract" name="OtherInformationAboutReceivablesAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_UnbilledAmountsBilledAndCollected" name="UnbilledAmountsBilledAndCollected" type="xbrli:durationItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_BilledReceivablesCollectionPeriod" name="BilledReceivablesCollectionPeriod" type="xbrli:durationItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_LongTermReceivable" name="LongTermReceivable" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="jec_ProjectRelatedAccruals" name="ProjectRelatedAccruals" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="jec_NonProjectRelatedAccruals" name="NonProjectRelatedAccruals" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="jec_InsuranceLiabilities" name="InsuranceLiabilities" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="jec_SalesAndOtherSimilarTaxes" name="SalesAndOtherSimilarTaxes" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="jec_DeferredMiscellaneousLiabilities" name="DeferredMiscellaneousLiabilities" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="jec_OtherAccumulatedOtherComprehensiveIncomeLoss" name="OtherAccumulatedOtherComprehensiveIncomeLoss" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="jec_IncreaseDecreaseInNoncurrentAssets" name="IncreaseDecreaseInNoncurrentAssets" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="debit" />
+  <element id="jec_OtherIncomeExpense" name="OtherIncomeExpense" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="jec_OtherNonoperatingIncomeExpenseExcludingDisposalGroupNotDiscontinuedOperationGainLossOnDisposal" name="OtherNonoperatingIncomeExpenseExcludingDisposalGroupNotDiscontinuedOperationGainLossOnDisposal" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" xbrli:balance="credit" />
+  <element id="jec_AustraliaAndNewZealandMember" name="AustraliaAndNewZealandMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_SouthAmericaAndMexicoMember" name="SouthAmericaAndMexicoMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_MiddleEastAndAfricaMember" name="MiddleEastAndAfricaMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_PercentageOfRevenueEarnedFromUSFederalGovernmentAndTheirAgencies" name="PercentageOfRevenueEarnedFromUSFederalGovernmentAndTheirAgencies" type="num:percentItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_SelectedQuarterlyFinancialInformationLineItems" name="SelectedQuarterlyFinancialInformationLineItems" type="xbrli:stringItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_SelectedQuarterlyFinancialInformationTable" name="SelectedQuarterlyFinancialInformationTable" type="xbrli:stringItemType" substitutionGroup="xbrldt:hypercubeItem" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_NonCashWriteOffOnEquityInvestmentMember" name="NonCashWriteOffOnEquityInvestmentMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="true" />
+  <element id="jec_EffectOfRestructuringChargeOnEarningsPerDilutedShare" name="EffectOfRestructuringChargeOnEarningsPerDilutedShare" type="num:perShareItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_GainLossFromDispositionOfIntangibleAssetsAfterTaxPerDilutedShare" name="GainLossFromDispositionOfIntangibleAssetsAfterTaxPerDilutedShare" type="num:perShareItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+  <element id="jec_NumberOfConsecutiveFiscalQuartersIncludedInConsolidatedLeverageRatioCalculation" name="NumberOfConsecutiveFiscalQuartersIncludedInConsolidatedLeverageRatioCalculation" type="xbrli:integerItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true" abstract="false" />
+</schema>
