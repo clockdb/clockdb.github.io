@@ -1,0 +1,731 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!--XBRL Document Created with Wdesk from Workiva-->
+<!-- -->
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.borgwarner.com/20171231" xmlns:bwa="http://www.borgwarner.com/20171231" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:nonnum="http://www.xbrl.org/dtr/type/non-numeric" xmlns:num="http://www.xbrl.org/dtr/type/numeric" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import namespace="http://fasb.org/us-gaap/2017-01-31" schemaLocation="http://xbrl.fasb.org/us-gaap/2017/elts/us-gaap-2017-01-31.xsd" />
+  <xsd:import namespace="http://fasb.org/us-roles/2017-01-31" schemaLocation="http://xbrl.fasb.org/us-gaap/2017/elts/us-roles-2017-01-31.xsd" />
+  <xsd:import namespace="http://fasb.org/us-types/2017-01-31" schemaLocation="http://xbrl.fasb.org/us-gaap/2017/elts/us-types-2017-01-31.xsd" />
+  <xsd:import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd" />
+  <xsd:import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd" />
+  <xsd:import namespace="http://www.xbrl.org/2009/arcrole/fact-explanatoryFact" schemaLocation="http://www.xbrl.org/lrr/arcrole/factExplanatory-2009-12-16.xsd" />
+  <xsd:import namespace="http://www.xbrl.org/2009/role/negated" schemaLocation="http://www.xbrl.org/lrr/role/negated-2009-12-16.xsd" />
+  <xsd:import namespace="http://www.xbrl.org/2009/role/net" schemaLocation="http://www.xbrl.org/lrr/role/net-2009-12-16.xsd" />
+  <xsd:import namespace="http://www.xbrl.org/dtr/type/non-numeric" schemaLocation="http://www.xbrl.org/dtr/type/nonNumeric-2009-12-16.xsd" />
+  <xsd:import namespace="http://www.xbrl.org/dtr/type/numeric" schemaLocation="http://www.xbrl.org/dtr/type/numeric-2009-12-16.xsd" />
+  <xsd:import namespace="http://xbrl.org/2005/xbrldt" schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd" />
+  <xsd:import namespace="http://xbrl.sec.gov/country/2017-01-31" schemaLocation="http://xbrl.sec.gov/country/2017/country-2017-01-31.xsd" />
+  <xsd:import namespace="http://xbrl.sec.gov/currency/2017-01-31" schemaLocation="http://xbrl.sec.gov/currency/2017/currency-2017-01-31.xsd" />
+  <xsd:import namespace="http://xbrl.sec.gov/dei/2014-01-31" schemaLocation="http://xbrl.sec.gov/dei/2014/dei-2014-01-31.xsd" />
+  <xsd:import namespace="http://xbrl.sec.gov/exch/2017-01-31" schemaLocation="http://xbrl.sec.gov/exch/2017/exch-2017-01-31.xsd" />
+  <xsd:import namespace="http://xbrl.sec.gov/invest/2013-01-31" schemaLocation="http://xbrl.sec.gov/invest/2013/invest-2013-01-31.xsd" />
+  <xsd:import namespace="http://xbrl.sec.gov/naics/2017-01-31" schemaLocation="http://xbrl.sec.gov/naics/2017/naics-2017-01-31.xsd" />
+  <xsd:import namespace="http://xbrl.sec.gov/sic/2011-01-31" schemaLocation="http://xbrl.sec.gov/sic/2011/sic-2011-01-31.xsd" />
+  <xsd:import namespace="http://xbrl.sec.gov/stpr/2011-01-31" schemaLocation="http://xbrl.sec.gov/stpr/2011/stpr-2011-01-31.xsd" />
+  <xsd:annotation>
+    <xsd:appinfo>
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="bwa-20171231_cal.xml" xlink:role="http://www.xbrl.org/2003/role/calculationLinkbaseRef" xlink:type="simple" />
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="bwa-20171231_def.xml" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef" xlink:type="simple" />
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="bwa-20171231_lab.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:type="simple" />
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="bwa-20171231_pre.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:type="simple" />
+      <link:roleType id="AccumulatedOtherComprehensiveLoss" roleURI="http://www.borgwarner.com/role/AccumulatedOtherComprehensiveLoss">
+        <link:definition>2126100 - Disclosure - Accumulated Other Comprehensive Loss</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="AccumulatedOtherComprehensiveLossDetails" roleURI="http://www.borgwarner.com/role/AccumulatedOtherComprehensiveLossDetails">
+        <link:definition>2426402 - Disclosure - Accumulated Other Comprehensive Loss (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="AccumulatedOtherComprehensiveLossTables" roleURI="http://www.borgwarner.com/role/AccumulatedOtherComprehensiveLossTables">
+        <link:definition>2326301 - Disclosure - Accumulated Other Comprehensive Loss (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="AssetsAndLiabilitiesHeldForSale" roleURI="http://www.borgwarner.com/role/AssetsAndLiabilitiesHeldForSale">
+        <link:definition>2133100 - Disclosure - Assets and Liabilities Held for Sale</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="AssetsAndLiabilitiesHeldForSaleDetails" roleURI="http://www.borgwarner.com/role/AssetsAndLiabilitiesHeldForSaleDetails">
+        <link:definition>2433402 - Disclosure - Assets and Liabilities Held for Sale (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="AssetsAndLiabilitiesHeldForSaleTables" roleURI="http://www.borgwarner.com/role/AssetsAndLiabilitiesHeldForSaleTables">
+        <link:definition>2333301 - Disclosure - Assets and Liabilities Held for Sale (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="BalanceSheetInformation" roleURI="http://www.borgwarner.com/role/BalanceSheetInformation">
+        <link:definition>2107100 - Disclosure - Balance Sheet Information</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="BalanceSheetInformationDetails" roleURI="http://www.borgwarner.com/role/BalanceSheetInformationDetails">
+        <link:definition>2407402 - Disclosure - Balance Sheet Information (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="BalanceSheetInformationEquityMethodInvestmentDetails" roleURI="http://www.borgwarner.com/role/BalanceSheetInformationEquityMethodInvestmentDetails">
+        <link:definition>2407403 - Disclosure - Balance Sheet Information - Equity Method Investment (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="BalanceSheetInformationTables" roleURI="http://www.borgwarner.com/role/BalanceSheetInformationTables">
+        <link:definition>2307301 - Disclosure - Balance Sheet Information (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="BorgwarnerIncAndConsolidatedSubsidiariesConsolidatedBalanceSheets" roleURI="http://www.borgwarner.com/role/BorgwarnerIncAndConsolidatedSubsidiariesConsolidatedBalanceSheets">
+        <link:definition>1001000 - Statement - BorgWarner Inc. and Consolidated Subsidiaries Consolidated Balance Sheets</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="BorgwarnerIncAndConsolidatedSubsidiariesConsolidatedBalanceSheetsCalc2" roleURI="http://www.borgwarner.com/role/BorgwarnerIncAndConsolidatedSubsidiariesConsolidatedBalanceSheetsCalc2">
+        <link:definition>1001000 - Statement - BorgWarner Inc. and Consolidated Subsidiaries Consolidated Balance Sheets</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="BorgwarnerIncAndConsolidatedSubsidiariesConsolidatedStatementsOfCashFlows" roleURI="http://www.borgwarner.com/role/BorgwarnerIncAndConsolidatedSubsidiariesConsolidatedStatementsOfCashFlows">
+        <link:definition>1004000 - Statement - BorgWarner Inc. and Consolidated Subsidiaries Consolidated Statements of Cash Flows</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="BorgwarnerIncAndConsolidatedSubsidiariesConsolidatedStatementsOfEquity" roleURI="http://www.borgwarner.com/role/BorgwarnerIncAndConsolidatedSubsidiariesConsolidatedStatementsOfEquity">
+        <link:definition>1005000 - Statement - BorgWarner Inc. and Consolidated Subsidiaries Consolidated Statements of Equity</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="BorgwarnerIncAndConsolidatedSubsidiariesConsolidatedStatementsOfOperations" roleURI="http://www.borgwarner.com/role/BorgwarnerIncAndConsolidatedSubsidiariesConsolidatedStatementsOfOperations">
+        <link:definition>1002000 - Statement - BorgWarner Inc. and Consolidated Subsidiaries Consolidated Statements of Operations</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="BorgwarnerIncAndConsolidatedSubsidiariesStatementsOfComprehensiveIncome" roleURI="http://www.borgwarner.com/role/BorgwarnerIncAndConsolidatedSubsidiariesStatementsOfComprehensiveIncome">
+        <link:definition>1003000 - Statement - BorgWarner Inc. and Consolidated Subsidiaries Statements of Comprehensive Income</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="Contingencies" roleURI="http://www.borgwarner.com/role/Contingencies">
+        <link:definition>2127100 - Disclosure - Contingencies</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ContingenciesDetails" roleURI="http://www.borgwarner.com/role/ContingenciesDetails">
+        <link:definition>2427402 - Disclosure - Contingencies (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ContingenciesTables" roleURI="http://www.borgwarner.com/role/ContingenciesTables">
+        <link:definition>2327301 - Disclosure - Contingencies (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="DocumentAndEntityInformationDocument" roleURI="http://www.borgwarner.com/role/DocumentAndEntityInformationDocument">
+        <link:definition>0001000 - Document - Document and Entity Information Document</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="EarningsPerShare" roleURI="http://www.borgwarner.com/role/EarningsPerShare">
+        <link:definition>2131100 - Disclosure - Earnings Per Share</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="EarningsPerShareDetails" roleURI="http://www.borgwarner.com/role/EarningsPerShareDetails">
+        <link:definition>2431402 - Disclosure - Earnings Per Share (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="EarningsPerShareTables" roleURI="http://www.borgwarner.com/role/EarningsPerShareTables">
+        <link:definition>2331301 - Disclosure - Earnings Per Share (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="FairValueMeasurements" roleURI="http://www.borgwarner.com/role/FairValueMeasurements">
+        <link:definition>2115100 - Disclosure - Fair Value Measurements</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="FairValueMeasurementsDefinedBenefitPlanAssetsDetails" roleURI="http://www.borgwarner.com/role/FairValueMeasurementsDefinedBenefitPlanAssetsDetails">
+        <link:definition>2415403 - Disclosure - Fair Value Measurements - Defined Benefit Plan Assets (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="FairValueMeasurementsDetails" roleURI="http://www.borgwarner.com/role/FairValueMeasurementsDetails">
+        <link:definition>2415402 - Disclosure - Fair Value Measurements (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="FairValueMeasurementsTables" roleURI="http://www.borgwarner.com/role/FairValueMeasurementsTables">
+        <link:definition>2315301 - Disclosure - Fair Value Measurements (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="FinancialInstruments" roleURI="http://www.borgwarner.com/role/FinancialInstruments">
+        <link:definition>2118100 - Disclosure - Financial Instruments</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="FinancialInstrumentsBalanceSheetDetails" roleURI="http://www.borgwarner.com/role/FinancialInstrumentsBalanceSheetDetails">
+        <link:definition>2418403 - Disclosure - Financial Instruments - Balance Sheet (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="FinancialInstrumentsDetails" roleURI="http://www.borgwarner.com/role/FinancialInstrumentsDetails">
+        <link:definition>2418402 - Disclosure - Financial Instruments (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="FinancialInstrumentsIncomeStatementDetails" roleURI="http://www.borgwarner.com/role/FinancialInstrumentsIncomeStatementDetails">
+        <link:definition>2418404 - Disclosure - Financial Instruments - Income Statement (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="FinancialInstrumentsTables" roleURI="http://www.borgwarner.com/role/FinancialInstrumentsTables">
+        <link:definition>2318301 - Disclosure - Financial Instruments (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="GoodwillAndOtherIntangibles" roleURI="http://www.borgwarner.com/role/GoodwillAndOtherIntangibles">
+        <link:definition>2109100 - Disclosure - Goodwill and Other Intangibles</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="GoodwillAndOtherIntangiblesGoodwillDetails" roleURI="http://www.borgwarner.com/role/GoodwillAndOtherIntangiblesGoodwillDetails">
+        <link:definition>2409402 - Disclosure - Goodwill and Other Intangibles - Goodwill (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="GoodwillAndOtherIntangiblesIntangibleAssetsDetails" roleURI="http://www.borgwarner.com/role/GoodwillAndOtherIntangiblesIntangibleAssetsDetails">
+        <link:definition>2409403 - Disclosure - Goodwill and Other Intangibles - Intangible Assets (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="GoodwillAndOtherIntangiblesTables" roleURI="http://www.borgwarner.com/role/GoodwillAndOtherIntangiblesTables">
+        <link:definition>2309301 - Disclosure - Goodwill and Other Intangibles (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="IncomeTaxes" roleURI="http://www.borgwarner.com/role/IncomeTaxes">
+        <link:definition>2105100 - Disclosure - Income Taxes</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="IncomeTaxesComponentsOfDeferredTaxAssetsAndLiabilitiesDetails" roleURI="http://www.borgwarner.com/role/IncomeTaxesComponentsOfDeferredTaxAssetsAndLiabilitiesDetails">
+        <link:definition>2405406 - Disclosure - Income Taxes - Components of Deferred Tax Assets and Liabilities (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="IncomeTaxesDetails" roleURI="http://www.borgwarner.com/role/IncomeTaxesDetails">
+        <link:definition>2405402 - Disclosure - Income Taxes (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="IncomeTaxesIncomeTaxExaminationsDetails" roleURI="http://www.borgwarner.com/role/IncomeTaxesIncomeTaxExaminationsDetails">
+        <link:definition>2405405 - Disclosure - Income Taxes - Income Tax Examinations (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="IncomeTaxesIncomeTaxReconciliationDetails" roleURI="http://www.borgwarner.com/role/IncomeTaxesIncomeTaxReconciliationDetails">
+        <link:definition>2405403 - Disclosure - Income Taxes - Income Tax Reconciliation (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="IncomeTaxesIncomeTaxesOperatingLossCarryforwardsDetails" roleURI="http://www.borgwarner.com/role/IncomeTaxesIncomeTaxesOperatingLossCarryforwardsDetails">
+        <link:definition>2405407 - Disclosure - Income Taxes Income Taxes - Operating Loss Carryforwards (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="IncomeTaxesTables" roleURI="http://www.borgwarner.com/role/IncomeTaxesTables">
+        <link:definition>2305301 - Disclosure - Income Taxes (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="IncomeTaxesUnrecognizedTaxBenefitsDetails" roleURI="http://www.borgwarner.com/role/IncomeTaxesUnrecognizedTaxBenefitsDetails">
+        <link:definition>2405404 - Disclosure - Income Taxes - Unrecognized Tax Benefits (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="InterimFinancialInformationUnaudited" roleURI="http://www.borgwarner.com/role/InterimFinancialInformationUnaudited">
+        <link:definition>2135100 - Disclosure - Interim Financial Information (Unaudited)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="InterimFinancialInformationUnauditedDetails" roleURI="http://www.borgwarner.com/role/InterimFinancialInformationUnauditedDetails">
+        <link:definition>2435402 - Disclosure - Interim Financial Information (Unaudited) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="InterimFinancialInformationUnauditedTables" roleURI="http://www.borgwarner.com/role/InterimFinancialInformationUnauditedTables">
+        <link:definition>2335301 - Disclosure - Interim Financial Information (Unaudited) (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="LeasesAndCommitments" roleURI="http://www.borgwarner.com/role/LeasesAndCommitments">
+        <link:definition>2130100 - Disclosure - Leases and Commitments</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="LeasesAndCommitmentsDetails" roleURI="http://www.borgwarner.com/role/LeasesAndCommitmentsDetails">
+        <link:definition>2430402 - Disclosure - Leases and Commitments (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="LeasesAndCommitmentsTables" roleURI="http://www.borgwarner.com/role/LeasesAndCommitmentsTables">
+        <link:definition>2330301 - Disclosure - Leases and Commitments (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="NotesPayableAndLongTermDebt" roleURI="http://www.borgwarner.com/role/NotesPayableAndLongTermDebt">
+        <link:definition>2113100 - Disclosure - Notes Payable and Long-Term Debt</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="NotesPayableAndLongTermDebtDetails" roleURI="http://www.borgwarner.com/role/NotesPayableAndLongTermDebtDetails">
+        <link:definition>2413402 - Disclosure - Notes Payable and Long-Term Debt (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="NotesPayableAndLongTermDebtTables" roleURI="http://www.borgwarner.com/role/NotesPayableAndLongTermDebtTables">
+        <link:definition>2313301 - Disclosure - Notes Payable and Long-Term Debt (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="OtherExpenseNet" roleURI="http://www.borgwarner.com/role/OtherExpenseNet">
+        <link:definition>2104100 - Disclosure - Other Expense, Net</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="OtherExpenseNetDetails" roleURI="http://www.borgwarner.com/role/OtherExpenseNetDetails">
+        <link:definition>2404402 - Disclosure - Other Expense, Net (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="OtherExpenseNetTables" roleURI="http://www.borgwarner.com/role/OtherExpenseNetTables">
+        <link:definition>2304301 - Disclosure - Other Expense, Net (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ProductWarranty" roleURI="http://www.borgwarner.com/role/ProductWarranty">
+        <link:definition>2112100 - Disclosure - Product Warranty</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ProductWarrantyDetails" roleURI="http://www.borgwarner.com/role/ProductWarrantyDetails">
+        <link:definition>2412402 - Disclosure - Product Warranty (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ProductWarrantyTables" roleURI="http://www.borgwarner.com/role/ProductWarrantyTables">
+        <link:definition>2312301 - Disclosure - Product Warranty (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="RecentTransactions" roleURI="http://www.borgwarner.com/role/RecentTransactions">
+        <link:definition>2132100 - Disclosure - Recent Transactions</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="RecentTransactionsDetails" roleURI="http://www.borgwarner.com/role/RecentTransactionsDetails">
+        <link:definition>2432402 - Disclosure - Recent Transactions (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="RecentTransactionsTables" roleURI="http://www.borgwarner.com/role/RecentTransactionsTables">
+        <link:definition>2332301 - Disclosure - Recent Transactions (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ReportingSegmentsAndRelatedInformation" roleURI="http://www.borgwarner.com/role/ReportingSegmentsAndRelatedInformation">
+        <link:definition>2134100 - Disclosure - Reporting Segments and Related Information</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ReportingSegmentsAndRelatedInformationAdjustedEbitDetails" roleURI="http://www.borgwarner.com/role/ReportingSegmentsAndRelatedInformationAdjustedEbitDetails">
+        <link:definition>2434403 - Disclosure - Reporting Segments and Related Information - Adjusted EBIT (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ReportingSegmentsAndRelatedInformationDetails" roleURI="http://www.borgwarner.com/role/ReportingSegmentsAndRelatedInformationDetails">
+        <link:definition>2434402 - Disclosure - Reporting Segments and Related Information (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ReportingSegmentsAndRelatedInformationGeographicInformationDetails" roleURI="http://www.borgwarner.com/role/ReportingSegmentsAndRelatedInformationGeographicInformationDetails">
+        <link:definition>2434404 - Disclosure - Reporting Segments and Related Information - Geographic Information (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ReportingSegmentsAndRelatedInformationMajorCustomersProductsDetails" roleURI="http://www.borgwarner.com/role/ReportingSegmentsAndRelatedInformationMajorCustomersProductsDetails">
+        <link:definition>2434405 - Disclosure - Reporting Segments and Related Information - Major Customers &amp; Products (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ReportingSegmentsAndRelatedInformationTables" roleURI="http://www.borgwarner.com/role/ReportingSegmentsAndRelatedInformationTables">
+        <link:definition>2334301 - Disclosure - Reporting Segments and Related Information (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ResearchAndDevelopmentCosts" roleURI="http://www.borgwarner.com/role/ResearchAndDevelopmentCosts">
+        <link:definition>2103100 - Disclosure - Research and Development Costs</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ResearchAndDevelopmentCostsDetails" roleURI="http://www.borgwarner.com/role/ResearchAndDevelopmentCostsDetails">
+        <link:definition>2403402 - Disclosure - Research and Development Costs (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ResearchAndDevelopmentCostsTables" roleURI="http://www.borgwarner.com/role/ResearchAndDevelopmentCostsTables">
+        <link:definition>2303301 - Disclosure - Research and Development Costs (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="Restructuring" roleURI="http://www.borgwarner.com/role/Restructuring">
+        <link:definition>2128100 - Disclosure - Restructuring</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="RestructuringDetails" roleURI="http://www.borgwarner.com/role/RestructuringDetails">
+        <link:definition>2428402 - Disclosure - Restructuring (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="RestructuringTables" roleURI="http://www.borgwarner.com/role/RestructuringTables">
+        <link:definition>2328301 - Disclosure - Restructuring (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="RetirementBenefitPlans" roleURI="http://www.borgwarner.com/role/RetirementBenefitPlans">
+        <link:definition>2121100 - Disclosure - Retirement Benefit Plans</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="RetirementBenefitPlansAssetAllocationsDetails" roleURI="http://www.borgwarner.com/role/RetirementBenefitPlansAssetAllocationsDetails">
+        <link:definition>2421405 - Disclosure - Retirement Benefit Plans - Asset Allocations (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="RetirementBenefitPlansAssumptionsUsedDetails" roleURI="http://www.borgwarner.com/role/RetirementBenefitPlansAssumptionsUsedDetails">
+        <link:definition>2421407 - Disclosure - Retirement Benefit Plans - Assumptions Used (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="RetirementBenefitPlansBenefitObligationAndPlanAssetsDetails" roleURI="http://www.borgwarner.com/role/RetirementBenefitPlansBenefitObligationAndPlanAssetsDetails">
+        <link:definition>2421403 - Disclosure - Retirement Benefit Plans - Benefit Obligation and Plan Assets (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="RetirementBenefitPlansDetails" roleURI="http://www.borgwarner.com/role/RetirementBenefitPlansDetails">
+        <link:definition>2421402 - Disclosure - Retirement Benefit Plans (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="RetirementBenefitPlansEstimatedFuturePaymentsDetails" roleURI="http://www.borgwarner.com/role/RetirementBenefitPlansEstimatedFuturePaymentsDetails">
+        <link:definition>2421408 - Disclosure - Retirement Benefit Plans - Estimated Future Payments (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="RetirementBenefitPlansFundedStatusOfPlansWithAboInExcessOfPlanAssetsDetails" roleURI="http://www.borgwarner.com/role/RetirementBenefitPlansFundedStatusOfPlansWithAboInExcessOfPlanAssetsDetails">
+        <link:definition>2421404 - Disclosure - Retirement Benefit Plans - Funded status of plans with ABO in excess of plan assets (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="RetirementBenefitPlansHealthCareTrendRatesDetails" roleURI="http://www.borgwarner.com/role/RetirementBenefitPlansHealthCareTrendRatesDetails">
+        <link:definition>2421409 - Disclosure - Retirement Benefit Plans - Health Care Trend Rates (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="RetirementBenefitPlansNetPeriodicBenefitCostDetails" roleURI="http://www.borgwarner.com/role/RetirementBenefitPlansNetPeriodicBenefitCostDetails">
+        <link:definition>2421406 - Disclosure - Retirement Benefit Plans - Net Periodic Benefit Cost (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="RetirementBenefitPlansTables" roleURI="http://www.borgwarner.com/role/RetirementBenefitPlansTables">
+        <link:definition>2321301 - Disclosure - Retirement Benefit Plans (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="StockBasedCompensation" roleURI="http://www.borgwarner.com/role/StockBasedCompensation">
+        <link:definition>2122100 - Disclosure - Stock-Based Compensation</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="StockBasedCompensationDetails" roleURI="http://www.borgwarner.com/role/StockBasedCompensationDetails">
+        <link:definition>2422402 - Disclosure - Stock-Based Compensation (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="StockBasedCompensationPerformanceSharePlansDetails" roleURI="http://www.borgwarner.com/role/StockBasedCompensationPerformanceSharePlansDetails">
+        <link:definition>2422404 - Disclosure - Stock-Based Compensation - Performance Share Plans (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="StockBasedCompensationRestrictedStockDetails" roleURI="http://www.borgwarner.com/role/StockBasedCompensationRestrictedStockDetails">
+        <link:definition>2422403 - Disclosure - Stock-Based Compensation - Restricted Stock (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="StockBasedCompensationTables" roleURI="http://www.borgwarner.com/role/StockBasedCompensationTables">
+        <link:definition>2322301 - Disclosure - Stock-Based Compensation (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="SummaryOfSignificantAccountingPolicies" roleURI="http://www.borgwarner.com/role/SummaryOfSignificantAccountingPolicies">
+        <link:definition>2101100 - Disclosure - Summary of Significant Accounting Policies</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="SummaryOfSignificantAccountingPoliciesDetails" roleURI="http://www.borgwarner.com/role/SummaryOfSignificantAccountingPoliciesDetails">
+        <link:definition>2401402 - Disclosure - Summary of Significant Accounting Policies (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="SummaryOfSignificantAccountingPoliciesPolicies" roleURI="http://www.borgwarner.com/role/SummaryOfSignificantAccountingPoliciesPolicies">
+        <link:definition>2201201 - Disclosure - Summary of Significant Accounting Policies (Policies)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+    </xsd:appinfo>
+  </xsd:annotation>
+  <xsd:element id="bwa_AccountsAndOtherReceivablesGrossCurrent" name="AccountsAndOtherReceivablesGrossCurrent" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="instant" />
+  <xsd:element abstract="true" id="bwa_AccountsPayableAndAccruedExpensesMember" name="AccountsPayableAndAccruedExpensesMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_AccumulatedAmortizationNetTextBlock" name="AccumulatedAmortizationNetTextBlock" nillable="true" substitutionGroup="xbrli:item" type="nonnum:textBlockItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_Accumulatedothercomprehensiveincomelosscumulativechangesinnetgainlossfromhedgesbeforetax" name="Accumulatedothercomprehensiveincomelosscumulativechangesinnetgainlossfromhedgesbeforetax" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="instant" />
+  <xsd:element id="bwa_AdjustedEbit" name="AdjustedEbit" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_AmortizationOfIntangibleAssetDivestiture" name="AmortizationOfIntangibleAssetDivestiture" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_AmortizationOfIntangibleAssetTranslationAdjustment" name="AmortizationOfIntangibleAssetTranslationAdjustment" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_AsbestosAccountingPolicyPolicyTextBlock" name="AsbestosAccountingPolicyPolicyTextBlock" nillable="true" substitutionGroup="xbrli:item" type="nonnum:textBlockItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_Asbestosrelatedcharge" name="Asbestosrelatedcharge" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_Asbestosrelatedchargenetoftax" name="Asbestosrelatedchargenetoftax" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_Asbestosrelatedliabilitynoncurrent" name="Asbestosrelatedliabilitynoncurrent" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="instant" />
+  <xsd:element abstract="true" id="bwa_BERUDieselStartSystemsPvt.Ltd.Member" name="BERUDieselStartSystemsPvt.Ltd.Member" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_BusinessAcquisitionGoodwillNondeductibleAmount" name="BusinessAcquisitionGoodwillNondeductibleAmount" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="instant" />
+  <xsd:element id="bwa_BusinessCombinationRecognizedIdentifiableAssetsAcquiredandLiabilitiesAssumedOtherAssetsandLiabilities" name="BusinessCombinationRecognizedIdentifiableAssetsAcquiredandLiabilitiesAssumedOtherAssetsandLiabilities" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="instant" />
+  <xsd:element id="bwa_CashAndNotesReceivedFromInsurers" name="CashAndNotesReceivedFromInsurers" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="instant" />
+  <xsd:element id="bwa_ChangeinEffectiveTaxRateinPercentage" name="ChangeinEffectiveTaxRateinPercentage" nillable="true" substitutionGroup="xbrli:item" type="xbrli:pureItemType" xbrli:periodType="instant" />
+  <xsd:element id="bwa_ChangeofOutstandingAsbestosrelatedClaimsTableTextBlock" name="ChangeofOutstandingAsbestosrelatedClaimsTableTextBlock" nillable="true" substitutionGroup="xbrli:item" type="nonnum:textBlockItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_CompanyPaidInDefenseAndIndemnityInAdvanceOfInsurersReimbursement" name="CompanyPaidInDefenseAndIndemnityInAdvanceOfInsurersReimbursement" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="instant" />
+  <xsd:element id="bwa_DeferredTaxAssetLiabilityrelatedtoAdvancedPricingAgreement" name="DeferredTaxAssetLiabilityrelatedtoAdvancedPricingAgreement" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_Deferredtaxassetsasbestosrelated" name="Deferredtaxassetsasbestosrelated" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="instant" />
+  <xsd:element id="bwa_DefinedBenefitPlanEstimatedFutureEmployerContributionsInNextFiscalYearUnderContractualObligation" name="DefinedBenefitPlanEstimatedFutureEmployerContributionsInNextFiscalYearUnderContractualObligation" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="instant" />
+  <xsd:element id="bwa_DefinedBenefitPlanOtherChangesInPlanAssets" name="DefinedBenefitPlanOtherChangesInPlanAssets" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_DeiInformationAbstract" name="DeiInformationAbstract" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_DivgiWarnerMember" name="DivgiWarnerMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_DrivetrainMember" name="DrivetrainMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_Effectiveincometaxratereconciliationassetimpairmentexpense" name="Effectiveincometaxratereconciliationassetimpairmentexpense" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_Effectiveincometaxratereconciliationcurrency" name="Effectiveincometaxratereconciliationcurrency" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_Effectiveincometaxratereconciliationgainlossontransaction" name="Effectiveincometaxratereconciliationgainlossontransaction" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_Effectiveincometaxratereconciliationnondeductibletransactioncosts" name="Effectiveincometaxratereconciliationnondeductibletransactioncosts" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_Effectiveincometaxratereconciliationotherforeigntaxes" name="Effectiveincometaxratereconciliationotherforeigntaxes" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_Effectiveincometaxratereconciliationpartnershipincome" name="Effectiveincometaxratereconciliationpartnershipincome" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_Effectiveincometaxratereconciliationprovisiontoreturnandpriorperiodtrueups" name="Effectiveincometaxratereconciliationprovisiontoreturnandpriorperiodtrueups" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_EngineMember" name="EngineMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_EquityInAffiliatesEarningsNetOfDividendsReceivedAndOther" name="EquityInAffiliatesEarningsNetOfDividendsReceivedAndOther" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_EquityMethodInvestmentSummarizedFinancialInformationCashAndSecurities" name="EquityMethodInvestmentSummarizedFinancialInformationCashAndSecurities" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="instant" />
+  <xsd:element abstract="true" id="bwa_FixedratedebtswappedtofloatingMember" name="FixedratedebtswappedtofloatingMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_FordMember" name="FordMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_Foreigntaxcreditsutilized" name="Foreigntaxcreditsutilized" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_FunctionalCurrencyAxis" name="FunctionalCurrencyAxis" nillable="true" substitutionGroup="xbrldt:dimensionItem" type="xbrli:stringItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_FunctionalCurrencyDomain" name="FunctionalCurrencyDomain" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_GoodwillImpairmentTestWeightedAverageCostOfCapitalDiscountRateForFutureCashFlow" name="GoodwillImpairmentTestWeightedAverageCostOfCapitalDiscountRateForFutureCashFlow" nillable="true" substitutionGroup="xbrli:item" type="num:percentItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_GrossCarryingAmountsOfIntangibleAssetTextBlock" name="GrossCarryingAmountsOfIntangibleAssetTextBlock" nillable="true" substitutionGroup="xbrli:item" type="nonnum:textBlockItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_GrossResearchAndDevelopmentExpenditures" name="GrossResearchAndDevelopmentExpenditures" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_GustavWahlerGmbHu.Co.KGandGeneralPartnerMember" name="GustavWahlerGmbHu.Co.KGandGeneralPartnerMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_HigherEstimatedValueOfSeniorUnsecuredNotes" name="HigherEstimatedValueOfSeniorUnsecuredNotes" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="instant" />
+  <xsd:element id="bwa_IncomeTaxExaminationYearsNoLongerSubjectToExamination" name="IncomeTaxExaminationYearsNoLongerSubjectToExamination" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_IncomeTaxInformationLineItems" name="IncomeTaxInformationLineItems" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_IncomeTaxInformationTable" name="IncomeTaxInformationTable" nillable="true" substitutionGroup="xbrldt:hypercubeItem" type="xbrli:stringItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_IncreaseofdeferredtaxliabilitiesfutureremittanceofforeignearningsduetotheAct" name="IncreaseofdeferredtaxliabilitiesfutureremittanceofforeignearningsduetotheAct" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_IntangibleAssetsAccumulatedAmortizationHeldForSale" name="IntangibleAssetsAccumulatedAmortizationHeldForSale" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_IntangibleAssetsAccumulatedAmortizationImpairedDuringthePeriod" name="IntangibleAssetsAccumulatedAmortizationImpairedDuringthePeriod" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_IntangibleAssetsAccumulatedAmortizationRollForward" name="IntangibleAssetsAccumulatedAmortizationRollForward" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_IntangibleAssetsExcludingGoodwillAcquiredDuringPeriod" name="IntangibleAssetsExcludingGoodwillAcquiredDuringPeriod" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_IntangibleAssetsExcludingGoodwillGrossRollForward" name="IntangibleAssetsExcludingGoodwillGrossRollForward" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_IntangibleAssetsExcludingGoodwillHeldForSaleDuringPeriod" name="IntangibleAssetsExcludingGoodwillHeldForSaleDuringPeriod" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_IntangibleAssetsExcludingGoodwillTranslationAdjustments" name="IntangibleAssetsExcludingGoodwillTranslationAdjustments" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_Intangibleassetsexcludinggoodwilldivestiture" name="Intangibleassetsexcludinggoodwilldivestiture" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_JointVenturePartnerInterestInSubsidiary" name="JointVenturePartnerInterestInSubsidiary" nillable="true" substitutionGroup="xbrli:item" type="num:percentItemType" xbrli:periodType="instant" />
+  <xsd:element abstract="true" id="bwa_LongTermSupplyArrangementsMember" name="LongTermSupplyArrangementsMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_MaturityOfDerivativesPeriodEightMember" name="MaturityOfDerivativesPeriodEightMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_MaturityOfDerivativesPeriodFiveMember" name="MaturityOfDerivativesPeriodFiveMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_MaturityOfDerivativesPeriodFourMember" name="MaturityOfDerivativesPeriodFourMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_MaturityOfDerivativesPeriodOneMember" name="MaturityOfDerivativesPeriodOneMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_MaturityOfDerivativesPeriodSevenMember" name="MaturityOfDerivativesPeriodSevenMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_MaturityOfDerivativesPeriodSixMember" name="MaturityOfDerivativesPeriodSixMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_MaturityOfDerivativesPeriodThreeMember" name="MaturityOfDerivativesPeriodThreeMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_MaturityOfDerivativesPeriodTwoMember" name="MaturityOfDerivativesPeriodTwoMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_MaturityPeriodDomain" name="MaturityPeriodDomain" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_MaximumPercentageOfConsolidatedNetSalesSales" name="MaximumPercentageOfConsolidatedNetSalesSales" nillable="true" substitutionGroup="xbrli:item" type="num:percentItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_MultiCurrencyRevolvingCreditFacilityMember" name="MultiCurrencyRevolvingCreditFacilityMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_NetAssetValueMember" name="NetAssetValueMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_NetCashPaidDuringPeriodForAbstract" name="NetCashPaidDuringPeriodForAbstract" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_NetResearchAndDevelopmentExpendituresAsPercentageOfNetSales" name="NetResearchAndDevelopmentExpendituresAsPercentageOfNetSales" nillable="true" substitutionGroup="xbrli:item" type="num:percentItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_NonCashFinancingTransactionsAbstract" name="NonCashFinancingTransactionsAbstract" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_NonCashInvestingTransactionsAbstract" name="NonCashInvestingTransactionsAbstract" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_NoncontrollingInterestParentOwnershipofInterestsSold" name="NoncontrollingInterestParentOwnershipofInterestsSold" nillable="true" substitutionGroup="xbrli:item" type="num:percentItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_NskWarnerMember" name="NskWarnerMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_OtherComprehensiveIncomeLossAdjusmentsbeforeReclassificationAdjustmentsandTax" name="OtherComprehensiveIncomeLossAdjusmentsbeforeReclassificationAdjustmentsandTax" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_OtherComprehensiveIncomeLossBeforeReclassificationAdjustmentsTax" name="OtherComprehensiveIncomeLossBeforeReclassificationAdjustmentsTax" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_OtherComprehensiveIncomeLossReclassificationAdjustmentTax" name="OtherComprehensiveIncomeLossReclassificationAdjustmentTax" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_OtherComprehensiveIncomeLossReclassificationAdjustmentsBeforeTax" name="OtherComprehensiveIncomeLossReclassificationAdjustmentsBeforeTax" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_OtherEuropeMember" name="OtherEuropeMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_OtherForeignMember" name="OtherForeignMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_OtherLossAccrualsAndValuationAllowancesPolicyTextBlock" name="OtherLossAccrualsAndValuationAllowancesPolicyTextBlock" nillable="true" substitutionGroup="xbrli:item" type="nonnum:textBlockItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_OtherNonCurrentAssets" name="OtherNonCurrentAssets" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="instant" />
+  <xsd:element abstract="true" id="bwa_PatentedAndUnpatentedTechnologyMember" name="PatentedAndUnpatentedTechnologyMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_PercentageOfNetSales" name="PercentageOfNetSales" nillable="true" substitutionGroup="xbrli:item" type="num:percentItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_PercentageOwnedAffiliatesAccountedForUnderEquityMethodMaximum" name="PercentageOwnedAffiliatesAccountedForUnderEquityMethodMaximum" nillable="true" substitutionGroup="xbrli:item" type="num:percentItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_PercentageOwnedAffiliatesAccountedForUnderEquityMethodMinimum" name="PercentageOwnedAffiliatesAccountedForUnderEquityMethodMinimum" nillable="true" substitutionGroup="xbrli:item" type="num:percentItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_PrepaymentsAndOtherCurrentAssetsMember" name="PrepaymentsAndOtherCurrentAssetsMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_PrinciplePaymentRequested" name="PrinciplePaymentRequested" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="instant" />
+  <xsd:element id="bwa_PropertyPlantAndEquipmentNetOfAccumulatedDepreciationExcludingTooling" name="PropertyPlantAndEquipmentNetOfAccumulatedDepreciationExcludingTooling" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="instant" />
+  <xsd:element abstract="true" id="bwa_RealEstateAndOtherMember" name="RealEstateAndOtherMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_RelativeRevenueGrowthPerformanceSharePlansMember" name="RelativeRevenueGrowthPerformanceSharePlansMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_RemyInternationalInc.Member" name="RemyInternationalInc.Member" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_RemylightvehicleaftermarketbusinessMember" name="RemylightvehicleaftermarketbusinessMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_ResearchAndDevelopmentContractPercentOfNetResearchAndDevelopmentMaximum" name="ResearchAndDevelopmentContractPercentOfNetResearchAndDevelopmentMaximum" nillable="true" substitutionGroup="xbrli:item" type="num:percentItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_ResearchAndDevelopmentCustomerReimbursements" name="ResearchAndDevelopmentCustomerReimbursements" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_RestrictedStockCompensationExpenseTableTextBlock" name="RestrictedStockCompensationExpenseTableTextBlock" nillable="true" substitutionGroup="xbrli:item" type="nonnum:textBlockItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_RestructuringandRelatedCostAgreementswithLaborUnionsNumber" name="RestructuringandRelatedCostAgreementswithLaborUnionsNumber" nillable="true" substitutionGroup="xbrli:item" type="xbrli:integerItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_ScheduleOfBalanceSheetInformationTableTextBlock" name="ScheduleOfBalanceSheetInformationTableTextBlock" nillable="true" substitutionGroup="xbrli:item" type="nonnum:textBlockItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_ScheduleOfFiniteAndIndefiniteLivedIntangibleAssetsByMajorClassLineItems" name="ScheduleOfFiniteAndIndefiniteLivedIntangibleAssetsByMajorClassLineItems" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_ScheduleOfFiniteAndIndefiniteLivedIntangibleAssetsByMajorClassTable" name="ScheduleOfFiniteAndIndefiniteLivedIntangibleAssetsByMajorClassTable" nillable="true" substitutionGroup="xbrldt:hypercubeItem" type="xbrli:stringItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_ScheduleOfIntangibleAssetsTableTextBlock" name="ScheduleOfIntangibleAssetsTableTextBlock" nillable="true" substitutionGroup="xbrli:item" type="nonnum:textBlockItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_ScheduleOfMaturityPeriodAxis" name="ScheduleOfMaturityPeriodAxis" nillable="true" substitutionGroup="xbrldt:dimensionItem" type="xbrli:stringItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_ScheduleOfResearchAndDevelopmentCostsTableTextBlock" name="ScheduleOfResearchAndDevelopmentCostsTableTextBlock" nillable="true" substitutionGroup="xbrli:item" type="nonnum:textBlockItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_SegmentReportingCorporateAllocation" name="SegmentReportingCorporateAllocation" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_SellingGeneralAndAdministrativeExpensesOneMember" name="SellingGeneralAndAdministrativeExpensesOneMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_SeniorNotesDueFebruary2029Member" name="SeniorNotesDueFebruary2029Member" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_SeniorNotesDueMarch2025Member" name="SeniorNotesDueMarch2025Member" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_SeniorNotesDueMarch2045Member" name="SeniorNotesDueMarch2045Member" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_SeniorNotesDueNovember2016Member" name="SeniorNotesDueNovember2016Member" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_SeniorNotesDueNovember2022Member" name="SeniorNotesDueNovember2022Member" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_SeniorNotesDueOctober2019Member" name="SeniorNotesDueOctober2019Member" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_SeniorNotesDueSeptember2020Member" name="SeniorNotesDueSeptember2020Member" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_SeniorNotesFourMember" name="SeniorNotesFourMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_SeniorNotesThreeMember" name="SeniorNotesThreeMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_SensitivityAnalysisDecreaseInOperatingMarginAssumption" name="SensitivityAnalysisDecreaseInOperatingMarginAssumption" nillable="true" substitutionGroup="xbrli:item" type="num:percentItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_SensitivityAnalysisIncreaseInDiscountRate" name="SensitivityAnalysisIncreaseInDiscountRate" nillable="true" substitutionGroup="xbrli:item" type="num:percentItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_Sensitivityanalysisdecreaseinrevenuegrowthrate" name="Sensitivityanalysisdecreaseinrevenuegrowthrate" nillable="true" substitutionGroup="xbrli:item" type="num:percentItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_SevconIncMember" name="SevconIncMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_ShortTermBorrowingsMember" name="ShortTermBorrowingsMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_SouthKoreaMember" name="SouthKoreaMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_StandardProductWarrantyAccrualDeductionfromBusinessDispositions" name="StandardProductWarrantyAccrualDeductionfromBusinessDispositions" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_Standardproductwarrantyterm" name="Standardproductwarrantyterm" nillable="true" substitutionGroup="xbrli:item" type="xbrli:durationItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_TaxBenefitAssociatedWithRestructuring" name="TaxBenefitAssociatedWithRestructuring" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_TaxBenefitAssociatedwithMergerandAcquisitionExpense" name="TaxBenefitAssociatedwithMergerandAcquisitionExpense" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_TaxImpactOfOtherTaxAdjustments" name="TaxImpactOfOtherTaxAdjustments" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_TaxReformAdjustmentstoProvisionforIncomeTaxes" name="TaxReformAdjustmentstoProvisionforIncomeTaxes" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_Taxbenefitsassociatedwithasbestosrelatedcharge" name="Taxbenefitsassociatedwithasbestosrelatedcharge" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_Taxbenefitsassociatedwithintangibleassetimpairment" name="Taxbenefitsassociatedwithintangibleassetimpairment" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_Taxbenefitsexpensesassociatedwithlossondivestiture" name="Taxbenefitsexpensesassociatedwithlossondivestiture" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_Taxbenefitsrelatedtopartialreversalofagainwithcustomercontractexpiration" name="Taxbenefitsrelatedtopartialreversalofagainwithcustomercontractexpiration" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_Taxexpenseongainfromcustomercontractexpiration" name="Taxexpenseongainfromcustomercontractexpiration" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_TermLoanFacilitiesAndOtherMember" name="TermLoanFacilitiesAndOtherMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_ToolingNetOfAmortization" name="ToolingNetOfAmortization" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="instant" />
+  <xsd:element id="bwa_TotalPrincipalPayments" name="TotalPrincipalPayments" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="instant" />
+  <xsd:element id="bwa_TransitionTaxPayable" name="TransitionTaxPayable" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="instant" />
+  <xsd:element abstract="true" id="bwa_TurbochargersMember" name="TurbochargersMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_U.S.FederalCorporateTaxRateAftertheTaxCutsandJobsAct" name="U.S.FederalCorporateTaxRateAftertheTaxCutsandJobsAct" nillable="true" substitutionGroup="xbrli:item" type="num:percentItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_U.S.FederalCorporateTaxRatepriortotheTaxCutsandJobsAct" name="U.S.FederalCorporateTaxRatepriortotheTaxCutsandJobsAct" nillable="true" substitutionGroup="xbrli:item" type="num:percentItemType" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_UnamortizedPortionOfDebtDerivativeMember" name="UnamortizedPortionOfDebtDerivativeMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_Unrecognizedtaxbenefitsnet" name="Unrecognizedtaxbenefitsnet" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="credit" xbrli:periodType="instant" />
+  <xsd:element id="bwa_ValuationAllowancesandReservesDeductionsfromBusinessDivestitures" name="ValuationAllowancesandReservesDeductionsfromBusinessDivestitures" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element abstract="true" id="bwa_VolkswagenMember" name="VolkswagenMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" />
+  <xsd:element id="bwa_Warrantyaccrualsheldforsale" name="Warrantyaccrualsheldforsale" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration" />
+  <xsd:element id="bwa_WasteDisposalSites" name="WasteDisposalSites" nillable="true" substitutionGroup="xbrli:item" type="xbrli:integerItemType" xbrli:periodType="duration" />
+</xsd:schema>
