@@ -15547,10 +15547,10 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                                 }
                             })
                         </script>
-                        <td><h5 id="DateSummary1"></h4></td>
-                        <td><h5 id="DateSummary2"></h4></td>
-                        <td><h5 id="DateSummary3"></h4></td>
-                        <td><h5 id="DateSummary4"></h4></td>
+                        <td><h5 id="DateSummary1" style="text-align:center"></h4></td>
+                        <td><h5 id="DateSummary2" style="text-align:center"></h4></td>
+                        <td><h5 id="DateSummary3" style="text-align:center"></h4></td>
+                        <td><h5 id="DateSummary4" style="text-align:center"></h4></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -15603,6 +15603,15 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                     <tr></tr>
                     <tr></tr>
                     <tr>
+                        <td colspan="2">
+                            <h4 id='q' style="font-family:Apple; color:rgb(73, 73, 73); font-weight:bold; text-align: left;"></h4>
+                        </td>
+                        <td colspan="2">
+                            <h4 id='p' style="font-family:Apple; font-style:italic; color:rgb(73, 73, 73); font-weight:bold; text-align: center;"></h4>
+                        </td>
+                        <td colspan="3"></td>
+                    </tr>
+                    <tr>
                         <td><h5>Accuracy Of Previous Opinions</h5></td>
                         <td></td>
                         <td>
@@ -15617,14 +15626,6 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr>
-                        <td colspan="4">
-                            <a href="https://cpaquebec.ca/en/find-a-cpa/orders-membership-roll/contact-information/?id=ab6ftJahZsg%3d&p=phil&n=dube&pn=" target="blank">
-                                <h4 id='p' style="font-family:Apple; font-style:italic; color:rgb(73, 73, 73); font-weight:bold; text-align: left;"></h4>
-                                <h4 id='q' style="font-family:Apple; color:rgb(73, 73, 73); font-weight:bold; text-align: left;"></h4>
-                            </a>
-                        </td>
-                    </tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
@@ -15869,136 +15870,7 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                                 a = parseInt(document.getElementById('IntrinsicValues4').innerHTML.replaceAll(/,/g, ''));
                                 b = document.getElementById('EntityCommonStockSharesOutstanding4').value.replaceAll(/,/g, '');
                                 document.getElementById('IntrinsicValueOfACommonShares4').innerHTML = Math.round(a / b * 100) / 100 ;
-                            ////////////////////
-                            // OPINION
-                                var numUSD = new Intl.NumberFormat("en-US", {
-                                    format: 'number',
-                                    minimumFractionDigits: 2,
-                                    maximumFractionDigits: 2
-                                })
-                                header = '-'
-                            // Column 1
-                                if (isNaN(parseFloat(document.getElementById('Clockφ1').innerHTML.replaceAll(/,/g, '')))) {
-                                } else {
-
-                                    if (parseFloat(document.getElementById('Clockφ1').innerHTML.replaceAll(/,/g, ''))> 90) {
-                                        document.getElementById('Opinionφ1').innerHTML = "Buy" ;
-                                    } else {
-                                        if (parseFloat(document.getElementById('Clockφ1').innerHTML.replaceAll(/,/g, ''))< 70) {
-                                            document.getElementById('Opinionφ1').innerHTML = "Hedge For A Loss In Value" ;
-                                        } else {
-                                            document.getElementById('Opinionφ1').innerHTML = "Indifferent" ;
-                                        }
-                                    }
-                                }
-                            // Column 2
-                                if (isNaN(parseFloat(document.getElementById('Clockφ2').innerHTML.replaceAll(/,/g, '')))) {
-                                } else {
-
-                                    if (parseFloat(document.getElementById('Clockφ2').innerHTML.replaceAll(/,/g, ''))> 90) {
-                                        document.getElementById('Opinionφ2').innerHTML = "Buy" ;
-                                    } else {
-                                        if (parseFloat(document.getElementById('Clockφ2').innerHTML.replaceAll(/,/g, ''))< 70) {
-                                            document.getElementById('Opinionφ2').innerHTML = "Hedge For A Loss In Value" ;
-                                        } else {
-                                            document.getElementById('Opinionφ2').innerHTML = "Indifferent" ;
-                                        }
-                                    }
-                                }
-                            // Column 3
-                                if (isNaN(parseFloat(document.getElementById('Clockφ3').innerHTML.replaceAll(/,/g, '')))) {
-                                } else {
-
-                                    if (parseFloat(document.getElementById('Clockφ3').innerHTML.replaceAll(/,/g, ''))> 90) {
-                                        document.getElementById('Opinionφ3').innerHTML = "Buy" ;
-                                    } else {
-                                        if (parseFloat(document.getElementById('Clockφ3').innerHTML.replaceAll(/,/g, ''))< 70) {
-                                            document.getElementById('Opinionφ3').innerHTML = "Hedge For A Loss In Value" ;
-                                        } else {
-                                            document.getElementById('Opinionφ3').innerHTML = "Indifferent" ;
-                                        }
-                                    }
-                                }
-                            // Column 4
-                                if (isNaN(parseFloat(document.getElementById('Clockφ4').innerHTML.replaceAll(/,/g, '')))) {
-                                } else {
-
-                                    if (parseFloat(document.getElementById('Clockφ4').innerHTML.replaceAll(/,/g, ''))> 90) {
-                                        document.getElementById('Opinionφ4').innerHTML = "Buy" ;
-                                    } else {
-                                        if (parseFloat(document.getElementById('Clockφ4').innerHTML.replaceAll(/,/g, ''))< 70) {
-                                            document.getElementById('Opinionφ4').innerHTML = "Hedge For A Loss In Value" ;
-                                        } else {
-                                            document.getElementById('Opinionφ4').innerHTML = "Indifferent" ;
-                                        }
-                                    }
-                                }
-                                ////////////////////
-                                // ACCURACY OF PREVIOUS OPINIONS
-                                a = parseInt(document.getElementById('MarketCapitalizationColumn1').innerHTML.replaceAll(/,/g, ''));
-                                b = parseInt(document.getElementById('MarketCapitalizationColumn2').innerHTML.replaceAll(/,/g, ''));
-                                c = parseInt(document.getElementById('MarketCapitalizationColumn3').innerHTML.replaceAll(/,/g, ''));
-                                d = parseInt(document.getElementById('MarketCapitalizationColumn4').innerHTML.replaceAll(/,/g, ''));
-                                //
-                                aa = parseFloat(document.getElementById('Clockφ2').innerHTML)/100;
-                                bb = parseFloat(document.getElementById('Clockφ3').innerHTML)/100;
-                                cc = parseFloat(document.getElementById('Clockφ4').innerHTML)/100;                              
-                                // Column 2
-                                if (aa > 1) {
-                                    if (a > b) {
-                                        acca = 'accurate';
-                                    } else {
-                                        acca = 'inaccurate';
-                                    }
-                                } else {
-                                    if (a < b) {
-                                        acca = 'accurate';
-                                    } else {
-                                        acca = 'inaccurate';
-                                    }
-                                }
-                                if (document.getElementById('Opinionφ2').innerHTML = 'Indifferent') {
-                                    acca =''
-                                }
-                                document.getElementById('AccuracyOfPreviousOpinions2').innerHTML = acca;
-                                // Column 3
-                                if (bb > 1) {
-                                    if (b > c) {
-                                        accb = 'accurate';
-                                    } else {
-                                        accb = 'inaccurate';
-                                    }
-                                } else {
-                                    if (b < c) {
-                                        accb = 'accurate';
-                                    } else {
-                                        accb = 'inaccurate';
-                                    }
-                                }
-                                if (document.getElementById('Opinionφ3').innerHTML = 'Indifferent') {
-                                    accb =''
-                                }
-                                document.getElementById('AccuracyOfPreviousOpinions3').innerHTML = accb;
-                                // Column 4
-                                if (cc > 1) {
-                                    if (c > d) {
-                                        accc = 'accurate';
-                                    } else {
-                                        accc = 'inaccurate';
-                                    }
-                                } else {
-                                    if (c < d) {
-                                        accc = 'accurate';
-                                    } else {
-                                        accc = 'inaccurate';
-                                    }
-                                }
-                                if (document.getElementById('Opinionφ4').innerHTML = 'Indifferent') {
-                                    accc =''
-                                }
-                                document.getElementById('AccuracyOfPreviousOpinions4').innerHTML = accc;
                             }
-                            //
                             window.addEventListener('DOMContentLoaded', BalanceClock)
                             window.addEventListener('keyup', function() {
                                 var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
@@ -16112,7 +15984,6 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                             <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.3/Chart.min.js"></script>
 
                             <script>
-
                                 function LineChart(LineChart) {
                                     //
                                     const lastyear = document.getElementById('DateSummary1').innerHTML.replaceAll(/,/g, '');
@@ -16143,7 +16014,7 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                                             }
                                         },
                                         data: {
-                                            labels: [fourthlastyear, thirdlastyear, secondlastyear, lastyear],
+                                            labels: [lastyear, secondlastyear, thirdlastyear, fourthlastyear],
                                             datasets: [
                                                 {
                                                     label: 'intrinsic value',
@@ -16162,7 +16033,7 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                                                     pointHoverBorderColor: 'rgba(75,192,192,1)',
                                                     pointHoverBorderWidth: 2,
                                                     pointHitRadius: 10,
-                                                    data: [fourthlastyearIntrinsicValue, thirdlastyearIntrinsicValue, secondlastyearIntrinsicValue, lastyearIntrinsicValue],
+                                                    data: [lastyearIntrinsicValue, secondlastyearIntrinsicValue, thirdlastyearIntrinsicValue, fourthlastyearIntrinsicValue],
                                                 },
                                                 {
                                                     label: 'market capitalization',
@@ -16182,7 +16053,7 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                                                     pointHoverBorderWidth: 2,
                                                     pointRadius: 1,
                                                     pointHitRadius: 10,
-                                                    data: [fourthlastyearMarketCap, thirdlastyearMarketCap, secondlastyearMarketCap, lastyearMarketCap],
+                                                    data: [lastyearMarketCap, secondlastyearMarketCap, thirdlastyearMarketCap, fourthlastyearMarketCap],
                                                 },
                                             ]
                                         }
@@ -20589,7 +20460,46 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                                     if (Math.abs(a) - Math.abs(mt) >= 0) {
                                         document.getElementById('Validity1').innerHTML = "There are still some unexplained differences in the financial statements and it might not be exempt from material misstatements."
                                     } else {
-                                        document.getElementById('Validity1').innerHTML = "Nothing leads to believe that the financial statements are not exempt from material misstatements."
+                                        f = 0
+                                        a = parseInt(document.getElementById('CurrentAssets1').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('NonCurrentAssets1').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('TotalAssets1').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('Sales1').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('CostOfSales1').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('SellingGeneralAdministrativeAndMarketing1').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('OperatingIncome1').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('IncomeBeforeTaxes1').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('NetIncome1').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        if (f === 0) {
+                                            document.getElementById('Validity1').innerHTML = "Nothing leads to believe that the financial statements are not exempt from material misstatements."
+                                        }
                                     }
                                     // Second Last Year
                                     mt = parseInt(document.getElementById('AnomaliesMaterialityThreshold2').innerHTML.replaceAll(/,/g, ''));
@@ -20597,7 +20507,46 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                                     if (Math.abs(a) - Math.abs(mt) >= 0) {
                                         document.getElementById('Validity2').innerHTML = "There are still some unexplained differences in the financial statements and it might not be exempt from material misstatements."
                                     } else {
-                                        document.getElementById('Validity2').innerHTML = "Nothing leads to believe that the financial statements are not exempt from material misstatements."
+                                        f = 0
+                                        a = parseInt(document.getElementById('CurrentAssets2').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('NonCurrentAssets2').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('TotalAssets2').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('Sales2').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('CostOfSales2').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('SellingGeneralAdministrativeAndMarketing2').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('OperatingIncome2').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('IncomeBeforeTaxes2').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('NetIncome2').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        if (f === 0) {
+                                            document.getElementById('Validity2').innerHTML = "Nothing leads to believe that the financial statements are not exempt from material misstatements."
+                                        }
                                     }
                                     // Third Last Year
                                     mt = parseInt(document.getElementById('AnomaliesMaterialityThreshold3').innerHTML.replaceAll(/,/g, ''));
@@ -20605,7 +20554,46 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                                     if (Math.abs(a) - Math.abs(mt) >= 0) {
                                         document.getElementById('Validity3').innerHTML = "There are still some unexplained differences in the financial statements and it might not be exempt from material misstatements."
                                     } else {
-                                        document.getElementById('Validity3').innerHTML = "Nothing leads to believe that the financial statements are not exempt from material misstatements."
+                                        f = 0
+                                        a = parseInt(document.getElementById('CurrentAssets3').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('NonCurrentAssets3').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('TotalAssets3').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('Sales3').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('CostOfSales3').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('SellingGeneralAdministrativeAndMarketing3').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('OperatingIncome3').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('IncomeBeforeTaxes3').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('NetIncome3').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        if (f === 0) {
+                                            document.getElementById('Validity3').innerHTML = "Nothing leads to believe that the financial statements are not exempt from material misstatements."
+                                        }
                                     }
                                     // Fourth Last Year
                                     mt = parseInt(document.getElementById('AnomaliesMaterialityThreshold4').innerHTML.replaceAll(/,/g, ''));
@@ -20613,7 +20601,46 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                                     if (Math.abs(a) - Math.abs(mt) >= 0) {
                                         document.getElementById('Validity4').innerHTML = "There are still some unexplained differences in the financial statements and it might not be exempt from material misstatements."
                                     } else {
-                                        document.getElementById('Validity4').innerHTML = "Nothing leads to believe that the financial statements are not exempt from material misstatements."
+                                        f = 0
+                                        a = parseInt(document.getElementById('CurrentAssets4').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('NonCurrentAssets4').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('TotalAssets4').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('Sales4').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('CostOfSales4').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('SellingGeneralAdministrativeAndMarketing4').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('OperatingIncome4').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('IncomeBeforeTaxes4').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('NetIncome4').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        if (f === 0) {
+                                            document.getElementById('Validity4').innerHTML = "Nothing leads to believe that the financial statements are not exempt from material misstatements."
+                                        }
                                     }
                                     // Fifth Last Year
                                     mt = parseInt(document.getElementById('AnomaliesMaterialityThreshold5').innerHTML.replaceAll(/,/g, ''));
@@ -20621,7 +20648,46 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                                     if (Math.abs(a) - Math.abs(mt) >= 0) {
                                         document.getElementById('Validity5').innerHTML = "There are still some unexplained differences in the financial statements and it might not be exempt from material misstatements."
                                     } else {
-                                        document.getElementById('Validity5').innerHTML = "Nothing leads to believe that the financial statements are not exempt from material misstatements."
+                                        f = 0
+                                        a = parseInt(document.getElementById('CurrentAssets5').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('NonCurrentAssets5').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('TotalAssets5').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('Sales5').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('CostOfSales5').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('SellingGeneralAdministrativeAndMarketing5').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('OperatingIncome5').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('IncomeBeforeTaxes5').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('NetIncome5').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        if (f === 0) {
+                                            document.getElementById('Validity5').innerHTML = "Nothing leads to believe that the financial statements are not exempt from material misstatements."
+                                        }
                                     }
                                     // Sixth Last Year
                                     mt = parseInt(document.getElementById('AnomaliesMaterialityThreshold6').innerHTML.replaceAll(/,/g, ''));
@@ -20629,7 +20695,46 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                                     if (Math.abs(a) - Math.abs(mt) >= 0) {
                                         document.getElementById('Validity6').innerHTML = "There are still some unexplained differences in the financial statements and it might not be exempt from material misstatements."
                                     } else {
-                                        document.getElementById('Validity6').innerHTML = "Nothing leads to believe that the financial statements are not exempt from material misstatements."
+                                        f = 0
+                                        a = parseInt(document.getElementById('CurrentAssets6').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('NonCurrentAssets6').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('TotalAssets6').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('Sales6').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('CostOfSales6').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('SellingGeneralAdministrativeAndMarketing6').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('OperatingIncome6').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('IncomeBeforeTaxes6').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        a = parseInt(document.getElementById('NetIncome6').innerHTML.replaceAll(/,/g, ''));
+                                        if (a === 0) {
+                                            f = f + 1
+                                        }
+                                        if (f === 0) {
+                                            document.getElementById('Validity6').innerHTML = "Nothing leads to believe that the financial statements are not exempt from material misstatements."
+                                        }
                                     }
                                 };
                                 window.addEventListener('DOMContentLoaded', AuditOpinion)
@@ -20718,14 +20823,137 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                                         g = ''
                                     }
                                     document.getElementById('Bridgeφ4').innerHTML = g
-                                };
-                                window.addEventListener('DOMContentLoaded', BalanceBridgeφ)
-                                window.addEventListener('keyup', function() {
-                                    var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
-                                    if (event.keyCode in formulakeylist) {
-                                        BalanceBridgeφ();
+                                ////////////////////
+                                // OPINION
+                                //
+                                // Column 1
+                                a = parseFloat(document.getElementById('Clockφ1').innerHTML.replaceAll(/,/g, ''))
+                                if (isNaN(a)) {
+                                } else {
+                                    if (document.getElementById('Bridgeφ1').innerHTML.length === 98) {
+                                        if (a > 100) {
+                                            document.getElementById('Opinionφ1').innerHTML = "Buy" ;
+                                        } else {
+                                            if (a < 70) {
+                                                document.getElementById('Opinionφ1').innerHTML = "Hedge For A Loss In Value" ;
+                                            }
+                                        }
                                     }
-                                })
+                                }
+                                // Column 2
+                                a = parseFloat(document.getElementById('Clockφ2').innerHTML.replaceAll(/,/g, ''))
+                                if (isNaN(a)) {
+                                } else {
+                                    if (document.getElementById('Bridgeφ2').innerHTML.length === 98) {
+                                        if (a > 100) {
+                                            document.getElementById('Opinionφ2').innerHTML = "Buy" ;
+                                        } else {
+                                            if (a < 70) {
+                                                document.getElementById('Opinionφ2').innerHTML = "Hedge For A Loss In Value" ;
+                                            }
+                                        }
+                                    }
+                                }
+                                // Column 3
+                                a = parseFloat(document.getElementById('Clockφ3').innerHTML.replaceAll(/,/g, ''))
+                                if (isNaN(a)) {
+                                } else {
+                                    if (document.getElementById('Bridgeφ3').innerHTML.length === 98) {
+                                        if (a > 100) {
+                                            document.getElementById('Opinionφ3').innerHTML = "Buy" ;
+                                        } else {
+                                            if (a < 70) {
+                                                document.getElementById('Opinionφ3').innerHTML = "Hedge For A Loss In Value" ;
+                                            }
+                                        }
+                                    }
+                                }
+                                // Column 1
+                                a = parseFloat(document.getElementById('Clockφ4').innerHTML.replaceAll(/,/g, ''))
+                                if (isNaN(a)) {
+                                } else {
+                                    if (document.getElementById('Bridgeφ4').innerHTML.length === 98) {
+                                        if (a > 100) {
+                                            document.getElementById('Opinionφ4').innerHTML = "Buy" ;
+                                        } else {
+                                            if (a < 70) {
+                                                document.getElementById('Opinionφ4').innerHTML = "Hedge For A Loss In Value" ;
+                                            }
+                                        }
+                                    }
+                                }
+                                ////////////////////
+                                // ACCURACY OF PREVIOUS OPINIONS
+                                a = parseInt(document.getElementById('MarketCapitalizationColumn1').innerHTML.replaceAll(/,/g, ''));
+                                b = parseInt(document.getElementById('MarketCapitalizationColumn2').innerHTML.replaceAll(/,/g, ''));
+                                c = parseInt(document.getElementById('MarketCapitalizationColumn3').innerHTML.replaceAll(/,/g, ''));
+                                d = parseInt(document.getElementById('MarketCapitalizationColumn4').innerHTML.replaceAll(/,/g, ''));
+                                //
+                                aa = parseFloat(document.getElementById('Clockφ2').innerHTML)/100;
+                                bb = parseFloat(document.getElementById('Clockφ3').innerHTML)/100;
+                                cc = parseFloat(document.getElementById('Clockφ4').innerHTML)/100;                              
+                                // Column 2
+                                if (aa > 1) {
+                                    if (a > b) {
+                                        acca = 'accurate';
+                                    } else {
+                                        acca = 'inaccurate';
+                                    }
+                                } else {
+                                    if (a < b) {
+                                        acca = 'accurate';
+                                    } else {
+                                        acca = 'inaccurate';
+                                    }
+                                }
+                                if (document.getElementById('Opinionφ2').innerHTML == '') {
+                                    acca =''
+                                }
+                                document.getElementById('AccuracyOfPreviousOpinions2').innerHTML = acca;
+                                // Column 3
+                                if (bb > 1) {
+                                    if (b > c) {
+                                        accb = 'accurate';
+                                    } else {
+                                        accb = 'inaccurate';
+                                    }
+                                } else {
+                                    if (b < c) {
+                                        accb = 'accurate';
+                                    } else {
+                                        accb = 'inaccurate';
+                                    }
+                                }
+                                if (document.getElementById('Opinionφ3').innerHTML == '') {
+                                    accb =''
+                                }
+                                document.getElementById('AccuracyOfPreviousOpinions3').innerHTML = accb;
+                                // Column 4
+                                if (cc > 1) {
+                                    if (c > d) {
+                                        accc = 'accurate';
+                                    } else {
+                                        accc = 'inaccurate';
+                                    }
+                                } else {
+                                    if (c < d) {
+                                        accc = 'accurate';
+                                    } else {
+                                        accc = 'inaccurate';
+                                    }
+                                }
+                                if (document.getElementById('Opinionφ4').innerHTML == '') {
+                                    accc =''
+                                }
+                                document.getElementById('AccuracyOfPreviousOpinions4').innerHTML = accc;
+                            }
+                            window.addEventListener('DOMContentLoaded', BalanceBridgeφ)
+                            window.addEventListener('keyup', function() {
+                                var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
+                                if (event.keyCode in formulakeylist) {
+                                    BalanceBridgeφ();
+                                }
+                            })
                             </script>
                             <td id="Validity1" style="font-weight:bold;"></td>
                             <td id="Validity2"></td>
@@ -20780,16 +21008,13 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
         //
         a = parseInt(document.getElementById('Clockφ1').innerHTML) / 100
         //
-        b = document.getElementById('Validity1').innerHTML
-        c = document.getElementById('Validity2').innerHTML
-        d = document.getElementById('Validity3').innerHTML
+        b = document.getElementById('Bridgeφ1').innerHTML
+        c = document.getElementById('Bridgeφ2').innerHTML
         //
         if (b.length === 98) {
             if (c.length === 98) {
-                if (d.length === 98) {
-                    document.getElementById('o').innerHTML = '⬤';
-                    document.getElementById('p').innerHTML = 'Audited.';
-                }
+                document.getElementById('o').innerHTML = '⬤';
+                document.getElementById('p').innerHTML = 'Audited.';
             }
         }
         //

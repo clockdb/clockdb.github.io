@@ -18,13 +18,16 @@
 
             <tr>
                 <td  colspan='2' style="border-bottom: ridge;">
-                    <h2 style="font-weight:bold;">Entity</h2>
+                    <h2 style="font-weight:bold;">entity</h2>
                 </td>
                 <td style="border-bottom: ridge;" >
-                    <h2 style="font-weight:bold;">Value</h2>
+                    <h2 style="font-weight:bold;">value</h2>
                 </td>
                 <td style="border-bottom: ridge;">
                     <h2 style="font-weight:bold;">+/-</h2>
+                </td>
+                <td style="border-bottom: ridge;">
+                    <h2 style="font-weight:bold;">status</h2>
                 </td>
             </tr>
 
@@ -46,12 +49,21 @@
                             <button style='vertical-align:bottom; padding-bottom: 1%;'>
                                 <h4 style="text-align:center;">{{ entity.Clockφ }}%</h4>
                             </button>
+                        </a>
                     </td>
                     <td style="vertical-align:bottom;" style='padding-top: 24px;'>
                         <a href="/{{ entity.TradingSymbol }}">
                             <button style='padding-bottom: 1%;'>
                                 <h4 style="text-align: center;">{{ entity.ClockφChange }}pp</h4>
                             </button>
+                        </a>
+                    </td>
+                    <td style="vertical-align:bottom;" style='padding-top: 24px;'>
+                        <a href="/{{ entity.TradingSymbol }}">
+                            <button style='padding-bottom: 1%;'>
+                                <h4 style="text-align: center;">{{ entity.Status }}</h4>
+                            </button>
+                        </a>
                     </td>
                 </tr>
                 <tr>
@@ -63,7 +75,7 @@
                             </button>
                         </a>                           
                     </td>
-            </tr>
+                </tr>
             
             {% endfor %}
             
