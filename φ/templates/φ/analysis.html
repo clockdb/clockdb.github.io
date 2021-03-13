@@ -15957,6 +15957,9 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                                         acca = 'inaccurate';
                                     }
                                 }
+                                if (document.getElementById('Opinionφ2').innerHTML = 'Indifferent') {
+                                    acca =''
+                                }
                                 document.getElementById('AccuracyOfPreviousOpinions2').innerHTML = acca;
                                 // Column 3
                                 if (bb > 1) {
@@ -15972,6 +15975,9 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                                         accb = 'inaccurate';
                                     }
                                 }
+                                if (document.getElementById('Opinionφ3').innerHTML = 'Indifferent') {
+                                    accb =''
+                                }
                                 document.getElementById('AccuracyOfPreviousOpinions3').innerHTML = accb;
                                 // Column 4
                                 if (cc > 1) {
@@ -15986,6 +15992,9 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                                     } else {
                                         accc = 'inaccurate';
                                     }
+                                }
+                                if (document.getElementById('Opinionφ4').innerHTML = 'Indifferent') {
+                                    accc =''
                                 }
                                 document.getElementById('AccuracyOfPreviousOpinions4').innerHTML = accc;
                             }
@@ -16137,7 +16146,7 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                                             labels: [fourthlastyear, thirdlastyear, secondlastyear, lastyear],
                                             datasets: [
                                                 {
-                                                    label: 'clockdb intrinsic value',
+                                                    label: 'intrinsic value',
                                                     fill: false,
                                                     lineTension: 0.5,
                                                     borderColor: 'green',
