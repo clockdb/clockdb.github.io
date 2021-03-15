@@ -61,12 +61,12 @@ def db(request):
         "entities": Entity.objects.all().order_by('-Clockφ').exclude(Anomalies='yes')
     })
 
-# ANOMALIES
-def anomalies(request):
-    return render(request, "./φ/anomalies.html", {
+# QP
+def qp(request):
+    return render(request, "./φ/qp.html", {
         "entities": Entity.objects.all().order_by('-Clockφ').exclude(Anomalies='no').exclude(Anomalies='0')
     })
-
+    
 # DISCLAIMER
 def disclaimer(request):
     return render(request, "./φ/disclaimer.html")
