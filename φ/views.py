@@ -58,13 +58,13 @@ def analysis(request, entity_TradingSymbol):
 # DB
 def db(request):
     return render(request, "./φ/db.html", {
-        "entities": Entity.objects.all().order_by('-Clockφ').exclude(Anomalies='yes')
+        "entities": Entity.objects.all().order_by('-Clockφ').exclude(Status='Misstated').exclude(Status='0')
     })
 
 # QP
 def qp(request):
     return render(request, "./φ/qp.html", {
-        "entities": Entity.objects.all().order_by('-Clockφ').exclude(Anomalies='no').exclude(Anomalies='0')
+        "entities": Entity.objects.all().order_by('-Clockφ').exclude(Status='Audited')
     })
     
 # DISCLAIMER
