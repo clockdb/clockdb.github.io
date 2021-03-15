@@ -15986,20 +15986,42 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                             <script>
                                 function LineChart(LineChart) {
                                     //
+                                    a = document.getElementById('IntrinsicValues1').innerHTML.replaceAll(/,/g, '');
+                                    a = Math.max(a, document.getElementById('IntrinsicValues2').innerHTML.replaceAll(/,/g, ''));
+                                    a = Math.max(a, document.getElementById('IntrinsicValues3').innerHTML.replaceAll(/,/g, ''));
+                                    a = Math.max(a, document.getElementById('IntrinsicValues4').innerHTML.replaceAll(/,/g, ''));
+                                    a = Math.max(a, document.getElementById('MarketCapitalizationColumn1').innerHTML.replaceAll(/,/g, ''));
+                                    a = Math.max(a, document.getElementById('MarketCapitalizationColumn2').innerHTML.replaceAll(/,/g, ''));
+                                    a = Math.max(a, document.getElementById('MarketCapitalizationColumn3').innerHTML.replaceAll(/,/g, ''));
+                                    a = Math.max(a, document.getElementById('MarketCapitalizationColumn4').innerHTML.replaceAll(/,/g, ''));
+                                    //
+                                    if (a/1000000000 > 1) {
+                                        dad = 1000000000;
+                                        scale = '(in billions)';
+                                    } else {
+                                        if (a/1000000 > 1) {
+                                            dad = 1000000;
+                                            scale = '(in millions)';
+                                        } else {
+                                            dad = 1000;
+                                            scale = 'in thousands';
+                                        }
+                                    }
+                                    //
                                     const lastyear = document.getElementById('DateSummary1').innerHTML.replaceAll(/,/g, '');
                                     const secondlastyear = document.getElementById('DateSummary2').innerHTML.replaceAll(/,/g, '');
                                     const thirdlastyear = document.getElementById('DateSummary3').innerHTML.replaceAll(/,/g, '');
                                     const fourthlastyear = document.getElementById('DateSummary4').innerHTML.replaceAll(/,/g, '');
                                     //
-                                    let lastyearIntrinsicValue = document.getElementById('IntrinsicValues1').innerHTML.replaceAll(/,/g, '');
-                                    let secondlastyearIntrinsicValue = document.getElementById('IntrinsicValues2').innerHTML.replaceAll(/,/g, '');
-                                    let thirdlastyearIntrinsicValue = document.getElementById('IntrinsicValues3').innerHTML.replaceAll(/,/g, '');
-                                    let fourthlastyearIntrinsicValue = document.getElementById('IntrinsicValues4').innerHTML.replaceAll(/,/g, '');
+                                    let lastyearIntrinsicValue = document.getElementById('IntrinsicValues1').innerHTML.replaceAll(/,/g, '')/dad;
+                                    let secondlastyearIntrinsicValue = document.getElementById('IntrinsicValues2').innerHTML.replaceAll(/,/g, '')/dad;
+                                    let thirdlastyearIntrinsicValue = document.getElementById('IntrinsicValues3').innerHTML.replaceAll(/,/g, '')/dad;
+                                    let fourthlastyearIntrinsicValue = document.getElementById('IntrinsicValues4').innerHTML.replaceAll(/,/g, '')/dad;
                                     //
-                                    let lastyearMarketCap = document.getElementById('MarketCapitalizationColumn1').innerHTML.replaceAll(/,/g, '');
-                                    let secondlastyearMarketCap = document.getElementById('MarketCapitalizationColumn2').innerHTML.replaceAll(/,/g, '');
-                                    let thirdlastyearMarketCap = document.getElementById('MarketCapitalizationColumn3').innerHTML.replaceAll(/,/g, '');
-                                    let fourthlastyearMarketCap = document.getElementById('MarketCapitalizationColumn4').innerHTML.replaceAll(/,/g, '');
+                                    let lastyearMarketCap = document.getElementById('MarketCapitalizationColumn1').innerHTML.replaceAll(/,/g, '')/dad;
+                                    let secondlastyearMarketCap = document.getElementById('MarketCapitalizationColumn2').innerHTML.replaceAll(/,/g, '')/dad;
+                                    let thirdlastyearMarketCap = document.getElementById('MarketCapitalizationColumn3').innerHTML.replaceAll(/,/g, '')/dad;
+                                    let fourthlastyearMarketCap = document.getElementById('MarketCapitalizationColumn4').innerHTML.replaceAll(/,/g, '')/dad;
                                     //
                                     const chart = document.getElementById('LineChart');
                                     chart.width = window.innerWidth*0.8;
@@ -16020,7 +16042,7 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                                             labels: [lastyear, secondlastyear, thirdlastyear, fourthlastyear],
                                             datasets: [
                                                 {
-                                                    label: 'intrinsic value',
+                                                    label: 'intrinsic value ' + scale,
                                                     fill: false,
                                                     lineTension: 0.5,
                                                     borderColor: 'green',
@@ -16039,7 +16061,7 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                                                     data: [lastyearIntrinsicValue, secondlastyearIntrinsicValue, thirdlastyearIntrinsicValue, fourthlastyearIntrinsicValue],
                                                 },
                                                 {
-                                                    label: 'market capitalization',
+                                                    label: 'market capitalization ' + scale,
                                                     fill: false,
                                                     lineTension: 0.5,
                                                     borderColor: 'red',
