@@ -386,6 +386,12 @@
                                 <h3 style="text-align:center">Comprehensive Income</h3>
                             </button>
                         </td>
+                    </tr>
+                </body>
+            </table>
+            <table style="border-bottom: ridge;">
+                <body>
+                    <tr>
                         <td>
                             <button data-page="AnnualStockholdersEquity">
                                 <h3 style="text-align:center">Stockholders' Equity</h3>
@@ -613,12 +619,12 @@
                     <tr></tr>
                     <tr>
                         <td colspan='3'></td>
-                        <td><input id="TrialBalanceDateColumn1" value="{{ entity.lastyear }}" style="font-weight:bold; font-size:11px" onclick="HighLight()"></input></td>
-                        <td><input id="TrialBalanceDateColumn2" value="{{ entity.secondlastyear }}" style="font-weight:bold; font-size:11px" onclick="HighLight()"></input></td>
-                        <td><input id="TrialBalanceDateColumn3" value="{{ entity.thirdlastyear }}" style="font-weight:bold; font-size:11px" onclick="HighLight()"></input></td>
-                        <td><input id="TrialBalanceDateColumn4" value="{{ entity.fourthlastyear }}" style="font-weight:bold; font-size:11px" onclick="HighLight()"></input></td>
-                        <td><input id="TrialBalanceDateColumn5" value="{{ entity.fifthlastyear }}" style="font-weight:bold; font-size:11px" onclick="HighLight()"></input></td>
-                        <td><input id="TrialBalanceDateColumn6" value="{{ entity.sixthlastyear }}" style="font-weight:bold; font-size:11px" onclick="HighLight()"></input></td>
+                        <td><input id="TrialBalanceDateColumn1" value="{{ entity.lastyear }}" style="font-weight:bold;" onclick="HighLight()"></input></td>
+                        <td><input id="TrialBalanceDateColumn2" value="{{ entity.secondlastyear }}" style="font-weight:bold;" onclick="HighLight()"></input></td>
+                        <td><input id="TrialBalanceDateColumn3" value="{{ entity.thirdlastyear }}" style="font-weight:bold;" onclick="HighLight()"></input></td>
+                        <td><input id="TrialBalanceDateColumn4" value="{{ entity.fourthlastyear }}" style="font-weight:bold;" onclick="HighLight()"></input></td>
+                        <td><input id="TrialBalanceDateColumn5" value="{{ entity.fifthlastyear }}" style="font-weight:bold;" onclick="HighLight()"></input></td>
+                        <td><input id="TrialBalanceDateColumn6" value="{{ entity.sixthlastyear }}" style="font-weight:bold;" onclick="HighLight()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -868,7 +874,7 @@
                         <td><input value={{ TrialBalance_sixthlastyear.DeferredTaxAssetsNonCurrent }} class="clock" id="TrialBalanceDeferredTaxAssetsNonCurrentColumn6" onclick="HighLight()"></input></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><h6><b>DefinedBenefitPensionAndOtherSimilarPlans</b></h6></td>
+                        <td colspan="2"><h6><b>Defined Benefit Pension And Other Similar Plans</b></h6></td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="TrialBalanceDefinedBenefitPensionAndOtherSimilarPlansCheckbox"></input>
                             <input type="checkbox" style="height: 16px;" id="TrialBalanceDefinedBenefitPensionAndOtherSimilarPlansCheckbox2"></input>
