@@ -619,12 +619,12 @@
                     <tr></tr>
                     <tr>
                         <td colspan='3'></td>
-                        <td><input id="TrialBalanceDateColumn1" value="{{ entity.lastyear }}" style="font-weight:bold;" onclick="HighLight()"></input></td>
-                        <td><input id="TrialBalanceDateColumn2" value="{{ entity.secondlastyear }}" style="font-weight:bold;" onclick="HighLight()"></input></td>
-                        <td><input id="TrialBalanceDateColumn3" value="{{ entity.thirdlastyear }}" style="font-weight:bold;" onclick="HighLight()"></input></td>
-                        <td><input id="TrialBalanceDateColumn4" value="{{ entity.fourthlastyear }}" style="font-weight:bold;" onclick="HighLight()"></input></td>
-                        <td><input id="TrialBalanceDateColumn5" value="{{ entity.fifthlastyear }}" style="font-weight:bold;" onclick="HighLight()"></input></td>
-                        <td><input id="TrialBalanceDateColumn6" value="{{ entity.sixthlastyear }}" style="font-weight:bold;" onclick="HighLight()"></input></td>
+                        <td><h5 id="TrialBalanceDateColumn1" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.lastyear }}</td>
+                        <td><h5 id="TrialBalanceDateColumn2" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.secondlastyear }}</td>
+                        <td><h5 id="TrialBalanceDateColumn3" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.thirdlastyear }}</td>
+                        <td><h5 id="TrialBalanceDateColumn4" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.fourthlastyear }}</td>
+                        <td><h5 id="TrialBalanceDateColumn5" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.fifthlastyear }}</td>
+                        <td><h5 id="TrialBalanceDateColumn6" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.sixthlastyear }}</td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -2182,12 +2182,12 @@
                         <td colspan="3"></td>
                         <script>
                             function DateBalanceSheets(DateBalanceSheets) {
-                                document.getElementById('DateBalanceSheets1').innerHTML = document.getElementById('TrialBalanceDateColumn1').value;
-                                document.getElementById('DateBalanceSheets2').innerHTML = document.getElementById('TrialBalanceDateColumn2').value;
-                                document.getElementById('DateBalanceSheets3').innerHTML = document.getElementById('TrialBalanceDateColumn3').value;
-                                document.getElementById('DateBalanceSheets4').innerHTML = document.getElementById('TrialBalanceDateColumn4').value;
-                                document.getElementById('DateBalanceSheets5').innerHTML = document.getElementById('TrialBalanceDateColumn5').value;
-                                document.getElementById('DateBalanceSheets6').innerHTML = document.getElementById('TrialBalanceDateColumn6').value;
+                                document.getElementById('DateBalanceSheets1').innerHTML = document.getElementById('TrialBalanceDateColumn1').innerHTML;
+                                document.getElementById('DateBalanceSheets2').innerHTML = document.getElementById('TrialBalanceDateColumn2').innerHTML;
+                                document.getElementById('DateBalanceSheets3').innerHTML = document.getElementById('TrialBalanceDateColumn3').innerHTML;
+                                document.getElementById('DateBalanceSheets4').innerHTML = document.getElementById('TrialBalanceDateColumn4').innerHTML;
+                                document.getElementById('DateBalanceSheets5').innerHTML = document.getElementById('TrialBalanceDateColumn5').innerHTML;
+                                document.getElementById('DateBalanceSheets6').innerHTML = document.getElementById('TrialBalanceDateColumn6').innerHTML;
                             };
                             window.addEventListener('DOMContentLoaded', DateBalanceSheets)
                             window.addEventListener('keyup', function() {
@@ -5934,12 +5934,12 @@
                         <td colspan="3"></td>
                         <script>
                             function DateStatementsOfIncome(DateStatementsOfIncome) {
-                                document.getElementById('DateDateStatementsOfIncome1').innerHTML = document.getElementById('TrialBalanceDateColumn1').value;
-                                document.getElementById('DateDateStatementsOfIncome2').innerHTML = document.getElementById('TrialBalanceDateColumn2').value;
-                                document.getElementById('DateDateStatementsOfIncome3').innerHTML = document.getElementById('TrialBalanceDateColumn3').value;
-                                document.getElementById('DateDateStatementsOfIncome4').innerHTML = document.getElementById('TrialBalanceDateColumn4').value;
-                                document.getElementById('DateDateStatementsOfIncome5').innerHTML = document.getElementById('TrialBalanceDateColumn5').value;
-                                document.getElementById('DateDateStatementsOfIncome6').innerHTML = document.getElementById('TrialBalanceDateColumn6').value;
+                                document.getElementById('DateDateStatementsOfIncome1').innerHTML = document.getElementById('TrialBalanceDateColumn1').innerHTML;
+                                document.getElementById('DateDateStatementsOfIncome2').innerHTML = document.getElementById('TrialBalanceDateColumn2').innerHTML;
+                                document.getElementById('DateDateStatementsOfIncome3').innerHTML = document.getElementById('TrialBalanceDateColumn3').innerHTML;
+                                document.getElementById('DateDateStatementsOfIncome4').innerHTML = document.getElementById('TrialBalanceDateColumn4').innerHTML;
+                                document.getElementById('DateDateStatementsOfIncome5').innerHTML = document.getElementById('TrialBalanceDateColumn5').innerHTML;
+                                document.getElementById('DateDateStatementsOfIncome6').innerHTML = document.getElementById('TrialBalanceDateColumn6').innerHTML;
                             };
                             window.addEventListener('DOMContentLoaded', DateStatementsOfIncome)
                             window.addEventListener('keyup', function() {
@@ -6608,12 +6608,12 @@
                         <td colspan="3"></td>
                         <script>
                             function DateStatementsOfComprehensiveIncome(DateStatementsOfComprehensiveIncome) {
-                                document.getElementById('DateStatementsOfComprehensiveIncome1').innerHTML = document.getElementById('TrialBalanceDateColumn1').value;
-                                document.getElementById('DateStatementsOfComprehensiveIncome2').innerHTML = document.getElementById('TrialBalanceDateColumn2').value;
-                                document.getElementById('DateStatementsOfComprehensiveIncome3').innerHTML = document.getElementById('TrialBalanceDateColumn3').value;
-                                document.getElementById('DateStatementsOfComprehensiveIncome4').innerHTML = document.getElementById('TrialBalanceDateColumn4').value;
-                                document.getElementById('DateStatementsOfComprehensiveIncome5').innerHTML = document.getElementById('TrialBalanceDateColumn5').value;
-                                document.getElementById('DateStatementsOfComprehensiveIncome6').innerHTML = document.getElementById('TrialBalanceDateColumn6').value;
+                                document.getElementById('DateStatementsOfComprehensiveIncome1').innerHTML = document.getElementById('TrialBalanceDateColumn1').innerHTML;
+                                document.getElementById('DateStatementsOfComprehensiveIncome2').innerHTML = document.getElementById('TrialBalanceDateColumn2').innerHTML;
+                                document.getElementById('DateStatementsOfComprehensiveIncome3').innerHTML = document.getElementById('TrialBalanceDateColumn3').innerHTML;
+                                document.getElementById('DateStatementsOfComprehensiveIncome4').innerHTML = document.getElementById('TrialBalanceDateColumn4').innerHTML;
+                                document.getElementById('DateStatementsOfComprehensiveIncome5').innerHTML = document.getElementById('TrialBalanceDateColumn5').innerHTML;
+                                document.getElementById('DateStatementsOfComprehensiveIncome6').innerHTML = document.getElementById('TrialBalanceDateColumn6').innerHTML;
                             };
                             window.addEventListener('DOMContentLoaded', DateStatementsOfComprehensiveIncome)
                             window.addEventListener('keyup', function() {
@@ -7137,12 +7137,12 @@
                         <td colspan="3"></td>
                         <script>
                             function DateStatementsOfStockholdersEquity(DateStatementsOfStockholdersEquity) {
-                                document.getElementById('DateStatementsOfStockholdersEquity1').innerHTML = document.getElementById('TrialBalanceDateColumn1').value;
-                                document.getElementById('DateStatementsOfStockholdersEquity2').innerHTML = document.getElementById('TrialBalanceDateColumn2').value;
-                                document.getElementById('DateStatementsOfStockholdersEquity3').innerHTML = document.getElementById('TrialBalanceDateColumn3').value;
-                                document.getElementById('DateStatementsOfStockholdersEquity4').innerHTML = document.getElementById('TrialBalanceDateColumn4').value;
-                                document.getElementById('DateStatementsOfStockholdersEquity5').innerHTML = document.getElementById('TrialBalanceDateColumn5').value;
-                                document.getElementById('DateStatementsOfStockholdersEquity6').innerHTML = document.getElementById('TrialBalanceDateColumn6').value;
+                                document.getElementById('DateStatementsOfStockholdersEquity1').innerHTML = document.getElementById('TrialBalanceDateColumn1').innerHTML;
+                                document.getElementById('DateStatementsOfStockholdersEquity2').innerHTML = document.getElementById('TrialBalanceDateColumn2').innerHTML;
+                                document.getElementById('DateStatementsOfStockholdersEquity3').innerHTML = document.getElementById('TrialBalanceDateColumn3').innerHTML;
+                                document.getElementById('DateStatementsOfStockholdersEquity4').innerHTML = document.getElementById('TrialBalanceDateColumn4').innerHTML;
+                                document.getElementById('DateStatementsOfStockholdersEquity5').innerHTML = document.getElementById('TrialBalanceDateColumn5').innerHTML;
+                                document.getElementById('DateStatementsOfStockholdersEquity6').innerHTML = document.getElementById('TrialBalanceDateColumn6').innerHTML;
                             };
                             window.addEventListener('DOMContentLoaded', DateStatementsOfStockholdersEquity)
                             window.addEventListener('keyup', function() {
@@ -8459,12 +8459,12 @@
                         <td colspan="3"></td>
                         <script>
                             function DateStatementsOfCashFlow(DateStatementsOfCashFlow) {
-                                document.getElementById('DateStatementsOfCashFlow1').innerHTML = document.getElementById('TrialBalanceDateColumn1').value;
-                                document.getElementById('DateStatementsOfCashFlow2').innerHTML = document.getElementById('TrialBalanceDateColumn2').value;
-                                document.getElementById('DateStatementsOfCashFlow3').innerHTML = document.getElementById('TrialBalanceDateColumn3').value;
-                                document.getElementById('DateStatementsOfCashFlow4').innerHTML = document.getElementById('TrialBalanceDateColumn4').value;
-                                document.getElementById('DateStatementsOfCashFlow5').innerHTML = document.getElementById('TrialBalanceDateColumn5').value;
-                                document.getElementById('DateStatementsOfCashFlow6').innerHTML = document.getElementById('TrialBalanceDateColumn6').value;
+                                document.getElementById('DateStatementsOfCashFlow1').innerHTML = document.getElementById('TrialBalanceDateColumn1').innerHTML;
+                                document.getElementById('DateStatementsOfCashFlow2').innerHTML = document.getElementById('TrialBalanceDateColumn2').innerHTML;
+                                document.getElementById('DateStatementsOfCashFlow3').innerHTML = document.getElementById('TrialBalanceDateColumn3').innerHTML;
+                                document.getElementById('DateStatementsOfCashFlow4').innerHTML = document.getElementById('TrialBalanceDateColumn4').innerHTML;
+                                document.getElementById('DateStatementsOfCashFlow5').innerHTML = document.getElementById('TrialBalanceDateColumn5').innerHTML;
+                                document.getElementById('DateStatementsOfCashFlow6').innerHTML = document.getElementById('TrialBalanceDateColumn6').innerHTML;
                             };
                             window.addEventListener('DOMContentLoaded', DateStatementsOfCashFlow)
                             window.addEventListener('keyup', function() {
@@ -11369,10 +11369,10 @@
                         <td colspan="3"></td>
                         <script>
                             function DateRatios(DateRatios) {
-                                document.getElementById('DateRatios1').innerHTML = document.getElementById('TrialBalanceDateColumn1').value;
-                                document.getElementById('DateRatios2').innerHTML = document.getElementById('TrialBalanceDateColumn2').value;
-                                document.getElementById('DateRatios3').innerHTML = document.getElementById('TrialBalanceDateColumn3').value;
-                                document.getElementById('DateRatios4').innerHTML = document.getElementById('TrialBalanceDateColumn4').value;
+                                document.getElementById('DateRatios1').innerHTML = document.getElementById('TrialBalanceDateColumn1').innerHTML;
+                                document.getElementById('DateRatios2').innerHTML = document.getElementById('TrialBalanceDateColumn2').innerHTML;
+                                document.getElementById('DateRatios3').innerHTML = document.getElementById('TrialBalanceDateColumn3').innerHTML;
+                                document.getElementById('DateRatios4').innerHTML = document.getElementById('TrialBalanceDateColumn4').innerHTML;
                             };
                             window.addEventListener('DOMContentLoaded', DateRatios)
                             window.addEventListener('keyup', function() {
@@ -12496,12 +12496,12 @@
                         <td colspan="3"></td>
                         <script>
                             function DateRatios(DateRatios) {
-                                document.getElementById('DateAdditionnalInformation1').innerHTML = document.getElementById('TrialBalanceDateColumn1').value;
-                                document.getElementById('DateAdditionnalInformation2').innerHTML = document.getElementById('TrialBalanceDateColumn2').value;
-                                document.getElementById('DateAdditionnalInformation3').innerHTML = document.getElementById('TrialBalanceDateColumn3').value;
-                                document.getElementById('DateAdditionnalInformation4').innerHTML = document.getElementById('TrialBalanceDateColumn4').value;
-                                document.getElementById('DateAdditionnalInformation5').innerHTML = document.getElementById('TrialBalanceDateColumn5').value;
-                                document.getElementById('DateAdditionnalInformation6').innerHTML = document.getElementById('TrialBalanceDateColumn6').value;
+                                document.getElementById('DateAdditionnalInformation1').innerHTML = document.getElementById('TrialBalanceDateColumn1').innerHTML;
+                                document.getElementById('DateAdditionnalInformation2').innerHTML = document.getElementById('TrialBalanceDateColumn2').innerHTML;
+                                document.getElementById('DateAdditionnalInformation3').innerHTML = document.getElementById('TrialBalanceDateColumn3').innerHTML;
+                                document.getElementById('DateAdditionnalInformation4').innerHTML = document.getElementById('TrialBalanceDateColumn4').innerHTML;
+                                document.getElementById('DateAdditionnalInformation5').innerHTML = document.getElementById('TrialBalanceDateColumn5').innerHTML;
+                                document.getElementById('DateAdditionnalInformation6').innerHTML = document.getElementById('TrialBalanceDateColumn6').innerHTML;
                             };
                             window.addEventListener('DOMContentLoaded', DateRatios)
                             window.addEventListener('keyup', function() {
@@ -12625,10 +12625,10 @@
                         <td colspan="3"></td>
                         <script>
                             function DateCapitalizationRate(DateCapitalizationRate) {
-                                document.getElementById('DateCapitalizationRate1').innerHTML = document.getElementById('TrialBalanceDateColumn1').value;
-                                document.getElementById('DateCapitalizationRate2').innerHTML = document.getElementById('TrialBalanceDateColumn2').value;
-                                document.getElementById('DateCapitalizationRate3').innerHTML = document.getElementById('TrialBalanceDateColumn3').value;
-                                document.getElementById('DateCapitalizationRate4').innerHTML = document.getElementById('TrialBalanceDateColumn4').value;
+                                document.getElementById('DateCapitalizationRate1').innerHTML = document.getElementById('TrialBalanceDateColumn1').innerHTML;
+                                document.getElementById('DateCapitalizationRate2').innerHTML = document.getElementById('TrialBalanceDateColumn2').innerHTML;
+                                document.getElementById('DateCapitalizationRate3').innerHTML = document.getElementById('TrialBalanceDateColumn3').innerHTML;
+                                document.getElementById('DateCapitalizationRate4').innerHTML = document.getElementById('TrialBalanceDateColumn4').innerHTML;
                             };
                             window.addEventListener('DOMContentLoaded', DateCapitalizationRate)
                             window.addEventListener('keyup', function() {
@@ -13025,12 +13025,12 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                         <td colspan="3"></td>
                         <script>
                             function DateCapitalizedCashFlow(DateCapitalizedCashFlow) {
-                                document.getElementById('DateCapitalizedCashFlow1').innerHTML = document.getElementById('TrialBalanceDateColumn1').value;
-                                document.getElementById('DateCapitalizedCashFlow2').innerHTML = document.getElementById('TrialBalanceDateColumn2').value;
-                                document.getElementById('DateCapitalizedCashFlow3').innerHTML = document.getElementById('TrialBalanceDateColumn3').value;
-                                document.getElementById('DateCapitalizedCashFlow4').innerHTML = document.getElementById('TrialBalanceDateColumn4').value;
-                                document.getElementById('DateCapitalizedCashFlow5').innerHTML = document.getElementById('TrialBalanceDateColumn5').value;
-                                document.getElementById('DateCapitalizedCashFlow6').innerHTML = document.getElementById('TrialBalanceDateColumn6').value;
+                                document.getElementById('DateCapitalizedCashFlow1').innerHTML = document.getElementById('TrialBalanceDateColumn1').innerHTML;
+                                document.getElementById('DateCapitalizedCashFlow2').innerHTML = document.getElementById('TrialBalanceDateColumn2').innerHTML;
+                                document.getElementById('DateCapitalizedCashFlow3').innerHTML = document.getElementById('TrialBalanceDateColumn3').innerHTML;
+                                document.getElementById('DateCapitalizedCashFlow4').innerHTML = document.getElementById('TrialBalanceDateColumn4').innerHTML;
+                                document.getElementById('DateCapitalizedCashFlow5').innerHTML = document.getElementById('TrialBalanceDateColumn5').innerHTML;
+                                document.getElementById('DateCapitalizedCashFlow6').innerHTML = document.getElementById('TrialBalanceDateColumn6').innerHTML;
                             };
                             window.addEventListener('DOMContentLoaded', DateCapitalizedCashFlow)
                             window.addEventListener('keyup', function() {
@@ -14220,12 +14220,12 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                         <td colspan="3"></td>
                         <script>
                             function DateCapitalizedIncome(DateCapitalizedIncome) {
-                                document.getElementById('DateCapitalizedIncome1').innerHTML = document.getElementById('TrialBalanceDateColumn1').value;
-                                document.getElementById('DateCapitalizedIncome2').innerHTML = document.getElementById('TrialBalanceDateColumn2').value;
-                                document.getElementById('DateCapitalizedIncome3').innerHTML = document.getElementById('TrialBalanceDateColumn3').value;
-                                document.getElementById('DateCapitalizedIncome4').innerHTML = document.getElementById('TrialBalanceDateColumn4').value;
-                                document.getElementById('DateCapitalizedIncome5').innerHTML = document.getElementById('TrialBalanceDateColumn5').value;
-                                document.getElementById('DateCapitalizedIncome6').innerHTML = document.getElementById('TrialBalanceDateColumn6').value;
+                                document.getElementById('DateCapitalizedIncome1').innerHTML = document.getElementById('TrialBalanceDateColumn1').innerHTML;
+                                document.getElementById('DateCapitalizedIncome2').innerHTML = document.getElementById('TrialBalanceDateColumn2').innerHTML;
+                                document.getElementById('DateCapitalizedIncome3').innerHTML = document.getElementById('TrialBalanceDateColumn3').innerHTML;
+                                document.getElementById('DateCapitalizedIncome4').innerHTML = document.getElementById('TrialBalanceDateColumn4').innerHTML;
+                                document.getElementById('DateCapitalizedIncome5').innerHTML = document.getElementById('TrialBalanceDateColumn5').innerHTML;
+                                document.getElementById('DateCapitalizedIncome6').innerHTML = document.getElementById('TrialBalanceDateColumn6').innerHTML;
                             };
                             window.addEventListener('DOMContentLoaded', DateCapitalizedIncome)
                             window.addEventListener('keyup', function() {
@@ -15317,10 +15317,10 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                         <td colspan="3"></td>
                         <script>
                             function DateIntrinsicValues(DateIntrinsicValues) {
-                                document.getElementById('DateIntrinsicValues1').innerHTML = document.getElementById('TrialBalanceDateColumn1').value;
-                                document.getElementById('DateIntrinsicValues2').innerHTML = document.getElementById('TrialBalanceDateColumn2').value;
-                                document.getElementById('DateIntrinsicValues3').innerHTML = document.getElementById('TrialBalanceDateColumn3').value;
-                                document.getElementById('DateIntrinsicValues4').innerHTML = document.getElementById('TrialBalanceDateColumn4').value;
+                                document.getElementById('DateIntrinsicValues1').innerHTML = document.getElementById('TrialBalanceDateColumn1').innerHTML;
+                                document.getElementById('DateIntrinsicValues2').innerHTML = document.getElementById('TrialBalanceDateColumn2').innerHTML;
+                                document.getElementById('DateIntrinsicValues3').innerHTML = document.getElementById('TrialBalanceDateColumn3').innerHTML;
+                                document.getElementById('DateIntrinsicValues4').innerHTML = document.getElementById('TrialBalanceDateColumn4').innerHTML;
                             };
                             window.addEventListener('DOMContentLoaded', DateIntrinsicValues)
                             window.addEventListener('keyup', function() {
@@ -15540,10 +15540,10 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                         <td colspan="3"></td>
                         <script>
                             function DateSummary(DateSummary) {
-                                document.getElementById('DateSummary1').innerHTML = document.getElementById('TrialBalanceDateColumn1').value;
-                                document.getElementById('DateSummary2').innerHTML = document.getElementById('TrialBalanceDateColumn2').value;
-                                document.getElementById('DateSummary3').innerHTML = document.getElementById('TrialBalanceDateColumn3').value;
-                                document.getElementById('DateSummary4').innerHTML = document.getElementById('TrialBalanceDateColumn4').value;
+                                document.getElementById('DateSummary1').innerHTML = document.getElementById('TrialBalanceDateColumn1').innerHTML;
+                                document.getElementById('DateSummary2').innerHTML = document.getElementById('TrialBalanceDateColumn2').innerHTML;
+                                document.getElementById('DateSummary3').innerHTML = document.getElementById('TrialBalanceDateColumn3').innerHTML;
+                                document.getElementById('DateSummary4').innerHTML = document.getElementById('TrialBalanceDateColumn4').innerHTML;
                             };
                             window.addEventListener('DOMContentLoaded', DateSummary)
                             window.addEventListener('keyup', function() {
@@ -16390,12 +16390,12 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                         <td colspan="3"></td>
                         <script>
                             function DateProcedureAnnualBalanceSheets(DateProcedureAnnualBalanceSheets) {
-                                document.getElementById('DateProcedureAnnualBalanceSheets1').innerHTML = document.getElementById('TrialBalanceDateColumn1').value;
-                                document.getElementById('DateProcedureAnnualBalanceSheets2').innerHTML = document.getElementById('TrialBalanceDateColumn2').value;
-                                document.getElementById('DateProcedureAnnualBalanceSheets3').innerHTML = document.getElementById('TrialBalanceDateColumn3').value;
-                                document.getElementById('DateProcedureAnnualBalanceSheets4').innerHTML = document.getElementById('TrialBalanceDateColumn4').value;
-                                document.getElementById('DateProcedureAnnualBalanceSheets5').innerHTML = document.getElementById('TrialBalanceDateColumn5').value;
-                                document.getElementById('DateProcedureAnnualBalanceSheets6').innerHTML = document.getElementById('TrialBalanceDateColumn6').value;
+                                document.getElementById('DateProcedureAnnualBalanceSheets1').innerHTML = document.getElementById('TrialBalanceDateColumn1').innerHTML;
+                                document.getElementById('DateProcedureAnnualBalanceSheets2').innerHTML = document.getElementById('TrialBalanceDateColumn2').innerHTML;
+                                document.getElementById('DateProcedureAnnualBalanceSheets3').innerHTML = document.getElementById('TrialBalanceDateColumn3').innerHTML;
+                                document.getElementById('DateProcedureAnnualBalanceSheets4').innerHTML = document.getElementById('TrialBalanceDateColumn4').innerHTML;
+                                document.getElementById('DateProcedureAnnualBalanceSheets5').innerHTML = document.getElementById('TrialBalanceDateColumn5').innerHTML;
+                                document.getElementById('DateProcedureAnnualBalanceSheets6').innerHTML = document.getElementById('TrialBalanceDateColumn6').innerHTML;
                             };
                             window.addEventListener('DOMContentLoaded', DateProcedureAnnualBalanceSheets)
                             window.addEventListener('keyup', function() {
@@ -16614,12 +16614,12 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                         <td colspan="3"></td>
                         <script>
                             function DateProcedureAnnualBalanceSheetsii(DateProcedureAnnualBalanceSheetsii) {
-                                document.getElementById('DateProcedureAnnualBalanceSheetsii1').innerHTML = document.getElementById('TrialBalanceDateColumn1').value;
-                                document.getElementById('DateProcedureAnnualBalanceSheetsii2').innerHTML = document.getElementById('TrialBalanceDateColumn2').value;
-                                document.getElementById('DateProcedureAnnualBalanceSheetsii3').innerHTML = document.getElementById('TrialBalanceDateColumn3').value;
-                                document.getElementById('DateProcedureAnnualBalanceSheetsii4').innerHTML = document.getElementById('TrialBalanceDateColumn4').value;
-                                document.getElementById('DateProcedureAnnualBalanceSheetsii5').innerHTML = document.getElementById('TrialBalanceDateColumn5').value;
-                                document.getElementById('DateProcedureAnnualBalanceSheetsii6').innerHTML = document.getElementById('TrialBalanceDateColumn6').value;
+                                document.getElementById('DateProcedureAnnualBalanceSheetsii1').innerHTML = document.getElementById('TrialBalanceDateColumn1').innerHTML;
+                                document.getElementById('DateProcedureAnnualBalanceSheetsii2').innerHTML = document.getElementById('TrialBalanceDateColumn2').innerHTML;
+                                document.getElementById('DateProcedureAnnualBalanceSheetsii3').innerHTML = document.getElementById('TrialBalanceDateColumn3').innerHTML;
+                                document.getElementById('DateProcedureAnnualBalanceSheetsii4').innerHTML = document.getElementById('TrialBalanceDateColumn4').innerHTML;
+                                document.getElementById('DateProcedureAnnualBalanceSheetsii5').innerHTML = document.getElementById('TrialBalanceDateColumn5').innerHTML;
+                                document.getElementById('DateProcedureAnnualBalanceSheetsii6').innerHTML = document.getElementById('TrialBalanceDateColumn6').innerHTML;
                             };
                             window.addEventListener('DOMContentLoaded', DateProcedureAnnualBalanceSheetsii)
                             window.addEventListener('keyup', function() {
@@ -17507,12 +17507,12 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                         <td colspan="3"></td>
                         <script>
                             function DateProcedureAnnualBalanceSheetsiii(DateProcedureAnnualBalanceSheetsiii) {
-                                document.getElementById('DateProcedureAnnualBalanceSheetsiii1').innerHTML = document.getElementById('TrialBalanceDateColumn1').value;
-                                document.getElementById('DateProcedureAnnualBalanceSheetsiii2').innerHTML = document.getElementById('TrialBalanceDateColumn2').value;
-                                document.getElementById('DateProcedureAnnualBalanceSheetsiii3').innerHTML = document.getElementById('TrialBalanceDateColumn3').value;
-                                document.getElementById('DateProcedureAnnualBalanceSheetsiii4').innerHTML = document.getElementById('TrialBalanceDateColumn4').value;
-                                document.getElementById('DateProcedureAnnualBalanceSheetsiii5').innerHTML = document.getElementById('TrialBalanceDateColumn5').value;
-                                document.getElementById('DateProcedureAnnualBalanceSheetsiii6').innerHTML = document.getElementById('TrialBalanceDateColumn6').value;
+                                document.getElementById('DateProcedureAnnualBalanceSheetsiii1').innerHTML = document.getElementById('TrialBalanceDateColumn1').innerHTML;
+                                document.getElementById('DateProcedureAnnualBalanceSheetsiii2').innerHTML = document.getElementById('TrialBalanceDateColumn2').innerHTML;
+                                document.getElementById('DateProcedureAnnualBalanceSheetsiii3').innerHTML = document.getElementById('TrialBalanceDateColumn3').innerHTML;
+                                document.getElementById('DateProcedureAnnualBalanceSheetsiii4').innerHTML = document.getElementById('TrialBalanceDateColumn4').innerHTML;
+                                document.getElementById('DateProcedureAnnualBalanceSheetsiii5').innerHTML = document.getElementById('TrialBalanceDateColumn5').innerHTML;
+                                document.getElementById('DateProcedureAnnualBalanceSheetsiii6').innerHTML = document.getElementById('TrialBalanceDateColumn6').innerHTML;
                             };
                             window.addEventListener('DOMContentLoaded', DateProcedureAnnualBalanceSheetsiii)
                             window.addEventListener('keyup', function() {
@@ -17655,12 +17655,12 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                         <td colspan="3"></td>
                         <script>
                             function DateProcedureAnnualIncomeStatements(DateProcedureAnnualIncomeStatements) {
-                                document.getElementById('DateProcedureAnnualIncomeStatements1').innerHTML = document.getElementById('TrialBalanceDateColumn1').value;
-                                document.getElementById('DateProcedureAnnualIncomeStatements2').innerHTML = document.getElementById('TrialBalanceDateColumn2').value;
-                                document.getElementById('DateProcedureAnnualIncomeStatements3').innerHTML = document.getElementById('TrialBalanceDateColumn3').value;
-                                document.getElementById('DateProcedureAnnualIncomeStatements4').innerHTML = document.getElementById('TrialBalanceDateColumn4').value;
-                                document.getElementById('DateProcedureAnnualIncomeStatements5').innerHTML = document.getElementById('TrialBalanceDateColumn5').value;
-                                document.getElementById('DateProcedureAnnualIncomeStatements6').innerHTML = document.getElementById('TrialBalanceDateColumn6').value;
+                                document.getElementById('DateProcedureAnnualIncomeStatements1').innerHTML = document.getElementById('TrialBalanceDateColumn1').innerHTML;
+                                document.getElementById('DateProcedureAnnualIncomeStatements2').innerHTML = document.getElementById('TrialBalanceDateColumn2').innerHTML;
+                                document.getElementById('DateProcedureAnnualIncomeStatements3').innerHTML = document.getElementById('TrialBalanceDateColumn3').innerHTML;
+                                document.getElementById('DateProcedureAnnualIncomeStatements4').innerHTML = document.getElementById('TrialBalanceDateColumn4').innerHTML;
+                                document.getElementById('DateProcedureAnnualIncomeStatements5').innerHTML = document.getElementById('TrialBalanceDateColumn5').innerHTML;
+                                document.getElementById('DateProcedureAnnualIncomeStatements6').innerHTML = document.getElementById('TrialBalanceDateColumn6').innerHTML;
                             };
                             window.addEventListener('DOMContentLoaded', DateProcedureAnnualIncomeStatements)
                             window.addEventListener('keyup', function() {
@@ -18218,12 +18218,12 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                         <td colspan="3"></td>
                         <script>
                             function DateProcedureAnnualIncomeStatementsi(DateProcedureAnnualIncomeStatementsi) {
-                                document.getElementById('DateProcedureAnnualIncomeStatementsi1').innerHTML = document.getElementById('TrialBalanceDateColumn1').value;
-                                document.getElementById('DateProcedureAnnualIncomeStatementsi2').innerHTML = document.getElementById('TrialBalanceDateColumn2').value;
-                                document.getElementById('DateProcedureAnnualIncomeStatementsi3').innerHTML = document.getElementById('TrialBalanceDateColumn3').value;
-                                document.getElementById('DateProcedureAnnualIncomeStatementsi4').innerHTML = document.getElementById('TrialBalanceDateColumn4').value;
-                                document.getElementById('DateProcedureAnnualIncomeStatementsi5').innerHTML = document.getElementById('TrialBalanceDateColumn5').value;
-                                document.getElementById('DateProcedureAnnualIncomeStatementsi6').innerHTML = document.getElementById('TrialBalanceDateColumn6').value;
+                                document.getElementById('DateProcedureAnnualIncomeStatementsi1').innerHTML = document.getElementById('TrialBalanceDateColumn1').innerHTML;
+                                document.getElementById('DateProcedureAnnualIncomeStatementsi2').innerHTML = document.getElementById('TrialBalanceDateColumn2').innerHTML;
+                                document.getElementById('DateProcedureAnnualIncomeStatementsi3').innerHTML = document.getElementById('TrialBalanceDateColumn3').innerHTML;
+                                document.getElementById('DateProcedureAnnualIncomeStatementsi4').innerHTML = document.getElementById('TrialBalanceDateColumn4').innerHTML;
+                                document.getElementById('DateProcedureAnnualIncomeStatementsi5').innerHTML = document.getElementById('TrialBalanceDateColumn5').innerHTML;
+                                document.getElementById('DateProcedureAnnualIncomeStatementsi6').innerHTML = document.getElementById('TrialBalanceDateColumn6').innerHTML;
                             };
                             window.addEventListener('DOMContentLoaded', DateProcedureAnnualIncomeStatementsi)
                             window.addEventListener('keyup', function() {
@@ -18367,12 +18367,12 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                         <td colspan="3"></td>
                         <script>
                             function DateProcedureAnnualComprehensiveIncome(DateProcedureAnnualComprehensiveIncome) {
-                                document.getElementById('DateProcedureAnnualComprehensiveIncome1').innerHTML = document.getElementById('TrialBalanceDateColumn1').value;
-                                document.getElementById('DateProcedureAnnualComprehensiveIncome2').innerHTML = document.getElementById('TrialBalanceDateColumn2').value;
-                                document.getElementById('DateProcedureAnnualComprehensiveIncome3').innerHTML = document.getElementById('TrialBalanceDateColumn3').value;
-                                document.getElementById('DateProcedureAnnualComprehensiveIncome4').innerHTML = document.getElementById('TrialBalanceDateColumn4').value;
-                                document.getElementById('DateProcedureAnnualComprehensiveIncome5').innerHTML = document.getElementById('TrialBalanceDateColumn5').value;
-                                document.getElementById('DateProcedureAnnualComprehensiveIncome6').innerHTML = document.getElementById('TrialBalanceDateColumn6').value;
+                                document.getElementById('DateProcedureAnnualComprehensiveIncome1').innerHTML = document.getElementById('TrialBalanceDateColumn1').innerHTML;
+                                document.getElementById('DateProcedureAnnualComprehensiveIncome2').innerHTML = document.getElementById('TrialBalanceDateColumn2').innerHTML;
+                                document.getElementById('DateProcedureAnnualComprehensiveIncome3').innerHTML = document.getElementById('TrialBalanceDateColumn3').innerHTML;
+                                document.getElementById('DateProcedureAnnualComprehensiveIncome4').innerHTML = document.getElementById('TrialBalanceDateColumn4').innerHTML;
+                                document.getElementById('DateProcedureAnnualComprehensiveIncome5').innerHTML = document.getElementById('TrialBalanceDateColumn5').innerHTML;
+                                document.getElementById('DateProcedureAnnualComprehensiveIncome6').innerHTML = document.getElementById('TrialBalanceDateColumn6').innerHTML;
                             };
                             window.addEventListener('DOMContentLoaded', DateProcedureAnnualComprehensiveIncome)
                             window.addEventListener('keyup', function() {
@@ -18586,12 +18586,12 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                         <td colspan="3"></td>
                         <script>
                             function DateProcedureAnnualStockholdersEquity(DateProcedureAnnualStockholdersEquity) {
-                                document.getElementById('DateProcedureAnnualStockholdersEquity1').innerHTML = document.getElementById('TrialBalanceDateColumn1').value;
-                                document.getElementById('DateProcedureAnnualStockholdersEquity2').innerHTML = document.getElementById('TrialBalanceDateColumn2').value;
-                                document.getElementById('DateProcedureAnnualStockholdersEquity3').innerHTML = document.getElementById('TrialBalanceDateColumn3').value;
-                                document.getElementById('DateProcedureAnnualStockholdersEquity4').innerHTML = document.getElementById('TrialBalanceDateColumn4').value;
-                                document.getElementById('DateProcedureAnnualStockholdersEquity5').innerHTML = document.getElementById('TrialBalanceDateColumn5').value;
-                                document.getElementById('DateProcedureAnnualStockholdersEquity6').innerHTML = document.getElementById('TrialBalanceDateColumn6').value;
+                                document.getElementById('DateProcedureAnnualStockholdersEquity1').innerHTML = document.getElementById('TrialBalanceDateColumn1').innerHTML;
+                                document.getElementById('DateProcedureAnnualStockholdersEquity2').innerHTML = document.getElementById('TrialBalanceDateColumn2').innerHTML;
+                                document.getElementById('DateProcedureAnnualStockholdersEquity3').innerHTML = document.getElementById('TrialBalanceDateColumn3').innerHTML;
+                                document.getElementById('DateProcedureAnnualStockholdersEquity4').innerHTML = document.getElementById('TrialBalanceDateColumn4').innerHTML;
+                                document.getElementById('DateProcedureAnnualStockholdersEquity5').innerHTML = document.getElementById('TrialBalanceDateColumn5').innerHTML;
+                                document.getElementById('DateProcedureAnnualStockholdersEquity6').innerHTML = document.getElementById('TrialBalanceDateColumn6').innerHTML;
                             };
                             window.addEventListener('DOMContentLoaded', DateProcedureAnnualStockholdersEquity)
                             window.addEventListener('keyup', function() {
@@ -18835,12 +18835,12 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                         <td colspan="3"></td>
                         <script>
                             function DateProcedureAnnualStockholdersEquityi(DateProcedureAnnualStockholdersEquityi) {
-                                document.getElementById('DateProcedureAnnualStockholdersEquityi1').innerHTML = document.getElementById('TrialBalanceDateColumn1').value;
-                                document.getElementById('DateProcedureAnnualStockholdersEquityi2').innerHTML = document.getElementById('TrialBalanceDateColumn2').value;
-                                document.getElementById('DateProcedureAnnualStockholdersEquityi3').innerHTML = document.getElementById('TrialBalanceDateColumn3').value;
-                                document.getElementById('DateProcedureAnnualStockholdersEquityi4').innerHTML = document.getElementById('TrialBalanceDateColumn4').value;
-                                document.getElementById('DateProcedureAnnualStockholdersEquityi5').innerHTML = document.getElementById('TrialBalanceDateColumn5').value;
-                                document.getElementById('DateProcedureAnnualStockholdersEquityi6').innerHTML = document.getElementById('TrialBalanceDateColumn6').value;
+                                document.getElementById('DateProcedureAnnualStockholdersEquityi1').innerHTML = document.getElementById('TrialBalanceDateColumn1').innerHTML;
+                                document.getElementById('DateProcedureAnnualStockholdersEquityi2').innerHTML = document.getElementById('TrialBalanceDateColumn2').innerHTML;
+                                document.getElementById('DateProcedureAnnualStockholdersEquityi3').innerHTML = document.getElementById('TrialBalanceDateColumn3').innerHTML;
+                                document.getElementById('DateProcedureAnnualStockholdersEquityi4').innerHTML = document.getElementById('TrialBalanceDateColumn4').innerHTML;
+                                document.getElementById('DateProcedureAnnualStockholdersEquityi5').innerHTML = document.getElementById('TrialBalanceDateColumn5').innerHTML;
+                                document.getElementById('DateProcedureAnnualStockholdersEquityi6').innerHTML = document.getElementById('TrialBalanceDateColumn6').innerHTML;
                             };
                             window.addEventListener('DOMContentLoaded', DateProcedureAnnualStockholdersEquityi)
                             window.addEventListener('keyup', function() {
@@ -18991,12 +18991,12 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                         <td colspan="3"></td>
                         <script>
                             function DateProcedureAnnualCashFlow(DateProcedureAnnualCashFlow) {
-                                document.getElementById('DateProcedureAnnualCashFlow1').innerHTML = document.getElementById('TrialBalanceDateColumn1').value;
-                                document.getElementById('DateProcedureAnnualCashFlow2').innerHTML = document.getElementById('TrialBalanceDateColumn2').value;
-                                document.getElementById('DateProcedureAnnualCashFlow3').innerHTML = document.getElementById('TrialBalanceDateColumn3').value;
-                                document.getElementById('DateProcedureAnnualCashFlow4').innerHTML = document.getElementById('TrialBalanceDateColumn4').value;
-                                document.getElementById('DateProcedureAnnualCashFlow5').innerHTML = document.getElementById('TrialBalanceDateColumn5').value;
-                                document.getElementById('DateProcedureAnnualCashFlow6').innerHTML = document.getElementById('TrialBalanceDateColumn6').value;
+                                document.getElementById('DateProcedureAnnualCashFlow1').innerHTML = document.getElementById('TrialBalanceDateColumn1').innerHTML;
+                                document.getElementById('DateProcedureAnnualCashFlow2').innerHTML = document.getElementById('TrialBalanceDateColumn2').innerHTML;
+                                document.getElementById('DateProcedureAnnualCashFlow3').innerHTML = document.getElementById('TrialBalanceDateColumn3').innerHTML;
+                                document.getElementById('DateProcedureAnnualCashFlow4').innerHTML = document.getElementById('TrialBalanceDateColumn4').innerHTML;
+                                document.getElementById('DateProcedureAnnualCashFlow5').innerHTML = document.getElementById('TrialBalanceDateColumn5').innerHTML;
+                                document.getElementById('DateProcedureAnnualCashFlow6').innerHTML = document.getElementById('TrialBalanceDateColumn6').innerHTML;
                             };
                             window.addEventListener('DOMContentLoaded', DateProcedureAnnualCashFlow)
                             window.addEventListener('keyup', function() {
@@ -19217,12 +19217,12 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                         <td colspan="3"></td>
                         <script>
                             function DateProcedureAnnualCashFlowClassification(DateProcedureAnnualCashFlowClassification) {
-                                document.getElementById('DateProcedureAnnualCashFlowClassification1').innerHTML = document.getElementById('TrialBalanceDateColumn1').value;
-                                document.getElementById('DateProcedureAnnualCashFlowClassification2').innerHTML = document.getElementById('TrialBalanceDateColumn2').value;
-                                document.getElementById('DateProcedureAnnualCashFlowClassification3').innerHTML = document.getElementById('TrialBalanceDateColumn3').value;
-                                document.getElementById('DateProcedureAnnualCashFlowClassification4').innerHTML = document.getElementById('TrialBalanceDateColumn4').value;
-                                document.getElementById('DateProcedureAnnualCashFlowClassification5').innerHTML = document.getElementById('TrialBalanceDateColumn5').value;
-                                document.getElementById('DateProcedureAnnualCashFlowClassification6').innerHTML = document.getElementById('TrialBalanceDateColumn6').value;
+                                document.getElementById('DateProcedureAnnualCashFlowClassification1').innerHTML = document.getElementById('TrialBalanceDateColumn1').innerHTML;
+                                document.getElementById('DateProcedureAnnualCashFlowClassification2').innerHTML = document.getElementById('TrialBalanceDateColumn2').innerHTML;
+                                document.getElementById('DateProcedureAnnualCashFlowClassification3').innerHTML = document.getElementById('TrialBalanceDateColumn3').innerHTML;
+                                document.getElementById('DateProcedureAnnualCashFlowClassification4').innerHTML = document.getElementById('TrialBalanceDateColumn4').innerHTML;
+                                document.getElementById('DateProcedureAnnualCashFlowClassification5').innerHTML = document.getElementById('TrialBalanceDateColumn5').innerHTML;
+                                document.getElementById('DateProcedureAnnualCashFlowClassification6').innerHTML = document.getElementById('TrialBalanceDateColumn6').innerHTML;
                             };
                             window.addEventListener('DOMContentLoaded', DateProcedureAnnualCashFlowClassification)
                             window.addEventListener('keyup', function() {
@@ -19322,12 +19322,12 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                         <td colspan="3"></td>
                         <script>
                             function DateAnomaliesi(DateAnomaliesi) {
-                                document.getElementById('DateAnomalies1').innerHTML = document.getElementById('TrialBalanceDateColumn1').value;
-                                document.getElementById('DateAnomalies2').innerHTML = document.getElementById('TrialBalanceDateColumn2').value;
-                                document.getElementById('DateAnomalies3').innerHTML = document.getElementById('TrialBalanceDateColumn3').value;
-                                document.getElementById('DateAnomalies4').innerHTML = document.getElementById('TrialBalanceDateColumn4').value;
-                                document.getElementById('DateAnomalies5').innerHTML = document.getElementById('TrialBalanceDateColumn5').value;
-                                document.getElementById('DateAnomalies6').innerHTML = document.getElementById('TrialBalanceDateColumn6').value;
+                                document.getElementById('DateAnomalies1').innerHTML = document.getElementById('TrialBalanceDateColumn1').innerHTML;
+                                document.getElementById('DateAnomalies2').innerHTML = document.getElementById('TrialBalanceDateColumn2').innerHTML;
+                                document.getElementById('DateAnomalies3').innerHTML = document.getElementById('TrialBalanceDateColumn3').innerHTML;
+                                document.getElementById('DateAnomalies4').innerHTML = document.getElementById('TrialBalanceDateColumn4').innerHTML;
+                                document.getElementById('DateAnomalies5').innerHTML = document.getElementById('TrialBalanceDateColumn5').innerHTML;
+                                document.getElementById('DateAnomalies6').innerHTML = document.getElementById('TrialBalanceDateColumn6').innerHTML;
                             };
                             window.addEventListener('DOMContentLoaded', DateAnomaliesi)
                             window.addEventListener('keyup', function() {
@@ -20102,12 +20102,12 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                             <td colspan="3"></td>
                             <script>
                                 function DateAnomaliesi(DateAnomaliesi) {
-                                    document.getElementById('DateAuditSummary1').innerHTML = document.getElementById('TrialBalanceDateColumn1').value;
-                                    document.getElementById('DateAuditSummary2').innerHTML = document.getElementById('TrialBalanceDateColumn2').value;
-                                    document.getElementById('DateAuditSummary3').innerHTML = document.getElementById('TrialBalanceDateColumn3').value;
-                                    document.getElementById('DateAuditSummary4').innerHTML = document.getElementById('TrialBalanceDateColumn4').value;
-                                    document.getElementById('DateAuditSummary5').innerHTML = document.getElementById('TrialBalanceDateColumn5').value;
-                                    document.getElementById('DateAuditSummary6').innerHTML = document.getElementById('TrialBalanceDateColumn6').value;
+                                    document.getElementById('DateAuditSummary1').innerHTML = document.getElementById('TrialBalanceDateColumn1').innerHTML;
+                                    document.getElementById('DateAuditSummary2').innerHTML = document.getElementById('TrialBalanceDateColumn2').innerHTML;
+                                    document.getElementById('DateAuditSummary3').innerHTML = document.getElementById('TrialBalanceDateColumn3').innerHTML;
+                                    document.getElementById('DateAuditSummary4').innerHTML = document.getElementById('TrialBalanceDateColumn4').innerHTML;
+                                    document.getElementById('DateAuditSummary5').innerHTML = document.getElementById('TrialBalanceDateColumn5').innerHTML;
+                                    document.getElementById('DateAuditSummary6').innerHTML = document.getElementById('TrialBalanceDateColumn6').innerHTML;
                                 };
                                 window.addEventListener('DOMContentLoaded', DateAnomaliesi)
                                 window.addEventListener('keyup', function() {
