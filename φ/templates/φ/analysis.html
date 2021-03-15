@@ -20920,57 +20920,63 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                                 // Column 2
                                 if (aa > 1) {
                                     if (a > b) {
-                                        acca = 'accurate';
+                                        ca = 'accurate';
                                     } else {
-                                        acca = 'inaccurate';
+                                        ca = 'inaccurate';
                                     }
                                 } else {
                                     if (a < b) {
-                                        acca = 'accurate';
+                                        ca = 'accurate';
                                     } else {
-                                        acca = 'inaccurate';
+                                        ca = 'inaccurate';
                                     }
                                 }
-                                if (document.getElementById('Opinionφ2').innerHTML == '') {
-                                    acca =''
+                                if (document.getElementById('Opinionφ1').innerHTML == '') {
+                                    if (document.getElementById('Opinionφ2').innerHTML == '') {
+                                        ca =''
+                                    }
                                 }
-                                document.getElementById('AccuracyOfPreviousOpinions2').innerHTML = acca;
+                                document.getElementById('AccuracyOfPreviousOpinions2').innerHTML = ca;
                                 // Column 3
                                 if (bb > 1) {
                                     if (b > c) {
-                                        accb = 'accurate';
+                                        ca = 'accurate';
                                     } else {
-                                        accb = 'inaccurate';
+                                        ca = 'inaccurate';
                                     }
                                 } else {
                                     if (b < c) {
-                                        accb = 'accurate';
+                                        ca = 'accurate';
                                     } else {
-                                        accb = 'inaccurate';
+                                        ca = 'inaccurate';
                                     }
                                 }
-                                if (document.getElementById('Opinionφ3').innerHTML == '') {
-                                    accb =''
+                                if (document.getElementById('Opinionφ2').innerHTML == '') {
+                                    if (document.getElementById('Opinionφ3').innerHTML == '') {
+                                        ca =''
+                                    }
                                 }
-                                document.getElementById('AccuracyOfPreviousOpinions3').innerHTML = accb;
+                                document.getElementById('AccuracyOfPreviousOpinions3').innerHTML = ca;
                                 // Column 4
                                 if (cc > 1) {
                                     if (c > d) {
-                                        accc = 'accurate';
+                                        ca = 'accurate';
                                     } else {
-                                        accc = 'inaccurate';
+                                        ca = 'inaccurate';
                                     }
                                 } else {
                                     if (c < d) {
-                                        accc = 'accurate';
+                                        ca = 'accurate';
                                     } else {
-                                        accc = 'inaccurate';
+                                        ca = 'inaccurate';
                                     }
                                 }
-                                if (document.getElementById('Opinionφ4').innerHTML == '') {
-                                    accc =''
+                                if (document.getElementById('Opinionφ3').innerHTML == '') {
+                                    if (document.getElementById('Opinionφ4').innerHTML == '') {
+                                        ca =''
+                                    }
                                 }
-                                document.getElementById('AccuracyOfPreviousOpinions4').innerHTML = accc;
+                                document.getElementById('AccuracyOfPreviousOpinions4').innerHTML = ca;
                             }
                             window.addEventListener('DOMContentLoaded', BalanceBridgeφ)
                             window.addEventListener('keyup', function() {
