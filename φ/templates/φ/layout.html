@@ -125,7 +125,7 @@
             @media (max-width: 599px) {
                 ul a {
                     font-size: 17px;
-                    padding: 17px;
+                    padding-top: 74px;
                     
                 }
             }
@@ -456,15 +456,15 @@
     </nav>
 
     <!-- Search results -->
-    <ul id="list"></ul>
+    <ul id="text"></ul>
 
-    <Section style="">
+    <Section>
     </Section>
 
     <script>
         
         // List of entities
-        let myURL = new URL('https://www.φ.com/');
+        let myURL = new URL('http://www.clockdb.com/');
 
         const entities = [
             { name: 'AMC ENTERTAINMENT HOLDINGS, INC. (AMC)' , url: './AMC'},
@@ -984,7 +984,7 @@
 
         ];
 
-        const list = document.getElementById('list');  
+        const list = document.getElementById('text');  
         
         function setList(group) {
             clearList();
