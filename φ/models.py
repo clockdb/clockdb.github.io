@@ -6,7 +6,6 @@ class Auditor(models.Model):
     #
     Name = models.CharField(max_length=93)
     Number = models.CharField(max_length=93)
-    URL = models.CharField(max_length=93)
     #
     def __str__(self):
         return f"{self.Name}"
@@ -29,6 +28,7 @@ class Entity(models.Model):
     Status = models.CharField(max_length=100, default=0)
     StockPrice = models.IntegerField(default=0)
     Anomalies = models.CharField(max_length=100, default=0)
+    SECurl = models.CharField(max_length=66, default=0)
     #
     lastquarter = models.CharField(max_length=13, default=0)
     secondlastquarter = models.CharField(max_length=13, default=0)
