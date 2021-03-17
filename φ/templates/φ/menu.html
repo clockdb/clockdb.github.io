@@ -12,24 +12,68 @@
 
 <!--- ENTITIES --->
 
-<div class="text" style="padding: 2%; padding-bottom: 199px;">
+<div class="text" style="margin-bottom: 17%;">
 
-    <ul style="padding-top: 59px;">
-            
-        <a href="{% url 'φ:db' %}" style="margin-top: 0%; padding: 0px;"><button><h4 style="padding-top:4%; padding-bottom:27px;"><b>db audited database</h4></b></button></a>
+    <ul>
 
-        <a href="{% url 'φ:qp' %}" style="margin-top: 0%; padding: 0px;"><button><h4 style="padding-top:4%; padding-bottom:27px;"><b>qp database with material misstatements</h4></b></button></a>
+        <a href="{% url 'φ:db' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>AUDITED DATABASE</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">financials audited for accuracy, completeness, classification and cut-off</h5>
 
-        <a href="{% url 'φ:entities' %}" style="margin-top: 0%; padding: 0px;"><button><h4 style="padding-top:4%; padding-bottom:27px;"><b>entities</h4></b></button></a>
-        
-        <a href="{% url 'φ:index' %}" style="margin-top: 0%; padding: 0px;"><button><h4 style="padding-top:4%; padding-bottom:27px;"><b>home</h4></b></button></a>
+            </button>
 
-        <a href="https://www.facebook.com/clockdbofficial" target="blank" style="margin-top: 0%; padding: 0px;"><button><h4 style="padding-top:4%; padding-bottom:27px;"><b>facebook</h4></b></button></a>
+        </a>
 
-        <a href="{% url 'φ:disclaimer' %}" style="margin-top: 0%; padding: 0px;"><button><h4 style="padding-top:4%; padding-bottom:27px;"><b>disclaimer</h4></b></button></a>
+        <a href="{% url 'φ:entities' %}">
+       
+            <button>
+                
+                <h4 style='text-align:center'><b>ALL ENTITIES</h4></b>
+                <h5 style="color:#8A9096; padding-bottom:5%">corporations we mine</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:index' %}">
+       
+            <button>
+                
+                <h4 style='text-align:center'><b>HOME</h4></b>
+                <h5 style="color:#8A9096; padding-bottom:5%">clockdb.com</h5>
+
+            </button>
+
+        </a>
+
+        <a href="https://www.facebook.com/clockdbofficial" target="blank">
+       
+            <button>
+                
+                <h4 style='text-align:center'><b>FACEBOOK</h4></b>
+                <h5 style="color:#8A9096; padding-bottom:5%">facebook.com/clockdbofficial</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:disclaimer' %}">
+       
+            <button>
+                
+                <h4 style='text-align:center'><b>DISCLAIMER</h4></b>
+                <h5 style="color:#8A9096; padding-bottom:5%">Limitation of liability, terms and conditions, etc.</h5>
+
+            </button>
+
+        </a>
 
     </ul>
     
 </div>
+
 
 {% endblock %}
