@@ -43,8 +43,8 @@ EntityCentralIndexKeys = {
     'ENPH':    '1463101',
     'TSLA':    '1318605',
 #
-#    'AMC':    '1411579',
-#    'GME':    '1326380',
+    'AMC':    '1411579',
+    'GME':    '1326380',
 }
 
 #
@@ -3839,6 +3839,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                     ]
                                     b = [
                                         'Asset',
+                                        'Short',
                                     ]
                                     for l in q:
                                         if l in d:
@@ -9653,7 +9654,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
             #
             driver.quit()
             #
-            if len(Bridge) == 8:
+            if len(Bridge) == 36:
                 e.Status = 'Audited'
                 e.Clockφ = int(float(ValuationRatio.strip('%').replace(',','')))
                 e.ClockφChange = int(ValuationRatio.strip('%').replace(',','')) - int(ValuationRatioPriorPeriod.strip('%').replace(',',''))
