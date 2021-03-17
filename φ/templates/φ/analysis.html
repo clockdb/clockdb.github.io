@@ -16026,15 +16026,15 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                                     const thirdlastyear = document.getElementById('DateSummary3').innerHTML.replaceAll(/,/g, '');
                                     const fourthlastyear = document.getElementById('DateSummary4').innerHTML.replaceAll(/,/g, '');
                                     //
-                                    let lastyearIntrinsicValue = document.getElementById('IntrinsicValues1').innerHTML.replaceAll(/,/g, '')/dad;
-                                    let secondlastyearIntrinsicValue = document.getElementById('IntrinsicValues2').innerHTML.replaceAll(/,/g, '')/dad;
-                                    let thirdlastyearIntrinsicValue = document.getElementById('IntrinsicValues3').innerHTML.replaceAll(/,/g, '')/dad;
-                                    let fourthlastyearIntrinsicValue = document.getElementById('IntrinsicValues4').innerHTML.replaceAll(/,/g, '')/dad;
+                                    let lastyearIntrinsicValue = Math.round(document.getElementById('IntrinsicValues1').innerHTML.replaceAll(/,/g, '')/dad);
+                                    let secondlastyearIntrinsicValue = Math.round(document.getElementById('IntrinsicValues2').innerHTML.replaceAll(/,/g, '')/dad);
+                                    let thirdlastyearIntrinsicValue = Math.round(document.getElementById('IntrinsicValues3').innerHTML.replaceAll(/,/g, '')/dad);
+                                    let fourthlastyearIntrinsicValue = Math.round(document.getElementById('IntrinsicValues4').innerHTML.replaceAll(/,/g, '')/dad);
                                     //
-                                    let lastyearMarketCap = document.getElementById('MarketCapitalizationColumn1').innerHTML.replaceAll(/,/g, '')/dad;
-                                    let secondlastyearMarketCap = document.getElementById('MarketCapitalizationColumn2').innerHTML.replaceAll(/,/g, '')/dad;
-                                    let thirdlastyearMarketCap = document.getElementById('MarketCapitalizationColumn3').innerHTML.replaceAll(/,/g, '')/dad;
-                                    let fourthlastyearMarketCap = document.getElementById('MarketCapitalizationColumn4').innerHTML.replaceAll(/,/g, '')/dad;
+                                    let lastyearMarketCap = Math.round(document.getElementById('MarketCapitalizationColumn1').innerHTML.replaceAll(/,/g, '')/dad);
+                                    let secondlastyearMarketCap = Math.round(document.getElementById('MarketCapitalizationColumn2').innerHTML.replaceAll(/,/g, '')/dad);
+                                    let thirdlastyearMarketCap = Math.round(document.getElementById('MarketCapitalizationColumn3').innerHTML.replaceAll(/,/g, '')/dad);
+                                    let fourthlastyearMarketCap = Math.round(document.getElementById('MarketCapitalizationColumn4').innerHTML.replaceAll(/,/g, '')/dad);
                                     //
                                     const chart = document.getElementById('LineChart');
                                     chart.width = window.innerWidth*0.8;
@@ -16104,7 +16104,6 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                                         LineChart();
                                     }
                                 })
-                                
                                 
                             </script>
 
@@ -20846,9 +20845,10 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                                     }
                                 }
                                 if (document.getElementById('Opinionφ1').innerHTML == '') {
-                                    if (document.getElementById('Opinionφ2').innerHTML == '') {
-                                        ca =''
-                                    }
+                                    ca =''
+                                }
+                                if (document.getElementById('Opinionφ2').innerHTML == '') {
+                                    ca =''
                                 }
                                 document.getElementById('AccuracyOfPreviousOpinions2').innerHTML = ca;
                                 // Column 3
@@ -20866,9 +20866,10 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                                     }
                                 }
                                 if (document.getElementById('Opinionφ2').innerHTML == '') {
-                                    if (document.getElementById('Opinionφ3').innerHTML == '') {
-                                        ca =''
-                                    }
+                                    ca =''
+                                }
+                                if (document.getElementById('Opinionφ3').innerHTML == '') {
+                                    ca =''
                                 }
                                 document.getElementById('AccuracyOfPreviousOpinions3').innerHTML = ca;
                                 // Column 4
@@ -20886,9 +20887,10 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                                     }
                                 }
                                 if (document.getElementById('Opinionφ3').innerHTML == '') {
-                                    if (document.getElementById('Opinionφ4').innerHTML == '') {
-                                        ca =''
-                                    }
+                                    ca =''
+                                }
+                                if (document.getElementById('Opinionφ4').innerHTML == '') {
+                                    ca =''
                                 }
                                 document.getElementById('AccuracyOfPreviousOpinions4').innerHTML = ca;
                             }
@@ -20909,9 +20911,8 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
                         </tr>
                     </body>
                 </table>
-        </div>
-
-</Section>
+            </div>
+    </Section>
 
 
 <!--- LAST UPDATE, DOCUMENTATION & DISCLAIMER --->
@@ -20921,7 +20922,7 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
             <tr>
                 <td>
                     <h6 style="text-align: center">
-                        as of {{ entity.Update }} | © clockdb.com | alpha 1.5.12.9
+                        as of {{ entity.Update }} | <a href="{% url 'φ:disclaimer' %}" target="blank">© clockdb.com</a> | alpha 1.6.1.8
                     </h6>
                 </td>
             </tr>
@@ -20952,7 +20953,6 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
         document.getElementById('q').innerHTML = '';
         //
         a = parseInt(document.getElementById('Clockφ1').innerHTML) / 100
-        //
         b = document.getElementById('Bridgeφ1').innerHTML
         c = document.getElementById('Bridgeφ2').innerHTML
         //
@@ -20964,7 +20964,7 @@ document.getElementById('CostOfTotalAssetsAccruingToCommonStockholdersColumn4').
         }
         //
         if (a > 0.7) {
-            if (a > 0.9) {
+            if (a > 1) {
                 document.getElementById('o').style.color = 'green';
             } else {
                 document.getElementById('o').style.color = 'orange';
