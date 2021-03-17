@@ -27,7 +27,24 @@ import xml.etree.ElementTree as ET
 
 # TradingSymbol to EntityCentralIndexKeys
 EntityCentralIndexKeys = {
-    'INTC': '50863',
+    'INTC':    '50863',
+    'ORLY':    '898173',
+    'AVY':    '8818',
+    'TJX':    '109198',
+    'AOS':    '91142',
+    'FB':    '1326801',
+    'ANET':    '1596532',
+    'ABMD':    '815094',
+    'AAPL':    '320193',
+    'LLY':    '59478',
+    'MCD':    '63908',
+    'INCY':    '879169',
+    'KEYS':    '1601046',
+    'ENPH':    '1463101',
+    'TSLA':    '1318605',
+#
+#    'AMC':    '1411579',
+#    'GME':    '1326380',
 }
 
 #
@@ -1452,12 +1469,17 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                             if dad == 0:
                                                 try:
                                                     qb = statement_data['headers'][0][0]
+                                                    print('header')
+                                                    print(qb)
                                                     if qb[-11:].upper() == 'IN MILLIONS':
                                                         dad = 1000000
+                                                        print('in millions')
                                                     elif qb[-12:].upper() == 'IN THOUSANDS':
                                                         dad = 1000
+                                                        print('in thousands')
                                                     else:
                                                         dad = 1
+                                                        print('in dollars')
                                                 except:
                                                     pass
                                         except:
@@ -3337,6 +3359,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                 if r < CurrentLiabilitiesRank:
                                     d = key
                                     q = [
+                                        'FinanceLeaseLiabilities',
                                         'FinanceLeaseObligation',
                                         'CapitalLease',
                                     ]
@@ -3759,6 +3782,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                     d = key
                                     q = [
                                         'Debt'
+                                        'CorporateBorrowings',
                                     ]
                                     b = [
                                         'Asset',
@@ -3811,6 +3835,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                     d = key
                                     q = [
                                         'Debt',
+                                        'CorporateBorrowings',
                                     ]
                                     b = [
                                         'Asset',
@@ -4121,6 +4146,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                         'OtherNonCurrentLiabilit',
                                         'OtherNoncurrentLiabilit',
                                         'OtherLiabilities',
+                                        'ExhibitorServicesAgreement',
                                     ]
                                     b = [
                                         'Asset',
@@ -8220,19 +8246,24 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
             #
             # 
             for key, value in BalanceSheet.items():
-                print(str(key) + ' ' + str(value))
+                if value != None:
+                    print(str(key) + ' ' + str(value))
             #
             for key, value in IncomeStatement.items():
-                print(str(key) + ' ' + str(value))
+                if value != None:
+                    print(str(key) + ' ' + str(value))
             #
             for key, value in ComprehensiveIncomeStatement.items():
-                print(str(key) + ' ' + str(value))
+                if value != None:
+                    print(str(key) + ' ' + str(value))
             #
             for key, value in StockholdersEquityStatement.items():
-                print(str(key) + ' ' + str(value))
+                if value != None:
+                    print(str(key) + ' ' + str(value))
             #
             for key, value in CashFlowStatement.items():
-                print(str(key) + ' ' + str(value))
+                if value != None:
+                    print(str(key) + ' ' + str(value))
         #
         #
         print(137 * '-' * 3)
@@ -9553,10 +9584,15 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
             #
             # Theorical Annual Interest Charge
             try:
-                z = tb.ShortTermPortionOfLongTermDebt
-                z = z + tb.LongTermDebt
-                z = z + tb.ShortTermBorrowings
+                z = tb.ShortTermBorrowings
                 z = z + tb.CommercialPapers
+                z = z + tb.FinanceLeasesCurrent
+                z = z + tb.CapitalLeaseAndFinancingObligationsCurrent
+                z = z + tb.ShortTermPortionOfLongTermDebt
+                z = z + tb.LongTermDebt
+                z = z + tb.OperatingLeasesNonCurrent
+                z = z + tb.FinanceLeasesNonCurrent
+                z = z + tb.CapitalLeaseAndFinancingObligationsNonCurrent
                 z = z * -0.035
                 a.NormalizedTheoricalInterestCharge = z
                 a.save()
@@ -9595,36 +9631,41 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
     # get valuation ratio
     if UpdateRanking == 'yes':
         #
-        driver = webdriver.Chrome('C:\\Program Files (x86)\\chromedriver.exe')
-        #
-        url = 'http://127.0.0.1:8000/' + TradingSymbol + '/'
-        #
-        driver.get(url)
-        #
         try:
-            link = WebDriverWait(driver, 15).until(
-                EC.presence_of_element_located((By.NAME, "Opinion"))
-            )
-            link.click()
+            #
+            driver = webdriver.Chrome('C:\\Program Files (x86)\\chromedriver.exe')
+            #
+            url = 'http://127.0.0.1:8000/' + TradingSymbol + '/'
+            #
+            driver.get(url)
+            #
+            try:
+                link = WebDriverWait(driver, 15).until(
+                    EC.presence_of_element_located((By.NAME, "Opinion"))
+                )
+                link.click()
+            except:
+                pass
+            #
+            Bridge = driver.find_element_by_id("p").text
+            ValuationRatio = driver.find_element_by_id("Clockφ1").text
+            ValuationRatioPriorPeriod = driver.find_element_by_id("Clockφ2").text
+            #
+            driver.quit()
+            #
+            if len(Bridge) == 8:
+                e.Status = 'Audited'
+                e.Clockφ = int(float(ValuationRatio.strip('%').replace(',','')))
+                e.ClockφChange = int(ValuationRatio.strip('%').replace(',','')) - int(ValuationRatioPriorPeriod.strip('%').replace(',',''))
+            else:
+                e.Status = 'Misstated'
+                e.Clockφ = int(float(ValuationRatio.strip('%').replace(',','')))
+                e.ClockφChange = int(ValuationRatio.strip('%').replace(',','')) - int(ValuationRatioPriorPeriod.strip('%').replace(',',''))
+            #
+            e.save()
+        #
         except:
             pass
-        #
-        Bridge = driver.find_element_by_id("p").text
-        ValuationRatio = driver.find_element_by_id("Clockφ1").text
-        ValuationRatioPriorPeriod = driver.find_element_by_id("Clockφ2").text
-        #
-        driver.quit()
-        #
-        if len(Bridge) == 8:
-            e.Status = 'Audited'
-            e.Clockφ = int(float(ValuationRatio.strip('%').replace(',','')))
-            e.ClockφChange = int(ValuationRatio.strip('%')) - int(ValuationRatioPriorPeriod.strip('%').replace(',',''))
-        else:
-            e.Status = 'Misstated'
-            e.Clockφ = int(float(ValuationRatio.strip('%').replace(',','')))
-            e.ClockφChange = int(ValuationRatio.strip('%')) - int(ValuationRatioPriorPeriod.strip('%').replace(',',''))
-        #
-        e.save()
     #
     # save entity and update date time
     try:
