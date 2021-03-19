@@ -61,6 +61,9 @@ class AuditData(models.Model):
     DocumentPeriodEndDate = models.CharField(max_length=13, default=0)
     Period = models.CharField(max_length=13, default=0)
     #
+    # 
+    dad = models.CharField(max_length=13, default=0)
+    #
     # Balance Sheets - Audit
     #
     CurrentAssets = models.IntegerField(default=0)
@@ -195,6 +198,7 @@ class CashFlow(models.Model):
     IncreaseDecreaseInOtherReceivables = models.IntegerField(default=0)
     IncreaseDecreaseInAccountsPayableAndAccruedLiabilities = models.IntegerField(default=0)
     IncreaseDecreaseInContractWithCustomerLiability = models.IntegerField(default=0)
+    IncreaseDecreaseInRetirementBenefits = models.IntegerField(default=0)
     IncreaseDecreaseOperatingLeaseCurrent = models.IntegerField(default=0)
     IncreaseDecreaseInOtherOperatingActivities = models.IntegerField(default=0)
     #

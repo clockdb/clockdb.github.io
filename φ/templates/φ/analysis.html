@@ -546,7 +546,7 @@
                 <tr>
                     <td>
                         <h4 id='o' style="color:Black; font-weight:bold; text-shadow: 1px 1px rgb(73, 73, 73); display:inline; padding-right:27px;"></h4>
-                        <a href={{ entity.SECurl }} target="blank" style="color:#0D47A1;"><h4 id="EntityRegistrantName" style="color:Black; font-weight:bold; text-shadow: 1px 1px rgb(73, 73, 73); display:inline;"></h4></a>
+                        <h4 id="EntityRegistrantName" style="color:Black; font-weight:bold; text-shadow: 1px 1px rgb(73, 73, 73); display:inline;"></h4>
                     </td>
                 </tr>
                 <tr>
@@ -9522,6 +9522,65 @@
                         <td colspan="2"><input class="clock" id="IncreaseDecreaseInContractWithCustomerLiability5" value={{ CashFlow_fifthlastyear.IncreaseDecreaseInContractWithCustomerLiability }} onclick="HighLight()"></input></td>
                         <td colspan="2"><input class="clock" id="IncreaseDecreaseInContractWithCustomerLiability6" value={{ CashFlow_sixthlastyear.IncreaseDecreaseInContractWithCustomerLiability }} onclick="HighLight()"></input></td>
                     </tr>
+                    <tr id='IncreaseDecreaseInRetirementBenefitsRow'>
+                        <td colspan="2"><h6>Increase (Decrease) In Deferred Revenue</h6></td>
+                        <td style="text-align:center; font-weight:bold;">db</td>
+                        <td>
+                            <input type="checkbox" style="height: 16px;" id="IncreaseDecreaseInRetirementBenefitsCheckbox"></input>
+                            <input type="checkbox" style="height: 16px;" id="IncreaseDecreaseInRetirementBenefitsCheckbox2"></input>
+                        </td>
+                        <script>
+                            function IncreaseDecreaseInRetirementBenefitsRow(IncreaseDecreaseInRetirementBenefitsRow) {
+                                z = 0
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('IncreaseDecreaseInRetirementBenefits1').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('IncreaseDecreaseInRetirementBenefits2').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('IncreaseDecreaseInRetirementBenefits3').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('IncreaseDecreaseInRetirementBenefits4').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('IncreaseDecreaseInRetirementBenefits5').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('IncreaseDecreaseInRetirementBenefits6').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                if (z == 6) {
+                                    document.getElementById('IncreaseDecreaseInRetirementBenefitsRow').style.display = 'none';
+                                }
+                            };
+                            window.addEventListener('DOMContentLoaded', IncreaseDecreaseInRetirementBenefitsRow)
+                            window.addEventListener('keyup', function() {
+                                var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
+                                if (event.keyCode in formulakeylist) {
+                                    IncreaseDecreaseInRetirementBenefitsRow();
+                                }
+                            })
+                        </script>
+                        <td colspan="2"><input class="clock" id="IncreaseDecreaseInRetirementBenefits1" style="font-weight:bold;" value={{ CashFlow_lastyear.IncreaseDecreaseInRetirementBenefits }} onclick="HighLight()"></input></td>
+                        <td colspan="2"><input class="clock" id="IncreaseDecreaseInRetirementBenefits2" value={{ CashFlow_secondlastyear.IncreaseDecreaseInRetirementBenefits }} onclick="HighLight()"></input></td>
+                        <td colspan="2"><input class="clock" id="IncreaseDecreaseInRetirementBenefits3" value={{ CashFlow_thirdlastyear.IncreaseDecreaseInRetirementBenefits }} onclick="HighLight()"></input></td>
+                        <td colspan="2"><input class="clock" id="IncreaseDecreaseInRetirementBenefits4" value={{ CashFlow_fourthlastyear.IncreaseDecreaseInRetirementBenefits }} onclick="HighLight()"></input></td>
+                        <td colspan="2"><input class="clock" id="IncreaseDecreaseInRetirementBenefits5" value={{ CashFlow_fifthlastyear.IncreaseDecreaseInRetirementBenefits }} onclick="HighLight()"></input></td>
+                        <td colspan="2"><input class="clock" id="IncreaseDecreaseInRetirementBenefits6" value={{ CashFlow_sixthlastyear.IncreaseDecreaseInRetirementBenefits }} onclick="HighLight()"></input></td>
+                    </tr>
                     <tr id='IncreaseDecreaseOperatingLeaseCurrentRow'>
                         <td colspan="2"><h6>Change In Operating Lease Current</h6></td>
                         <td style="text-align:center; font-weight:bold;">db</td>
@@ -9665,6 +9724,7 @@
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInOtherReceivables1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInAccountsPayableAndAccruedLiabilities1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInContractWithCustomerLiability1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('IncreaseDecreaseInRetirementBenefits1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseOperatingLeaseCurrent1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInOtherOperatingActivities1').value.replaceAll(/,/g, ''));
                                 document.getElementById('OperatingActivitiesNote1').innerHTML = numUSD.format(Math.round(a));
@@ -9683,6 +9743,7 @@
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInOtherReceivables2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInAccountsPayableAndAccruedLiabilities2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInContractWithCustomerLiability2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('IncreaseDecreaseInRetirementBenefits2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseOperatingLeaseCurrent2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInOtherOperatingActivities2').value.replaceAll(/,/g, ''));
                                 document.getElementById('OperatingActivitiesNote2').innerHTML = numUSD.format(Math.round(a));
@@ -9701,6 +9762,7 @@
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInOtherReceivables3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInAccountsPayableAndAccruedLiabilities3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInContractWithCustomerLiability3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('IncreaseDecreaseInRetirementBenefits3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseOperatingLeaseCurrent3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInOtherOperatingActivities3').value.replaceAll(/,/g, ''));
                                 document.getElementById('OperatingActivitiesNote3').innerHTML = numUSD.format(Math.round(a));
@@ -9719,6 +9781,7 @@
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInOtherReceivables4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInAccountsPayableAndAccruedLiabilities4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInContractWithCustomerLiability4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('IncreaseDecreaseInRetirementBenefits4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseOperatingLeaseCurrent4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInOtherOperatingActivities4').value.replaceAll(/,/g, ''));
                                 document.getElementById('OperatingActivitiesNote4').innerHTML = numUSD.format(Math.round(a));
@@ -9737,6 +9800,7 @@
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInOtherReceivables5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInAccountsPayableAndAccruedLiabilities5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInContractWithCustomerLiability5').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('IncreaseDecreaseInRetirementBenefits5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseOperatingLeaseCurrent5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInOtherOperatingActivities5').value.replaceAll(/,/g, ''));
                                 document.getElementById('OperatingActivitiesNote5').innerHTML = numUSD.format(Math.round(a));
@@ -9755,6 +9819,7 @@
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInOtherReceivables6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInAccountsPayableAndAccruedLiabilities6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInContractWithCustomerLiability6').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('IncreaseDecreaseInRetirementBenefits6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseOperatingLeaseCurrent6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInOtherOperatingActivities6').value.replaceAll(/,/g, ''));
                                 document.getElementById('OperatingActivitiesNote6').innerHTML = numUSD.format(Math.round(a));
@@ -15898,20 +15963,20 @@
                                 })
                                 // Column 1
                                 a = parseInt(document.getElementById('EntityCommonStockSharesOutstanding1').value.replaceAll(/,/g, ''));
-                                b = parseInt(document.getElementById('StockPriceColumn1').value.replaceAll(/,/g, ''));
-                                document.getElementById('MarketCapitalizationColumn1').innerHTML = numUSD.format(a * b);
+                                b = parseFloat(document.getElementById('StockPriceColumn1').value.replaceAll(/,/g, ''));
+                                document.getElementById('MarketCapitalizationColumn1').innerHTML = numUSD.format(Math.round(a * b));
                                 // Column 2
                                 a = parseInt(document.getElementById('EntityCommonStockSharesOutstanding2').value.replaceAll(/,/g, ''));
-                                b = parseInt(document.getElementById('StockPriceColumn2').value.replaceAll(/,/g, ''));
-                                document.getElementById('MarketCapitalizationColumn2').innerHTML = numUSD.format(a * b);
+                                b = parseFloat(document.getElementById('StockPriceColumn2').value.replaceAll(/,/g, ''));
+                                document.getElementById('MarketCapitalizationColumn2').innerHTML = numUSD.format(Math.round(a * b));
                                 // Column 3
                                 a = parseInt(document.getElementById('EntityCommonStockSharesOutstanding3').value.replaceAll(/,/g, ''));
-                                b = parseInt(document.getElementById('StockPriceColumn3').value.replaceAll(/,/g, ''));
-                                document.getElementById('MarketCapitalizationColumn3').innerHTML = numUSD.format(a * b);
+                                b = parseFloat(document.getElementById('StockPriceColumn3').value.replaceAll(/,/g, ''));
+                                document.getElementById('MarketCapitalizationColumn3').innerHTML = numUSD.format(Math.round(a * b));
                                 // Column 4
                                 a = parseInt(document.getElementById('EntityCommonStockSharesOutstanding4').value.replaceAll(/,/g, ''));
-                                b = parseInt(document.getElementById('StockPriceColumn4').value.replaceAll(/,/g, ''));
-                                document.getElementById('MarketCapitalizationColumn4').innerHTML = numUSD.format(a * b);
+                                b = parseFloat(document.getElementById('StockPriceColumn4').value.replaceAll(/,/g, ''));
+                                document.getElementById('MarketCapitalizationColumn4').innerHTML = numUSD.format(Math.round(a * b));
                             };
                             window.addEventListener('DOMContentLoaded', BalanceMarketCapitalization)
                             window.addEventListener('keyup', function() {
@@ -16197,7 +16262,7 @@
                                             scale = '(in millions)';
                                         } else {
                                             dad = 1000;
-                                            scale = 'in thousands';
+                                            scale = '(in thousands)';
                                         }
                                     }
                                     //
@@ -16507,11 +16572,11 @@
                                     minimumFractionDigits: 0,
                                     maximumFractionDigits: 0
                                 })
-                                b = parseInt(document.getElementById('IntrinsicValueMaterialityThreshold').innerHTML.replaceAll(/,/g, ''));
-                                c = parseInt(document.getElementById('ContinuingOperationsMaterialityThreshold').innerHTML.replaceAll(/,/g, ''));
-                                d = parseInt(document.getElementById('RevenuesMaterialityThreshold').innerHTML.replaceAll(/,/g, ''));
-                                e = parseInt(document.getElementById('NetAssetMaterialityThreshold').innerHTML.replaceAll(/,/g, ''));
-                                document.getElementById('MaterialityThresholdValue').innerHTML = numUSD.format(Math.max(850000000, Math.min(b, Math.abs(c), d, e)));
+                                a = parseInt(document.getElementById('IntrinsicValueMaterialityThreshold').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.max(a, parseInt(document.getElementById('ContinuingOperationsMaterialityThreshold').innerHTML.replaceAll(/,/g, '')));
+                                a = Math.max(a, parseInt(document.getElementById('RevenuesMaterialityThreshold').innerHTML.replaceAll(/,/g, '')));
+                                a = Math.max(a, parseInt(document.getElementById('NetAssetMaterialityThreshold').innerHTML.replaceAll(/,/g, '')));
+                                document.getElementById('MaterialityThresholdValue').innerHTML = numUSD.format(a);
                             };
                             window.addEventListener('DOMContentLoaded', BalanceMaterialityThresholdValue)
                             window.addEventListener('keyup', function() {
@@ -20431,6 +20496,51 @@
                             <td colspan="2" class="account" id="CashFlowAnomalySummary5" style="border-bottom-style:ridge;"></td>
                             <td colspan="2" class="account" id="CashFlowAnomalySummary6" style="border-bottom-style:ridge;"></td>
                         </tr>
+                        <tr>
+                            <td colspan="2"><h6><b>Market Capitalization</b></h6></td>
+                            <td><button data-page="Opinion" style="text-align:center; font-weight:bold;">OP</button></td>
+                            <td>
+                                <input type="checkbox" style="height: 16px;" id="Checkbox"></input>
+                                <input type="checkbox" style="height: 16px;" id="Checkbox2"></input>
+                            </td>
+                            <script>
+                                function MarketCapitalizationAnomalySummary(MarketCapitalizationAnomalySummary) {
+                                    // Last Year
+                                    a = parseInt(document.getElementById('MarketCapitalizationColumn1').innerHTML.replaceAll(/,/g, ''));
+                                    if (a === 0) {
+                                        document.getElementById('MarketCapitalizationAnomalySummary1').innerHTML = 'Market Capitalization is null.';
+                                    }
+                                    // Second Last Year
+                                    a = parseInt(document.getElementById('MarketCapitalizationColumn2').innerHTML.replaceAll(/,/g, ''));
+                                    if (a === 0) {
+                                        document.getElementById('MarketCapitalizationAnomalySummary2').innerHTML = 'Market Capitalization is null.';
+                                    }
+                                    // Third Last Year
+                                    a = parseInt(document.getElementById('MarketCapitalizationColumn3').innerHTML.replaceAll(/,/g, ''));
+                                    if (a === 0) {
+                                        document.getElementById('MarketCapitalizationAnomalySummary3').innerHTML = 'Market Capitalization is null.';
+                                    }
+                                    // Fourth Last Year
+                                    a = parseInt(document.getElementById('MarketCapitalizationColumn4').innerHTML.replaceAll(/,/g, ''));
+                                    if (a === 0) {
+                                        document.getElementById('MarketCapitalizationAnomalySummary4').innerHTML = 'Market Capitalization is null.';
+                                    }
+                                };
+                                window.addEventListener('DOMContentLoaded', MarketCapitalizationAnomalySummary)
+                                window.addEventListener('keyup', function() {
+                                    var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
+                                    if (event.keyCode in formulakeylist) {
+                                        MarketCapitalizationAnomalySummary();
+                                    }
+                                })
+                            </script>
+                            <td colspan="2" id="MarketCapitalizationAnomalySummary1" style="border-bottom-style:ridge; font-weight:bold;"></td>
+                            <td colspan="2" id="MarketCapitalizationAnomalySummary2" style="border-bottom-style:ridge;"></td>
+                            <td colspan="2" id="MarketCapitalizationAnomalySummary3" style="border-bottom-style:ridge;"></td>
+                            <td colspan="2" id="MarketCapitalizationAnomalySummary4" style="border-bottom-style:ridge;"></td>
+                            <td colspan="2" id="MarketCapitalizationAnomalySummary5" style="border-bottom-style:ridge;"></td>
+                            <td colspan="2" id="MarketCapitalizationAnomalySummary6" style="border-bottom-style:ridge;"></td>
+                        </tr>
                         <tr></tr>
                         <tr></tr>
                         <tr></tr>
@@ -20558,11 +20668,12 @@
                             <td colspan='4'></td>
                             <script>
                                 function AuditOpinion(AuditOpinion) {
-                                    // Last Year
+                                    // Second Last Year
                                     mt = parseInt(document.getElementById('AnomaliesMaterialityThreshold1').innerHTML.replaceAll(/,/g, ''));
                                     a = parseInt(document.getElementById('AnomaliesWorstCaseScenario1').innerHTML.replaceAll(/,/g, ''));
+                                    z = 'There are still some unexplained differences in the financial statements and it might not be exempt from material misstatements.'
                                     if (Math.abs(a) - Math.abs(mt) >= 0) {
-                                        document.getElementById('Validity1').innerHTML = "There are still some unexplained differences in the financial statements and it might not be exempt from material misstatements."
+                                        document.getElementById('Validity1').innerHTML = z
                                     } else {
                                         f = 0
                                         a = parseInt(document.getElementById('CurrentAssets1').innerHTML.replaceAll(/,/g, ''));
@@ -20601,15 +20712,22 @@
                                         if (a === 0) {
                                             f = f + 1
                                         }
+                                        a = document.getElementById('MarketCapitalizationAnomalySummary1').innerHTML.replaceAll(/,/g, '');
+                                        if (a === 'Market Capitalization is null.') {
+                                            f = f + 1
+                                        }
                                         if (f === 0) {
                                             document.getElementById('Validity1').innerHTML = "Nothing leads to believe that the financial statements are not exempt from material misstatements."
+                                        } else {
+                                            document.getElementById('Validity1').innerHTML = z
                                         }
                                     }
                                     // Second Last Year
                                     mt = parseInt(document.getElementById('AnomaliesMaterialityThreshold2').innerHTML.replaceAll(/,/g, ''));
                                     a = parseInt(document.getElementById('AnomaliesWorstCaseScenario2').innerHTML.replaceAll(/,/g, ''));
+                                    z = 'There are still some unexplained differences in the financial statements and it might not be exempt from material misstatements.'
                                     if (Math.abs(a) - Math.abs(mt) >= 0) {
-                                        document.getElementById('Validity2').innerHTML = "There are still some unexplained differences in the financial statements and it might not be exempt from material misstatements."
+                                        document.getElementById('Validity2').innerHTML = z
                                     } else {
                                         f = 0
                                         a = parseInt(document.getElementById('CurrentAssets2').innerHTML.replaceAll(/,/g, ''));
@@ -20648,15 +20766,22 @@
                                         if (a === 0) {
                                             f = f + 1
                                         }
+                                        a = document.getElementById('MarketCapitalizationAnomalySummary2').innerHTML.replaceAll(/,/g, '');
+                                        if (a === 'Market Capitalization is null.') {
+                                            f = f + 1
+                                        }
                                         if (f === 0) {
                                             document.getElementById('Validity2').innerHTML = "Nothing leads to believe that the financial statements are not exempt from material misstatements."
+                                        } else {
+                                            document.getElementById('Validity2').innerHTML = z
                                         }
                                     }
                                     // Third Last Year
                                     mt = parseInt(document.getElementById('AnomaliesMaterialityThreshold3').innerHTML.replaceAll(/,/g, ''));
                                     a = parseInt(document.getElementById('AnomaliesWorstCaseScenario3').innerHTML.replaceAll(/,/g, ''));
+                                    z = 'There are still some unexplained differences in the financial statements and it might not be exempt from material misstatements.'
                                     if (Math.abs(a) - Math.abs(mt) >= 0) {
-                                        document.getElementById('Validity3').innerHTML = "There are still some unexplained differences in the financial statements and it might not be exempt from material misstatements."
+                                        document.getElementById('Validity3').innerHTML = z
                                     } else {
                                         f = 0
                                         a = parseInt(document.getElementById('CurrentAssets3').innerHTML.replaceAll(/,/g, ''));
@@ -20695,15 +20820,22 @@
                                         if (a === 0) {
                                             f = f + 1
                                         }
+                                        a = document.getElementById('MarketCapitalizationAnomalySummary3').innerHTML.replaceAll(/,/g, '');
+                                        if (a === 'Market Capitalization is null.') {
+                                            f = f + 1
+                                        }
                                         if (f === 0) {
                                             document.getElementById('Validity3').innerHTML = "Nothing leads to believe that the financial statements are not exempt from material misstatements."
+                                        } else {
+                                            document.getElementById('Validity3').innerHTML = z
                                         }
                                     }
                                     // Fourth Last Year
                                     mt = parseInt(document.getElementById('AnomaliesMaterialityThreshold4').innerHTML.replaceAll(/,/g, ''));
                                     a = parseInt(document.getElementById('AnomaliesWorstCaseScenario4').innerHTML.replaceAll(/,/g, ''));
+                                    z = 'There are still some unexplained differences in the financial statements and it might not be exempt from material misstatements.'
                                     if (Math.abs(a) - Math.abs(mt) >= 0) {
-                                        document.getElementById('Validity4').innerHTML = "There are still some unexplained differences in the financial statements and it might not be exempt from material misstatements."
+                                        document.getElementById('Validity4').innerHTML = z
                                     } else {
                                         f = 0
                                         a = parseInt(document.getElementById('CurrentAssets4').innerHTML.replaceAll(/,/g, ''));
@@ -20742,15 +20874,22 @@
                                         if (a === 0) {
                                             f = f + 1
                                         }
+                                        a = document.getElementById('MarketCapitalizationAnomalySummary4').innerHTML.replaceAll(/,/g, '');
+                                        if (a === 'Market Capitalization is null.') {
+                                            f = f + 1
+                                        }
                                         if (f === 0) {
                                             document.getElementById('Validity4').innerHTML = "Nothing leads to believe that the financial statements are not exempt from material misstatements."
+                                        } else {
+                                            document.getElementById('Validity4').innerHTML = z
                                         }
                                     }
                                     // Fifth Last Year
                                     mt = parseInt(document.getElementById('AnomaliesMaterialityThreshold5').innerHTML.replaceAll(/,/g, ''));
                                     a = parseInt(document.getElementById('AnomaliesWorstCaseScenario5').innerHTML.replaceAll(/,/g, ''));
+                                    z = 'There are still some unexplained differences in the financial statements and it might not be exempt from material misstatements.'
                                     if (Math.abs(a) - Math.abs(mt) >= 0) {
-                                        document.getElementById('Validity5').innerHTML = "There are still some unexplained differences in the financial statements and it might not be exempt from material misstatements."
+                                        document.getElementById('Validity5').innerHTML = z
                                     } else {
                                         f = 0
                                         a = parseInt(document.getElementById('CurrentAssets5').innerHTML.replaceAll(/,/g, ''));
@@ -20789,15 +20928,22 @@
                                         if (a === 0) {
                                             f = f + 1
                                         }
+                                        a = document.getElementById('MarketCapitalizationAnomalySummary5').innerHTML.replaceAll(/,/g, '');
+                                        if (a === 'Market Capitalization is null.') {
+                                            f = f + 1
+                                        }
                                         if (f === 0) {
                                             document.getElementById('Validity5').innerHTML = "Nothing leads to believe that the financial statements are not exempt from material misstatements."
+                                        } else {
+                                            document.getElementById('Validity5').innerHTML = z
                                         }
                                     }
                                     // Sixth Last Year
                                     mt = parseInt(document.getElementById('AnomaliesMaterialityThreshold6').innerHTML.replaceAll(/,/g, ''));
                                     a = parseInt(document.getElementById('AnomaliesWorstCaseScenario6').innerHTML.replaceAll(/,/g, ''));
+                                    z = 'There are still some unexplained differences in the financial statements and it might not be exempt from material misstatements.'
                                     if (Math.abs(a) - Math.abs(mt) >= 0) {
-                                        document.getElementById('Validity6').innerHTML = "There are still some unexplained differences in the financial statements and it might not be exempt from material misstatements."
+                                        document.getElementById('Validity6').innerHTML = z
                                     } else {
                                         f = 0
                                         a = parseInt(document.getElementById('CurrentAssets6').innerHTML.replaceAll(/,/g, ''));
@@ -20836,8 +20982,14 @@
                                         if (a === 0) {
                                             f = f + 1
                                         }
+                                        a = document.getElementById('MarketCapitalizationAnomalySummary6').innerHTML.replaceAll(/,/g, '');
+                                        if (a === 'Market Capitalization is null.') {
+                                            f = f + 1
+                                        }
                                         if (f === 0) {
                                             document.getElementById('Validity6').innerHTML = "Nothing leads to believe that the financial statements are not exempt from material misstatements."
+                                        } else {
+                                            document.getElementById('Validity6').innerHTML = z
                                         }
                                     }
                                 };
@@ -20883,15 +21035,17 @@
                                     d = document.getElementById('Validity4').innerHTML
                                     e = document.getElementById('Validity5').innerHTML
                                     f = document.getElementById('Validity6').innerHTML
+                                    //
+                                    z = 'There are still some unexplained differences in the financial statements and it might not be exempt from material misstatements.'
                                     // Column 1
                                     if (a === b) {
                                         if (b === c) {
                                             g = a
                                         } else {
-                                            g = ''
+                                            g = z
                                         }
                                     } else {
-                                        g = ''
+                                        g = z
                                     }
                                     document.getElementById('Bridgeφ1').innerHTML = g
                                     // Column 2
@@ -20899,10 +21053,10 @@
                                         if (c === d) {
                                             g = b
                                         } else {
-                                            g = ''
+                                            g = z
                                         }
                                     } else {
-                                        g = ''
+                                        g = z
                                     }
                                     document.getElementById('Bridgeφ2').innerHTML = g
                                     // Column 3
@@ -20910,10 +21064,10 @@
                                         if (d === e) {
                                             g = c
                                         } else {
-                                            g = ''
+                                            g = z
                                         }
                                     } else {
-                                        g = ''
+                                        g = z
                                     }
                                     document.getElementById('Bridgeφ3').innerHTML = g
                                     // Column 4
@@ -20921,10 +21075,10 @@
                                         if (e === f) {
                                             g = d
                                         } else {
-                                            g = ''
+                                            g = z
                                         }
                                     } else {
-                                        g = ''
+                                        g = z
                                     }
                                     document.getElementById('Bridgeφ4').innerHTML = g
                                 ////////////////////
@@ -21134,7 +21288,7 @@
         if (b.length === 98) {
             if (c.length === 98) {
                 document.getElementById('o').innerHTML = '⬤';
-                document.getElementById('p').innerHTML = 'Philippe Dube, CPA auditor, D. Fisc.';
+                document.getElementById('p').innerHTML = 'Audited.';
             }
         }
         //
