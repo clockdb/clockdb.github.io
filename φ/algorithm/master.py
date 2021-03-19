@@ -27,23 +27,7 @@ import xml.etree.ElementTree as ET
 
 # TradingSymbol to EntityCentralIndexKeys
 EntityCentralIndexKeys = {
-#    'AAPL':    '320193',
-#    'ABMD':    '815094',
-    'ANET':    '1596532',
-#    'AOS':    '91142',
-#    'AVY':    '8818',
-#    'ENPH':    '1463101',
-#    'FB':    '1326801',
-#    'GME':    '1326380',
-#    'INCY':    '879169',
-#    'INTC':    '50863',
-#    'KDP':    '1418135',
-#    'KEYS':    '1601046',
-#    'LLY':    '59478',
-#    'MCD':    '63908',
-#    'ORLY':    '898173',
-#    'TJX':    '109198',
-#    'TSLA':    '1318605',
+    'TSLA':    '1318605',
 }
 
 #
@@ -1383,6 +1367,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                 'DETAIL',
                                 'PARENTHETICAL',
                                 'POLICIES',
+                                'REDEEMABLE',
                                 'SCHEDULE',
                                 'SEGMENT',
                                 'TABLE',
@@ -1434,6 +1419,8 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             #
                             a.dad = None
                             #
+                            h = None
+                            #
                             statement = statements_set[financial_statement]
                             #
                             print(137*'-' + '\n')
@@ -1458,46 +1445,58 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                         #
                                         t = [ele.text.strip() for ele in cols]
                                         #
-                                        GL_SEC = t[0]
+                                        GL_SEC = t[0].lower().title()
                                         #
-                                        GL = re.sub(r"[^a-zA-Z()]", "", GL_SEC.title())
+                                        GL = re.sub(r"[^a-zA-Z()]", "", GL_SEC)
                                         #
                                         for y in RegularExpressions:
                                             GL = GL.replace(y,'')
                                         #
-                                        # dad
+                                        # header
                                         try:
-                                            try:
-                                                qb = statement_data['headers'][0][0]
-                                                #
-                                                if a.dad is None:
-                                                #
-                                                    if qb[-11:].upper() == 'IN MILLIONS':
-                                                        #
-                                                        dad = 1000000
-                                                        a.dad = 'In Millions'
-                                                        print(qb[-11:].upper())
+                                            # dad
+                                            qd = statement_data['headers']
+                                            qb = qd[0][0]
+                                            #
+                                            if a.dad is None:
+                                            #
+                                                if qb[-11:].upper() == 'IN MILLIONS':
                                                     #
-                                                    elif qb[-12:].upper() == 'IN THOUSANDS':
-                                                        #
-                                                        a.dad = 'In Thousands'
-                                                        dad = 1000
-                                                        print(qb[-12:].upper())
+                                                    dad = 1000000
+                                                    a.dad = 'In Millions'
+                                                    print(qb[-11:].upper())
+                                                #
+                                                elif qb[-12:].upper() == 'IN THOUSANDS':
                                                     #
-                                                    else:
-                                                        #
-                                                        dad = 1
-                                                        print('In Dollars')
-                                            except:
-                                                pass
+                                                    a.dad = 'In Thousands'
+                                                    dad = 1000
+                                                    print(qb[-12:].upper())
+                                                #
+                                                else:
+                                                    #
+                                                    dad = 1
+                                                    print('In Dollars')
+                                                #
+                                                # column
+                                                if h is None:
+                                                    print(qd)
+                                                    h = "done"
+                                        #
                                         except:
                                             print('---Could not establish scale.')
                                         #
                                         # value
                                         try:
+                                            #
                                             z = len(m[5].find_all('td'))
+                                            #
                                             x = m[5].find_all('td')[1].text
-                                            if z > 3:
+                                            #
+                                            if z > 12:
+                                                g = t[9]
+                                                print(g)
+                                            #
+                                            elif z > 3:
                                                 if x == '' :
                                                     g = t[2]
                                                 else:
@@ -1638,6 +1637,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
             try:
                 #
                 # balance sheet
+                print(137*'-' + '\n')
                 print('balance sheet')
                 print(137*'-' + '\n')
                 try:
@@ -1853,7 +1853,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                                 CurrentLiabilitiesRank = r
                             r = r + 1
                         a.CurrentLiabilities = -sum(CurrentLiabilities)
-                        print('Current Liabiliies Rank: ' + str(CurrentLiabilitiesRank))
+                        print('Current Liabilities Rank: ' + str(CurrentLiabilitiesRank))
                     except:
                         pass
                     #
@@ -1938,39 +1938,42 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                 'Stockholder',
                                 'Tax',
                             ]
+                            s = 'a'
                             for l in q:
-                                if l in d:
-                                    h = 'p'
-                                    for p in b:
-                                        u = 0
-                                        while u < len(b):
-                                            if p in d:
-                                                h = ''
-                                            u = u + 1
-                                    if h == 'p':
-                                        try:
-                                            i = 0
-                                            while BalanceSheet[key][i] == None:
-                                                i = i + 1
-                                            ARCHvalue = BalanceSheet[key][i]
-                                            BalanceSheet[key][i] = None
-                                        except:
-                                            if BalanceSheet[key] != None:
-                                                ARCHvalue = BalanceSheet[key]
-                                                BalanceSheet[key] = None
-                                            else:
-                                                ARCHvalue = 0
-                                        if ARCHvalue != 0:
-                                            TotalLiabilities.append(ARCHvalue)
-                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'TotalLiabilities')
-                                            LiabilitiesRank = r
+                                if s == 'a':
+                                    if l in d:
+                                        h = 'p'
+                                        for p in b:
+                                            u = 0
+                                            while u < len(b):
+                                                if p in d:
+                                                    h = ''
+                                                u = u + 1
+                                        if h == 'p':
+                                            try:
+                                                i = 0
+                                                while BalanceSheet[key][i] == None:
+                                                    i = i + 1
+                                                ARCHvalue = BalanceSheet[key][i]
+                                                BalanceSheet[key][i] = None
+                                            except:
+                                                if BalanceSheet[key] != None:
+                                                    ARCHvalue = BalanceSheet[key]
+                                                    BalanceSheet[key] = None
+                                                else:
+                                                    ARCHvalue = 0
+                                            if ARCHvalue != 0:
+                                                TotalLiabilities.append(ARCHvalue)
+                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'TotalLiabilities')
+                                                LiabilitiesRank = r
+                                                s = 'z'
                                 r = r + 1
                         a.Liabilities = -sum(TotalLiabilities)
                         if LiabilitiesRank is None:
                             a.Liabilities = None
                             print('Could not establish rank for Total Liabilities')
                         else:
-                            print('Liabiliies Rank: ' + str(LiabilitiesRank))
+                            print('Liabilities Rank: ' + str(LiabilitiesRank))
                     except:
                         pass
                     #
@@ -2188,7 +2191,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             print('Total Non Current Liabilities: ' + str(a.NonCurrentLiabilities))
                             for key, value in BalanceSheet.items():
                                 if r > CurrentLiabilitiesRank:
-                                    if r < LiabilitiesRank:
+                                    if r < min(LiabilitiesRank r < LiabilitiesAndStockholdersEquityRank):
                                         NCLA = NCLA - value
                                 r = r + 1
                             print('Non Current Liabilities Components: ' + str(NCLA))
@@ -3845,7 +3848,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             LongTermDebt = []
                             r = 0
                             for key, value in BalanceSheet.items():
-                                if r < LiabilitiesRank:
+                                if r < min(LiabilitiesRank r < LiabilitiesAndStockholdersEquityRank):
                                     d = key
                                     q = [
                                         'Debt',
@@ -3890,7 +3893,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             RetirementBenefits = []
                             r = 0
                             for key, value in BalanceSheet.items():
-                                if r < LiabilitiesRank:
+                                if r < min(LiabilitiesRank r < LiabilitiesAndStockholdersEquityRank):
                                     d = key
                                     q = [
                                         'RetirementBenefits',
@@ -3933,7 +3936,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             OperatingLeasesNonCurrent = []
                             r = 0
                             for key, value in BalanceSheet.items():
-                                if r < LiabilitiesRank:
+                                if r < min(LiabilitiesRank r < LiabilitiesAndStockholdersEquityRank):
                                     d = key
                                     q = [
                                         'Lease',
@@ -3976,7 +3979,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             FinanceLeasesNonCurrent = []
                             r = 0
                             for key, value in BalanceSheet.items():
-                                if r < LiabilitiesRank:
+                                if r < min(LiabilitiesRank r < LiabilitiesAndStockholdersEquityRank):
                                     d = key
                                     q = [
                                         'FinanceLeaseObligation',
@@ -4021,7 +4024,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             DeferredRevenueAndDepositsNonCurrent = []
                             r = 0
                             for key, value in BalanceSheet.items():
-                                if r < LiabilitiesRank:
+                                if r < min(LiabilitiesRank r < LiabilitiesAndStockholdersEquityRank):
                                     d = key
                                     q = [
                                         'DeferredRevenue',
@@ -4066,7 +4069,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             AccruedTaxLiabilitiesNonCurrent = []
                             r = 0
                             for key, value in BalanceSheet.items():
-                                if r < LiabilitiesRank:
+                                if r < min(LiabilitiesRank r < LiabilitiesAndStockholdersEquityRank):
                                     d = key
                                     q = [
                                         'IncomeTaxesPayable',
@@ -4110,7 +4113,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             DeferredTaxLiabilitiesNonCurrent = []
                             r = 0
                             for key, value in BalanceSheet.items():
-                                if r < LiabilitiesRank:
+                                if r < min(LiabilitiesRank r < LiabilitiesAndStockholdersEquityRank):
                                     d = key
                                     q = [
                                         'DeferredIncomeTax',
@@ -4154,7 +4157,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             OtherNonCurrentLiabilities = []
                             r = 0
                             for key, value in BalanceSheet.items():
-                                if r < LiabilitiesRank:
+                                if r < min(LiabilitiesRank r < LiabilitiesAndStockholdersEquityRank):
                                     d = key
                                     q = [
                                         'OtherLongTermLiabilities',
@@ -4201,7 +4204,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             DiscontinuedOperationsLiabilitiesNonCurrent = []
                             r = 0
                             for key, value in BalanceSheet.items():
-                                if r < LiabilitiesRank:
+                                if r < min(LiabilitiesRank r < LiabilitiesAndStockholdersEquityRank):
                                     d = key
                                     q = [
                                         'NoncurrentLiabilitiesOfDiscontinuedOperations',
@@ -4755,6 +4758,54 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     except:
                         pass
                     #
+                    # total operating income
+                    try:
+                        OperatingIncome = []
+                        r = 0
+                        for key, value in IncomeStatement.items():
+                            if r < NetIncomeRank:
+                                d = key
+                                q = [
+                                    'IncomeFromOperations',
+                                    'OperatingIncome',
+                                ]
+                                b = [
+                                    'DiscontinuedOperation',
+                                    'OtherOperating',
+                                    'Research',
+                                ]
+                                for l in q:
+                                    if l in d:
+                                        h = 'p'
+                                        for p in b:
+                                            u = 0
+                                            while u < len(b):
+                                                if p in d:
+                                                    h = ''
+                                                u = u + 1
+                                        if h == 'p':
+                                            try:
+                                                i = 0
+                                                while IncomeStatement[key][i] == None:
+                                                    i = i + 1
+                                                ARCHvalue = IncomeStatement[key][i]
+                                                IncomeStatement[key][i] = None
+                                            except:
+                                                if IncomeStatement[key] != None:
+                                                    ARCHvalue = IncomeStatement[key]
+                                                    IncomeStatement[key] = None
+                                                else:
+                                                    ARCHvalue = 0
+                                            if ARCHvalue != 0:
+                                                OperatingIncome.append(ARCHvalue)
+                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'OperatingIncome')
+                                                OperatingIncomeRank = r
+                            r = r + 1
+                        a.OperatingIncome = -sum(OperatingIncome)
+                        print('Operating Income Rank: ' + str(OperatingIncomeRank))
+                    except:
+                        pass
+                    #
                     print(137*'-' + '\n')
                     #
                     # sales components
@@ -4886,6 +4937,15 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     except:
                         pass
                     #
+                    # debugging
+                    try:
+                        if a.Sales != 0:
+                            tb.Sales = a.Sales
+                        if a.CostOfSales != 0:
+                            tb.CostOfSales = a.CostOfSales
+                    except:
+                        pass
+                    #
                     print(137*'-' + '\n')
                     #
                     # research and development
@@ -4944,12 +5004,13 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                     'DepreciationDepletion',
                                     'GeneralAndAdministrative',
                                     'GeneralAdministrative',
-                                    'SellingAndAdministrative',
                                     'OperatingExpenses',
                                     'OtherCostAndExpensesOperating',
                                     'OtherOperatingExpenses',
                                     'OtherOperatingIncomeExpenses',
                                     'Other',
+                                    'SalesAndMarketing',
+                                    'SellingAndAdministrative',
                                 ]
                                 b = [
                                     'CostOfSalesOperatingExpensesAndOtherNet',
@@ -8818,37 +8879,6 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                 except:
                     print('---Could Not Examinate Gross Margin.')
                 #
-                #
-                # operating income
-                try:
-                    print(' = Operating Income: ' + str(a.OperatingIncome) + ' $')
-                    print(137*'-' + '\n')
-                except:
-                    pass
-                try:
-                    Anomaly = 0
-                    Components = [
-                        a.GrossMargin,
-                        a.OperatingExpenses,
-                    ]
-                    Total = a.OperatingIncome
-                    #
-                    Components = sum(Components)
-                    print('Components: ' + str(Components))
-                    print('Total: ' + str(Total))
-                    Anomaly = Components - Total
-                    print('Anomaly: ' + str(Anomaly))
-                    #
-                    a.AnomalyOperatingIncome = Anomaly
-                    #
-                    tb.save()
-                    a.save()
-                    #
-                    print(137*'-' + '\n')
-                    #
-                except:
-                    print('---Could Not Examinate Operating Income.')
-                #
                 # operating expenses
                 try:
                     print('Research And Development: ' + str(tb.ResearchAndDevelopment) + ' $')
@@ -8896,6 +8926,37 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     #
                 except:
                     print('---Could Not Examinate Operating Expenses.')
+                #
+                #
+                # operating income
+                try:
+                    print(' = Operating Income: ' + str(a.OperatingIncome) + ' $')
+                    print(137*'-' + '\n')
+                except:
+                    pass
+                try:
+                    Anomaly = 0
+                    Components = [
+                        a.GrossMargin,
+                        a.OperatingExpenses,
+                    ]
+                    Total = a.OperatingIncome
+                    #
+                    Components = sum(Components)
+                    print('Components: ' + str(Components))
+                    print('Total: ' + str(Total))
+                    Anomaly = Components - Total
+                    print('Anomaly: ' + str(Anomaly))
+                    #
+                    a.AnomalyOperatingIncome = Anomaly
+                    #
+                    tb.save()
+                    a.save()
+                    #
+                    print(137*'-' + '\n')
+                    #
+                except:
+                    print('---Could Not Examinate Operating Income.')
                 #
                 #
                 # income before taxes

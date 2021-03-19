@@ -13152,7 +13152,7 @@
                                 if (a < 0.021) {
                                     e = parseInt(document.getElementById('RiskRelatedToVolatilityOfReturnOnTotalAssetsColumn1').innerHTML)/100;
                                     e = e + 0.021
-                                    document.getElementById('RiskRelatedToVolatilityOfReturnOnTotalAssetsColumn1').innerHTML = numUSD.format(a);
+                                    document.getElementById('OtherRateSubstractionColumn1').value = numUSD.format(a);
                                     a = 0.021
                                 }
                                 document.getElementById('CapitalizationRateColumn1').innerHTML = numUSD.format(a);
@@ -13163,7 +13163,7 @@
                                 if (a < 0.021) {
                                     e = parseInt(document.getElementById('RiskRelatedToVolatilityOfReturnOnTotalAssetsColumn2').innerHTML)/100;
                                     e = e + 0.021
-                                    document.getElementById('RiskRelatedToVolatilityOfReturnOnTotalAssetsColumn2').innerHTML = numUSD.format(a);
+                                    document.getElementById('OtherRateSubstractionColumn2').value = numUSD.format(a);
                                     a = 0.021
                                 }
                                 document.getElementById('CapitalizationRateColumn2').innerHTML = numUSD.format(Math.max(a));
@@ -13175,7 +13175,7 @@
                                 if (a < 0.021) {
                                     e = parseInt(document.getElementById('RiskRelatedToVolatilityOfReturnOnTotalAssetsColumn3').innerHTML)/100;
                                     e = e + 0.021
-                                    document.getElementById('RiskRelatedToVolatilityOfReturnOnTotalAssetsColumn3').innerHTML = numUSD.format(a);
+                                    document.getElementById('OtherRateSubstractionColumn3').value = numUSD.format(a);
                                     a = 0.021
                                 }
                                 document.getElementById('CapitalizationRateColumn3').innerHTML = numUSD.format(Math.max(a));
@@ -13186,7 +13186,7 @@
                                 if (a < 0.021) {
                                     e = parseInt(document.getElementById('RiskRelatedToVolatilityOfReturnOnTotalAssetsColumn4').innerHTML)/100;
                                     e = e + 0.021
-                                    document.getElementById('RiskRelatedToVolatilityOfReturnOnTotalAssetsColumn4').innerHTML = numUSD.format(a);
+                                    document.getElementById('OtherRateSubstractionColumn4').value = numUSD.format(a);
                                     a = 0.021
                                 }
                                 document.getElementById('CapitalizationRateColumn4').innerHTML = numUSD.format(Math.max(a));
@@ -16428,7 +16428,7 @@
                     </tr>
                     </tr>
                     <tr>
-                        <td style="text-align:left">{{ entity.sixthlastyear }} to {{ entity.lastyear }}</td>
+                        <td style="text-align:left">{{ entity.lastyear }} and the five years before<./td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
