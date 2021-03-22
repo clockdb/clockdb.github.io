@@ -200,6 +200,7 @@ class CashFlow(models.Model):
     IncreaseDecreaseInContractWithCustomerLiability = models.IntegerField(default=0)
     IncreaseDecreaseInRetirementBenefits = models.IntegerField(default=0)
     IncreaseDecreaseOperatingLeaseCurrent = models.IntegerField(default=0)
+    IncreaseDecreaseInFairValueOfDerivativesOperating = models.IntegerField(default=0)
     IncreaseDecreaseInOtherOperatingActivities = models.IntegerField(default=0)
     #
     # Investing Activities - Cash Flow

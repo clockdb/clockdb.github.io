@@ -9051,7 +9051,7 @@
                         <td colspan="2"><input class="clock" id="ShareBasedCompensationOperatingActivities6" value={{ CashFlow_sixthlastyear.ShareBasedCompensation }} onclick="HighLight()"></input></td>
                     </tr>
                     <tr id='IncreaseDecreaseInIncomeTaxExpenseBenefitRow'>
-                        <td colspan="2"><h6>Increase Decrease In Income Tax Expense (Benefit)</h6></td>
+                        <td colspan="2"><h6>Increase (Decrease) In Income Tax Expense (Benefit)</h6></td>
                         <td style="text-align:center; font-weight:bold;">db</td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="IncreaseDecreaseInIncomeTaxExpenseBenefitCheckbox"></input>
@@ -9639,6 +9639,65 @@
                         <td colspan="2"><input class="clock" id="IncreaseDecreaseOperatingLeaseCurrent4" value={{ CashFlow_fourthlastyear.IncreaseDecreaseOperatingLeaseCurrent }} onclick="HighLight()"></input></td>
                         <td colspan="2"><input class="clock" id="IncreaseDecreaseOperatingLeaseCurrent5" value={{ CashFlow_fifthlastyear.IncreaseDecreaseOperatingLeaseCurrent }} onclick="HighLight()"></input></td>
                         <td colspan="2"><input class="clock" id="IncreaseDecreaseOperatingLeaseCurrent6" value={{ CashFlow_sixthlastyear.IncreaseDecreaseOperatingLeaseCurrent }} onclick="HighLight()"></input></td>
+                    </tr>                    
+                    <tr id='IncreaseDecreaseInFairValueOfDerivativesOperatingRow'>
+                        <td colspan="2"><h6>Increase (Decrease) In Fair Value Of Derivatives</h6></td>
+                        <td style="text-align:center; font-weight:bold;">db</td>
+                        <td>
+                            <input type="checkbox" style="height: 16px;" id="IncreaseDecreaseInFairValueOfDerivativesOperatingCheckbox"></input>
+                            <input type="checkbox" style="height: 16px;" id="IncreaseDecreaseInFairValueOfDerivativesOperatingCheckbox2"></input>
+                        </td>
+                        <script>
+                            function IncreaseDecreaseInFairValueOfDerivativesOperatingRow(IncreaseDecreaseInFairValueOfDerivativesOperatingRow) {
+                                z = 0
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('IncreaseDecreaseInFairValueOfDerivativesOperating1').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('IncreaseDecreaseInFairValueOfDerivativesOperating2').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('IncreaseDecreaseInFairValueOfDerivativesOperating3').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('IncreaseDecreaseInFairValueOfDerivativesOperating4').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('IncreaseDecreaseInFairValueOfDerivativesOperating5').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('IncreaseDecreaseInFairValueOfDerivativesOperating6').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                if (z == 6) {
+                                    document.getElementById('IncreaseDecreaseInFairValueOfDerivativesOperatingRow').style.display = 'none';
+                                }
+                            };
+                            window.addEventListener('DOMContentLoaded', IncreaseDecreaseInFairValueOfDerivativesOperatingRow)
+                            window.addEventListener('keyup', function() {
+                                var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
+                                if (event.keyCode in formulakeylist) {
+                                    IncreaseDecreaseInFairValueOfDerivativesOperatingRow();
+                                }
+                            })
+                        </script>
+                        <td colspan="2"><input class="clock" id="IncreaseDecreaseInFairValueOfDerivativesOperating1" style="font-weight:bold;" value={{ CashFlow_lastyear.IncreaseDecreaseInFairValueOfDerivativesOperating }} onclick="HighLight()"></input></td>
+                        <td colspan="2"><input class="clock" id="IncreaseDecreaseInFairValueOfDerivativesOperating2" value={{ CashFlow_secondlastyear.IncreaseDecreaseInFairValueOfDerivativesOperating }} onclick="HighLight()"></input></td>
+                        <td colspan="2"><input class="clock" id="IncreaseDecreaseInFairValueOfDerivativesOperating3" value={{ CashFlow_thirdlastyear.IncreaseDecreaseInFairValueOfDerivativesOperating }} onclick="HighLight()"></input></td>
+                        <td colspan="2"><input class="clock" id="IncreaseDecreaseInFairValueOfDerivativesOperating4" value={{ CashFlow_fourthlastyear.IncreaseDecreaseInFairValueOfDerivativesOperating }} onclick="HighLight()"></input></td>
+                        <td colspan="2"><input class="clock" id="IncreaseDecreaseInFairValueOfDerivativesOperating5" value={{ CashFlow_fifthlastyear.IncreaseDecreaseInFairValueOfDerivativesOperating }} onclick="HighLight()"></input></td>
+                        <td colspan="2"><input class="clock" id="IncreaseDecreaseInFairValueOfDerivativesOperating6" value={{ CashFlow_sixthlastyear.IncreaseDecreaseInFairValueOfDerivativesOperating }} onclick="HighLight()"></input></td>
                     </tr>
                     <tr id='IncreaseDecreaseInOtherOperatingActivitiesRow'>
                         <td colspan="2"><h6>Increase (Decrease) In Other Operating Activities</h6></td>
@@ -9726,6 +9785,7 @@
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInContractWithCustomerLiability1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInRetirementBenefits1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseOperatingLeaseCurrent1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('IncreaseDecreaseInFairValueOfDerivativesOperating1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInOtherOperatingActivities1').value.replaceAll(/,/g, ''));
                                 document.getElementById('OperatingActivitiesNote1').innerHTML = numUSD.format(Math.round(a));
                                 document.getElementById('OperatingActivities1').innerHTML = numUSD.format(Math.round(a));
@@ -9745,6 +9805,7 @@
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInContractWithCustomerLiability2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInRetirementBenefits2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseOperatingLeaseCurrent2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('IncreaseDecreaseInFairValueOfDerivativesOperating2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInOtherOperatingActivities2').value.replaceAll(/,/g, ''));
                                 document.getElementById('OperatingActivitiesNote2').innerHTML = numUSD.format(Math.round(a));
                                 document.getElementById('OperatingActivities2').innerHTML = numUSD.format(Math.round(a));
@@ -9764,6 +9825,7 @@
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInContractWithCustomerLiability3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInRetirementBenefits3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseOperatingLeaseCurrent3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('IncreaseDecreaseInFairValueOfDerivativesOperating3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInOtherOperatingActivities3').value.replaceAll(/,/g, ''));
                                 document.getElementById('OperatingActivitiesNote3').innerHTML = numUSD.format(Math.round(a));
                                 document.getElementById('OperatingActivities3').innerHTML = numUSD.format(Math.round(a));
@@ -9783,6 +9845,7 @@
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInContractWithCustomerLiability4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInRetirementBenefits4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseOperatingLeaseCurrent4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('IncreaseDecreaseInFairValueOfDerivativesOperating4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInOtherOperatingActivities4').value.replaceAll(/,/g, ''));
                                 document.getElementById('OperatingActivitiesNote4').innerHTML = numUSD.format(Math.round(a));
                                 document.getElementById('OperatingActivities4').innerHTML = numUSD.format(Math.round(a));
@@ -9802,6 +9865,7 @@
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInContractWithCustomerLiability5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInRetirementBenefits5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseOperatingLeaseCurrent5').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('IncreaseDecreaseInFairValueOfDerivativesOperating5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInOtherOperatingActivities5').value.replaceAll(/,/g, ''));
                                 document.getElementById('OperatingActivitiesNote5').innerHTML = numUSD.format(Math.round(a));
                                 document.getElementById('OperatingActivities5').innerHTML = numUSD.format(Math.round(a));
@@ -9821,6 +9885,7 @@
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInContractWithCustomerLiability6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInRetirementBenefits6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseOperatingLeaseCurrent6').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('IncreaseDecreaseInFairValueOfDerivativesOperating6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IncreaseDecreaseInOtherOperatingActivities6').value.replaceAll(/,/g, ''));
                                 document.getElementById('OperatingActivitiesNote6').innerHTML = numUSD.format(Math.round(a));
                                 document.getElementById('OperatingActivities6').innerHTML = numUSD.format(Math.round(a));
@@ -16572,8 +16637,8 @@
                                     minimumFractionDigits: 0,
                                     maximumFractionDigits: 0
                                 })
-                                a = parseInt(document.getElementById('IntrinsicValueMaterialityThreshold').innerHTML.replaceAll(/,/g, ''));
-                                a = Math.max(a, parseInt(document.getElementById('ContinuingOperationsMaterialityThreshold').innerHTML.replaceAll(/,/g, '')));
+                                a = parseInt(document.getElementById('ContinuingOperationsMaterialityThreshold').innerHTML.replaceAll(/,/g, ''));
+                                a = Math.max(a, parseInt(document.getElementById('IntrinsicValueMaterialityThreshold').innerHTML.replaceAll(/,/g, '')));
                                 a = Math.max(a, parseInt(document.getElementById('RevenuesMaterialityThreshold').innerHTML.replaceAll(/,/g, '')));
                                 a = Math.max(a, parseInt(document.getElementById('NetAssetMaterialityThreshold').innerHTML.replaceAll(/,/g, '')));
                                 document.getElementById('MaterialityThresholdValue').innerHTML = numUSD.format(a);
