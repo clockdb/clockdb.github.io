@@ -27,7 +27,7 @@ import xml.etree.ElementTree as ET
 
 # TradingSymbol to EntityCentralIndexKeys
 EntityCentralIndexKeys = {
-    'TSLA':    '1318605',
+    'ENPH':    '1463101',
 }
 
 #
@@ -2191,7 +2191,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             print('Total Non Current Liabilities: ' + str(a.NonCurrentLiabilities))
                             for key, value in BalanceSheet.items():
                                 if r > CurrentLiabilitiesRank:
-                                    if r < min(LiabilitiesRank r < LiabilitiesAndStockholdersEquityRank):
+                                    if r < min(LiabilitiesRank , LiabilitiesAndStockholdersEquityRank):
                                         NCLA = NCLA - value
                                 r = r + 1
                             print('Non Current Liabilities Components: ' + str(NCLA))
@@ -3848,7 +3848,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             LongTermDebt = []
                             r = 0
                             for key, value in BalanceSheet.items():
-                                if r < min(LiabilitiesRank r < LiabilitiesAndStockholdersEquityRank):
+                                if r < min(LiabilitiesRank , LiabilitiesAndStockholdersEquityRank):
                                     d = key
                                     q = [
                                         'Debt',
@@ -3893,7 +3893,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             RetirementBenefits = []
                             r = 0
                             for key, value in BalanceSheet.items():
-                                if r < min(LiabilitiesRank r < LiabilitiesAndStockholdersEquityRank):
+                                if r < min(LiabilitiesRank , LiabilitiesAndStockholdersEquityRank):
                                     d = key
                                     q = [
                                         'RetirementBenefits',
@@ -3936,7 +3936,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             OperatingLeasesNonCurrent = []
                             r = 0
                             for key, value in BalanceSheet.items():
-                                if r < min(LiabilitiesRank r < LiabilitiesAndStockholdersEquityRank):
+                                if r < min(LiabilitiesRank , LiabilitiesAndStockholdersEquityRank):
                                     d = key
                                     q = [
                                         'Lease',
@@ -3979,7 +3979,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             FinanceLeasesNonCurrent = []
                             r = 0
                             for key, value in BalanceSheet.items():
-                                if r < min(LiabilitiesRank r < LiabilitiesAndStockholdersEquityRank):
+                                if r < min(LiabilitiesRank , LiabilitiesAndStockholdersEquityRank):
                                     d = key
                                     q = [
                                         'FinanceLeaseObligation',
@@ -4024,7 +4024,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             DeferredRevenueAndDepositsNonCurrent = []
                             r = 0
                             for key, value in BalanceSheet.items():
-                                if r < min(LiabilitiesRank r < LiabilitiesAndStockholdersEquityRank):
+                                if r < min(LiabilitiesRank , LiabilitiesAndStockholdersEquityRank):
                                     d = key
                                     q = [
                                         'DeferredRevenue',
@@ -4069,7 +4069,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             AccruedTaxLiabilitiesNonCurrent = []
                             r = 0
                             for key, value in BalanceSheet.items():
-                                if r < min(LiabilitiesRank r < LiabilitiesAndStockholdersEquityRank):
+                                if r < min(LiabilitiesRank , LiabilitiesAndStockholdersEquityRank):
                                     d = key
                                     q = [
                                         'IncomeTaxesPayable',
@@ -4113,7 +4113,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             DeferredTaxLiabilitiesNonCurrent = []
                             r = 0
                             for key, value in BalanceSheet.items():
-                                if r < min(LiabilitiesRank r < LiabilitiesAndStockholdersEquityRank):
+                                if r < min(LiabilitiesRank , LiabilitiesAndStockholdersEquityRank):
                                     d = key
                                     q = [
                                         'DeferredIncomeTax',
@@ -4157,7 +4157,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             OtherNonCurrentLiabilities = []
                             r = 0
                             for key, value in BalanceSheet.items():
-                                if r < min(LiabilitiesRank r < LiabilitiesAndStockholdersEquityRank):
+                                if r < min(LiabilitiesRank , LiabilitiesAndStockholdersEquityRank):
                                     d = key
                                     q = [
                                         'OtherLongTermLiabilities',
@@ -4204,7 +4204,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             DiscontinuedOperationsLiabilitiesNonCurrent = []
                             r = 0
                             for key, value in BalanceSheet.items():
-                                if r < min(LiabilitiesRank r < LiabilitiesAndStockholdersEquityRank):
+                                if r < min(LiabilitiesRank , LiabilitiesAndStockholdersEquityRank):
                                     d = key
                                     q = [
                                         'NoncurrentLiabilitiesOfDiscontinuedOperations',

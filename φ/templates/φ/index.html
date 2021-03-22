@@ -1,52 +1,90 @@
 {% extends "φ/layout.html" %}
+
 {% block body %}
 
+<!--- SCRIPT --->
+<script>       
 
-<!-- Header -->
+    // DOCUMENT TITLE
+    document.title = 'clockdb.com | menu'
 
+</script>
 
-<div class="text" style="padding-top:11%; padding-bottom:11%">
+<!--- MENU --->
 
+<div class="text">
 
-    <h3 style="padding-top:59px;">audit, business valuations</h3>
-        
-    <h3>machine learning, artificial intelligence</h3>
+    <ul>
 
-    <h3>our goal is to democratize access to financial literature and equity</h3>
+        <a href="{% url 'φ:db' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>AUDITED DATABASE</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">financials with a level of assurance of 95% or higher</h5>
 
-    <h3>the data we mine is audited twice for accuracy, completeness, classification and cut-off once in python and once in javascript</h3>
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:entities' %}">
+       
+            <button>
+                
+                <h4 style='text-align:center'><b>ALL ENTITIES</h4></b>
+                <h5 style="color:#8A9096; padding-bottom:5%">corporations we mine</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:about' %}">
+       
+            <button>
+                
+                <h4 style='text-align:center'><b>ABOUT</h4></b>
+                <h5 style="color:#8A9096; padding-bottom:5%">clockdb.com</h5>
+
+            </button>
+
+        </a>
+
+        <a href="https://github.com/clockdb/clockdb/blob/master/%CF%86/algorithm/master.py" target="blank">
+       
+            <button>
+                
+                <h4 style='text-align:center'><b>GITHUB</h4></b>
+                <h5 style="color:#8A9096; padding-bottom:5%">as of march 14, 2021</h5>
+
+            </button>
+
+        </a>
+
+        <a href="https://www.facebook.com/clockdbofficial" target="blank">
+       
+            <button>
+                
+                <h4 style='text-align:center'><b>FACEBOOK</h4></b>
+                <h5 style="color:#8A9096; padding-bottom:5%">facebook.com/clockdbofficial</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:disclaimer' %}" style="padding-bottom:17%">
+       
+            <button>
+                
+                <h4 style='text-align:center'><b>DISCLAIMER</h4></b>
+                <h5 style="color:#8A9096; padding-bottom:5%">limitation of liability, terms and conditions, etc.</h5>
+
+            </button>
+
+        </a>
+
+    </ul>
     
-    <h3>our mining process is public and our data is customizable.</h3>
-    
-    <h3>earning power is key to sustainability and growth</h3>
-
-    <h3 style="padding-top:59px;">Philippe Dube, CPA auditor, D. Fisc.</h3>
-    
-    
-    <h3 style="padding-top:59px;">---------------------</h3>
-    
-
-
-    <h3 style="padding-top:59px ;">audit, évaluation d'entreprises</h3>
-        
-    <h3>apprentissage automatique, intelligence artificielle</h3>
-
-    <h3>notre objectif est de démocratiser l'accès à la littérature financière et à l'investissement sur les marchés de capitaux</h3>
-
-    <h3>les données que nous minons sont vérifiées deux fois pour leur exactitude, leur exhaustivité, leur classification et leur démarcation, une fois en python et une fois en javascript</h3>
-    
-    <h3>notre processus d'extraction est public et nos données sont personnalisables.</h3>
-    
-    <h3>Le pouvoir d'achat est la clé de la durabilité et de la croissance</h3>
-
-    <h3 style="padding-top:59px;">Philippe Dube, CPA auditeur, D. Fisc.</h3>
-    
-
-
 </div>
 
 
 {% endblock %}
-
-
-

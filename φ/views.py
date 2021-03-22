@@ -81,9 +81,9 @@ def entities(request):
         "entities": Entity.objects.all().order_by('TradingSymbol')
     })
     
-# MENU
-def menu(request):
-    return render(request, "./φ/menu.html")
+# ABOUT
+def about(request):
+    return render(request, "./φ/about.html")
         
 # INDEX
 def index(request):

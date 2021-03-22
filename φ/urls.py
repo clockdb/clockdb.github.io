@@ -10,6 +10,8 @@ urlpatterns = [
     
     path("", views.index, name="index"),
 
+    path("about/", views.about, name="about"),
+
     path("db/", views.db, name="db"),
 
     path("qp/", views.qp, name="qp"),
@@ -19,8 +21,6 @@ urlpatterns = [
     path("entities/", views.entities, name="entities"),
     
     path("documentation/", views.documentation, name="documentation"),
-
-    path("menu/", views.menu, name="menu"),
 
     path("<str:entity_TradingSymbol>/", views.analysis, name="analysis"),
     #
