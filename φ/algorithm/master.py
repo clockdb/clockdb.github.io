@@ -1419,8 +1419,6 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             #
                             dad = None
                             #
-                            h = None
-                            #
                             statement = statements_set[financial_statement]
                             #
                             print(137*'-' + '\n')
@@ -1454,18 +1452,28 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                         #
                                         # header
                                         try:
+                                            #
+                                            #
+                                            f = [
+                                                ' SHARES IN MILLIONS',
+                                                ' SHARES IN THOUSANDS',
+                                            ]
                                             # dad
                                             qd = statement_data['headers']
-                                            qb = qd[0][0]
+                                            qb = qd[0][0].upper()
                                             #
                                             if dad is None:
-                                            #
-                                                if qb[-11:].upper() == 'IN MILLIONS':
+                                                #
+                                                for g in f:
+                                                    qb = qb.replace(g, '')
+                                                    print('header: ' + qb)
+                                                #
+                                                if qb[-11:] == 'IN MILLIONS':
                                                     #
                                                     dad = 1000000
                                                     print('In Millions')
                                                 #
-                                                elif qb[-12:].upper() == 'IN THOUSANDS':
+                                                elif qb[-12:] == 'IN THOUSANDS':
                                                     #
                                                     dad = 1000
                                                     print('In Thousands')
@@ -1474,11 +1482,6 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                                     #
                                                     dad = 1
                                                     print('In Dollars')
-                                                #
-                                                # column
-                                                if h is None:
-                                                    print(qd)
-                                                    h = "done"
                                         #
                                         except:
                                             print('---Could not establish scale.')
@@ -6042,82 +6045,6 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                 #
                 try:
                     #
-                    # cash beginning balance
-                    try:
-                        CashBeginningBalance = []
-                        r = 0
-                        s = 'a'
-                        for key, value in CashFlowStatement.items():
-                            d = key
-                            q = [
-                                'Cash',
-                                'Balance',
-                            ]
-                            b = [
-                                'Acquire',
-                                'Acquisition',
-                                'AtEndOfYear',
-                                'AtYearEnd',
-                                'ChangeIn',
-                                'Decrease',
-                                'Disposal',
-                                'Distributed',
-                                'Dividends',
-                                'Effect',
-                                'End',
-                                'Exchange',
-                                'Financing',
-                                'Flows'
-                                'From',
-                                'Hedge',
-                                'Impairment',
-                                'Increase',
-                                'Investing',
-                                'Net',
-                                'NonCash',
-                                'Operating',
-                                'Paid',
-                                'Payment',
-                                'Proceeds',
-                                'Provided',
-                                'Purchase',
-                                'Received',
-                                'Restructuring',
-                                'Sale',
-                                'Selling',
-                            ]
-                            for l in q:
-                                if s == 'a':
-                                    if l in d:
-                                        h = 'p'
-                                        for p in b:
-                                            u = 0
-                                            while u < len(b):
-                                                if p in d:
-                                                    h = ''
-                                                u = u + 1
-                                        if h == 'p':
-                                            try:
-                                                i = 0
-                                                while CashFlowStatement[key][i] == None:
-                                                    i = i + 1
-                                                ARCHvalue = CashFlowStatement[key][i]
-                                                CashFlowStatement[key][i] = None
-                                            except:
-                                                if CashFlowStatement[key] != None:
-                                                    ARCHvalue = CashFlowStatement[key]
-                                                    CashFlowStatement[key] = None
-                                                else:
-                                                    ARCHvalue = 0
-                                            if ARCHvalue != 0:
-                                                CashBeginningBalance.append(ARCHvalue)
-                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'CashBeginningBalance')
-                                                s = 'z'
-                            r = r + 1
-                        cf.CashBeginningBalance = sum(CashBeginningBalance)
-                    except:
-                        pass
-                    #
                     # effect of exchange rate on cash
                     try:
                         EffectOfExchangeRateOnCash = []
@@ -6324,6 +6251,84 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             r = r + 1
                         a.FinancingActivities = sum(FinancingActivities)
                     #
+                    except:
+                        pass
+                    #                   
+                    a.IncreaseDecreaseInCash = a.OperatingActivities + a.InvestingActivities + a.FinancingActivities
+                    #
+                    # cash beginning balance
+                    try:
+                        CashEndingBalance = []
+                        r = 0
+                        s = 'a'
+                        for key, value in CashFlowStatement.items():
+                            d = key
+                            q = [
+                                'Cash',
+                                'Balance',
+                            ]
+                            b = [
+                                'Acquire',
+                                'Acquisition',
+                                'AtBeginningOfYear',
+                                'AtYearBeginning',
+                                'ChangeIn',
+                                'Decrease',
+                                'Disposal',
+                                'Distributed',
+                                'Dividends',
+                                'Effect',
+                                'End',
+                                'Exchange',
+                                'Financing',
+                                'Flows'
+                                'From',
+                                'Hedge',
+                                'Impairment',
+                                'Increase',
+                                'Investing',
+                                'Net',
+                                'NonCash',
+                                'Operating',
+                                'Paid',
+                                'Payment',
+                                'Proceeds',
+                                'Provided',
+                                'Purchase',
+                                'Received',
+                                'Restructuring',
+                                'Sale',
+                                'Selling',
+                            ]
+                            for l in q:
+                                if s == 'a':
+                                    if l in d:
+                                        h = 'p'
+                                        for p in b:
+                                            u = 0
+                                            while u < len(b):
+                                                if p in d:
+                                                    h = ''
+                                                u = u + 1
+                                        if h == 'p':
+                                            try:
+                                                i = 0
+                                                while CashFlowStatement[key][i] == None:
+                                                    i = i + 1
+                                                ARCHvalue = CashFlowStatement[key][i]
+                                                CashFlowStatement[key][i] = None
+                                            except:
+                                                if CashFlowStatement[key] != None:
+                                                    ARCHvalue = CashFlowStatement[key]
+                                                    CashFlowStatement[key] = None
+                                                else:
+                                                    ARCHvalue = 0
+                                            if ARCHvalue != 0:
+                                                CashEndingBalance.append(ARCHvalue)
+                                                print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'CashEndingBalance(CFS)')
+                                                s = 'z'
+                            r = r + 1
+                        cf.CashBeginningBalance = sum(CashEndingBalance) - a.IncreaseDecreaseInCash
                     except:
                         pass
                     #

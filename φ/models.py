@@ -141,6 +141,7 @@ class AuditData(models.Model):
     OperatingActivities = models.IntegerField(default=0)
     InvestingActivities = models.IntegerField(default=0)
     FinancingActivities = models.IntegerField(default=0)
+    IncreaseDecreaseInCash = models.IntegerField(default=0)
     #
     AnomalyOperatingActivities = models.IntegerField(default=0)
     AnomalyOperatingActivitiesSEC = models.IntegerField(default=0)
