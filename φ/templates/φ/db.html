@@ -28,6 +28,9 @@
                     <td style="border-bottom: ridge;">
                         <h2 style="font-weight:bold;">status</h2>
                     </td>
+                    <td style="border-bottom: ridge;">
+                        <h2 style="font-weight:bold;">reviewed</h2>
+                    </td>
                 </tr>
 
                 <tr></tr>
@@ -54,6 +57,13 @@
                             <a href="/{{ entity.TradingSymbol }}">
                                 <button style='padding-bottom: 1%; padding-top: 24px;'>
                                     <h3 style="text-align: center;">{{ entity.Status }}</h3>
+                                </button>
+                            </a>
+                        </td>
+                        <td style="vertical-align:bottom;" style='padding-top: 24px;'>
+                            <a href="/{{ entity.TradingSymbol }}">
+                                <button style='padding-bottom: 1%; padding-top: 24px;'>
+                                    <h3 style="text-align: center;">{{ entity.Reviewed }}</h3>
                                 </button>
                             </a>
                         </td>

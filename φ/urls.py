@@ -2,28 +2,20 @@ from django.urls import path
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from . import views
 
-
 app_name = "φ"
 
-
 urlpatterns = [
-    
-    path("", views.index, name="index"),
-
-    path("about/", views.about, name="about"),
-
-    path("db/", views.db, name="db"),
-
-    path("qp/", views.qp, name="qp"),
-
-    path("disclaimer/", views.disclaimer, name="disclaimer"),
-
-    path("entities/", views.entities, name="entities"),
-    
-    path("documentation/", views.documentation, name="documentation"),
-
-    path("<str:entity_TradingSymbol>/", views.analysis, name="analysis"),
     #
+    path("", views.index, name="index"),
+    path("about/", views.about, name="about"),
+    path("db/", views.db, name="db"),
+    path("qp/", views.qp, name="qp"),
+    path("disclaimer/", views.disclaimer, name="disclaimer"),
+    path("entities/", views.entities, name="entities"),
+    path("documentation/", views.documentation, name="documentation"),
+    #
+    path("<str:entity_TradingSymbol>/", views.analysis, name="analysis"),
+    path("<str:entity_TradingSymbol>/Community", views.analysis, name="analysis"),
     path("<str:entity_TradingSymbol>/Arch", views.analysis, name="analysis"),
     path("<str:entity_TradingSymbol>/Bridge", views.analysis, name="analysis"),
     path("<str:entity_TradingSymbol>/Clock", views.analysis, name="analysis"),
