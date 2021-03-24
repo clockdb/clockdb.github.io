@@ -26,7 +26,7 @@ class Entity(models.Model):
     ClockφChange = models.IntegerField(default=0)
     Bridgeφ = models.CharField(max_length=100, default=0)
     Status = models.CharField(max_length=7, default=0)
-    Reviewed = models.CharField(max_length=8, default=0)
+    Reviewed = models.IntegerField(max_length=8, default=0)
     StockPrice = models.IntegerField(default=0)
     Anomalies = models.CharField(max_length=100, default=0)
     SECurl = models.CharField(max_length=66, default=0)
