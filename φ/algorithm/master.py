@@ -27,20 +27,7 @@ import xml.etree.ElementTree as ET
 
 # TradingSymbol to EntityCentralIndexKeys
 EntityCentralIndexKeys = {
-    'INTC':    '50863',
-    'ORLY':    '898173',
-    'TJX':    '109198',
-    'KEYS':    '1601046',
-    'ANET':    '1596532',
-    'FB':    '1326801',
-    'ABMD':    '815094',
-    'AAPL':    '320193',
-    'LLY':    '59478',
-    'KO':   '21344',
-    'ENPH':    '1463101',
     'MCD':    '63908',
-    'TSLA':    '1318605',
-    'GME':    '1326380',
 }
 
 #
@@ -4801,11 +4788,15 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                     q = [
                                         'TotalCost',
                                         'TotalNetCost',
+                                        'Occupancy',
+                                        'Food',
+                                        'Payroll',
                                     ]
                                     b = [
                                         'CostOfSalesOperatingExpensesAndOther',
                                         'CostsExpensesAndOther',
                                         'TotalCostsAndExpenses',
+                                        'TotalOperatingCostsAndExpenses',
                                     ]
                                     s = 'a'
                                     for l in q:

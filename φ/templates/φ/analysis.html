@@ -16402,42 +16402,50 @@
                             <script>
                                 function LineChart(LineChart) {
                                     //
-                                    a = parseInt(document.getElementById('IntrinsicValues1').innerHTML.replaceAll(/,/g, ''));
+                                    a = 1
+                                    a = Math.max(a, parseInt(document.getElementById('IntrinsicValues1').innerHTML.replaceAll(/,/g, '')));
                                     if (Number.isNaN(Number(a))) {
                                         a = 1
                                     }
                                     //
-                                    b = parseInt(document.getElementById('IntrinsicValues2').innerHTML.replaceAll(/,/g, ''));
+                                    b = 1
+                                    b = Math.max(b, parseInt(document.getElementById('IntrinsicValues2').innerHTML.replaceAll(/,/g, '')));
                                     if (Number.isNaN(Number(b))) {
                                         b = 1
                                     }
                                     //
-                                    c = parseInt(document.getElementById('IntrinsicValues3').innerHTML.replaceAll(/,/g, ''));
+                                    c = 1
+                                    c = Math.max(c, parseInt(document.getElementById('IntrinsicValues3').innerHTML.replaceAll(/,/g, '')));
                                     if (Number.isNaN(Number(c))) {
                                         c = 1
                                     }
                                     //
-                                    d = parseInt(document.getElementById('IntrinsicValues4').innerHTML.replaceAll(/,/g, ''));
+                                    d = 1
+                                    d = Math.max(d, parseInt(document.getElementById('IntrinsicValues4').innerHTML.replaceAll(/,/g, '')));
                                     if (Number.isNaN(Number(d))) {
                                         d = 1
                                     }
                                     //
-                                    e = parseInt(document.getElementById('MarketCapitalizationColumn1').innerHTML.replaceAll(/,/g, ''));
+                                    e = 1
+                                    e = Math.max(e, parseInt(document.getElementById('MarketCapitalizationColumn1').innerHTML.replaceAll(/,/g, '')));
                                     if (Number.isNaN(Number(e))) {
                                         e = 1
                                     }
                                     //
-                                    f = parseInt(document.getElementById('MarketCapitalizationColumn2').innerHTML.replaceAll(/,/g, ''));
+                                    f = 1
+                                    f = Math.max(f, parseInt(document.getElementById('MarketCapitalizationColumn2').innerHTML.replaceAll(/,/g, '')));
                                     if (Number.isNaN(Number(f))) {
                                         f = 1
                                     }
                                     //
-                                    g = parseInt(document.getElementById('MarketCapitalizationColumn3').innerHTML.replaceAll(/,/g, ''));
+                                    g = 1
+                                    g = Math.max(g, parseInt(document.getElementById('MarketCapitalizationColumn3').innerHTML.replaceAll(/,/g, '')));
                                     if (Number.isNaN(Number(g))) {
                                         g = 1
                                     }
                                     //
-                                    h = parseInt(document.getElementById('MarketCapitalizationColumn4').innerHTML.replaceAll(/,/g, ''));
+                                    h = 1
+                                    h = Math.max(h, parseInt(document.getElementById('MarketCapitalizationColumn4').innerHTML.replaceAll(/,/g, '')));
                                     if (Number.isNaN(Number(h))) {
                                         h = 1
                                     }
@@ -16462,55 +16470,54 @@
                                     const thirdlastyear = document.getElementById('DateSummary3').innerHTML.replaceAll(/,/g, '');
                                     const fourthlastyear = document.getElementById('DateSummary4').innerHTML.replaceAll(/,/g, '');
                                     //
-                                    a = Math.round(a / dad * 1000)/1000;
+                                    a = a / dad;
                                     if (a == 0) {
                                         a = NaN
                                     }
-                                    let lastyearIntrinsicValue = a
+                                    let lastyearIntrinsicValue = Math.round(a * 1000)/1000
                                     //
-                                    a = Math.round(b / dad * 1000)/1000;
+                                    a = b / dad;
                                     if (a == 0) {
                                         a = NaN
                                     }
-                                    let secondlastyearIntrinsicValue = a
+                                    let secondlastyearIntrinsicValue = Math.round(a * 1000)/1000
                                     //
-                                    a = Math.round(c / dad * 1000)/1000;
+                                    a = c / dad;
                                     if (a == 0) {
                                         a = NaN
                                     }
-                                    let thirdlastyearIntrinsicValue = a
+                                    let thirdlastyearIntrinsicValue = Math.round(a * 1000)/1000
                                     //
-                                    a = Math.round(d / dad * 1000)/1000;
+                                    a = d / dad;
                                     if (a == 0) {
                                         a = NaN
                                     }
-                                    let fourthlastyearIntrinsicValue = a
+                                    let fourthlastyearIntrinsicValue = Math.round(a * 1000)/1000
                                     //
-                                    a = Math.round(e / dad * 1000)/1000;
+                                    a = e / dad;
                                     if (a == 0) {
                                         a = NaN
                                     }
-                                    let lastyearMarketCap = a
+                                    let lastyearMarketCap = Math.round(a * 1000)/1000
                                     //
-                                    a = Math.round(f / dad * 1000)/1000;
+                                    a = f / dad;
                                     if (a == 0) {
                                         a = NaN
                                     }
+                                    let secondlastyearMarketCap = Math.round(a * 1000)/1000
                                     //
-                                    let secondlastyearMarketCap = a
-                                    a = Math.round(g / dad * 1000)/1000;
+                                    a = g / dad;
                                     if (a == 0) {
                                         a = NaN
                                     }
+                                    let thirdlastyearMarketCap = Math.round(a * 1000)/1000
                                     //
-                                    let thirdlastyearMarketCap = a
-                                    a = Math.round(h / dad * 1000)/1000;
+                                    a = h / dad;
                                     if (a == 0) {
                                         a = NaN
                                     }
+                                    let fourthlastyearMarketCap = Math.round(a * 1000)/1000
                                     //
-                                    let fourthlastyearMarketCap = a
-
                                     const chart = document.getElementById('LineChart');
                                     chart.width = window.innerWidth*0.8;
                                     chart.height = window.innerHeight/2.8;
