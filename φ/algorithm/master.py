@@ -27,7 +27,21 @@ import xml.etree.ElementTree as ET
 
 # TradingSymbol to EntityCentralIndexKeys
 EntityCentralIndexKeys = {
-    'MCD':    '63908',
+#    'LLY':    '59478',
+#    'ORLY':    '898173',
+#    'FB':       '1326801',
+#    'INTC':    '50863',
+#    'TJX':    '109198',
+#    'KEYS':    '1601046',
+#    'ABMD':    '815094',
+#    'ANET':    '1596532',
+#    'AAPL':    '320193',
+#    'ENPH':    '1463101',
+#    'KO':       '21344',
+    'AMC':    '1411579',
+#    'TSLA':    '1318605',
+#   'GME':    '1326380',
+#    'MCD':    '63908',
 }
 
 #
@@ -873,14 +887,14 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
         try:
             e = Entity.objects.get(TradingSymbol=TradingSymbol)
             #
-            print(e.EntityRegistrantName + ' (' + e.TradingSymbol + ') retreived from φ.')
+            print(e.EntityRegistrantName + ' (' + e.TradingSymbol + ') retreived from φ.\n')
         except:
             e = Entity()
             e.TradingSymbol = TradingSymbol
             e.EntityCentralIndexKey = EntityCentralIndexKeys[TradingSymbol]
             e.save()
             #
-            print('New Entity for TradingSymbol ' + TradingSymbol + ' created in φ.')
+            print('New Entity for TradingSymbol ' + TradingSymbol + ' created in φ.\n')
             #
             print(137*'-' + '\n')
     except:
@@ -1466,7 +1480,8 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                                 #
                                                 for g in f:
                                                     qb = qb.replace(g, '')
-                                                    print('header: ' + qb)
+                                                #
+                                                print('header: ' + qb)
                                                 #
                                                 if qb[-11:] == 'IN MILLIONS':
                                                     #
@@ -1493,8 +1508,9 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                             #
                                             x = m[5].find_all('td')[1].text
                                             #
-                                            if z > 11:
-                                                g = t[9]
+                                            if z > 10:
+                                                g = (z - 3)
+                                                g = t[g]
                                             #
                                             elif z > 3:
                                                 if x == '' :
@@ -1585,14 +1601,15 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             a.save()
                         #
                         #
+                        print(137*'-' + '\n')
+                        #
+                        #
                         # Define documents period end date
                         try:
                             try:
                                 DPED = statements_data[0]['headers'][1][0]
-                                print(DPED)
                             except:
                                 DPED = statements_data[0]['headers'][0][1]
-                                print(DPED)
                             #
                             DPED = DPED.replace('Jan.', 'January').replace('Feb.', 'February').replace('Mar.', 'March')
                             DPED = DPED.replace('Apr.', 'April').replace('Jun.', 'June').replace('Jul.', 'July').replace('Aug.', 'August')
@@ -1602,6 +1619,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             tb.DocumentPeriodEndDate = DPED
                         except:
                             print('---Could not establish document period end date.')
+                        #
                         #
                         # Define entity period end date
                         try:
@@ -1629,7 +1647,6 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                 e.seventhlastyear =  tb.DocumentPeriodEndDate
                             else:
                                 pass
-                            print(137*'-' + '\n')
                         except:
                             print('---Could Not Define Entity`s Period End Dates')
                     except:
@@ -1639,12 +1656,16 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
             except:
                 pass
             #
+            #
+            print(137*'-' + '\n')
+            #
+            #
             # financial statements
             try:
                 #
                 # balance sheet
                 print(137*'-' + '\n')
-                print('balance sheet')
+                print('balance sheet | ' + DPED)
                 print(137*'-' + '\n')
                 try:
                     #
@@ -1703,7 +1724,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                             
                             r = r + 1
                         a.CurrentAssets = sum(TotalCurrentAssets)
-                        print('Current Assets Rank: ' + str(CurrentAssetsRank))
+                        print('Current Assets Rank: ' + str(CurrentAssetsRank) + '\n')
                     except:
                         pass
                     #                   
@@ -1803,7 +1824,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                                 AssetsRank = r
                             r = r + 1
                         a.Assets = sum(TotalAssets)
-                        print('Assets Rank: ' + str(AssetsRank))
+                        print('Assets Rank: ' + str(AssetsRank) + '\n')
                         #
                         # total asset not null
                         try:
@@ -1861,7 +1882,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                                 CurrentLiabilitiesRank = r
                             r = r + 1
                         a.CurrentLiabilities = -sum(CurrentLiabilities)
-                        print('Current Liabilities Rank: ' + str(CurrentLiabilitiesRank))
+                        print('Current Liabilities Rank: ' + str(CurrentLiabilitiesRank) + '\n')
                     except:
                         pass
                     #
@@ -1915,7 +1936,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         a.NonCurrentLiabilities = -sum(TotalNonCurrentLiabilities)
                         if NonCurrentLiabilitiesRank is None:
                             a.NonCurrentLiabilities = None
-                            print('Non Current Liabilities is None')
+                            print('Non Current Liabilities is None + \n')
                     except:
                         pass
                     #
@@ -1980,9 +2001,9 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         a.Liabilities = -sum(TotalLiabilities)
                         if LiabilitiesRank is None:
                             a.Liabilities = None
-                            print('Could not establish rank for Total Liabilities')
+                            print('Could not establish rank for Total Liabilities \n')
                         else:
-                            print('Liabilities Rank: ' + str(LiabilitiesRank))
+                            print('Liabilities Rank: ' + str(LiabilitiesRank) + '\n')
                     except:
                         pass
                     #
@@ -2029,12 +2050,12 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                             LiabilitiesAndStockholdersEquityRank = r
                             r = r + 1
                         a.LiabilitiesAndStockholdersEquity = -sum(LiabilitiesAndStockholdersEquity)
-                        print('Liabilities And Stockholders Equity Rank: ' + str(LiabilitiesAndStockholdersEquityRank))
+                        print('Liabilities And Stockholders Equity Rank: ' + str(LiabilitiesAndStockholdersEquityRank) + '\n')
                     except:
                         pass
                     #
                     print(137*'-' + '\n')
-                    print('debugging')
+                    print('debugging | ' + DPED)
                     print(137*'-' + '\n')
                     #
                     # debugging
@@ -2042,7 +2063,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         #
                         if a.NonCurrentLiabilities is None:
                             #
-                            print('bridge liabilities and non current liabilities rank and value')
+                            print('bridge liabilities and non current liabilities rank and value \n')
                             #
                             # stockholders equity
                             try:
@@ -2140,7 +2161,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         #
                         #
                         print(137*'-' + '\n')
-                        print('anomalies attributable to the SEC')
+                        print('anomalies attributable to the SEC | ' + DPED)
                         print(137*'-' + '\n')
                         #
                         r = 0
@@ -2176,6 +2197,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                     h = [
                                         'Land',
                                         'BuildingsAndLeasehold',
+                                        'LeaseholdCostsAndImprovments',
                                         'FixturesAndEquipment',
                                         'TotalOtherAssets',
                                     ]
@@ -2245,7 +2267,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     try:
                         #
                         print(137*'-' + '\n')
-                        print('current assets')
+                        print('current assets | ' + DPED)
                         print(137*'-' + '\n')
                         #
                         # cash
@@ -2727,7 +2749,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     try:
                         #
                         print(137*'-' + '\n')
-                        print('non-current assets')
+                        print('non-current assets | ' + DPED)
                         print(137*'-' + '\n')
                         #
                         # long term receivables
@@ -2893,6 +2915,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                         k = [
                                             'PropertyAndEquipement',
                                             'PropertyPlantAndEquipement',
+                                            'PropertyAtCost',
                                         ]
                                         for l in q:
                                             if l in d:
@@ -2905,29 +2928,32 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                                         u = u + 1
                                                 for j in k:
                                                     if j in d:
-                                                        if ppe == 'once':
+                                                        if ppe == '':
+                                                            ppe = 'once'
+                                                        elif ppe == 'once':
                                                             ppe = 'twice'
                                                 if ppe == 'once':
                                                     ppe = ''
                                                 if h == 'p':
-                                                    try:
-                                                        i = 0
-                                                        while BalanceSheet[key][i] == None:
-                                                            i = i + 1
-                                                        ARCHvalue = BalanceSheet[key][i]
-                                                        BalanceSheet[key][i] = None
-                                                    except:
-                                                        if BalanceSheet[key] != None:
-                                                            ARCHvalue = BalanceSheet[key]
-                                                            BalanceSheet[key] = None
-                                                        else:
-                                                            ARCHvalue = 0
-                                                    for n in m:
-                                                        if n in d:
-                                                            ARCHvalue = -abs(ARCHvalue) 
-                                                    if ARCHvalue != 0:
-                                                        PropertyPlantAndEquipment.append(ARCHvalue)
-                                                        print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'PropertyPlantAndEquipment')
+                                                    if ppe == '':
+                                                        try:
+                                                            i = 0
+                                                            while BalanceSheet[key][i] == None:
+                                                                i = i + 1
+                                                            ARCHvalue = BalanceSheet[key][i]
+                                                            BalanceSheet[key][i] = None
+                                                        except:
+                                                            if BalanceSheet[key] != None:
+                                                                ARCHvalue = BalanceSheet[key]
+                                                                BalanceSheet[key] = None
+                                                            else:
+                                                                ARCHvalue = 0
+                                                        for n in m:
+                                                            if n in d:
+                                                                ARCHvalue = -abs(ARCHvalue) 
+                                                        if ARCHvalue != 0:
+                                                            PropertyPlantAndEquipment.append(ARCHvalue)
+                                                            print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'PropertyPlantAndEquipment')
                                 r = r + 1
                             tb.PropertyPlantAndEquipment = sum(PropertyPlantAndEquipment)
                         except:
@@ -3274,7 +3300,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     # current liabilities components
                     try:
                         print(137*'-' + '\n')
-                        print('current liabilities')
+                        print('current liabilities | ' + DPED)
                         print(137*'-' + '\n')
                         #
                         # accounts payable and accrued liabilities
@@ -3670,7 +3696,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                 if r < CurrentLiabilitiesRank:
                                     d = key
                                     q = [
-                                        'ShortTermBorrowings',
+                                        'ShortTermBorrowing',
                                     ]
                                     b = [
                                         'Accrued',
@@ -3896,7 +3922,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     try:
                         #
                         print(137*'-' + '\n')
-                        print('non-current liabilities')
+                        print('non-current liabilities | ' + DPED)
                         print(137*'-' + '\n')
                         #
                         # long-term debt
@@ -4316,7 +4342,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     # shareholders' equity components
                     try:
                         print(137*'-' + '\n')
-                        print('shareholders equity')
+                        print('shareholders equity | ' + DPED)
                         print(137*'-' + '\n')
                         #
                         # common shares
@@ -4567,7 +4593,6 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                     q = [
                                         'NoncontrollingInterest',
                                         'RedeemableNonControllingInterestInSubsidiaries',
-                                        'ConvertibleSeniorNotes',
                                     ]
                                     b = [
                                         'Asset',
@@ -4611,7 +4636,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                 #
                 # income statement
                 print(137*'-' + '\n')
-                print('income statement')
+                print('income statement | ' + DPED)
                 print(137*'-' + '\n')
                 #
                 try:
@@ -4621,6 +4646,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         NetIncome = []
                         NetIncomeRank = None
                         r = 0
+                        s = 'a'
                         for key, value in IncomeStatement.items():
                             d = key
                             q = [
@@ -4633,11 +4659,13 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                 'ContinuingOperations',
                                 'CostOfGoods',
                                 'CostOfOperations',
+                                'Debt',
                                 'DiscontinuedOperation',
                                 'EquityIncome(Loss)Net',
                                 'Gain',
                                 'Income(Loss)FromOperations',
                                 'LossFromOperations',
+                                'NonConsolidatedEntities',
                                 'Operating',
                                 'Other',
                                 'Miscellaneous',
@@ -4647,7 +4675,6 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                 'Sales',
                                 'Tax',
                             ]
-                            s = 'a'
                             for l in q:
                                 if s == 'a':
                                     if l in d:
@@ -4786,15 +4813,19 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                 if r < GrossMarginRank:
                                     d = key
                                     q = [
+                                        'FilmExhibitionCost',
+                                        'FoodAndBeverageCost',
+                                        'Occupancy',
+                                        'OperatingExpense',
+                                        'Payroll',
+                                        'Rent',
                                         'TotalCost',
                                         'TotalNetCost',
-                                        'Occupancy',
-                                        'Food',
-                                        'Payroll',
                                     ]
                                     b = [
-                                        'CostOfSalesOperatingExpensesAndOther',
                                         'CostsExpensesAndOther',
+                                        'OperatingExpenses',
+                                        'MergerAcquisition',
                                         'TotalCostsAndExpenses',
                                         'TotalOperatingCostsAndExpenses',
                                     ]
@@ -4877,7 +4908,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                                 OperatingIncomeRank = r
                             r = r + 1
                         a.OperatingIncome = -sum(OperatingIncome)
-                        print('Operating Income Rank: ' + str(OperatingIncomeRank))
+                        print('Operating Income Rank: ' + str(OperatingIncomeRank) + '\n')
                     except:
                         pass
                     #
@@ -4886,7 +4917,6 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         if OperatingIncomeRank is None:
                             TempOperatingIncomeRank = NetIncomeRank - 7
                             OperatingIncomeRank = TempOperatingIncomeRank
-                            print('Operating Income Rank based on Net Income Rank: ' + str(OperatingIncomeRank))
                     except:
                         print('Could not attribute Operating Income Rank to Net Income Rank')
                     #
@@ -4944,9 +4974,9 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     try:
                         if OperatingIncomeRank == TempOperatingIncomeRank:
                             OperatingIncomeRank = IncomeBeforeTaxesRank
-                            print('Operating Income Rank based on Net Income Rank: ' + str(OperatingIncomeRank))
+                            print('Operating Income Rank based on Net Income Rank: ' + str(OperatingIncomeRank) + '\n')
                     except:
-                        print('Could not set operating income rank based on Income before taxes')
+                        print('Could not set operating income rank based on Income before taxes \n')
                     #
                     # net Income From Discontinued Operations
                     try:
@@ -5006,13 +5036,16 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                 if r < GrossMarginRank:
                                         d = key
                                         q = [
+                                            'Admissions',
+                                            'AutomotiveRevenue',
                                             'Financing',
+                                            'Food',
                                             'Membership',
                                             'Products',
                                             'Revenue',
                                             'Sales',
                                             'Services',
-                                            'AutomotiveRevenue',
+                                            'Theatre',
                                         ]
                                         b = [
                                             'Cost',
@@ -5074,14 +5107,21 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                         'Sales',
                                         'Financing',
                                         'Cost',
-                                        'Food',
+                                        'FoodAndBeverageCost',
+                                        'FilmExhibitionCost',
+                                        'OperatingExpenseExcludingDepreciationAndAmortizationBelow',
+                                        'OperatingExpensesExcludingDepreciationAndAmortizationBelow',
+                                        'OtherOperating',
                                         'Payroll',
                                         'Products',
-                                        'OtherOperating',
+                                        'Rent',
                                     ]
                                     b = [
-                                        'CostOfSalesOperatingExpensesAndOther',
                                         'CostsExpensesAndOther',
+                                        'CostOfSalesOperatingExpensesAndOther',
+                                        'OperatingCostsAndExpenses',
+                                        'OtherCosts',
+                                        'Merger',
                                     ]
                                     c = [
                                         'TotalCost',
@@ -5190,17 +5230,19 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                 if r < OperatingIncomeRank:
                                     d = key
                                     q = [
+                                        'Acquisition',
                                         'DepreciationAndAmortization',
                                         'DepreciationDepletion',
+                                        'FinanceLeaseObligations',
                                         'GeneralAndAdministrative',
                                         'GeneralAdministrative',
                                         'OperatingExpenses',
                                         'OtherCostAndExpensesOperating',
                                         'OtherOperatingExpenses',
                                         'OtherOperatingIncomeExpenses',
-                                        'Other',
                                         'SalesAndMarketing',
                                         'SellingAndAdministrative',
+                                        'SellingGeneralAndAdministrative',
                                     ]
                                     b = [
                                         'CostOfSalesOperatingExpensesAndOtherNet',
@@ -5210,6 +5252,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                         'InterestExpense',
                                         'Impairment',
                                         'LegalSettlement',
+                                        'Merger',
                                         'NonOperating',
                                         'OtherIncome',
                                         'Other(Expense)Income',
@@ -5250,12 +5293,15 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                                     print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'SellingGeneralAdministrativeAndMarketing')
                             r = r + 1
                         tb.SellingGeneralAdministrativeAndMarketing = sum(SellingGeneralAdministrativeAndMarketing)
+                        if a.OperatingIncome == 0:
+                            a.OperatingIncome = tb.Sales + tb.CostOfSales + tb.ResearchAndDevelopment + tb.SellingGeneralAdministrativeAndMarketing
                     except:
                         pass
                     #
                     # Asset Impairment, restructuring, and other special charges
                     try:
                         ImpairmentRestructuringAndOtherSpecialCharges = []
+                        ImpairmentRestructuringAndOtherSpecialChargesRank = None
                         r = 0
                         for key, value in IncomeStatement.items():
                             if r < NetIncomeRank:
@@ -5299,8 +5345,13 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                             if ARCHvalue != 0:
                                                 ImpairmentRestructuringAndOtherSpecialCharges.append(ARCHvalue)
                                                 print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'ImpairmentRestructuringAndOtherSpecialCharges')
+                                                ImpairmentRestructuringAndOtherSpecialChargesRank = r
                             r = r + 1
                         tb.ImpairmentRestructuringAndOtherSpecialCharges = sum(ImpairmentRestructuringAndOtherSpecialCharges)
+                        if ImpairmentRestructuringAndOtherSpecialChargesRank != None:
+                            if ImpairmentRestructuringAndOtherSpecialChargesRank < OperatingIncomeRank:
+                                a.OperatingIncome = a.OperatingIncome - tb.ImpairmentRestructuringAndOtherSpecialCharges
+                                print('Impairment Value Extracted From Operating Income \n')
                     except:
                         pass
                     #
@@ -5312,18 +5363,26 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             if r < NetIncomeRank:
                                 d = key
                                 q = [
+                                    'CorporateBorrowing',
                                     'Debt',
                                     'EquityIncome(loss)',
+                                    'EquityIn(Earnings)',
                                     'EquityInNetIncome',
+                                    'ExhibitorServices',
                                     'Finance',
                                     'InterestIncome',
                                     'InterestExpense',
+                                    'InvestmentExpense',
                                     'NonOperating',
                                     'OtherIncome',
                                     'OtherNet(Income)Expense',
                                 ]
                                 b = [
                                     'Research',
+                                ]
+                                g = [
+                                    '(Income)',
+                                    '(Earnings)',
                                 ]
                                 for l in q:
                                     if l in d:
@@ -5335,10 +5394,10 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                                     h = ''
                                                 u = u + 1
                                         if h == 'p':
-                                            if '(Income)' in d:
-                                                y = -1
-                                            else:
-                                                y = 1
+                                            y = 1
+                                            for f in g:
+                                                if f in d:
+                                                    y = -1
                                             try:
                                                 i = 0
                                                 while IncomeStatement[key][i] == None:
@@ -5477,7 +5536,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                 #
                 # comprehensive income
                 print(137*'-' + '\n')
-                print('other comprehensive income')
+                print('other comprehensive income | ' + DPED)
                 print(137*'-' + '\n')
                 #
                 try:
@@ -5766,7 +5825,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                 #
                 # stockholders equity
                 print(137*'-' + '\n')
-                print("stockholders equity")
+                print('stockholders equity | ' + DPED)
                 print(137*'-' + '\n')
                 #
                 try:
@@ -5794,7 +5853,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                     if h == 'p':
                                         if ARCHvalue != 0:
                                             LiabilitiesAndStockholdersEquityRank = r
-                                            print('Rank: ' + str(r))
+                                            print('Net Income Rank: ' + str(r))
                             r = r + 1
                         tb.CommonStockIssued = -sum(CommonStockIssued)
                     except:
@@ -5935,6 +5994,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                                 else:
                                                     ARCHvalue = 0
                                             if ARCHvalue != 0:
+                                                ARCHvalue = -abs(ARCHvalue)
                                                 DividendsAndDividendEquivalentsDeclared.append(ARCHvalue)
                                                 print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'DividendsAndDividendEquivalentsDeclared')
                             r = r + 1
@@ -6094,7 +6154,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                 #
                 # cash flow
                 print(137*'-' + '\n')
-                print('cash flow')
+                print('cash flow | ' + DPED)
                 print(137*'-' + '\n')
                 #
                 try:
@@ -6209,7 +6269,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                             OperatingActivities.append(ARCHvalue)
                                             print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'OperatingActivities')
                                             OperatingActivitiesRank = r
-                                            print(str(OperatingActivitiesRank))
+                                            print(str('Operating Activities Rank: ' + str(OperatingActivitiesRank)))
                             r = r + 1
                         a.OperatingActivities = sum(OperatingActivities)
                     except:
@@ -6310,8 +6370,14 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     #
                     except:
                         pass
-                    #                   
+                    #
+                    #
+                    a.save()
+                    #
+                    #
                     a.IncreaseDecreaseInCash = a.OperatingActivities + a.InvestingActivities + a.FinancingActivities + cf.EffectOfExchangeRateOnCash
+                    print('Increase Decrease In Cash: ' + str(a.IncreaseDecreaseInCash))
+                    #
                     #
                     # cash beginning balance backwards
                     try:
@@ -6388,10 +6454,11 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     except:
                         pass
                     #
+                    #
                     # supplemental cash flow disclosure
                     try:
                         print(137*'-' + '\n')
-                        print('supplemental cash flow disclosure')
+                        print('supplemental cash flow disclosure | ' + DPED)
                         print(137*'-' + '\n')
                         #
                         # Cash paid for in interest
@@ -6486,13 +6553,17 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     except:
                         pass
                     #
+                    #
+                    print(137*'-' + '\n')
+                    print('anomalies attributable to the SEC | ' + DPED)
+                    print(137*'-' + '\n')
+                    #
+                    #
                     # anomalies attributable to the SEC
                     try:
                         #
                         # Operating Activities
                         try:
-                            print(137*'-' + '\n')
-                            print('Operating Activities Rank: ' + str(OperatingActivitiesRank))
                             print('Total Operating Activities: ' + str(a.OperatingActivities))
                             r = 0
                             OA = 0
@@ -6501,6 +6572,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                 'CashAndCashEquivalents',
                                 'NetCashProvided',
                                 'NetChangeInOper',
+                                'NetEarning',
                                 'NetIncome',
                                 'NetLoss',
                                 'Net(Loss)',
@@ -6563,11 +6635,21 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             skip = ''
                             f = [
                                 'Total',
-                                'NetChange',
+                                'NetChangeInFinancing',
+                                'NetChangeInInvesting',
                                 'NetCashProvided',
+                            ]
+                            h = [
+                                'Payment',
+                                'Repayment',
+                            ]
+                            i = [
+                                '(Payment)',
+                                '(Repayment)',
                             ]
                             for key, value in CashFlowStatement.items():
                                 skip = ''
+                                d = key
                                 if r > InvestingActivitiesRank:
                                     if r < FinancingActivitiesRank:
                                         if value != None:
@@ -6575,6 +6657,16 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                                 if g in key:
                                                     skip = 'skip'
                                             if skip == '':
+                                                for k in h:
+                                                    if k in d:
+                                                        neg = ''
+                                                        for w in i:
+                                                            if w in d:
+                                                                neg = 'n'
+                                                        if neg == '':
+                                                            value = value
+                                                        else:
+                                                            value = -abs(value)
                                                 if value != None:
                                                     FA = FA + value
                                 r = r + 1
@@ -6586,12 +6678,11 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     except:
                         pass
                     #
-                    print(137*'-' + '\n')
                     #
                     # operating activities components
                     try:
                         print(137*'-' + '\n')
-                        print('operating activities')
+                        print('operating activities | ' + DPED)
                         print(137*'-' + '\n')
                         #
                         # depreciation depletion and amortization
@@ -6604,8 +6695,6 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                     q = [
                                         'Depreciation',
                                         'Amortization',
-                                        'Depletion',
-                                        'Impairment',
                                     ]
                                     b = [
                                         'Acquire',
@@ -6618,6 +6707,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                         'Financing',
                                         'Hedge',
                                         'Increase',
+                                        'Impairment',
                                         'Investment',
                                         'Investing',
                                         'Operating',
@@ -6674,6 +6764,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                         'Gain(Loss)OnDisposal',
                                         'Gain(Loss)OnExtinguishmentOfDebt',
                                         'Gain(Loss)OnSale',
+                                        'GainOnDisposition',
                                         'GainOnDivestiture',
                                         'GainOnInsurance',
                                         'GainOnSale',
@@ -6733,9 +6824,11 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                     d = key
                                     q = [
                                         'DebtDiscount',
-                                        'GoodwillImpairment',
+                                        'Depletion',
+                                        'Impairment',
                                         'Restructuring',
                                         'Special',
+                                        'LossOnExtinguishmentOfDebt',
                                     ]
                                     b = [
                                         'Acquire',
@@ -6958,8 +7051,10 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                     d = key
                                     q = [
                                         'ForeignCurrency',
+                                        'LandlordContribution',
                                         'NoncashIncomeExpense',
                                         'NonCashInterest',
+                                        'NonCashRent',
                                     ]
                                     b = [
                                         'Amortization',
@@ -7047,8 +7142,6 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         except:
                             pass
                         #
-                            pass
-                        #
                         # increase (decrease) in prepaid expenses
                         try:
                             IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssets = []
@@ -7057,14 +7150,18 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                 if r < OperatingActivitiesRank:
                                     d = key
                                     q = [
+                                        'DeferredExpense',
+                                        'DeferredRent',
                                         'Prepaid',
                                     ]
                                     b = [
+                                        'Acquire',
+                                        'Acquisition',
+                                        'Income',
                                         'NonTrade',
                                         'Payment',
                                         'Purchase',
-                                        'Acquisition',
-                                        'Acquire',
+                                        'Tax',
                                     ]
                                     for l in q:
                                         if l in d:
@@ -7295,6 +7392,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                     d = key
                                     q = [
                                         'Retirement',
+                                        'BenefitCost',
                                     ]
                                     b = [
                                         'NonTrade',
@@ -7385,7 +7483,8 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                 if r < OperatingActivitiesRank:
                                     d = key
                                     q = [
-                                        'Derivatives',
+                                        'Derivative',
+                                        'Swap',
                                     ]
                                     b = [
                                         'Acquisition',
@@ -7432,6 +7531,8 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                         'CurrentAssetsAndCurrentLiabilit',
                                         'DiscountedConvertible',
                                         'Equity(Income)Loss',
+                                        'EquityIn(Earnings)LossFromNonConsolidated',
+                                        'EquityInLossFromNonConsolidated',
                                         'Other',
                                         'Guarantee',
                                         'Miscellaneous',
@@ -7483,7 +7584,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     # investing activities components
                     try:
                         print(137*'-' + '\n')
-                        print('investing activities')
+                        print('investing activities | ' + DPED)
                         print(137*'-' + '\n')
                         #
                         # Payments To Acquire Investment
@@ -7556,6 +7657,9 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                             'Securities',
                                             'TradingAsset',
                                             'Maturities',
+                                            'ProceedsFromDispositionOfLongTermAsset',
+                                            'ProceedsFromSaleLeaseBack',
+                                            'ProceedsFromSaleLeaseback',
                                             'ReturnOfCapital',
                                         ]
                                         b = [
@@ -7947,7 +8051,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     # financing activities components
                     try:
                         print(137*'-' + '\n')
-                        print('financing activities')
+                        print('financing activities | ' + DPED)
                         print(137*'-' + '\n')
                         #
                         # Finance Lease Principal Payments
@@ -7961,6 +8065,8 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                         q = [
                                             'FinanceLease',
                                             'PrincipalPaymentsOnCapitalLeases',
+                                            'PrincipalPaymentsUnderCapitalAndFinancingLease',
+                                            'CollateralizedLease',
                                         ]
                                         b = [
                                             'Operating',
@@ -7995,6 +8101,104 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         except:
                             pass        
                         #
+                        # Payments For Repurchase Of Common Stock
+                        try:
+                            PaymentsForRepurchaseOfCommonStock = []
+                            r = 0
+                            for key, value in CashFlowStatement.items():
+                                if r > InvestingActivitiesRank:
+                                    if r < FinancingActivitiesRank:
+                                        d = key
+                                        q = [
+                                            'CommonSharesRepurchase',
+                                            'CommonSharesRepurchases',
+                                            'CommonStockRepurchase',
+                                            'CommonStockRepurchases',
+                                            'CompanyStockRepurchase',
+                                            'CompanyStockRepurchases',
+                                            'CompanySharesRepurchase',
+                                            'CompanySharesRepurchases',
+                                            'StockForTreasuryRepurchase',
+                                            'StockForTreasuryRepurchases',
+                                            #
+                                            'CommonSharesRepurchased',
+                                            'CommonStockRepurchased',
+                                            'CompanyStockRepurchased',
+                                            'CompanySharesRepurchased',
+                                            'StockForTreasuryRepurchased',
+                                            #     
+                                            'PurchasesOfClassACommonStock',
+                                            'PurchasesOfClassACommonShares',
+                                            'PurchasesOfClassBCommonStock',
+                                            'PurchasesOfClassBCommonShares',
+                                            'PurchaseOfCommonShares',
+                                            'PurchasesOfCommonShares',
+                                            'PurchaseOfCommonStock',
+                                            'PurchasesOfCommonStock',
+                                            'PurchaseOfCompanyStock',
+                                            'PurchasesOfCompanyStock',
+                                            'PurchaseOfCompanyShares',
+                                            'PurchasesOfCompanyShares',
+                                            'PurchaseOfStockForTreasury',
+                                            'PurchasesOfStockForTreasury',
+                                            'PurchaseOfTreasuryStock',
+                                            'PurchaseOfTreasuryShare',
+                                            #
+                                            'RepurchasesOfClassACommonStock',
+                                            'RepurchasesOfClassACommonShares',
+                                            'RepurchasesOfClassBCommonStock',
+                                            'RepurchasesOfClassBCommonShares',
+                                            'RepurchaseOfCommonShares',
+                                            'RepurchasesOfCommonShares',
+                                            'RepurchaseOfCommonStock',
+                                            'RepurchasesOfCommonStock',
+                                            'RepurchaseOfCompanyStock',
+                                            'RepurchasesOfCompanyStock',
+                                            'RepurchaseOfCompanyShares',
+                                            'RepurchasesOfCompanyShares',
+                                            'RepurchaseOfStockForTreasury',
+                                            'RepurchasesOfStockForTreasury',
+                                            #
+                                            'RetirementOfClassBCommonStock',
+                                            'RetirementOfClassBCommonShares',
+                                            #
+                                            'TreasuryStockPurchases',
+                                            'TreasuryStockRepurchases',
+                                            'TreasuryStockRepurchased',
+                                        ]
+                                        b = [
+                                            'Proceeds',
+                                        ]
+                                        for l in q:
+                                            if l in d:
+                                                h = 'p'
+                                                for p in b:
+                                                    u = 0
+                                                    while u < len(b):
+                                                        if p in d:
+                                                            h = ''
+                                                        u = u + 1
+                                                if h == 'p':
+                                                    try:
+                                                        i = 0
+                                                        while CashFlowStatement[key][i] == None:
+                                                            i = i + 1
+                                                        ARCHvalue = CashFlowStatement[key][i]
+                                                        CashFlowStatement[key][i] = None
+                                                    except:
+                                                        if CashFlowStatement[key] != None:
+                                                            ARCHvalue = CashFlowStatement[key]
+                                                            CashFlowStatement[key] = None
+                                                        else:
+                                                            ARCHvalue = 0
+                                                    if ARCHvalue != 0:
+                                                        PaymentsForRepurchaseOfCommonStock.append(ARCHvalue)
+                                                        print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'PaymentsForRepurchaseOfCommonStock')
+                                r = r + 1
+                            cf.PaymentsForRepurchaseOfCommonStock = sum(PaymentsForRepurchaseOfCommonStock)
+                        except:
+                            pass
+                        #
                         # Proceeds From Issuance Of Common Stock
                         try:
                             ProceedsFromIssuanceOfCommonStock = []
@@ -8008,6 +8212,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                             'IssuancesOfCommonStock',
                                             'IssuancesOfStock',
                                             'SalesOfCommonStock',
+                                            'NetProceedsFromEquityOffering',
                                         ]
                                         b = [
                                             'Purchase',
@@ -8053,9 +8258,10 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                         d = key
                                         q = [
                                             'TaxBenefitFromShareBased',
+                                            'TaxesPaidRelatedToNetShareSettlementOfEquity',
                                             'TaxWithholdingForShareBased',
                                             'TaxWithholdingsOnShareBased',
-                                            'TaxesPaidRelatedToNetShareSettlementOfEquity',
+                                            'TaxesPaidForRestrictedUnitWithholdings',
                                         ]
                                         b = [
                                             'Proceeds',
@@ -8134,95 +8340,6 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         except:
                             pass
                         #
-                        # Payments For Repurchase Of Common Stock
-                        try:
-                            PaymentsForRepurchaseOfCommonStock = []
-                            r = 0
-                            for key, value in CashFlowStatement.items():
-                                if r > InvestingActivitiesRank:
-                                    if r < FinancingActivitiesRank:
-                                        d = key
-                                        q = [
-                                            'CommonSharesRepurchase',
-                                            'CommonSharesRepurchases',
-                                            'CommonStockRepurchase',
-                                            'CommonStockRepurchases',
-                                            'CompanyStockRepurchase',
-                                            'CompanyStockRepurchases',
-                                            'CompanySharesRepurchase',
-                                            'CompanySharesRepurchases',
-                                            'StockForTreasuryRepurchase',
-                                            'StockForTreasuryRepurchases',
-                                            #
-                                            'CommonSharesRepurchased',
-                                            'CommonStockRepurchased',
-                                            'CompanyStockRepurchased',
-                                            'CompanySharesRepurchased',
-                                            'StockForTreasuryRepurchased',
-                                            #     
-                                            'PurchasesOfClassACommonStock',
-                                            'PurchasesOfClassACommonShares',
-                                            'PurchaseOfCommonShares',
-                                            'PurchasesOfCommonShares',
-                                            'PurchaseOfCommonStock',
-                                            'PurchasesOfCommonStock',
-                                            'PurchaseOfCompanyStock',
-                                            'PurchasesOfCompanyStock',
-                                            'PurchaseOfCompanyShares',
-                                            'PurchasesOfCompanyShares',
-                                            'PurchaseOfStockForTreasury',
-                                            'PurchasesOfStockForTreasury',
-                                            #
-                                            'RepurchasesOfClassACommonStock',
-                                            'RepurchasesOfClassACommonShares',
-                                            'RepurchaseOfCommonShares',
-                                            'RepurchasesOfCommonShares',
-                                            'RepurchaseOfCommonStock',
-                                            'RepurchasesOfCommonStock',
-                                            'RepurchaseOfCompanyStock',
-                                            'RepurchasesOfCompanyStock',
-                                            'RepurchaseOfCompanyShares',
-                                            'RepurchasesOfCompanyShares',
-                                            'RepurchaseOfStockForTreasury',
-                                            'RepurchasesOfStockForTreasury',
-                                            #
-                                            'TreasuryStockPurchases',
-                                            'TreasuryStockRepurchases',
-                                            'TreasuryStockRepurchased',
-                                        ]
-                                        b = [
-                                            'Proceeds',
-                                        ]
-                                        for l in q:
-                                            if l in d:
-                                                h = 'p'
-                                                for p in b:
-                                                    u = 0
-                                                    while u < len(b):
-                                                        if p in d:
-                                                            h = ''
-                                                        u = u + 1
-                                                if h == 'p':
-                                                    try:
-                                                        i = 0
-                                                        while CashFlowStatement[key][i] == None:
-                                                            i = i + 1
-                                                        ARCHvalue = CashFlowStatement[key][i]
-                                                        CashFlowStatement[key][i] = None
-                                                    except:
-                                                        if CashFlowStatement[key] != None:
-                                                            ARCHvalue = CashFlowStatement[key]
-                                                            CashFlowStatement[key] = None
-                                                        else:
-                                                            ARCHvalue = 0
-                                                    if ARCHvalue != 0:
-                                                        PaymentsForRepurchaseOfCommonStock.append(ARCHvalue)
-                                                        print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'PaymentsForRepurchaseOfCommonStock')
-                                r = r + 1
-                            cf.PaymentsForRepurchaseOfCommonStock = sum(PaymentsForRepurchaseOfCommonStock)
-                        except:
-                            pass
-                        #
                         # Payments For Taxes Related To Net Share Settlement Of Equity Award
                         try:
                             PaymentsForTaxesRelatedToNetShareSettlementOfEquityAward = []
@@ -8230,9 +8347,10 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                             for key, value in CashFlowStatement.items():
                                 if r > InvestingActivitiesRank:
                                     if r < FinancingActivitiesRank:
+                                        d = key
                                         q = [
                                             'ExcessTaxBenefitsFromEquityAwards',
-                                            'SettlementOfEquityAward',
+                                            'TaxesRelatedToNetShareSettlement',
                                         ]
                                         b = [
                                             'Proceeds',
@@ -8279,6 +8397,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                             'Debt',
                                             'FinancingIssuance',
                                             'FinancingCost',
+                                            'Loan',
                                         ]
                                         b = [
                                             'Convertible',
@@ -8325,11 +8444,23 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                     if r < FinancingActivitiesRank:
                                         d = key
                                         q = [
+                                            'Borrowings',
                                             'Debt',
+                                            'DeferredFinancingCosts',
                                             'FinancingRepayments',
+                                            'Loan',
+                                            'RepaymentsOfSeniorNotes',
+                                            'RepurchaseOfSeniorNotesDue',
                                         ]
                                         b = [
+                                            'BorrowingsFromTheRevolver',
+                                            'Lease',
+                                            'Loans',
                                             'Proceeds',
+                                            'Revolver',
+                                            'Revolving',
+                                            'ShortTerm',
+                                            'TermLoan',
                                         ]
                                         for l in q:
                                             if l in d:
@@ -8353,8 +8484,11 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                                             CashFlowStatement[key] = None
                                                         else:
                                                             ARCHvalue = 0
+                                                    y = 1
                                                     if ARCHvalue != 0:
-                                                        ARCHvalue = -abs(ARCHvalue)
+                                                        if '(Repayments)' in d:
+                                                            y = -1
+                                                        ARCHvalue = -abs(ARCHvalue) * y
                                                         RepaymentsOfLongTermDebt.append(ARCHvalue)
                                                         print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'RepaymentsOfLongTermDebt')
                                 r = r + 1
@@ -8419,7 +8553,8 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                             'RepaymentsOfDiscontinuedConvertible',
                                         ]
                                         b = [
-                                            'Issuance'
+                                            'Issuance',
+                                            'Proceeds',
                                         ]
                                         for l in q:
                                             if l in d:
@@ -8460,7 +8595,9 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                     if r < FinancingActivitiesRank:
                                         d = key
                                         q = [
+                                            'ConvertibleSeniorNotes',
                                             'IssuancesOfConvertible',
+                                            'IssuanceOfSeniorUnsecuredConvertible',
                                         ]
                                         b = [
                                             'Repayment',
@@ -8506,9 +8643,15 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                         q = [
                                             'ShortTermBorrowing',
                                             'ShortTermDebt',
+                                            'BorrowingsFromTheRevolver',
+                                            'Borrowings(Repayments)UnderRevolvingCredit',
                                         ]
                                         b = [
                                             'CommercialPaper',
+                                        ]
+                                        g = [
+                                            '(Payment)',
+                                            '(Repayment)',
                                         ]
                                         for l in q:
                                             if l in d:
@@ -8533,6 +8676,10 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                                         else:
                                                             ARCHvalue = 0
                                                     if ARCHvalue != 0:
+                                                        for t in g:
+                                                            if t in d:
+                                                                if ARCHvalue < 1:
+                                                                    ARCHvalue = -abs(ARCHvalue)
                                                         NetChangeInShortTermBorrowings.append(ARCHvalue)
                                                         print(key + ': ' + str(ARCHvalue) + ' allocated to ' + 'NetChangeInShortTermBorrowings')
                                 r = r + 1
@@ -8593,18 +8740,18 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                     if r < FinancingActivitiesRank:
                                         d = key
                                         q = [
+                                            'CallPremiumsPaid',
                                             'CashPooling',
-                                            'CollateralizedLease',
                                             'ConvertibleNote',
+                                            'Guarantee',
                                             'InitialPublicOffering',
-                                            'Warrants',
                                             'NonControllingInterest',
                                             'NoncontrollingInterest',
                                             'Miscellaneous',
                                             'Other',
+                                            'Warrants',
                                             'ResaleValueGuarantee',
                                             'RelatedParties',
-                                            'Guarantee',
                                         ]
                                         b = [
                                             'AccountsPayable',
@@ -8639,6 +8786,8 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         except:
                             pass
                         #
+                        print(137*'-' + '\n')
+                        #
                         # save
                         try:
                             try:
@@ -8657,7 +8806,6 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                 a.save()
                                 #
                                 print("Audit Saved.")
-                                print(137*'-' + '\n')
                             except:
                                 pass
                         except:
@@ -8673,7 +8821,9 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
             except:
                 pass
         #
-        print(137 * '-' * 3)
+        print(137*'-' + '\n')
+        print('Number of shares outstanding | ' + DPED)
+        print(137*'-' + '\n')
         #
         # number of shares outstanding
         try:
@@ -8720,9 +8870,14 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
             a.save()
             #
             print('number of shares outstanding: ' + str(a.EntityCommonStockSharesOutstanding))
-            print(137*'-' + '\n')
         except:
             pass
+        #
+        #
+        print(137*'-' + '\n')
+        print('stock price | ' + DPED)
+        print(137*'-' + '\n')
+        #
         #
         # stock price
         try:
@@ -8776,9 +8931,13 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                 #
                 print('stock price: ' + str(a.StockPrice))
                 #
-                print(137*'-' + '\n')
         except:
             pass
+        #
+        #
+        print(137*'-' + '\n')
+        print('saving | ' + DPED)
+        print(137*'-' + '\n')
         #
         # save
         try:
@@ -8788,20 +8947,25 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
             a.save()
             e.save()
             #
-            print(str(e.EntityRegistrantName) + ' (' + str(e.TradingSymbol) + '), ' + str(tb.DocumentPeriodEndDate) + ' (' + str(tb.Period) + ') SEC Data Arched.' * 3)
+            print(str(e.EntityRegistrantName) + ' (' + str(e.TradingSymbol) + '), ' + str(tb.DocumentPeriodEndDate) + ' (' + str(tb.Period) + ') SEC Data Arched.')
             #
         except:
             print('---Could not save.')
+    #
     #
     # Delete the content of the download file
     try:
         files = glob.glob('A:/clock/φ/algorithm/downloads/*')
         for f in files:
             os.remove(f)
-        #
-        print(137*'-' + '\n')
     except:
         pass
+    #
+    #
+    print(137*'-' + '\n')
+    print('beginning balances | ' + DPED)
+    print(137*'-' + '\n')
+    #
     #
     # stockholders equity beginning balances
     if BeginningBalances == 'yes':
@@ -8913,8 +9077,12 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                 print('---Could not establish beginning balances.')
             #
             tb.save()
-            #
-            print(137 * '-')
+    #
+    #
+    print(137*'-' + '\n')
+    print('Regularizing | ' + DPED)
+    print(137*'-' + '\n')
+    #
     #
     # anomalies & corrections
     if Regularize == 'yes':
@@ -8924,11 +9092,15 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
             #
             print('anomalies and regularizations for ' + scopedperiod)
             #
+            #
             tb = TrialBalance.objects.get(TradingSymbol=TradingSymbol, Period=scopedperiod)
             a = AuditData.objects.get(TradingSymbol=TradingSymbol, Period=scopedperiod)
             #
+            #
             print(137*'-' + '\n')
             #
+            #
+            # anomalies in fs
             try:
                 #
                 #
@@ -9911,7 +10083,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     cf.OtherFinancingActivities = cf.OtherFinancingActivities - Anomaly
                     #
                     print('Anomaly Attributable To The SEC: ' + str(a.AnomalyFinancingActivitiesSEC) + ' $')
-                    a.AnomalyFinancingActivities = (Anomaly - a.AnomalyFinancingActivities)
+                    a.AnomalyFinancingActivities = (Anomaly - a.AnomalyFinancingActivitiesSEC)
                     #
                     if Anomaly != 0:
                         #
@@ -9944,57 +10116,12 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                     #
                 except:
                     pass
-                #
-                #
-                # anomalies
-                print('classification anomalies')
-                print(137*'-' + '\n')
-                #
-                #
-                # Balance Sheets - Audit
-                #
-                print('current assets: ' + str(a.AnomalyCurrentAssets))
-                print('non current assets: ' + str(a.AnomalyNonCurrentAssets))
-                print('assets: ' + str(a.AnomalyAssets))
-                print('current liabilities: ' + str(a.AnomalyCurrentLiabilities))
-                print('non current liabilities: ' + str(a.AnomalyNonCurrentLiabilities))
-                print('liabilities: ' + str(a.AnomalyLiabilities))
-                print('stockholders equity: ' + str(a.AnomalyStockholdersEquity))
-                print('liabilities and stockholders equity: ' + str(a.AnomalyLiabilitiesAndStockholdersEquity))
-                #
-                #
-                # Income Statements - Audit
-                #
-                print('gross margin: ' + str(a.AnomalyGrossMargin))
-                print('operating expenses: ' + str(a.AnomalyOperatingExpenses))
-                print('operating income ' + str(a.AnomalyOperatingIncome))
-                print('income before taxes: ' + str(a.AnomalyIncomeBeforeTaxes))
-                print('net income: ' + str(a.AnomalyNetIncome))
-                #
-                #
-                # Comprehensive Income - Audit
-                #
-                print('other comprehensinve income: ' + str(a.AnomalyOtherComprehensiveIncome))
-                print('comprehensive income: ' + str(a.AnomalyComprehensiveIncome))
-                #
-                #
-                # Stockholders Equity - Audit
-                #
-                print('common shares: ' + str(a.AnomalyCommonShares))
-                print('retained earnings: ' + str(a.AnomalyRetainedEarnings))
-                print('accumulated other comprehensive income: ' + str(a.AnomalyAccumulatedOtherComprehensiveIncome))
-                print('employee benefit trust: ' + str(a.AnomalyEmployeeBenefitTrust))
-                print('non controlling interests: ' + str(a.AnomalyNonControllingInterests))
-                #
-                #
-                # Cash Flow - Audit
-                #
-                print('operating activities: ' + str(a.AnomalyOperatingActivities))
-                print('investing activities: ' + str(a.AnomalyInvestingActivities))
-                print('financing activities: ' + str(a.AnomalyFinancingActivities))
-            #
             except:
                 pass
+            #
+            #
+            print(137*'-' + '\n')
+            print('theorical charge')
             print(137*'-' + '\n')
             #
             #
@@ -10042,10 +10169,16 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
             #
         #
         #
-        print(137 * '-')
+    #
+    #
+    #
     #
     # get valuation ratio
     if UpdateRanking == 'yes':
+        #
+        print(137*'-' + '\n')
+        print('updating ranking')
+        print(137*'-' + '\n')
         #
         try:
             #
@@ -10056,7 +10189,14 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
             driver.get(url)
             #
             try:
-                link = WebDriverWait(driver, 15).until(
+                link = WebDriverWait(driver, 7).until(
+                    EC.presence_of_element_located((By.NAME, "Summary"))
+                )
+                link.click()
+            except:
+                pass
+            try:
+                link = WebDriverWait(driver, 7).until(
                     EC.presence_of_element_located((By.NAME, "Opinion"))
                 )
                 link.click()
@@ -10070,18 +10210,24 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
             driver.quit()
             #
             if len(Bridge) == 8:
+                #
                 e.Status = 'Audited'
                 e.Clockφ = int(float(ValuationRatio.strip('%').replace(',','')))
                 e.ClockφChange = int(ValuationRatio.strip('%').replace(',','')) - int(ValuationRatioPriorPeriod.strip('%').replace(',',''))
+                try:
+                    e.Reviewed = e.Reviewed + 1
+                except:
+                    e.Reviewed = 1
+            #
             else:
+                #
                 e.Status = 'Misstated'
                 e.Clockφ = int(float(ValuationRatio.strip('%').replace(',','')))
                 e.ClockφChange = int(ValuationRatio.strip('%').replace(',','')) - int(ValuationRatioPriorPeriod.strip('%').replace(',',''))
-            #
-            e.save()
         #
         except:
             pass
+    #
     #
     # save entity and update date time
     try:
@@ -10092,6 +10238,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
         print("Update: ", str(e.Update))
     except:
         print('---Could not save time of update.')
+    #
     #
     # save
     try:

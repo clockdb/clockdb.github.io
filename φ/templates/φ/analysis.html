@@ -356,19 +356,34 @@
                         </button>
                     </td>
                     <td>
-                        <button data-page="Graph">
-                            <h2>Graph</h2>
-                        </button>
-                    </td>
-                    <td>
-                        <button data-page="Opinion" name="Opinion">
-                            <h2>Opinion</h2>
+                        <button data-page="Summary"  name="Summary">
+                            <h2>Summary</h2>
                         </button>
                     </td>
                 </tr>
             </tbody>
         </table>
         
+        <!--- SUMMARY --->
+        <div id="Summary">
+            <table style="border-bottom: ridge;;">
+                <tbody>
+                    <tr>
+                        <td>
+                            <button data-page="Graph">
+                                <h3 style="text-align:center">Line Chart</h3>
+                            </button>
+                        </td>
+                        <td>
+                            <button data-page="Opinion" name="Opinion">
+                                <h3 style="text-align:center">Opinion</h3>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
         <!--- FINANCIALS BUTTONS --->
         <div id="Arch">
 
@@ -540,6 +555,26 @@
                 </tbody>
             </table>
 
+        </div>
+
+        <!--- COMMUNITY --->
+        <div id="Community">
+            <table style="border-bottom: ridge;">
+                <body>
+                    <tr>
+                        <td>
+                            <button data-page="SocialPlatform">
+                                <h3 style="text-align:center">Social Platform</h3>
+                            </button>
+                        </td>
+                        <td>
+                            <button data-page="Media">
+                                <h3 style="text-align:center">Media News</h3>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
 
@@ -6275,7 +6310,7 @@
                         <td colspan="2" class="account"id="SellingGeneralAdministrativeAndMarketing6" style="border-bottom-style:ridge"></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><h6><b>Operating Income</b></h6></td>
+                        <td colspan="2"><h6><b>Operating Income (Loss)</b></h6></td>
                         <td style="color:#0d47a1; text-align:center; font-weight:bold;"></td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="OperatingIncomeCheckbox"></input>
@@ -13458,7 +13493,7 @@
                     <tr></tr>
                     <tr></tr>
                     <tr>
-                        <td colspan="2"><h6><b>Operating Income</b></h6></td>
+                        <td colspan="2"><h6><b>Operating Income (Loss)</b></h6></td>
                         <td><button data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold;">IS</button></td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="NetIncomeCCFCheckbox"></input>
@@ -13502,52 +13537,6 @@
                         <td colspan="2" class="clock" id="OperatingIncomeCCFColumn4" onclick="HighLight()"></input></td>
                         <td colspan="2" class="clock" id="OperatingIncomeCCFColumn5" onclick="HighLight()"></input></td>
                         <td colspan="2" class="clock" id="OperatingIncomeCCFColumn6" onclick="HighLight()"></input></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><h6>Interest</h6></td>
-                        <td><button data-page="AdditionalInformation" style="text-align:center; font-weight:bold;">AI</button></td>
-                        <td>
-                            <input type="checkbox" style="height: 16px;" id="InterestCCFCheckbox"></input>
-                            <input type="checkbox" style="height: 16px;" id="InterestCCFCheckbox2"></input>
-                        </td>
-                        <script>
-                            function InterestCCF(InterestCCF) {
-                                var numUSD = new Intl.NumberFormat("en-US", {
-                                    format: "number"
-                                });                                
-                                // Last Year
-                                a = parseInt(document.getElementById('NormalizedTheoricalInterestCharge1').value.replaceAll(/,/g, ''));
-                                document.getElementById('InterestCCFColumn1').innerHTML = numUSD.format(a);
-                                // Second Last Year
-                                a = parseInt(document.getElementById('NormalizedTheoricalInterestCharge2').value.replaceAll(/,/g, ''));
-                                document.getElementById('InterestCCFColumn2').innerHTML = numUSD.format(a);
-                                // Third Last Year
-                                a = parseInt(document.getElementById('NormalizedTheoricalInterestCharge3').value.replaceAll(/,/g, ''));
-                                document.getElementById('InterestCCFColumn3').innerHTML = numUSD.format(a);
-                                // Fourth Last Year
-                                a = parseInt(document.getElementById('NormalizedTheoricalInterestCharge4').value.replaceAll(/,/g, ''));
-                                document.getElementById('InterestCCFColumn4').innerHTML = numUSD.format(a);
-                                // Fifth Last Year
-                                a = parseInt(document.getElementById('NormalizedTheoricalInterestCharge5').value.replaceAll(/,/g, ''));
-                                document.getElementById('InterestCCFColumn5').innerHTML = numUSD.format(a);
-                                // Fifth Last Year
-                                a = parseInt(document.getElementById('NormalizedTheoricalInterestCharge6').value.replaceAll(/,/g, ''));
-                                document.getElementById('InterestCCFColumn6').innerHTML = numUSD.format(a);
-                            };
-                            window.addEventListener('DOMContentLoaded', InterestCCF)
-                            window.addEventListener('keyup', function() {
-                                var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
-                                if (event.keyCode in formulakeylist) {
-                                    InterestCCF();
-                                }
-                            })
-                        </script>
-                        <td colspan="2" class="clock" id="InterestCCFColumn1" style="font-weight:bold;" onclick="HighLight()"></input></td>
-                        <td colspan="2" class="clock" id="InterestCCFColumn2" onclick="HighLight()"></input></td>
-                        <td colspan="2" class="clock" id="InterestCCFColumn3" onclick="HighLight()"></input></td>
-                        <td colspan="2" class="clock" id="InterestCCFColumn4" onclick="HighLight()"></input></td>
-                        <td colspan="2" class="clock" id="InterestCCFColumn5" onclick="HighLight()"></input></td>
-                        <td colspan="2" class="clock" id="InterestCCFColumn6" onclick="HighLight()"></input></td>
                     </tr>
                     <tr>
                         <td colspan="2"><h6>Depreciation, Depletion And Amortization</h6></td>
@@ -13670,42 +13659,36 @@
                                 // Last Year
                                 a = -parseFloat(document.getElementById('TheoricalTaxRate1').value.replaceAll(/,/g, ''));
                                 b = parseInt(document.getElementById('OperatingIncomeCCFColumn1').innerHTML.replaceAll(/,/g, ''));
-                                b = b + parseInt(document.getElementById('InterestCCFColumn1').innerHTML.replaceAll(/,/g, ''));
                                 b = b + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCFColumn1').innerHTML.replaceAll(/,/g, ''));
                                 b = b + parseInt(document.getElementById('OthersCCFColumn1').value.replaceAll(/,/g, ''));
                                 document.getElementById('TaxesPaidAdjustmentsCCFColumn1').innerHTML = numUSD.format(Math.round(a/100 * b));
                                 // Second Last Year
                                 a = -parseFloat(document.getElementById('TheoricalTaxRate2').value.replaceAll(/,/g, ''));
                                 b = parseInt(document.getElementById('OperatingIncomeCCFColumn2').innerHTML.replaceAll(/,/g, ''));
-                                b = b + parseInt(document.getElementById('InterestCCFColumn2').innerHTML.replaceAll(/,/g, ''));
                                 b = b + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCFColumn2').innerHTML.replaceAll(/,/g, ''));
                                 b = b + parseInt(document.getElementById('OthersCCFColumn2').value.replaceAll(/,/g, ''));
                                 document.getElementById('TaxesPaidAdjustmentsCCFColumn2').innerHTML = numUSD.format(Math.round(a/100 * b));
                                 // Third Last Year
                                 a = -parseFloat(document.getElementById('TheoricalTaxRate3').value.replaceAll(/,/g, ''));
                                 b = parseInt(document.getElementById('OperatingIncomeCCFColumn3').innerHTML.replaceAll(/,/g, ''));
-                                b = b + parseInt(document.getElementById('InterestCCFColumn3').innerHTML.replaceAll(/,/g, ''));
                                 b = b + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCFColumn3').innerHTML.replaceAll(/,/g, ''));
                                 b = b + parseInt(document.getElementById('OthersCCFColumn3').value.replaceAll(/,/g, ''));
                                 document.getElementById('TaxesPaidAdjustmentsCCFColumn3').innerHTML = numUSD.format(Math.round(a/100 * b));
                                 // Fourth Last Year
                                 a = -parseFloat(document.getElementById('TheoricalTaxRate4').value.replaceAll(/,/g, ''));
                                 b = parseInt(document.getElementById('OperatingIncomeCCFColumn4').innerHTML.replaceAll(/,/g, ''));
-                                b = b + parseInt(document.getElementById('InterestCCFColumn4').innerHTML.replaceAll(/,/g, ''));
                                 b = b + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCFColumn4').innerHTML.replaceAll(/,/g, ''));
                                 b = b + parseInt(document.getElementById('OthersCCFColumn4').value.replaceAll(/,/g, ''));
                                 document.getElementById('TaxesPaidAdjustmentsCCFColumn4').innerHTML = numUSD.format(Math.round(a/100 * b));
                                 // Fifth Last Year
                                 a = -parseFloat(document.getElementById('TheoricalTaxRate5').value.replaceAll(/,/g, ''));
                                 b = parseInt(document.getElementById('OperatingIncomeCCFColumn5').innerHTML.replaceAll(/,/g, ''));
-                                b = b + parseInt(document.getElementById('InterestCCFColumn5').innerHTML.replaceAll(/,/g, ''));
                                 b = b + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCFColumn5').innerHTML.replaceAll(/,/g, ''));
                                 b = b + parseInt(document.getElementById('OthersCCFColumn5').value.replaceAll(/,/g, ''));
                                 document.getElementById('TaxesPaidAdjustmentsCCFColumn5').innerHTML = numUSD.format(Math.round(a/100 * b));
                                 // Sixth Last Year
                                 a = -parseFloat(document.getElementById('TheoricalTaxRate6').value.replaceAll(/,/g, ''));
                                 b = parseInt(document.getElementById('OperatingIncomeCCFColumn6').innerHTML.replaceAll(/,/g, ''));
-                                b = b + parseInt(document.getElementById('InterestCCFColumn6').innerHTML.replaceAll(/,/g, ''));
                                 b = b + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCFColumn6').innerHTML.replaceAll(/,/g, ''));
                                 b = b + parseInt(document.getElementById('OthersCCFColumn6').value.replaceAll(/,/g, ''));
                                 document.getElementById('TaxesPaidAdjustmentsCCFColumn6').innerHTML = numUSD.format(Math.round(a/100 * b));
@@ -13739,7 +13722,6 @@
                                 })
                                 // Column 1
                                 a = parseInt(document.getElementById('OperatingIncomeCCFColumn1').innerHTML.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('InterestCCFColumn1').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TaxesPaidAdjustmentsCCFColumn1').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCFColumn1').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AnnualReinvestmentOfMaintenanceCCFColumn1').innerHTML.replaceAll(/,/g, ''));
@@ -13747,7 +13729,6 @@
                                 document.getElementById('NormalizedOperatingCashFlowCCFColumn1').innerHTML = numUSD.format(Math.round(a));
                                 // Column 2
                                 a = parseInt(document.getElementById('OperatingIncomeCCFColumn2').innerHTML.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('InterestCCFColumn2').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TaxesPaidAdjustmentsCCFColumn2').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCFColumn2').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AnnualReinvestmentOfMaintenanceCCFColumn2').innerHTML.replaceAll(/,/g, ''));
@@ -13755,7 +13736,6 @@
                                 document.getElementById('NormalizedOperatingCashFlowCCFColumn2').innerHTML = numUSD.format(Math.round(a));
                                 // Column 3
                                 a = parseInt(document.getElementById('OperatingIncomeCCFColumn3').innerHTML.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('InterestCCFColumn3').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TaxesPaidAdjustmentsCCFColumn3').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCFColumn3').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AnnualReinvestmentOfMaintenanceCCFColumn3').innerHTML.replaceAll(/,/g, ''));
@@ -13763,7 +13743,6 @@
                                 document.getElementById('NormalizedOperatingCashFlowCCFColumn3').innerHTML = numUSD.format(Math.round(a));
                                 // Column 4
                                 a = parseInt(document.getElementById('OperatingIncomeCCFColumn4').innerHTML.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('InterestCCFColumn4').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TaxesPaidAdjustmentsCCFColumn4').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCFColumn4').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AnnualReinvestmentOfMaintenanceCCFColumn4').innerHTML.replaceAll(/,/g, ''));
@@ -13771,7 +13750,6 @@
                                 document.getElementById('NormalizedOperatingCashFlowCCFColumn4').innerHTML = numUSD.format(Math.round(a));
                                 // Column 5
                                 a = parseInt(document.getElementById('OperatingIncomeCCFColumn5').innerHTML.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('InterestCCFColumn5').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TaxesPaidAdjustmentsCCFColumn5').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCFColumn5').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AnnualReinvestmentOfMaintenanceCCFColumn5').innerHTML.replaceAll(/,/g, ''));
@@ -13779,7 +13757,6 @@
                                 document.getElementById('NormalizedOperatingCashFlowCCFColumn5').innerHTML = numUSD.format(Math.round(a));
                                 // Column 6
                                 a = parseInt(document.getElementById('OperatingIncomeCCFColumn6').innerHTML.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('InterestCCFColumn6').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TaxesPaidAdjustmentsCCFColumn6').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCFColumn6').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AnnualReinvestmentOfMaintenanceCCFColumn6').innerHTML.replaceAll(/,/g, ''));
@@ -14653,7 +14630,7 @@
                     <tr></tr>
                     <tr></tr>
                     <tr>
-                        <td colspan="2"><h6><b>Operating Income</b></h6></td>
+                        <td colspan="2"><h6><b>Operating Income (Loss)</b></h6></td>
                         <td><button data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold;">IS</button></td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="OperatingIncomeCICheckbox"></input>
@@ -14699,52 +14676,6 @@
                         <td colspan="2" class="clock" id="OperatingIncomeCIColumn6" onclick="HighLight()"></input></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><h6>Interest</h6></td>
-                        <td><button data-page="AdditionalInformation" style="text-align:center; font-weight:bold;">AI</button></td>
-                        <td>
-                            <input type="checkbox" style="height: 16px;" id="InterestCICheckbox"></input>
-                            <input type="checkbox" style="height: 16px;" id="InterestCICheckbox2"></input>
-                        </td>
-                        <script>
-                            function InterestCI(InterestCI) {
-                                var numUSD = new Intl.NumberFormat("en-US", {
-                                    format: "number"
-                                });                                
-                                // Last Year
-                                a = parseInt(document.getElementById('NormalizedTheoricalInterestCharge1').value.replaceAll(/,/g, ''));
-                                document.getElementById('InterestCIColumn1').innerHTML = numUSD.format(a);
-                                // Second Last Year
-                                a = parseInt(document.getElementById('NormalizedTheoricalInterestCharge2').value.replaceAll(/,/g, ''));
-                                document.getElementById('InterestCIColumn2').innerHTML = numUSD.format(a);
-                                // Third Last Year
-                                a = parseInt(document.getElementById('NormalizedTheoricalInterestCharge3').value.replaceAll(/,/g, ''));
-                                document.getElementById('InterestCIColumn3').innerHTML = numUSD.format(a);
-                                // Fourth Last Year
-                                a = parseInt(document.getElementById('NormalizedTheoricalInterestCharge4').value.replaceAll(/,/g, ''));
-                                document.getElementById('InterestCIColumn4').innerHTML = numUSD.format(a);
-                                // Fifth Last Year
-                                a = parseInt(document.getElementById('NormalizedTheoricalInterestCharge5').value.replaceAll(/,/g, ''));
-                                document.getElementById('InterestCIColumn5').innerHTML = numUSD.format(a);
-                                // Fifth Last Year
-                                a = parseInt(document.getElementById('NormalizedTheoricalInterestCharge6').value.replaceAll(/,/g, ''));
-                                document.getElementById('InterestCIColumn6').innerHTML = numUSD.format(a);
-                            };
-                            window.addEventListener('DOMContentLoaded', InterestCI)
-                            window.addEventListener('keyup', function() {
-                                var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
-                                if (event.keyCode in formulakeylist) {
-                                    InterestCI();
-                                }
-                            })
-                        </script>
-                        <td colspan="2" class="clock" id="InterestCIColumn1" style="font-weight:bold;" onclick="HighLight()"></input></td>
-                        <td colspan="2" class="clock" id="InterestCIColumn2" onclick="HighLight()"></input></td>
-                        <td colspan="2" class="clock" id="InterestCIColumn3" onclick="HighLight()"></input></td>
-                        <td colspan="2" class="clock" id="InterestCIColumn4" onclick="HighLight()"></input></td>
-                        <td colspan="2" class="clock" id="InterestCIColumn5" onclick="HighLight()"></input></td>
-                        <td colspan="2" class="clock" id="InterestCIColumn6" onclick="HighLight()"></input></td>
-                    </tr>
-                    <tr>
                         <td colspan="2"><h6>Others</h6></td>
                         <td></td>
                         <td>
@@ -14773,37 +14704,31 @@
                                 // Last Year
                                 a = -parseFloat(document.getElementById('TheoricalTaxRate1').value.replaceAll(/,/g, ''));
                                 b = parseInt(document.getElementById('OperatingIncomeCIColumn1').innerHTML.replaceAll(/,/g, ''));
-                                b = b + parseInt(document.getElementById('InterestCIColumn1').innerHTML.replaceAll(/,/g, ''));
                                 b = b + parseInt(document.getElementById('OthersCIColumn1').value.replaceAll(/,/g, ''));
                                 document.getElementById('TaxesAdjustmentCIColumn1').innerHTML = numUSD.format(Math.round(a/100 * b));
                                 // Second Last Year
                                 a = -parseFloat(document.getElementById('TheoricalTaxRate2').value.replaceAll(/,/g, ''));
                                 b = parseInt(document.getElementById('OperatingIncomeCIColumn2').innerHTML.replaceAll(/,/g, ''));
-                                b = b + parseInt(document.getElementById('InterestCIColumn2').innerHTML.replaceAll(/,/g, ''));
                                 b = b + parseInt(document.getElementById('OthersCIColumn2').value.replaceAll(/,/g, ''));
                                 document.getElementById('TaxesAdjustmentCIColumn2').innerHTML = numUSD.format(Math.round(a/100 * b));
                                 // Third Last Year
                                 a = -parseFloat(document.getElementById('TheoricalTaxRate3').value.replaceAll(/,/g, ''));
                                 b = parseInt(document.getElementById('OperatingIncomeCIColumn3').innerHTML.replaceAll(/,/g, ''));
-                                b = b + parseInt(document.getElementById('InterestCIColumn3').innerHTML.replaceAll(/,/g, ''));
                                 b = b + parseInt(document.getElementById('OthersCIColumn3').value.replaceAll(/,/g, ''));
                                 document.getElementById('TaxesAdjustmentCIColumn3').innerHTML = numUSD.format(Math.round(a/100 * b));
                                 // Fourth Last Year
                                 a = -parseFloat(document.getElementById('TheoricalTaxRate4').value.replaceAll(/,/g, ''));
                                 b = parseInt(document.getElementById('OperatingIncomeCIColumn4').innerHTML.replaceAll(/,/g, ''));
-                                b = b + parseInt(document.getElementById('InterestCIColumn4').innerHTML.replaceAll(/,/g, ''));
                                 b = b + parseInt(document.getElementById('OthersCIColumn4').value.replaceAll(/,/g, ''));
                                 document.getElementById('TaxesAdjustmentCIColumn4').innerHTML = numUSD.format(Math.round(a/100 * b));
                                 // Fifth Last Year
                                 a = -parseFloat(document.getElementById('TheoricalTaxRate5').value.replaceAll(/,/g, ''));
                                 b = parseInt(document.getElementById('OperatingIncomeCIColumn5').innerHTML.replaceAll(/,/g, ''));
-                                b = b + parseInt(document.getElementById('InterestCIColumn5').innerHTML.replaceAll(/,/g, ''));
                                 b = b + parseInt(document.getElementById('OthersCIColumn5').value.replaceAll(/,/g, ''));
                                 document.getElementById('TaxesAdjustmentCIColumn5').innerHTML = numUSD.format(Math.round(a/100 * b));
                                 // Sixth Last Year
                                 a = -parseFloat(document.getElementById('TheoricalTaxRate6').value.replaceAll(/,/g, ''));
                                 b = parseInt(document.getElementById('OperatingIncomeCIColumn6').innerHTML.replaceAll(/,/g, ''));
-                                b = b + parseInt(document.getElementById('InterestCIColumn6').innerHTML.replaceAll(/,/g, ''));
                                 b = b + parseInt(document.getElementById('OthersCIColumn6').value.replaceAll(/,/g, ''));
                                 document.getElementById('TaxesAdjustmentCIColumn6').innerHTML = numUSD.format(Math.round(a/100 * b));
                             };
@@ -14836,37 +14761,31 @@
                                 })
                                 // Column 1
                                 a = parseInt(document.getElementById('OperatingIncomeCIColumn1').innerHTML.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('InterestCIColumn1').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OthersCIColumn1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TaxesAdjustmentCIColumn1').innerHTML.replaceAll(/,/g, ''));
                                 document.getElementById('NormalizedIncomeBeforeInterestCIColumn1').innerHTML = numUSD.format(Math.round(a));
                                 // Column 2
                                 a = parseInt(document.getElementById('OperatingIncomeCIColumn2').innerHTML.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('InterestCIColumn2').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OthersCIColumn2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TaxesAdjustmentCIColumn2').innerHTML.replaceAll(/,/g, ''));
                                 document.getElementById('NormalizedIncomeBeforeInterestCIColumn2').innerHTML = numUSD.format(Math.round(a));
                                 // Column 3
                                 a = parseInt(document.getElementById('OperatingIncomeCIColumn3').innerHTML.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('InterestCIColumn3').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OthersCIColumn3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TaxesAdjustmentCIColumn3').innerHTML.replaceAll(/,/g, ''));
                                 document.getElementById('NormalizedIncomeBeforeInterestCIColumn3').innerHTML = numUSD.format(Math.round(a));
                                 // Column 4
                                 a = parseInt(document.getElementById('OperatingIncomeCIColumn4').innerHTML.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('InterestCIColumn4').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OthersCIColumn4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TaxesAdjustmentCIColumn4').innerHTML.replaceAll(/,/g, ''));
                                 document.getElementById('NormalizedIncomeBeforeInterestCIColumn4').innerHTML = numUSD.format(Math.round(a));
                                 // Column 5
                                 a = parseInt(document.getElementById('OperatingIncomeCIColumn5').innerHTML.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('InterestCIColumn5').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OthersCIColumn5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TaxesAdjustmentCIColumn5').innerHTML.replaceAll(/,/g, ''));
                                 document.getElementById('NormalizedIncomeBeforeInterestCIColumn5').innerHTML = numUSD.format(Math.round(a));
                                 // Column 6
                                 a = parseInt(document.getElementById('OperatingIncomeCIColumn6').innerHTML.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('InterestCIColumn6').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OthersCIColumn6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TaxesAdjustmentCIColumn6').innerHTML.replaceAll(/,/g, ''));
                                 document.getElementById('NormalizedIncomeBeforeInterestCIColumn6').innerHTML = numUSD.format(Math.round(a));
@@ -14975,7 +14894,7 @@
                         <td colspan="2"><input id="OthersWeightedCIColumn6" onclick="HighLight()"></input></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><h6><b>Characteristic Income Before Interest, After Taxes</b></h6></td>
+                        <td colspan="2"><h6><b>Characteristic Income Before Interest</b></h6></td>
                         <td style="color:#0d47a1; text-align:center; font-weight:bold;">(d)</td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="CharacteristicCashFlowCheckbox"></input>
@@ -15061,7 +14980,7 @@
                         <td colspan="2" id="CapitalizationRateCIColumn6"></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><h6><b>Capitalized Characteristic Income Before Interest, After Taxes</b></h6></td>
+                        <td colspan="2"><h6><b>Capitalized Characteristic Income Before Interest</b></h6></td>
                         <td style="color:#0d47a1; text-align:center; font-weight:bold;">(e)</td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="CapitalizedCharacteristicCashFlowCheckbox"></input>
@@ -15649,11 +15568,11 @@
                     </tr>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">(d)</td>
-                        <td style="text-align:justify;" colspan="20" ><b>Characteristic Income Before Interest, After Taxes:</b> Representative net income for valuation purposes.</td>
+                        <td style="text-align:justify;" colspan="20" ><b>Characteristic Income Before Interest:</b> Representative net income for valuation purposes.</td>
                     </tr>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">(e)</td>
-                        <td style="text-align:justify;" colspan="20" ><b>Capitalized Characteristic Income Before Interest, After Taxes:</b> The quotient of the representative net income by the capitalization rate.</td>
+                        <td style="text-align:justify;" colspan="20" ><b>Capitalized Characteristic Income Before Interest:</b> The quotient of the representative net income by the capitalization rate.</td>
                     </tr>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">(f)</td>
@@ -16381,7 +16300,7 @@
             <table style="border-bottom:solid #0D47A1">
                 <body>
                     <tr>
-                        <td><h3 style="font-weight:bold; margin-left:0px;">Graph</h3></td>
+                        <td><h3 style="font-weight:bold; margin-left:0px;">Line Chart</h3></td>
                     </tr>
                 </body>
             </table>
@@ -16402,49 +16321,49 @@
                             <script>
                                 function LineChart(LineChart) {
                                     //
-                                    a = 1
+                                    a = 0
                                     a = Math.max(a, parseInt(document.getElementById('IntrinsicValues1').innerHTML.replaceAll(/,/g, '')));
                                     if (Number.isNaN(Number(a))) {
                                         a = 1
                                     }
                                     //
-                                    b = 1
+                                    b = 0
                                     b = Math.max(b, parseInt(document.getElementById('IntrinsicValues2').innerHTML.replaceAll(/,/g, '')));
                                     if (Number.isNaN(Number(b))) {
                                         b = 1
                                     }
                                     //
-                                    c = 1
+                                    c = 0
                                     c = Math.max(c, parseInt(document.getElementById('IntrinsicValues3').innerHTML.replaceAll(/,/g, '')));
                                     if (Number.isNaN(Number(c))) {
                                         c = 1
                                     }
                                     //
-                                    d = 1
+                                    d = 0
                                     d = Math.max(d, parseInt(document.getElementById('IntrinsicValues4').innerHTML.replaceAll(/,/g, '')));
                                     if (Number.isNaN(Number(d))) {
                                         d = 1
                                     }
                                     //
-                                    e = 1
+                                    e = 0
                                     e = Math.max(e, parseInt(document.getElementById('MarketCapitalizationColumn1').innerHTML.replaceAll(/,/g, '')));
                                     if (Number.isNaN(Number(e))) {
                                         e = 1
                                     }
                                     //
-                                    f = 1
+                                    f = 0
                                     f = Math.max(f, parseInt(document.getElementById('MarketCapitalizationColumn2').innerHTML.replaceAll(/,/g, '')));
                                     if (Number.isNaN(Number(f))) {
                                         f = 1
                                     }
                                     //
-                                    g = 1
+                                    g = 0
                                     g = Math.max(g, parseInt(document.getElementById('MarketCapitalizationColumn3').innerHTML.replaceAll(/,/g, '')));
                                     if (Number.isNaN(Number(g))) {
                                         g = 1
                                     }
                                     //
-                                    h = 1
+                                    h = 0
                                     h = Math.max(h, parseInt(document.getElementById('MarketCapitalizationColumn4').innerHTML.replaceAll(/,/g, '')));
                                     if (Number.isNaN(Number(h))) {
                                         h = 1
@@ -16470,51 +16389,61 @@
                                     const thirdlastyear = document.getElementById('DateSummary3').innerHTML.replaceAll(/,/g, '');
                                     const fourthlastyear = document.getElementById('DateSummary4').innerHTML.replaceAll(/,/g, '');
                                     //
-                                    a = a / dad;
-                                    if (a == 0) {
+                                    if (a == 1) {
                                         a = NaN
+                                    } else {
+                                        a = a / dad;
                                     }
                                     let lastyearIntrinsicValue = Math.round(a * 1000)/1000
                                     //
-                                    a = b / dad;
-                                    if (a == 0) {
+                                    if (b == 1) {
                                         a = NaN
+                                    } else {
+                                        a = b / dad;
                                     }
                                     let secondlastyearIntrinsicValue = Math.round(a * 1000)/1000
                                     //
-                                    a = c / dad;
-                                    if (a == 0) {
+                                    if (c == 1) {
                                         a = NaN
+                                    } else {
+                                        a = c / dad;
                                     }
                                     let thirdlastyearIntrinsicValue = Math.round(a * 1000)/1000
                                     //
-                                    a = d / dad;
-                                    if (a == 0) {
+                                    //
+                                    //
+                                    if (d == 1) {
                                         a = NaN
+                                    } else {
+                                        a = d / dad;
                                     }
                                     let fourthlastyearIntrinsicValue = Math.round(a * 1000)/1000
                                     //
-                                    a = e / dad;
-                                    if (a == 0) {
+                                    if (e == 1) {
                                         a = NaN
+                                    } else {
+                                        a = e / dad;
                                     }
                                     let lastyearMarketCap = Math.round(a * 1000)/1000
                                     //
-                                    a = f / dad;
-                                    if (a == 0) {
+                                    if (f == 1) {
                                         a = NaN
+                                    } else {
+                                        a = f / dad;
                                     }
                                     let secondlastyearMarketCap = Math.round(a * 1000)/1000
                                     //
-                                    a = g / dad;
-                                    if (a == 0) {
+                                    if (g == 1) {
                                         a = NaN
+                                    } else {
+                                        a = g / dad;
                                     }
                                     let thirdlastyearMarketCap = Math.round(a * 1000)/1000
                                     //
-                                    a = h / dad;
-                                    if (a == 0) {
+                                    if (h == 1) {
                                         a = NaN
+                                    } else {
+                                        a = h / dad;
                                     }
                                     let fourthlastyearMarketCap = Math.round(a * 1000)/1000
                                     //
@@ -18710,7 +18639,7 @@
                         <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.2.1.6" value={{ AuditData_sixthlastyear.AnomalyGrossMargin }}></input></td>
                     </tr>
                     <tr>
-                        <td colspan="2" style="text-align:left;">Operating Income</td>
+                        <td colspan="2" style="text-align:left;">Operating Income (Loss)</td>
                         <td><button data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold;">IS</button></td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="Checkbox"></input>
@@ -19363,21 +19292,21 @@
                         <td style="padding-top:37px"><h6><b>PROCEDURE 5.1</b></h6></td>
                     </tr>
                     <tr>
-                       <td style="text-align:left">The variation of the balance sheets components are explained by the variation in cash for the underlying transactions.</td>
+                       <td colspan="2" style="text-align:left">The variation of the balance sheets components are explained by the variation in cash for the underlying transactions.</td>
                     </tr>
                     <tr></tr>
                     <tr>
                         <td colspan="2"><h6><b>ASSERTIONS</b></h6></td>
                     </tr>
                     <tr>
-                        <td style="text-align:left">Cut-off, existence, completeness and accuracy.</td>
+                        <td colspan="2" style="text-align:left">Cut-off, existence, completeness and accuracy.</td>
                     </tr>
                     <tr></tr>
                     <tr>
                         <td colspan="2"><h6><b>SCOPE</b></h6></td>
                     </tr>
                     <tr>
-                        <td style="text-align:left">Yearly</td>
+                        <td colspan="2" style="text-align:left">Yearly</td>
                     </tr>
                 </body>
             </table>
@@ -20113,7 +20042,7 @@
                         <td colspan="2" class="account" id="AnomaliesGrossMargin6"></td>
                     </tr>
                     <tr>
-                        <td colspan="2" style="text-align: left;">Operating Income</td>
+                        <td colspan="2" style="text-align: left;">Operating Income (Loss)</td>
                         <td><button data-page="ProcedureAnnualIncomeStatements" style="text-align:center; font-weight:bold;">Pro</button></td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="Checkbox"></input>
