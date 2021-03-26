@@ -1,5 +1,7 @@
 
 { name: 'ABIOMED INC (ABMD)' , url: './ABMD'},
+{ name: 'AGILENT TECHNOLOGIES, INC. (A)' , url: './A'},
+{ name: 'AMC ENTERTAINMENT HOLDINGS, INC. (AMC)' , url: './AMC'},
 { name: 'APPLE INC. (AAPL)' , url: './AAPL'},
 { name: 'ARISTA NETWORKS, INC. (ANET)' , url: './ANET'},
 { name: 'COCA COLA CO (KO)' , url: './KO'},
@@ -9,7 +11,9 @@
 { name: 'GAMESTOP CORP. (GME)' , url: './GME'},
 { name: 'INTEL CORP (INTC)' , url: './INTC'},
 { name: 'KEYSIGHT TECHNOLOGIES, INC. (KEYS)' , url: './KEYS'},
+{ name: 'KROGER CO (KR)' , url: './KR'},
 { name: 'MCDONALDS CORP (MCD)' , url: './MCD'},
+{ name: 'MONSTER BEVERAGE CORP (MNST)' , url: './MNST'},
 { name: 'O REILLY AUTOMOTIVE INC (ORLY)' , url: './ORLY'},
 { name: 'TESLA, INC. (TSLA)' , url: './TSLA'},
 { name: 'TJX COMPANIES INC /DE/ (TJX)' , url: './TJX'},
