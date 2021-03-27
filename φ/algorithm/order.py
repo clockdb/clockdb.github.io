@@ -1,47 +1,37 @@
-Ordered = {
-    'ORLY':    '898173',
-    'TJX':    '109198',
-    'INTC':    '50863',
-    'KEYS':    '1601046',
-    'ANET':    '1596532',
-    'FB':       '1326801',
-    'ABMD':    '815094',
-    'AAPL':    '320193',
-    'LLY':    '59478',
-    'KO':       '21344',
-    'ENPH':    '1463101',
-    'TSLA':    '1318605',
-    'GME':    '1326380',
-    'MCD':    '63908',
-    'AMC':    '1411579',
+
+
+
+Ordered = {#
+    'WMT':     '104169',
+#    'TXT':     '217346',
+#
+#    'ORLY':    '898173',
+#    'MNST':    '865752',
+#    'FB':    '1326801',
+#    'INTC':    '50863',
+#    'TJX':    '109198',
+#    'KEYS':    '1601046',
+#    'ABMD':    '815094',
+#    'ANET':    '1596532',
+#    'AAPL':    '320193',
+#    'A':       '1090872',
+#    'LLY':    '59478',
+#    'ENPH':    '1463101',
+#    'KO':      '21344',
+#    'KR':      '56873',
+#    'TSLA':    '1318605',
+#    'GME':    '1326380',
+#    'AMC':    '1411579',
+#    'MCD':    '63908',
 }
  
-Pending = {
-    'AOS':    '91142',
-    'AVY':    '8818',
-    'INCY':    '879169',
-    'KDP':    '1418135',
-}
+
+from φ.models import *
+
 
 # TradingSymbol to EntityCentralIndexKeys
 EntityCentralIndexKeys = {
     #
-    'INTC':    '50863',
-    'ORLY':    '898173',
-    'TJX':    '109198',
-    'KEYS':    '1601046',
-    'ANET':    '1596532',
-    'FB':    '1326801',
-    'ABMD':    '815094',
-    'AAPL':    '320193',
-    'LLY':    '59478',
-    'KO':   '21344',
-    'ENPH':    '1463101',
-    'MCD':    '63908',
-    'TSLA':    '1318605',
-    'GME':    '1326380',
-    #
-    'AMC':    '1411579',
     'AOS':    '91142',
     'AVY':    '8818',
     'INCY':    '879169',
@@ -57,7 +47,6 @@ EntityCentralIndexKeys = {
     'AAP': '1158449',
     'AES': '874761',
     'AFL': '4977',
-    'A': '1090872',
     'APD': '2969',
     'AKAM': '1086222',
     'ALK': '766421',
@@ -154,7 +143,6 @@ EntityCentralIndexKeys = {
     'CLX': '21076',
     'CME': '1156375',
     'CMS': '811156',
-    'KO': '21344',
     'CTSH': '1058290',
     'CL': '21665',
     'CMCSA': '1166691',
@@ -311,7 +299,6 @@ EntityCentralIndexKeys = {
     'KMI': '1506307',
     'KLAC': '319201',
     'KHC': '1637459',
-    'KR': '56873',
     'LB': '701985',
     'LHX': '202058',
     'LH': '920148',
@@ -354,7 +341,6 @@ EntityCentralIndexKeys = {
     'MHK': '851968',
     'TAP': '24545',
     'MDLZ': '1103982',
-    'MNST': '865752',
     'MCO': '1059556',
     'MS': '895421',
     'MOS': '1285785',
@@ -470,7 +456,6 @@ EntityCentralIndexKeys = {
     'TFX': '96943',
     'TER': '97210',
     'TXN': '97476',
-    'TXT': '217346',
     'TMO': '97745',
     'TSCO': '916365',
     'TT': '1466258',
@@ -509,7 +494,6 @@ EntityCentralIndexKeys = {
     'VMC': '1396009',
     'WRB': '11544',
     'WAB': '943452',
-    'WMT': '104169',
     'WBA': '1618921',
     'DIS': '1744489',
     'WM': '823768',
@@ -536,3 +520,10 @@ EntityCentralIndexKeys = {
     'ZION': '109380',
     'ZTS': '1555280',
 }
+
+for EntityCentralIndexKey in EntityCentralIndexKeys:
+
+    Entity.objects.get(TradingSymbol=EntityCentralIndexKey).delete()
+
+
+    

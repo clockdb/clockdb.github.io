@@ -2921,15 +2921,15 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                         try:
                             PropertyPlantAndEquipment = []
                             r = 0
-                            ppe = ''
                             for key, value in BalanceSheet.items():
                                 if r > CurrentAssetsRank:
                                     if r < AssetsRank:
                                         d = key
+                                        x = ''
+                                        ppe = ''
                                         q = [
                                             'Property',
                                             'AccumulatedDepreciation',
-
                                         ]
                                         b = [
                                             'UnderCapitalLease',
@@ -2949,12 +2949,19 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                                         if p in d:
                                                             h = ''
                                                         u = u + 1
+                                                print(d)
                                                 for j in k:
+                                                    for y in m:
+                                                        if y in d:
+                                                            x = 'p'
+                                                if x == '' :
                                                     if j in d:
-                                                        if ppe == '':
-                                                            ppe = 'once'
-                                                        elif ppe == 'once':
+                                                        if ppe == 'once':
+                                                            print(2)
                                                             ppe = 'twice'
+                                                        elif ppe == '':
+                                                            print(1)
+                                                            ppe = 'once'
                                                 if ppe == 'once':
                                                     ppe = ''
                                                 if h == 'p':
@@ -10341,6 +10348,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
     try:
         # Time Of Update
         today = date.today()
+        print(today)
         date_text = today.strftime("%B %d, %Y")
         e.Update = date_text
         print("Update: ", str(e.Update))
