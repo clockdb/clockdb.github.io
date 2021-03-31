@@ -29,30 +29,8 @@ import xml.etree.ElementTree as ET
 
 # TradingSymbol to EntityCentralIndexKeys
 EntityCentralIndexKeys = {
-#
-#    'ORLY':    '898173',
-#    'MNST':    '865752',
-#    'FB':      '1326801',
-#    'INTC':    '50863',
-#    'TJX':     '109198',
-#    'COST':    '909832',
-#    'WMT':     '104169',
-#    'KEYS':    '1601046',
-#    'COO':     '711404',
-#    'AAPL':    '320193',
-#    'ABMD':    '815094',
-#    'ANET':    '1596532',
-#    'A':       '1090872',
-#    'LLY':     '59478',
-#    'ENPH':    '1463101',
-    'KR':      '56873',
-#    'TRMB':    '864749',
-#    'KO':      '21344',
-#    'TSLA':    '1318605',
-#    'GME':     '1326380',
-#    'MCD':     '63908',
-#    'AMC':     '1411579',
-#
+    'ACLS':    '1113232',
+    'ADYX':    '1054274',
 }
  
 #
@@ -937,6 +915,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
             e = Entity()
             e.TradingSymbol = TradingSymbol
             e.EntityCentralIndexKey = EntityCentralIndexKeys[TradingSymbol]
+            e.Reviewed = 0
             e.save()
             #
             print('New Entity for TradingSymbol ' + TradingSymbol + ' created in φ.\n')
@@ -1732,6 +1711,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                         'DeferredIncome',
                                         'DiscontinuedOperations',
                                         'Inventor',
+                                        'LongTerm',
                                         'Prepaid',
                                         'Receivable',
                                         'Securities',
@@ -3491,6 +3471,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                         if r < AssetsRank:
                                             d = key
                                             q = [
+                                                'RestrictedCash',
                                                 'OtherAssets',
                                                 'OtherLongTermAsset',
                                                 'OtherNonCurrentAsset',
