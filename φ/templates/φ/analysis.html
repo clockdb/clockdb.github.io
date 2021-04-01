@@ -21272,11 +21272,17 @@
                                 //
                                 // Column 1
                                 a = parseFloat(document.getElementById('Clockφ1').innerHTML.replaceAll(/,/g, ''))
+                                b = parseFloat(document.getElementById('ExpectedGrowthColumn1').innerHTML.replaceAll(/,/g, ''))
+                                c = parseFloat(document.getElementById('CharacteristicIncomeBeforeInterestAfterTaxesColumn1').innerHTML.replaceAll(/,/g, ''))
                                 if (isNaN(a)) {
                                 } else {
                                     if (document.getElementById('Bridgeφ1').innerHTML.length === 98) {
                                         if (a > 100) {
-                                            document.getElementById('Opinionφ1').innerHTML = "Buy" ;
+                                            if (b < 1) {
+                                                if (c > 1) {
+                                                    document.getElementById('Opinionφ1').innerHTML = "Buy" ;
+                                                }
+                                            }
                                         } else {
                                             if (a < 70) {
                                                 document.getElementById('Opinionφ1').innerHTML = "Hedge For A Loss In Value" ;
@@ -21286,42 +21292,66 @@
                                 }
                                 // Column 2
                                 a = parseFloat(document.getElementById('Clockφ2').innerHTML.replaceAll(/,/g, ''))
+                                b = parseFloat(document.getElementById('ExpectedGrowthColumn2').innerHTML.replaceAll(/,/g, ''))
+                                c = parseFloat(document.getElementById('CharacteristicIncomeBeforeInterestAfterTaxesColumn2').innerHTML.replaceAll(/,/g, ''))
                                 if (isNaN(a)) {
                                 } else {
                                     if (document.getElementById('Bridgeφ2').innerHTML.length === 98) {
                                         if (a > 100) {
-                                            document.getElementById('Opinionφ2').innerHTML = "Buy" ;
+                                            if (b < 1) {
+                                                if (c > 1) {
+                                                    document.getElementById('Opinionφ2').innerHTML = "Buy" ;
+                                                }
+                                            }
                                         } else {
                                             if (a < 70) {
-                                                document.getElementById('Opinionφ2').innerHTML = "Hedge For A Loss In Value" ;
+                                                if (b > 1) {
+                                                    document.getElementById('Opinionφ2').innerHTML = "Hedge For A Loss In Value" ;
+                                                }
                                             }
                                         }
                                     }
                                 }
                                 // Column 3
                                 a = parseFloat(document.getElementById('Clockφ3').innerHTML.replaceAll(/,/g, ''))
+                                b = parseFloat(document.getElementById('ExpectedGrowthColumn3').innerHTML.replaceAll(/,/g, ''))
+                                c = parseFloat(document.getElementById('CharacteristicIncomeBeforeInterestAfterTaxesColumn3').innerHTML.replaceAll(/,/g, ''))                                
                                 if (isNaN(a)) {
                                 } else {
                                     if (document.getElementById('Bridgeφ3').innerHTML.length === 98) {
                                         if (a > 100) {
-                                            document.getElementById('Opinionφ3').innerHTML = "Buy" ;
+                                            if (b < 1) {
+                                                if (c > 1) {
+                                                    document.getElementById('Opinionφ3').innerHTML = "Buy" ;
+                                                }
+                                            }
                                         } else {
                                             if (a < 70) {
-                                                document.getElementById('Opinionφ3').innerHTML = "Hedge For A Loss In Value" ;
+                                                if (b > 1) {
+                                                    document.getElementById('Opinionφ3').innerHTML = "Hedge For A Loss In Value" ;
+                                                }
                                             }
                                         }
                                     }
                                 }
                                 // Column 1
                                 a = parseFloat(document.getElementById('Clockφ4').innerHTML.replaceAll(/,/g, ''))
+                                b = parseFloat(document.getElementById('ExpectedGrowthColumn4').innerHTML.replaceAll(/,/g, ''))
+                                c = parseFloat(document.getElementById('CharacteristicIncomeBeforeInterestAfterTaxesColumn4').innerHTML.replaceAll(/,/g, ''))                                
                                 if (isNaN(a)) {
                                 } else {
                                     if (document.getElementById('Bridgeφ4').innerHTML.length === 98) {
                                         if (a > 100) {
-                                            document.getElementById('Opinionφ4').innerHTML = "Buy" ;
+                                            if (b < 1) {
+                                                if (c > 1) {
+                                                    document.getElementById('Opinionφ4').innerHTML = "Buy" ;
+                                                }
+                                            }
                                         } else {
                                             if (a < 70) {
-                                                document.getElementById('Opinionφ4').innerHTML = "Hedge For A Loss In Value" ;
+                                                if (b > 1) {
+                                                    document.getElementById('Opinionφ4').innerHTML = "Hedge For A Loss In Value" ;
+                                                }
                                             }
                                         }
                                     }
@@ -21386,6 +21416,9 @@
         document.getElementById('q').innerHTML = '';
         //
         a = parseInt(document.getElementById('Clockφ1').innerHTML.replaceAll(/,/g, '')) / 100
+        aa = parseFloat(document.getElementById('ExpectedGrowthColumn1').innerHTML.replaceAll(/,/g, ''))
+        aaa = parseFloat(document.getElementById('CharacteristicIncomeBeforeInterestAfterTaxesColumn1').innerHTML.replaceAll(/,/g, ''))
+        //
         b = document.getElementById('Bridgeφ1').innerHTML
         c = document.getElementById('Bridgeφ2').innerHTML
         //
@@ -21396,15 +21429,32 @@
             }
         }
         //
-        if (a > 0.7) {
-            if (a > 1) {
-                document.getElementById('o').style.color = 'green';
-            } else {
-                document.getElementById('o').style.color = 'orange';
-            }
-        } else {
-            document.getElementById('o').style.color = 'red';
+        m = '';
+        //
+        if (a < 0.7) {
+            m = 'red';
         }
+        //
+        if (aa > 1) {
+            m = 'red';
+        }
+        //
+        if (aaa < 1) {
+            m = 'red';
+        }
+        //
+        if (a > 1) {
+            if (aa < 1) {
+                if (aaa > 1) {
+                    m = 'green';
+                }
+            }
+        }
+        if (m == '') {
+            m = 'orange'
+        }
+        //
+        document.getElementById('o').style.color = m;
     };
     window.addEventListener('DOMContentLoaded', Puck)
     window.addEventListener('keyup', function() {

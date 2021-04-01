@@ -29,8 +29,6 @@ EntityCentralIndexKeys = {
 }
 
 
-'VLO': '1035002',
-'IBM': '51143',
 
 
 from φ.models import *
@@ -10905,7 +10903,7 @@ EntityCentralIndexKeys = {
 for EntityCentralIndexKey in EntityCentralIndexKeys:
     try:
         e = Entity.objects.get(TradingSymbol=EntityCentralIndexKey)
-        if e.Reviewed == 0:
+        if e.lastyear == '0':
             Entity.objects.get(TradingSymbol=EntityCentralIndexKey).delete()
     except:
         pass

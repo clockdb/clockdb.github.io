@@ -29,8 +29,8 @@ import xml.etree.ElementTree as ET
 
 # TradingSymbol to EntityCentralIndexKeys
 EntityCentralIndexKeys = {
-    'ACLS':    '1113232',
-    'ADYX':    '1054274',
+    'VLO': '1035002',
+#    'IBM': '51143',
 }
  
 #
@@ -915,6 +915,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
             e = Entity()
             e.TradingSymbol = TradingSymbol
             e.EntityCentralIndexKey = EntityCentralIndexKeys[TradingSymbol]
+            UpToDate = None
             e.Reviewed = 0
             e.save()
             #

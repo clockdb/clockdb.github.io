@@ -13,6 +13,7 @@ urlpatterns = [
     path("disclaimer/", views.disclaimer, name="disclaimer"),
     path("entities/", views.entities, name="entities"),
     path("documentation/", views.documentation, name="documentation"),
+    path("memo/", views.memo, name="memo"),
     #
     path("<str:entity_TradingSymbol>/", views.analysis, name="analysis"),
     path("<str:entity_TradingSymbol>/Community", views.analysis, name="analysis"),

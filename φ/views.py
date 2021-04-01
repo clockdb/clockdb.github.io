@@ -55,6 +55,10 @@ def analysis(request, entity_TradingSymbol):
         "AuditData_sixthlastyear": AuditData_sixthlastyear,
     })
 
+# ABOUT
+def about(request):
+    return render(request, "./φ/about.html")
+        
 # DB
 def db(request):
     return render(request, "./φ/db.html", {
@@ -81,10 +85,11 @@ def entities(request):
         "entities": Entity.objects.all().order_by('TradingSymbol')
     })
     
-# ABOUT
-def about(request):
-    return render(request, "./φ/about.html")
-        
+# MEMO
+def memo(request):
+    return render(request, "./φ/memo.html")
+    
+
 # INDEX
 def index(request):
     return render(request, "./φ/index.html")
