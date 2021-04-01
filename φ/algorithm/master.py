@@ -29,8 +29,8 @@ import xml.etree.ElementTree as ET
 
 # TradingSymbol to EntityCentralIndexKeys
 EntityCentralIndexKeys = {
-    'VLO': '1035002',
-#    'IBM': '51143',
+#    'VLO': '1035002',
+    'IBM': '51143',
 }
  
 #
@@ -5466,8 +5466,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                             'FoodAndBeverageCost',
                                             'FilmExhibitionCost',
                                             'Merchandise',
-                                            'OperatingExpenseExcludingDepreciationAndAmortizationBelow',
-                                            'OperatingExpensesExcludingDepreciationAndAmortizationBelow',
+                                            'OperatingExpense',
                                             'OtherOperating',
                                             'Payroll',
                                             'Products',
@@ -8442,6 +8441,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                             q = [
                                                 'AcquireBusinesses',
                                                 'AcquisitionOfBusinesses',
+                                                'AcquisitionOfValero',
                                                 'AcquisitionOfUndividedInterest',
                                                 'AcquisitionsNetOfCashAcquired',
                                                 'BusinessAcquisitions',
@@ -9475,6 +9475,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                         'cf.PaymentsOfDividends',
                                         'cf.PaymentsForTaxesRelatedToNetShareSettlementOfEquityAward',
                                         'cf.ProceedsFromIssuanceOfLongTermDebt',
+                                        'cf.RepaymentsOfLongTermDebt',
                                         'cf.ProceedsFromRepaymentsOfCommercialPaper',
                                         'cf.RepaymentsOfConvertible',
                                         'cf.IssuanceOfConvertible',
@@ -9492,6 +9493,7 @@ for EntityCentralIndexKey in EntityCentralIndexKeys:
                                         '{:,}'.format(cf.PaymentsOfDividends),
                                         '{:,}'.format(cf.PaymentsForTaxesRelatedToNetShareSettlementOfEquityAward),
                                         '{:,}'.format(cf.ProceedsFromIssuanceOfLongTermDebt),
+                                        '{:,}'.format(cf.RepaymentsOfLongTermDebt),
                                         '{:,}'.format(cf.ProceedsFromRepaymentsOfCommercialPaper),
                                         '{:,}'.format(cf.RepaymentsOfConvertible),
                                         '{:,}'.format(cf.IssuanceOfConvertible),
