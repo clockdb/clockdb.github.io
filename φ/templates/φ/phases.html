@@ -1,0 +1,134 @@
+{% extends "φ/layout.html" %}
+
+{% block body %}
+
+<!--- SCRIPT --->
+<script>       
+
+    // DOCUMENT TITLE
+    document.title = 'clockdb.com | mining phases'
+
+</script>
+
+<!--- MENU --->
+
+<div class="text">
+
+    <ul>
+
+        <a href="{% url 'φ:db' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>REVIEWED</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">reviewed audited financial statements and valuations ({{db.audited}} trading symbols) (human)</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:prepared' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>PREPARED</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">prepared audited financial statements and valuations ({{db.prepared}} trading symbols)</h5>
+
+            </button>
+
+        </a>
+        
+        <a href="{% url 'φ:phase8' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>PHASE 8</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">market data ({{db.phase8}} trading symbols)</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:phase7' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>PHASE 7</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">audited financial statements ({{db.phase7}} trading symbols)</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:phase6' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>PHASE 6</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">financial statements ({{db.phase6}} trading symbols)</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:phase5' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>PHASE 5</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">amend ({{db.phase5}} trading symbols)</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:phase4' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>PHASE 4</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">accession numbers and fiscal year end ({{db.phase4}} trading symbols)</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:phase3' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>PHASE 3</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">financial, cashflow and audit templates ({{db.phase3}} trading symbols)</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:phase2' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>PHASE 2</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">name, industry and region ({{db.phase2}} trading symbols)</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:phase1' %}" style="padding-bottom:17%">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>PHASE 1</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">central index keys ({{db.phase1}} trading symbols)</h5>
+
+            </button>
+
+        </a>
+
+    </ul>
+    
+</div>
+
+
+{% endblock %}

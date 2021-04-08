@@ -17,7 +17,6 @@ import requests
 import urllib
 import xml.etree.ElementTree as ET
 
-
 ##############################################################################################################    
 
 # OUTPUT DIRECTORY
@@ -32,10 +31,16 @@ except:
 
 # LAYOUT
 entities_list = Entity.objects.all().order_by('EntityRegistrantName')
+
 with open(output_directory + 'layout.txt', 'a') as layout:
+    #
     for count in range(0, len(entities_list)):
-        layout.write("{ name: '" + entities_list[count].EntityRegistrantName.replace("'", "`") + " (" + entities_list[count].TradingSymbol + ")' , url: './" + entities_list[count].TradingSymbol + "'},")
-        layout.write('\n')
+        #
+        e = entities_list[count]
+        #
+        if e.Status == 'Audited':
+            #
+            layout.write("{ name: '" + entities_list[count].EntityRegistrantName.replace("'", "`") + " (" + entities_list[count].TradingSymbol + ")' , url: './" + entities_list[count].TradingSymbol + "'}, \n")
 
 ###############################################################################################################
 

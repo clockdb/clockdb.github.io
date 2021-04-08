@@ -1,14 +1,41 @@
+from django.db import models, migrations
 
-from django.db import models   
-
-
-class Auditor(models.Model):
+class Database(models.Model):
     #
-    Name = models.CharField(max_length=93)
-    Number = models.CharField(max_length=93)
+    phase1 = models.IntegerField(default=0)
     #
-    def __str__(self):
-        return f"{self.Name}"
+    phase2 = models.IntegerField(default=0)
+    #
+    phase3 = models.IntegerField(default=0)
+    #
+    phase4 = models.IntegerField(default=0)
+    #
+    phase41 = models.IntegerField(default=0)
+    #
+    phase42 = models.IntegerField(default=0)
+    #
+    phase43 = models.IntegerField(default=0)
+    #
+    phase5 = models.IntegerField(default=0)
+    #
+    phase6 = models.IntegerField(default=0)
+    #
+    phase61 = models.IntegerField(default=0)
+    #
+    phase62 = models.IntegerField(default=0)
+    #
+    phase63 = models.IntegerField(default=0)
+    #
+    phase64 = models.IntegerField(default=0)
+    #
+    phase7 = models.IntegerField(default=0)
+    #
+    phase8 = models.IntegerField(default=0)
+    #
+    prepared = models.IntegerField(default=0)
+    #
+    audited = models.IntegerField(default=0)
+
 
 class Entity(models.Model):
     #
@@ -21,30 +48,47 @@ class Entity(models.Model):
     CurrentFiscalYearEndDate = models.CharField(max_length=13, default=0)
     SecurityExchangeName = models.CharField(max_length=55, default=0)
     Regulator = models.CharField(max_length=3)
-    Update = models.CharField(max_length=30, default=0)
-    UpdateDateAndTime = models.CharField(max_length=15, default=0)
+    Update = models.DateField(null=True)
+    UpdateDateAndTime = models.DateTimeField(null=True)
     Clockφ = models.IntegerField(default=0)
     ClockφChange = models.IntegerField(default=0)
     Bridgeφ = models.CharField(max_length=100, default=0)
     Status = models.CharField(max_length=7, default=0)
-    Reviewed = models.IntegerField(max_length=8, default=0)
+    Reviewed = models.IntegerField(default=0)
     StockPrice = models.IntegerField(default=0)
     Anomalies = models.CharField(max_length=100, default=0)
     SECurl = models.CharField(max_length=66, default=0)
     #
-    lastquarter = models.CharField(max_length=13, default=0)
-    secondlastquarter = models.CharField(max_length=13, default=0)
-    thirdlastquarter = models.CharField(max_length=13, default=0)
-    fourthlastquarter = models.CharField(max_length=13, default=0)
+    lastyear = models.DateField(null=True)
+    secondlastyear = models.DateField(null=True)
+    thirdlastyear = models.DateField(null=True)
+    fourthlastyear = models.DateField(null=True)
+    fifthlastyear = models.DateField(null=True)
+    sixthlastyear = models.DateField(null=True)
+    seventhlastyear = models.DateField(null=True)
+    #   
+    accessionnumberlastyear = models.CharField(max_length=20, default=0)
+    accessionnumbersecondlastyear = models.CharField(max_length=20, default=0)
+    accessionnumberthirdlastyear = models.CharField(max_length=20, default=0)
+    accessionnumberfourthlastyear = models.CharField(max_length=20, default=0)
+    accessionnumberfifthlastyear = models.CharField(max_length=20, default=0)
+    accessionnumbersixthlastyear =  models.CharField(max_length=20, default=0)
+    accessionnumberseventhlastyear =  models.CharField(max_length=20, default=0)
     #
-    lastyear = models.CharField(max_length=13, default=0)
-    secondlastyear = models.CharField(max_length=13, default=0)
-    thirdlastyear = models.CharField(max_length=13, default=0)
-    fourthlastyear = models.CharField(max_length=13, default=0)
-    fifthlastyear = models.CharField(max_length=13, default=0)
-    sixthlastyear = models.CharField(max_length=13, default=0)
-    seventhlastyear = models.CharField(max_length=13, default=0)
-    eighthlastyear = models.CharField(max_length=13, default=0)
+    phase1 = models.IntegerField(default=0)
+    phase2 = models.IntegerField(default=0)
+    phase3 = models.IntegerField(default=0)
+    phase41 = models.IntegerField(default=0)
+    phase42 = models.IntegerField(default=0)
+    phase5 = models.IntegerField(default=0)
+    phase61 = models.IntegerField(default=0)
+    phase62 = models.IntegerField(default=0)
+    phase63 = models.IntegerField(default=0)
+    phase64 = models.IntegerField(default=0)
+    phase7 = models.IntegerField(default=0)
+    phase8 = models.IntegerField(default=0)
+    prepared = models.IntegerField(default=0)
+    audited = models.IntegerField(default=0)
     #
     def __str__(self):
         return f"{self.TradingSymbol}"
@@ -61,10 +105,7 @@ class AuditData(models.Model):
     DocumentFiscalPeriodFocus = models.CharField(max_length=2, default=0)
     DocumentFiscalYearFocus = models.CharField(max_length=4, default=0)
     DocumentPeriodEndDate = models.CharField(max_length=13, default=0)
-    Period = models.CharField(max_length=13, default=0)
-    #
-    # 
-    dad = models.CharField(max_length=13, default=0)
+    Period = models.CharField(max_length=27, default=0)
     #
     # Balance Sheets - Audit
     #
@@ -179,7 +220,7 @@ class CashFlow(models.Model):
     DocumentFiscalPeriodFocus = models.CharField(max_length=2, default=0)
     DocumentFiscalYearFocus = models.CharField(max_length=4, default=0)
     DocumentPeriodEndDate = models.CharField(max_length=13, default=0)
-    Period = models.CharField(max_length=13, default=0)
+    Period = models.CharField(max_length=27, default=0)
     #
     # Cash - Cash Flow
     #
@@ -260,7 +301,7 @@ class TrialBalance(models.Model):
     PeriodOfReport = models.CharField(max_length=13, default=0)
     NumberOfDays = models.IntegerField(default=0)
     FilingDate = models.CharField(max_length=13, default=0)
-    Period = models.CharField(max_length=13, default=0)
+    Period = models.CharField(max_length=27, default=0)
     Link = models.CharField(max_length=360, default=0)
     #
     #

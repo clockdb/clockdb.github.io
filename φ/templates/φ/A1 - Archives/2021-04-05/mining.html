@@ -1,0 +1,46 @@
+{% extends "φ/layout.html" %}
+
+{% block body %}
+
+<!--- SCRIPT --->
+<script>       
+
+    // DOCUMENT TITLE
+    document.title = 'clockdb.com | mining'
+
+</script>
+
+<!--- MENU --->
+
+<div class="text">
+
+    <ul>
+
+        <a href="{% url 'φ:master' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>MASTER</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">phases and chronology</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:phases' %}" style="padding-bottom:17%">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>PHASES</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">mining process</h5>
+
+            </button>
+
+        </a>
+
+    </ul>
+    
+</div>
+
+
+{% endblock %}
