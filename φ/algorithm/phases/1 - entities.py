@@ -28,11 +28,11 @@ import time
 import urllib
 import xml.etree.ElementTree as ET
 
-entitiesobjects = Entity.objects.all().order_by('EntityRegistrantName')
+entities = Entity.objects.all().order_by('EntityRegistrantName')
 
 for count in range(0, len(entitiesobjects)):
     #
-    e = entitiesobjects[count]
+    e = entities[count]
     #
     ts = e.TradingSymbol
     #

@@ -39,7 +39,12 @@ entitiesobjects = Entity.objects.all().order_by('TradingSymbol')
 
 print(137*'-')
 
-for count in range(0, len(entitiesobjects)):
+l = 1
+
+l = len(entities)
+
+# counter
+for count in range(0, l):
     #
     # retreives entity from db
     try:
@@ -85,6 +90,7 @@ for count in range(0, len(entitiesobjects)):
                     #
                     d = datetime.datetime.strptime(b, '%Y-%m-%d')
                     #
+                    # saves data
                     try:
                         if acc == accs[0]:
                             e.lastyear = d

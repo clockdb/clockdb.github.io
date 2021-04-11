@@ -29,13 +29,16 @@ import urllib
 import xml.etree.ElementTree as ET
 
 # Accession Number Replacements
-rep1 = 'Transition reports [Rule 13a-10 or 15d-10]Acc-no: '
-rep2 = 'Annual report [Section 13 and 15(d), not S-K Item 405]Acc-no: '
-rep3 = 'Annual report [Sections 13 and 15(d), not S-K Item 405]Acc-no: '
-rep4 = 'Annual report [Section 13 and 15(d), S-K Item 405] '
-rep5 = 'Annual report [Sections 13 and 15(d), S-K Item 405] '
-rep6 = 'Quarterly report [Sections 13 or 15(d)]Acc-no: '
-rep7 = '[Cover]'
+rep = [
+    'Transition reports [Rule 13a-10 or 15d-10]Acc-no: ',
+    'Annual report [Section 13 and 15(d), not S-K Item 405]Acc-no: ',
+    'Annual report [Sections 13 and 15(d), not S-K Item 405]Acc-no: ',
+    'Annual report [Section 13 and 15(d), S-K Item 405] ',
+    'Annual report [Sections 13 and 15(d), S-K Item 405] ',
+    'Quarterly report [Sections 13 or 15(d)]Acc-no: ',
+    '[Cover]',
+    '[Amend] ',
+]
 
 # BeautifulSoup parser
 def fetch(url):
@@ -52,9 +55,14 @@ def append_value(dict_obj, key, value):
         dict_obj[key] = value
 
 # loop
-entitiesobjects = Entity.objects.all().order_by('TradingSymbol')
+entities = Entity.objects.all().order_by('TradingSymbol')
 
-for count in range(0, len(entitiesobjects)):
+l = 1
+
+l = len(entities)
+
+# counter
+for count in range(0, l):
     #
     e = entitiesobjects[count]
     #
@@ -94,6 +102,8 @@ for count in range(0, len(entitiesobjects)):
                 URL = URL + str(e.EntityCentralIndexKey) 
                 URL = URL + "&type=10-k&dateb=&owner=exclude&count=40&search_text="
                 #
+                print(URL)
+                #
                 # html
                 r = 0
                 while r < 10:
@@ -119,13 +129,10 @@ for count in range(0, len(entitiesobjects)):
                             i = i + 1
                             c = u[i].text
                         #
-                        c = c.replace(rep1,'')
-                        c = c.replace(rep2,'')
-                        c = c.replace(rep3,'')
-                        c = c.replace(rep4,'')
-                        c = c.replace(rep5,'')
-                        c = c.replace(rep6,'')
-                        c = c.replace(rep7,'')[:20]
+                        for r in rep:
+                            c = c.replace(r,'')
+                        #
+                        c = c[:20]
                         #
                         accessionnumber = c
                         #
@@ -135,6 +142,7 @@ for count in range(0, len(entitiesobjects)):
                         i = i + 1
                 except:
                     pass
+                #
                 print(accessionnumbers)
                 #
                 # save data 
@@ -167,19 +175,19 @@ for count in range(0, len(entitiesobjects)):
                 except:
                     pass
                 #
-                # Time Of Update
-                try:
-                    now = datetime.datetime.now()
-                    e.Update = now
-                except:
-                    pass
-                #
                 # phase
                 if e.accessionnumberlastyear != '':
                     if e.accessionnumbersecondlastyear != '':
                         if e.accessionnumberthirdlastyear != '':
                             if e.accessionnumberfourthlastyear != '':
                                 e.Status = 'Phase 4.2'
+                #
+                # Time Of Update
+                try:
+                    now = datetime.datetime.now()
+                    e.Update = now
+                except:
+                    pass
                 #
                 # save entity
                 e.save()

@@ -32,8 +32,6 @@ urlpatterns = [
     path("phase6/", views.phase6, name="phase6"),
     path("phase6.1/", views.phase61, name="phase6.1"),
     path("phase6.2/", views.phase62, name="phase6.2"),
-    path("phase6.3/", views.phase63, name="phase6.3"),
-    path("phase6.4/", views.phase64, name="phase6.4"),
     path("phase7/", views.phase7, name="phase7"),
     path("phase8/", views.phase8, name="phase8"),
     #

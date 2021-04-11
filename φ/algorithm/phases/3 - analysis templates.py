@@ -39,11 +39,16 @@ scopedperiods = [
     'sixthlastyear',
 ]
 
-entitiesobjects = Entity.objects.all().order_by('-EntityRegistrantName')
+entities = Entity.objects.all().order_by('-EntityRegistrantName')
 
-for count in range(0, len(entitiesobjects)):
+l = 1
+
+l = len(entities)
+
+# counter
+for count in range(0, l):
     #
-    e = entitiesobjects[count]
+    e = entities[count]
     #
     ts = e.TradingSymbol
     #

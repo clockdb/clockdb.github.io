@@ -28,6 +28,8 @@ class Database(models.Model):
     #
     phase64 = models.IntegerField(default=0)
     #
+    phase65 = models.IntegerField(default=0)
+    #
     phase7 = models.IntegerField(default=0)
     #
     phase8 = models.IntegerField(default=0)
@@ -35,6 +37,8 @@ class Database(models.Model):
     prepared = models.IntegerField(default=0)
     #
     audited = models.IntegerField(default=0)
+    #
+    total = models.IntegerField(default=0)
 
 
 class Entity(models.Model):
@@ -58,6 +62,14 @@ class Entity(models.Model):
     StockPrice = models.IntegerField(default=0)
     Anomalies = models.CharField(max_length=100, default=0)
     SECurl = models.CharField(max_length=66, default=0)
+    #   
+    accessionnumberlastyear = models.CharField(max_length=20, default='')
+    accessionnumbersecondlastyear = models.CharField(max_length=20, default='')
+    accessionnumberthirdlastyear = models.CharField(max_length=20, default='')
+    accessionnumberfourthlastyear = models.CharField(max_length=20, default='')
+    accessionnumberfifthlastyear = models.CharField(max_length=20, default='')
+    accessionnumbersixthlastyear =  models.CharField(max_length=20, default='')
+    accessionnumberseventhlastyear =  models.CharField(max_length=20, default='')
     #
     lastyear = models.DateField(null=True)
     secondlastyear = models.DateField(null=True)
@@ -66,14 +78,61 @@ class Entity(models.Model):
     fifthlastyear = models.DateField(null=True)
     sixthlastyear = models.DateField(null=True)
     seventhlastyear = models.DateField(null=True)
-    #   
-    accessionnumberlastyear = models.CharField(max_length=20, default=0)
-    accessionnumbersecondlastyear = models.CharField(max_length=20, default=0)
-    accessionnumberthirdlastyear = models.CharField(max_length=20, default=0)
-    accessionnumberfourthlastyear = models.CharField(max_length=20, default=0)
-    accessionnumberfifthlastyear = models.CharField(max_length=20, default=0)
-    accessionnumbersixthlastyear =  models.CharField(max_length=20, default=0)
-    accessionnumberseventhlastyear =  models.CharField(max_length=20, default=0)
+    #
+    amendlastyear =  models.CharField(max_length=5, default='')
+    amendsecondlastyear =  models.CharField(max_length=5, default='')
+    amendthirdlastyear =  models.CharField(max_length=5, default='')
+    amendfourthlastyear =  models.CharField(max_length=5, default='')
+    amendfifthlastyear =  models.CharField(max_length=5, default='')
+    amendsixthlastyear =  models.CharField(max_length=5, default='')
+    amendseventhlastyear =  models.CharField(max_length=5, default='')
+    #
+    urlbalancesheetlastyear =  models.CharField(max_length=170, default='')
+    urlbalancesheetsecondlastyear =  models.CharField(max_length=170, default='')
+    urlbalancesheetthirdlastyear =  models.CharField(max_length=170, default='')
+    urlbalancesheetfourthlastyear =  models.CharField(max_length=170, default='')
+    urlbalancesheetfifthlastyear =  models.CharField(max_length=170, default='')
+    urlbalancesheetsixthlastyear =  models.CharField(max_length=170, default='')
+    urlbalancesheetseventhlastyear =  models.CharField(max_length=170, default='')
+    #
+    urlincomestatementlastyear =  models.CharField(max_length=170, default='')
+    urlincomestatementsecondlastyear =  models.CharField(max_length=170, default='')
+    urlincomestatementthirdlastyear =  models.CharField(max_length=170, default='')
+    urlincomestatementfourthlastyear =  models.CharField(max_length=170, default='')
+    urlincomestatementfifthlastyear =  models.CharField(max_length=170, default='')
+    urlincomestatementsixthlastyear =  models.CharField(max_length=170, default='')
+    urlincomestatementseventhlastyear =  models.CharField(max_length=170, default='')
+    #
+    urlcomprehensiveincomelastyear =  models.CharField(max_length=170, default='')
+    urlcomprehensiveincomesecondlastyear =  models.CharField(max_length=170, default='')
+    urlcomprehensiveincomethirdlastyear =  models.CharField(max_length=170, default='')
+    urlcomprehensiveincomefourthlastyear =  models.CharField(max_length=170, default='')
+    urlcomprehensiveincomefifthlastyear =  models.CharField(max_length=170, default='')
+    urlcomprehensiveincomesixthlastyear =  models.CharField(max_length=170, default='')
+    urlcomprehensiveincomeseventhlastyear =  models.CharField(max_length=170, default='')
+    #
+    urlstockholdersequitylastyear =  models.CharField(max_length=170, default='')
+    urlstockholdersequitysecondlastyear =  models.CharField(max_length=170, default='')
+    urlstockholdersequitythirdlastyear =  models.CharField(max_length=170, default='')
+    urlstockholdersequityfourthlastyear =  models.CharField(max_length=170, default='')
+    urlstockholdersequityfifthlastyear =  models.CharField(max_length=170, default='')
+    urlstockholdersequitysixthlastyear =  models.CharField(max_length=170, default='')
+    urlstockholdersequityseventhlastyear =  models.CharField(max_length=170, default='')
+    #
+    urlcashflowlastyear =  models.CharField(max_length=170, default='')
+    urlcashflowsecondlastyear =  models.CharField(max_length=170, default='')
+    urlcashflowthirdlastyear =  models.CharField(max_length=170, default='')
+    urlcashflowfourthlastyear =  models.CharField(max_length=170, default='')
+    urlcashflowfifthlastyear =  models.CharField(max_length=170, default='')
+    urlcashflowsixthlastyear =  models.CharField(max_length=170, default='')
+    urlcashflowseventhlastyear =  models.CharField(max_length=170, default='')
+    #
+    urlsauditlastyear = models.IntegerField(default=0)
+    urlsauditsecondlastyear = models.IntegerField(default=0)
+    urlsauditthirdlastyear = models.IntegerField(default=0)
+    urlsauditfourthlastyear = models.IntegerField(default=0)
+    urlsauditfifthlastyear = models.IntegerField(default=0)
+    urlsauditsixthlastyear = models.IntegerField(default=0)
     #
     phase1 = models.IntegerField(default=0)
     phase2 = models.IntegerField(default=0)
@@ -81,11 +140,13 @@ class Entity(models.Model):
     phase41 = models.IntegerField(default=0)
     phase42 = models.IntegerField(default=0)
     phase5 = models.IntegerField(default=0)
+    phase6 = models.IntegerField(default=0)
     phase61 = models.IntegerField(default=0)
     phase62 = models.IntegerField(default=0)
-    phase63 = models.IntegerField(default=0)
-    phase64 = models.IntegerField(default=0)
     phase7 = models.IntegerField(default=0)
+    phase71 = models.IntegerField(default=0)
+    phase72 = models.IntegerField(default=0)
+    phase73 = models.IntegerField(default=0)
     phase8 = models.IntegerField(default=0)
     prepared = models.IntegerField(default=0)
     audited = models.IntegerField(default=0)

@@ -33,7 +33,12 @@ entitiesobjects = Entity.objects.all().order_by('TradingSymbol')
 
 now = datetime.datetime.now()
 
-for count in range(0, len(entitiesobjects)):
+l = 1
+
+l = len(entities)
+
+# counter
+for count in range(0, l):
     try:
         #
         e = entitiesobjects[count]
@@ -45,15 +50,15 @@ for count in range(0, len(entitiesobjects)):
             #
             a = e.lastyear - e.secondlastyear
             a = a.days
-            if a > 280:
+            if a > 0:
                 #
                 a = e.secondlastyear - e.thirdlastyear
                 a = a.days
-                if a > 280:
+                if a > 0:
                     #
                     a = e.thirdlastyear - e.fourthlastyear
                     a = a.days
-                    if a > 280:
+                    if a > 0:
                         #
                         z = datetime.datetime(int(e.lastyear.year), int(e.lastyear.month), int(e.lastyear.day))
                         if e.fifthlastyear is None:
@@ -61,30 +66,34 @@ for count in range(0, len(entitiesobjects)):
                                 if (now - z).days < 420:
                                     e.Status = 'Phase 5'
                                 else:
-                                    e.Status = 'Phase 4.3'
+                                    if (now - z).days > 540:
+                                        e.Status = 'Inactive'
                         else:
                             a = e.fourthlastyear - e.fifthlastyear
                             a = a.days
-                            if a > 280:
+                            if a > 0:
                                 #
                                 if e.sixthlastyear is None:
                                     if (now - z).days < 420:
                                         e.Status = 'Phase 5'
                                     else:
-                                        e.Status = 'Phase 4.3'
+                                        if (now - z).days > 540:
+                                            e.Status = 'Inactive'
                                 else:
                                     a = e.fifthlastyear - e.sixthlastyear
                                     a = a.days
-                                    if a > 280:
+                                    if a > 0:
                                         if (now - z).days < 420:
                                             e.Status = 'Phase 5'
                                         else:
-                                            e.Status = 'Phase 4.3'
+                                            if (now - z).days > 540:
+                                                e.Status = 'Inactive'
             #
             # Time Of Update
             e.Update = now
             #
             e.save()
+            #
     except:
         pass
 

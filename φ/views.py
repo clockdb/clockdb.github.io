@@ -72,8 +72,8 @@ def db(request):
         .exclude(Status='Phase 5')
         .exclude(Status='Phase 6.1')
         .exclude(Status='Phase 6.2')
-        .exclude(Status='Phase 6.3')
-        .exclude(Status='Phase 6.4')
+        .exclude(Status='Phase 7')
+        .exclude(Status='Phase 7.2')
         .exclude(Status='Phase 7')
         .exclude(Status='Phase 8')
         .exclude(Status='Prepared')
@@ -109,6 +109,7 @@ def mining(request):
 def phase1(request):
     return render(request, "./φ/phase1.html", {
         "entities": Entity.objects.all().order_by('TradingSymbol')
+        .exclude(Status='Inactive')
         .exclude(Status='Phase 2')
         .exclude(Status='Phase 3')
         .exclude(Status='Phase 4.1')
@@ -117,8 +118,8 @@ def phase1(request):
         .exclude(Status='Phase 5')
         .exclude(Status='Phase 6.1')
         .exclude(Status='Phase 6.2')
-        .exclude(Status='Phase 6.3')
-        .exclude(Status='Phase 6.4')
+        .exclude(Status='Phase 7')
+        .exclude(Status='Phase 7.2')
         .exclude(Status='Phase 7')
         .exclude(Status='Phase 8')
         .exclude(Status='Prepared')
@@ -129,6 +130,7 @@ def phase1(request):
 def phase2(request):
     return render(request, "./φ/phase2.html", {
         "entities": Entity.objects.all().order_by('TradingSymbol')
+        .exclude(Status='Inactive')
         .exclude(Status='Phase 1')
         .exclude(Status='Phase 3')
         .exclude(Status='Phase 4.1')
@@ -137,8 +139,8 @@ def phase2(request):
         .exclude(Status='Phase 5')
         .exclude(Status='Phase 6.1')
         .exclude(Status='Phase 6.2')
-        .exclude(Status='Phase 6.3')
-        .exclude(Status='Phase 6.4')
+        .exclude(Status='Phase 7')
+        .exclude(Status='Phase 7.2')
         .exclude(Status='Phase 7')
         .exclude(Status='Phase 8')
         .exclude(Status='Prepared')
@@ -149,6 +151,7 @@ def phase2(request):
 def phase3(request):
     return render(request, "./φ/phase3.html", {
         "entities": Entity.objects.all().order_by('TradingSymbol')
+        .exclude(Status='Inactive')
         .exclude(Status='Phase 1')
         .exclude(Status='Phase 2')
         .exclude(Status='Phase 4.1')
@@ -157,8 +160,8 @@ def phase3(request):
         .exclude(Status='Phase 5')
         .exclude(Status='Phase 6.1')
         .exclude(Status='Phase 6.2')
-        .exclude(Status='Phase 6.3')
-        .exclude(Status='Phase 6.4')
+        .exclude(Status='Phase 7')
+        .exclude(Status='Phase 7.2')
         .exclude(Status='Phase 7')
         .exclude(Status='Phase 8')
         .exclude(Status='Prepared')
@@ -175,6 +178,7 @@ def phase4(request):
 def phase41(request):
     return render(request, "./φ/phase4.1.html", {
         "entities": Entity.objects.all().order_by('TradingSymbol')
+        .exclude(Status='Inactive')
         .exclude(Status='Phase 1')
         .exclude(Status='Phase 2')
         .exclude(Status='Phase 3')
@@ -183,8 +187,8 @@ def phase41(request):
         .exclude(Status='Phase 5')
         .exclude(Status='Phase 6.1')
         .exclude(Status='Phase 6.2')
-        .exclude(Status='Phase 6.3')
-        .exclude(Status='Phase 6.4')
+        .exclude(Status='Phase 7')
+        .exclude(Status='Phase 7.2')
         .exclude(Status='Phase 7')
         .exclude(Status='Phase 8')
         .exclude(Status='Prepared')
@@ -195,6 +199,7 @@ def phase41(request):
 def phase42(request):
     return render(request, "./φ/phase4.2.html", {
         "entities": Entity.objects.all().order_by('TradingSymbol')
+        .exclude(Status='Inactive')
         .exclude(Status='Phase 1')
         .exclude(Status='Phase 2')
         .exclude(Status='Phase 3')
@@ -203,8 +208,7 @@ def phase42(request):
         .exclude(Status='Phase 5')
         .exclude(Status='Phase 6.1')
         .exclude(Status='Phase 6.2')
-        .exclude(Status='Phase 6.3')
-        .exclude(Status='Phase 6.4')
+        .exclude(Status='Phase 7')
         .exclude(Status='Phase 7')
         .exclude(Status='Phase 8')
         .exclude(Status='Prepared')
@@ -215,6 +219,7 @@ def phase42(request):
 def phase43(request):
     return render(request, "./φ/phase4.3.html", {
         "entities": Entity.objects.all().order_by('TradingSymbol')
+        .exclude(Status='Inactive')
         .exclude(Status='Phase 1')
         .exclude(Status='Phase 2')
         .exclude(Status='Phase 3')
@@ -223,8 +228,7 @@ def phase43(request):
         .exclude(Status='Phase 5')
         .exclude(Status='Phase 6.1')
         .exclude(Status='Phase 6.2')
-        .exclude(Status='Phase 6.3')
-        .exclude(Status='Phase 6.4')
+        .exclude(Status='Phase 7')
         .exclude(Status='Phase 7')
         .exclude(Status='Phase 8')
         .exclude(Status='Prepared')
@@ -235,6 +239,7 @@ def phase43(request):
 def phase5(request):
     return render(request, "./φ/phase5.html", {
         "entities": Entity.objects.all().order_by('TradingSymbol')
+        .exclude(Status='Inactive')
         .exclude(Status='Phase 1')
         .exclude(Status='Phase 2')
         .exclude(Status='Phase 3')
@@ -243,8 +248,7 @@ def phase5(request):
         .exclude(Status='Phase 4.3')
         .exclude(Status='Phase 6.1')
         .exclude(Status='Phase 6.2')
-        .exclude(Status='Phase 6.3')
-        .exclude(Status='Phase 6.4')
+        .exclude(Status='Phase 7')
         .exclude(Status='Phase 7')
         .exclude(Status='Phase 8')
         .exclude(Status='Prepared')
@@ -261,6 +265,7 @@ def phase6(request):
 def phase61(request):
     return render(request, "./φ/phase6.1.html", {
         "entities": Entity.objects.all().order_by('TradingSymbol')
+        .exclude(Status='Inactive')
         .exclude(Status='Phase 1')
         .exclude(Status='Phase 2')
         .exclude(Status='Phase 3')
@@ -269,8 +274,7 @@ def phase61(request):
         .exclude(Status='Phase 4.3')
         .exclude(Status='Phase 5')
         .exclude(Status='Phase 6.2')
-        .exclude(Status='Phase 6.3')
-        .exclude(Status='Phase 6.4')
+        .exclude(Status='Phase 7')
         .exclude(Status='Phase 7')
         .exclude(Status='Phase 8')
         .exclude(Status='Prepared')
@@ -281,6 +285,7 @@ def phase61(request):
 def phase62(request):
     return render(request, "./φ/phase6.2.html", {
         "entities": Entity.objects.all().order_by('TradingSymbol')
+        .exclude(Status='Inactive')
         .exclude(Status='Phase 1')
         .exclude(Status='Phase 2')
         .exclude(Status='Phase 3')
@@ -289,48 +294,7 @@ def phase62(request):
         .exclude(Status='Phase 4.3')
         .exclude(Status='Phase 5')
         .exclude(Status='Phase 6.1')
-        .exclude(Status='Phase 6.3')
-        .exclude(Status='Phase 6.4')
         .exclude(Status='Phase 7')
-        .exclude(Status='Phase 8')
-        .exclude(Status='Prepared')
-        .exclude(Status='Audited')
-    })
-
-# PHASE 6.3
-def phase63(request):
-    return render(request, "./φ/phase6.3.html", {
-        "entities": Entity.objects.all().order_by('TradingSymbol')
-        .exclude(Status='Phase 1')
-        .exclude(Status='Phase 2')
-        .exclude(Status='Phase 3')
-        .exclude(Status='Phase 4.1')
-        .exclude(Status='Phase 4.2')
-        .exclude(Status='Phase 4.3')
-        .exclude(Status='Phase 5')
-        .exclude(Status='Phase 6.1')
-        .exclude(Status='Phase 6.2')
-        .exclude(Status='Phase 6.4')
-        .exclude(Status='Phase 7')
-        .exclude(Status='Phase 8')
-        .exclude(Status='Prepared')
-        .exclude(Status='Audited')
-    })
-
-# PHASE 6.4
-def phase64(request):
-    return render(request, "./φ/phase6.4.html", {
-        "entities": Entity.objects.all().order_by('TradingSymbol')
-        .exclude(Status='Phase 1')
-        .exclude(Status='Phase 2')
-        .exclude(Status='Phase 3')
-        .exclude(Status='Phase 4.1')
-        .exclude(Status='Phase 4.2')
-        .exclude(Status='Phase 4.3')
-        .exclude(Status='Phase 5')
-        .exclude(Status='Phase 6.1')
-        .exclude(Status='Phase 6.2')
-        .exclude(Status='Phase 6.3')
         .exclude(Status='Phase 7')
         .exclude(Status='Phase 8')
         .exclude(Status='Prepared')
@@ -340,7 +304,14 @@ def phase64(request):
 # PHASE 7
 def phase7(request):
     return render(request, "./φ/phase7.html", {
-        "entities": Entity.objects.all().order_by('TradingSymbol')
+        "db": Database.objects.all()[0]
+    })
+
+# PHASE 7
+def phase7(request):
+    return render(request, "./φ/phase7.html", {
+        "entities": Entity.objects.all().order_by('-lastyear', 'TradingSymbol')
+        .exclude(Status='Inactive')
         .exclude(Status='Phase 1')
         .exclude(Status='Phase 2')
         .exclude(Status='Phase 3')
@@ -350,8 +321,6 @@ def phase7(request):
         .exclude(Status='Phase 5')
         .exclude(Status='Phase 6.1')
         .exclude(Status='Phase 6.2')
-        .exclude(Status='Phase 6.3')
-        .exclude(Status='Phase 6.4')
         .exclude(Status='Phase 8')
         .exclude(Status='Prepared')
         .exclude(Status='Audited')
@@ -360,7 +329,8 @@ def phase7(request):
 # PHASE 8
 def phase8(request):
     return render(request, "./φ/phase8.html", {
-        "entities": Entity.objects.all().order_by('TradingSymbol')
+        "entities": Entity.objects.all().order_by('-lastyear', 'TradingSymbol')
+        .exclude(Status='Inactive')
         .exclude(Status='Phase 1')
         .exclude(Status='Phase 2')
         .exclude(Status='Phase 3')
@@ -370,8 +340,6 @@ def phase8(request):
         .exclude(Status='Phase 5')
         .exclude(Status='Phase 6.1')
         .exclude(Status='Phase 6.2')
-        .exclude(Status='Phase 6.3')
-        .exclude(Status='Phase 6.4')
         .exclude(Status='Phase 7')
         .exclude(Status='Prepared')
         .exclude(Status='Audited')
@@ -386,7 +354,8 @@ def phases(request):
 # PREPARED
 def prepared(request):
     return render(request, "./φ/prepared.html", {
-        "entities": Entity.objects.all().order_by('TradingSymbol')
+        "entities": Entity.objects.all().order_by('-lastyear', 'TradingSymbol')
+        .exclude(Status='Inactive')
         .exclude(Status='Phase 1')
         .exclude(Status='Phase 2')
         .exclude(Status='Phase 3')
@@ -396,8 +365,6 @@ def prepared(request):
         .exclude(Status='Phase 5')
         .exclude(Status='Phase 6.1')
         .exclude(Status='Phase 6.2')
-        .exclude(Status='Phase 6.3')
-        .exclude(Status='Phase 6.4')
         .exclude(Status='Phase 7')
         .exclude(Status='Phase 8')
         .exclude(Status='Audited')
@@ -406,7 +373,8 @@ def prepared(request):
 # REVIEWED
 def reviewed(request):
     return render(request, "./φ/reviewed.html", {
-        "entities": Entity.objects.all().order_by('TradingSymbol')
+        "entities": Entity.objects.all().order_by('-lastyear', 'TradingSymbol')
+        .exclude(Status='Inactive')
         .exclude(Status='Phase 1')
         .exclude(Status='Phase 2')
         .exclude(Status='Phase 3')
@@ -416,8 +384,6 @@ def reviewed(request):
         .exclude(Status='Phase 5')
         .exclude(Status='Phase 6.1')
         .exclude(Status='Phase 6.2')
-        .exclude(Status='Phase 6.3')
-        .exclude(Status='Phase 6.4')
         .exclude(Status='Phase 7')
         .exclude(Status='Phase 8')
         .exclude(Status='Prepared')

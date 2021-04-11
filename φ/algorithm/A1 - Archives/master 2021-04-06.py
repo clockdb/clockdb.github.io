@@ -32,7 +32,7 @@ import xml.etree.ElementTree as ET
 EntityCentralIndexKeys = {
     'AMKR':    '1047127',
 }
- 
+
 #
 # scope
 scopedperiods = [
