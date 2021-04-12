@@ -63,6 +63,7 @@ def analysis(request, entity_TradingSymbol):
 def db(request):
     return render(request, "./φ/db.html", {
         "entities": Entity.objects.all().order_by('-Clockφ')
+        .exclude(Status='Inactive')
         .exclude(Status='Phase 1')
         .exclude(Status='Phase 2')
         .exclude(Status='Phase 3')
@@ -91,6 +92,7 @@ def index(request):
 def master(request):
     return render(request, "./φ/master.html", {
         "entities": Entity.objects.all().order_by('-Status', '-lastyear', 'TradingSymbol')
+        .exclude(Status='Inactive')
     })
 
 # MEMO
