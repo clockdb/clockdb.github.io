@@ -427,6 +427,11 @@
                                 <h3 style="text-align:center">Trial Balances</h3>
                             </button>
                         </td>
+                        <td>
+                            <button data-page="Context">
+                                <h3 style="text-align:center">Context</h3>
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -646,6 +651,100 @@
 
 
 <!--- FINANCIALS --->
+
+        <!--- CONTEXT --->
+        <div id="Context">
+            <table style="border-bottom:solid #0D47A1">
+                <body>
+                    <tr>
+                        <td><h3 style="font-weight:bold; margin-left:0px;">Context</h3></td>
+                    </tr>
+                </body>
+            </table>
+            <table style="border-bottom:solid #0D47A1; padding-bottom:57px;">
+                <body>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan="4"></td>
+                        <script>
+                            function DateContext(DateContext) {
+                                document.getElementById('DateContext1').innerHTML = document.getElementById('TrialBalanceDateColumn1').innerHTML;
+                                document.getElementById('DateContext2').innerHTML = document.getElementById('TrialBalanceDateColumn2').innerHTML;
+                                document.getElementById('DateContext3').innerHTML = document.getElementById('TrialBalanceDateColumn3').innerHTML;
+                                document.getElementById('DateContext4').innerHTML = document.getElementById('TrialBalanceDateColumn4').innerHTML;
+                                document.getElementById('DateContext5').innerHTML = document.getElementById('TrialBalanceDateColumn5').innerHTML;
+                                document.getElementById('DateContext6').innerHTML = document.getElementById('TrialBalanceDateColumn6').innerHTML;
+                            };
+                            window.addEventListener('DOMContentLoaded', DateContext)
+                            window.addEventListener('keyup', function() {
+                                var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
+                                if (event.keyCode in formulakeylist) {
+                                    DateContext();
+                                }
+                            })
+                        </script>
+                        <td colspan="2"><h5 id="DateContext1" style="text-align:center"></h5></td>
+                        <td colspan="2"><h5 id="DateContext2" style="text-align:center"></h5></td>
+                        <td colspan="2"><h5 id="DateContext3" style="text-align:center"></h5></td>
+                        <td colspan="2"><h5 id="DateContext4" style="text-align:center"></h5></td>
+                        <td colspan="2"><h5 id="DateContext5" style="text-align:center"></h5></td>
+                        <td colspan="2"><h5 id="DateContext6" style="text-align:center"></h5></td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_lastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_secondlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_thirdlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_fourthlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_fifthlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_sixthlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>   
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan="2"><h6>Accession Numbers</h6></td>
+                        <td style="text-align:center; font-weight:bold;"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px;" id="AccessionNumbersCheckbox"></input>
+                            <input type="checkbox" style="height: 16px;" id="AccessionNumbersCheckbox2"></input>
+                        </td>
+                        <td colspan="2" id="AccessionNumber1" style="font-weight:bold;">{{ TrialBalance_lastyear.accessionnumber }}</td>
+                        <td colspan="2" id="AccessionNumber2">{{ TrialBalance_secondlastyear.accessionnumber }}</td>
+                        <td colspan="2" id="AccessionNumber3">{{ TrialBalance_thirdlastyear.accessionnumber }}</td>
+                        <td colspan="2" id="AccessionNumber4">{{ TrialBalance_fourthlastyear.accessionnumber }}</td>
+                        <td colspan="2" id="AccessionNumber5">{{ TrialBalance_fifthlastyear.accessionnumber }}</td>
+                        <td colspan="2" id="AccessionNumber6">{{ TrialBalance_sixthlastyear.accessionnumber }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><h6>Amend</h6></td>
+                        <td style="text-align:center; font-weight:bold;"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px;" id="AmendCheckbox"></input>
+                            <input type="checkbox" style="height: 16px;" id="AmendCheckbox2"></input>
+                        </td>
+                        <td colspan="2" id="Amend1" style="font-weight:bold;">{{ TrialBalance_lastyear.amend }}</td>
+                        <td colspan="2" id="Amend2">{{ TrialBalance_secondlastyear.amend }}</td>
+                        <td colspan="2" id="Amend3">{{ TrialBalance_thirdlastyear.amend }}</td>
+                        <td colspan="2" id="Amend4">{{ TrialBalance_fourthlastyear.amend }}</td>
+                        <td colspan="2" id="Amend5">{{ TrialBalance_fifthlastyear.amend }}</td>
+                        <td colspan="2" id="Amend6">{{ TrialBalance_sixthlastyear.amend }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <tbody>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                </tbody>
+            </table>
+        </div>
 
         <!--- TRIAL BALANCES --->
         <div id="AnnualTrialBalances">
@@ -13646,6 +13745,52 @@
                         <td colspan="2" class="clock" id="AnnualReinvestmentOfMaintenanceCCFColumn6" onclick="HighLight()"></input></td>
                     </tr>
                     <tr>
+                        <td colspan="2"><h6>Finance Lease Principal Payments</h6></td>
+                        <td><button data-page="AnnualCashFlow" style="text-align:center; font-weight:bold;">CF</button></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px;" id="FinanceLeasePrincipalPaymentsCCFCheckbox"></input>
+                            <input type="checkbox" style="height: 16px;" id="FinanceLeasePrincipalPaymentsCCFCheckbox2"></input>
+                        </td>
+                        <script>
+                            function FinanceLeasePrincipalPaymentsCCF(FinanceLeasePrincipalPaymentsCCF) {
+                                var numUSD = new Intl.NumberFormat("en-US", {
+                                    format: "number"
+                                });
+                                // Last Year
+                                a = -parseInt(document.getElementById('FinanceLeasePrincipalPayments1').value.replaceAll(/,/g, ''));
+                                document.getElementById('FinanceLeasePrincipalPaymentsCCFColumn1').innerHTML = numUSD.format(a);
+                                // Second Last Year
+                                a = -parseInt(document.getElementById('FinanceLeasePrincipalPayments2').value.replaceAll(/,/g, ''));
+                                document.getElementById('FinanceLeasePrincipalPaymentsCCFColumn2').innerHTML = numUSD.format(a);
+                                // Third Last Year
+                                a = -parseInt(document.getElementById('FinanceLeasePrincipalPayments3').value.replaceAll(/,/g, ''));
+                                document.getElementById('FinanceLeasePrincipalPaymentsCCFColumn3').innerHTML = numUSD.format(a);
+                                // Fourth Last Year
+                                a = -parseInt(document.getElementById('FinanceLeasePrincipalPayments4').value.replaceAll(/,/g, ''));
+                                document.getElementById('FinanceLeasePrincipalPaymentsCCFColumn4').innerHTML = numUSD.format(a);
+                                // Fifth Last Year
+                                a = -parseInt(document.getElementById('FinanceLeasePrincipalPayments5').value.replaceAll(/,/g, ''));
+                                document.getElementById('FinanceLeasePrincipalPaymentsCCFColumn5').innerHTML = numUSD.format(a);
+                                // Sixth Last Year
+                                a = -parseInt(document.getElementById('FinanceLeasePrincipalPayments6').value.replaceAll(/,/g, ''));
+                                document.getElementById('FinanceLeasePrincipalPaymentsCCFColumn6').innerHTML = numUSD.format(a);
+                            };
+                            window.addEventListener('DOMContentLoaded', FinanceLeasePrincipalPaymentsCCF)
+                            window.addEventListener('keyup', function() {
+                                var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
+                                if (event.keyCode in formulakeylist) {
+                                    FinanceLeasePrincipalPaymentsCCF();
+                                }
+                            })
+                        </script>
+                        <td colspan="2" class="clock" id="FinanceLeasePrincipalPaymentsCCFColumn1" style="font-weight:bold;" onclick="HighLight()"></input></td>
+                        <td colspan="2" class="clock" id="FinanceLeasePrincipalPaymentsCCFColumn2" onclick="HighLight()"></input></td>
+                        <td colspan="2" class="clock" id="FinanceLeasePrincipalPaymentsCCFColumn3" onclick="HighLight()"></input></td>
+                        <td colspan="2" class="clock" id="FinanceLeasePrincipalPaymentsCCFColumn4" onclick="HighLight()"></input></td>
+                        <td colspan="2" class="clock" id="FinanceLeasePrincipalPaymentsCCFColumn5" onclick="HighLight()"></input></td>
+                        <td colspan="2" class="clock" id="FinanceLeasePrincipalPaymentsCCFColumn6" onclick="HighLight()"></input></td>
+                    </tr>
+                    <tr>
                         <td colspan="2"><h6>Others</h6></td>
                         <td></td>
                         <td>
@@ -13740,6 +13885,7 @@
                                 a = a + parseInt(document.getElementById('TaxesPaidAdjustmentsCCFColumn1').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCFColumn1').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AnnualReinvestmentOfMaintenanceCCFColumn1').innerHTML.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('FinanceLeasePrincipalPaymentsCCFColumn1').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OthersCCFColumn1').value.replaceAll(/,/g, ''));
                                 document.getElementById('NormalizedOperatingCashFlowCCFColumn1').innerHTML = numUSD.format(Math.round(a));
                                 // Column 2
@@ -13747,6 +13893,7 @@
                                 a = a + parseInt(document.getElementById('TaxesPaidAdjustmentsCCFColumn2').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCFColumn2').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AnnualReinvestmentOfMaintenanceCCFColumn2').innerHTML.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('FinanceLeasePrincipalPaymentsCCFColumn2').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OthersCCFColumn2').value.replaceAll(/,/g, ''));
                                 document.getElementById('NormalizedOperatingCashFlowCCFColumn2').innerHTML = numUSD.format(Math.round(a));
                                 // Column 3
@@ -13754,6 +13901,7 @@
                                 a = a + parseInt(document.getElementById('TaxesPaidAdjustmentsCCFColumn3').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCFColumn3').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AnnualReinvestmentOfMaintenanceCCFColumn3').innerHTML.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('FinanceLeasePrincipalPaymentsCCFColumn3').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OthersCCFColumn3').value.replaceAll(/,/g, ''));
                                 document.getElementById('NormalizedOperatingCashFlowCCFColumn3').innerHTML = numUSD.format(Math.round(a));
                                 // Column 4
@@ -13761,6 +13909,7 @@
                                 a = a + parseInt(document.getElementById('TaxesPaidAdjustmentsCCFColumn4').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCFColumn4').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AnnualReinvestmentOfMaintenanceCCFColumn4').innerHTML.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('FinanceLeasePrincipalPaymentsCCFColumn4').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OthersCCFColumn4').value.replaceAll(/,/g, ''));
                                 document.getElementById('NormalizedOperatingCashFlowCCFColumn4').innerHTML = numUSD.format(Math.round(a));
                                 // Column 5
@@ -13768,6 +13917,7 @@
                                 a = a + parseInt(document.getElementById('TaxesPaidAdjustmentsCCFColumn5').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCFColumn5').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AnnualReinvestmentOfMaintenanceCCFColumn5').innerHTML.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('FinanceLeasePrincipalPaymentsCCFColumn5').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OthersCCFColumn5').value.replaceAll(/,/g, ''));
                                 document.getElementById('NormalizedOperatingCashFlowCCFColumn5').innerHTML = numUSD.format(Math.round(a));
                                 // Column 6
@@ -13775,6 +13925,7 @@
                                 b = b + parseInt(document.getElementById('TaxesPaidAdjustmentsCCFColumn6').innerHTML.replaceAll(/,/g, ''));
                                 b = b + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCFColumn6').innerHTML.replaceAll(/,/g, ''));
                                 b = b + parseInt(document.getElementById('AnnualReinvestmentOfMaintenanceCCFColumn6').innerHTML.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('FinanceLeasePrincipalPaymentsCCFColumn6').innerHTML.replaceAll(/,/g, ''));
                                 b = b + parseInt(document.getElementById('OthersCCFColumn6').value.replaceAll(/,/g, ''));
                                 if (a == 0) {
                                     b = a;
@@ -16599,7 +16750,7 @@
                     </tr>
                     </tr>
                     <tr>
-                        <td style="text-align:left">{{ entity.lastyear }} and the five years before<./td>
+                        <td style="text-align:left">{{ entity.lastyear }} and the five years before</td>
                     </tr>
                     <tr></tr>
                     <tr></tr>

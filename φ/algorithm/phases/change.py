@@ -41,9 +41,9 @@ for count in range(0, l):
     # retreives entity from db
     try:
         #
-        e = entitiesobjects[count]
+        e = entities[count]
         #
-        if e.Status == 'Phase 7':
+        if e.Status == 'Phase 6.2':
             #
             # change to be made
             try:

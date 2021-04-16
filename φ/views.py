@@ -59,6 +59,10 @@ def analysis(request, entity_TradingSymbol):
         "AuditData_sixthlastyear": AuditData_sixthlastyear,
     })
 
+# AUDITED DATABASE
+def auditeddatabase(request):
+    return render(request, "./φ/auditeddatabase.html")
+
 # DB
 def db(request):
     return render(request, "./φ/db.html", {
@@ -73,6 +77,7 @@ def db(request):
         .exclude(Status='Phase 5')
         .exclude(Status='Phase 6.1')
         .exclude(Status='Phase 6.2')
+        .exclude(Status='Phase 6.3')
         .exclude(Status='Phase 7')
         .exclude(Status='Phase 7.2')
         .exclude(Status='Phase 7')
@@ -83,6 +88,10 @@ def db(request):
 # DISCLAIMER
 def disclaimer(request):
     return render(request, "./φ/disclaimer.html")
+
+# ECONOMICS
+def economics(request):
+    return render(request, "./φ/economics.html")
 
 # INDEX
 def index(request):
@@ -120,6 +129,7 @@ def phase1(request):
         .exclude(Status='Phase 5')
         .exclude(Status='Phase 6.1')
         .exclude(Status='Phase 6.2')
+        .exclude(Status='Phase 6.3')
         .exclude(Status='Phase 7')
         .exclude(Status='Phase 7.2')
         .exclude(Status='Phase 7')
@@ -141,6 +151,7 @@ def phase2(request):
         .exclude(Status='Phase 5')
         .exclude(Status='Phase 6.1')
         .exclude(Status='Phase 6.2')
+        .exclude(Status='Phase 6.3')
         .exclude(Status='Phase 7')
         .exclude(Status='Phase 7.2')
         .exclude(Status='Phase 7')
@@ -162,6 +173,7 @@ def phase3(request):
         .exclude(Status='Phase 5')
         .exclude(Status='Phase 6.1')
         .exclude(Status='Phase 6.2')
+        .exclude(Status='Phase 6.3')
         .exclude(Status='Phase 7')
         .exclude(Status='Phase 7.2')
         .exclude(Status='Phase 7')
@@ -189,6 +201,7 @@ def phase41(request):
         .exclude(Status='Phase 5')
         .exclude(Status='Phase 6.1')
         .exclude(Status='Phase 6.2')
+        .exclude(Status='Phase 6.3')
         .exclude(Status='Phase 7')
         .exclude(Status='Phase 7.2')
         .exclude(Status='Phase 7')
@@ -210,6 +223,7 @@ def phase42(request):
         .exclude(Status='Phase 5')
         .exclude(Status='Phase 6.1')
         .exclude(Status='Phase 6.2')
+        .exclude(Status='Phase 6.3')
         .exclude(Status='Phase 7')
         .exclude(Status='Phase 7')
         .exclude(Status='Phase 8')
@@ -230,6 +244,7 @@ def phase43(request):
         .exclude(Status='Phase 5')
         .exclude(Status='Phase 6.1')
         .exclude(Status='Phase 6.2')
+        .exclude(Status='Phase 6.3')
         .exclude(Status='Phase 7')
         .exclude(Status='Phase 7')
         .exclude(Status='Phase 8')
@@ -250,6 +265,7 @@ def phase5(request):
         .exclude(Status='Phase 4.3')
         .exclude(Status='Phase 6.1')
         .exclude(Status='Phase 6.2')
+        .exclude(Status='Phase 6.3')
         .exclude(Status='Phase 7')
         .exclude(Status='Phase 7')
         .exclude(Status='Phase 8')
@@ -276,6 +292,7 @@ def phase61(request):
         .exclude(Status='Phase 4.3')
         .exclude(Status='Phase 5')
         .exclude(Status='Phase 6.2')
+        .exclude(Status='Phase 6.3')
         .exclude(Status='Phase 7')
         .exclude(Status='Phase 7')
         .exclude(Status='Phase 8')
@@ -296,6 +313,7 @@ def phase62(request):
         .exclude(Status='Phase 4.3')
         .exclude(Status='Phase 5')
         .exclude(Status='Phase 6.1')
+        .exclude(Status='Phase 6.3')
         .exclude(Status='Phase 7')
         .exclude(Status='Phase 7')
         .exclude(Status='Phase 8')
@@ -303,10 +321,25 @@ def phase62(request):
         .exclude(Status='Audited')
     })
 
-# PHASE 7
-def phase7(request):
-    return render(request, "./φ/phase7.html", {
-        "db": Database.objects.all()[0]
+# PHASE 6.3
+def phase63(request):
+    return render(request, "./φ/phase6.3.html", {
+        "entities": Entity.objects.all().order_by('-lastyear', 'TradingSymbol')
+        .exclude(Status='Inactive')
+        .exclude(Status='Phase 1')
+        .exclude(Status='Phase 2')
+        .exclude(Status='Phase 3')
+        .exclude(Status='Phase 4.1')
+        .exclude(Status='Phase 4.2')
+        .exclude(Status='Phase 4.3')
+        .exclude(Status='Phase 5')
+        .exclude(Status='Phase 6.1')
+        .exclude(Status='Phase 6.2')
+        .exclude(Status='Phase 7')
+        .exclude(Status='Phase 7')
+        .exclude(Status='Phase 8')
+        .exclude(Status='Prepared')
+        .exclude(Status='Audited')
     })
 
 # PHASE 7
@@ -323,6 +356,7 @@ def phase7(request):
         .exclude(Status='Phase 5')
         .exclude(Status='Phase 6.1')
         .exclude(Status='Phase 6.2')
+        .exclude(Status='Phase 6.3')
         .exclude(Status='Phase 8')
         .exclude(Status='Prepared')
         .exclude(Status='Audited')

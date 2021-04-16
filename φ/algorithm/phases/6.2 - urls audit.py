@@ -31,15 +31,23 @@ import xml.etree.ElementTree as ET
 # loop
 entities = Entity.objects.all().order_by('TradingSymbol')
 
-for count in range(0, len(entities)):
+l = 1
+
+l = len(entities)
+
+phases = [
+    'Phase 6.2',
+]
+
+for count in range(0, l):
     #
     e = entities[count]
     #
-    if e.Status == 'Phase 6.2':
+    if e.Status in phases:
         #
         print(str(e) + '\n' + 137*'-')
         #
-        # periods and urls dictionnairies
+        # urls
         try:
             urls1 = [
                 e.urlbalancesheetlastyear,
@@ -91,6 +99,7 @@ for count in range(0, len(entities)):
             #
             # last year
             u = 0
+            e.urlsauditlastyear = 0
             for urls in urls1:
                 if urls != '':
                     u = u + 1
@@ -98,6 +107,7 @@ for count in range(0, len(entities)):
             #
             # second last year
             u = 0
+            e.urlsauditsecondlastyear = 0
             for urls in urls2:
                 if urls != '':
                     u = u + 1
@@ -105,6 +115,7 @@ for count in range(0, len(entities)):
             #
             # third last year
             u = 0
+            e.urlsauditthirdlastyear = 0
             for urls in urls3:
                 if urls != '':
                     u = u + 1
@@ -112,6 +123,7 @@ for count in range(0, len(entities)):
             #
             # fourth last year
             u = 0
+            e.urlsauditfourthlastyear = 0
             for urls in urls4:
                 if urls != '':
                     u = u + 1
@@ -119,6 +131,7 @@ for count in range(0, len(entities)):
             #
             # fifth last year
             u = 0
+            e.urlsauditfifthlastyear = 0
             for urls in urls5:
                 if urls != '':
                     u = u + 1
@@ -126,6 +139,7 @@ for count in range(0, len(entities)):
             #
             # sixth last year
             u = 0
+            e.urlsauditsixthlastyear = 0
             for urls in urls6:
                 if urls != '':
                     u = u + 1
@@ -134,20 +148,22 @@ for count in range(0, len(entities)):
             pass
         #
         # status
-        a = 'Phase 7'
-        if e.urlsauditlastyear > 3:
-            if e.urlsauditsecondlastyear > 3:
-                if e.urlsauditthirdlastyear > 3:
-                    if e.urlsauditfourthlastyear > 3:
-                        if e.fifthlastyear != None:
-                            if e.urlsauditfifthlastyear > 3:
-                                if e.sixthlastyear != None:
-                                    if e.urlsauditsixthlastyear > 3:
+        if e.Status == 'Phase 6.2':
+            e.Status = 'Phase 6.1'
+            a = 'Phase 6.3'
+            if e.urlsauditlastyear > 3:
+                if e.urlsauditsecondlastyear > 3:
+                    if e.urlsauditthirdlastyear > 3:
+                        if e.urlsauditfourthlastyear > 3:
+                            if e.fifthlastyear != None:
+                                if e.urlsauditfifthlastyear > 3:
+                                    if e.sixthlastyear != None:
+                                        if e.urlsauditsixthlastyear > 3:
+                                            e.Status = a
+                                    else:
                                         e.Status = a
-                                else:
-                                    e.Status = a
-                        else:
-                            e.Status = a
+                            else:
+                                e.Status = a
         #
         # Time Of Update
         try:

@@ -8,9 +8,13 @@ urlpatterns = [
     #
     path("about/", views.about, name="about"),
     #
+    path("auditeddatabase/", views.auditeddatabase, name="auditeddatabase"),
+    #
     path("db/", views.db, name="db"),
     #
     path("disclaimer/", views.disclaimer, name="disclaimer"),
+    #
+    path("economics/", views.economics, name="economics"),
     #
     path("", views.index, name="index"),
     #
@@ -32,6 +36,7 @@ urlpatterns = [
     path("phase6/", views.phase6, name="phase6"),
     path("phase6.1/", views.phase61, name="phase6.1"),
     path("phase6.2/", views.phase62, name="phase6.2"),
+    path("phase6.3/", views.phase63, name="phase6.3"),
     path("phase7/", views.phase7, name="phase7"),
     path("phase8/", views.phase8, name="phase8"),
     #
@@ -47,6 +52,7 @@ urlpatterns = [
     path("<str:entity_TradingSymbol>/Summary", views.analysis, name="analysis"),
     path("<str:entity_TradingSymbol>/Graph", views.analysis, name="analysis"),
     path("<str:entity_TradingSymbol>/Opinion", views.analysis, name="analysis"),
+    path("<str:entity_TradingSymbol>/Context", views.analysis, name="analysis"),
     path("<str:entity_TradingSymbol>/AnnualCashFlow", views.analysis, name="analysis"),
     path("<str:entity_TradingSymbol>/AnnualBalanceSheets", views.analysis, name="analysis"),
     path("<str:entity_TradingSymbol>/AnnualIncomeStatements", views.analysis, name="analysis"),
