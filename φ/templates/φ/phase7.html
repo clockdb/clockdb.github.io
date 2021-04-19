@@ -10,69 +10,92 @@
 
 </script>
 
-<!--- HOME --->
+<!--- MENU --->
 
-<Section id="φ" style='padding-bottom:27%'>
+<div class="text">
 
-    <table style='width:90%'>
+    <ul>
 
-        <tbody>
+        <a href="{% url 'φ:phase7.7' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>PHASE 7.7</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">fifth last year ({{ db.phase77 }})</h5>
 
-                <tr>
-                    <td colspan='4' style="border-bottom: ridge;">
-                        <h3 style="text-align:center; font-weight:bold;">entity</h2>
-                    </td>
-                    <td colspan='2' style="border-bottom: ridge;" >
-                        <h3 style="text-align:center; font-weight:bold;">year end</h2>
-                    </td>
-                    <td colspan='2' style="border-bottom: ridge;">
-                        <h3 style="text-align:center; font-weight:bold;">status</h2>
-                    </td>
-                    <td colspan='2' style="border-bottom: ridge;">
-                        <h3 style="text-align:center; font-weight:bold;">update</h2>
-                    </td>
-                </tr>
+            </button>
 
-                <tr></tr>
-                <tr></tr>
+        </a>
 
-            {% for entity in entities %}
+        <a href="{% url 'φ:phase7.6' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>PHASE 7.6</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">fourth last year ({{ db.phase76 }})</h5>
 
-                    <tr>
-                        <td colspan='4' style="vertical-align:top;" style='padding-top: 24px;'>
-                            <a href="/{{ entity.TradingSymbol }}">
-                                <button>
-                                    <h3 style="text-align:left; padding-bottom: 0%; padding-left:0px"><b>{{ entity.EntityRegistrantName }} ({{ entity.TradingSymbol }})</b></h3>
-                                </button>
-                            </a>                           
-                        </td>
-                        <td colspan='2' style="vertical-align:top;" style='padding-top: 24px;'>
-                            <a href="/{{ entity.TradingSymbol }}">
-                                <button>
-                                    <h3 style="text-align:center;"><b>{{ entity.lastyear }}</b></h3>
-                                </button>
-                            </a>
-                        </td>
-                        <td colspan='2' style="vertical-align:top;" style='padding-top: 24px;'>
-                            <a href="/{{ entity.TradingSymbol }}">
-                                <button>
-                                    <h3 style="text-align: center;">{{ entity.Status }}</h3>
-                                </button>
-                            </a>
-                        </td>
-                        <td colspan='2' style="vertical-align:top;" style='padding-top: 24px;'>
-                            <a href="/{{ entity.TradingSymbol }}">
-                                <button>
-                                    <h3 style="text-align: center;">{{ entity.Update }}</h3>
-                                </button>
-                            </a>
-                        </td>
-                    </tr>
-                    
-            {% endfor %}
-            
-        </tbody>
-    </table>
-</Section>
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:phase7.5' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>PHASE 7.5</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">third last year ({{ db.phase75 }})</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:phase7.4' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>PHASE 7.4</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">second last year ({{ db.phase74 }})</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:phase7.3' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>PHASE 7.3</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">last year ({{ db.phase73 }})</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:phase7.2' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>PHASE 7.2</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">review ({{ db.phase72 }})</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:phase7.1' %}" style="padding-bottom:17%">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>PHASE 7.1</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">preparation ({{ db.phase71 }})</h5>
+
+            </button>
+
+        </a>
+
+    </ul>
+    
+</div>
+
 
 {% endblock %}

@@ -1,0 +1,57 @@
+{% extends "φ/layout.html" %}
+
+{% block body %}
+
+<!--- SCRIPT --->
+<script>       
+
+    // DOCUMENT TITLE
+    document.title = 'clockdb.com | economics'
+
+</script>
+
+<!--- MENU --->
+
+<div class="text">
+
+    <ul>
+
+        <a href="{% url 'φ:global' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>NATIONAL ECONOMICS</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">macro</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:industrial' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>INDUSTRIAL</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">macro</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:marketcap' %}" style="padding-bottom:17%">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>MARKET CAPITALIZATION</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">micro</h5>
+
+            </button>
+
+        </a>
+
+    </ul>
+    
+</div>
+
+
+{% endblock %}

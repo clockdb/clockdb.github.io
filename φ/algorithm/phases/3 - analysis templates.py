@@ -39,7 +39,7 @@ scopedperiods = [
     'sixthlastyear',
 ]
 
-entities = Entity.objects.all().order_by('-EntityRegistrantName')
+entities = Entity.objects.all().order_by('EntityRegistrantName')
 
 l = 1
 

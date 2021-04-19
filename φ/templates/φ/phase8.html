@@ -10,32 +10,79 @@
 
 </script>
 
-<!--- ENTITIES --->
+<!--- HOME --->
 
-<div class="text">
+<Section id="φ" style='padding-bottom:27%'>
 
-    <ul>
+    <table style='width:90%'>
 
-        {% for entity in entities %}
-            
-            <a href="/{{ entity.TradingSymbol }}">
-           
-                <button>
+        <tbody>
+
+                <tr>
+                    <td colspan='4' style="border-bottom: ridge;">
+                        <h3 style="text-align:center; font-weight:bold;">entity</h3>
+                    </td>
+                    <td colspan='2' style="border-bottom: ridge;" >
+                        <h3 style="text-align:center; font-weight:bold;">market capitalization</h3>
+                    </td>
+                    <td colspan='2' style="border-bottom: ridge;" >
+                        <h3 style="text-align:center; font-weight:bold;">stock price</h3>
+                    </td>
+                    <td colspan='2' style="border-bottom: ridge;" >
+                        <h3 style="text-align:center; font-weight:bold;">number of shares outstanding</h3>
+                    </td>
+                    <td colspan='2' style="border-bottom: ridge;">
+                        <h3 style="text-align:center; font-weight:bold;">year end</h3>
+                        </td>
+                </tr>
+
+                <tr></tr>
+                <tr></tr>
+
+            {% for entity in entities %}
+
+                    <tr>
+                        <td colspan='4' style="vertical-align:top;" style='padding-top: 24px;'>
+                            <a href="/{{ entity.TradingSymbol }}">
+                                <button>
+                                    <h3 style="text-align:left; padding-bottom: 0%; padding-left:0px"><b>{{ entity.EntityRegistrantName }} ({{ entity.TradingSymbol }})</b></h3>
+                                </button>
+                            </a>                           
+                        </td>
+                        <td colspan='2' style="vertical-align:top;" style='padding-top: 24px;'>
+                            <a href="/{{ entity.TradingSymbol }}">
+                                <button>
+                                    <h3 style="text-align: center;">{{ entity.MarketCapitalization }}</h3>
+                                </button>
+                            </a>
+                        </td>
+                        <td colspan='2' style="vertical-align:top;" style='padding-top: 24px;'>
+                            <a href="/{{ entity.TradingSymbol }}">
+                                <button>
+                                    <h3 style="text-align: center;">{{ entity.StockPrice }}</h3>
+                                </button>
+                            </a>
+                        </td>
+                        <td colspan='2' style="vertical-align:top;" style='padding-top: 24px;'>
+                            <a href="/{{ entity.TradingSymbol }}">
+                                <button>
+                                    <h3 style="text-align: center;">{{ entity.EntityCommonStockSharesOutstanding }}</h3>
+                                </button>
+                            </a>
+                        </td>
+                        <td colspan='2' style="vertical-align:top;" style='padding-top: 24px;'>
+                            <a href="/{{ entity.TradingSymbol }}">
+                                <button>
+                                    <h3 style="text-align:center;"><b>{{ entity.lastyear }}</b></h3>
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
                     
-                    <h4 style='text-align:center'><b>{{ entity.EntityRegistrantName }} ({{ entity.TradingSymbol }})</h4></b>
-                    <h5 style="color:#8A9096; padding-bottom:0%">{{ entity.Industry }}</h5>
-                    <h5 style="color:#8A9096; padding-bottom:5%">{{ entity.lastyear }}</h5>
-
-                </button>
- 
-            </a>
-
-        {% endfor %}
-    
-    </ul>
-   
-</div>
-
-<div style="padding-top:17%"> </div>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+</Section>
 
 {% endblock %}

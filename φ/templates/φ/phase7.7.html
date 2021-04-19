@@ -1,0 +1,68 @@
+{% extends "φ/layout.html" %}
+
+{% block body %}
+
+<!--- SCRIPT --->
+<script>       
+
+    // DOCUMENT TITLE
+    document.title = 'clockdb.com | phase 7.8'
+
+</script>
+
+<!--- HOME --->
+
+<Section id="φ" style='padding-bottom:27%'>
+
+    <table style='width:90%'>
+
+        <tbody>
+
+                <tr>
+                    <td colspan='4' style="border-bottom: ridge;">
+                        <h3 style="text-align:center; font-weight:bold;">entity</h2>
+                    </td>
+                    <td colspan='2' style="border-bottom: ridge;">
+                        <h3 style="text-align:center; font-weight:bold;">anomalies</h2>
+                    </td>
+                    <td colspan='2' style="border-bottom: ridge;" >
+                        <h3 style="text-align:center; font-weight:bold;">year end</h2>
+                    </td>
+                </tr>
+
+                <tr></tr>
+                <tr></tr>
+
+            {% for entity in entities %}
+
+                    <tr>
+                        <td colspan='4' style="vertical-align:top;" style='padding-top: 24px;'>
+                            <a href="/{{ entity.TradingSymbol }}">
+                                <button>
+                                    <h3 style="text-align:left; padding-bottom: 0%; padding-left:0px"><b>{{ entity.EntityRegistrantName }} ({{ entity.TradingSymbol }})</b></h3>
+                                </button>
+                            </a>                           
+                        </td>
+                        <td colspan='2' style="vertical-align:top;" style='padding-top: 24px;'>
+                            <a href="/{{ entity.TradingSymbol }}">
+                                <button>
+                                    <h3 style="text-align: center;">{{ entity.AnomaliesRatio }}</h3>
+                                </button>
+                            </a>
+                        </td>
+                        <td colspan='2' style="vertical-align:top;" style='padding-top: 24px;'>
+                            <a href="/{{ entity.TradingSymbol }}">
+                                <button>
+                                    <h3 style="text-align:center;"><b>{{ entity.fifthlastyear }}</b></h3>
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                    
+            {% endfor %}
+            
+        </tbody>
+    </table>
+</Section>
+
+{% endblock %}

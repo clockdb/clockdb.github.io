@@ -1,0 +1,68 @@
+{% extends "φ/layout.html" %}
+
+{% block body %}
+
+<!--- SCRIPT --->
+<script>       
+
+    // DOCUMENT TITLE
+    document.title = 'clockdb.com | phase 5'
+
+</script>
+
+<!--- MENU --->
+
+<div class="text">
+
+    <ul>
+
+        <a href="{% url 'φ:phase5.4' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>PHASE 5.4</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">classification</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:phase5.3' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>PHASE 5.3</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">accuracy</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:phase5.2' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>PHASE 5.2</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">accounting equation</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:phase5.1' %}" style="padding-bottom:17%"></a>
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>PHASE 5.1</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">trial balances</h5>
+
+            </button>
+
+        </a>
+
+    </ul>
+    
+</div>
+
+
+{% endblock %}

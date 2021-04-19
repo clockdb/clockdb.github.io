@@ -38,9 +38,7 @@ with open(output_directory + 'layout.txt', 'a') as layout:
         #
         e = entities_list[count]
         #
-        if e.Status == 'Audited':
-            #
-            layout.write("{ name: '" + entities_list[count].EntityRegistrantName.replace("'", "`") + " (" + entities_list[count].TradingSymbol + ")' , url: './" + entities_list[count].TradingSymbol + "'}, \n")
+        layout.write("{ name: '" + entities_list[count].EntityRegistrantName.replace("'", "`") + " (" + entities_list[count].TradingSymbol + ")' , url: './" + entities_list[count].TradingSymbol + "'}, \n")
 
 ###############################################################################################################
 

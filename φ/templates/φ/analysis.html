@@ -335,18 +335,18 @@
         <table style="border-bottom: ridge; border-top: ridge;">
             <tbody>
                 <tr>
-                    <td>
+<!---                    <td>
                         <button data-page="Community" name="Community">
                             <h2>Community</h2>
                         </button>
-                    </td>
-                    <td>
+                        </td>
+-->                 <td>
                         <button data-page="Arch">
                             <h2>Financials</h2>
                         </button>
                     </td>
                     <td>
-                        <button data-page="Bridge">
+                        <button data-page="Bridge" name="Bridge">
                             <h2>Audit</h2>
                         </button>
                     </td>
@@ -356,7 +356,7 @@
                         </button>
                     </td>
                     <td>
-                        <button data-page="Summary"  name="Summary">
+                        <button data-page="Summary" name="Summary">
                             <h2>Summary</h2>
                         </button>
                     </td>
@@ -515,7 +515,7 @@
                             </button>
                         </td>
                         <td>
-                            <button data-page="AuditSummary">
+                            <button data-page="AuditSummary" name="AuditSummary">
                                 <h3 style="text-align:center">Summary</h3>
                             </button>   
                         </td>
@@ -694,6 +694,16 @@
                         <td colspan="2"><h5 id="DateContext6" style="text-align:center"></h5></td>
                     </tr>
                     <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn1" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn2" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsecondlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn3" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendthirdlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn4" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfourthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn5" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfifthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn6" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsixthlastyear }}</td>
+                    </tr>
+                    <tr></tr>
                     <tr></tr>
                     <tr>
                         <td colspan='4'></td>
@@ -707,32 +717,46 @@
                     <tr></tr>
                     <tr></tr>
                     <tr>
+                        <td colspan="2"><h6>Entity Central Index Key</h6></td>
+                        <td style="text-align:center; font-weight:bold;"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px;" id="CIKCheckbox"></input>
+                            <input type="checkbox" style="height: 16px;" id="CIKCheckbox2"></input>
+                        </td>
+                        <td colspan="2" id="CIK1" style="font-weight:bold;">{{ entity.EntityCentralIndexKey }}</td>
+                        <td colspan="2" id="CIK2"></td>
+                        <td colspan="2" id="CIK3"></td>
+                        <td colspan="2" id="CIK4"></td>
+                        <td colspan="2" id="CIK5"></td>
+                        <td colspan="2" id="CIK6"></td>
+                    </tr>
+                    <tr>
                         <td colspan="2"><h6>Accession Numbers</h6></td>
                         <td style="text-align:center; font-weight:bold;"></td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="AccessionNumbersCheckbox"></input>
                             <input type="checkbox" style="height: 16px;" id="AccessionNumbersCheckbox2"></input>
                         </td>
-                        <td colspan="2" id="AccessionNumber1" style="font-weight:bold;">{{ TrialBalance_lastyear.accessionnumber }}</td>
-                        <td colspan="2" id="AccessionNumber2">{{ TrialBalance_secondlastyear.accessionnumber }}</td>
-                        <td colspan="2" id="AccessionNumber3">{{ TrialBalance_thirdlastyear.accessionnumber }}</td>
-                        <td colspan="2" id="AccessionNumber4">{{ TrialBalance_fourthlastyear.accessionnumber }}</td>
-                        <td colspan="2" id="AccessionNumber5">{{ TrialBalance_fifthlastyear.accessionnumber }}</td>
-                        <td colspan="2" id="AccessionNumber6">{{ TrialBalance_sixthlastyear.accessionnumber }}</td>
+                        <td colspan="2" id="AccessionNumber1" style="font-weight:bold;">{{ entity.accessionnumberlastyear }}</td>
+                        <td colspan="2" id="AccessionNumber2">{{ entity.accessionnumbersecondlastyear }}</td>
+                        <td colspan="2" id="AccessionNumber3">{{ entity.accessionnumberthirdlastyear }}</td>
+                        <td colspan="2" id="AccessionNumber4">{{ entity.accessionnumberfourthlastyear }}</td>
+                        <td colspan="2" id="AccessionNumber5">{{ entity.accessionnumberfifthlastyear }}</td>
+                        <td colspan="2" id="AccessionNumber6">{{ entity.accessionnumbersixthlastyear }}</td>
                     </tr>
                     <tr>
-                        <td colspan="2"><h6>Amend</h6></td>
+                        <td colspan="2"><h6>Status</h6></td>
                         <td style="text-align:center; font-weight:bold;"></td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="AmendCheckbox"></input>
                             <input type="checkbox" style="height: 16px;" id="AmendCheckbox2"></input>
                         </td>
-                        <td colspan="2" id="Amend1" style="font-weight:bold;">{{ TrialBalance_lastyear.amend }}</td>
-                        <td colspan="2" id="Amend2">{{ TrialBalance_secondlastyear.amend }}</td>
-                        <td colspan="2" id="Amend3">{{ TrialBalance_thirdlastyear.amend }}</td>
-                        <td colspan="2" id="Amend4">{{ TrialBalance_fourthlastyear.amend }}</td>
-                        <td colspan="2" id="Amend5">{{ TrialBalance_fifthlastyear.amend }}</td>
-                        <td colspan="2" id="Amend6">{{ TrialBalance_sixthlastyear.amend }}</td>
+                        <td colspan="2" id="Status1" style="font-weight:bold;">{{ entity.Status }}</td>
+                        <td colspan="2" id="Status2"></td>
+                        <td colspan="2" id="Status3"></td>
+                        <td colspan="2" id="Status4"></td>
+                        <td colspan="2" id="Status5"></td>
+                        <td colspan="2" id="Status6"></td>
                     </tr>
                 </tbody>
             </table>
@@ -770,7 +794,6 @@
                         <td colspan='2'><h5 id="TrialBalanceDateColumn5" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.fifthlastyear }}</td>
                         <td colspan='2'><h5 id="TrialBalanceDateColumn6" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.sixthlastyear }}</td>
                     </tr>
-                    <tr></tr>
                     <tr></tr>
                     <tr>
                         <td colspan='4'></td>
@@ -2431,6 +2454,16 @@
                         <td colspan="2"><h5 id="DateBalanceSheets4" style="text-align:center"></h5></td>
                         <td colspan="2"><h5 id="DateBalanceSheets5" style="text-align:center"></h5></td>
                         <td colspan="2"><h5 id="DateBalanceSheets6" style="text-align:center"></h5></td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn1" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn2" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsecondlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn3" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendthirdlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn4" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfourthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn5" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfifthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn6" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsixthlastyear }}</td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -6190,6 +6223,16 @@
                         <td colspan='2'><h5 id="DateDateStatementsOfIncome6" style="text-align:center"></h4></td>
                     </tr>
                     <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn1" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn2" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsecondlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn3" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendthirdlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn4" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfourthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn5" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfifthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn6" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsixthlastyear }}</td>
+                    </tr>
+                    <tr></tr>
                     <tr></tr>
                     <tr>
                         <td colspan='4'></td>
@@ -6864,6 +6907,16 @@
                         <td colspan="2"><h5 id="DateStatementsOfComprehensiveIncome6" style="text-align:center"></h5></td>
                     </tr>
                     <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn1" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn2" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsecondlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn3" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendthirdlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn4" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfourthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn5" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfifthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn6" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsixthlastyear }}</td>
+                    </tr>
+                    <tr></tr>
                     <tr></tr>
                     <tr>
                         <td colspan='4'></td>
@@ -7391,6 +7444,16 @@
                         <td colspan='2'><h5 id="DateStatementsOfStockholdersEquity4" style="text-align:center;"></h5></td>
                         <td colspan='2'><h5 id="DateStatementsOfStockholdersEquity5" style="text-align:center;"></h5></td>
                         <td colspan='2'><h5 id="DateStatementsOfStockholdersEquity6" style="text-align:center;"></h5></td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn1" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn2" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsecondlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn3" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendthirdlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn4" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfourthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn5" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfifthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn6" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsixthlastyear }}</td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -8713,6 +8776,16 @@
                         <td colspan="2"><h5 id="DateStatementsOfCashFlow4" style="text-align:center;"></h5></td>
                         <td colspan="2"><h5 id="DateStatementsOfCashFlow5" style="text-align:center;"></h5></td>
                         <td colspan="2"><h5 id="DateStatementsOfCashFlow6" style="text-align:center;"></h5></td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn1" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn2" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsecondlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn3" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendthirdlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn4" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfourthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn5" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfifthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn6" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsixthlastyear }}</td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -11785,6 +11858,23 @@
                         <td colspan="2"><h5 id="DateRatios4" style="text-align:center;"></h4></td>
                     </tr>
                     <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn1" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn2" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsecondlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn3" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendthirdlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn4" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfourthlastyear }}</td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_lastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_secondlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_thirdlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_fourthlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>   
+                    </tr>
+                    <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
@@ -12916,6 +13006,27 @@
                         <td colspan="2"><h5 id="DateAdditionalInformation6" style="text-align:center;"></h5></td>
                     </tr>
                     <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn1" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn2" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsecondlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn3" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendthirdlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn4" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfourthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn5" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfifthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn6" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsixthlastyear }}</td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_lastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_secondlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_thirdlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_fourthlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_fifthlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_sixthlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>   
+                    </tr>
+                    <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
@@ -13111,6 +13222,23 @@
                         <td colspan="2"><h5 id="DateCapitalizationRate2" style="text-align:center;"></h5></td>
                         <td colspan="2"><h5 id="DateCapitalizationRate3" style="text-align:center;"></h5></td>
                         <td colspan="2"><h5 id="DateCapitalizationRate4" style="text-align:center;"></h5></td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn1" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn2" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsecondlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn3" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendthirdlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn4" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfourthlastyear }}</td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_lastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_secondlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_thirdlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_fourthlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -13603,6 +13731,27 @@
                         <td colspan="2"><h5 id="DateCapitalizedCashFlow6" style="text-align:center;"></h5></td>
                     </tr>
                     <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn1" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn2" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsecondlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn3" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendthirdlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn4" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfourthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn5" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfifthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn6" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsixthlastyear }}</td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_lastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_secondlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_thirdlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_fourthlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_fifthlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_sixthlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>   
+                    </tr>
+                    <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
@@ -13745,52 +13894,6 @@
                         <td colspan="2" class="clock" id="AnnualReinvestmentOfMaintenanceCCFColumn6" onclick="HighLight()"></input></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><h6>Finance Lease Principal Payments</h6></td>
-                        <td><button data-page="AnnualCashFlow" style="text-align:center; font-weight:bold;">CF</button></td>
-                        <td>
-                            <input type="checkbox" style="height: 16px;" id="FinanceLeasePrincipalPaymentsCCFCheckbox"></input>
-                            <input type="checkbox" style="height: 16px;" id="FinanceLeasePrincipalPaymentsCCFCheckbox2"></input>
-                        </td>
-                        <script>
-                            function FinanceLeasePrincipalPaymentsCCF(FinanceLeasePrincipalPaymentsCCF) {
-                                var numUSD = new Intl.NumberFormat("en-US", {
-                                    format: "number"
-                                });
-                                // Last Year
-                                a = -parseInt(document.getElementById('FinanceLeasePrincipalPayments1').value.replaceAll(/,/g, ''));
-                                document.getElementById('FinanceLeasePrincipalPaymentsCCFColumn1').innerHTML = numUSD.format(a);
-                                // Second Last Year
-                                a = -parseInt(document.getElementById('FinanceLeasePrincipalPayments2').value.replaceAll(/,/g, ''));
-                                document.getElementById('FinanceLeasePrincipalPaymentsCCFColumn2').innerHTML = numUSD.format(a);
-                                // Third Last Year
-                                a = -parseInt(document.getElementById('FinanceLeasePrincipalPayments3').value.replaceAll(/,/g, ''));
-                                document.getElementById('FinanceLeasePrincipalPaymentsCCFColumn3').innerHTML = numUSD.format(a);
-                                // Fourth Last Year
-                                a = -parseInt(document.getElementById('FinanceLeasePrincipalPayments4').value.replaceAll(/,/g, ''));
-                                document.getElementById('FinanceLeasePrincipalPaymentsCCFColumn4').innerHTML = numUSD.format(a);
-                                // Fifth Last Year
-                                a = -parseInt(document.getElementById('FinanceLeasePrincipalPayments5').value.replaceAll(/,/g, ''));
-                                document.getElementById('FinanceLeasePrincipalPaymentsCCFColumn5').innerHTML = numUSD.format(a);
-                                // Sixth Last Year
-                                a = -parseInt(document.getElementById('FinanceLeasePrincipalPayments6').value.replaceAll(/,/g, ''));
-                                document.getElementById('FinanceLeasePrincipalPaymentsCCFColumn6').innerHTML = numUSD.format(a);
-                            };
-                            window.addEventListener('DOMContentLoaded', FinanceLeasePrincipalPaymentsCCF)
-                            window.addEventListener('keyup', function() {
-                                var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
-                                if (event.keyCode in formulakeylist) {
-                                    FinanceLeasePrincipalPaymentsCCF();
-                                }
-                            })
-                        </script>
-                        <td colspan="2" class="clock" id="FinanceLeasePrincipalPaymentsCCFColumn1" style="font-weight:bold;" onclick="HighLight()"></input></td>
-                        <td colspan="2" class="clock" id="FinanceLeasePrincipalPaymentsCCFColumn2" onclick="HighLight()"></input></td>
-                        <td colspan="2" class="clock" id="FinanceLeasePrincipalPaymentsCCFColumn3" onclick="HighLight()"></input></td>
-                        <td colspan="2" class="clock" id="FinanceLeasePrincipalPaymentsCCFColumn4" onclick="HighLight()"></input></td>
-                        <td colspan="2" class="clock" id="FinanceLeasePrincipalPaymentsCCFColumn5" onclick="HighLight()"></input></td>
-                        <td colspan="2" class="clock" id="FinanceLeasePrincipalPaymentsCCFColumn6" onclick="HighLight()"></input></td>
-                    </tr>
-                    <tr>
                         <td colspan="2"><h6>Others</h6></td>
                         <td></td>
                         <td>
@@ -13885,7 +13988,6 @@
                                 a = a + parseInt(document.getElementById('TaxesPaidAdjustmentsCCFColumn1').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCFColumn1').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AnnualReinvestmentOfMaintenanceCCFColumn1').innerHTML.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('FinanceLeasePrincipalPaymentsCCFColumn1').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OthersCCFColumn1').value.replaceAll(/,/g, ''));
                                 document.getElementById('NormalizedOperatingCashFlowCCFColumn1').innerHTML = numUSD.format(Math.round(a));
                                 // Column 2
@@ -13893,7 +13995,6 @@
                                 a = a + parseInt(document.getElementById('TaxesPaidAdjustmentsCCFColumn2').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCFColumn2').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AnnualReinvestmentOfMaintenanceCCFColumn2').innerHTML.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('FinanceLeasePrincipalPaymentsCCFColumn2').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OthersCCFColumn2').value.replaceAll(/,/g, ''));
                                 document.getElementById('NormalizedOperatingCashFlowCCFColumn2').innerHTML = numUSD.format(Math.round(a));
                                 // Column 3
@@ -13901,7 +14002,6 @@
                                 a = a + parseInt(document.getElementById('TaxesPaidAdjustmentsCCFColumn3').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCFColumn3').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AnnualReinvestmentOfMaintenanceCCFColumn3').innerHTML.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('FinanceLeasePrincipalPaymentsCCFColumn3').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OthersCCFColumn3').value.replaceAll(/,/g, ''));
                                 document.getElementById('NormalizedOperatingCashFlowCCFColumn3').innerHTML = numUSD.format(Math.round(a));
                                 // Column 4
@@ -13909,7 +14009,6 @@
                                 a = a + parseInt(document.getElementById('TaxesPaidAdjustmentsCCFColumn4').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCFColumn4').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AnnualReinvestmentOfMaintenanceCCFColumn4').innerHTML.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('FinanceLeasePrincipalPaymentsCCFColumn4').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OthersCCFColumn4').value.replaceAll(/,/g, ''));
                                 document.getElementById('NormalizedOperatingCashFlowCCFColumn4').innerHTML = numUSD.format(Math.round(a));
                                 // Column 5
@@ -13917,7 +14016,6 @@
                                 a = a + parseInt(document.getElementById('TaxesPaidAdjustmentsCCFColumn5').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCFColumn5').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AnnualReinvestmentOfMaintenanceCCFColumn5').innerHTML.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('FinanceLeasePrincipalPaymentsCCFColumn5').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OthersCCFColumn5').value.replaceAll(/,/g, ''));
                                 document.getElementById('NormalizedOperatingCashFlowCCFColumn5').innerHTML = numUSD.format(Math.round(a));
                                 // Column 6
@@ -13925,7 +14023,6 @@
                                 b = b + parseInt(document.getElementById('TaxesPaidAdjustmentsCCFColumn6').innerHTML.replaceAll(/,/g, ''));
                                 b = b + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCFColumn6').innerHTML.replaceAll(/,/g, ''));
                                 b = b + parseInt(document.getElementById('AnnualReinvestmentOfMaintenanceCCFColumn6').innerHTML.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('FinanceLeasePrincipalPaymentsCCFColumn6').innerHTML.replaceAll(/,/g, ''));
                                 b = b + parseInt(document.getElementById('OthersCCFColumn6').value.replaceAll(/,/g, ''));
                                 if (a == 0) {
                                     b = a;
@@ -14796,6 +14893,27 @@
                         <td colspan="2"><h5 id="DateCapitalizedIncome4" style="text-align:center;"></h5></td>
                         <td colspan="2"><h5 id="DateCapitalizedIncome5" style="text-align:center;"></h5></td>
                         <td colspan="2"><h5 id="DateCapitalizedIncome6" style="text-align:center;"></h5></td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn1" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn2" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsecondlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn3" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendthirdlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn4" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfourthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn5" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfifthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn6" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsixthlastyear }}</td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_lastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_secondlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_thirdlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_fourthlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_fifthlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_sixthlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>   
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -15838,6 +15956,23 @@
                         <td colspan="2"><h5 id="DateIntrinsicValues4" style="text-align:center;"></h5></td>
                     </tr>
                     <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn1" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn2" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsecondlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn3" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendthirdlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn4" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfourthlastyear }}</td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_lastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_secondlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_thirdlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_fourthlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>   
+                    </tr>
+                    <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
@@ -16810,6 +16945,9 @@
                                     format: "number"
                                 })
                                 a = parseInt(document.getElementById('OperatingIncome1').innerHTML.replaceAll(/,/g, ''));
+                                if (isNaN(a)) {
+                                    a = 0
+                                }
                                 document.getElementById('ContinuingOperationsMaterialityThreshold').innerHTML = numUSD.format(Math.round(Math.abs(a) * 0.05));
                             };
                             window.addEventListener('DOMContentLoaded', BalanceContinuingOperationsMaterialityThreshold)
@@ -16830,6 +16968,9 @@
                                     format: "number"
                                 })
                                 a = parseInt(document.getElementById('BalanceSheetsStockholdersEquity1').innerHTML.replaceAll(/,/g, ''));
+                                if (isNaN(a)) {
+                                    a = 0
+                                }
                                 document.getElementById('NetAssetMaterialityThreshold').innerHTML = numUSD.format(Math.round(Math.abs(a * 0.05)));
                             };
                             window.addEventListener('DOMContentLoaded', BalanceNetAssetMaterialityThreshold)
@@ -16850,6 +16991,9 @@
                                     format: "number"
                                 })
                                 a = parseInt(document.getElementById('Sales1').innerHTML.replaceAll(/,/g, ''));
+                                if (isNaN(a)) {
+                                    a = 0
+                                }
                                 document.getElementById('RevenuesMaterialityThreshold').innerHTML = numUSD.format(Math.round(a * 0.015));
                             };
                             window.addEventListener('DOMContentLoaded', BalanceRevenuesMaterialityThreshold)
@@ -16872,6 +17016,9 @@
                                         maximumFractionDigits: 0
                                     })
                                 a = parseInt(document.getElementById('IntrinsicValues1').innerHTML.replaceAll(/,/g, ''));
+                                if (isNaN(a)) {
+                                    a = 0
+                                }
                                 document.getElementById('IntrinsicValueMaterialityThreshold').innerHTML = numUSD.format(a * 0.005);
                             };
                             window.addEventListener('DOMContentLoaded', BalanceIntrinsicValueMaterialityThreshold)
@@ -16894,6 +17041,9 @@
                                         maximumFractionDigits: 0
                                     })
                                 a = parseInt(document.getElementById('MarketCapitalizationColumn1').innerHTML.replaceAll(/,/g, ''));
+                                if (isNaN(a)) {
+                                    a = 0
+                                }
                                 document.getElementById('MarketCapMaterialityThreshold').innerHTML = numUSD.format(a * 0.005);
                             };
                             window.addEventListener('DOMContentLoaded', MarketCapMaterialityThreshold)
@@ -16996,6 +17146,16 @@
                         <td colspan="2"><h5 id="DateProcedureAnnualBalanceSheets4" style="text-align:center;"></h5></td>
                         <td colspan="2"><h5 id="DateProcedureAnnualBalanceSheets5" style="text-align:center;"></h5></td>
                         <td colspan="2"><h5 id="DateProcedureAnnualBalanceSheets6" style="text-align:center;"></h5></td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn1" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn2" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsecondlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn3" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendthirdlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn4" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfourthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn5" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfifthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn6" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsixthlastyear }}</td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -17207,6 +17367,16 @@
                         <td colspan="2"><h5 id="DateProcedureAnnualBalanceSheetsii4" style="text-align:center;"></h5></td>
                         <td colspan="2"><h5 id="DateProcedureAnnualBalanceSheetsii5" style="text-align:center;"></h5></td>
                         <td colspan="2"><h5 id="DateProcedureAnnualBalanceSheetsii6" style="text-align:center;"></h5></td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn1" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn2" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsecondlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn3" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendthirdlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn4" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfourthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn5" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfifthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn6" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsixthlastyear }}</td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -18093,6 +18263,16 @@
                         <td colspan="2"><h5 id="DateProcedureAnnualBalanceSheetsiii6" style="text-align:center;"></h5></td>
                     </tr>
                     <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn1" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn2" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsecondlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn3" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendthirdlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn4" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfourthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn5" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfifthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn6" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsixthlastyear }}</td>
+                    </tr>
+                    <tr></tr>
                     <tr></tr>
                     <tr>
                         <td colspan='4'></td>
@@ -18232,6 +18412,16 @@
                         <td colspan="2"><h5 id="DateProcedureAnnualIncomeStatements4" style="text-align:center;"></h5></td>
                         <td colspan="2"><h5 id="DateProcedureAnnualIncomeStatements5" style="text-align:center;"></h5></td>
                         <td colspan="2"><h5 id="DateProcedureAnnualIncomeStatements6" style="text-align:center;"></h5></td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn1" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn2" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsecondlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn3" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendthirdlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn4" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfourthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn5" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfifthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn6" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsixthlastyear }}</td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -18793,6 +18983,16 @@
                         <td colspan="2"><h5 id="DateProcedureAnnualIncomeStatementsi6" style="text-align:center;"></h5></td>
                     </tr>
                     <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn1" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn2" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsecondlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn3" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendthirdlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn4" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfourthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn5" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfifthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn6" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsixthlastyear }}</td>
+                    </tr>
+                    <tr></tr>
                     <tr></tr>
                     <tr>
                         <td colspan='4'></td>
@@ -18918,6 +19118,16 @@
                         <td colspan="2"><h5 id="DateProcedureAnnualComprehensiveIncome4" style="text-align:center;"></h5></td>
                         <td colspan="2"><h5 id="DateProcedureAnnualComprehensiveIncome5" style="text-align:center;"></h5></td>
                         <td colspan="2"><h5 id="DateProcedureAnnualComprehensiveIncome6" style="text-align:center;"></h5></td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn1" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn2" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsecondlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn3" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendthirdlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn4" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfourthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn5" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfifthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn6" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsixthlastyear }}</td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -19129,6 +19339,16 @@
                         <td colspan="2"><h5 id="DateProcedureAnnualStockholdersEquity4" style="text-align:center;"></h5></td>
                         <td colspan="2"><h5 id="DateProcedureAnnualStockholdersEquity5" style="text-align:center;"></h5></td>
                         <td colspan="2"><h5 id="DateProcedureAnnualStockholdersEquity6" style="text-align:center;"></h5></td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn1" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn2" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsecondlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn3" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendthirdlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn4" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfourthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn5" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfifthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn6" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsixthlastyear }}</td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -19372,6 +19592,16 @@
                         <td colspan="2"><h5 id="DateProcedureAnnualStockholdersEquityi6" style="text-align:center;"></h5></td>
                     </tr>
                     <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn1" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn2" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsecondlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn3" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendthirdlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn4" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfourthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn5" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfifthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn6" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsixthlastyear }}</td>
+                    </tr>
+                    <tr></tr>
                     <tr></tr>
                     <tr>
                         <td colspan='4'></td>
@@ -19518,6 +19748,16 @@
                         <td colspan="2"><h5 id="DateProcedureAnnualCashFlow4" style="text-align:center;"></h5></td>
                         <td colspan="2"><h5 id="DateProcedureAnnualCashFlow5" style="text-align:center;"></h5></td>
                         <td colspan="2"><h5 id="DateProcedureAnnualCashFlow6" style="text-align:center;"></h5></td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn1" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn2" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsecondlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn3" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendthirdlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn4" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfourthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn5" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfifthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn6" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsixthlastyear }}</td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -19734,6 +19974,16 @@
                         <td colspan="2"><h5 id="DateProcedureAnnualCashFlowClassification6" style="text-align:center;"></h5></td>
                     </tr>
                     <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn1" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn2" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsecondlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn3" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendthirdlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn4" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfourthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn5" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfifthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn6" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsixthlastyear }}</td>
+                    </tr>
+                    <tr></tr>
                     <tr></tr>
                     <tr>
                         <td colspan='4'></td>
@@ -19803,6 +20053,10 @@
             </table>
             <table>
                 <body>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
                     <tr>
                         <td colspan="4"></td>
                         <script>
@@ -19830,6 +20084,27 @@
                         <td colspan="2"><h5 id="DateAnomalies6" style="text-align:center;"></h5></td>
                     </tr>
                     <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn1" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn2" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsecondlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn3" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendthirdlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn4" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfourthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn5" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfifthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmendColumn6" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsixthlastyear }}</td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_lastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_secondlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_thirdlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_fourthlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_fifthlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_sixthlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>   
+                    </tr>
+                    <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
@@ -19851,28 +20126,28 @@
                                 header = '-'
                                 // Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.3.1').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.1.1').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesCurrentAssets1').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-1.3.1.1').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesCurrentAssets1').innerHTML = numUSD.format(Math.max(a, b));
                                 // Second Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.3.2').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.1.2').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesCurrentAssets2').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-1.3.1.2').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesCurrentAssets2').innerHTML = numUSD.format(Math.max(a, b));
                                 // Third Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.3.3').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.1.3').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesCurrentAssets3').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-1.3.1.3').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesCurrentAssets3').innerHTML = numUSD.format(Math.max(a, b));
                                 // Fourth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.3.4').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.1.4').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesCurrentAssets4').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-1.3.1.4').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesCurrentAssets4').innerHTML = numUSD.format(Math.max(a, b));
                                 // Fifth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.3.5').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.1.5').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesCurrentAssets5').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-1.3.1.5').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesCurrentAssets5').innerHTML = numUSD.format(Math.max(a, b));
                                 // Sixth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.3.6').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.1.6').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesCurrentAssets6').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-1.3.1.6').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesCurrentAssets6').innerHTML = numUSD.format(Math.max(a, b));
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAnomaliesCurrentAssets)
                             window.addEventListener('keyup', function() {
@@ -19903,28 +20178,28 @@
                                 })
                                 // Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.6.1').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.2.1').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesNonCurrentAssets1').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-1.3.2.1').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesNonCurrentAssets1').innerHTML = numUSD.format(Math.max(a, b));
                                 // Second Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.6.2').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.2.2').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesNonCurrentAssets2').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-1.3.2.2').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesNonCurrentAssets2').innerHTML = numUSD.format(Math.max(a, b));
                                 // Third Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.6.3').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.2.3').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesNonCurrentAssets3').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-1.3.2.3').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesNonCurrentAssets3').innerHTML = numUSD.format(Math.max(a, b));
                                 // Fourth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.6.4').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.2.4').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesNonCurrentAssets4').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-1.3.2.4').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesNonCurrentAssets4').innerHTML = numUSD.format(Math.max(a, b));
                                 // Fifth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.6.5').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.2.5').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesNonCurrentAssets5').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-1.3.2.5').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesNonCurrentAssets5').innerHTML = numUSD.format(Math.max(a, b));
                                 // Sixth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.6.6').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.2.6').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesNonCurrentAssets6').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-1.3.2.6').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesNonCurrentAssets6').innerHTML = numUSD.format(Math.max(a, b));
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAnomaliesNonCurrentAssets)
                             window.addEventListener('keyup', function() {
@@ -19955,28 +20230,28 @@
                                 })
                                 // Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.9.1').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.3.1').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesCurrentLiabilities1').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-1.3.3.1').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesCurrentLiabilities1').innerHTML = numUSD.format(Math.max(a, b));
                                 // Second Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.9.2').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.3.2').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesCurrentLiabilities2').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-1.3.3.2').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesCurrentLiabilities2').innerHTML = numUSD.format(Math.max(a, b));
                                 // Third Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.9.3').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.3.3').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesCurrentLiabilities3').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-1.3.3.3').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesCurrentLiabilities3').innerHTML = numUSD.format(Math.max(a, b));
                                 // Fourth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.9.4').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.3.4').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesCurrentLiabilities4').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-1.3.3.4').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesCurrentLiabilities4').innerHTML = numUSD.format(Math.max(a, b));
                                 // Fifth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.9.5').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.3.5').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesCurrentLiabilities5').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-1.3.3.5').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesCurrentLiabilities5').innerHTML = numUSD.format(Math.max(a, b));
                                 // Fifth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.9.6').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.3.6').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesCurrentLiabilities6').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-1.3.3.6').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesCurrentLiabilities6').innerHTML = numUSD.format(Math.max(a, b));
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAnomaliesCurrentLiabilities)
                             window.addEventListener('keyup', function() {
@@ -20007,28 +20282,28 @@
                                 })
                                 // Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.12.1').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.4.1').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesNonCurrentLiabilities1').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-1.3.4.1').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesNonCurrentLiabilities1').innerHTML = numUSD.format(Math.max(a, b));
                                 // Second Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.12.2').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.4.2').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesNonCurrentLiabilities2').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-1.3.4.2').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesNonCurrentLiabilities2').innerHTML = numUSD.format(Math.max(a, b));
                                 // Third Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.12.3').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.4.3').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesNonCurrentLiabilities3').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-1.3.4.3').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesNonCurrentLiabilities3').innerHTML = numUSD.format(Math.max(a, b));
                                 // Fourth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.12.4').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.4.4').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesNonCurrentLiabilities4').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-1.3.4.4').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesNonCurrentLiabilities4').innerHTML = numUSD.format(Math.max(a, b));
                                 // Fifth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.12.5').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.4.5').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesNonCurrentLiabilities5').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-1.3.4.5').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesNonCurrentLiabilities5').innerHTML = numUSD.format(Math.max(a, b));
                                 // Sixth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.12.6').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.4.6').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesNonCurrentLiabilities6').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-1.3.4.6').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesNonCurrentLiabilities6').innerHTML = numUSD.format(Math.max(a, b));
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAnomaliesNonCurrentLiabilities)
                             window.addEventListener('keyup', function() {
@@ -20059,28 +20334,28 @@
                                 })
                                 // Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.15.1').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.5.1').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesStockholdersEquity1').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-1.3.5.1').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesStockholdersEquity1').innerHTML = numUSD.format(Math.max(a, b));
                                 // Second Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.15.2').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.5.2').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesStockholdersEquity2').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-1.3.5.2').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesStockholdersEquity2').innerHTML = numUSD.format(Math.max(a, b));
                                 // Third Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.15.3').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.5.3').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesStockholdersEquity3').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-1.3.5.3').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesStockholdersEquity3').innerHTML = numUSD.format(Math.max(a, b));
                                 // Fourth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.15.4').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.5.4').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesStockholdersEquity4').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-1.3.5.4').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesStockholdersEquity4').innerHTML = numUSD.format(Math.max(a, b));
                                 // Fifth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.15.5').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.5.5').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesStockholdersEquity5').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-1.3.5.5').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesStockholdersEquity5').innerHTML = numUSD.format(Math.max(a, b));
                                 // Sixth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.15.6').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-1.3.5.6').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesStockholdersEquity6').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-1.3.5.6').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesStockholdersEquity6').innerHTML = numUSD.format(Math.max(a, b));
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAnomaliesStockholdersEquity)
                             window.addEventListener('keyup', function() {
@@ -20184,28 +20459,28 @@
                                 header = '-'
                                 // Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-2.1.3.1').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.1.1').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesGrossMargin1').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-2.2.1.1').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesGrossMargin1').innerHTML = numUSD.format(Math.max(a, b));
                                 // Second Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-2.1.3.2').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.1.2').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesGrossMargin2').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-2.2.1.2').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesGrossMargin2').innerHTML = numUSD.format(Math.max(a, b));
                                 // Third Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-2.1.3.3').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.1.3').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesGrossMargin3').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-2.2.1.3').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesGrossMargin3').innerHTML = numUSD.format(Math.max(a, b));
                                 // Fourth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-2.1.3.4').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.1.4').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesGrossMargin4').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-2.2.1.4').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesGrossMargin4').innerHTML = numUSD.format(Math.max(a, b));
                                 // Fifth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-2.1.3.5').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.1.5').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesGrossMargin5').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-2.2.1.5').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesGrossMargin5').innerHTML = numUSD.format(Math.max(a, b));
                                 // Sixth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-2.1.3.6').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.1.6').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesGrossMargin6').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-2.2.1.6').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesGrossMargin6').innerHTML = numUSD.format(Math.max(a, b));
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAnomaliesGrossMargin)
                             window.addEventListener('keyup', function() {
@@ -20236,28 +20511,28 @@
                                 })
                                 // Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-2.1.6.1').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.2.1').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesOperatingIncome1').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-2.2.2.1').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesOperatingIncome1').innerHTML = numUSD.format(Math.max(a, b));
                                 // Second Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-2.1.6.2').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.2.2').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesOperatingIncome2').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-2.2.2.2').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesOperatingIncome2').innerHTML = numUSD.format(Math.max(a, b));
                                 // Third Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-2.1.6.3').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.2.3').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesOperatingIncome3').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-2.2.2.3').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesOperatingIncome3').innerHTML = numUSD.format(Math.max(a, b));
                                 // Fourth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-2.1.6.4').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.2.4').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesOperatingIncome4').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-2.2.2.4').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesOperatingIncome4').innerHTML = numUSD.format(Math.max(a, b));
                                 // Fifth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-2.1.6.5').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.2.5').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesOperatingIncome5').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-2.2.2.5').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesOperatingIncome5').innerHTML = numUSD.format(Math.max(a, b));
                                 // Sixth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-2.1.6.6').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.2.6').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesOperatingIncome6').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-2.2.2.6').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesOperatingIncome6').innerHTML = numUSD.format(Math.max(a, b));
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAnomaliesOperatingIncome)
                             window.addEventListener('keyup', function() {
@@ -20288,28 +20563,28 @@
                                 })
                                 // Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-2.1.9.1').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.3.1').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesIncomeLossBeforeTaxes1').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-2.2.3.1').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesIncomeLossBeforeTaxes1').innerHTML = numUSD.format(Math.max(a, b));
                                 // Second Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-2.1.9.2').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.3.2').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesIncomeLossBeforeTaxes2').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-2.2.3.2').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesIncomeLossBeforeTaxes2').innerHTML = numUSD.format(Math.max(a, b));
                                 // Third Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-2.1.9.3').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.3.3').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesIncomeLossBeforeTaxes3').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-2.2.3.3').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesIncomeLossBeforeTaxes3').innerHTML = numUSD.format(Math.max(a, b));
                                 // Fourth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-2.1.9.4').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.3.4').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesIncomeLossBeforeTaxes4').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-2.2.3.4').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesIncomeLossBeforeTaxes4').innerHTML = numUSD.format(Math.max(a, b));
                                 // Fifth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-2.1.9.5').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.3.5').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesIncomeLossBeforeTaxes5').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-2.2.3.5').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesIncomeLossBeforeTaxes5').innerHTML = numUSD.format(Math.max(a, b));
                                 // Sixth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-2.1.9.6').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.3.6').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesIncomeLossBeforeTaxes6').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-2.2.3.6').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesIncomeLossBeforeTaxes6').innerHTML = numUSD.format(Math.max(a, b));
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAnomaliesIncomeBeforeTaxes)
                             window.addEventListener('keyup', function() {
@@ -20340,28 +20615,28 @@
                                 })
                                 // Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-2.1.12.1').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.4.1').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesNetIncome1').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-2.2.4.1').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesNetIncome1').innerHTML = numUSD.format(Math.max(a, b));
                                 // Second Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-2.1.12.2').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.4.2').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesNetIncome2').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-2.2.4.2').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesNetIncome2').innerHTML = numUSD.format(Math.max(a, b));
                                 // Third Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-2.1.12.3').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.4.3').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesNetIncome3').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-2.2.4.3').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesNetIncome3').innerHTML = numUSD.format(Math.max(a, b));
                                 // Fourth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-2.1.12.4').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.4.4').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesNetIncome4').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-2.2.4.4').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesNetIncome4').innerHTML = numUSD.format(Math.max(a, b));
                                 // Fifth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-2.1.12.5').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.4.5').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesNetIncome5').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-2.2.4.5').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesNetIncome5').innerHTML = numUSD.format(Math.max(a, b));
                                 // Sixth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-2.1.12.6').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-2.2.4.6').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesNetIncome6').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-2.2.4.6').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesNetIncome6').innerHTML = numUSD.format(Math.max(a, b));
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAnomaliesNetIncome)
                             window.addEventListener('keyup', function() {
@@ -20394,22 +20669,22 @@
                                 })
                                 // Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-3.1.3.1').innerHTML.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesComprehensiveIncome1').innerHTML = numUSD.format(a);
+                                document.getElementById('AnomaliesComprehensiveIncome1').innerHTML = numUSD.format(Math.max(a, b));
                                 // Second Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-3.1.3.2').innerHTML.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesComprehensiveIncome2').innerHTML = numUSD.format(a);
+                                document.getElementById('AnomaliesComprehensiveIncome2').innerHTML = numUSD.format(Math.max(a, b));
                                 // Third Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-3.1.3.3').innerHTML.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesComprehensiveIncome3').innerHTML = numUSD.format(a);
+                                document.getElementById('AnomaliesComprehensiveIncome3').innerHTML = numUSD.format(Math.max(a, b));
                                 // Fourth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-3.1.3.4').innerHTML.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesComprehensiveIncome4').innerHTML = numUSD.format(a);
+                                document.getElementById('AnomaliesComprehensiveIncome4').innerHTML = numUSD.format(Math.max(a, b));
                                 // Fifth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-3.1.3.5').innerHTML.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesComprehensiveIncome5').innerHTML = numUSD.format(a);
+                                document.getElementById('AnomaliesComprehensiveIncome5').innerHTML = numUSD.format(Math.max(a, b));
                                 // Sixth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-3.1.3.6').innerHTML.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesComprehensiveIncome6').innerHTML = numUSD.format(a);
+                                document.getElementById('AnomaliesComprehensiveIncome6').innerHTML = numUSD.format(Math.max(a, b));
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAnomaliesComprehensiveIncome)
                             window.addEventListener('keyup', function() {
@@ -20509,41 +20784,41 @@
                                     format: "number"
                                 })
                                 // Last Year
-                                a = Math.abs(parseInt(document.getElementById('PRO-5.1.3.1').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.1.1').value.replaceAll(/,/g, '')));
+                                a = Math.abs(parseInt(document.getElementById('PRO-5.2.1.1').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.2.1').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.3.1').value.replaceAll(/,/g, '')));
-                                document.getElementById('TotalAnomaliesCashFlow1').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-5.1.3.1').innerHTML.replaceAll(/,/g, '')));
+                                document.getElementById('TotalAnomaliesCashFlow1').innerHTML = numUSD.format(Math.max(a, b));
                                 // Second Last Year
-                                a = Math.abs(parseInt(document.getElementById('PRO-5.1.3.2').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.1.2').value.replaceAll(/,/g, '')));
+                                a = Math.abs(parseInt(document.getElementById('PRO-5.2.1.2').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.2.2').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.3.2').value.replaceAll(/,/g, '')));
-                                document.getElementById('TotalAnomaliesCashFlow2').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-5.1.3.2').innerHTML.replaceAll(/,/g, '')));
+                                document.getElementById('TotalAnomaliesCashFlow2').innerHTML = numUSD.format(Math.max(a, b));
                                 // Third Last Year
-                                a = Math.abs(parseInt(document.getElementById('PRO-5.1.3.3').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.1.3').value.replaceAll(/,/g, '')));
+                                a = Math.abs(parseInt(document.getElementById('PRO-5.2.1.3').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.2.3').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.3.3').value.replaceAll(/,/g, '')));
-                                document.getElementById('TotalAnomaliesCashFlow3').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-5.1.3.3').innerHTML.replaceAll(/,/g, '')));
+                                document.getElementById('TotalAnomaliesCashFlow3').innerHTML = numUSD.format(Math.max(a, b));
                                 // Fourth Last Year
-                                a = Math.abs(parseInt(document.getElementById('PRO-5.1.3.4').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.1.4').value.replaceAll(/,/g, '')));
+                                a = Math.abs(parseInt(document.getElementById('PRO-5.2.1.4').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.2.4').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.3.4').value.replaceAll(/,/g, '')));
-                                document.getElementById('TotalAnomaliesCashFlow4').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-5.1.3.4').innerHTML.replaceAll(/,/g, '')));
+                                document.getElementById('TotalAnomaliesCashFlow4').innerHTML = numUSD.format(Math.max(a, b));
                                 // Fifth Last Year
-                                a = Math.abs(parseInt(document.getElementById('PRO-5.1.3.5').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.1.5').value.replaceAll(/,/g, '')));
+                                a = Math.abs(parseInt(document.getElementById('PRO-5.2.1.5').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.2.5').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.3.5').value.replaceAll(/,/g, '')));
-                                document.getElementById('TotalAnomaliesCashFlow5').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-5.1.3.5').innerHTML.replaceAll(/,/g, '')));
+                                document.getElementById('TotalAnomaliesCashFlow5').innerHTML = numUSD.format(Math.max(a, b));
                                 // Sixth Last Year
-                                a = Math.abs(parseInt(document.getElementById('PRO-5.1.3.6').innerHTML.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.1.6').value.replaceAll(/,/g, '')));
+                                a = Math.abs(parseInt(document.getElementById('PRO-5.2.1.6').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.2.6').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.3.6').value.replaceAll(/,/g, '')));
-                                document.getElementById('TotalAnomaliesCashFlow6').innerHTML = numUSD.format(a);
+                                b = Math.abs(parseInt(document.getElementById('PRO-5.1.3.6').innerHTML.replaceAll(/,/g, '')));
+                                document.getElementById('TotalAnomaliesCashFlow6').innerHTML = numUSD.format(Math.max(a, b));
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAnomaliesCash)
                             window.addEventListener('keyup', function() {
@@ -20608,6 +20883,27 @@
                             <td colspan="2"><h5 id="DateAuditSummary4" style="text-align:center"></h4></td>
                             <td colspan="2"><h5 id="DateAuditSummary5" style="text-align:center"></h4></td>
                             <td colspan="2"><h5 id="DateAuditSummary6" style="text-align:center"></h4></td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td colspan='4'></td>
+                            <td colspan='2'><h5 id="TrialBalanceAmendColumn1" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendlastyear }}</td>
+                            <td colspan='2'><h5 id="TrialBalanceAmendColumn2" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsecondlastyear }}</td>
+                            <td colspan='2'><h5 id="TrialBalanceAmendColumn3" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendthirdlastyear }}</td>
+                            <td colspan='2'><h5 id="TrialBalanceAmendColumn4" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfourthlastyear }}</td>
+                            <td colspan='2'><h5 id="TrialBalanceAmendColumn5" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendfifthlastyear }}</td>
+                            <td colspan='2'><h5 id="TrialBalanceAmendColumn6" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsixthlastyear }}</td>
+                        </tr>
+                        <tr></tr>
+                        <tr></tr>
+                        <tr>
+                            <td colspan='4'></td>
+                            <td colspan="2" style="text-align:center"><a href={{ TrialBalance_lastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                            <td colspan="2" style="text-align:center"><a href={{ TrialBalance_secondlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                            <td colspan="2" style="text-align:center"><a href={{ TrialBalance_thirdlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                            <td colspan="2" style="text-align:center"><a href={{ TrialBalance_fourthlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                            <td colspan="2" style="text-align:center"><a href={{ TrialBalance_fifthlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                            <td colspan="2" style="text-align:center"><a href={{ TrialBalance_sixthlastyear.Link }} target="blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>   
                         </tr>
                         <tr></tr>
                         <tr></tr>
@@ -20957,6 +21253,15 @@
                             <td colspan="2" id="AnomaliesWorstCaseScenario5" style="border-bottom:double black;"></td>
                             <td colspan="2" id="AnomaliesWorstCaseScenario6" style="border-bottom:double black;"></td>
                         </tr>
+                        <tr>
+                            <td colspan='4'><h6></h6></td>
+                            <td colspan="2" class="ratio" id="AnomaliesRatio1" style="font-weight:bold;"></td>
+                            <td colspan="2" class="ratio" id="AnomaliesRatio2"></td>
+                            <td colspan="2" class="ratio" id="AnomaliesRatio3"></td>
+                            <td colspan="2" class="ratio" id="AnomaliesRatio4"></td>
+                            <td colspan="2" class="ratio" id="AnomaliesRatio5"></td>
+                            <td colspan="2" class="ratio" id="AnomaliesRatio6"></td>
+                        </tr>
                         <tr></tr>
                         <tr></tr>
                         <tr></tr>
@@ -20997,6 +21302,44 @@
                                     var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
                                     if (event.keyCode in formulakeylist) {
                                         BalanceAnomaliesMatherialityThreshold();
+                                    }
+                                })
+                                function AnomaliesRatio(AnomaliesRatio) {
+                                    var numUSD = new Intl.NumberFormat("en-US", {
+                                        style: 'percent',
+                                        minimumFractionDigits: 0,
+                                        maximumFractionDigits: 0,
+                                    });
+                                    // Last Year
+                                    a = Math.abs(parseInt(document.getElementById('AnomaliesWorstCaseScenario1').innerHTML.replaceAll(/,/g, '')));
+                                    a = a / Math.abs(parseInt(document.getElementById('AnomaliesMaterialityThreshold1').innerHTML.replaceAll(/,/g, '')));
+                                    document.getElementById('AnomaliesRatio1').innerHTML = numUSD.format(a)
+                                    // Second Last Year
+                                    a = Math.abs(parseInt(document.getElementById('AnomaliesWorstCaseScenario2').innerHTML.replaceAll(/,/g, '')));
+                                    a = a / Math.abs(parseInt(document.getElementById('AnomaliesMaterialityThreshold2').innerHTML.replaceAll(/,/g, '')));
+                                    document.getElementById('AnomaliesRatio2').innerHTML = numUSD.format(a)
+                                    // Third Last Year
+                                    a = Math.abs(parseInt(document.getElementById('AnomaliesWorstCaseScenario3').innerHTML.replaceAll(/,/g, '')));
+                                    a = a / Math.abs(parseInt(document.getElementById('AnomaliesMaterialityThreshold3').innerHTML.replaceAll(/,/g, '')));
+                                    document.getElementById('AnomaliesRatio3').innerHTML = numUSD.format(a)
+                                    // Fourth Last Year
+                                    a = Math.abs(parseInt(document.getElementById('AnomaliesWorstCaseScenario4').innerHTML.replaceAll(/,/g, '')));
+                                    a = a / Math.abs(parseInt(document.getElementById('AnomaliesMaterialityThreshold4').innerHTML.replaceAll(/,/g, '')));
+                                    document.getElementById('AnomaliesRatio4').innerHTML = numUSD.format(a)
+                                    // Fifth Last Year
+                                    a = Math.abs(parseInt(document.getElementById('AnomaliesWorstCaseScenario5').innerHTML.replaceAll(/,/g, '')));
+                                    a = a / Math.abs(parseInt(document.getElementById('AnomaliesMaterialityThreshold5').innerHTML.replaceAll(/,/g, '')));
+                                    document.getElementById('AnomaliesRatio5').innerHTML = numUSD.format(a)
+                                    // Sixth Last Year
+                                    a = Math.abs(parseInt(document.getElementById('AnomaliesWorstCaseScenario6').innerHTML.replaceAll(/,/g, '')));
+                                    a = a / Math.abs(parseInt(document.getElementById('AnomaliesMaterialityThreshold6').innerHTML.replaceAll(/,/g, '')));
+                                    document.getElementById('AnomaliesRatio6').innerHTML = numUSD.format(a)
+                                };
+                                window.addEventListener('DOMContentLoaded', AnomaliesRatio)
+                                window.addEventListener('keyup', function() {
+                                    var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
+                                    if (event.keyCode in formulakeylist) {
+                                        AnomaliesRatio();
                                     }
                                 })
                             </script>
@@ -21546,7 +21889,7 @@
             <tr>
                 <td>
                     <h6 style="text-align: center">
-                        as of {{ entity.UpdateDateAndTime }} | <a href="{% url 'φ:disclaimer' %}" target="blank">© clockdb.com</a> | alpha 1.6.1.8
+                        as of {{ entity.UpdateDateAndTime }} | <a href="{% url 'φ:disclaimer' %}" target="blank">© clockdb.com</a> | beta 1.6.1.8
                     </h6>
                 </td>
             </tr>

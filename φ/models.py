@@ -32,6 +32,20 @@ class Database(models.Model):
     #
     phase7 = models.IntegerField(default=0)
     #
+    phase71 = models.IntegerField(default=0)
+    #
+    phase72 = models.IntegerField(default=0)
+    #
+    phase73 = models.IntegerField(default=0)
+    #
+    phase74 = models.IntegerField(default=0)
+    #
+    phase75 = models.IntegerField(default=0)
+    #
+    phase76 = models.IntegerField(default=0)
+    #
+    phase77 = models.IntegerField(default=0)
+    #
     phase8 = models.IntegerField(default=0)
     #
     prepared = models.IntegerField(default=0)
@@ -39,7 +53,6 @@ class Database(models.Model):
     audited = models.IntegerField(default=0)
     #
     total = models.IntegerField(default=0)
-
 
 class Entity(models.Model):
     #
@@ -59,10 +72,15 @@ class Entity(models.Model):
     Bridgeφ = models.CharField(max_length=100, default=0)
     Status = models.CharField(max_length=7, default=0)
     Reviewed = models.IntegerField(default=0)
-    StockPrice = models.IntegerField(default=0)
     Anomalies = models.CharField(max_length=100, default=0)
-    SECurl = models.CharField(max_length=66, default=0)
-    #   
+    SECurl = models.CharField(max_length=66, default=0)    
+    #
+    MarketCapitalization = models.IntegerField(default=0)
+    StockPrice = models.IntegerField(default=0)
+    EntityCommonStockSharesOutstanding = models.IntegerField(default=0)
+    #
+    AnomaliesRatio = models.IntegerField(default=999999)
+    #
     accessionnumberlastyear = models.CharField(max_length=20, default='')
     accessionnumbersecondlastyear = models.CharField(max_length=20, default='')
     accessionnumberthirdlastyear = models.CharField(max_length=20, default='')
@@ -134,26 +152,8 @@ class Entity(models.Model):
     urlsauditfifthlastyear = models.IntegerField(default=0)
     urlsauditsixthlastyear = models.IntegerField(default=0)
     #
-    phase1 = models.IntegerField(default=0)
-    phase2 = models.IntegerField(default=0)
-    phase3 = models.IntegerField(default=0)
-    phase41 = models.IntegerField(default=0)
-    phase42 = models.IntegerField(default=0)
-    phase5 = models.IntegerField(default=0)
-    phase6 = models.IntegerField(default=0)
-    phase61 = models.IntegerField(default=0)
-    phase62 = models.IntegerField(default=0)
-    phase7 = models.IntegerField(default=0)
-    phase71 = models.IntegerField(default=0)
-    phase72 = models.IntegerField(default=0)
-    phase73 = models.IntegerField(default=0)
-    phase8 = models.IntegerField(default=0)
-    prepared = models.IntegerField(default=0)
-    audited = models.IntegerField(default=0)
-    #
     def __str__(self):
         return f"{self.TradingSymbol}"
-
 
 class AuditData(models.Model):
     #
@@ -161,7 +161,9 @@ class AuditData(models.Model):
     #
     EntityRegistrantName = models.CharField(max_length=93)
     TradingSymbol = models.CharField(max_length=13, default=0)
+    AccessionNumber = models.CharField(max_length=20, default='')
     AmendmentFlag = models.CharField(max_length=5, default=0)
+    PeriodEndDate = models.DateField(null=True)
     CurrentFiscalYearEndDate = models.CharField(max_length=7, default=0)
     DocumentFiscalPeriodFocus = models.CharField(max_length=2, default=0)
     DocumentFiscalYearFocus = models.CharField(max_length=4, default=0)
@@ -269,14 +271,15 @@ class AuditData(models.Model):
     def __str__(self):
         return f"{self.TradingSymbol}:{self.Period}"
 
-
 class CashFlow(models.Model):
     #
     # General - Cash Flow
     #
     EntityRegistrantName = models.CharField(max_length=93)
     TradingSymbol = models.CharField(max_length=13, default=0)
+    AccessionNumber = models.CharField(max_length=20, default='')
     AmendmentFlag = models.CharField(max_length=5, default=0)
+    PeriodEndDate = models.DateField(null=True)
     CurrentFiscalYearEndDate = models.CharField(max_length=7, default=0)
     DocumentFiscalPeriodFocus = models.CharField(max_length=2, default=0)
     DocumentFiscalYearFocus = models.CharField(max_length=4, default=0)
@@ -346,7 +349,6 @@ class CashFlow(models.Model):
     def __str__(self):
         return f"{self.TradingSymbol}:{self.Period}"
 
-
 class TrialBalance(models.Model):
     #
     #
@@ -354,7 +356,9 @@ class TrialBalance(models.Model):
     #
     EntityRegistrantName = models.CharField(max_length=93)
     TradingSymbol = models.CharField(max_length=13, default=0)
+    AccessionNumber = models.CharField(max_length=20, default='')
     AmendmentFlag = models.CharField(max_length=5, default=0)
+    PeriodEndDate = models.DateField(null=True)
     CurrentFiscalYearEndDate = models.CharField(max_length=7, default=0)
     DocumentFiscalPeriodFocus = models.CharField(max_length=2, default=0)
     DocumentFiscalYearFocus = models.CharField(max_length=4, default=0)
@@ -480,5 +484,3 @@ class TrialBalance(models.Model):
     #
     def __str__(self):
         return f"{self.TradingSymbol}:{self.Period}"
-
-

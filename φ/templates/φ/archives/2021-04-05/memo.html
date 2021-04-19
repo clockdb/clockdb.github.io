@@ -1,0 +1,35 @@
+{% extends "φ/layout.html" %}
+
+{% block body %}
+
+<!--- SCRIPT --->
+<script>       
+
+    // DOCUMENT TITLE
+    document.title = 'clockdb.com | memo'
+
+</script>
+
+<!--- MENU --->
+
+<div class="text">
+
+    <ul>
+
+        <a href="{% url 'φ:memo1' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>March 31, 2021</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">Covid-19, central banks and economic dictatorship</h5>
+
+            </button>
+
+        </a>
+
+    </ul>
+    
+</div>
+
+
+{% endblock %}

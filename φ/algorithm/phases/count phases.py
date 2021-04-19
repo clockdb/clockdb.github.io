@@ -54,6 +54,14 @@ try:
         db.phase62 = 0
         db.phase63 = 0
         db.phase7 = 0
+        db.phase71 = 0
+        db.phase72 = 0
+        db.phase73 = 0
+        db.phase74 = 0
+        db.phase75 = 0
+        db.phase76 = 0
+        db.phase77 = 0
+        db.phase78 = 0
         db.phase8 = 0
         db.prepared = 0
         db.audited = 0
@@ -77,8 +85,41 @@ try:
         if e.Status == 'Phase 8':
             db.phase8 = db.phase8 + 1
         #
-        if e.Status == 'Phase 7':
-            db.phase7 = db.phase7 + 1
+        if e.Status == 'Phase 7.8':
+            db.phase77 = db.phase78 + 1
+        #
+        if e.Status == 'Phase 7.7':
+            db.phase77 = db.phase77 + 1
+        #
+        if e.Status == 'Phase 7.6':
+            db.phase76 = db.phase76 + 1
+        #
+        if e.Status == 'Phase 7.5':
+            db.phase75 = db.phase75 + 1
+        #
+        if e.Status == 'Phase 7.4':
+            db.phase74 = db.phase74 + 1
+        #
+        if e.Status == 'Phase 7.3':
+            db.phase73 = db.phase73 + 1
+        #
+        if e.Status == 'Phase 7.2':
+            db.phase72 = db.phase72 + 1
+        #
+        if e.Status == 'Phase 7.1':
+            db.phase71 = db.phase71 + 1
+        #
+        phase7 = [
+            db.phase78,
+            db.phase77,
+            db.phase76,
+            db.phase75,
+            db.phase74,
+            db.phase73,
+            db.phase72,
+            db.phase71,
+        ]
+        db.phase7 = sum(phase7)
         #
         if e.Status == 'Phase 6.3':
             db.phase63 = db.phase63 + 1
@@ -187,6 +228,40 @@ try:
     except:
         pass
     #
+    # dataframe phase 7
+    try:
+        df7 = pd.DataFrame({
+        #
+        '.': 
+            #
+            [
+            'Phase 7.8 ',
+            'Phase 7.7 ',
+            'Phase 7.6 ',
+            'Phase 7.5 ',
+            'Phase 7.4 ',
+            'Phase 7.3 ',
+            'Phase 7.2 ',
+            'Phase 7.1 ',
+            ],
+        #
+        '..':
+            #
+            [
+            '{:,}'.format(db.phase78),
+            '{:,}'.format(db.phase77),
+            '{:,}'.format(db.phase76),
+            '{:,}'.format(db.phase75),
+            '{:,}'.format(db.phase74),
+            '{:,}'.format(db.phase73),
+            '{:,}'.format(db.phase72),
+            '{:,}'.format(db.phase71),
+            ]
+        #
+        })
+    except:
+        pass
+    #
     # dataframe phase 6 
     try:
         df6 = pd.DataFrame({
@@ -240,6 +315,9 @@ try:
         print('\n')
         #
         print(df)
+        print('\n')
+        #
+        print(df7)
         print('\n')
         #
         print(df6)

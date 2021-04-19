@@ -29,10 +29,9 @@ import urllib
 import xml.etree.ElementTree as ET
 
 # loop
-entities = Entity.objects.all().order_by('TradingSymbol')
+entities = Entity.objects.all().order_by('AnomaliesRatio')
 
 l = 1
-
 l = len(entities)
 
 # counter
@@ -41,27 +40,26 @@ for count in range(0, l):
     # retreives entity from db
     try:
         #
+        e = Entity.objects.get(TradingSymbol='DNOW')
         e = entities[count]
         #
-        if e.Status == 'Phase 6.2':
+        if e.Status == 'Phase 8':
             #
-            # change to be made
+            # change
+            e.Status = 'Phase 7.8'
+            #
+            # time of update
             try:
-                a = None
+                now = datetime.datetime.now()
+                e.Update = now
             except:
                 pass
             #
-            # phase
-            try:
-                e.Status = 'Phase 6.1'
-            except:
-                pass
-            # 
             # save
             e.save()
             #
             print(137*'-' + '\n')
-            print(e.EntityRegistrantName + ' (' + e.TradingSymbol + ')\n')
+            print(e.EntityRegistrantName + ' (' + e.TradingSymbol + ')' + ', ' + e.Status + '\n')
     #
     except:
         pass
