@@ -23,10 +23,22 @@
                         <h3 style="text-align:center; font-weight:bold;">entity</h2>
                     </td>
                     <td colspan='2' style="border-bottom: ridge;">
-                        <h3 style="text-align:center; font-weight:bold;">anomalies</h2>
+                        <h3 style="text-align:center; font-weight:bold;">anomalies last year</h2>
                     </td>
                     <td colspan='2' style="border-bottom: ridge;" >
-                        <h3 style="text-align:center; font-weight:bold;">year end</h2>
+                        <h3 style="text-align:center; font-weight:bold;">second last year</h2>
+                    </td>
+                    <td colspan='2' style="border-bottom: ridge;" >
+                        <h3 style="text-align:center; font-weight:bold;">third last year</h2>
+                    </td>
+                    <td colspan='2' style="border-bottom: ridge;" >
+                        <h3 style="text-align:center; font-weight:bold;">fourth last year</h2>
+                    </td>
+                    <td colspan='2' style="border-bottom: ridge;" >
+                        <h3 style="text-align:center; font-weight:bold;">fifth last year</h2>
+                    </td>
+                    <td colspan='2' style="border-bottom: ridge;" >
+                        <h3 style="text-align:center; font-weight:bold;">sixth last year</h2>
                     </td>
                 </tr>
 
@@ -37,23 +49,102 @@
 
                     <tr>
                         <td colspan='4' style="vertical-align:top;" style='padding-top: 24px;'>
-                            <a href="/{{ entity.TradingSymbol }}">
+                            <a href="/{{ entity.TradingSymbol }}" target="blank">
                                 <button>
                                     <h3 style="text-align:left; padding-bottom: 0%; padding-left:0px"><b>{{ entity.EntityRegistrantName }} ({{ entity.TradingSymbol }})</b></h3>
                                 </button>
                             </a>                           
                         </td>
                         <td colspan='2' style="vertical-align:top;" style='padding-top: 24px;'>
-                            <a href="/{{ entity.TradingSymbol }}">
+                            <a href="/{{ entity.TradingSymbol }}" target="blank">
                                 <button>
-                                    <h3 style="text-align: center;">{{ entity.AnomaliesRatio }}</h3>
+                                    <h3 style="text-align: center;">{{ entity.AnomaliesRatio1 }}</h3>
                                 </button>
                             </a>
                         </td>
                         <td colspan='2' style="vertical-align:top;" style='padding-top: 24px;'>
-                            <a href="/{{ entity.TradingSymbol }}">
+                            <a href="/{{ entity.TradingSymbol }}" target="blank">
                                 <button>
-                                    <h3 style="text-align:center;"><b>{{ entity.lastyear }}</b></h3>
+                                    <h3 style="text-align: center;">{{ entity.AnomaliesRatio2 }}</h3>
+                                </button>
+                            </a>
+                        </td>
+                        <td colspan='2' style="vertical-align:top;" style='padding-top: 24px;'>
+                            <a href="/{{ entity.TradingSymbol }}" target="blank">
+                                <button>
+                                    <h3 style="text-align: center;">{{ entity.AnomaliesRatio3 }}</h3>
+                                </button>
+                            </a>
+                        </td>
+                        <td colspan='2' style="vertical-align:top;" style='padding-top: 24px;'>
+                            <a href="/{{ entity.TradingSymbol }}" target="blank">
+                                <button>
+                                    <h3 style="text-align: center;">{{ entity.AnomaliesRatio4 }}</h3>
+                                </button>
+                            </a>
+                        </td>
+                        <td colspan='2' style="vertical-align:top;" style='padding-top: 24px;'>
+                            <a href="/{{ entity.TradingSymbol }}" target="blank">
+                                <button>
+                                    <h3 style="text-align: center;">{{ entity.AnomaliesRatio5 }}</h3>
+                                </button>
+                            </a>
+                        </td>
+                        <td colspan='2' style="vertical-align:top;" style='padding-top: 24px;'>
+                            <a href="/{{ entity.TradingSymbol }}" target="blank">
+                                <button>
+                                    <h3 style="text-align: center;">{{ entity.AnomaliesRatio6 }}</h3>
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan='4' style="vertical-align:top;">
+                            <a href="/{{ entity.TradingSymbol }}" target="blank">
+                                <button>
+                                    <h3 style="text-align:left;"></h3>
+                                </button>
+                            </a>                           
+                        </td>
+                        <td colspan='2' style="vertical-align:top;">
+                            <a href="/{{ entity.TradingSymbol }}" target="blank">
+                                <button>
+                                    <h3 style="text-align:center;"><b>{{ entity.amendlastyear }}</b></h3>
+                                </button>
+                            </a>
+                        </td>
+                        <td colspan='2' style="vertical-align:top;">
+                            <a href="/{{ entity.TradingSymbol }}" target="blank">
+                                <button>
+                                    <h3 style="text-align: center;">{{ entity.amendsecondlastyear }}</h3>
+                                </button>
+                            </a>
+                        </td>
+                        <td colspan='2' style="vertical-align:top;">
+                            <a href="/{{ entity.TradingSymbol }}" target="blank">
+                                <button>
+                                    <h3 style="text-align: center;">{{ entity.amendthirdlastyear }}</h3>
+                                </button>
+                            </a>
+                        </td>
+                        <td colspan='2' style="vertical-align:top;">
+                            <a href="/{{ entity.TradingSymbol }}" target="blank">
+                                <button>
+                                    <h3 style="text-align: center;">{{ entity.amendfourthlastyear }}</h3>
+                                </button>
+                            </a>
+                        </td>
+                        <td colspan='2' style="vertical-align:top;">
+                            <a href="/{{ entity.TradingSymbol }}" target="blank">
+                                <button>
+                                    <h3 style="text-align: center;">{{ entity.amendfifthlastyear }}</h3>
+                                </button>
+                            </a>
+                        </td>
+                        <td colspan='2' style="vertical-align:top;">
+                            <a href="/{{ entity.TradingSymbol }}" target="blank">
+                                <button>
+                                    <h3 style="text-align: center;">{{ entity.amendsixthlastyear }}</h3>
                                 </button>
                             </a>
                         </td>

@@ -61,7 +61,9 @@ def analysis(request, entity_TradingSymbol):
 
 # AUDITED DATABASE
 def auditeddatabase(request):
-    return render(request, "./φ/auditeddatabase.html")
+    return render(request, "./φ/auditeddatabase.html", {
+        "db": Database.objects.all()[0]
+    })
 
 # DB
 def db(request):
@@ -100,7 +102,9 @@ def economics(request):
 
 # INDEX
 def index(request):
-    return render(request, "./φ/index.html")
+    return render(request, "./φ/index.html", {
+        "db": Database.objects.all()[0]
+    })
 
 # MASTER
 def master(request):
@@ -119,7 +123,9 @@ def memo1(request):
 
 # MINING
 def mining(request):
-    return render(request, "./φ/mining.html")
+    return render(request, "./φ/mining.html", {
+        "db": Database.objects.all()[0]
+    })
 
 # PHASE 1
 def phase1(request):
@@ -412,7 +418,7 @@ def phase7(request):
 # PHASE 7.1
 def phase71(request):
     return render(request, "./φ/phase7.1.html", {
-        "entities": Entity.objects.all().order_by('AnomaliesRatio', '-lastyear', 'TradingSymbol')
+        "entities": Entity.objects.all().order_by('-NumberOfYearsAudited', 'AnomaliesRatio1',  'AnomaliesRatio2', 'AnomaliesRatio3', 'AnomaliesRatio4', 'AnomaliesRatio5', 'AnomaliesRatio6', '-lastyear', 'TradingSymbol')
         .exclude(Status='Inactive')
         .exclude(Status='Phase 1')
         .exclude(Status='Phase 2')
@@ -439,7 +445,7 @@ def phase71(request):
 # PHASE 7.2
 def phase72(request):
     return render(request, "./φ/phase7.2.html", {
-        "entities": Entity.objects.all().order_by('AnomaliesRatio', '-lastyear', 'TradingSymbol')
+        "entities": Entity.objects.all().order_by('-NumberOfYearsAudited', 'AnomaliesRatio1',  'AnomaliesRatio2', 'AnomaliesRatio3', 'AnomaliesRatio4', 'AnomaliesRatio5', 'AnomaliesRatio6', '-lastyear', 'TradingSymbol')
         .exclude(Status='Inactive')
         .exclude(Status='Phase 1')
         .exclude(Status='Phase 2')
@@ -466,7 +472,7 @@ def phase72(request):
 # PHASE 7.3
 def phase73(request):
     return render(request, "./φ/phase7.3.html", {
-        "entities": Entity.objects.all().order_by('AnomaliesRatio', '-lastyear', 'TradingSymbol')
+        "entities": Entity.objects.all().order_by('-NumberOfYearsAudited', 'AnomaliesRatio1',  'AnomaliesRatio2', 'AnomaliesRatio3', 'AnomaliesRatio4', 'AnomaliesRatio5', 'AnomaliesRatio6', '-lastyear', 'TradingSymbol')
         .exclude(Status='Inactive')
         .exclude(Status='Phase 1')
         .exclude(Status='Phase 2')
@@ -493,7 +499,7 @@ def phase73(request):
 # PHASE 7.4
 def phase74(request):
     return render(request, "./φ/phase7.4.html", {
-        "entities": Entity.objects.all().order_by('AnomaliesRatio', '-lastyear', 'TradingSymbol')
+        "entities": Entity.objects.all().order_by('-NumberOfYearsAudited', 'AnomaliesRatio1',  'AnomaliesRatio2', 'AnomaliesRatio3', 'AnomaliesRatio4', 'AnomaliesRatio5', 'AnomaliesRatio6', '-lastyear', 'TradingSymbol')
         .exclude(Status='Inactive')
         .exclude(Status='Phase 1')
         .exclude(Status='Phase 2')
@@ -520,7 +526,7 @@ def phase74(request):
 # PHASE 7.5
 def phase75(request):
     return render(request, "./φ/phase7.5.html", {
-        "entities": Entity.objects.all().order_by('AnomaliesRatio', '-lastyear', 'TradingSymbol')
+        "entities": Entity.objects.all().order_by('-NumberOfYearsAudited', 'AnomaliesRatio1',  'AnomaliesRatio2', 'AnomaliesRatio3', 'AnomaliesRatio4', 'AnomaliesRatio5', 'AnomaliesRatio6', '-lastyear', 'TradingSymbol')
         .exclude(Status='Inactive')
         .exclude(Status='Phase 1')
         .exclude(Status='Phase 2')
@@ -547,7 +553,7 @@ def phase75(request):
 # PHASE 7.6
 def phase76(request):
     return render(request, "./φ/phase7.6.html", {
-        "entities": Entity.objects.all().order_by('AnomaliesRatio', '-lastyear', 'TradingSymbol')
+        "entities": Entity.objects.all().order_by('-NumberOfYearsAudited', 'AnomaliesRatio1',  'AnomaliesRatio2', 'AnomaliesRatio3', 'AnomaliesRatio4', 'AnomaliesRatio5', 'AnomaliesRatio6', '-lastyear', 'TradingSymbol')
         .exclude(Status='Inactive')
         .exclude(Status='Phase 1')
         .exclude(Status='Phase 2')
@@ -574,7 +580,7 @@ def phase76(request):
 # PHASE 7.7
 def phase77(request):
     return render(request, "./φ/phase7.7.html", {
-        "entities": Entity.objects.all().order_by('AnomaliesRatio', '-lastyear', 'TradingSymbol')
+        "entities": Entity.objects.all().order_by('-NumberOfYearsAudited', 'AnomaliesRatio1',  'AnomaliesRatio2', 'AnomaliesRatio3', 'AnomaliesRatio4', 'AnomaliesRatio5', 'AnomaliesRatio6', '-lastyear', 'TradingSymbol')
         .exclude(Status='Inactive')
         .exclude(Status='Phase 1')
         .exclude(Status='Phase 2')
@@ -601,7 +607,7 @@ def phase77(request):
 # PHASE 7.8
 def phase78(request):
     return render(request, "./φ/phase7.8.html", {
-        "entities": Entity.objects.all().order_by('AnomaliesRatio', '-lastyear', 'TradingSymbol')
+        "entities": Entity.objects.all().order_by('-NumberOfYearsAudited', 'AnomaliesRatio1',  'AnomaliesRatio2', 'AnomaliesRatio3', 'AnomaliesRatio4', 'AnomaliesRatio5', 'AnomaliesRatio6', '-lastyear', 'TradingSymbol')
         .exclude(Status='Inactive')
         .exclude(Status='Phase 1')
         .exclude(Status='Phase 2')

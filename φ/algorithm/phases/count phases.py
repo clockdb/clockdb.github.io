@@ -41,6 +41,7 @@ try:
     #
     # variables
     try:
+        Inactives = 0
         db.phase1 = 0
         db.phase2 = 0
         db.phase3 = 0
@@ -65,6 +66,9 @@ try:
         db.phase8 = 0
         db.prepared = 0
         db.audited = 0
+        db.total = 0
+        db.completed = 0
+        db.progress = 0
     except:
         pass
     #
@@ -86,7 +90,7 @@ try:
             db.phase8 = db.phase8 + 1
         #
         if e.Status == 'Phase 7.8':
-            db.phase77 = db.phase78 + 1
+            db.phase78 = db.phase78 + 1
         #
         if e.Status == 'Phase 7.7':
             db.phase77 = db.phase77 + 1
@@ -164,6 +168,9 @@ try:
         #
         if e.Status == 'Phase 1':
             db.phase1 = db.phase1 + 1
+        #
+        if e.Status == 'Inactive':
+            Inactives = Inactives + 1
     #
     # total
     total = [
@@ -178,13 +185,31 @@ try:
         db.prepared,
         db.audited,
     ]
-    total = sum(total)
+    db.total = sum(total)
+    #
+    # progress
+    try:
+        c = [
+            db.audited,
+            db.prepared,
+            db.phase8,
+            db.phase78,
+            db.phase77 * 5/6,
+            db.phase76 * 4/6,
+            db.phase75 * 3/6,
+            db.phase74 * 2/6,
+            db.phase73 * 1/6,
+        ]
+        db.completed = round(sum(c))
+        db.progress = round(db.completed / db.total * 1000) / 10
+        db.onboarded = db.phase7 - (db.phase71 + db.phase72)
+    except:
+        pass
 except:
     pass
 
 db.save()
 
-#
 # print dataframe
 try:
     #
@@ -198,7 +223,14 @@ try:
             'Audited ',
             'Prepared ',
             'Phase 8 ',
-            'Phase 7 ',
+            'Phase 7.8 ',
+            'Phase 7.7 ',
+            'Phase 7.6 ',
+            'Phase 7.5 ',
+            'Phase 7.4 ',
+            'Phase 7.3 ',
+            'Phase 7.2 ',
+            'Phase 7.1 ',
             'Phase 6 ',
             'Phase 5 ',
             'Phase 4 ',
@@ -214,40 +246,6 @@ try:
             '{:,}'.format(db.audited),
             '{:,}'.format(db.prepared),
             '{:,}'.format(db.phase8),
-            '{:,}'.format(db.phase7),
-            '{:,}'.format(db.phase6),
-            '{:,}'.format(db.phase5),
-            '{:,}'.format(db.phase4),
-            '{:,}'.format(db.phase3),
-            '{:,}'.format(db.phase2),
-            '{:,}'.format(db.phase1),
-            '{:,}'.format(total),
-            ]
-        #
-        })
-    except:
-        pass
-    #
-    # dataframe phase 7
-    try:
-        df7 = pd.DataFrame({
-        #
-        '.': 
-            #
-            [
-            'Phase 7.8 ',
-            'Phase 7.7 ',
-            'Phase 7.6 ',
-            'Phase 7.5 ',
-            'Phase 7.4 ',
-            'Phase 7.3 ',
-            'Phase 7.2 ',
-            'Phase 7.1 ',
-            ],
-        #
-        '..':
-            #
-            [
             '{:,}'.format(db.phase78),
             '{:,}'.format(db.phase77),
             '{:,}'.format(db.phase76),
@@ -256,6 +254,13 @@ try:
             '{:,}'.format(db.phase73),
             '{:,}'.format(db.phase72),
             '{:,}'.format(db.phase71),
+            '{:,}'.format(db.phase6),
+            '{:,}'.format(db.phase5),
+            '{:,}'.format(db.phase4),
+            '{:,}'.format(db.phase3),
+            '{:,}'.format(db.phase2),
+            '{:,}'.format(db.phase1),
+            '{:,}'.format(db.total),
             ]
         #
         })
@@ -310,21 +315,55 @@ try:
     except:
         pass
     #
+    # dataframe inactives
+    try:
+        dfi = pd.DataFrame({
+        #
+        '.': 
+            #
+            [
+            'Inactives ',
+            ],
+        #
+        '..':
+            #
+            [
+            '{:,}'.format(Inactives),
+            ]
+        #
+        })
+    except:
+        pass
+    #
+    # dataframe progress
+    try:
+        dfp = pd.DataFrame({
+        #
+        '.': 
+            #
+            [
+            'progress ',
+            'entities eq ',
+            'onboarded ',
+            ],
+        #
+        '..':
+            #
+            [
+            '{:.1%}'.format(db.progress/100),
+            '{:,}'.format(db.completed),
+            '{:,}'.format(db.onboarded),
+            ]
+        #
+        })
+    except:
+        pass
+    #
     # print
     try:
-        print('\n')
-        #
+        print(137 * '-' + 2 * '\n')
+        print(dfp)
         print(df)
-        print('\n')
-        #
-        print(df7)
-        print('\n')
-        #
-        print(df6)
-        print('\n')
-        #
-        print(df4)
-        print('\n')
     except:
         pass
     #

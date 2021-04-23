@@ -1,0 +1,45 @@
+
+
+auditedpreviously = [
+    'ORLY',
+    'MNST',
+    'FB',
+    'INTC',
+    'TJX',
+    'COST',
+    'WMT',
+    'KEYS',
+    'COO',
+    'AAPL',
+    'ABMD',
+    'ANET',
+    'A',
+    'LLY',
+    'ENPH',
+    'KR',
+    'TRMB',
+    'KO',
+    'TSLA',
+    'GME',
+    'MCD',
+    'AMC',
+]
+
+
+# Generations
+
+
+Gen 1: 155
+
+0  Phase 7.8      33
+1  Phase 7.7       6
+2  Phase 7.6      15
+3  Phase 7.5      16
+4  Phase 7.4      28
+5  Phase 7.3      57
+6  Phase 7.2   3,893
+7  Phase 7.1       0
+
+
+Gen 2 :
+

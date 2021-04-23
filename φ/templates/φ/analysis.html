@@ -356,33 +356,13 @@
                         </button>
                     </td>
                     <td>
-                        <button data-page="Summary" name="Summary">
-                            <h2>Summary</h2>
+                        <button data-page="Opinion" name="Opinion">
+                            <h2>Opinion</h2>
                         </button>
                     </td>
                 </tr>
             </tbody>
         </table>
-        
-        <!--- SUMMARY --->
-        <div id="Summary">
-            <table style="border-bottom: ridge;;">
-                <tbody>
-                    <tr>
-                        <td>
-                            <button data-page="Graph">
-                                <h3 style="text-align:center">Line Chart</h3>
-                            </button>
-                        </td>
-                        <td>
-                            <button data-page="Opinion" name="Opinion">
-                                <h3 style="text-align:center">Opinion</h3>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
 
         <!--- FINANCIALS BUTTONS --->
         <div id="Arch">
@@ -453,6 +433,11 @@
                         <td>
                             <button data-page="IntrinsicValues">
                                 <h3 style="text-align:center">Intrinsic Values</h3>
+                            </button>
+                        </td>
+                        <td>
+                            <button data-page="Graph">
+                                <h3 style="text-align:center">Line Chart</h3>
                             </button>
                         </td>
                     </tr>
@@ -751,6 +736,20 @@
                             <input type="checkbox" style="height: 16px;" id="AmendCheckbox"></input>
                             <input type="checkbox" style="height: 16px;" id="AmendCheckbox2"></input>
                         </td>
+                        <td colspan="2" id="Status1" style="font-weight:bold;">{{ AuditData_lastyear.Status }}</td>
+                        <td colspan="2" id="Status2">{{ AuditData_secondlastyear.Status }}</td>
+                        <td colspan="2" id="Status3">{{ AuditData_thirdlastyear.Status }}</td>
+                        <td colspan="2" id="Status4">{{ AuditData_fourthlastyear.Status }}</td>
+                        <td colspan="2" id="Status5">{{ AuditData_fifthlastyear.Status }}</td>
+                        <td colspan="2" id="Status6">{{ AuditData_sixthlastyear.Status }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><h6>Work In Progress</h6></td>
+                        <td style="text-align:center; font-weight:bold;"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px;" id="AmendCheckbox"></input>
+                            <input type="checkbox" style="height: 16px;" id="AmendCheckbox2"></input>
+                        </td>
                         <td colspan="2" id="Status1" style="font-weight:bold;">{{ entity.Status }}</td>
                         <td colspan="2" id="Status2"></td>
                         <td colspan="2" id="Status3"></td>
@@ -858,6 +857,20 @@
                         <td colspan='2'><input value={{ TrialBalance_fourthlastyear.AccountsReceivable }} class="clock" id="TrialBalanceAccountsReceivableColumn4" onclick="HighLight()"></input></td>
                         <td colspan='2'><input value={{ TrialBalance_fifthlastyear.AccountsReceivable }} class="clock" id="TrialBalanceAccountsReceivableColumn5" onclick="HighLight()"></input></td>
                         <td colspan='2'><input value={{ TrialBalance_sixthlastyear.AccountsReceivable }} class="clock" id="TrialBalanceAccountsReceivableColumn6" onclick="HighLight()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><h6><b>Work In Progress</b></h6></td>
+                        <td style="text-align:center; font-weight:bold;">db</td>
+                        <td>
+                            <input type="checkbox" style="height: 16px;" id="TrialBalanceWorkInProgressCheckbox"></input>
+                            <input type="checkbox" style="height: 16px;" id="TrialBalanceWorkInProgressCheckbox2"></input>
+                        </td>
+                        <td colspan='2'><input value={{ TrialBalance_lastyear.WorkInProgress }} class="clock" id="TrialBalanceWorkInProgressColumn1" style="font-weight:bold;" onclick="HighLight()"></input></td>
+                        <td colspan='2'><input value={{ TrialBalance_secondlastyear.WorkInProgress }} class="clock" id="TrialBalanceWorkInProgressColumn2" onclick="HighLight()"></input></td>
+                        <td colspan='2'><input value={{ TrialBalance_thirdlastyear.WorkInProgress }} class="clock" id="TrialBalanceWorkInProgressColumn3" onclick="HighLight()"></input></td>
+                        <td colspan='2'><input value={{ TrialBalance_fourthlastyear.WorkInProgress }} class="clock" id="TrialBalanceWorkInProgressColumn4" onclick="HighLight()"></input></td>
+                        <td colspan='2'><input value={{ TrialBalance_fifthlastyear.WorkInProgress }} class="clock" id="TrialBalanceWorkInProgressColumn5" onclick="HighLight()"></input></td>
+                        <td colspan='2'><input value={{ TrialBalance_sixthlastyear.WorkInProgress }} class="clock" id="TrialBalanceWorkInProgressColumn6" onclick="HighLight()"></input></td>
                     </tr>
                     <tr>
                         <td colspan="2"><h6><b>Inventories</b></h6></td>
@@ -1856,6 +1869,7 @@
                                 a = parseInt(document.getElementById('TrialBalanceCashColumn1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceShortTermInvestmentsColumn1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceAccountsReceivableColumn1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('TrialBalanceWorkInProgressColumn1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceInventoriesColumn1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalancePrepaidExpensesColumn1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceNonTradeReceivablesColumn1').value.replaceAll(/,/g, ''));
@@ -1946,6 +1960,7 @@
                                 a = parseInt(document.getElementById('TrialBalanceCashColumn2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceShortTermInvestmentsColumn2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceAccountsReceivableColumn2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('TrialBalanceWorkInProgressColumn2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceInventoriesColumn2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalancePrepaidExpensesColumn2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceNonTradeReceivablesColumn2').value.replaceAll(/,/g, ''));
@@ -2036,6 +2051,7 @@
                                 a = parseInt(document.getElementById('TrialBalanceCashColumn3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceShortTermInvestmentsColumn3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceAccountsReceivableColumn3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('TrialBalanceWorkInProgressColumn3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceInventoriesColumn3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalancePrepaidExpensesColumn3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceNonTradeReceivablesColumn3').value.replaceAll(/,/g, ''));
@@ -2126,6 +2142,7 @@
                                 a = parseInt(document.getElementById('TrialBalanceCashColumn4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceShortTermInvestmentsColumn4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceAccountsReceivableColumn4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('TrialBalanceWorkInProgressColumn4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceInventoriesColumn4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalancePrepaidExpensesColumn4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceNonTradeReceivablesColumn4').value.replaceAll(/,/g, ''));
@@ -2216,6 +2233,7 @@
                                 a = parseInt(document.getElementById('TrialBalanceCashColumn5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceShortTermInvestmentsColumn5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceAccountsReceivableColumn5').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('TrialBalanceWorkInProgressColumn5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceInventoriesColumn5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalancePrepaidExpensesColumn5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceNonTradeReceivablesColumn5').value.replaceAll(/,/g, ''));
@@ -2306,6 +2324,7 @@
                                 a = parseInt(document.getElementById('TrialBalanceCashColumn6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceShortTermInvestmentsColumn6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceAccountsReceivableColumn6').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('TrialBalanceWorkInProgressColumn6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceInventoriesColumn6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalancePrepaidExpensesColumn6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceNonTradeReceivablesColumn6').value.replaceAll(/,/g, ''));
@@ -2813,6 +2832,74 @@
                         <td colspan="2" class="account"id="AccountsReceivable5"></td>
                         <td colspan="2" class="account"id="AccountsReceivable6"></td>
                     </tr>
+                    <tr id ='WorkInProgressRow'>
+                        <td colspan="2"><h6>Work In Progress</h6></td>
+                        <td><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold;">TB</button></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px;" id="WorkInProgressCheckbox"></input>
+                            <input type="checkbox" style="height: 16px;" id="WorkInProgressCheckbox2"></input>
+                        </td>
+                        <script>
+                            function BalanceWorkInProgress(BalanceWorkInProgress) {
+                                var numUSD = new Intl.NumberFormat("en-US", {
+                                    format: "number"
+                                })
+                                z = 0
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('TrialBalanceWorkInProgressColumn1').value.replaceAll(/,/g, '')))
+                                document.getElementById('WorkInProgress1').innerHTML = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // second last year
+                                a = Math.round(parseInt(document.getElementById('TrialBalanceWorkInProgressColumn2').value.replaceAll(/,/g, '')))
+                                document.getElementById('WorkInProgress2').innerHTML = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // third last year
+                                a = Math.round(parseInt(document.getElementById('TrialBalanceWorkInProgressColumn3').value.replaceAll(/,/g, '')))
+                                document.getElementById('WorkInProgress3').innerHTML = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // fourth last year
+                                a = Math.round(parseInt(document.getElementById('TrialBalanceWorkInProgressColumn4').value.replaceAll(/,/g, '')))
+                                document.getElementById('WorkInProgress4').innerHTML = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // fifth last year
+                                a = Math.round(parseInt(document.getElementById('TrialBalanceWorkInProgressColumn5').value.replaceAll(/,/g, '')))
+                                document.getElementById('WorkInProgress5').innerHTML = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // sixth last year
+                                a = Math.round(parseInt(document.getElementById('TrialBalanceWorkInProgressColumn6').value.replaceAll(/,/g, '')))
+                                document.getElementById('WorkInProgress6').innerHTML = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                if (z == 6) {
+                                    document.getElementById('WorkInProgressRow').style.display = 'none';
+                                }
+                            };
+                            window.addEventListener('DOMContentLoaded', BalanceWorkInProgress)
+                            window.addEventListener('keyup', function() {
+                                var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
+                                if (event.keyCode in formulakeylist) {
+                                    BalanceWorkInProgress();
+                                }
+                            })
+                        </script>
+                        <td colspan="2" class="account"id="WorkInProgress1" style="font-weight:bold;"></td>
+                        <td colspan="2" class="account"id="WorkInProgress2"></td>
+                        <td colspan="2" class="account"id="WorkInProgress3"></td>
+                        <td colspan="2" class="account"id="WorkInProgress4"></td>
+                        <td colspan="2" class="account"id="WorkInProgress5"></td>
+                        <td colspan="2" class="account"id="WorkInProgress6"></td>
+                    </tr>
                     <tr id='InventoriesRow'>
                         <td colspan="2"><h6>Inventories</h6></td>
                         <td><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold;">TB</button></td>
@@ -3236,6 +3323,7 @@
                                 a = parseInt(document.getElementById('Cash1').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShortTermInvestments1').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccountsReceivable1').innerHTML.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('WorkInProgress1').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('Inventories1').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PrepaidExpenses1').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonTradeReceivables1').innerHTML.replaceAll(/,/g, ''));
@@ -3248,6 +3336,7 @@
                                 a = parseInt(document.getElementById('Cash2').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShortTermInvestments2').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccountsReceivable2').innerHTML.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('WorkInProgress2').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('Inventories2').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PrepaidExpenses2').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonTradeReceivables2').innerHTML.replaceAll(/,/g, ''));
@@ -3260,6 +3349,7 @@
                                 a = parseInt(document.getElementById('Cash3').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShortTermInvestments3').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccountsReceivable3').innerHTML.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('WorkInProgress3').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('Inventories3').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PrepaidExpenses3').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonTradeReceivables3').innerHTML.replaceAll(/,/g, ''));
@@ -3272,6 +3362,7 @@
                                 a = parseInt(document.getElementById('Cash4').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShortTermInvestments4').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccountsReceivable4').innerHTML.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('WorkInProgress4').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('Inventories4').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PrepaidExpenses4').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonTradeReceivables4').innerHTML.replaceAll(/,/g, ''));
@@ -3284,6 +3375,7 @@
                                 a = parseInt(document.getElementById('Cash5').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShortTermInvestments5').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccountsReceivable5').innerHTML.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('WorkInProgress5').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('Inventories5').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PrepaidExpenses5').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonTradeReceivables5').innerHTML.replaceAll(/,/g, ''));
@@ -3296,6 +3388,7 @@
                                 a = parseInt(document.getElementById('Cash6').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShortTermInvestments6').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccountsReceivable6').innerHTML.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('WorkInProgress6').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('Inventories6').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PrepaidExpenses6').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonTradeReceivables6').innerHTML.replaceAll(/,/g, ''));
@@ -7469,7 +7562,7 @@
                     <tr></tr>
                     <tr></tr>
                     <tr>
-                        <td colspan="2"><h6><b>Total Stockholder's Equity Beginning Balance</b></h6></td>
+                        <td colspan="2"><h6><b>Total Stockholders' Equity Beginning Balance</b></h6></td>
                         <td style="color:#0d47a1; text-align:center; font-weight:bold;">\</td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="StockholdersEquityBeginningCheckbox"></input>
@@ -8261,7 +8354,7 @@
                         <td colspan="2" class="account"id="NetIncomeLossStockholdersEquity6" style="border-bottom-style:ridge"></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><h6><b>Total Stockholder's Equity</b></h6></td>
+                        <td colspan="2"><h6><b>Total Stockholders' Equity</b></h6></td>
                         <td style="color:#0d47a1; text-align:center; font-weight:bold;"></td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="StockholdersEquityCheckbox"></input>
@@ -10678,6 +10771,65 @@
                         <td colspan="2"><input class="clock" id="OtherInvestingActivities5" value={{ CashFlow_fifthlastyear.OtherInvestingActivities }} onclick="HighLight()"></input></td>
                         <td colspan="2"><input class="clock" id="OtherInvestingActivities6" value={{ CashFlow_sixthlastyear.OtherInvestingActivities }} onclick="HighLight()"></input></td>
                     </tr>
+                    <tr id='InvestingActivitiesInDiscontinuedOperationsRow'>
+                        <td colspan="2"><h6>Discontinued Operations</h6></td>
+                        <td style="text-align:center; font-weight:bold;">db</td>
+                        <td>
+                            <input type="checkbox" style="height: 16px;" id="InvestingActivitiesInDiscontinuedOperationsCheckbox"></input>
+                            <input type="checkbox" style="height: 16px;" id="InvestingActivitiesInDiscontinuedOperationsCheckbox2"></input>
+                        </td>
+                        <script>
+                            function InvestingActivitiesInDiscontinuedOperationsRow(InvestingActivitiesInDiscontinuedOperationsRow) {
+                                z = 0
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('InvestingActivitiesInDiscontinuedOperations1').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('InvestingActivitiesInDiscontinuedOperations2').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('InvestingActivitiesInDiscontinuedOperations3').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('InvestingActivitiesInDiscontinuedOperations4').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('InvestingActivitiesInDiscontinuedOperations5').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('InvestingActivitiesInDiscontinuedOperations6').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                if (z == 6) {
+                                    document.getElementById('InvestingActivitiesInDiscontinuedOperationsRow').style.display = 'none';
+                                }
+                            };
+                            window.addEventListener('DOMContentLoaded', InvestingActivitiesInDiscontinuedOperationsRow)
+                            window.addEventListener('keyup', function() {
+                                var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
+                                if (event.keyCode in formulakeylist) {
+                                    InvestingActivitiesInDiscontinuedOperationsRow();
+                                }
+                            })
+                        </script>
+                        <td colspan="2"><input class="clock" id="InvestingActivitiesInDiscontinuedOperations1"  style="font-weight:bold;" value={{ CashFlow_lastyear.InvestingActivitiesInDiscontinuedOperations }} onclick="HighLight()"></input></td>
+                        <td colspan="2"><input class="clock" id="InvestingActivitiesInDiscontinuedOperations2" value={{ CashFlow_secondlastyear.InvestingActivitiesInDiscontinuedOperations }} onclick="HighLight()"></input></td>
+                        <td colspan="2"><input class="clock" id="InvestingActivitiesInDiscontinuedOperations3" value={{ CashFlow_thirdlastyear.InvestingActivitiesInDiscontinuedOperations }} onclick="HighLight()"></input></td>
+                        <td colspan="2"><input class="clock" id="InvestingActivitiesInDiscontinuedOperations4" value={{ CashFlow_fourthlastyear.InvestingActivitiesInDiscontinuedOperations }} onclick="HighLight()"></input></td>
+                        <td colspan="2"><input class="clock" id="InvestingActivitiesInDiscontinuedOperations5" value={{ CashFlow_fifthlastyear.InvestingActivitiesInDiscontinuedOperations }} onclick="HighLight()"></input></td>
+                        <td colspan="2"><input class="clock" id="InvestingActivitiesInDiscontinuedOperations6" value={{ CashFlow_sixthlastyear.InvestingActivitiesInDiscontinuedOperations }} onclick="HighLight()"></input></td>
+                    </tr>
                     <tr>
                         <td colspan="3"></td>
                         <td>
@@ -10698,6 +10850,7 @@
                                 a = a + parseInt(document.getElementById('ProceedsFromDisposalsOfBusinessesAndIntangibles1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ReveiptOfGovernmentGrants1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OtherInvestingActivities1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('InvestingActivitiesInDiscontinuedOperations1').value.replaceAll(/,/g, ''));
                                 document.getElementById('InvestingActivitiesNote1').innerHTML = numUSD.format(Math.round(a));
                                 document.getElementById('InvestingActivities1').innerHTML = numUSD.format(Math.round(a));
                                 // Second Last Year
@@ -10710,6 +10863,7 @@
                                 a = a + parseInt(document.getElementById('ProceedsFromCompanyOwnedLifeInsurance2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ReveiptOfGovernmentGrants2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OtherInvestingActivities2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('InvestingActivitiesInDiscontinuedOperations2').value.replaceAll(/,/g, ''));
                                 document.getElementById('InvestingActivitiesNote2').innerHTML = numUSD.format(Math.round(a));
                                 document.getElementById('InvestingActivities2').innerHTML = numUSD.format(Math.round(a));
                                 // Third Last Year
@@ -10722,6 +10876,7 @@
                                 a = a + parseInt(document.getElementById('ProceedsFromCompanyOwnedLifeInsurance3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ReveiptOfGovernmentGrants3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OtherInvestingActivities3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('InvestingActivitiesInDiscontinuedOperations3').value.replaceAll(/,/g, ''));
                                 document.getElementById('InvestingActivitiesNote3').innerHTML = numUSD.format(Math.round(a));
                                 document.getElementById('InvestingActivities3').innerHTML = numUSD.format(Math.round(a));
                                 // Fourth Last Year
@@ -10734,6 +10889,7 @@
                                 a = a + parseInt(document.getElementById('ProceedsFromCompanyOwnedLifeInsurance4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ReveiptOfGovernmentGrants4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OtherInvestingActivities4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('InvestingActivitiesInDiscontinuedOperations4').value.replaceAll(/,/g, ''));
                                 document.getElementById('InvestingActivitiesNote4').innerHTML = numUSD.format(Math.round(a));
                                 document.getElementById('InvestingActivities4').innerHTML = numUSD.format(Math.round(a));
                                 // Fifth Last Year
@@ -10746,6 +10902,7 @@
                                 a = a + parseInt(document.getElementById('ProceedsFromCompanyOwnedLifeInsurance5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ReveiptOfGovernmentGrants5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OtherInvestingActivities5').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('InvestingActivitiesInDiscontinuedOperations5').value.replaceAll(/,/g, ''));
                                 document.getElementById('InvestingActivitiesNote5').innerHTML = numUSD.format(Math.round(a));
                                 document.getElementById('InvestingActivities5').innerHTML = numUSD.format(Math.round(a));
                                 // Sixth Last Year
@@ -10758,6 +10915,7 @@
                                 a = a + parseInt(document.getElementById('ProceedsFromCompanyOwnedLifeInsurance6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ReveiptOfGovernmentGrants6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OtherInvestingActivities6').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('InvestingActivitiesInDiscontinuedOperations6').value.replaceAll(/,/g, ''));
                                 document.getElementById('InvestingActivitiesNote6').innerHTML = numUSD.format(Math.round(a));
                                 document.getElementById('InvestingActivities6').innerHTML = numUSD.format(Math.round(a));
                             };
@@ -12900,7 +13058,7 @@
                     </tr>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold; vertical-align:top">(k)</td>
-                        <td style="text-align:justify;" colspan="20" ><b>Equity Multiplier:</b> The equity multiplier is a risk indicator that measures the portion of a company’s assets that is financed by stockholder's equity rather than by debt. It is calculated by dividing a company's total asset value by its total shareholders' equity.</td>
+                        <td style="text-align:justify;" colspan="20" ><b>Equity Multiplier:</b> The equity multiplier is a risk indicator that measures the portion of a company’s assets that is financed by stockholders' equity rather than by debt. It is calculated by dividing a company's total asset value by its total shareholders' equity.</td>
                     </tr>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold; vertical-align:top">(l)</td>
@@ -13159,7 +13317,7 @@
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">(a)</td>
                         <td style="text-align:justify;" colspan="20" ><b>Reinvestment Of Maintenance:</b>
-                            Average payments to acquire property, plant and equipments of the last six years.
+                            Average payments to acquire property, plant and equipments (last six years average).
                         </td>
                     </tr>
                     <tr>
@@ -14731,8 +14889,8 @@
                                 // Column 2
                                 a = parseInt(document.getElementById('CommonSharesValueCCFColumn2').innerHTML.replaceAll(/,/g, ''));
                                 a = a - parseInt(document.getElementById('FairValueOfIdentifiableAssetsCCFColumn2').value.replaceAll(/,/g, ''));
-                                document.getElementById('GoodwillFairValueCCFColumn2').innerHTML = numUSD.format(Math.round(a));
                                 a = Math.max(0, a)
+                                document.getElementById('GoodwillFairValueCCFColumn2').innerHTML = numUSD.format(Math.round(a));
                                 // Column 3
                                 a = parseInt(document.getElementById('CommonSharesValueCCFColumn3').innerHTML.replaceAll(/,/g, ''));
                                 a = a - parseInt(document.getElementById('FairValueOfIdentifiableAssetsCCFColumn3').value.replaceAll(/,/g, ''));
@@ -16163,7 +16321,7 @@
             <table style="border-bottom:solid #0D47A1">
                 <body>
                     <tr>
-                        <td><h3 style="font-weight:bold; margin-left:0px;">Summary</h3></td>
+                        <td><h3 style="font-weight:bold; margin-left:0px;">Opinion</h3></td>
                     </tr>
                 </body>
             </table>
@@ -16828,7 +16986,7 @@
                     <tr></tr>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold; vertical-align:top;">N.B.:</td>
-                        <td style="text-align:left;" colspan="20">Market Capitalization values are smoothed between filing dates. The value for the most recent period end date is at time of data gathering.</td>
+                        <td style="text-align:left;" colspan="20">Market Capitalization values are smoothed between report dates. The value for the most recent period end date is at time of data gathering.</td>
                     </tr>
                 </tbody>
             </table>
@@ -17410,6 +17568,7 @@
                                 a = parseInt(document.getElementById('Cash1').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShortTermInvestments1').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccountsReceivable1').innerHTML.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('WorkInProgress1').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('Inventories1').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PrepaidExpenses1').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonTradeReceivables1').innerHTML.replaceAll(/,/g, ''));
@@ -17421,6 +17580,7 @@
                                 a = parseInt(document.getElementById('Cash2').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShortTermInvestments2').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccountsReceivable2').innerHTML.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('WorkInProgress2').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('Inventories2').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PrepaidExpenses2').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonTradeReceivables2').innerHTML.replaceAll(/,/g, ''));
@@ -17432,6 +17592,7 @@
                                 a = parseInt(document.getElementById('Cash3').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShortTermInvestments3').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccountsReceivable3').innerHTML.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('WorkInProgress3').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('Inventories3').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PrepaidExpenses3').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonTradeReceivables3').innerHTML.replaceAll(/,/g, ''));
@@ -17443,6 +17604,7 @@
                                 a = parseInt(document.getElementById('Cash4').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShortTermInvestments4').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccountsReceivable4').innerHTML.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('WorkInProgress4').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('Inventories4').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PrepaidExpenses4').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonTradeReceivables4').innerHTML.replaceAll(/,/g, ''));
@@ -17454,6 +17616,7 @@
                                 a = parseInt(document.getElementById('Cash5').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShortTermInvestments5').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccountsReceivable5').innerHTML.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('WorkInProgress5').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('Inventories5').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PrepaidExpenses5').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonTradeReceivables5').innerHTML.replaceAll(/,/g, ''));
@@ -17465,6 +17628,7 @@
                                 a = parseInt(document.getElementById('Cash6').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShortTermInvestments6').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccountsReceivable6').innerHTML.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('WorkInProgress6').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('Inventories6').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PrepaidExpenses6').innerHTML.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonTradeReceivables6').innerHTML.replaceAll(/,/g, ''));
@@ -21889,7 +22053,7 @@
             <tr>
                 <td>
                     <h6 style="text-align: center">
-                        as of {{ entity.UpdateDateAndTime }} | <a href="{% url 'φ:disclaimer' %}" target="blank">© clockdb.com</a> | beta 1.6.1.8
+                        as of {{ entity.UpdateDateAndTime }} | <a href="{% url 'φ:disclaimer' %}" target="_blank">© clockdb.com</a> | beta 1.6.1.8
                     </h6>
                 </td>
             </tr>

@@ -46,6 +46,8 @@ class Database(models.Model):
     #
     phase77 = models.IntegerField(default=0)
     #
+    phase78 = models.IntegerField(default=0)
+    #
     phase8 = models.IntegerField(default=0)
     #
     prepared = models.IntegerField(default=0)
@@ -53,6 +55,12 @@ class Database(models.Model):
     audited = models.IntegerField(default=0)
     #
     total = models.IntegerField(default=0)
+    #
+    onboarded = models.IntegerField(default=0)
+    #
+    completed = models.IntegerField(default=0)
+    #
+    progress = models.FloatField(default=0)
 
 class Entity(models.Model):
     #
@@ -79,7 +87,14 @@ class Entity(models.Model):
     StockPrice = models.IntegerField(default=0)
     EntityCommonStockSharesOutstanding = models.IntegerField(default=0)
     #
-    AnomaliesRatio = models.IntegerField(default=999999)
+    AnomaliesRatio1 = models.IntegerField(default=9999)
+    AnomaliesRatio2 = models.IntegerField(default=9999)
+    AnomaliesRatio3 = models.IntegerField(default=9999)
+    AnomaliesRatio4 = models.IntegerField(default=9999)
+    AnomaliesRatio5 = models.IntegerField(default=9999)
+    AnomaliesRatio6 = models.IntegerField(default=9999)
+    #
+    NumberOfYearsAudited = models.IntegerField(default=0)
     #
     accessionnumberlastyear = models.CharField(max_length=20, default='')
     accessionnumbersecondlastyear = models.CharField(max_length=20, default='')
@@ -169,6 +184,8 @@ class AuditData(models.Model):
     DocumentFiscalYearFocus = models.CharField(max_length=4, default=0)
     DocumentPeriodEndDate = models.CharField(max_length=13, default=0)
     Period = models.CharField(max_length=27, default=0)
+    #
+    Status = models.CharField(max_length=7, default='')
     #
     # Balance Sheets - Audit
     #
@@ -322,6 +339,7 @@ class CashFlow(models.Model):
     ProceedsFromCompanyOwnedLifeInsurance = models.IntegerField(default=0)
     ReveiptOfGovernmentGrants = models.IntegerField(default=0)
     OtherInvestingActivities = models.IntegerField(default=0)
+    InvestingActivitiesInDiscontinuedOperations = models.IntegerField(default=0)
     #
     # Financing Activities - Cash Flow
     #
@@ -375,6 +393,7 @@ class TrialBalance(models.Model):
     Cash = models.IntegerField(default=0)
     ShortTermInvestments = models.IntegerField(default=0)
     AccountsReceivable = models.IntegerField(default=0)
+    WorkInProgress = models.IntegerField(default=0)
     Inventories = models.IntegerField(default=0)
     PrepaidExpenses = models.IntegerField(default=0)
     NonTradeReceivables = models.IntegerField(default=0)
