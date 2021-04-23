@@ -77,16 +77,17 @@ for count in range(0, ll):
         e = Entity.objects.get(TradingSymbol='AAPL')
     #
     phases = [
-        'Phase 7.1',
+        'Phase 7.2',
     ]
     ignore = [
-        'N/A',
+        'Audited',
     ]
     #
     if e.Status in phases:
         #
         # entity
-        print('\n' + 137 * '-' + '\n' + str(e) + ', ' + str(round(count/ll * 100)) + '% \n' + 137 * '-' + '\n')
+        print('\n' + 137 * '-' + '\n' + e.EntityRegistrantName + ' (' + e.TradingSymbol + ')' + ', ' + str(round(count/ll * 1000) / 10) + '%\n')
+        print(e.Status + ', ' + str(e.NumberOfYearsAudited) + 137 * '-' + '\n')
         #
         # period end dates and accession numbers
         try:
@@ -10083,8 +10084,6 @@ for count in range(0, ll):
         # save
         try:
             e.save()
-            print(137 * '-' + '\n')
-            print(e.EntityRegistrantName + ' (' + e.TradingSymbol + ')' + ', ' + e.Status + ', ' + str(e.NumberOfYearsAudited) + '\n')
         except:
             pass
 
