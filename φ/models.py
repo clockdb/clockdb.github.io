@@ -75,6 +75,7 @@ class Entity(models.Model):
     Regulator = models.CharField(max_length=3)
     Update = models.DateField(null=True)
     UpdateDateAndTime = models.DateTimeField(null=True)
+    StockPriceUpdate = models.DateTimeField(null=True)
     Clockφ = models.IntegerField(default=0)
     ClockφChange = models.IntegerField(default=0)
     Bridgeφ = models.CharField(max_length=100, default=0)

@@ -87,7 +87,7 @@ for count in range(0, ll):
         #
         # entity
         print('\n' + 137 * '-' + '\n' + e.EntityRegistrantName + ' (' + e.TradingSymbol + ')' + ', ' + str(round(count/ll * 1000) / 10) + '%\n')
-        print(e.Status + ', ' + str(e.NumberOfYearsAudited) + 137 * '-' + '\n')
+        print('\n' + e.Status + ', ' + str(e.NumberOfYearsAudited) + 137 * '-' + '\n')
         #
         # period end dates and accession numbers
         try:
@@ -10084,6 +10084,8 @@ for count in range(0, ll):
         # save
         try:
             e.save()
+            print('\n' + 137 * '-' + '\n' + e.EntityRegistrantName + ' (' + e.TradingSymbol + ')' + ', ' + str(round(count/ll * 1000) / 10) + '%\n')
+            print('\n' + e.Status + ', ' + str(e.NumberOfYearsAudited) + 137 * '-' + '\n')
         except:
             pass
 

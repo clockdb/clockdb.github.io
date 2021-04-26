@@ -29,7 +29,7 @@ import urllib
 import xml.etree.ElementTree as ET
 
 entities = Entity.objects.all().order_by(
-    'TradingSymbol',
+    '-TradingSymbol',
 )
 
 ll = 1
@@ -46,43 +46,11 @@ for count in range(0, ll):
     phases = [
         'Inactive',
     ]
-    periods = [
-        'lastyear',
-        'secondlastyear',
-        'thirdlastyear',
-        'fourthlastyear',
-        'fifthlastyear',
-        'sixthlastyear',
-    ]
     #
     if e.Status in phases:
         #
         print('\n' + 137 * '-' + '\n' + e.EntityRegistrantName + ' (' + e.TradingSymbol + ')' + ', ' + str(round(count/ll * 1000) / 10) + '%\n')
-        print(e.Status + ', ' + str(e.NumberOfYearsAudited) + 137 * '-' + '\n')
+        print('\n' + e.Status + ', ' + str(e.NumberOfYearsAudited) + 137 * '-' + '\n')
         #
-        for period in periods:
-            #
-            # delete objects
-            try:
-                a = AuditData.objects.get(TradingSymbol=e.TradingSymbol, Period=period)
-                a.delete()
-            except:
-                pass
-            try:
-                tb = TrialBalance.objects.get(TradingSymbol=e.TradingSymbol, Period=period)
-                tb.delete()
-            except:
-                pass
-            try:
-                cf = CashFlow.objects.get(TradingSymbol=e.TradingSymbol, Period=period)
-                cf.delete()
-            except:
-                pass
-        #
-        # save
-        try:
-            e.save()
-        except:
-            pass
-
+        e.delete()
 
