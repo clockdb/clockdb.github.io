@@ -9,7 +9,6 @@
 
     // SINGLE-PAGE + BUTTONS
     window.onpopstate = function(event) {
-        console.log(event.state.page);
         showPage(event.state.page);
     }
     ////
@@ -17084,9 +17083,12 @@
                         <td><input value=95% onclick="HighLight()"></input></td>
                     </tr>
                     <tr></tr>
+                    <tr></tr>
                     <tr>
                         <td colspan='7'><h6><b>Calculation Basis</b></h6></td>
                     </tr>
+                    <tr></tr>
+                    <tr></tr>
                     <tr>
                         <td colspan="7" style="text-align: left">5.0 % of income from continuing operations</right></td>
                         <script>
@@ -22158,6 +22160,7 @@
         a = parseInt(document.getElementById('Clockφ1').innerHTML.replaceAll(/,/g, '')) / 100
         aa = parseFloat(document.getElementById('ExpectedGrowthColumn1').value.replaceAll(/,/g, ''))
         aaa = parseFloat(document.getElementById('CharacteristicIncomeBeforeInterestAfterTaxesColumn1').value.replaceAll(/,/g, ''))
+        x = parseInt(document.getElementById('MarketCapitalizationColumn1').value.replaceAll(/,/g, ''));
         //
         b = document.getElementById('Bridgeφ1').innerHTML
         c = document.getElementById('Bridgeφ2').innerHTML
@@ -22171,25 +22174,33 @@
         //
         m = '';
         //
-        if (isNaN(a)) {
+        if (x == 0) {
             m = 'x';
         }
         if (a < 0.7) {
-            m = 'red';
+            if (m == '') {
+                m = 'red';
+            }
         }
         //
         if (aa > 1) {
-            m = 'red';
+            if (m == '') {
+                m = 'red';
+            }
         }
         //
         if (aaa < 1) {
-            m = 'red';
+            if (m == '') {
+                m = 'red';
+            }
         }
         //
         if (a > 1) {
             if (aa < 1) {
                 if (aaa > 1) {
-                    m = 'green';
+                    if (m == '') {
+                        m = 'red';
+                    }
                 }
             }
         }
