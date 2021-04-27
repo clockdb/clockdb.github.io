@@ -1,5 +1,6 @@
 
 
+
 auditedpreviously = [
     'ORLY',
     'MNST',
@@ -26,8 +27,9 @@ auditedpreviously = [
 ]
 
 
-# Generations
 
+teaser
+_________________________________________________
 
 Gen 1: 155
 
@@ -50,6 +52,18 @@ Gen 2 :
 
 
 
+
+
+app
+_________________________________________________
+
+Common Shares' Intrinsic Value 
+    IV
+        Net Assets
+
+hide None column
+    capitalized valuation when a column is empty
+
 Additional information
     add growth
     add risk related to volatility of return on total assets
@@ -59,5 +73,6 @@ enter, tab up down with hidden rows
 
 remove buttons pushed state urls.
 
-infinite scroll database objects (phases)
+infinite scroll database objects (entities objects)
     
+french

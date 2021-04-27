@@ -16643,19 +16643,27 @@
                             // Column 1
                                 a = parseInt(document.getElementById('IntrinsicValues1').value.replaceAll(/,/g, ''));
                                 b = parseInt(document.getElementById('EntityCommonStockSharesOutstanding1').value.replaceAll(/,/g, ''));
-                                document.getElementById('IntrinsicValueOfACommonShares1').value = Math.round(a / b * 100) / 100 ;
+                                if (b > 0) {
+                                    document.getElementById('IntrinsicValueOfACommonShares1').value = Math.round(a / b * 100) / 100 ;
+                                }
                             // Column 2
                                 a = parseInt(document.getElementById('IntrinsicValues2').value.replaceAll(/,/g, ''));
                                 b = parseInt(document.getElementById('EntityCommonStockSharesOutstanding2').value.replaceAll(/,/g, ''));
-                                document.getElementById('IntrinsicValueOfACommonShares2').value = Math.round(a / b * 100) / 100 ;
+                                if (b > 0) {
+                                    document.getElementById('IntrinsicValueOfACommonShares2').value = Math.round(a / b * 100) / 100 ;
+                                }
                             // Column 3
                                 a = parseInt(document.getElementById('IntrinsicValues3').value.replaceAll(/,/g, ''));
                                 b = parseInt(document.getElementById('EntityCommonStockSharesOutstanding3').value.replaceAll(/,/g, ''));
-                                document.getElementById('IntrinsicValueOfACommonShares3').value = Math.round(a / b * 100) / 100 ;
+                                if (b > 0) {
+                                    document.getElementById('IntrinsicValueOfACommonShares3').value = Math.round(a / b * 100) / 100 ;
+                                }
                             // Column 4
                                 a = parseInt(document.getElementById('IntrinsicValues4').value.replaceAll(/,/g, ''));
                                 b = document.getElementById('EntityCommonStockSharesOutstanding4').value.replaceAll(/,/g, '');
-                                document.getElementById('IntrinsicValueOfACommonShares4').value = Math.round(a / b * 100) / 100 ;
+                                if (b > 0) {
+                                    document.getElementById('IntrinsicValueOfACommonShares4').value = Math.round(a / b * 100) / 100 ;
+                                }
                             }
                             window.addEventListener('DOMContentLoaded', BalanceClock)
                             window.addEventListener('keyup', function() {
