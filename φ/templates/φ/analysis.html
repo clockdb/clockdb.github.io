@@ -112,31 +112,126 @@
             destination.select()
             aa = o * 9
             window.scrollBy(0, aa);
+            // Format
+            for (let i = 0; i < document.querySelectorAll('.clock').length; i++) {
+                var m = document.getElementsByClassName("clock")[i].value.replaceAll(/,/g, '');
+                var numUSD = new Intl.NumberFormat("en-US", {
+                    format: "number",
+                })
+                document.getElementsByClassName('clock')[i].value = numUSD.format(m);
+            }
         }
     })
 
-    // CHECK BOX (BOX + CSS)
-
-        // F1 + F2 BOXES
-        document.addEventListener('keydown', (event) => {
-            keys = [112, 113]
-            if (keys.includes(event.keyCode)) {
-                event.preventDefault();
-                position = event.target
-                row = position.id.slice(0, -1)
-                if (event.keyCode == 112) {
-                    checkbox = document.getElementById(row + 'Checkbox')
-                }
-                if (event.keyCode == 113) {
-                    checkbox = document.getElementById(row + 'Checkbox2')
-                }
-                if (checkbox.checked == true) {
-                    checkbox.checked = false;
-                } else {
-                    checkbox.checked = true;
-                }
+    // F1 + F2 BOXES
+    document.addEventListener('keydown', (event) => {
+        keys = [112, 113]
+        if (keys.includes(event.keyCode)) {
+            event.preventDefault();
+            position = event.target
+            row = position.id.slice(0, -1)
+            if (event.keyCode == 112) {
+                checkbox = document.getElementById(row + 'Checkbox')
             }
-        })  
+            if (event.keyCode == 113) {
+                checkbox = document.getElementById(row + 'Checkbox2')
+            }
+            if (checkbox.checked == true) {
+                checkbox.checked = false;
+            } else {
+                checkbox.checked = true;
+            }
+        }
+    })  
+    
+    // CTRL + A (AUDIT)
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'KeyA' && (event.ctrlKey || event.metaKey)) {
+            event.preventDefault();
+            document.getElementById('BridgeCell').style.display = 'block';
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('AuditSummary').style.display = 'block';
+        }
+    });
+    
+    // CTRL + C (CONTEXT)
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'KeyC' && (event.ctrlKey || event.metaKey)) {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('Context').style.display = 'block';
+        }
+    });
+    
+    // CTRL + I (CONTEXT)
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'KeyI' && (event.ctrlKey || event.metaKey)) {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('IntrinsicValues').style.display = 'block';
+        }
+    });
+
+    // CTRL + K (CONTEXT)
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'KeyK' && (event.ctrlKey || event.metaKey)) {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('AnnualIncomeStatements').style.display = 'block';
+        }
+    });
+
+    // CTRL + M (CONTEXT)
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'KeyM' && (event.ctrlKey || event.metaKey)) {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('AnnualBalanceSheets').style.display = 'block';
+        }
+    });
+
+    // CTRL + O (CONTEXT)
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'KeyO' && (event.ctrlKey || event.metaKey)) {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('Opinion').style.display = 'block';
+        }
+    });
+
+    // CTRL + P (CONTEXT)
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'KeyP' && (event.ctrlKey || event.metaKey)) {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('Graph').style.display = 'block';
+        }
+    });
+
+    // CTRL + R (CONTEXT)
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'KeyR' && (event.ctrlKey || event.metaKey)) {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('CapitalizationRate').style.display = 'block';
+        }
+    });
         
     // CTRL + S (SAVE)
     document.addEventListener('keydown', function(event) {
@@ -155,6 +250,270 @@
         if (event.code == 'KeyY' && (event.ctrlKey || event.metaKey)) {
         }
     });
+
+    function HighLight(e) {
+        position = event.target
+        position.select()
+    };
+    function Enter(Enter) {
+        Balance();
+        BalanceCash();
+        BalanceShortTermInvestments();
+        BalanceAccountsReceivable();
+        BalanceWorkInProgress();
+        BalanceInventories();
+        BalancePrepaidExpenses();
+        BalanceNonTradeReceivables();
+        BalanceDeferredTaxAssetsCurrent();
+        BalanceOtherCurrentAssets();
+        BalanceDiscontinuedOperationsCurrent();
+        BalanceCurrentAssets();
+        BalanceLongTermReceivables();
+        BalanceDeferredCharges();
+        BalanceInvestments();
+        BalancePropertyPlantAndEquipment();
+        BalanceOperatingLeaseRightOfUseAssets();
+        BalanceFinanceLeaseRightOfUseAssets();
+        BalanceIntangibleAssets();
+        BalanceGoodwill();
+        BalanceDeferredTaxAssetsNonCurrent();
+        BalanceDefinedBenefitPensionAndOtherSimilarPlans();
+        BalanceOtherNonCurrentAssets();
+        BalanceDiscontinuedOperationsNonCurrent();
+        BalanceNonCurrentAssets();
+        BalanceAccountsPayableAndAccruedLiabilities();
+        BalanceEmployeeCompensationCurrent();
+        BalanceOperatingLeasesCurrent();
+        BalanceFinanceLeasesCurrent();
+        BalanceDeferredRevenueAndDepositsCurrent();
+        BalanceAccruedTaxLiabilities();
+        BalanceDeferredTaxLiabilitiesCurrent();
+        BalanceCommercialPapers();
+        BalanceShortTermBorrowings();
+        BalanceOtherCurrentLiabilities();
+        BalanceDiscontinuedOperationsLiabilitiesCurrent();
+        BalanceDividendsPayable();
+        BalanceShortTermPortionOfLongTermDebt();
+        BalanceCurrentLiabilities();
+        BalanceLongTermDebt();
+        BalanceRetirementBenefits();
+        BalanceOperatingLeasesNonCurrent();
+        BalanceFinanceLeasesNonCurrent();
+        BalanceAccruedTaxLiabilitiesNonCurrent();
+        BalanceDeferredTaxLiabilitiesNonCurrent();
+        BalanceDeferredRevenueAndDepositsNonCurrent();
+        BalanceOtherNonCurrentLiabilities();
+        BalanceDiscontinuedOperationsLiabilitiesNonCurrent();
+        BalanceNonCurrentLiabilities();
+        BalanceSales();
+        BalanceCostOfSales();
+        BalanceGrossMargin();
+        BalanceResearchAndDevelopment();
+        BalanceSellingGeneralAdministrativeAndMarketing();
+        BalanceOperatingIncome();
+        BalanceImpairmentRestructuringAndOtherSpecialCharges();
+        BalanceNonOperatingIncomeExpense();
+        BalanceIncomeBeforeTaxes();
+        BalanceIncomeTaxExpenseBenefit();
+        BalanceNetIncomeFromDiscontinuedOperations();
+        BalanceNetIncome();
+        BalanceNetIncomeLossComprehensiveIncome();
+        BalanceChangeInForeignCurrencyTranslationAdjustment();
+        BalanceChangeInUnrealizedGainsLossesOnDerivativeInstruments();
+        BalanceChangeInUnrealizedGainsLossesOnInvestments();
+        BalanceChangeInDefinedBenefitPensionAndOtherSimilarPlans();
+        BalanceIncomeTaxOnOtherComprehensiveIncome();
+        BalanceComprehensiveIncome();
+        BalanceStockholdersEquityBeginning();
+        BalanceCommonStockIssued();
+        BalanceShareBasedCompensation();
+        BalanceDividendsAndDividendEquivalentsDeclared();
+        BalanceCommonStockRepurchasedAndRetired();
+        BalanceEffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts();
+        BalanceRetainedEarningsOthers();
+        BalancePurchaseAndSellOfTreasuryShares();
+        BalanceDividendsDeclaredToNonControllingInterests();
+        BalanceNonControllingInterestsOthers();
+        BalanceComprehensiveIncomeStockholdersEquity();
+        BalanceNetIncomeLossStockholdersEquity();
+        BalanceStockholdersEquity();
+        EffectOfExchangeRateOnCashRow();
+        NetIncomeCashFlow();
+        DepreciationDepletionAndAmortizationRow();
+        GainRelatedToDisposalOrSaleRow();
+        RestructuringAndOtherSpecialChargesRow();
+        AccruedEmployeeCompensationRow();
+        ShareBasedCompensationOperatingActivitiesRow();
+        IncreaseDecreaseInIncomeTaxExpenseBenefitRow();
+        OtherNonCashIncomeExpenseRow();
+        IncreaseDecreaseInAccountsReceivableRow();
+        IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssetsRow();
+        IncreaseDecreaseInInventoriesRow();
+        IncreaseDecreaseInOtherReceivablesRow();
+        IncreaseDecreaseInAccountsPayableRow();
+        IncreaseDecreaseInContractWithCustomerLiabilityRow();
+        IncreaseDecreaseInRetirementBenefitsRow();
+        IncreaseDecreaseOperatingLeaseCurrentRow();
+        IncreaseDecreaseInFairValueOfDerivativesOperatingRow();
+        IncreaseDecreaseInOtherOperatingActivitiesRow();
+        OperatingActivities();
+        PaymentsToAcquireInvestmentsRow();
+        ProceedsOfInvestmentsRow();
+        PaymentsToAcquirePropertyPlantAndEquipmentRow();
+        ProceedsFromDisposalsOfPropertyAndEquipmentRow();
+        PaymentsToAcquireBusinessesAndIntangiblesRow();
+        ProceedsFromDisposalsOfBusinessesAndIntangiblesRow();
+        ProceedsFromCompanyOwnedLifeInsuranceRow();
+        ReveiptOfGovernmentGrantsRow();
+        OtherInvestingActivitiesRow();
+        InvestingActivitiesInDiscontinuedOperationsRow();
+        InvestingActivities();
+        FinanceLeasePrincipalPaymentsRow();
+        ProceedsFromIssuanceOfCommonStockRow();
+        ProceedsFromStockOptionExercicesRow();
+        PaymentsRelatedToTaxWithholdingForShareBasedCompensationRow();
+        PaymentsForRepurchaseOfCommonStockRow();
+        PaymentsOfDividendsRow();
+        PaymentsForTaxesRelatedToNetShareSettlementOfEquityAwardRow();
+        ProceedsFromIssuanceOfLongTermDebtRow();
+        RepaymentsOfLongTermDebtRow();
+        NetChangeInShortTermBorrowingsRow();
+        ProceedsFromRepaymentsOfCommercialPaperRow();
+        RepaymentsOfConvertibleRow();
+        IssuanceOfConvertibleRow();
+        OtherFinancingActivitiesRow();
+        FinancingActivities();
+        CashEndingBalance();
+        ReturnOnEquity();
+        ReturnOnAssets();
+        ProfitMargin();
+        OperatingMargin();
+        DividendPayments();
+        EarningsRetention();
+        BasicEarningPower();
+        DebtToEquity();
+        EquityMultiplier();
+        DegreeOfFinancialLeverage();
+        DebtToEBITDA();
+        InterestCoverage();
+        FixedChargeCoverage();
+        Current();
+        Quick();
+        InventoryTurnover();
+        DaysOfInventoryOnHand();
+        NumberOfDaysPayable();
+        FixedAssetsTurnover();
+        TotalAssetsTurnover();
+        DuPont();
+        ReinvestmentOfMaintenance();
+        BalanceWeightedAverageCostOfTotalAssets();
+        RiskRelatedToVolatilityOfReturnOnTotalAssets();
+        BalanceCapitalizationRateBeforeGrowth();
+        ExpectedDeclineExpectedGrowthOfReturnOnTotalAssets();
+        BalanceCapitalizationRate();
+        OperatingIncomeCCF();
+        DepreciationDepletionAndAmortizationCCF();
+        AnnualReinvestmentOfMaintenanceCCF();
+        TaxesCCF();
+        BalanceNormalizedOperatingCashFlowCCF();
+        BalanceNormalizedWeightedOperatingCashFlow();
+        BalanceCharacteristicCashFlow();
+        BalanceCapitalizationRateCCF();
+        BalanceCapitalizedCharacteristicCashFlowCCF();
+        BalanceExcessWorkingCapital();
+        BalanceExcessAssets();
+        BalancePresentvalueOfTaxProtectionCCF();
+        BalanceBusinessValueCCF();
+        BalanceLongTermDebtAndLeaseObligation();
+        BalanceValueOfAllCategoryOfSharesCCF();
+        ValueAccruingToMinorityShareholdersCCF();
+        BalanceCommonSharesValueCCF();
+        BalanceGoodwillFairValueCCF();
+        OperatingIncomeCI();
+        TaxesCI();
+        BalanceNormalizedCashFlowBeforeTaxesCI();
+        BalanceNormalizedWeightedCashFlowBeforeTaxes();
+        BalanceCharacteristicIncomeBeforeInterestAfterTaxes();
+        BalanceCapitalizationRateCI();
+        BalanceCapitalizedCharacteristicCashFlowCI();
+        BalanceExcessWorkingCapital();
+        BalanceExcessAssetsCI();
+        BalancePresentvalueOfTaxProtectionCI();
+        BalanceBusinessValueCI();
+        BalanceLongTermDebtAndLeaseObligationCI();
+        BalanceValueOfAllCategoryOfSharesCI();
+        ValueAccruingToMinorityShareholdersCI();
+        BalanceCommonSharesValueCI();
+        BalanceGoodwillFairValueCI();
+        BalanceIntrinsicValuesCCF();
+        BalanceGoowillFairValueCCF();
+        BalanceIntrinsicValuesCI();
+        BalanceGoowillFairValueCI();
+        BalanceIntrinsicValues();
+        BalanceMarketCapitalization();
+        PriceEarnings();
+        MarketToBook();
+        BalanceClock();
+        LineChart();
+        BalanceContinuingOperationsMaterialityThreshold();
+        BalanceNetAssetMaterialityThreshold();
+        BalanceRevenuesMaterialityThreshold();
+        BalanceIntrinsicValueMaterialityThreshold();
+        MarketCapMaterialityThreshold();
+        BalanceMaterialityThresholdValue();
+        BalancePROAssets();
+        BalancePROLiabilitiesAndStockholdersEquity();
+        BalancePROAssetsLessLiabilitiesAndStockholdersEquity();
+        BalancePROCurrentAssetsComponents();
+        BalancePROCurrentAssetsAnomaly();
+        BalancePRONonCurrentAssetsComponents();
+        BalancePRONonCurrentAssetsAnomaly();
+        BalancePROCurrentLiabilitiesComponents();
+        BalancePROCurrentLiabilitiesAnomalies();
+        BalancePRONonCurrentLiabilitiesComponents();
+        BalancePRONonCurrentLiabilitiesAnomalies();
+        BalancePROStockholdersEquityComponents();
+        BalancePROStockholdersEquityAnomalies();
+        BalancePROGrossMarginComponents();
+        BalancePROGrossMarginAnomalies();
+        BalancePROOperatingIncomeComponents();
+        BalancePROOperatingIncomeAnomalies();
+        BalancePROIncomeLossBeforeTaxesComponents();
+        BalancePROIncomeLossBeforeTaxesAnomalies();
+        BalancePRONetIncomeComponents();
+        BalancePRONetIncomeAnomalies();
+        BalanceOtherComprehensiveIncomeComponents();
+        BalanceComprehensiveIncomeAnomalies();
+        BalanceStockholdersEquityComponents();
+        BalanceStockholdersEquityAnomalies();
+        CashFlowCashBeginning();
+        CashBalanceSheetsAudit();
+        CashFlowCashAnomaly();
+        BalanceAnomaliesCurrentAssets();
+        BalanceAnomaliesNonCurrentAssets();
+        BalanceAnomaliesCurrentLiabilities();
+        BalanceAnomaliesNonCurrentLiabilities();
+        BalanceAnomaliesStockholdersEquity();
+        BalanceAnomaliesBalanceSheets();
+        BalanceAnomaliesGrossMargin();
+        BalanceAnomaliesOperatingIncome();
+        BalanceAnomaliesIncomeBeforeTaxes();
+        BalanceAnomaliesNetIncome();
+        BalanceAnomaliesComprehensiveIncome();
+        BalanceAnomaliesIncomeStatements();
+        BalanceAnomaliesCash();
+        TrialBalanceAnomalySummary();
+        AccountingEquationAnomalySummary();
+        BalanceSheetsAnomalySummary();
+        IncomeAnomalySummary();
+        CashFlowAnomalySummary();
+        MarketCapitalizationAnomalySummary();
+        WorstCaseScenario();
+        BalanceAnomaliesMatherialityThreshold();
+        AnomaliesRatio();
+        AuditOpinion();
+        BalanceBridgeφ();
+    };
 
 </script>
 
@@ -179,7 +538,7 @@
                             <h2>Financials</h2>
                         </button>
                     </td>
-                    <td>
+                    <td style="display:none;" id="BridgeCell">
                         <button data-page="Bridge" name="Bridge">
                             <h2>Audit</h2>
                         </button>
@@ -430,303 +789,6 @@
                 </tr>
             </tbody>
         </table>
-
-        <!--- CALCULATOR & HIGHLIGHT--->
-        <script>
-            function Calculator(Calculator) {
-                var numUSD = new Intl.NumberFormat("en-US", {
-                    format: "number",
-                })
-                document.getElementById("Calculator").value = numUSD.format(document.getElementById("Calculator").value.replaceAll(/,/g, ''));
-            }
-            window.addEventListener('DOMContentLoaded', Calculator)
-            window.addEventListener('keyup', function() {
-                var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
-                if (event.keyCode in formulakeylist) {
-                    Calculator();
-                }
-            })
-            function InsertEqual(e) {
-                CalcuInput = document.getElementById("Calculator")
-                InsertEqualValues = {'': true, '= ': true, '0': true}
-                if (CalcuInput.value in InsertEqualValues) {
-                    CalcuInput.value = ''
-                    CalcuInput.value = '= '
-                } else {
-                    CalcuInput.select()
-                }
-            };
-            function InsertEqualAnyway(e) {
-                CalcuInput = document.getElementById("Calculator")
-                CalcuInput.value = ''
-                CalcuInput.value = '= '
-            };
-            function HighLight(e) {
-                position = event.target
-                position.select()
-            };
-            function Enter(Enter) {
-                Balance();
-                BalanceCash();
-                BalanceShortTermInvestments();
-                BalanceAccountsReceivable();
-                BalanceWorkInProgress();
-                BalanceInventories();
-                BalancePrepaidExpenses();
-                BalanceNonTradeReceivables();
-                BalanceDeferredTaxAssetsCurrent();
-                BalanceOtherCurrentAssets();
-                BalanceDiscontinuedOperationsCurrent();
-                BalanceCurrentAssets();
-                BalanceLongTermReceivables();
-                BalanceDeferredCharges();
-                BalanceInvestments();
-                BalancePropertyPlantAndEquipment();
-                BalanceOperatingLeaseRightOfUseAssets();
-                BalanceFinanceLeaseRightOfUseAssets();
-                BalanceIntangibleAssets();
-                BalanceGoodwill();
-                BalanceDeferredTaxAssetsNonCurrent();
-                BalanceDefinedBenefitPensionAndOtherSimilarPlans();
-                BalanceOtherNonCurrentAssets();
-                BalanceDiscontinuedOperationsNonCurrent();
-                BalanceNonCurrentAssets();
-                BalanceAccountsPayableAndAccruedLiabilities();
-                BalanceEmployeeCompensationCurrent();
-                BalanceOperatingLeasesCurrent();
-                BalanceFinanceLeasesCurrent();
-                BalanceDeferredRevenueAndDepositsCurrent();
-                BalanceAccruedTaxLiabilities();
-                BalanceDeferredTaxLiabilitiesCurrent();
-                BalanceCommercialPapers();
-                BalanceShortTermBorrowings();
-                BalanceOtherCurrentLiabilities();
-                BalanceDiscontinuedOperationsLiabilitiesCurrent();
-                BalanceDividendsPayable();
-                BalanceShortTermPortionOfLongTermDebt();
-                BalanceCurrentLiabilities();
-                BalanceLongTermDebt();
-                BalanceRetirementBenefits();
-                BalanceOperatingLeasesNonCurrent();
-                BalanceFinanceLeasesNonCurrent();
-                BalanceAccruedTaxLiabilitiesNonCurrent();
-                BalanceDeferredTaxLiabilitiesNonCurrent();
-                BalanceDeferredRevenueAndDepositsNonCurrent();
-                BalanceOtherNonCurrentLiabilities();
-                BalanceDiscontinuedOperationsLiabilitiesNonCurrent();
-                BalanceNonCurrentLiabilities();
-                BalanceSales();
-                BalanceCostOfSales();
-                BalanceGrossMargin();
-                BalanceResearchAndDevelopment();
-                BalanceSellingGeneralAdministrativeAndMarketing();
-                BalanceOperatingIncome();
-                BalanceImpairmentRestructuringAndOtherSpecialCharges();
-                BalanceNonOperatingIncomeExpense();
-                BalanceIncomeBeforeTaxes();
-                BalanceIncomeTaxExpenseBenefit();
-                BalanceNetIncomeFromDiscontinuedOperations();
-                BalanceNetIncome();
-                BalanceNetIncomeLossComprehensiveIncome();
-                BalanceChangeInForeignCurrencyTranslationAdjustment();
-                BalanceChangeInUnrealizedGainsLossesOnDerivativeInstruments();
-                BalanceChangeInUnrealizedGainsLossesOnInvestments();
-                BalanceChangeInDefinedBenefitPensionAndOtherSimilarPlans();
-                BalanceIncomeTaxOnOtherComprehensiveIncome();
-                BalanceComprehensiveIncome();
-                BalanceStockholdersEquityBeginning();
-                BalanceCommonStockIssued();
-                BalanceShareBasedCompensation();
-                BalanceDividendsAndDividendEquivalentsDeclared();
-                BalanceCommonStockRepurchasedAndRetired();
-                BalanceEffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts();
-                BalanceRetainedEarningsOthers();
-                BalancePurchaseAndSellOfTreasuryShares();
-                BalanceDividendsDeclaredToNonControllingInterests();
-                BalanceNonControllingInterestsOthers();
-                BalanceComprehensiveIncomeStockholdersEquity();
-                BalanceNetIncomeLossStockholdersEquity();
-                BalanceStockholdersEquity();
-                EffectOfExchangeRateOnCashRow();
-                NetIncomeCashFlow();
-                DepreciationDepletionAndAmortizationRow();
-                GainRelatedToDisposalOrSaleRow();
-                RestructuringAndOtherSpecialChargesRow();
-                AccruedEmployeeCompensationRow();
-                ShareBasedCompensationOperatingActivitiesRow();
-                IncreaseDecreaseInIncomeTaxExpenseBenefitRow();
-                OtherNonCashIncomeExpenseRow();
-                IncreaseDecreaseInAccountsReceivableRow();
-                IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssetsRow();
-                IncreaseDecreaseInInventoriesRow();
-                IncreaseDecreaseInOtherReceivablesRow();
-                IncreaseDecreaseInAccountsPayableRow();
-                IncreaseDecreaseInContractWithCustomerLiabilityRow();
-                IncreaseDecreaseInRetirementBenefitsRow();
-                IncreaseDecreaseOperatingLeaseCurrentRow();
-                IncreaseDecreaseInFairValueOfDerivativesOperatingRow();
-                IncreaseDecreaseInOtherOperatingActivitiesRow();
-                OperatingActivities();
-                PaymentsToAcquireInvestmentsRow();
-                ProceedsOfInvestmentsRow();
-                PaymentsToAcquirePropertyPlantAndEquipmentRow();
-                ProceedsFromDisposalsOfPropertyAndEquipmentRow();
-                PaymentsToAcquireBusinessesAndIntangiblesRow();
-                ProceedsFromDisposalsOfBusinessesAndIntangiblesRow();
-                ProceedsFromCompanyOwnedLifeInsuranceRow();
-                ReveiptOfGovernmentGrantsRow();
-                OtherInvestingActivitiesRow();
-                InvestingActivitiesInDiscontinuedOperationsRow();
-                InvestingActivities();
-                FinanceLeasePrincipalPaymentsRow();
-                ProceedsFromIssuanceOfCommonStockRow();
-                ProceedsFromStockOptionExercicesRow();
-                PaymentsRelatedToTaxWithholdingForShareBasedCompensationRow();
-                PaymentsForRepurchaseOfCommonStockRow();
-                PaymentsOfDividendsRow();
-                PaymentsForTaxesRelatedToNetShareSettlementOfEquityAwardRow();
-                ProceedsFromIssuanceOfLongTermDebtRow();
-                RepaymentsOfLongTermDebtRow();
-                NetChangeInShortTermBorrowingsRow();
-                ProceedsFromRepaymentsOfCommercialPaperRow();
-                RepaymentsOfConvertibleRow();
-                IssuanceOfConvertibleRow();
-                OtherFinancingActivitiesRow();
-                FinancingActivities();
-                CashEndingBalance();
-                ReturnOnEquity();
-                ReturnOnAssets();
-                ProfitMargin();
-                OperatingMargin();
-                DividendPayments();
-                EarningsRetention();
-                BasicEarningPower();
-                DebtToEquity();
-                EquityMultiplier();
-                DegreeOfFinancialLeverage();
-                DebtToEBITDA();
-                InterestCoverage();
-                FixedChargeCoverage();
-                Current();
-                Quick();
-                InventoryTurnover();
-                DaysOfInventoryOnHand();
-                NumberOfDaysPayable();
-                FixedAssetsTurnover();
-                TotalAssetsTurnover();
-                DuPont();
-                ReinvestmentOfMaintenance();
-                BalanceWeightedAverageCostOfTotalAssets();
-                RiskRelatedToVolatilityOfReturnOnTotalAssets();
-                BalanceCapitalizationRateBeforeGrowth();
-                ExpectedDeclineExpectedGrowthOfReturnOnTotalAssets();
-                BalanceCapitalizationRate();
-                OperatingIncomeCCF();
-                DepreciationDepletionAndAmortizationCCF();
-                AnnualReinvestmentOfMaintenanceCCF();
-                TaxesCCF();
-                BalanceNormalizedOperatingCashFlowCCF();
-                BalanceNormalizedWeightedOperatingCashFlow();
-                BalanceCharacteristicCashFlow();
-                BalanceCapitalizationRateCCF();
-                BalanceCapitalizedCharacteristicCashFlowCCF();
-                BalanceExcessWorkingCapital();
-                BalanceExcessAssets();
-                BalancePresentvalueOfTaxProtectionCCF();
-                BalanceBusinessValueCCF();
-                BalanceLongTermDebtAndLeaseObligation();
-                BalanceValueOfAllCategoryOfSharesCCF();
-                ValueAccruingToMinorityShareholdersCCF();
-                BalanceCommonSharesValueCCF();
-                BalanceGoodwillFairValueCCF();
-                OperatingIncomeCI();
-                TaxesCI();
-                BalanceNormalizedCashFlowBeforeTaxesCI();
-                BalanceNormalizedWeightedCashFlowBeforeTaxes();
-                BalanceCharacteristicIncomeBeforeInterestAfterTaxes();
-                BalanceCapitalizationRateCI();
-                BalanceCapitalizedCharacteristicCashFlowCI();
-                BalanceExcessWorkingCapital();
-                BalanceExcessAssetsCI();
-                BalancePresentvalueOfTaxProtectionCI();
-                BalanceBusinessValueCI();
-                BalanceLongTermDebtAndLeaseObligationCI();
-                BalanceValueOfAllCategoryOfSharesCI();
-                ValueAccruingToMinorityShareholdersCI();
-                BalanceCommonSharesValueCI();
-                BalanceGoodwillFairValueCI();
-                BalanceIntrinsicValuesCCF();
-                BalanceGoowillFairValueCCF();
-                BalanceIntrinsicValuesCI();
-                BalanceGoowillFairValueCI();
-                BalanceIntrinsicValues();
-                BalanceMarketCapitalization();
-                PriceEarnings();
-                MarketToBook();
-                BalanceClock();
-                LineChart();
-                BalanceContinuingOperationsMaterialityThreshold();
-                BalanceNetAssetMaterialityThreshold();
-                BalanceRevenuesMaterialityThreshold();
-                BalanceIntrinsicValueMaterialityThreshold();
-                MarketCapMaterialityThreshold();
-                BalanceMaterialityThresholdValue();
-                BalancePROAssets();
-                BalancePROLiabilitiesAndStockholdersEquity();
-                BalancePROAssetsLessLiabilitiesAndStockholdersEquity();
-                BalancePROCurrentAssetsComponents();
-                BalancePROCurrentAssetsAnomaly();
-                BalancePRONonCurrentAssetsComponents();
-                BalancePRONonCurrentAssetsAnomaly();
-                BalancePROCurrentLiabilitiesComponents();
-                BalancePROCurrentLiabilitiesAnomalies();
-                BalancePRONonCurrentLiabilitiesComponents();
-                BalancePRONonCurrentLiabilitiesAnomalies();
-                BalancePROStockholdersEquityComponents();
-                BalancePROStockholdersEquityAnomalies();
-                BalancePROGrossMarginComponents();
-                BalancePROGrossMarginAnomalies();
-                BalancePROOperatingIncomeComponents();
-                BalancePROOperatingIncomeAnomalies();
-                BalancePROIncomeLossBeforeTaxesComponents();
-                BalancePROIncomeLossBeforeTaxesAnomalies();
-                BalancePRONetIncomeComponents();
-                BalancePRONetIncomeAnomalies();
-                BalanceOtherComprehensiveIncomeComponents();
-                BalanceComprehensiveIncomeAnomalies();
-                BalanceStockholdersEquityComponents();
-                BalanceStockholdersEquityAnomalies();
-                CashFlowCashBeginning();
-                CashBalanceSheetsAudit();
-                CashFlowCashAnomaly();
-                BalanceAnomaliesCurrentAssets();
-                BalanceAnomaliesNonCurrentAssets();
-                BalanceAnomaliesCurrentLiabilities();
-                BalanceAnomaliesNonCurrentLiabilities();
-                BalanceAnomaliesStockholdersEquity();
-                BalanceAnomaliesBalanceSheets();
-                BalanceAnomaliesGrossMargin();
-                BalanceAnomaliesOperatingIncome();
-                BalanceAnomaliesIncomeBeforeTaxes();
-                BalanceAnomaliesNetIncome();
-                BalanceAnomaliesComprehensiveIncome();
-                BalanceAnomaliesIncomeStatements();
-                BalanceAnomaliesCash();
-                TrialBalanceAnomalySummary();
-                AccountingEquationAnomalySummary();
-                BalanceSheetsAnomalySummary();
-                IncomeAnomalySummary();
-                CashFlowAnomalySummary();
-                MarketCapitalizationAnomalySummary();
-                WorstCaseScenario();
-                BalanceAnomaliesMatherialityThreshold();
-                AnomaliesRatio();
-                AuditOpinion();
-                BalanceBridgeφ();
-            };
-        </script>
-        <table><input id="Calculator" class="clock" onclick="InsertEqual()" ondblclick="InsertEqualAnyway()"></input></table>
-
 
 <!--- FINANCIALS --->
 
@@ -1427,7 +1489,7 @@
                         <td colspan='2'><input value={{ TrialBalance_fifthlastyear.RetirementBenefits }} class="clock" id="TrialBalanceRetirementBenefits5" onclick="HighLight()" onfocusout="Enter()"></input></td>
                         <td colspan='2'><input value={{ TrialBalance_sixthlastyear.RetirementBenefits }} class="clock" id="TrialBalanceRetirementBenefits6" onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
-                    <tr id="TrialBalanceOperatingLeasesNonCurrent">
+                    <tr id="TrialBalanceOperatingLeasesNonCurrentRow">
                         <td colspan="2"><h6><b>Operating Leases Obligations</b></h6></td>
                         <td style="text-align:center; font-weight:bold;">db</td>
                         <td>
