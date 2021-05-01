@@ -29,7 +29,7 @@ import urllib
 import xml.etree.ElementTree as ET
 
 # loop
-entitiesobjects = Entity.objects.all().order_by('TradingSymbol')
+entities = Entity.objects.all().order_by('TradingSymbol')
 
 now = datetime.datetime.now()
 
@@ -41,12 +41,12 @@ l = len(entities)
 for count in range(0, l):
     try:
         #
-        e = entitiesobjects[count]
-        #
-        print(e)
-        print(137*'-')
+        e = entities[count]
         #
         if e.Status == 'Phase 4.3':
+            #
+            print(e)
+            print(137*'-')
             #
             a = e.lastyear - e.secondlastyear
             a = a.days

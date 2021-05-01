@@ -50,57 +50,58 @@ for count in range(0, l):
     #
     e = entities[count]
     #
-    ts = e.TradingSymbol
-    #
-    print(137*'-' + '\n' + e.EntityRegistrantName + ' (' + ts + ') \n')
-    #
-    # data gathering
-    for scopedperiod in scopedperiods:
-        #
-        d = scopedperiod
-        #
-        # trial balance
-        try:
-            tb = TrialBalance.objects.get(TradingSymbol=ts, Period=d)
-        except:
-            try:
-                tb = TrialBalance(TradingSymbol=ts, Period=d)
-                tb.save()
-            except:
-                pass
-        #
-        # cash flow
-        try:
-            cf = CashFlow.objects.get(TradingSymbol=ts, Period=d)
-        except:
-            try:
-                cf = CashFlow(TradingSymbol=ts, Period=d)
-                cf.save()
-            except:
-                pass
-        #
-        # audit
-        try:
-            a = AuditData.objects.get(TradingSymbol=ts, Period=d)
-        except:
-            try:
-                a = AuditData(TradingSymbol=ts, Period=d)
-                a.save()
-            except:
-                pass
-    #
-    # phase 3 status
     if e.Status == 'Phase 3':
+        #
+        ts = e.TradingSymbol
+        #
+        print(137*'-' + '\n' + e.EntityRegistrantName + ' (' + ts + ') \n')
+        #
+        # data gathering
+        for scopedperiod in scopedperiods:
+            #
+            d = scopedperiod
+            #
+            # trial balance
+            try:
+                tb = TrialBalance.objects.get(TradingSymbol=ts, Period=d)
+            except:
+                try:
+                    tb = TrialBalance(TradingSymbol=ts, Period=d)
+                    tb.save()
+                except:
+                    pass
+            #
+            # cash flow
+            try:
+                cf = CashFlow.objects.get(TradingSymbol=ts, Period=d)
+            except:
+                try:
+                    cf = CashFlow(TradingSymbol=ts, Period=d)
+                    cf.save()
+                except:
+                    pass
+            #
+            # audit
+            try:
+                a = AuditData.objects.get(TradingSymbol=ts, Period=d)
+            except:
+                try:
+                    a = AuditData(TradingSymbol=ts, Period=d)
+                    a.save()
+                except:
+                    pass
+        #
+        # status
         e.Status = 'Phase 4.1'
-    #
-    # Time Of Update
-    try:
-        now = datetime.datetime.now()
-        e.Update = now
-    except:
-        pass
-    #
-    e.save()
+        #
+        # Time Of Update
+        try:
+            now = datetime.datetime.now()
+            e.Update = now
+        except:
+            pass
+        #
+        e.save()
 
 
 

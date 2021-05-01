@@ -64,11 +64,10 @@ l = len(entities)
 # counter
 for count in range(0, l):
     #
-    e = entitiesobjects[count]
+    e = entities[count]
     #
     # retreives entity from db
     try:
-        #
         #
         if e.Status == 'Phase 4.1':
             #

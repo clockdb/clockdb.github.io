@@ -7,8 +7,9 @@ from datetime import datetime, date
 from PyQt5.QtWidgets import QApplication, QTableView
 from PyQt5.QtCore import QAbstractTableModel, Qt
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from urllib.request import urlopen
@@ -65,8 +66,8 @@ entities = Entity.objects.all().order_by(
     'TradingSymbol',
 )
 
-ll = 1
 ll = len(entities)
+ll = 1
 
 # entities
 for count in range(0, ll):
@@ -74,10 +75,10 @@ for count in range(0, ll):
     e = entities[count]
     #
     if ll == 1:
-        e = Entity.objects.get(TradingSymbol='AAPL')
+        e = Entity.objects.get(TradingSymbol='AMBA')
     #
     phases = [
-        'Phase 7.2',
+        'Phase 7.8',
     ]
     ignore = [
         'Audited',
@@ -87,7 +88,7 @@ for count in range(0, ll):
         #
         # entity
         print('\n' + 137 * '-' + '\n' + e.EntityRegistrantName + ' (' + e.TradingSymbol + ')' + ', ' + str(round(count/ll * 1000) / 10) + '%\n')
-        print('\n' + e.Status + ', ' + str(e.NumberOfYearsAudited) + 137 * '-' + '\n')
+        print('\n' + e.Status + ', ' + str(e.NumberOfYearsAudited) + '\n' + 137 * '-' + '\n')
         #
         # period end dates and accession numbers
         try:
@@ -9845,7 +9846,7 @@ for count in range(0, ll):
         # anomalies ratio
         try:
             #
-            driver = webdriver.Chrome('C:\\Program Files (x86)\\chromedriver.exe')
+            driver = webdriver.Firefox(executable_path=r'C:\\Program Files\\geckodriver.exe')
             #
             url = 'http://127.0.0.1:8000/' + e.TradingSymbol + '/'
             #
@@ -9853,16 +9854,10 @@ for count in range(0, ll):
             #
             try:
                 link = WebDriverWait(driver, 13).until(
-                    EC.presence_of_element_located((By.NAME, "Bridge"))
+                    EC.presence_of_element_located((By.NAME, "Opinion"))
                 )
-                link.click()
-            except:
-                pass
-            try:
-                link = WebDriverWait(driver, 13).until(
-                    EC.presence_of_element_located((By.NAME, "AuditSummary"))
-                )
-                link.click()
+                ac = ActionChains(driver)
+                ac.key_down(Keys.CONTROL).send_keys('A').key_up(Keys.CONTROL).perform()
             except:
                 pass
             #
@@ -9886,7 +9881,7 @@ for count in range(0, ll):
             cc = []
             #
             for b in bb:
-                c = driver.find_element_by_id(b).text
+                c = driver.find_element_by_id(b).get_attribute('value')
                 for d in dd:
                     try:
                         c = c.replace(d,'')
@@ -10085,7 +10080,7 @@ for count in range(0, ll):
         try:
             e.save()
             print('\n' + 137 * '-' + '\n' + e.EntityRegistrantName + ' (' + e.TradingSymbol + ')' + ', ' + str(round(count/ll * 1000) / 10) + '%\n')
-            print('\n' + e.Status + ', ' + str(e.NumberOfYearsAudited) + 137 * '-' + '\n')
+            print('\n' + e.Status + ', ' + str(e.NumberOfYearsAudited) + '\n' + 137 * '-' + '\n')
         except:
             pass
 

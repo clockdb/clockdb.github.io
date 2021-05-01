@@ -35,7 +35,7 @@ def fetch(url):
     return soupdata
 
 # loop
-entitiesobjects = Entity.objects.all().order_by('TradingSymbol')
+entities = Entity.objects.all().order_by('TradingSymbol')
 
 print(137*'-')
 
@@ -49,7 +49,7 @@ for count in range(0, l):
     # retreives entity from db
     try:
         #
-        e = entitiesobjects[count]
+        e = entities[count]
         #
         if e.Status == 'Phase 4.2':
             #

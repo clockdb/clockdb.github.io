@@ -110,8 +110,6 @@
             destination = document.getElementById(destination)
             destination.focus()
             destination.select()
-            aa = o * 9
-            window.scrollBy(0, aa);
             // Format
             for (let i = 0; i < document.querySelectorAll('.clock').length; i++) {
                 var m = document.getElementsByClassName("clock")[i].value.replaceAll(/,/g, '');
@@ -153,21 +151,59 @@
                 div.style.display = 'none';
             })
             document.getElementById('AuditSummary').style.display = 'block';
+            window.scrollTo(0, 0);
         }
     });
     
-    // CTRL + C (CONTEXT)
+    // CTRL + B (CONTEXT)
     document.addEventListener('keydown', function(event) {
-        if (event.code == 'KeyC' && (event.ctrlKey || event.metaKey)) {
+        if (event.code == 'KeyB' && (event.ctrlKey || event.metaKey)) {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('AnnualTrialBalances').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+    });
+
+    // CTRL + E (RATIOS)
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'KeyE' && (event.ctrlKey || event.metaKey)) {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('AnnualFinancialRatios').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+    });
+    
+    // CTRL + F (CASHFLOW)
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'KeyF' && (event.ctrlKey || event.metaKey)) {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('AnnualCashFlow').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+    });
+
+    // CTRL + G (CONTEXT)
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'KeyG' && (event.ctrlKey || event.metaKey)) {
             event.preventDefault();
             document.querySelectorAll('div').forEach(div => {
                 div.style.display = 'none';
             })
             document.getElementById('Context').style.display = 'block';
+            window.scrollTo(0, 0);
         }
     });
     
-    // CTRL + I (CONTEXT)
+    // CTRL + I (INTRINSIC VALUES)
     document.addEventListener('keydown', function(event) {
         if (event.code == 'KeyI' && (event.ctrlKey || event.metaKey)) {
             event.preventDefault();
@@ -175,10 +211,11 @@
                 div.style.display = 'none';
             })
             document.getElementById('IntrinsicValues').style.display = 'block';
+            window.scrollTo(0, 0);
         }
     });
 
-    // CTRL + K (CONTEXT)
+    // CTRL + K (INCOME STATEMENT)
     document.addEventListener('keydown', function(event) {
         if (event.code == 'KeyK' && (event.ctrlKey || event.metaKey)) {
             event.preventDefault();
@@ -186,10 +223,23 @@
                 div.style.display = 'none';
             })
             document.getElementById('AnnualIncomeStatements').style.display = 'block';
+            window.scrollTo(0, 0);
         }
     });
 
-    // CTRL + M (CONTEXT)
+    // CTRL + L (LINE CHART)
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'KeyL' && (event.ctrlKey || event.metaKey)) {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('Graph').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+    });
+
+    // CTRL + M (BALANCE SHEETS)
     document.addEventListener('keydown', function(event) {
         if (event.code == 'KeyM' && (event.ctrlKey || event.metaKey)) {
             event.preventDefault();
@@ -197,10 +247,11 @@
                 div.style.display = 'none';
             })
             document.getElementById('AnnualBalanceSheets').style.display = 'block';
+            window.scrollTo(0, 0);
         }
     });
 
-    // CTRL + O (CONTEXT)
+    // CTRL + O (OPINION)
     document.addEventListener('keydown', function(event) {
         if (event.code == 'KeyO' && (event.ctrlKey || event.metaKey)) {
             event.preventDefault();
@@ -208,21 +259,11 @@
                 div.style.display = 'none';
             })
             document.getElementById('Opinion').style.display = 'block';
+            window.scrollTo(0, 0);
         }
     });
 
-    // CTRL + P (CONTEXT)
-    document.addEventListener('keydown', function(event) {
-        if (event.code == 'KeyP' && (event.ctrlKey || event.metaKey)) {
-            event.preventDefault();
-            document.querySelectorAll('div').forEach(div => {
-                div.style.display = 'none';
-            })
-            document.getElementById('Graph').style.display = 'block';
-        }
-    });
-
-    // CTRL + R (CONTEXT)
+    // CTRL + R (RATE)
     document.addEventListener('keydown', function(event) {
         if (event.code == 'KeyR' && (event.ctrlKey || event.metaKey)) {
             event.preventDefault();
@@ -230,6 +271,31 @@
                 div.style.display = 'none';
             })
             document.getElementById('CapitalizationRate').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+    });
+
+    // CTRL + X (RATE)
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'KeyX' && (event.ctrlKey || event.metaKey)) {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('CapitalizedIncome').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+    });
+
+    // CTRL + S (RATE)
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'KeyS' && (event.ctrlKey || event.metaKey)) {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('CapitalizedCashFlow').style.display = 'block';
+            window.scrollTo(0, 0);
         }
     });
         
@@ -6424,10 +6490,6 @@
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">TB</td>
                         <td style="text-align:left;" colspan="20" >Trial Balance</td>
-                    </tr>
-                    <tr>
-                        <td style="color:#0d47a1; text-align:left; font-weight:bold;">SE</td>
-                        <td style="text-align:left;" colspan="20" >Stockholders' Equity</td>
                     </tr>
                 </tbody>
             </table>

@@ -276,6 +276,7 @@ for count in range(0, l):
                                                                 if acc == accs[5]:
                                                                     e.urlstockholdersequitysixthlastyear = t
                                                                 s = 'z'
+                                                                print(t)
                                                     # balance sheet
                                                     for bbb in bb:
                                                         if bbb in d:
@@ -293,6 +294,7 @@ for count in range(0, l):
                                                                 if acc == accs[5]:
                                                                     e.urlbalancesheetsixthlastyear = t
                                                                 s = 'z'
+                                                                print(t)
                                                     # comprehensive income
                                                     for ccc in cc:
                                                         if ccc in d:
@@ -310,6 +312,7 @@ for count in range(0, l):
                                                                 if acc == accs[5]:
                                                                     e.urlcomprehensiveincomesixthlastyear = t
                                                                 s = 'z'
+                                                                print(t)
                                                     # income statement
                                                     for ddd in dd:
                                                         if ddd in d:
@@ -329,6 +332,7 @@ for count in range(0, l):
                                                                         if acc == accs[5]:
                                                                             e.urlincomestatementsixthlastyear = t
                                                                         s = 'z'
+                                                                        print(t)
                                                     # cash flow
                                                     for eee in ee:
                                                         if eee in d:
@@ -346,6 +350,7 @@ for count in range(0, l):
                                                                 if acc == accs[5]:
                                                                     e.urlcashflowsixthlastyear = t
                                                                 s = 'z'
+                                                                print(t)
         #
         # status
         e.Status = 'Phase 6.2'

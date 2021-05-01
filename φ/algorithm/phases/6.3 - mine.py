@@ -114,7 +114,7 @@ for count in range(0, l):
                     else:
                         pass
                     #
-                    path = 'φ/algorithm/downloads/' + filename + '-' + statement + '.html'
+                    path = 'mine/' + filename + '-' + statement + '.html'
                     #
                     print(path)
                     #
