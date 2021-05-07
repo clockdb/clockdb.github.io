@@ -495,6 +495,30 @@
     </Section>
 
     <script>
+
+        // CTRL + P (OVERVIEW)
+        document.addEventListener('keydown', function(event) {
+            if (event.code == 'KeyP' && (event.ctrlKey || event.metaKey)) {
+                event.preventDefault();
+                window.open("{% url 'φ:overview' %}", '_blank');
+            }
+        });
+
+        // CTRL + Q (MASTER)
+        document.addEventListener('keydown', function(event) {
+            if (event.code == 'KeyQ' && (event.ctrlKey || event.metaKey)) {
+                event.preventDefault();
+                window.open("{% url 'φ:master' %}", '_blank');
+            }
+        });
+
+        // CTRL + X (DB)
+        document.addEventListener('keydown', function(event) {
+            if (event.code == 'KeyX' && (event.ctrlKey || event.metaKey)) {
+                event.preventDefault();
+                window.open("{% url 'φ:db' %}", '_blank');
+            }
+        });
         
         // List of entities
         let myURL = new URL('http://www.clockdb.com/');
@@ -2241,7 +2265,6 @@
             { name: 'TURTLE BEACH CORP (HEAR)' , url: './HEAR'}, 
             { name: 'H&E EQUIPMENT SERVICES, INC. (HEES)' , url: './HEES'}, 
             { name: 'HEICO CORP (HEI)' , url: './HEI'}, 
-            { name: 'HEICO CORP (HEI-A)' , url: './HEI-A'}, 
             { name: 'HELEN OF TROY LTD (HELE)' , url: './HELE'}, 
             { name: 'HOLLY ENERGY PARTNERS LP (HEP)' , url: './HEP'}, 
             { name: 'HEPION PHARMACEUTICALS, INC. (HEPA)' , url: './HEPA'}, 

@@ -32,8 +32,12 @@ entities = Entity.objects.all().order_by(
     '-TradingSymbol',
 )
 
-ll = len(entities)
 ll = 1
+ll = len(entities)
+
+phases = [
+    'Phase 7.0',
+]
 
 # entities
 for count in range(0, ll):
@@ -41,18 +45,14 @@ for count in range(0, ll):
     e = entities[count]
     #
     if ll == 1:
-        e = Entity.objects.get(TradingSymbol='AMBA')
-    #
-    phases = [
-        'Phase 7.8',
-    ]
+        e = Entity.objects.get(TradingSymbol='MIK')
     #
     if e.Status in phases:
         #
-        e.Status = 'Phase 8'
+        e.Status = 'Phase 7.1'
         #
         print('\n' + 137 * '-' + '\n' + e.EntityRegistrantName + ' (' + e.TradingSymbol + ')' + ', ' + str(round(count/ll * 1000) / 10) + '%\n')
-        print('\n' + e.Status + ', ' + str(e.NumberOfYearsAudited) + 137 * '-' + '\n')
+        print('\n' + e.Status + ', ' + str(e.NumberOfYearsAudited) + '\n' +  137 * '-' + '\n')
         #
         e.save()
 

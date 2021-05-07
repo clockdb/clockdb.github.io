@@ -25,6 +25,8 @@ urlpatterns = [
     #
     path("mining/", views.mining, name="mining"),
     #
+    path("overview/", views.overview, name="overview"),
+    #
     path("phase1/", views.phase1, name="phase1"),
     path("phase2/", views.phase2, name="phase2"),
     path("phase3/", views.phase3, name="phase3"),

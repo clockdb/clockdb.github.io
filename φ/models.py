@@ -325,6 +325,7 @@ class CashFlow(models.Model):
     IncreaseDecreaseInAccountsPayableAndAccruedLiabilities = models.IntegerField(default=0)
     IncreaseDecreaseInContractWithCustomerLiability = models.IntegerField(default=0)
     IncreaseDecreaseInRetirementBenefits = models.IntegerField(default=0)
+    IncreaseDecreaseFinanceLeaseCurrent = models.IntegerField(default=0)
     IncreaseDecreaseOperatingLeaseCurrent = models.IntegerField(default=0)
     IncreaseDecreaseInFairValueOfDerivativesOperating = models.IntegerField(default=0)
     IncreaseDecreaseInOtherOperatingActivities = models.IntegerField(default=0)
@@ -337,10 +338,11 @@ class CashFlow(models.Model):
     ProceedsFromDisposalsOfPropertyAndEquipment = models.IntegerField(default=0)
     PaymentsToAcquireBusinessesAndIntangibles = models.IntegerField(default=0)
     ProceedsFromDisposalsOfBusinessesAndIntangibles = models.IntegerField(default=0)
-    ProceedsFromCompanyOwnedLifeInsurance = models.IntegerField(default=0)
+    ProceedsRelatedToInsuranceSettlement = models.IntegerField(default=0)
     ReveiptOfGovernmentGrants = models.IntegerField(default=0)
-    OtherInvestingActivities = models.IntegerField(default=0)
+    PaymentOfLicenseFee = models.IntegerField(default=0)
     InvestingActivitiesInDiscontinuedOperations = models.IntegerField(default=0)
+    OtherInvestingActivities = models.IntegerField(default=0)
     #
     # Financing Activities - Cash Flow
     #
@@ -350,13 +352,16 @@ class CashFlow(models.Model):
     PaymentsRelatedToTaxWithholdingForShareBasedCompensation = models.IntegerField(default=0)
     PaymentsForRepurchaseOfCommonStock = models.IntegerField(default=0)
     PaymentsOfDividends = models.IntegerField(default=0)
-    PaymentsForTaxesRelatedToNetShareSettlementOfEquityAward = models.IntegerField(default=0)
+    IncreaseDecreaseDeferredContingentConsideration = models.IntegerField(default=0)
     ProceedsFromIssuanceOfLongTermDebt = models.IntegerField(default=0)
     RepaymentsOfLongTermDebt = models.IntegerField(default=0)
+    FinancingCosts = models.IntegerField(default=0)
     NetChangeInShortTermBorrowings = models.IntegerField(default=0)
+    NetChangeInNonControllingInterests = models.IntegerField(default=0)
     ProceedsFromRepaymentsOfCommercialPaper = models.IntegerField(default=0)
     RepaymentsOfConvertible = models.IntegerField(default=0)
     IssuanceOfConvertible = models.IntegerField(default=0)
+    EquityInvesteeAdvancesRepayments = models.IntegerField(default=0)
     OtherFinancingActivities = models.IntegerField(default=0)
     #
     # Supplemental - Cash Flow
@@ -398,7 +403,9 @@ class TrialBalance(models.Model):
     Inventories = models.IntegerField(default=0)
     PrepaidExpenses = models.IntegerField(default=0)
     NonTradeReceivables = models.IntegerField(default=0)
+    PrepaidTaxAssetsCurrent = models.IntegerField(default=0)
     DeferredTaxAssetsCurrent = models.IntegerField(default=0)
+    RightOfUseAssetsCurrent = models.IntegerField(default=0)
     OtherCurrentAssets = models.IntegerField(default=0)
     DiscontinuedOperationsCurrent = models.IntegerField(default=0)
     #
@@ -413,6 +420,7 @@ class TrialBalance(models.Model):
     FinanceLeaseRightOfUseAssets = models.IntegerField(default=0)
     IntangibleAssets = models.IntegerField(default=0)
     Goodwill = models.IntegerField(default=0)
+    RefundableTaxAssetsNonCurrent = models.IntegerField(default=0)
     DeferredTaxAssetsNonCurrent = models.IntegerField(default=0)
     DefinedBenefitPensionAndOtherSimilarPlans = models.IntegerField(default=0)
     OtherNonCurrentAssets = models.IntegerField(default=0)
@@ -440,14 +448,17 @@ class TrialBalance(models.Model):
     # Non-Current Liabilities - Trial Balance
     #
     LongTermDebt = models.IntegerField(default=0)
+    PreferredSharesLiability = models.IntegerField(default=0)
     RetirementBenefits = models.IntegerField(default=0)
     OperatingLeasesNonCurrent = models.IntegerField(default=0)
     FinanceLeasesNonCurrent = models.IntegerField(default=0)
     CapitalLeaseAndFinancingObligationsNonCurrent = models.IntegerField(default=0)
     DeferredRevenueAndDepositsNonCurrent = models.IntegerField(default=0)
+    ContingentConsideration = models.IntegerField(default=0)
     AccruedTaxLiabilitiesNonCurrent = models.IntegerField(default=0)
     DeferredTaxLiabilitiesNonCurrent = models.IntegerField(default=0)
     OtherNonCurrentLiabilities = models.IntegerField(default=0)
+    RedeemableNonControllingInterests = models.IntegerField(default=0)
     DiscontinuedOperationsLiabilitiesNonCurrent = models.IntegerField(default=0)
     #
     #
@@ -490,6 +501,7 @@ class TrialBalance(models.Model):
     ImpairmentRestructuringAndOtherSpecialCharges = models.IntegerField(default=0)
     NonOperatingIncome = models.IntegerField(default=0)
     IncomeTaxExpenseBenefit = models.IntegerField(default=0)
+    EquityMethodInvesteesIncome = models.IntegerField(default=0)
     NetIncomeFromDiscontinuedOperations = models.IntegerField(default=0)
     #
     #

@@ -88,7 +88,6 @@ capitalized valuation when a column is empty
 Additional information
     add growth
     add risk related to volatility of return on total assets
-    remove minority (embeded in income statement)
 
 remove buttons pushed state urls.
 
@@ -107,3 +106,5 @@ Link Target level of assurance with math
 negative number in brackets
 
 clean url
+
+azure

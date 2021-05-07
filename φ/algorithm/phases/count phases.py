@@ -31,10 +31,12 @@ import xml.etree.ElementTree as ET
 # database
 #
 db = Database.objects.all()[0]
+
 #
 # entities
 #
 entities = Entity.objects.all().order_by('TradingSymbol')
+
 #
 # counter
 try:
