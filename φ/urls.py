@@ -8,7 +8,7 @@ urlpatterns = [
     #
     path("about/", views.about, name="about"),
     #
-    path("auditeddatabase/", views.auditeddatabase, name="auditeddatabase"),
+    path("audited/", views.audited, name="audited"),
     #
     path("db/", views.db, name="db"),
     #
@@ -18,14 +18,14 @@ urlpatterns = [
     #
     path("", views.index, name="index"),
     #
-    path("master/", views.master, name="master"),
+    path("overview/", views.overview, name="overview"),
     #
     path("memo/", views.memo, name="memo"),
     path("memo1/", views.memo1, name="memo1"),
     #
     path("mining/", views.mining, name="mining"),
     #
-    path("overview/", views.overview, name="overview"),
+    path("master/", views.master, name="master"),
     #
     path("phase1/", views.phase1, name="phase1"),
     path("phase2/", views.phase2, name="phase2"),

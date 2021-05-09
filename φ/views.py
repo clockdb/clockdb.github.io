@@ -60,9 +60,9 @@ def analysis(request, entity_TradingSymbol):
         "AuditData_sixthlastyear": AuditData_sixthlastyear,
     })
 
-# AUDITED DATABASE
-def auditeddatabase(request):
-    return render(request, "./φ/auditeddatabase.html", {
+# AUDITED
+def audited(request):
+    return render(request, "./φ/audited.html", {
         "db": Database.objects.all()[0]
     })
 
@@ -111,8 +111,7 @@ def index(request):
 # MASTER
 def master(request):
     return render(request, "./φ/master.html", {
-        "entities": Entity.objects.all().order_by('-Status', '-lastyear', 'TradingSymbol')
-        .exclude(Status='Inactive')
+        "db": Database.objects.all()[0]
     })
 
 # MEMO
@@ -127,6 +126,13 @@ def memo1(request):
 def mining(request):
     return render(request, "./φ/mining.html", {
         "db": Database.objects.all()[0]
+    })
+
+# OVERVIEW
+def overview(request):
+    return render(request, "./φ/overview.html", {
+        "entities": Entity.objects.all().order_by('-Status', '-lastyear', 'TradingSymbol')
+        .exclude(Status='Inactive')
     })
 
 # PHASE 1
@@ -739,11 +745,4 @@ def reviewed(request):
         .exclude(Status='Phase 7.8')
         .exclude(Status='Phase 8')
         .exclude(Status='Prepared')
-    })
-
-
-# OVERVIEW
-def overview(request):
-    return render(request, "./φ/overview.html", {
-        "db": Database.objects.all()[0]
     })

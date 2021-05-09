@@ -76,8 +76,8 @@ entities = Entity.objects.all().order_by(
     'TradingSymbol',
 )
 
-ll = 1
 ll = len(entities)
+ll = 1
 
 # entities
 for count in range(0, ll):
@@ -85,7 +85,7 @@ for count in range(0, ll):
     e = entities[count]
     #
     if ll == 1:
-        e = Entity.objects.get(TradingSymbol='CPRT')
+        e = Entity.objects.get(TradingSymbol='BKNG')
     #
     phases = [
         'Phase 7.2',
@@ -3823,12 +3823,61 @@ for count in range(0, ll):
                                     print(periodenddate)
                                     print(137 * '-' + '\n')
                                     #
+                                    # convertible debt
+                                    try:
+                                        ConvertibleDebt = []
+                                        r = 0
+                                        for key, value in BalanceSheet.items():
+                                            if r > LiabilitiesRank:
+                                                d = key
+                                                q = [
+                                                    'ConvertibleDebt',
+                                                ]
+                                                b = [
+                                                    'AdditionalCapital',
+                                                    'AdditionalPaidInCapital',
+                                                    'CapitalInExcessOfParValue',
+                                                    'CapitalSurplus',
+                                                    'CommonShares',
+                                                    'CommonStock',
+                                                    'OrdinaryShares',
+                                                    'Surplus',
+                                                ]
+                                                for l in q:
+                                                    if l in d:
+                                                        h = 'p'
+                                                        for p in b:
+                                                            u = 0
+                                                            while u < len(b):
+                                                                if p in d:
+                                                                    h = ''
+                                                                u = u + 1
+                                                        if h == 'p':
+                                                            try:
+                                                                i = 0
+                                                                while BalanceSheet[key][i] == None:
+                                                                    i = i + 1
+                                                                ARCHvalue = BalanceSheet[key][i]
+                                                                BalanceSheet[key][i] = None
+                                                            except:
+                                                                if value != None:
+                                                                    ARCHvalue = BalanceSheet[key]
+                                                                    BalanceSheet[key] = None
+                                                                else:
+                                                                    ARCHvalue = 0
+                                                            if ARCHvalue != 0:
+                                                                ConvertibleDebt.append(ARCHvalue)
+                                            r = r + 1
+                                        a.ConvertibleDebt = -sum(ConvertibleDebt)
+                                    except:
+                                        pass
+                                    #
                                     # common shares
                                     try:
                                         CommonShares = []
                                         r = 0
                                         for key, value in BalanceSheet.items():
-                                            if r > CurrentLiabilitiesRank:
+                                            if r > LiabilitiesRank:
                                                 d = key
                                                 q = [
                                                     'AdditionalCapital',
@@ -3881,7 +3930,7 @@ for count in range(0, ll):
                                         RetainedEarnings = []
                                         r = 0
                                         for key, value in BalanceSheet.items():
-                                            if r > CurrentLiabilitiesRank:
+                                            if r > LiabilitiesRank:
                                                 if r < LiabilitiesAndStockholdersEquityRank:
                                                     d = key
                                                     q = [
@@ -3929,7 +3978,7 @@ for count in range(0, ll):
                                         AccumulatedOtherComprehensiveIncome = []
                                         r = 0
                                         for key, value in BalanceSheet.items():
-                                            if r > CurrentLiabilitiesRank:
+                                            if r > LiabilitiesRank:
                                                 if r < LiabilitiesAndStockholdersEquityRank:
                                                     d = key
                                                     q = [
@@ -3975,7 +4024,7 @@ for count in range(0, ll):
                                         TreasuryShares = []
                                         r = 0
                                         for key, value in BalanceSheet.items():
-                                            if r > CurrentLiabilitiesRank:
+                                            if r > LiabilitiesRank:
                                                 if r < LiabilitiesAndStockholdersEquityRank:
                                                     d = key
                                                     q = [
@@ -4024,7 +4073,7 @@ for count in range(0, ll):
                                         EmployeeBenefitTrust = []
                                         r = 0
                                         for key, value in BalanceSheet.items():
-                                            if r > CurrentLiabilitiesRank:
+                                            if r > LiabilitiesRank:
                                                 if r < LiabilitiesAndStockholdersEquityRank:
                                                     d = key
                                                     q = [
@@ -4069,7 +4118,7 @@ for count in range(0, ll):
                                         NonControllingInterests = []
                                         r = 0
                                         for key, value in BalanceSheet.items():
-                                            if r > CurrentLiabilitiesRank:
+                                            if r > LiabilitiesRank:
                                                 if r < LiabilitiesAndStockholdersEquityRank:
                                                     d = key
                                                     print(d)
@@ -4117,7 +4166,8 @@ for count in range(0, ll):
                                             #
                                             '..': 
                                                 #
-                                                ['a.CommonShares',
+                                                ['a.ConvertibleDebt',
+                                                'a.CommonShares',
                                                 'a.RetainedEarnings',
                                                 'a.AccumulatedOtherComprehensiveIncome',
                                                 'a.TreasuryShares',
@@ -4126,7 +4176,8 @@ for count in range(0, ll):
                                             #
                                             '.':
                                                 #
-                                                ['{:,}'.format(a.CommonShares),
+                                                ['{:,}'.format(a.ConvertibleDebt),
+                                                '{:,}'.format(a.CommonShares),
                                                 '{:,}'.format(a.RetainedEarnings),
                                                 '{:,}'.format(a.AccumulatedOtherComprehensiveIncome),
                                                 '{:,}'.format(a.TreasuryShares),
@@ -9315,6 +9366,13 @@ for count in range(0, ll):
                             except:
                                 pass
                             #
+                            # Convertible Debt - Beginning Balance
+                            if backwards == '':
+                                tb.ConvertibleDebtBeginning = prioryeara.ConvertibleDebt
+                            else:
+                                c = a.ConvertibleDebt
+                                tb.ConvertibleDebtBeginning = c
+                            #
                             # Common Shares - Beginning Balance
                             if backwards == '':
                                 tb.CommonSharesBeginning = prioryeara.CommonShares
@@ -10028,6 +10086,55 @@ for count in range(0, ll):
                             except:
                                 pass
                             #
+                            # convertible debt
+                            try:
+                                #
+                                Anomaly = 0
+                                #
+                                Components = [
+                                    tb.ConvertibleDebtBeginning,
+                                ]
+                                #
+                                Total = a.ConvertibleDebt
+                                #
+                                Components = sum(Components)
+                                #
+                                Anomaly = Components - Total
+                                #
+                                a.AnomalyConvertibleDebt = Anomaly
+                                #
+                                # dataframe
+                                try:
+                                    df = pd.DataFrame({
+                                        #
+                                        'convertible debt': 
+                                            #
+                                            [
+                                            'Components',
+                                            'Total',
+                                            'Anomaly',
+                                            'a.AnomalyCommonShares',
+                                            ],
+                                        #
+                                        '.':
+                                            #
+                                            [
+                                            '{:,}'.format(Components),
+                                            '{:,}'.format(Total),
+                                            '{:,}'.format(Anomaly),
+                                            '{:,}'.format(a.AnomalyConvertibleDebt),
+                                            ],
+                                    })
+                                    print(df)
+                                    print(137 * '-' + '\n')
+                                    #
+                                    tb.save()
+                                    a.save()
+                                except:
+                                    pass
+                            except:
+                                pass
+                            #
                             # common shares
                             try:
                                 #
@@ -10322,6 +10429,7 @@ for count in range(0, ll):
                                 Anomaly = 0
                                 #
                                 Components = [
+                                    a.ConvertibleDebt,
                                     a.CommonShares,
                                     a.AccumulatedOtherComprehensiveIncome,
                                     a.RetainedEarnings,
@@ -10899,7 +11007,7 @@ for count in range(0, ll):
             e.NumberOfYearsAudited = lt - ea
             #
             if e.NumberOfYearsAudited == 0:
-                e.Status = goto
+                e.Status = 'Phase 7.2'
         except:
             pass
         #
@@ -10921,8 +11029,8 @@ for count in range(0, ll):
         # database
         try:
             #
-            # count
             db = Database.objects.all()[0]
+            #
             try:
                 #
                 # variables
@@ -10959,41 +11067,51 @@ for count in range(0, ll):
                     pass
                 #
                 # counter
-                for count in range(0, ll):
+                for dbcount in range(0, len(entities)):
                     #
-                    e = entities[count]
                     #
-                    if e.Status == 'Audited':   
+                    #######################
+                    print(dbcount)
+                    #
+                    #
+                    #
+                    ee = entities[dbcount]
+                    #
+                    #
+                    print(ee)
+                    #
+                    #
+                    if ee.Status == 'Audited':   
                         db.audited = db.audited + 1
                     #
-                    if e.Status == 'Prepared':
+                    if ee.Status == 'Prepared':
                         db.prepared = db.prepared + 1
                     #
-                    if e.Status == 'Phase 8':
+                    if ee.Status == 'Phase 8':
                         db.phase8 = db.phase8 + 1
                     #
-                    if e.Status == 'Phase 7.8':
+                    if ee.Status == 'Phase 7.8':
                         db.phase78 = db.phase78 + 1
                     #
-                    if e.Status == 'Phase 7.7':
+                    if ee.Status == 'Phase 7.7':
                         db.phase77 = db.phase77 + 1
                     #
-                    if e.Status == 'Phase 7.6':
+                    if ee.Status == 'Phase 7.6':
                         db.phase76 = db.phase76 + 1
                     #
-                    if e.Status == 'Phase 7.5':
+                    if ee.Status == 'Phase 7.5':
                         db.phase75 = db.phase75 + 1
                     #
-                    if e.Status == 'Phase 7.4':
+                    if ee.Status == 'Phase 7.4':
                         db.phase74 = db.phase74 + 1
                     #
-                    if e.Status == 'Phase 7.3':
+                    if ee.Status == 'Phase 7.3':
                         db.phase73 = db.phase73 + 1
                     #
-                    if e.Status == 'Phase 7.2':
+                    if ee.Status == 'Phase 7.2':
                         db.phase72 = db.phase72 + 1
                     #
-                    if e.Status == 'Phase 7.1':
+                    if ee.Status == 'Phase 7.1':
                         db.phase71 = db.phase71 + 1
                     #
                     phase7 = [
@@ -11008,13 +11126,13 @@ for count in range(0, ll):
                     ]
                     db.phase7 = sum(phase7)
                     #
-                    if e.Status == 'Phase 6.3':
+                    if ee.Status == 'Phase 6.3':
                         db.phase63 = db.phase63 + 1
                     #
-                    if e.Status == 'Phase 6.2':
+                    if ee.Status == 'Phase 6.2':
                         db.phase62 = db.phase62 + 1
                     #
-                    if e.Status == 'Phase 6.1':
+                    if ee.Status == 'Phase 6.1':
                         db.phase61 = db.phase61 + 1
                     #
                     phase6 = [
@@ -11024,16 +11142,16 @@ for count in range(0, ll):
                     ]
                     db.phase6 = sum(phase6)
                     #
-                    if e.Status == 'Phase 5':
+                    if ee.Status == 'Phase 5':
                         db.phase5 = db.phase5 + 1
                     #
-                    if e.Status == 'Phase 4.3':
+                    if ee.Status == 'Phase 4.3':
                         db.phase43 = db.phase43 + 1
                     #
-                    if e.Status == 'Phase 4.2':
+                    if ee.Status == 'Phase 4.2':
                         db.phase42 = db.phase42 + 1
                     #
-                    if e.Status == 'Phase 4.1':
+                    if ee.Status == 'Phase 4.1':
                         db.phase41 = db.phase41 + 1
                     #
                     phase4 = [
@@ -11043,16 +11161,16 @@ for count in range(0, ll):
                     ]
                     db.phase4 = sum(phase4)
                     #
-                    if e.Status == 'Phase 3':
+                    if ee.Status == 'Phase 3':
                         db.phase3 = db.phase3 + 1
                     #
-                    if e.Status == 'Phase 2':
+                    if ee.Status == 'Phase 2':
                         db.phase2 = db.phase2 + 1
                     #
-                    if e.Status == 'Phase 1':
+                    if ee.Status == 'Phase 1':
                         db.phase1 = db.phase1 + 1
                     #
-                    if e.Status == 'Inactive':
+                    if ee.Status == 'Inactive':
                         Inactives = Inactives + 1
                 #
                 # total
@@ -11255,3 +11373,7 @@ for count in range(0, ll):
                 pass
         except:
             pass
+
+
+
+

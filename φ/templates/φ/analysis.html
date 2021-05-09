@@ -33,7 +33,7 @@
         document.getElementById('Graph').style.display = 'block';
     })
 
-    // ENTER
+    // enter
     document.addEventListener('keydown', (event) => {
         keys = [13, 38, 40]
         up = [38]
@@ -121,17 +121,18 @@
         }
     })
 
-    // F1 + F2 BOXES
+    // checkboxes
     document.addEventListener('keydown', (event) => {
-        keys = [112, 113]
+        keys = [49, 50]
         if (keys.includes(event.keyCode)) {
-            event.preventDefault();
             position = event.target
             row = position.id.slice(0, -1)
-            if (event.keyCode == 112) {
+            if (event.keyCode == 49 && (event.altKey || event.metaKey)) {
+                event.preventDefault();
                 checkbox = document.getElementById(row + 'Checkbox')
             }
-            if (event.keyCode == 113) {
+            if (event.keyCode == 50 && (event.altKey || event.metaKey)) {
+                event.preventDefault();
                 checkbox = document.getElementById(row + 'Checkbox2')
             }
             if (checkbox.checked == true) {
@@ -142,196 +143,334 @@
         }
     })  
     
-    // CTRL + A (AUDIT)
+    // context
     document.addEventListener('keydown', function(event) {
-        if (event.code == 'KeyA' && (event.ctrlKey || event.metaKey)) {
+        if (event.code == 'Insert') {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('Context').style.display = 'block';
+            window.scrollTo(0, 200);
+        }
+    });
+    
+    // line chart
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'Home') {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('Graph').style.display = 'block';
+            const url = 'Graph'
+            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            window.scrollTo(0, 160);
+        }
+    });
+
+    // opinion
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'End') {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('Opinion').style.display = 'block';
+            const url = 'Opinion'
+            //
+            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            window.scrollTo(0, 200);
+        }
+    });
+    
+    // financials
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'Numpad0' && (event.altKey || event.metaKey)) {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('AnnualTrialBalances').style.display = 'block';
+            const url = 'AnnualTrialBalances'
+            //
+            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            window.scrollTo(0, 200);
+        }
+    });
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'Numpad1' && (event.altKey || event.metaKey)) {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('AnnualCashFlow').style.display = 'block';
+            const url = 'AnnualCashFlow'
+            //
+            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            window.scrollTo(0, 200);
+        }
+    });
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'Numpad2' && (event.altKey || event.metaKey)) {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('AnnualBalanceSheets').style.display = 'block';
+            const url = 'AnnualBalanceSheets'
+            //
+            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            window.scrollTo(0, 200);
+        }
+    });
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'Numpad3' && (event.altKey || event.metaKey)) {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('AnnualIncomeStatements').style.display = 'block';
+            const url = 'AnnualIncomeStatements'
+            //
+            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            window.scrollTo(0, 200);
+        }
+    });
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'Numpad4' && (event.altKey || event.metaKey)) {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('AnnualComprehensiveIncome').style.display = 'block';
+            const url = 'AnnualComprehensiveIncome'
+            //
+            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            window.scrollTo(0, 200);
+        }
+    });
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'Numpad5' && (event.altKey || event.metaKey)) {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('AnnualStockholdersEquity').style.display = 'block';
+            const url = 'AnnualStockholdersEquity'
+            //
+            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            window.scrollTo(0, 200);
+        }
+    });
+
+    // audit
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'Numpad0' && (event.ctrlKey || event.metaKey)) {
             event.preventDefault();
             document.getElementById('BridgeCell').style.display = 'block';
             document.querySelectorAll('div').forEach(div => {
                 div.style.display = 'none';
             })
             document.getElementById('AuditSummary').style.display = 'block';
-            window.scrollTo(0, 235);
+            const url = 'AuditSummary'
+            //
+            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            window.scrollTo(0, 200);
         }
     });
-    
-    // CTRL + B (TRIAL BALANCE)
     document.addEventListener('keydown', function(event) {
-        if (event.code == 'KeyB' && (event.ctrlKey || event.metaKey)) {
+        if (event.code == 'Numpad6' && (event.ctrlKey || event.metaKey)) {
             event.preventDefault();
+            document.getElementById('BridgeCell').style.display = 'block';
             document.querySelectorAll('div').forEach(div => {
                 div.style.display = 'none';
             })
-            document.getElementById('AnnualTrialBalances').style.display = 'block';
-            window.scrollTo(0, 235);
+            document.getElementById('AuditDetailed').style.display = 'block';
+            const url = 'AuditDetailed'
+            //
+            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            window.scrollTo(0, 200);
+        }
+    });
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'Numpad7' && (event.ctrlKey || event.metaKey)) {
+            event.preventDefault();
+            document.getElementById('BridgeCell').style.display = 'block';
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('MaterialityThreshold').style.display = 'block';
+            const url = 'MaterialityThreshold'
+            //
+            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            window.scrollTo(0, 200);
+        }
+    });    
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'Numpad8' && (event.ctrlKey || event.metaKey)) {
+            event.preventDefault();
+            document.getElementById('BridgeCell').style.display = 'block';
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('Mission').style.display = 'block';
+            const url = 'Mission'
+            //
+            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            window.scrollTo(0, 200);
         }
     });
 
-    // CTRL + D (CAPITALIZED CASHFLOW)
+    // procedures
     document.addEventListener('keydown', function(event) {
-        if (event.code == 'KeyD' && (event.ctrlKey || event.metaKey)) {
+        if (event.code == 'Numpad2' && (event.ctrlKey || event.metaKey)) {
             event.preventDefault();
+            document.getElementById('BridgeCell').style.display = 'block';
             document.querySelectorAll('div').forEach(div => {
                 div.style.display = 'none';
             })
-            document.getElementById('CapitalizedCashFlow').style.display = 'block';
-            window.scrollTo(0, 235);
+            document.getElementById('ProcedureAnnualBalanceSheets').style.display = 'block';
+            const url = 'ProcedureAnnualBalanceSheets'
+            //
+            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            window.scrollTo(0, 200);
+        }
+    });
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'Numpad3' && (event.ctrlKey || event.metaKey)) {
+            event.preventDefault();
+            document.getElementById('BridgeCell').style.display = 'block';
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('ProcedureAnnualIncomeStatements').style.display = 'block';
+            const url = 'ProcedureAnnualIncomeStatements'
+            //
+            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            window.scrollTo(0, 200);
+        }
+    });
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'Numpad4' && (event.ctrlKey || event.metaKey)) {
+            event.preventDefault();
+            document.getElementById('BridgeCell').style.display = 'block';
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('ProcedureAnnualComprehensiveIncome').style.display = 'block';
+            const url = 'ProcedureAnnualComprehensiveIncome'
+            //
+            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            window.scrollTo(0, 200);
+        }
+    });
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'Numpad5' && (event.ctrlKey || event.metaKey)) {
+            event.preventDefault();
+            document.getElementById('BridgeCell').style.display = 'block';
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('ProcedureAnnualStockholdersEquity').style.display = 'block';
+            const url = 'ProcedureAnnualStockholdersEquity'
+            //
+            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            window.scrollTo(0, 200);
+        }
+    });
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'Numpad1' && (event.ctrlKey || event.metaKey)) {
+            event.preventDefault();
+            document.getElementById('BridgeCell').style.display = 'block';
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('ProcedureAnnualCashFlow').style.display = 'block';
+            const url = 'ProcedureAnnualCashFlow'
+            //
+            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            window.scrollTo(0, 200);
         }
     });
 
-    // CTRL + E (RATIOS)
+    // valuation
     document.addEventListener('keydown', function(event) {
-        if (event.code == 'KeyE' && (event.ctrlKey || event.metaKey)) {
-            event.preventDefault();
-            document.querySelectorAll('div').forEach(div => {
-                div.style.display = 'none';
-            })
-            document.getElementById('AnnualFinancialRatios').style.display = 'block';
-            window.scrollTo(0, 235);
-        }
-    });
-    
-    // CTRL + F (CASHFLOW)
-    document.addEventListener('keydown', function(event) {
-        if (event.code == 'KeyF' && (event.ctrlKey || event.metaKey)) {
-            event.preventDefault();
-            document.querySelectorAll('div').forEach(div => {
-                div.style.display = 'none';
-            })
-            document.getElementById('AnnualCashFlow').style.display = 'block';
-            window.scrollTo(0, 235);
-        }
-    });
-
-    // CTRL + G (CONTEXT)
-    document.addEventListener('keydown', function(event) {
-        if (event.code == 'KeyG' && (event.ctrlKey || event.metaKey)) {
-            event.preventDefault();
-            document.querySelectorAll('div').forEach(div => {
-                div.style.display = 'none';
-            })
-            document.getElementById('Context').style.display = 'block';
-            window.scrollTo(0, 235);
-        }
-    });
-
-    // CTRL + H (STOCKHOLDERS EQUITY)
-    document.addEventListener('keydown', function(event) {
-        if (event.code == 'KeyH' && (event.ctrlKey || event.metaKey)) {
-            event.preventDefault();
-            document.querySelectorAll('div').forEach(div => {
-                div.style.display = 'none';
-            })
-            document.getElementById('AnnualStockholdersEquity').style.display = 'block';
-            window.scrollTo(0, 235);
-        }
-    });
-    
-    // CTRL + I (INTRINSIC VALUES)
-    document.addEventListener('keydown', function(event) {
-        if (event.code == 'KeyI' && (event.ctrlKey || event.metaKey)) {
+        if (event.code == 'Numpad0' && (event.winKey || event.metaKey)) {
             event.preventDefault();
             document.querySelectorAll('div').forEach(div => {
                 div.style.display = 'none';
             })
             document.getElementById('IntrinsicValues').style.display = 'block';
-            window.scrollTo(0, 235);
+            const url = 'IntrinsicValues'
+            //
+            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            window.scrollTo(0, 200);
         }
     });
-    
-    // CTRL + J (COMPREHENSIVE INCOME)
     document.addEventListener('keydown', function(event) {
-        if (event.code == 'KeyJ' && (event.ctrlKey || event.metaKey)) {
+        if (event.code == 'Numpad1' && (event.winKey || event.metaKey)) {
             event.preventDefault();
             document.querySelectorAll('div').forEach(div => {
                 div.style.display = 'none';
             })
-            document.getElementById('AnnualComprehensiveIncome').style.display = 'block';
-            window.scrollTo(0, 235);
+            document.getElementById('CapitalizedCashFlow').style.display = 'block';
+            const url = 'CapitalizedCashFlow'
+            //
+            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            window.scrollTo(0, 200);
         }
     });
-
-    // CTRL + K (INCOME STATEMENT)
     document.addEventListener('keydown', function(event) {
-        if (event.code == 'KeyK' && (event.ctrlKey || event.metaKey)) {
-            event.preventDefault();
-            document.querySelectorAll('div').forEach(div => {
-                div.style.display = 'none';
-            })
-            document.getElementById('AnnualIncomeStatements').style.display = 'block';
-            window.scrollTo(0, 235);
-        }
-    });
-
-    // CTRL + L (LINE CHART)
-    document.addEventListener('keydown', function(event) {
-        if (event.code == 'KeyL' && (event.ctrlKey || event.metaKey)) {
-            event.preventDefault();
-            document.querySelectorAll('div').forEach(div => {
-                div.style.display = 'none';
-            })
-            document.getElementById('Graph').style.display = 'block';
-            window.scrollTo(0, 235);
-        }
-    });
-
-    // CTRL + M (BALANCE SHEETS)
-    document.addEventListener('keydown', function(event) {
-        if (event.code == 'KeyM' && (event.ctrlKey || event.metaKey)) {
-            event.preventDefault();
-            document.querySelectorAll('div').forEach(div => {
-                div.style.display = 'none';
-            })
-            document.getElementById('AnnualBalanceSheets').style.display = 'block';
-            window.scrollTo(0, 235);
-        }
-    });
-
-    // CTRL + O (OPINION)
-    document.addEventListener('keydown', function(event) {
-        if (event.code == 'KeyO' && (event.ctrlKey || event.metaKey)) {
-            event.preventDefault();
-            document.querySelectorAll('div').forEach(div => {
-                div.style.display = 'none';
-            })
-            document.getElementById('Opinion').style.display = 'block';
-            window.scrollTo(0, 235);
-        }
-    });
-
-    // CTRL + R (RATE)
-    document.addEventListener('keydown', function(event) {
-        if (event.code == 'KeyR' && (event.ctrlKey || event.metaKey)) {
+        if (event.code == 'Numpad2' && (event.winKey || event.metaKey)) {
             event.preventDefault();
             document.querySelectorAll('div').forEach(div => {
                 div.style.display = 'none';
             })
             document.getElementById('CapitalizationRate').style.display = 'block';
-            window.scrollTo(0, 235);
+            const url = 'CapitalizationRate'
+            //
+            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            window.scrollTo(0, 200);
         }
     });
-
-    // CTRL + S (CAPITALIZED INCOME)
     document.addEventListener('keydown', function(event) {
-        if (event.code == 'KeyS' && (event.ctrlKey || event.metaKey)) {
+        if (event.code == 'Numpad3' && (event.winKey || event.metaKey)) {
             event.preventDefault();
             document.querySelectorAll('div').forEach(div => {
                 div.style.display = 'none';
             })
             document.getElementById('CapitalizedIncome').style.display = 'block';
-            window.scrollTo(0, 235);
+            const url = 'CapitalizedIncome'
+            //
+            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            window.scrollTo(0, 200);
         }
     });
-
-    // CTRL + Z (UNDO)
     document.addEventListener('keydown', function(event) {
-        if (event.code == 'KeyZ' && (event.ctrlKey || event.metaKey)) {
+        if (event.code == 'Numpad4' && (event.winKey || event.metaKey)) {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('AdditionalInformation').style.display = 'block';
+            const url = 'AdditionalInformation'
+            //
+            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            window.scrollTo(0, 200);
         }
     });
-
-    // CTRL + Y (REDO)
     document.addEventListener('keydown', function(event) {
-        if (event.code == 'KeyY' && (event.ctrlKey || event.metaKey)) {
+        if (event.code == 'Numpad5' && (event.winKey || event.metaKey)) {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('AnnualFinancialRatios').style.display = 'block';
+            const url = 'AnnualFinancialRatios'
+            //
+            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            window.scrollTo(0, 200);
         }
     });
 
@@ -1767,6 +1906,20 @@
                         <td colspan='2'><input value={{ TrialBalance_fifthlastyear.DiscontinuedOperationsLiabilitiesNonCurrent }} class="clock" id="TrialBalanceDiscontinuedOperationsLiabilitiesNonCurrent5" onclick="HighLight()" onfocusout="Enter()"></input></td>
                         <td colspan='2'><input value={{ TrialBalance_sixthlastyear.DiscontinuedOperationsLiabilitiesNonCurrent }} class="clock" id="TrialBalanceDiscontinuedOperationsLiabilitiesNonCurrent6" onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
+                    <tr id="TrialBalanceConvertibleDebtRow">
+                        <td colspan="2"><h6><b>Convertible Debt</b></h6></td>
+                        <td style="text-align:center; font-weight:bold;">db</td>
+                        <td>
+                            <input type="checkbox" style="height: 16px;" id="TrialBalanceConvertibleDebtCheckbox"></input>
+                            <input type="checkbox" style="height: 16px;" id="TrialBalanceConvertibleDebtCheckbox2"></input>
+                        </td>
+                        <td colspan='2'><input value={{ TrialBalance_lastyear.ConvertibleDebtBeginning }} class="clock" id="TrialBalanceConvertibleDebt1" style="font-weight:bold;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan='2'><input value={{ TrialBalance_secondlastyear.ConvertibleDebtBeginning }} class="clock" id="TrialBalanceConvertibleDebt2" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan='2'><input value={{ TrialBalance_thirdlastyear.ConvertibleDebtBeginning }} class="clock" id="TrialBalanceConvertibleDebt3" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan='2'><input value={{ TrialBalance_fourthlastyear.ConvertibleDebtBeginning }} class="clock" id="TrialBalanceConvertibleDebt4" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan='2'><input value={{ TrialBalance_fifthlastyear.ConvertibleDebtBeginning }} class="clock" id="TrialBalanceConvertibleDebt5" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan='2'><input value={{ TrialBalance_sixthlastyear.ConvertibleDebtBeginning }} class="clock" id="TrialBalanceConvertibleDebt6" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
                     <tr id="TrialBalanceCommonSharesRow">
                         <td colspan="2"><h6><b>Common Shares</b></h6></td>
                         <td style="text-align:center; font-weight:bold;">db</td>
@@ -2240,7 +2393,9 @@
                                 a = a + parseInt(document.getElementById('TrialBalanceOtherNonCurrentLiabilities1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceRedeemableNonControllingInterests1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceDiscontinuedOperationsLiabilitiesNonCurrent1').value.replaceAll(/,/g, ''));
-                                // Equity
+                                // Convertible Debt
+                                a = a + parseInt(document.getElementById('TrialBalanceConvertibleDebt1').value.replaceAll(/,/g, ''));
+                                // Common Shares
                                 a = a + parseInt(document.getElementById('TrialBalanceCommonShares1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceCommonStockIssued1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceShareBasedCompensation1').value.replaceAll(/,/g, ''));
@@ -2335,7 +2490,9 @@
                                 a = a + parseInt(document.getElementById('TrialBalanceDeferredRevenueAndDepositsNonCurrent2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceOtherNonCurrentLiabilities2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceDiscontinuedOperationsLiabilitiesNonCurrent2').value.replaceAll(/,/g, ''));
-                                // Equity
+                                // Convertible Debt
+                                a = a + parseInt(document.getElementById('TrialBalanceConvertibleDebt2').value.replaceAll(/,/g, ''));
+                                // Common Shares
                                 a = a + parseInt(document.getElementById('TrialBalanceCommonShares2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceCommonStockIssued2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceShareBasedCompensation2').value.replaceAll(/,/g, ''));
@@ -2431,7 +2588,9 @@
                                 a = a + parseInt(document.getElementById('TrialBalanceOtherNonCurrentLiabilities3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceRedeemableNonControllingInterests3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceDiscontinuedOperationsLiabilitiesNonCurrent3').value.replaceAll(/,/g, ''));
-                                // Equity
+                                // Convertible Debt
+                                a = a + parseInt(document.getElementById('TrialBalanceConvertibleDebt3').value.replaceAll(/,/g, ''));
+                                // Common Shares
                                 a = a + parseInt(document.getElementById('TrialBalanceCommonShares3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceCommonStockIssued3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceShareBasedCompensation3').value.replaceAll(/,/g, ''));
@@ -2527,7 +2686,9 @@
                                 a = a + parseInt(document.getElementById('TrialBalanceOtherNonCurrentLiabilities4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceRedeemableNonControllingInterests4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceDiscontinuedOperationsLiabilitiesNonCurrent4').value.replaceAll(/,/g, ''));
-                                // Equity
+                                // Convertible Debt
+                                a = a + parseInt(document.getElementById('TrialBalanceConvertibleDebt4').value.replaceAll(/,/g, ''));
+                                // Common Shares
                                 a = a + parseInt(document.getElementById('TrialBalanceCommonShares4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceCommonStockIssued4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceShareBasedCompensation4').value.replaceAll(/,/g, ''));
@@ -2623,7 +2784,9 @@
                                 a = a + parseInt(document.getElementById('TrialBalanceOtherNonCurrentLiabilities5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceRedeemableNonControllingInterests5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceDiscontinuedOperationsLiabilitiesNonCurrent5').value.replaceAll(/,/g, ''));
-                                // Equity
+                                // Convertible Debt
+                                a = a + parseInt(document.getElementById('TrialBalanceConvertibleDebt5').value.replaceAll(/,/g, ''));
+                                // Common Shares
                                 a = a + parseInt(document.getElementById('TrialBalanceCommonShares5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceCommonStockIssued5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceShareBasedCompensation5').value.replaceAll(/,/g, ''));
@@ -2719,7 +2882,9 @@
                                 a = a + parseInt(document.getElementById('TrialBalanceOtherNonCurrentLiabilities6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceRedeemableNonControllingInterests6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceDiscontinuedOperationsLiabilitiesNonCurrent6').value.replaceAll(/,/g, ''));
-                                // Equity
+                                // Convertible Debt
+                                a = a + parseInt(document.getElementById('TrialBalanceConvertibleDebt6').value.replaceAll(/,/g, ''));
+                                // Common Shares
                                 a = a + parseInt(document.getElementById('TrialBalanceCommonShares6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceCommonStockIssued6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceShareBasedCompensation6').value.replaceAll(/,/g, ''));
@@ -7002,6 +7167,20 @@
                     </tr>
                     <tr></tr>
                     <tr>
+                        <td colspan="2"><h6>Convertible Debt</h6></td>
+                        <td><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold;">TB</button></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px;" id="ConvertibleDebtCheckbox"></input>
+                            <input type="checkbox" style="height: 16px;" id="ConvertibleDebtCheckbox2"></input>
+                        </td>
+                        <td colspan="2"><input class="account" id="ConvertibleDebt1" style="font-weight:bold;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="ConvertibleDebt2" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="ConvertibleDebt3" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="ConvertibleDebt4" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="ConvertibleDebt5" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="ConvertibleDebt6" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
                         <td colspan="2"><h6>Common Shares</h6></td>
                         <td><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold;">TB</button></td>
                         <td>
@@ -8534,7 +8713,8 @@
                                     format: "number"
                                 });                                
                                 // Last Year
-                                a = parseInt(document.getElementById('TrialBalanceCommonShares1').value.replaceAll(/,/g, ''));
+                                a = parseInt(document.getElementById('TrialBalanceConvertibleDebt1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('TrialBalanceCommonShares1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceAccumulatedOtherComprehensiveIncomeLoss1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceRetainedEarningsAccumulatedDeficit1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceTreasuryShares1').value.replaceAll(/,/g, ''));
@@ -8542,7 +8722,8 @@
                                 a = a + parseInt(document.getElementById('TrialBalanceNonControllingInterests1').value.replaceAll(/,/g, ''));
                                 document.getElementById('StockholdersEquityBeginning1').value = numUSD.format(Math.round(-a));
                                 // Second Last Year
-                                a = parseInt(document.getElementById('TrialBalanceCommonShares2').value.replaceAll(/,/g, ''));
+                                a = parseInt(document.getElementById('TrialBalanceConvertibleDebt2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('TrialBalanceCommonShares2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceAccumulatedOtherComprehensiveIncomeLoss2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceRetainedEarningsAccumulatedDeficit2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceTreasuryShares2').value.replaceAll(/,/g, ''));
@@ -8550,7 +8731,8 @@
                                 a = a + parseInt(document.getElementById('TrialBalanceNonControllingInterests2').value.replaceAll(/,/g, ''));
                                 document.getElementById('StockholdersEquityBeginning2').value = numUSD.format(Math.round(-a));
                                 // Third Last Year
-                                a = parseInt(document.getElementById('TrialBalanceCommonShares3').value.replaceAll(/,/g, ''));
+                                a = parseInt(document.getElementById('TrialBalanceConvertibleDebt3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('TrialBalanceCommonShares3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceAccumulatedOtherComprehensiveIncomeLoss3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceRetainedEarningsAccumulatedDeficit3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceTreasuryShares3').value.replaceAll(/,/g, ''));
@@ -8558,7 +8740,8 @@
                                 a = a + parseInt(document.getElementById('TrialBalanceNonControllingInterests3').value.replaceAll(/,/g, ''));
                                 document.getElementById('StockholdersEquityBeginning3').value = numUSD.format(Math.round(-a));
                                 // Fourth Last Year
-                                a = parseInt(document.getElementById('TrialBalanceCommonShares4').value.replaceAll(/,/g, ''));
+                                a = parseInt(document.getElementById('TrialBalanceConvertibleDebt4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('TrialBalanceCommonShares4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceAccumulatedOtherComprehensiveIncomeLoss4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceRetainedEarningsAccumulatedDeficit4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceTreasuryShares4').value.replaceAll(/,/g, ''));
@@ -8566,7 +8749,8 @@
                                 a = a + parseInt(document.getElementById('TrialBalanceNonControllingInterests4').value.replaceAll(/,/g, ''));
                                 document.getElementById('StockholdersEquityBeginning4').value = numUSD.format(Math.round(-a));
                                 // Fifth Last Year
-                                a = parseInt(document.getElementById('TrialBalanceCommonShares5').value.replaceAll(/,/g, ''));
+                                a = parseInt(document.getElementById('TrialBalanceConvertibleDebt5').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('TrialBalanceCommonShares5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceAccumulatedOtherComprehensiveIncomeLoss5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceRetainedEarningsAccumulatedDeficit5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceTreasuryShares5').value.replaceAll(/,/g, ''));
@@ -8574,7 +8758,8 @@
                                 a = a + parseInt(document.getElementById('TrialBalanceNonControllingInterests5').value.replaceAll(/,/g, ''));
                                 document.getElementById('StockholdersEquityBeginning5').value = numUSD.format(Math.round(-a));
                                 // Sixth Last Year
-                                a = parseInt(document.getElementById('TrialBalanceCommonShares6').value.replaceAll(/,/g, ''));
+                                a = parseInt(document.getElementById('TrialBalanceConvertibleDebt6').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('TrialBalanceCommonShares6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceAccumulatedOtherComprehensiveIncomeLoss6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceRetainedEarningsAccumulatedDeficit6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceTreasuryShares6').value.replaceAll(/,/g, ''));
@@ -9421,6 +9606,26 @@
                                 a = a + parseInt(document.getElementById('ComprehensiveIncomeStockholdersEquity6').value.replaceAll(/,/g, ''));
                                 document.getElementById('StockholdersEquity6').value = numUSD.format(Math.round(a));
                                 ////////////////////
+                                // Convertible Debt (Balance Sheets) 
+                                // Last Year
+                                a = -parseInt(document.getElementById('TrialBalanceConvertibleDebt1').value.replaceAll(/,/g, ''));
+                                document.getElementById('ConvertibleDebt1').value = numUSD.format(Math.round(a));
+                                // Second Last Year
+                                a = -parseInt(document.getElementById('TrialBalanceConvertibleDebt2').value.replaceAll(/,/g, ''));
+                                document.getElementById('ConvertibleDebt2').value = numUSD.format(Math.round(a));
+                                // Third Last Year
+                                a = -parseInt(document.getElementById('TrialBalanceConvertibleDebt3').value.replaceAll(/,/g, ''));
+                                document.getElementById('ConvertibleDebt3').value = numUSD.format(Math.round(a));
+                                // Fourth Last Year
+                                a = -parseInt(document.getElementById('TrialBalanceConvertibleDebt4').value.replaceAll(/,/g, ''));
+                                document.getElementById('ConvertibleDebt4').value = numUSD.format(Math.round(a));
+                                // Fifth Year
+                                a = -parseInt(document.getElementById('TrialBalanceConvertibleDebt5').value.replaceAll(/,/g, ''));
+                                document.getElementById('ConvertibleDebt5').value = numUSD.format(Math.round(a));
+                                // Fifth Year
+                                a = -parseInt(document.getElementById('TrialBalanceConvertibleDebt6').value.replaceAll(/,/g, ''));
+                                document.getElementById('ConvertibleDebt6').value = numUSD.format(Math.round(a));
+                                ////////////////////
                                 // Common Shares (Balance Sheets) 
                                 // Last Year
                                 a = -parseInt(document.getElementById('TrialBalanceCommonShares1').value.replaceAll(/,/g, ''));
@@ -9678,6 +9883,7 @@
                                 ////////////////////
                                 // Stockholders Equity (Balance Sheets) 
                                 // Last Year
+                                a = parseInt(document.getElementById('ConvertibleDebt1').value.replaceAll(/,/g, ''));
                                 a = parseInt(document.getElementById('CommonShares1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccumulatedOtherComprehensiveIncomeLoss1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetainedEarningsAccumulatedDeficit1').value.replaceAll(/,/g, ''));
@@ -9687,6 +9893,7 @@
                                 document.getElementById('StockholdersEquityNote1').value = numUSD.format(Math.round(a));
                                 document.getElementById('BalanceSheetsStockholdersEquity1').value = numUSD.format(Math.round(a));
                                 // Second Last Year
+                                a = parseInt(document.getElementById('ConvertibleDebt2').value.replaceAll(/,/g, ''));
                                 a = parseInt(document.getElementById('CommonShares2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccumulatedOtherComprehensiveIncomeLoss2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetainedEarningsAccumulatedDeficit2').value.replaceAll(/,/g, ''));
@@ -9696,6 +9903,7 @@
                                 document.getElementById('StockholdersEquityNote2').value = numUSD.format(Math.round(a));
                                 document.getElementById('BalanceSheetsStockholdersEquity2').value = numUSD.format(Math.round(a));
                                 // Third Last Year
+                                a = parseInt(document.getElementById('ConvertibleDebt3').value.replaceAll(/,/g, ''));
                                 a = parseInt(document.getElementById('CommonShares3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccumulatedOtherComprehensiveIncomeLoss3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetainedEarningsAccumulatedDeficit3').value.replaceAll(/,/g, ''));
@@ -9705,6 +9913,7 @@
                                 document.getElementById('StockholdersEquityNote3').value = numUSD.format(Math.round(a));
                                 document.getElementById('BalanceSheetsStockholdersEquity3').value = numUSD.format(Math.round(a));
                                 // Fourth Last Year
+                                a = parseInt(document.getElementById('ConvertibleDebt4').value.replaceAll(/,/g, ''));
                                 a = parseInt(document.getElementById('CommonShares4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccumulatedOtherComprehensiveIncomeLoss4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetainedEarningsAccumulatedDeficit4').value.replaceAll(/,/g, ''));
@@ -9714,6 +9923,7 @@
                                 document.getElementById('StockholdersEquityNote4').value = numUSD.format(Math.round(a));
                                 document.getElementById('BalanceSheetsStockholdersEquity4').value = numUSD.format(Math.round(a));
                                 // Fifth Year
+                                a = parseInt(document.getElementById('ConvertibleDebt5').value.replaceAll(/,/g, ''));
                                 a = parseInt(document.getElementById('CommonShares5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccumulatedOtherComprehensiveIncomeLoss5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetainedEarningsAccumulatedDeficit5').value.replaceAll(/,/g, ''));
@@ -9723,6 +9933,7 @@
                                 document.getElementById('StockholdersEquityNote5').value = numUSD.format(Math.round(a));
                                 document.getElementById('BalanceSheetsStockholdersEquity5').value = numUSD.format(Math.round(a));
                                 // Sixth Year
+                                a = parseInt(document.getElementById('ConvertibleDebt6').value.replaceAll(/,/g, ''));
                                 a = parseInt(document.getElementById('CommonShares6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccumulatedOtherComprehensiveIncomeLoss6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetainedEarningsAccumulatedDeficit6').value.replaceAll(/,/g, ''));
@@ -14646,7 +14857,7 @@
             <table style="border-bottom:solid #0D47A1">
                 <body>
                     <tr>
-                        <td><h3 style="font-weight:bold; vertical-align:top">Additional Information</h3></td>
+                        <td><h3 style="font-weight:bold; margin-left:0px;">Additional Information</h3></td>
                     </tr>
                 </body>
             </table>
@@ -16277,6 +16488,7 @@
                                 a = a + parseInt(document.getElementById('FinanceLeasesCurrent1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('FinanceLeasesNonCurrent1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetirementBenefits1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ConvertibleDebt1').value.replaceAll(/,/g, ''));
                                 document.getElementById('TotalDebtAndLeaseObligationCCF1').value = numUSD.format(Math.round(-a));
                                 // Column 2
                                 a = parseInt(document.getElementById('ShortTermPortionOfLongTermDebt2').value.replaceAll(/,/g, ''));
@@ -16286,6 +16498,7 @@
                                 a = a + parseInt(document.getElementById('FinanceLeasesCurrent2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('FinanceLeasesNonCurrent2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetirementBenefits2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ConvertibleDebt2').value.replaceAll(/,/g, ''));
                                 document.getElementById('TotalDebtAndLeaseObligationCCF2').value = numUSD.format(Math.round(-a));
                                 // Column 3
                                 a = parseInt(document.getElementById('ShortTermPortionOfLongTermDebt3').value.replaceAll(/,/g, ''));
@@ -16295,6 +16508,7 @@
                                 a = a + parseInt(document.getElementById('FinanceLeasesCurrent3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('FinanceLeasesNonCurrent3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetirementBenefits3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ConvertibleDebt3').value.replaceAll(/,/g, ''));
                                 document.getElementById('TotalDebtAndLeaseObligationCCF3').value = numUSD.format(Math.round(-a));
                                 // Column 4
                                 a = parseInt(document.getElementById('ShortTermPortionOfLongTermDebt4').value.replaceAll(/,/g, ''));
@@ -16304,6 +16518,7 @@
                                 a = a + parseInt(document.getElementById('FinanceLeasesCurrent4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('FinanceLeasesNonCurrent4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetirementBenefits4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ConvertibleDebt4').value.replaceAll(/,/g, ''));
                                 document.getElementById('TotalDebtAndLeaseObligationCCF4').value = numUSD.format(Math.round(-a));
                             };
                             window.addEventListener('DOMContentLoaded', BalanceLongTermDebtAndLeaseObligation)
@@ -16374,7 +16589,7 @@
                         </td>
                         <td colspan='2' style="border-bottom-style:ridge; font-weight:bold;"><input class="clock" id="ValueAccruingToPreferredShareholdersCCF1" style="font-weight:bold;" onclick="HighLight()" onfocusout="Enter()"></input></td>
                         <td colspan='2' style="border-bottom-style:ridge;"><input class="clock" id="ValueAccruingToPreferredShareholdersCCF2" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan='2' style="border-bottom-style:ridge;"></td><input class="clock" id="ValueAccruingToPreferredShareholdersCCF3" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan='2' style="border-bottom-style:ridge;"><input class="clock" id="ValueAccruingToPreferredShareholdersCCF3" onclick="HighLight()" onfocusout="Enter()"></input></td>
                         <td colspan='2' style="border-bottom-style:ridge;"><input class="clock" id="ValueAccruingToPreferredShareholdersCCF4" onclick="HighLight()" onfocusout="Enter()"></input></td>
                         <td colspan='2'><input  id="ValueAccruingToPreferredShareholdersCCF5" onclick="HighLight()" onfocusout="Enter()"></input></td>
                         <td colspan='2'><input  id="ValueAccruingToPreferredShareholdersCCF6" onclick="HighLight()" onfocusout="Enter()"></input></td>
@@ -17375,41 +17590,17 @@
                                     format: "number"
                                 })
                                 // Column 1
-                                a = parseInt(document.getElementById('ShortTermPortionOfLongTermDebt1').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('LongTermDebt1').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('OperatingLeasesCurrent1').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('OperatingLeasesNonCurrent1').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('RetirementBenefits1').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('FinanceLeasesCurrent1').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('FinanceLeasesNonCurrent1').value.replaceAll(/,/g, ''));
-                                document.getElementById('TotalDebtAndLeaseObligationCI1').value = numUSD.format(Math.round(-a));
+                                a = parseInt(document.getElementById('TotalDebtAndLeaseObligationCCF1').value.replaceAll(/,/g, ''));
+                                document.getElementById('TotalDebtAndLeaseObligationCI1').value = numUSD.format(a);
                                 // Column 2
-                                a = parseInt(document.getElementById('ShortTermPortionOfLongTermDebt2').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('LongTermDebt2').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('OperatingLeasesCurrent2').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('OperatingLeasesNonCurrent2').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('RetirementBenefits2').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('FinanceLeasesCurrent2').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('FinanceLeasesNonCurrent2').value.replaceAll(/,/g, ''));
-                                document.getElementById('TotalDebtAndLeaseObligationCI2').value = numUSD.format(Math.round(-a));
+                                a = parseInt(document.getElementById('TotalDebtAndLeaseObligationCCF2').value.replaceAll(/,/g, ''));
+                                document.getElementById('TotalDebtAndLeaseObligationCI2').value = numUSD.format(a);
                                 // Column 3
-                                a = parseInt(document.getElementById('ShortTermPortionOfLongTermDebt3').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('LongTermDebt3').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('OperatingLeasesCurrent3').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('OperatingLeasesNonCurrent3').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('RetirementBenefits3').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('FinanceLeasesCurrent3').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('FinanceLeasesNonCurrent3').value.replaceAll(/,/g, ''));
-                                document.getElementById('TotalDebtAndLeaseObligationCI3').value = numUSD.format(Math.round(-a));
+                                a = parseInt(document.getElementById('TotalDebtAndLeaseObligationCCF3').value.replaceAll(/,/g, ''));
+                                document.getElementById('TotalDebtAndLeaseObligationCI3').value = numUSD.format(a);
                                 // Column 4
-                                a = parseInt(document.getElementById('ShortTermPortionOfLongTermDebt4').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('LongTermDebt4').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('OperatingLeasesCurrent4').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('OperatingLeasesNonCurrent4').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('RetirementBenefits4').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('FinanceLeasesCurrent4').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('FinanceLeasesNonCurrent4').value.replaceAll(/,/g, ''));
-                                document.getElementById('TotalDebtAndLeaseObligationCI4').value = numUSD.format(Math.round(-a));
+                                a = parseInt(document.getElementById('TotalDebtAndLeaseObligationCCF4').value.replaceAll(/,/g, ''));
+                                document.getElementById('TotalDebtAndLeaseObligationCI4').value = numUSD.format(a);
                             };
                             window.addEventListener('DOMContentLoaded', BalanceLongTermDebtAndLeaseObligationCI)
                             window.addEventListener('keyup', function() {
@@ -18710,7 +18901,7 @@
             <table style="border-bottom:solid #0D47A1"> 
                 <body>
                     <tr>
-                        <td><h3 style="font-weight:bold; margin-left:0px;">clockdb.com internal audit mission</h3></td>
+                        <td><h3 style="font-weight:bold; margin-left:0px;">Mission</h3></td>
                     </tr>
                 </body>
             </table>
@@ -19039,7 +19230,7 @@
             <table style="border-bottom:solid #0D47A1">
                 <body>
                     <tr>
-                        <td><h3 style="font-weight:bold; margin-left:0px;">Balance Sheets</h3></td>
+                        <td><h3 style="font-weight:bold; margin-left:0px;">Balance Sheets - Procedures</h3></td>
                     </tr>
                 </body>
             </table>
@@ -20097,7 +20288,8 @@
                                     format: "number"
                                 })
                                 // Last Year
-                                a = parseInt(document.getElementById('CommonShares1').value.replaceAll(/,/g, ''));
+                                a = parseInt(document.getElementById('ConvertibleDebt1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('CommonShares1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccumulatedOtherComprehensiveIncomeLoss1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetainedEarningsAccumulatedDeficit1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TreasuryShares1').value.replaceAll(/,/g, ''));
@@ -20105,7 +20297,8 @@
                                 a = a + parseInt(document.getElementById('NonControllingInterests1').value.replaceAll(/,/g, ''));
                                 document.getElementById('PRO-1.2.131').value = numUSD.format(-a);
                                 // Second Last Year
-                                a = parseInt(document.getElementById('CommonShares2').value.replaceAll(/,/g, ''));
+                                a = parseInt(document.getElementById('ConvertibleDebt2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('CommonShares2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccumulatedOtherComprehensiveIncomeLoss2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetainedEarningsAccumulatedDeficit2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TreasuryShares2').value.replaceAll(/,/g, ''));
@@ -20113,7 +20306,8 @@
                                 a = a + parseInt(document.getElementById('NonControllingInterests2').value.replaceAll(/,/g, ''));
                                 document.getElementById('PRO-1.2.132').value = numUSD.format(-a);
                                 // Third Last Year
-                                a = parseInt(document.getElementById('CommonShares3').value.replaceAll(/,/g, ''));
+                                a = parseInt(document.getElementById('ConvertibleDebt3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('CommonShares3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccumulatedOtherComprehensiveIncomeLoss3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetainedEarningsAccumulatedDeficit3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TreasuryShares3').value.replaceAll(/,/g, ''));
@@ -20121,7 +20315,8 @@
                                 a = a + parseInt(document.getElementById('NonControllingInterests3').value.replaceAll(/,/g, ''));
                                 document.getElementById('PRO-1.2.133').value = numUSD.format(-a);
                                 // Fourth Last Year
-                                a = parseInt(document.getElementById('CommonShares4').value.replaceAll(/,/g, ''));
+                                a = parseInt(document.getElementById('ConvertibleDebt4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('CommonShares4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccumulatedOtherComprehensiveIncomeLoss4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetainedEarningsAccumulatedDeficit4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TreasuryShares4').value.replaceAll(/,/g, ''));
@@ -20129,7 +20324,8 @@
                                 a = a + parseInt(document.getElementById('NonControllingInterests4').value.replaceAll(/,/g, ''));
                                 document.getElementById('PRO-1.2.134').value = numUSD.format(-a);
                                 // Fifth Last Year
-                                a = parseInt(document.getElementById('CommonShares5').value.replaceAll(/,/g, ''));
+                                a = parseInt(document.getElementById('ConvertibleDebt5').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('CommonShares5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccumulatedOtherComprehensiveIncomeLoss5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetainedEarningsAccumulatedDeficit5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TreasuryShares5').value.replaceAll(/,/g, ''));
@@ -20137,7 +20333,8 @@
                                 a = a + parseInt(document.getElementById('NonControllingInterests5').value.replaceAll(/,/g, ''));
                                 document.getElementById('PRO-1.2.135').value = numUSD.format(-a);
                                 // Sixth Last Year
-                                a = parseInt(document.getElementById('CommonShares6').value.replaceAll(/,/g, ''));
+                                a = parseInt(document.getElementById('ConvertibleDebt6').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('CommonShares6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccumulatedOtherComprehensiveIncomeLoss6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetainedEarningsAccumulatedDeficit6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TreasuryShares6').value.replaceAll(/,/g, ''));
@@ -21664,6 +21861,20 @@
                     <tr></tr>
                     <tr></tr>
                     <tr>
+                        <td colspan="2" style="text-align:left;">Convertible Debt</td>
+                        <td><button data-page="AnnualStockholdersEquity" style="text-align:center; font-weight:bold;">SE</button></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px;" id="PRO-4.2.1Checkbox"></input>
+                            <input type="checkbox" style="height: 16px;" id="PRO-4.2.1Checkbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.01" style="font-weight:bold;" value={{ AuditData_lastyear.AnomalyConvertibleDebt }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.02" value={{ AuditData_secondlastyear.AnomalyConvertibleDebt }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.03" value={{ AuditData_thirdlastyear.AnomalyConvertibleDebt }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.04" value={{ AuditData_fourthlastyear.AnomalyConvertibleDebt }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.05" value={{ AuditData_fifthlastyear.AnomalyConvertibleDebt }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.06" value={{ AuditData_sixthlastyear.AnomalyConvertibleDebt }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
                         <td colspan="2" style="text-align:left;">Common Shares</td>
                         <td><button data-page="AnnualStockholdersEquity" style="text-align:center; font-weight:bold;">SE</button></td>
                         <td>
@@ -21706,18 +21917,32 @@
                         <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.36" value={{ AuditData_sixthlastyear.AnomalyAccumulatedOtherComprehensiveIncome }} onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
                     <tr>
+                        <td colspan="2" style="text-align:left;">Treasury Shares</td>
+                        <td><button data-page="AnnualStockholdersEquity" style="text-align:center; font-weight:bold;">SE</button></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px;" id="PRO-4.2.3Checkbox"></input>
+                            <input type="checkbox" style="height: 16px;" id="PRO-4.2.3Checkbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.41" style="font-weight:bold;" value={{ AuditData_lastyear.AnomalyAnomalyTreasuryShares }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.42" value={{ AuditData_secondlastyear.AnomalyAnomalyTreasuryShares }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.43" value={{ AuditData_thirdlastyear.AnomalyAnomalyTreasuryShares }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.44" value={{ AuditData_fourthlastyear.AnomalyAnomalyTreasuryShares }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.45" value={{ AuditData_fifthlastyear.AnomalyAnomalyTreasuryShares }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.46" value={{ AuditData_sixthlastyear.AnomalyAnomalyTreasuryShares }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
                         <td colspan="2" style="text-align:left;">Employee Benefit Trust</td>
                         <td><button data-page="AnnualStockholdersEquity" style="text-align:center; font-weight:bold;">SE</button></td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="PRO-4.2.4Checkbox"></input>
                             <input type="checkbox" style="height: 16px;" id="PRO-4.2.4Checkbox2"></input>
                         </td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.41" style="font-weight:bold;" value={{ AuditData_lastyear.AnomalyEmployeeBenefitTrust }} onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.42" value={{ AuditData_secondlastyear.AnomalyEmployeeBenefitTrust }} onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.43" value={{ AuditData_thirdlastyear.AnomalyEmployeeBenefitTrust }} onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.44" value={{ AuditData_fourthlastyear.AnomalyEmployeeBenefitTrust }} onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.45" value={{ AuditData_fifthlastyear.AnomalyEmployeeBenefitTrust }} onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.46" value={{ AuditData_sixthlastyear.AnomalyEmployeeBenefitTrust }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.51" style="font-weight:bold;" value={{ AuditData_lastyear.AnomalyEmployeeBenefitTrust }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.52" value={{ AuditData_secondlastyear.AnomalyEmployeeBenefitTrust }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.53" value={{ AuditData_thirdlastyear.AnomalyEmployeeBenefitTrust }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.54" value={{ AuditData_fourthlastyear.AnomalyEmployeeBenefitTrust }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.55" value={{ AuditData_fifthlastyear.AnomalyEmployeeBenefitTrust }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.56" value={{ AuditData_sixthlastyear.AnomalyEmployeeBenefitTrust }} onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align:left;">Non Controlling Interests</td>
@@ -21726,12 +21951,12 @@
                             <input type="checkbox" style="height: 16px;" id="PRO-4.2.5Checkbox"></input>
                             <input type="checkbox" style="height: 16px;" id="PRO-4.2.5Checkbox2"></input>
                         </td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.51" style="font-weight:bold;" value={{ AuditData_lastyear.AnomalyNonControllingInterests }} onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.52" value={{ AuditData_secondlastyear.AnomalyNonControllingInterests }} onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.53" value={{ AuditData_thirdlastyear.AnomalyNonControllingInterests }} onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.54" value={{ AuditData_fourthlastyear.AnomalyNonControllingInterests }} onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.55" value={{ AuditData_fifthlastyear.AnomalyNonControllingInterests }} onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.56" value={{ AuditData_sixthlastyear.AnomalyNonControllingInterests }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.61" style="font-weight:bold;" value={{ AuditData_lastyear.AnomalyNonControllingInterests }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.62" value={{ AuditData_secondlastyear.AnomalyNonControllingInterests }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.63" value={{ AuditData_thirdlastyear.AnomalyNonControllingInterests }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.64" value={{ AuditData_fourthlastyear.AnomalyNonControllingInterests }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.65" value={{ AuditData_fifthlastyear.AnomalyNonControllingInterests }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.66" value={{ AuditData_sixthlastyear.AnomalyNonControllingInterests }} onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
                 </body>
             </table>

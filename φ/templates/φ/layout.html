@@ -496,29 +496,64 @@
 
     <script>
 
-        // CTRL + P (OVERVIEW)
-        document.addEventListener('keydown', function(event) {
-            if (event.code == 'KeyP' && (event.ctrlKey || event.metaKey)) {
+        // F keys
+        
+        document.addEventListener('keydown', (event) => {
+            keys = [27, 112, 113, 114, 115]
+            if (keys.includes(event.keyCode)) {
                 event.preventDefault();
-                window.open("{% url 'φ:overview' %}", '_blank');
+                if (event.keyCode == 27) {
+                    window.close();
+                }
+                if (event.keyCode == 112) {
+                    window.open("{% url 'φ:master' %}", '_top');
+                }
+                if (event.keyCode == 113) {
+                    window.open("{% url 'φ:db' %}", '_top');
+                }
+                if (event.keyCode == 114) {
+                    window.open("{% url 'φ:economics' %}", '_top');
+                }
+                if (event.keyCode == 115) {
+                    window.open("{% url 'φ:overview' %}", '_top');
+                }
             }
         });
 
-        // CTRL + Q (MASTER)
-        document.addEventListener('keydown', function(event) {
-            if (event.code == 'KeyQ' && (event.ctrlKey || event.metaKey)) {
-                event.preventDefault();
-                window.open("{% url 'φ:master' %}", '_blank');
+        // ctrl number keys
+        document.addEventListener('keydown', (event) => {
+            keys = [49, 50, 51, 52, 53, 54, 55, 56, 57]
+            if (keys.includes(event.keyCode)) {
+                if (event.keyCode == 49 && (event.ctrlKey || event.metaKey)) {
+                    window.open("{% url 'φ:phase1' %}", '_top');
+                }
+                if (event.keyCode == 50 && (event.ctrlKey || event.metaKey)) {
+                    window.open("{% url 'φ:phase2' %}", '_top');
+                }
+                if (event.keyCode == 51 && (event.ctrlKey || event.metaKey)) {
+                    window.open("{% url 'φ:phase3' %}", '_top');
+                }
+                if (event.keyCode == 52 && (event.ctrlKey || event.metaKey)) {
+                    window.open("{% url 'φ:phase4' %}", '_top');
+                }
+                if (event.keyCode == 53 && (event.ctrlKey || event.metaKey)) {
+                    window.open("{% url 'φ:phase5' %}", '_top');
+                }
+                if (event.keyCode == 54 && (event.ctrlKey || event.metaKey)) {
+                    window.open("{% url 'φ:phase6' %}", '_top');
+                }
+                if (event.keyCode == 55 && (event.ctrlKey || event.metaKey)) {
+                    window.open("{% url 'φ:phase7' %}", '_top');
+                }
+                if (event.keyCode == 56 && (event.ctrlKey || event.metaKey)) {
+                    window.open("{% url 'φ:phase8' %}", '_top');
+                }
+                if (event.keyCode == 57 && (event.ctrlKey || event.metaKey)) {
+                    window.open("{% url 'φ:prepared' %}", '_top');
+                }
             }
         });
 
-        // CTRL + X (DB)
-        document.addEventListener('keydown', function(event) {
-            if (event.code == 'KeyX' && (event.ctrlKey || event.metaKey)) {
-                event.preventDefault();
-                window.open("{% url 'φ:db' %}", '_blank');
-            }
-        });
         
         // List of entities
         let myURL = new URL('http://www.clockdb.com/');

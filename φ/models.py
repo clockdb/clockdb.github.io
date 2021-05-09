@@ -245,6 +245,7 @@ class AuditData(models.Model):
     #
     StockholdersEquityBeginning = models.IntegerField(default=0)
     #
+    ConvertibleDebt = models.IntegerField(default=0)
     CommonShares = models.IntegerField(default=0)
     RetainedEarnings = models.IntegerField(default=0)
     AccumulatedOtherComprehensiveIncome = models.IntegerField(default=0)
@@ -252,6 +253,7 @@ class AuditData(models.Model):
     EmployeeBenefitTrust = models.IntegerField(default=0)
     NonControllingInterests = models.IntegerField(default=0)
     #
+    AnomalyConvertibleDebt = models.IntegerField(default=0)
     AnomalyCommonShares = models.IntegerField(default=0)
     AnomalyRetainedEarnings = models.IntegerField(default=0)
     AnomalyAccumulatedOtherComprehensiveIncome = models.IntegerField(default=0)
@@ -463,6 +465,9 @@ class TrialBalance(models.Model):
     #
     #
     # Stockholders Equity - Trial Balance
+    #
+    # convertible debt
+    ConvertibleDebtBeginning = models.IntegerField(default=0)
     #
     # common shares
     CommonSharesBeginning = models.IntegerField(default=0)
