@@ -762,7 +762,7 @@ def reviewed(request):
         .exclude(Status='Phase 8')
         .exclude(Status='Prepared')
     })
-    
+   
 # 1000
 def i1000(request):
     return render(request, "./φ/industrial/i1000.html", {
@@ -3768,5 +3768,677 @@ def i8900(request):
     return render(request, "./φ/industrial/i8900.html", {
         "entities": Entity.objects.all()
         .filter(IndustryCode='8900')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rAL
+def rAL(request):
+    return render(request, "./φ/regional/rAL.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='AL')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rAK
+def rAK(request):
+    return render(request, "./φ/regional/rAK.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='AK')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rA0
+def rA0(request):
+    return render(request, "./φ/regional/rA0.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='A0')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rC1
+def rC1(request):
+    return render(request, "./φ/regional/rC1.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='C1')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rAZ
+def rAZ(request):
+    return render(request, "./φ/regional/rAZ.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='AZ')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rAR
+def rAR(request):
+    return render(request, "./φ/regional/rAR.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='AR')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rC3
+def rC3(request):
+    return render(request, "./φ/regional/rC3.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='C3')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rC9
+def rC9(request):
+    return render(request, "./φ/regional/rC9.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='C9')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rD0
+def rD0(request):
+    return render(request, "./φ/regional/rD0.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='D0')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rD5
+def rD5(request):
+    return render(request, "./φ/regional/rD5.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='D5')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rA1
+def rA1(request):
+    return render(request, "./φ/regional/rA1.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='A1')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rCA
+def rCA(request):
+    return render(request, "./φ/regional/rCA.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='CA')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rE9
+def rE9(request):
+    return render(request, "./φ/regional/rE9.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='E9')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rF4
+def rF4(request):
+    return render(request, "./φ/regional/rF4.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='F4')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rF8
+def rF8(request):
+    return render(request, "./φ/regional/rF8.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='F8')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rCO
+def rCO(request):
+    return render(request, "./φ/regional/rCO.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='CO')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rCT
+def rCT(request):
+    return render(request, "./φ/regional/rCT.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='CT')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rDE
+def rDE(request):
+    return render(request, "./φ/regional/rDE.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='DE')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rG7
+def rG7(request):
+    return render(request, "./φ/regional/rG7.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='G7')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rDC
+def rDC(request):
+    return render(request, "./φ/regional/rDC.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='DC')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rFL
+def rFL(request):
+    return render(request, "./φ/regional/rFL.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='FL')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rI0
+def rI0(request):
+    return render(request, "./φ/regional/rI0.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='I0')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# r2Q
+def r2Q(request):
+    return render(request, "./φ/regional/r2Q.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='2Q')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# r2M
+def r2M(request):
+    return render(request, "./φ/regional/r2M.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='2M')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rGU
+def rGU(request):
+    return render(request, "./φ/regional/rGU.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='GU')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rHI
+def rHI(request):
+    return render(request, "./φ/regional/rHI.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='HI')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rK3
+def rK3(request):
+    return render(request, "./φ/regional/rK3.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='K3')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rID
+def rID(request):
+    return render(request, "./φ/regional/rID.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='ID')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rIL
+def rIL(request):
+    return render(request, "./φ/regional/rIL.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='IL')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rIN
+def rIN(request):
+    return render(request, "./φ/regional/rIN.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='IN')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rIA
+def rIA(request):
+    return render(request, "./φ/regional/rIA.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='IA')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rL2
+def rL2(request):
+    return render(request, "./φ/regional/rL2.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='L2')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rL3
+def rL3(request):
+    return render(request, "./φ/regional/rL3.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='L3')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rM0
+def rM0(request):
+    return render(request, "./φ/regional/rM0.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='M0')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rY9
+def rY9(request):
+    return render(request, "./φ/regional/rY9.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='Y9')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rKS
+def rKS(request):
+    return render(request, "./φ/regional/rKS.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='KS')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rKY
+def rKY(request):
+    return render(request, "./φ/regional/rKY.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='KY')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rLA
+def rLA(request):
+    return render(request, "./φ/regional/rLA.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='LA')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rN4
+def rN4(request):
+    return render(request, "./φ/regional/rN4.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='N4')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rME
+def rME(request):
+    return render(request, "./φ/regional/rME.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='ME')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rN8
+def rN8(request):
+    return render(request, "./φ/regional/rN8.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='N8')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rMD
+def rMD(request):
+    return render(request, "./φ/regional/rMD.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='MD')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rMA
+def rMA(request):
+    return render(request, "./φ/regional/rMA.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='MA')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rMI
+def rMI(request):
+    return render(request, "./φ/regional/rMI.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='MI')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rMN
+def rMN(request):
+    return render(request, "./φ/regional/rMN.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='MN')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rMS
+def rMS(request):
+    return render(request, "./φ/regional/rMS.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='MS')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rMO
+def rMO(request):
+    return render(request, "./φ/regional/rMO.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='MO')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rMT
+def rMT(request):
+    return render(request, "./φ/regional/rMT.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='MT')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rNE
+def rNE(request):
+    return render(request, "./φ/regional/rNE.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='NE')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rP7
+def rP7(request):
+    return render(request, "./φ/regional/rP7.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='P7')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rNV
+def rNV(request):
+    return render(request, "./φ/regional/rNV.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='NV')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rNH
+def rNH(request):
+    return render(request, "./φ/regional/rNH.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='NH')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rNJ
+def rNJ(request):
+    return render(request, "./φ/regional/rNJ.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='NJ')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rNM
+def rNM(request):
+    return render(request, "./φ/regional/rNM.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='NM')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rNY
+def rNY(request):
+    return render(request, "./φ/regional/rNY.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='NY')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rNC
+def rNC(request):
+    return render(request, "./φ/regional/rNC.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='NC')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rND
+def rND(request):
+    return render(request, "./φ/regional/rND.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='ND')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rOH
+def rOH(request):
+    return render(request, "./φ/regional/rOH.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='OH')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rOK
+def rOK(request):
+    return render(request, "./φ/regional/rOK.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='OK')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rA6
+def rA6(request):
+    return render(request, "./φ/regional/rA6.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='A6')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rOR
+def rOR(request):
+    return render(request, "./φ/regional/rOR.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='OR')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rPA
+def rPA(request):
+    return render(request, "./φ/regional/rPA.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='PA')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rPR
+def rPR(request):
+    return render(request, "./φ/regional/rPR.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='PR')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rA8
+def rA8(request):
+    return render(request, "./φ/regional/rA8.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='A8')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rRI
+def rRI(request):
+    return render(request, "./φ/regional/rRI.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='RI')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rU0
+def rU0(request):
+    return render(request, "./φ/regional/rU0.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='U0')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rT3
+def rT3(request):
+    return render(request, "./φ/regional/rT3.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='T3')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rSC
+def rSC(request):
+    return render(request, "./φ/regional/rSC.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='SC')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rSD
+def rSD(request):
+    return render(request, "./φ/regional/rSD.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='SD')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rV7
+def rV7(request):
+    return render(request, "./φ/regional/rV7.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='V7')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rV8
+def rV8(request):
+    return render(request, "./φ/regional/rV8.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='V8')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rF5
+def rF5(request):
+    return render(request, "./φ/regional/rF5.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='F5')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rTN
+def rTN(request):
+    return render(request, "./φ/regional/rTN.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='TN')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rTX
+def rTX(request):
+    return render(request, "./φ/regional/rTX.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='TX')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rW1
+def rW1(request):
+    return render(request, "./φ/regional/rW1.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='W1')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rW8
+def rW8(request):
+    return render(request, "./φ/regional/rW8.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='W8')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rX0
+def rX0(request):
+    return render(request, "./φ/regional/rX0.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='X0')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rX1
+def rX1(request):
+    return render(request, "./φ/regional/rX1.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='X1')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rUT
+def rUT(request):
+    return render(request, "./φ/regional/rUT.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='UT')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rVT
+def rVT(request):
+    return render(request, "./φ/regional/rVT.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='VT')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rVA
+def rVA(request):
+    return render(request, "./φ/regional/rVA.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='VA')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rWA
+def rWA(request):
+    return render(request, "./φ/regional/rWA.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='WA')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rWV
+def rWV(request):
+    return render(request, "./φ/regional/rWV.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='WV')
+        .order_by('-lastyear', 'TradingSymbol')
+    })
+
+# rWI
+def rWI(request):
+    return render(request, "./φ/regional/rWI.html", {
+        "entities": Entity.objects.all()
+        .filter(RegionCode='WI')
         .order_by('-lastyear', 'TradingSymbol')
     })

@@ -1,0 +1,528 @@
+{% extends "φ/layout.html" %}
+
+{% block body %}
+
+<!--- SCRIPT --->
+<script>       
+
+    // DOCUMENT TITLE
+    document.title = 'clockdb.com | regional'
+
+</script>
+
+<!--- MENU --->
+
+<div class="text">
+
+    <ul>
+        <a href="{% url 'φ:rAL' %}">
+            <button>
+                <h4 style='text-align:center'><b>ALABAMA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">AL</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rAK' %}">
+            <button>
+                <h4 style='text-align:center'><b>ALASKA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">AK</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rA0' %}">
+            <button>
+                <h4 style='text-align:center'><b>ALBERTA, CANADA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">A0</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rC1' %}">
+            <button>
+                <h4 style='text-align:center'><b>ARGENTINA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">C1</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rAZ' %}">
+            <button>
+                <h4 style='text-align:center'><b>ARIZONA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">AZ</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rAR' %}">
+            <button>
+                <h4 style='text-align:center'><b>ARKANSAS</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">AR</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rC3' %}">
+            <button>
+                <h4 style='text-align:center'><b>AUSTRALIA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">C3</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rC9' %}">
+            <button>
+                <h4 style='text-align:center'><b>BELGIUM</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">C9</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rD0' %}">
+            <button>
+                <h4 style='text-align:center'><b>BERMUDA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">D0</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rD5' %}">
+            <button>
+                <h4 style='text-align:center'><b>BRAZIL</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">D5</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rA1' %}">
+            <button>
+                <h4 style='text-align:center'><b>BRITISH COLUMBIA, CANADA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">A1</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rCA' %}">
+            <button>
+                <h4 style='text-align:center'><b>CALIFORNIA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">CA</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rE9' %}">
+            <button>
+                <h4 style='text-align:center'><b>CAYMAN ISLANDS</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">E9</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rF4' %}">
+            <button>
+                <h4 style='text-align:center'><b>CHINA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">F4</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rF8' %}">
+            <button>
+                <h4 style='text-align:center'><b>COLOMBIA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">F8</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rCO' %}">
+            <button>
+                <h4 style='text-align:center'><b>COLORADO</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">CO</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rCT' %}">
+            <button>
+                <h4 style='text-align:center'><b>CONNECTICUT</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">CT</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rDE' %}">
+            <button>
+                <h4 style='text-align:center'><b>DELAWARE</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">DE</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rG7' %}">
+            <button>
+                <h4 style='text-align:center'><b>DENMARK</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">G7</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rDC' %}">
+            <button>
+                <h4 style='text-align:center'><b>DISTRICT OF COLUMBIA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">DC</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rFL' %}">
+            <button>
+                <h4 style='text-align:center'><b>FLORIDA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">FL</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rI0' %}">
+            <button>
+                <h4 style='text-align:center'><b>FRANCE</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">I0</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:r2Q' %}">
+            <button>
+                <h4 style='text-align:center'><b>GEORGIA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">2Q</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:r2M' %}">
+            <button>
+                <h4 style='text-align:center'><b>GERMANY</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">2M</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rGU' %}">
+            <button>
+                <h4 style='text-align:center'><b>GUAM</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">GU</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rHI' %}">
+            <button>
+                <h4 style='text-align:center'><b>HAWAII</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">HI</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rK3' %}">
+            <button>
+                <h4 style='text-align:center'><b>HONG KONG</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">K3</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rID' %}">
+            <button>
+                <h4 style='text-align:center'><b>IDAHO</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">ID</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rIL' %}">
+            <button>
+                <h4 style='text-align:center'><b>ILLINOIS</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">IL</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rIN' %}">
+            <button>
+                <h4 style='text-align:center'><b>INDIANA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">IN</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rIA' %}">
+            <button>
+                <h4 style='text-align:center'><b>IOWA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">IA</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rL2' %}">
+            <button>
+                <h4 style='text-align:center'><b>IRELAND</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">L2</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rL3' %}">
+            <button>
+                <h4 style='text-align:center'><b>ISRAEL</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">L3</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rM0' %}">
+            <button>
+                <h4 style='text-align:center'><b>JAPAN</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">M0</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rY9' %}">
+            <button>
+                <h4 style='text-align:center'><b>JERSEY</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">Y9</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rKS' %}">
+            <button>
+                <h4 style='text-align:center'><b>KANSAS</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">KS</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rKY' %}">
+            <button>
+                <h4 style='text-align:center'><b>KENTUCKY</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">KY</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rLA' %}">
+            <button>
+                <h4 style='text-align:center'><b>LOUISIANA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">LA</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rN4' %}">
+            <button>
+                <h4 style='text-align:center'><b>LUXEMBOURG</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">N4</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rME' %}">
+            <button>
+                <h4 style='text-align:center'><b>MAINE</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">ME</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rN8' %}">
+            <button>
+                <h4 style='text-align:center'><b>MALAYSIA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">N8</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rMD' %}">
+            <button>
+                <h4 style='text-align:center'><b>MARYLAND</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">MD</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rMA' %}">
+            <button>
+                <h4 style='text-align:center'><b>MASSACHUSETTS</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">MA</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rMI' %}">
+            <button>
+                <h4 style='text-align:center'><b>MICHIGAN</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">MI</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rMN' %}">
+            <button>
+                <h4 style='text-align:center'><b>MINNESOTA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">MN</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rMS' %}">
+            <button>
+                <h4 style='text-align:center'><b>MISSISSIPPI</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">MS</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rMO' %}">
+            <button>
+                <h4 style='text-align:center'><b>MISSOURI</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">MO</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rMT' %}">
+            <button>
+                <h4 style='text-align:center'><b>MONTANA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">MT</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rNE' %}">
+            <button>
+                <h4 style='text-align:center'><b>NEBRASKA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">NE</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rP7' %}">
+            <button>
+                <h4 style='text-align:center'><b>NETHERLANDS</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">P7</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rNV' %}">
+            <button>
+                <h4 style='text-align:center'><b>NEVADA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">NV</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rNH' %}">
+            <button>
+                <h4 style='text-align:center'><b>NEW HAMPSHIRE</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">NH</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rNJ' %}">
+            <button>
+                <h4 style='text-align:center'><b>NEW JERSEY</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">NJ</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rNM' %}">
+            <button>
+                <h4 style='text-align:center'><b>NEW MEXICO</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">NM</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rNY' %}">
+            <button>
+                <h4 style='text-align:center'><b>NEW YORK</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">NY</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rNC' %}">
+            <button>
+                <h4 style='text-align:center'><b>NORTH CAROLINA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">NC</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rND' %}">
+            <button>
+                <h4 style='text-align:center'><b>NORTH DAKOTA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">ND</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rOH' %}">
+            <button>
+                <h4 style='text-align:center'><b>OHIO</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">OH</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rOK' %}">
+            <button>
+                <h4 style='text-align:center'><b>OKLAHOMA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">OK</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rA6' %}">
+            <button>
+                <h4 style='text-align:center'><b>ONTARIO, CANADA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">A6</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rOR' %}">
+            <button>
+                <h4 style='text-align:center'><b>OREGON</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">OR</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rPA' %}">
+            <button>
+                <h4 style='text-align:center'><b>PENNSYLVANIA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">PA</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rPR' %}">
+            <button>
+                <h4 style='text-align:center'><b>PUERTO RICO</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">PR</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rA8' %}">
+            <button>
+                <h4 style='text-align:center'><b>QUEBEC, CANADA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">A8</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rRI' %}">
+            <button>
+                <h4 style='text-align:center'><b>RHODE ISLAND</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">RI</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rU0' %}">
+            <button>
+                <h4 style='text-align:center'><b>SINGAPORE</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">U0</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rT3' %}">
+            <button>
+                <h4 style='text-align:center'><b>SOUTH AFRICA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">T3</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rSC' %}">
+            <button>
+                <h4 style='text-align:center'><b>SOUTH CAROLINA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">SC</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rSD' %}">
+            <button>
+                <h4 style='text-align:center'><b>SOUTH DAKOTA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">SD</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rV7' %}">
+            <button>
+                <h4 style='text-align:center'><b>SWEDEN</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">V7</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rV8' %}">
+            <button>
+                <h4 style='text-align:center'><b>SWITZERLAND</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">V8</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rF5' %}">
+            <button>
+                <h4 style='text-align:center'><b>TAIWAN, PROVINCE OF CHINA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">F5</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rTN' %}">
+            <button>
+                <h4 style='text-align:center'><b>TENNESSEE</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">TN</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rTX' %}">
+            <button>
+                <h4 style='text-align:center'><b>TEXAS</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">TX</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rW1' %}">
+            <button>
+                <h4 style='text-align:center'><b>THAILAND</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">W1</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rW8' %}">
+            <button>
+                <h4 style='text-align:center'><b>TURKEY</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">W8</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rX0' %}">
+            <button>
+                <h4 style='text-align:center'><b>UNITED KINGDOM</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">X0</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rX1' %}">
+            <button>
+                <h4 style='text-align:center'><b>UNITED STATES</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">X1</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rUT' %}">
+            <button>
+                <h4 style='text-align:center'><b>UTAH</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">UT</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rVT' %}">
+            <button>
+                <h4 style='text-align:center'><b>VERMONT</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">VT</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rVA' %}">
+            <button>
+                <h4 style='text-align:center'><b>VIRGINIA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">VA</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rWA' %}">
+            <button>
+                <h4 style='text-align:center'><b>WASHINGTON</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">WA</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rWV' %}">
+            <button>
+                <h4 style='text-align:center'><b>WEST VIRGINIA</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">WV</h5>
+            </button>
+        </a>
+        <a href="{% url 'φ:rWI' %}">
+            <button>
+                <h4 style='text-align:center'><b>WISCONSIN</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">WI</h5>
+            </button>
+        </a>
+
+    </ul>
+    
+</div>
+
+
+{% endblock %}
