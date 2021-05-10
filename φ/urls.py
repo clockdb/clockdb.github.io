@@ -10,7 +10,7 @@ urlpatterns = [
     #
     path("audited/", views.audited, name="audited"),
     #
-    path("db/", views.db, name="db"),
+    path("database/", views.database, name="database"),
     #
     path("disclaimer/", views.disclaimer, name="disclaimer"),
     #

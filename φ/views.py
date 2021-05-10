@@ -66,9 +66,9 @@ def audited(request):
         "db": Database.objects.all()[0]
     })
 
-# DB
-def db(request):
-    return render(request, "./φ/db.html", {
+# DATABASE
+def database(request):
+    return render(request, "./φ/database.html", {
         "entities": Entity.objects.all().order_by('-Clockφ')
         .filter(Status='Audited')
     })
