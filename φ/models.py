@@ -360,6 +360,7 @@ class CashFlow(models.Model):
     RepaymentsOfLongTermDebt = models.IntegerField(default=0)
     FinancingCosts = models.IntegerField(default=0)
     NetChangeInShortTermBorrowings = models.IntegerField(default=0)
+    NetChangeInForwardAndHedgesClassifiedAsFinancingActivities = models.IntegerField(default=0)
     NetChangeInNonControllingInterests = models.IntegerField(default=0)
     ProceedsFromRepaymentsOfCommercialPaper = models.IntegerField(default=0)
     RepaymentsOfConvertible = models.IntegerField(default=0)
@@ -436,7 +437,6 @@ class TrialBalance(models.Model):
     EmployeeCompensationCurrent = models.IntegerField(default=0)
     OperatingLeasesCurrent = models.IntegerField(default=0)
     FinanceLeasesCurrent = models.IntegerField(default=0)
-    CapitalLeaseAndFinancingObligationsCurrent = models.IntegerField(default=0)
     DeferredRevenueAndDepositsCurrent = models.IntegerField(default=0)
     AccruedTaxLiabilities = models.IntegerField(default=0)
     DeferredTaxLiabilitiesCurrent = models.IntegerField(default=0)
@@ -455,7 +455,7 @@ class TrialBalance(models.Model):
     RetirementBenefits = models.IntegerField(default=0)
     OperatingLeasesNonCurrent = models.IntegerField(default=0)
     FinanceLeasesNonCurrent = models.IntegerField(default=0)
-    CapitalLeaseAndFinancingObligationsNonCurrent = models.IntegerField(default=0)
+    LeaseIncentiveObligation = models.IntegerField(default=0)
     DeferredRevenueAndDepositsNonCurrent = models.IntegerField(default=0)
     ContingentConsideration = models.IntegerField(default=0)
     AccruedTaxLiabilitiesNonCurrent = models.IntegerField(default=0)
@@ -495,6 +495,7 @@ class TrialBalance(models.Model):
     # non controlling interests
     NonControllingInterestsBeginning = models.IntegerField(default=0)
     DividendsDeclaredToNonControllingInterests = models.IntegerField(default=0)
+    AcquisitionOfNonControllingInterests = models.IntegerField(default=0)
     NonControllingInterestsOthers = models.IntegerField(default=0)
     #
     #

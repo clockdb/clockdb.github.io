@@ -31,6 +31,7 @@
     ////
     document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('Graph').style.display = 'block';
+        window.scrollTo(0, 60);
     })
 
     // enter
@@ -165,7 +166,7 @@
             document.getElementById('Graph').style.display = 'block';
             const url = 'Graph'
             history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
-            window.scrollTo(0, 160);
+            window.scrollTo(0, 60);
         }
     });
 
@@ -526,6 +527,7 @@
         BalanceRetirementBenefits();
         BalanceOperatingLeasesNonCurrent();
         BalanceFinanceLeasesNonCurrent();
+        BalanceLeaseIncentiveObligation();
         BalanceContingentConsideration();
         BalanceAccruedTaxLiabilitiesNonCurrent();
         BalanceDeferredTaxLiabilitiesNonCurrent();
@@ -563,6 +565,7 @@
         BalanceRetainedEarningsOthers();
         BalancePurchaseAndSellOfTreasuryShares();
         BalanceDividendsDeclaredToNonControllingInterests();
+        BalanceAcquisitionOfNonControllingInterests();
         BalanceNonControllingInterestsOthers();
         BalanceComprehensiveIncomeStockholdersEquity();
         BalanceNetIncomeLossStockholdersEquity();
@@ -612,6 +615,7 @@
         RepaymentsOfLongTermDebtRow();
         FinancingCostsRow();
         NetChangeInShortTermBorrowingsRow();
+        NetChangeInForwardAndHedgesClassifiedAsFinancingActivitiesRow();
         NetChangeInNonControllingInterestsRow();
         ProceedsFromRepaymentsOfCommercialPaperRow();
         RepaymentsOfConvertibleRow();
@@ -1822,6 +1826,20 @@
                         <td colspan='2'><input value={{ TrialBalance_fifthlastyear.FinanceLeasesNonCurrent }} class="clock" id="TrialBalanceFinanceLeasesNonCurrent5" onclick="HighLight()" onfocusout="Enter()"></input></td>
                         <td colspan='2'><input value={{ TrialBalance_sixthlastyear.FinanceLeasesNonCurrent }} class="clock" id="TrialBalanceFinanceLeasesNonCurrent6" onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
+                    <tr id="TrialBalanceLeaseIncentiveObligationRow">
+                        <td colspan="2"><h6><b>Lease Incentive Obligation</b></h6></td>
+                        <td style="text-align:center; font-weight:bold;">db</td>
+                        <td>
+                            <input type="checkbox" style="height: 16px;" id="TrialBalanceLeaseIncentiveObligationCheckbox"></input>
+                            <input type="checkbox" style="height: 16px;" id="TrialBalanceLeaseIncentiveObligationCheckbox2"></input>
+                        </td>
+                        <td colspan='2'><input value={{ TrialBalance_lastyear.LeaseIncentiveObligation }} class="clock" id="TrialBalanceLeaseIncentiveObligation1" style="font-weight:bold;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan='2'><input value={{ TrialBalance_secondlastyear.LeaseIncentiveObligation }} class="clock" id="TrialBalanceLeaseIncentiveObligation2" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan='2'><input value={{ TrialBalance_thirdlastyear.LeaseIncentiveObligation }} class="clock" id="TrialBalanceLeaseIncentiveObligation3" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan='2'><input value={{ TrialBalance_fourthlastyear.LeaseIncentiveObligation }} class="clock" id="TrialBalanceLeaseIncentiveObligation4" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan='2'><input value={{ TrialBalance_fifthlastyear.LeaseIncentiveObligation }} class="clock" id="TrialBalanceLeaseIncentiveObligation5" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan='2'><input value={{ TrialBalance_sixthlastyear.LeaseIncentiveObligation }} class="clock" id="TrialBalanceLeaseIncentiveObligation6" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
                     <tr id="TrialBalanceAccruedTaxLiabilitiesNonCurrentRow">
                         <td colspan="2"><h6><b>Accrued Tax Liabilities, Non Current</b></h6></td>
                         <td style="text-align:center; font-weight:bold;">db</td>
@@ -2116,6 +2134,20 @@
                         <td colspan='2'><input value={{ TrialBalance_fifthlastyear.DividendsDeclaredToNonControllingInterests }} class="clock" id="TrialBalanceDividendsDeclaredToNonControllingInterests5" onclick="HighLight()" onfocusout="Enter()"></input></td>
                         <td colspan='2'><input value={{ TrialBalance_sixthlastyear.DividendsDeclaredToNonControllingInterests }} class="clock" id="TrialBalanceDividendsDeclaredToNonControllingInterests6" onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
+                    <tr id="TrialBalanceAcquisitionOfNonControllingInterestsRow">
+                        <td colspan="2"><h6><b>Dividends Declared To Non Controlling Interests</b></h6></td>
+                        <td style="text-align:center; font-weight:bold;">db</td>
+                        <td>
+                            <input type="checkbox" style="height: 16px;" id="TrialBalanceAcquisitionOfNonControllingInterestsCheckbox"></input>
+                            <input type="checkbox" style="height: 16px;" id="TrialBalanceAcquisitionOfNonControllingInterestsCheckbox2"></input>
+                        </td>
+                        <td colspan='2'><input value={{ TrialBalance_lastyear.AcquisitionOfNonControllingInterests }} class="clock" id="TrialBalanceAcquisitionOfNonControllingInterests1" style="font-weight:bold;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan='2'><input value={{ TrialBalance_secondlastyear.AcquisitionOfNonControllingInterests }} class="clock" id="TrialBalanceAcquisitionOfNonControllingInterests2" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan='2'><input value={{ TrialBalance_thirdlastyear.AcquisitionOfNonControllingInterests }} class="clock" id="TrialBalanceAcquisitionOfNonControllingInterests3" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan='2'><input value={{ TrialBalance_fourthlastyear.AcquisitionOfNonControllingInterests }} class="clock" id="TrialBalanceAcquisitionOfNonControllingInterests4" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan='2'><input value={{ TrialBalance_fifthlastyear.AcquisitionOfNonControllingInterests }} class="clock" id="TrialBalanceAcquisitionOfNonControllingInterests5" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan='2'><input value={{ TrialBalance_sixthlastyear.AcquisitionOfNonControllingInterests }} class="clock" id="TrialBalanceAcquisitionOfNonControllingInterests6" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
                     <tr id="TrialBalanceNonControllingInterestsOthersRow">
                         <td colspan="2"><h6><b>Other Adjustment To Non-Controlling Interests</b></h6></td>
                         <td style="text-align:center; font-weight:bold;">db</td>
@@ -2386,6 +2418,7 @@
                                 a = a + parseInt(document.getElementById('TrialBalanceRetirementBenefits1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceOperatingLeasesNonCurrent1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceFinanceLeasesNonCurrent1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('TrialBalanceLeaseIncentiveObligation1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceContingentConsideration1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceAccruedTaxLiabilitiesNonCurrent1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceDeferredTaxLiabilitiesNonCurrent1').value.replaceAll(/,/g, ''));
@@ -2415,6 +2448,7 @@
                                 // Non Controlling Interests
                                 a = a + parseInt(document.getElementById('TrialBalanceNonControllingInterests1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceDividendsDeclaredToNonControllingInterests1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('TrialBalanceAcquisitionOfNonControllingInterests1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceNonControllingInterestsOthers1').value.replaceAll(/,/g, ''));
                                 // Income
                                 a = a + parseInt(document.getElementById('TrialBalanceSales1').value.replaceAll(/,/g, ''));
@@ -2484,6 +2518,7 @@
                                 a = a + parseInt(document.getElementById('TrialBalanceRetirementBenefits2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceOperatingLeasesNonCurrent2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceFinanceLeasesNonCurrent2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('TrialBalanceLeaseIncentiveObligation2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceContingentConsideration2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceAccruedTaxLiabilitiesNonCurrent2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceDeferredTaxLiabilitiesNonCurrent2').value.replaceAll(/,/g, ''));
@@ -2512,6 +2547,7 @@
                                 // Non Controlling Interests
                                 a = a + parseInt(document.getElementById('TrialBalanceNonControllingInterests2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceDividendsDeclaredToNonControllingInterests2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('TrialBalanceAcquisitionOfNonControllingInterests2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceNonControllingInterestsOthers2').value.replaceAll(/,/g, ''));
                                 // Income
                                 a = a + parseInt(document.getElementById('TrialBalanceSales2').value.replaceAll(/,/g, ''));
@@ -2581,6 +2617,7 @@
                                 a = a + parseInt(document.getElementById('TrialBalanceRetirementBenefits3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceOperatingLeasesNonCurrent3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceFinanceLeasesNonCurrent3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('TrialBalanceLeaseIncentiveObligation3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceContingentConsideration3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceAccruedTaxLiabilitiesNonCurrent3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceDeferredTaxLiabilitiesNonCurrent3').value.replaceAll(/,/g, ''));
@@ -2610,6 +2647,7 @@
                                 // Non Controlling Interests
                                 a = a + parseInt(document.getElementById('TrialBalanceNonControllingInterests3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceDividendsDeclaredToNonControllingInterests3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('TrialBalanceAcquisitionOfNonControllingInterests3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceNonControllingInterestsOthers3').value.replaceAll(/,/g, ''));
                                 // Income
                                 a = a + parseInt(document.getElementById('TrialBalanceSales3').value.replaceAll(/,/g, ''));
@@ -2679,6 +2717,7 @@
                                 a = a + parseInt(document.getElementById('TrialBalanceRetirementBenefits4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceOperatingLeasesNonCurrent4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceFinanceLeasesNonCurrent4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('TrialBalanceLeaseIncentiveObligation4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceContingentConsideration4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceAccruedTaxLiabilitiesNonCurrent4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceDeferredTaxLiabilitiesNonCurrent4').value.replaceAll(/,/g, ''));
@@ -2708,6 +2747,7 @@
                                 // Non Controlling Interests
                                 a = a + parseInt(document.getElementById('TrialBalanceNonControllingInterests4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceDividendsDeclaredToNonControllingInterests4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('TrialBalanceAcquisitionOfNonControllingInterests4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceNonControllingInterestsOthers4').value.replaceAll(/,/g, ''));
                                 // Income
                                 a = a + parseInt(document.getElementById('TrialBalanceSales4').value.replaceAll(/,/g, ''));
@@ -2777,6 +2817,7 @@
                                 a = a + parseInt(document.getElementById('TrialBalanceRetirementBenefits5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceOperatingLeasesNonCurrent5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceFinanceLeasesNonCurrent5').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('TrialBalanceLeaseIncentiveObligation5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceContingentConsideration5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceAccruedTaxLiabilitiesNonCurrent5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceDeferredTaxLiabilitiesNonCurrent5').value.replaceAll(/,/g, ''));
@@ -2806,6 +2847,7 @@
                                 // Non Controlling Interests
                                 a = a + parseInt(document.getElementById('TrialBalanceNonControllingInterests5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceDividendsDeclaredToNonControllingInterests5').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('TrialBalanceAcquisitionOfNonControllingInterests5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceNonControllingInterestsOthers5').value.replaceAll(/,/g, ''));
                                 // Income
                                 a = a + parseInt(document.getElementById('TrialBalanceSales5').value.replaceAll(/,/g, ''));
@@ -2875,6 +2917,7 @@
                                 a = a + parseInt(document.getElementById('TrialBalanceRetirementBenefits6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceOperatingLeasesNonCurrent6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceFinanceLeasesNonCurrent6').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('TrialBalanceLeaseIncentiveObligation6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceContingentConsideration6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceAccruedTaxLiabilitiesNonCurrent6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceDeferredTaxLiabilitiesNonCurrent6').value.replaceAll(/,/g, ''));
@@ -2904,6 +2947,7 @@
                                 // Non Controlling Interests
                                 a = a + parseInt(document.getElementById('TrialBalanceNonControllingInterests6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceDividendsDeclaredToNonControllingInterests6').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('TrialBalanceAcquisitionOfNonControllingInterests6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceNonControllingInterestsOthers6').value.replaceAll(/,/g, ''));
                                 // Income
                                 a = a + parseInt(document.getElementById('TrialBalanceSales6').value.replaceAll(/,/g, ''));
@@ -6528,6 +6572,75 @@
                         <td colspan="2"><input class="account" id="FinanceLeasesNonCurrent5" onclick="HighLight()" onfocusout="Enter()"></input></td>
                         <td colspan="2"><input class="account" id="FinanceLeasesNonCurrent6" onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
+                    <tr id='LeaseIncentiveObligationRow'>
+                        <td colspan="2"><h6>Lease Incentive Obligation</h6></td>
+                        <td><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold;">TB</button></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px;" id="FinanceLeaseNonCurrentCheckbox"></input>
+                            <input type="checkbox" style="height: 16px;" id="FinanceLeaseNonCurrentCheckbox2"></input>
+                        </td>
+                        <script>
+                            function BalanceLeaseIncentiveObligation(BalanceLeaseIncentiveObligation) {
+                                var numUSD = new Intl.NumberFormat("en-US", {
+                                    format: "number"
+                                })
+                                z = 0
+                                // last year
+                                a = -Math.round(parseInt(document.getElementById('TrialBalanceLeaseIncentiveObligation1').value.replaceAll(/,/g, '')))
+                                document.getElementById('LeaseIncentiveObligation1').value = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // second last year
+                                a = -Math.round(parseInt(document.getElementById('TrialBalanceLeaseIncentiveObligation2').value.replaceAll(/,/g, '')))
+                                document.getElementById('LeaseIncentiveObligation2').value = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // third last year
+                                a = -Math.round(parseInt(document.getElementById('TrialBalanceLeaseIncentiveObligation3').value.replaceAll(/,/g, '')))
+                                document.getElementById('LeaseIncentiveObligation3').value = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // fourth last year
+                                a = -Math.round(parseInt(document.getElementById('TrialBalanceLeaseIncentiveObligation4').value.replaceAll(/,/g, '')))
+                                document.getElementById('LeaseIncentiveObligation4').value = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // fifth last year
+                                a = -Math.round(parseInt(document.getElementById('TrialBalanceLeaseIncentiveObligation5').value.replaceAll(/,/g, '')))
+                                document.getElementById('LeaseIncentiveObligation5').value = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // sixth last year
+                                a = -Math.round(parseInt(document.getElementById('TrialBalanceLeaseIncentiveObligation6').value.replaceAll(/,/g, '')))
+                                document.getElementById('LeaseIncentiveObligation6').value = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                if (z == 6) {
+                                    document.getElementById('LeaseIncentiveObligationRow').style.display = 'none';
+                                    document.getElementById('TrialBalanceLeaseIncentiveObligationRow').style.display = 'none';
+                                }
+                            };
+                            window.addEventListener('DOMContentLoaded', BalanceLeaseIncentiveObligation)
+                            window.addEventListener('keyup', function() {
+                                var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
+                                if (event.keyCode in formulakeylist) {
+                                    BalanceLeaseIncentiveObligation();
+                                }
+                            })
+                        </script>
+                        <td colspan="2"><input class="account" id="LeaseIncentiveObligation1" style="font-weight:bold;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="LeaseIncentiveObligation2" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="LeaseIncentiveObligation3" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="LeaseIncentiveObligation4" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="LeaseIncentiveObligation5" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="LeaseIncentiveObligation6" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
                     <tr id='ContingentConsiderationRow'>
                         <td colspan="2"><h6>Contingent Consideration</h6></td>
                         <td><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold;">TB</button></td>
@@ -7029,6 +7142,7 @@
                                 a = a + parseInt(document.getElementById('RetirementBenefits1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OperatingLeasesNonCurrent1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('FinanceLeasesNonCurrent1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('LeaseIncentiveObligation1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ContingentConsideration1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccruedTaxLiabilitiesNonCurrent1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DeferredTaxLiabilitiesNonCurrent1').value.replaceAll(/,/g, ''));
@@ -7049,6 +7163,7 @@
                                 a = a + parseInt(document.getElementById('OperatingLeasesNonCurrent2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetirementBenefits2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('FinanceLeasesNonCurrent2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('LeaseIncentiveObligation2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ContingentConsideration2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccruedTaxLiabilitiesNonCurrent2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DeferredTaxLiabilitiesNonCurrent2').value.replaceAll(/,/g, ''));
@@ -7069,6 +7184,7 @@
                                 a = a + parseInt(document.getElementById('OperatingLeasesNonCurrent3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetirementBenefits3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('FinanceLeasesNonCurrent3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('LeaseIncentiveObligation3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ContingentConsideration3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccruedTaxLiabilitiesNonCurrent3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DeferredTaxLiabilitiesNonCurrent3').value.replaceAll(/,/g, ''));
@@ -7089,6 +7205,7 @@
                                 a = a + parseInt(document.getElementById('OperatingLeasesNonCurrent4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetirementBenefits4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('FinanceLeasesNonCurrent4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('LeaseIncentiveObligation4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ContingentConsideration4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccruedTaxLiabilitiesNonCurrent4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DeferredTaxLiabilitiesNonCurrent4').value.replaceAll(/,/g, ''));
@@ -7109,6 +7226,7 @@
                                 a = a + parseInt(document.getElementById('OperatingLeasesNonCurrent5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetirementBenefits5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('FinanceLeasesNonCurrent5').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('LeaseIncentiveObligation5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ContingentConsideration5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccruedTaxLiabilitiesNonCurrent5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DeferredTaxLiabilitiesNonCurrent5').value.replaceAll(/,/g, ''));
@@ -7129,6 +7247,7 @@
                                 a = a + parseInt(document.getElementById('OperatingLeasesNonCurrent6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetirementBenefits6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('FinanceLeasesNonCurrent6').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('LeaseIncentiveObligation6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ContingentConsideration6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccruedTaxLiabilitiesNonCurrent6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DeferredTaxLiabilitiesNonCurrent6').value.replaceAll(/,/g, ''));
@@ -7166,7 +7285,7 @@
                         <td colspan="6"><h6><b>NOTE 5: STOCKHOLDERS' EQUITY</b></h6></td>
                     </tr>
                     <tr></tr>
-                    <tr>
+                    <tr id='ConvertibleDebtRow'>
                         <td colspan="2"><h6>Convertible Debt</h6></td>
                         <td><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold;">TB</button></td>
                         <td>
@@ -7180,7 +7299,7 @@
                         <td colspan="2"><input class="account" id="ConvertibleDebt5" onclick="HighLight()" onfocusout="Enter()"></input></td>
                         <td colspan="2"><input class="account" id="ConvertibleDebt6" onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
-                    <tr>
+                    <tr id='CommonSharesRow'>
                         <td colspan="2"><h6>Common Shares</h6></td>
                         <td><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold;">TB</button></td>
                         <td>
@@ -7194,7 +7313,7 @@
                         <td colspan="2"><input class="account" id="CommonShares5" onclick="HighLight()" onfocusout="Enter()"></input></td>
                         <td colspan="2"><input class="account" id="CommonShares6" onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
-                    <tr>
+                    <tr id='RetainedEarningsRow'>
                         <td colspan="2"><h6>Retained Earnings (Accumulated Deficit)</h6></td>
                         <td><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold;">TB</button></td>
                         <td>
@@ -7208,7 +7327,7 @@
                         <td colspan="2"><input class="account" id="RetainedEarningsAccumulatedDeficit5" onclick="HighLight()" onfocusout="Enter()"></input></td>
                         <td colspan="2"><input class="account" id="RetainedEarningsAccumulatedDeficit6" onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
-                    <tr>
+                    <tr id='AccumulatedOtherComprehensiveIncomeRow'>
                         <td colspan="2"><h6>Accumulated Other Comprehensive Income (Loss)</h6></td>
                         <td><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold;">TB</button></td>
                         <td>
@@ -9334,6 +9453,75 @@
                         <td colspan="2"><input class="account" id="DividendsDeclaredToNonControllingInterests5" onclick="HighLight()" onfocusout="Enter()"></input></td>
                         <td colspan="2"><input class="account" id="DividendsDeclaredToNonControllingInterests6" onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
+                    <tr id='AcquisitionOfNonControllingInterestsRow'>
+                        <td colspan="2"><h6>Acquisition And Other Distributions To Non Controlling Interests</h6></td>
+                        <td><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold;">TB</button></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px;" id="AcquisitionOfNonControllingInterestsCheckbox"></input>
+                            <input type="checkbox" style="height: 16px;" id="AcquisitionOfNonControllingInterestsCheckbox2"></input>
+                        </td>
+                        <script>
+                            function BalanceAcquisitionOfNonControllingInterests(BalanceAcquisitionOfNonControllingInterests) {
+                                var numUSD = new Intl.NumberFormat("en-US", {
+                                    format: "number"
+                                })
+                                z = 0
+                                // last year
+                                a = -Math.round(parseInt(document.getElementById('TrialBalanceAcquisitionOfNonControllingInterests1').value.replaceAll(/,/g, '')))
+                                document.getElementById('AcquisitionOfNonControllingInterests1').value = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // second last year
+                                a = -Math.round(parseInt(document.getElementById('TrialBalanceAcquisitionOfNonControllingInterests2').value.replaceAll(/,/g, '')))
+                                document.getElementById('AcquisitionOfNonControllingInterests2').value = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // third last year
+                                a = -Math.round(parseInt(document.getElementById('TrialBalanceAcquisitionOfNonControllingInterests3').value.replaceAll(/,/g, '')))
+                                document.getElementById('AcquisitionOfNonControllingInterests3').value = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // fourth last year
+                                a = -Math.round(parseInt(document.getElementById('TrialBalanceAcquisitionOfNonControllingInterests4').value.replaceAll(/,/g, '')))
+                                document.getElementById('AcquisitionOfNonControllingInterests4').value = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // fifth last year
+                                a = -Math.round(parseInt(document.getElementById('TrialBalanceAcquisitionOfNonControllingInterests5').value.replaceAll(/,/g, '')))
+                                document.getElementById('AcquisitionOfNonControllingInterests5').value = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // sixth last year
+                                a = -Math.round(parseInt(document.getElementById('TrialBalanceAcquisitionOfNonControllingInterests6').value.replaceAll(/,/g, '')))
+                                document.getElementById('AcquisitionOfNonControllingInterests6').value = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                if (z == 6) {
+                                    document.getElementById('AcquisitionOfNonControllingInterestsRow').style.display = 'none';
+                                    document.getElementById('TrialBalanceAcquisitionOfNonControllingInterestsRow').style.display = 'none';
+                                }
+                            };
+                            window.addEventListener('DOMContentLoaded', BalanceAcquisitionOfNonControllingInterests)
+                            window.addEventListener('keyup', function() {
+                                var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
+                                if (event.keyCode in formulakeylist) {
+                                    BalanceAcquisitionOfNonControllingInterests();
+                                }
+                            })
+                        </script>
+                        <td colspan="2"><input class="account" id="AcquisitionOfNonControllingInterests1" style="font-weight:bold;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="AcquisitionOfNonControllingInterests2" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="AcquisitionOfNonControllingInterests3" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="AcquisitionOfNonControllingInterests4" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="AcquisitionOfNonControllingInterests5" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="AcquisitionOfNonControllingInterests6" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
                     <tr id='NonControllingInterestsOthersRow'>
                         <td colspan="2"><h6>Other Transactions Affecting Non Controlling Interests</h6></td>
                         <td><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold;">TB</button></td>
@@ -9532,6 +9720,7 @@
                                 a = a + parseInt(document.getElementById('PurchaseAndSellOfTreasuryShares1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonControllingInterestsOthers1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsDeclaredToNonControllingInterests1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('AcquisitionOfNonControllingInterests1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetIncomeLossStockholdersEquity1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ComprehensiveIncomeStockholdersEquity1').value.replaceAll(/,/g, ''));
                                 document.getElementById('StockholdersEquity1').value = numUSD.format(Math.round(a));
@@ -9546,6 +9735,7 @@
                                 a = a + parseInt(document.getElementById('PurchaseAndSellOfTreasuryShares2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonControllingInterestsOthers2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsDeclaredToNonControllingInterests2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('AcquisitionOfNonControllingInterests2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetIncomeLossStockholdersEquity2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ComprehensiveIncomeStockholdersEquity2').value.replaceAll(/,/g, ''));
                                 document.getElementById('StockholdersEquity2').value = numUSD.format(Math.round(a));
@@ -9560,6 +9750,7 @@
                                 a = a + parseInt(document.getElementById('PurchaseAndSellOfTreasuryShares3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonControllingInterestsOthers3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsDeclaredToNonControllingInterests3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('AcquisitionOfNonControllingInterests3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetIncomeLossStockholdersEquity3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ComprehensiveIncomeStockholdersEquity3').value.replaceAll(/,/g, ''));
                                 document.getElementById('StockholdersEquity3').value = numUSD.format(Math.round(a));
@@ -9574,6 +9765,7 @@
                                 a = a + parseInt(document.getElementById('PurchaseAndSellOfTreasuryShares4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonControllingInterestsOthers4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsDeclaredToNonControllingInterests4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('AcquisitionOfNonControllingInterests4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetIncomeLossStockholdersEquity4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ComprehensiveIncomeStockholdersEquity4').value.replaceAll(/,/g, ''));
                                 document.getElementById('StockholdersEquity4').value = numUSD.format(Math.round(a));
@@ -9588,6 +9780,7 @@
                                 a = a + parseInt(document.getElementById('PurchaseAndSellOfTreasuryShares5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonControllingInterestsOthers5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsDeclaredToNonControllingInterests5').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('AcquisitionOfNonControllingInterests5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetIncomeLossStockholdersEquity5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ComprehensiveIncomeStockholdersEquity5').value.replaceAll(/,/g, ''));
                                 document.getElementById('StockholdersEquity5').value = numUSD.format(Math.round(a));
@@ -9602,6 +9795,7 @@
                                 a = a + parseInt(document.getElementById('PurchaseAndSellOfTreasuryShares6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonControllingInterestsOthers6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsDeclaredToNonControllingInterests6').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('AcquisitionOfNonControllingInterests6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetIncomeLossStockholdersEquity6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ComprehensiveIncomeStockholdersEquity6').value.replaceAll(/,/g, ''));
                                 document.getElementById('StockholdersEquity6').value = numUSD.format(Math.round(a));
@@ -9610,21 +9804,43 @@
                                 // Last Year
                                 a = -parseInt(document.getElementById('TrialBalanceConvertibleDebt1').value.replaceAll(/,/g, ''));
                                 document.getElementById('ConvertibleDebt1').value = numUSD.format(Math.round(a));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
                                 // Second Last Year
                                 a = -parseInt(document.getElementById('TrialBalanceConvertibleDebt2').value.replaceAll(/,/g, ''));
                                 document.getElementById('ConvertibleDebt2').value = numUSD.format(Math.round(a));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
                                 // Third Last Year
                                 a = -parseInt(document.getElementById('TrialBalanceConvertibleDebt3').value.replaceAll(/,/g, ''));
                                 document.getElementById('ConvertibleDebt3').value = numUSD.format(Math.round(a));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
                                 // Fourth Last Year
                                 a = -parseInt(document.getElementById('TrialBalanceConvertibleDebt4').value.replaceAll(/,/g, ''));
                                 document.getElementById('ConvertibleDebt4').value = numUSD.format(Math.round(a));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
                                 // Fifth Year
                                 a = -parseInt(document.getElementById('TrialBalanceConvertibleDebt5').value.replaceAll(/,/g, ''));
                                 document.getElementById('ConvertibleDebt5').value = numUSD.format(Math.round(a));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
                                 // Fifth Year
                                 a = -parseInt(document.getElementById('TrialBalanceConvertibleDebt6').value.replaceAll(/,/g, ''));
                                 document.getElementById('ConvertibleDebt6').value = numUSD.format(Math.round(a));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                if (z == 6) {
+                                    document.getElementById('ConvertibleDebtRow').style.display = 'none';
+                                    document.getElementById('TrialBalanceConvertibleDebtRow').style.display = 'none';
+                                }
                                 ////////////////////
                                 // Common Shares (Balance Sheets) 
                                 // Last Year
@@ -9831,6 +10047,7 @@
                                 // Last Year
                                 a = -parseInt(document.getElementById('TrialBalanceNonControllingInterests1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsDeclaredToNonControllingInterests1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('AcquisitionOfNonControllingInterests1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonControllingInterestsOthers1').value.replaceAll(/,/g, ''));
                                 document.getElementById('NonControllingInterests1').value = numUSD.format(Math.round(a));
                                 if (a == 0) {
@@ -9839,6 +10056,7 @@
                                 // Second Last Year
                                 a = -parseInt(document.getElementById('TrialBalanceNonControllingInterests2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsDeclaredToNonControllingInterests2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('AcquisitionOfNonControllingInterests2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonControllingInterestsOthers2').value.replaceAll(/,/g, ''));
                                 document.getElementById('NonControllingInterests2').value = numUSD.format(Math.round(a));
                                 if (a == 0) {
@@ -9847,6 +10065,7 @@
                                 // Third Last Year
                                 a = -parseInt(document.getElementById('TrialBalanceNonControllingInterests3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsDeclaredToNonControllingInterests3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('AcquisitionOfNonControllingInterests3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonControllingInterestsOthers3').value.replaceAll(/,/g, ''));
                                 document.getElementById('NonControllingInterests3').value = numUSD.format(Math.round(a));
                                 if (a == 0) {
@@ -9855,6 +10074,7 @@
                                 // Fourth Last Year
                                 a = -parseInt(document.getElementById('TrialBalanceNonControllingInterests4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsDeclaredToNonControllingInterests4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('AcquisitionOfNonControllingInterests4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonControllingInterestsOthers4').value.replaceAll(/,/g, ''));
                                 document.getElementById('NonControllingInterests4').value = numUSD.format(Math.round(a));
                                 if (a == 0) {
@@ -9863,6 +10083,7 @@
                                 // Fifth Year
                                 a = -parseInt(document.getElementById('TrialBalanceNonControllingInterests5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsDeclaredToNonControllingInterests5').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('AcquisitionOfNonControllingInterests5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonControllingInterestsOthers5').value.replaceAll(/,/g, ''));
                                 document.getElementById('NonControllingInterests5').value = numUSD.format(Math.round(a));
                                 if (a == 0) {
@@ -9871,6 +10092,7 @@
                                 // Sixth Year
                                 a = -parseInt(document.getElementById('TrialBalanceNonControllingInterests6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsDeclaredToNonControllingInterests6').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('AcquisitionOfNonControllingInterests6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonControllingInterestsOthers6').value.replaceAll(/,/g, ''));
                                 document.getElementById('NonControllingInterests6').value = numUSD.format(Math.round(a));
                                 if (a == 0) {
@@ -9884,7 +10106,7 @@
                                 // Stockholders Equity (Balance Sheets) 
                                 // Last Year
                                 a = parseInt(document.getElementById('ConvertibleDebt1').value.replaceAll(/,/g, ''));
-                                a = parseInt(document.getElementById('CommonShares1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('CommonShares1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccumulatedOtherComprehensiveIncomeLoss1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetainedEarningsAccumulatedDeficit1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TreasuryShares1').value.replaceAll(/,/g, ''));
@@ -9894,7 +10116,7 @@
                                 document.getElementById('BalanceSheetsStockholdersEquity1').value = numUSD.format(Math.round(a));
                                 // Second Last Year
                                 a = parseInt(document.getElementById('ConvertibleDebt2').value.replaceAll(/,/g, ''));
-                                a = parseInt(document.getElementById('CommonShares2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('CommonShares2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccumulatedOtherComprehensiveIncomeLoss2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetainedEarningsAccumulatedDeficit2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TreasuryShares2').value.replaceAll(/,/g, ''));
@@ -9904,7 +10126,7 @@
                                 document.getElementById('BalanceSheetsStockholdersEquity2').value = numUSD.format(Math.round(a));
                                 // Third Last Year
                                 a = parseInt(document.getElementById('ConvertibleDebt3').value.replaceAll(/,/g, ''));
-                                a = parseInt(document.getElementById('CommonShares3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('CommonShares3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccumulatedOtherComprehensiveIncomeLoss3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetainedEarningsAccumulatedDeficit3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TreasuryShares3').value.replaceAll(/,/g, ''));
@@ -9914,7 +10136,7 @@
                                 document.getElementById('BalanceSheetsStockholdersEquity3').value = numUSD.format(Math.round(a));
                                 // Fourth Last Year
                                 a = parseInt(document.getElementById('ConvertibleDebt4').value.replaceAll(/,/g, ''));
-                                a = parseInt(document.getElementById('CommonShares4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('CommonShares4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccumulatedOtherComprehensiveIncomeLoss4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetainedEarningsAccumulatedDeficit4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TreasuryShares4').value.replaceAll(/,/g, ''));
@@ -9924,7 +10146,7 @@
                                 document.getElementById('BalanceSheetsStockholdersEquity4').value = numUSD.format(Math.round(a));
                                 // Fifth Year
                                 a = parseInt(document.getElementById('ConvertibleDebt5').value.replaceAll(/,/g, ''));
-                                a = parseInt(document.getElementById('CommonShares5').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('CommonShares5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccumulatedOtherComprehensiveIncomeLoss5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetainedEarningsAccumulatedDeficit5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TreasuryShares5').value.replaceAll(/,/g, ''));
@@ -9934,7 +10156,7 @@
                                 document.getElementById('BalanceSheetsStockholdersEquity5').value = numUSD.format(Math.round(a));
                                 // Sixth Year
                                 a = parseInt(document.getElementById('ConvertibleDebt6').value.replaceAll(/,/g, ''));
-                                a = parseInt(document.getElementById('CommonShares6').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('CommonShares6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccumulatedOtherComprehensiveIncomeLoss6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetainedEarningsAccumulatedDeficit6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TreasuryShares6').value.replaceAll(/,/g, ''));
@@ -12969,6 +13191,65 @@
                         <td colspan="2"><input class="clock" id="NetChangeInShortTermBorrowings5" value={{ CashFlow_fifthlastyear.NetChangeInShortTermBorrowings }} onclick="HighLight()" onfocusout="Enter()"></input></td>
                         <td colspan="2"><input class="clock" id="NetChangeInShortTermBorrowings6" value={{ CashFlow_sixthlastyear.NetChangeInShortTermBorrowings }} onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
+                    <tr id='NetChangeInForwardAndHedgesClassifiedAsFinancingActivitiesRow'>
+                        <td colspan="2"><h6>Net Change In Forward And Hedges Classified As Financing Activities</h6></td>
+                        <td style="text-align:center; font-weight:bold;">db</td>
+                        <td>
+                            <input type="checkbox" style="height: 16px;" id="NetChangeInForwardAndHedgesClassifiedAsFinancingActivitiesCheckbox"></input>
+                            <input type="checkbox" style="height: 16px;" id="NetChangeInForwardAndHedgesClassifiedAsFinancingActivitiesCheckbox2"></input>
+                        </td>
+                        <script>
+                            function NetChangeInForwardAndHedgesClassifiedAsFinancingActivitiesRow(NetChangeInForwardAndHedgesClassifiedAsFinancingActivitiesRow) {
+                                z = 0
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('NetChangeInForwardAndHedgesClassifiedAsFinancingActivities1').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('NetChangeInForwardAndHedgesClassifiedAsFinancingActivities2').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('NetChangeInForwardAndHedgesClassifiedAsFinancingActivities3').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('NetChangeInForwardAndHedgesClassifiedAsFinancingActivities4').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('NetChangeInForwardAndHedgesClassifiedAsFinancingActivities5').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // last year
+                                a = Math.round(parseInt(document.getElementById('NetChangeInForwardAndHedgesClassifiedAsFinancingActivities6').value.replaceAll(/,/g, '')))
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                if (z == 6) {
+                                    document.getElementById('NetChangeInForwardAndHedgesClassifiedAsFinancingActivitiesRow').style.display = 'none';
+                                }
+                            };
+                            window.addEventListener('DOMContentLoaded', NetChangeInForwardAndHedgesClassifiedAsFinancingActivitiesRow)
+                            window.addEventListener('keyup', function() {
+                                var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
+                                if (event.keyCode in formulakeylist) {
+                                    NetChangeInForwardAndHedgesClassifiedAsFinancingActivitiesRow();
+                                }
+                            })
+                        </script>
+                        <td colspan="2"><input class="clock" id="NetChangeInForwardAndHedgesClassifiedAsFinancingActivities1" style="font-weight:bold;" value={{ CashFlow_lastyear.NetChangeInForwardAndHedgesClassifiedAsFinancingActivities }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="clock" id="NetChangeInForwardAndHedgesClassifiedAsFinancingActivities2" value={{ CashFlow_secondlastyear.NetChangeInForwardAndHedgesClassifiedAsFinancingActivities }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="clock" id="NetChangeInForwardAndHedgesClassifiedAsFinancingActivities3" value={{ CashFlow_thirdlastyear.NetChangeInForwardAndHedgesClassifiedAsFinancingActivities }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="clock" id="NetChangeInForwardAndHedgesClassifiedAsFinancingActivities4" value={{ CashFlow_fourthlastyear.NetChangeInForwardAndHedgesClassifiedAsFinancingActivities }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="clock" id="NetChangeInForwardAndHedgesClassifiedAsFinancingActivities5" value={{ CashFlow_fifthlastyear.NetChangeInForwardAndHedgesClassifiedAsFinancingActivities }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="clock" id="NetChangeInForwardAndHedgesClassifiedAsFinancingActivities6" value={{ CashFlow_sixthlastyear.NetChangeInForwardAndHedgesClassifiedAsFinancingActivities }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
                     <tr id='NetChangeInNonControllingInterestsRow'>
                         <td colspan="2"><h6>Net Change In Non-Controlling Interests</h6></td>
                         <td style="text-align:center; font-weight:bold;">db</td>
@@ -13290,6 +13571,7 @@
                                 a = a + parseInt(document.getElementById('RepaymentsOfConvertible1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IssuanceOfConvertible1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetChangeInShortTermBorrowings1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('NetChangeInForwardAndHedgesClassifiedAsFinancingActivities1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetChangeInNonControllingInterests1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OtherFinancingActivities1').value.replaceAll(/,/g, ''));
                                 document.getElementById('FinancingActivitiesNote1').value = numUSD.format(Math.round(a));
@@ -13309,6 +13591,7 @@
                                 a = a + parseInt(document.getElementById('RepaymentsOfConvertible2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IssuanceOfConvertible2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetChangeInShortTermBorrowings2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('NetChangeInForwardAndHedgesClassifiedAsFinancingActivities2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetChangeInNonControllingInterests2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OtherFinancingActivities2').value.replaceAll(/,/g, ''));
                                 document.getElementById('FinancingActivitiesNote2').value = numUSD.format(Math.round(a));
@@ -13328,6 +13611,7 @@
                                 a = a + parseInt(document.getElementById('RepaymentsOfConvertible3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IssuanceOfConvertible3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetChangeInShortTermBorrowings3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('NetChangeInForwardAndHedgesClassifiedAsFinancingActivities3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetChangeInNonControllingInterests3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OtherFinancingActivities3').value.replaceAll(/,/g, ''));
                                 document.getElementById('FinancingActivitiesNote3').value = numUSD.format(Math.round(a));
@@ -13347,6 +13631,7 @@
                                 a = a + parseInt(document.getElementById('RepaymentsOfConvertible4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IssuanceOfConvertible4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetChangeInShortTermBorrowings4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('NetChangeInForwardAndHedgesClassifiedAsFinancingActivities4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetChangeInNonControllingInterests4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OtherFinancingActivities4').value.replaceAll(/,/g, ''));
                                 document.getElementById('FinancingActivitiesNote4').value = numUSD.format(Math.round(a));
@@ -13366,6 +13651,7 @@
                                 a = a + parseInt(document.getElementById('RepaymentsOfConvertible5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IssuanceOfConvertible5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetChangeInShortTermBorrowings5').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('NetChangeInForwardAndHedgesClassifiedAsFinancingActivities5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetChangeInNonControllingInterests5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OtherFinancingActivities5').value.replaceAll(/,/g, ''));
                                 document.getElementById('FinancingActivitiesNote5').value = numUSD.format(Math.round(a));
@@ -13385,6 +13671,7 @@
                                 a = a + parseInt(document.getElementById('RepaymentsOfConvertible6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('IssuanceOfConvertible6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetChangeInShortTermBorrowings6').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('NetChangeInForwardAndHedgesClassifiedAsFinancingActivities6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetChangeInNonControllingInterests6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OtherFinancingActivities6').value.replaceAll(/,/g, ''));
                                 document.getElementById('FinancingActivitiesNote6').value = numUSD.format(Math.round(a));
@@ -16469,7 +16756,7 @@
                         <td colspan='2'><input id="BusinessValueCCF6" onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><h6><b>Long-Term Debt, Lease Obligations And Retirement Benefits Liability</b></h6></td>
+                        <td colspan="2"><h6><b>Long-Term Debt And Obligations</b></h6></td>
                         <td style="color:#0d47a1; text-align:center; font-weight:bold;">(k)</td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="TotalDebtCCFCheckbox"></input>
@@ -16487,6 +16774,7 @@
                                 a = a + parseInt(document.getElementById('OperatingLeasesNonCurrent1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('FinanceLeasesCurrent1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('FinanceLeasesNonCurrent1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('LeaseIncentiveObligation1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetirementBenefits1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ConvertibleDebt1').value.replaceAll(/,/g, ''));
                                 document.getElementById('TotalDebtAndLeaseObligationCCF1').value = numUSD.format(Math.round(-a));
@@ -16497,6 +16785,7 @@
                                 a = a + parseInt(document.getElementById('OperatingLeasesNonCurrent2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('FinanceLeasesCurrent2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('FinanceLeasesNonCurrent2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('LeaseIncentiveObligation2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetirementBenefits2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ConvertibleDebt2').value.replaceAll(/,/g, ''));
                                 document.getElementById('TotalDebtAndLeaseObligationCCF2').value = numUSD.format(Math.round(-a));
@@ -16507,6 +16796,7 @@
                                 a = a + parseInt(document.getElementById('OperatingLeasesNonCurrent3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('FinanceLeasesCurrent3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('FinanceLeasesNonCurrent3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('LeaseIncentiveObligation3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetirementBenefits3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ConvertibleDebt3').value.replaceAll(/,/g, ''));
                                 document.getElementById('TotalDebtAndLeaseObligationCCF3').value = numUSD.format(Math.round(-a));
@@ -16517,6 +16807,7 @@
                                 a = a + parseInt(document.getElementById('OperatingLeasesNonCurrent4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('FinanceLeasesCurrent4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('FinanceLeasesNonCurrent4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('LeaseIncentiveObligation4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetirementBenefits4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ConvertibleDebt4').value.replaceAll(/,/g, ''));
                                 document.getElementById('TotalDebtAndLeaseObligationCCF4').value = numUSD.format(Math.round(-a));
@@ -17578,7 +17869,7 @@
                         <td colspan="2"><input id="BusinessValueCI6" onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><h6><b>Long-Term Debt, Lease Obligations And Retirement Benefits Liability</b></h6></td>
+                        <td colspan="2"><h6><b>Long-Term Debt And Obligations</b></h6></td>
                         <td style="color:#0d47a1; text-align:center; font-weight:bold;">(k)</td>
                         <td>
                             <input type="checkbox" style="height: 16px;" id="TotalDebtCICheckbox"></input>
@@ -20110,6 +20401,7 @@
                                 a = a + parseInt(document.getElementById('RetirementBenefits1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OperatingLeasesNonCurrent1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('FinanceLeasesNonCurrent1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('LeaseIncentiveObligation1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ContingentConsideration1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccruedTaxLiabilitiesNonCurrent1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DeferredTaxLiabilitiesNonCurrent1').value.replaceAll(/,/g, ''));
@@ -20124,6 +20416,7 @@
                                 a = a + parseInt(document.getElementById('RetirementBenefits2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OperatingLeasesNonCurrent2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('FinanceLeasesNonCurrent2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('LeaseIncentiveObligation2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ContingentConsideration2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccruedTaxLiabilitiesNonCurrent2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DeferredTaxLiabilitiesNonCurrent2').value.replaceAll(/,/g, ''));
@@ -20138,6 +20431,7 @@
                                 a = a + parseInt(document.getElementById('RetirementBenefits3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OperatingLeasesNonCurrent3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('FinanceLeasesNonCurrent3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('LeaseIncentiveObligation3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ContingentConsideration3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccruedTaxLiabilitiesNonCurrent3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DeferredTaxLiabilitiesNonCurrent3').value.replaceAll(/,/g, ''));
@@ -20152,6 +20446,7 @@
                                 a = a + parseInt(document.getElementById('RetirementBenefits4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OperatingLeasesNonCurrent4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('FinanceLeasesNonCurrent4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('LeaseIncentiveObligation4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ContingentConsideration4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccruedTaxLiabilitiesNonCurrent4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DeferredTaxLiabilitiesNonCurrent4').value.replaceAll(/,/g, ''));
@@ -20166,6 +20461,7 @@
                                 a = a + parseInt(document.getElementById('RetirementBenefits5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OperatingLeasesNonCurrent5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('FinanceLeasesNonCurrent4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('LeaseIncentiveObligation4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ContingentConsideration5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccruedTaxLiabilitiesNonCurrent5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DeferredTaxLiabilitiesNonCurrent5').value.replaceAll(/,/g, ''));
@@ -20180,6 +20476,7 @@
                                 a = a + parseInt(document.getElementById('RetirementBenefits6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OperatingLeasesNonCurrent6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('FinanceLeasesNonCurrent6').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('LeaseIncentiveObligation6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ContingentConsideration6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccruedTaxLiabilitiesNonCurrent6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DeferredTaxLiabilitiesNonCurrent6').value.replaceAll(/,/g, ''));
@@ -21626,6 +21923,7 @@
                                 a = a + parseInt(document.getElementById('RetainedEarningsOthers1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonControllingInterestsOthers1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsDeclaredToNonControllingInterests1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('AcquisitionOfNonControllingInterests1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ComprehensiveIncomeStockholdersEquity1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetIncome1').value.replaceAll(/,/g, ''));
                                 document.getElementById('PRO-4.1.11').value = numUSD.format(-a);
@@ -21640,6 +21938,7 @@
                                 a = a + parseInt(document.getElementById('RetainedEarningsOthers2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonControllingInterestsOthers2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsDeclaredToNonControllingInterests2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('AcquisitionOfNonControllingInterests2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ComprehensiveIncomeStockholdersEquity2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetIncome2').value.replaceAll(/,/g, ''));
                                 document.getElementById('PRO-4.1.12').value = numUSD.format(-a);
@@ -21654,6 +21953,7 @@
                                 a = a + parseInt(document.getElementById('RetainedEarningsOthers3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonControllingInterestsOthers3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsDeclaredToNonControllingInterests3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('AcquisitionOfNonControllingInterests3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ComprehensiveIncomeStockholdersEquity3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetIncome3').value.replaceAll(/,/g, ''));
                                 document.getElementById('PRO-4.1.13').value = numUSD.format(-a);
@@ -21668,6 +21968,7 @@
                                 a = a + parseInt(document.getElementById('RetainedEarningsOthers4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonControllingInterestsOthers4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsDeclaredToNonControllingInterests4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('AcquisitionOfNonControllingInterests4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ComprehensiveIncomeStockholdersEquity4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetIncome4').value.replaceAll(/,/g, ''));
                                 document.getElementById('PRO-4.1.14').value = numUSD.format(-a);
@@ -21682,6 +21983,7 @@
                                 a = a + parseInt(document.getElementById('RetainedEarningsOthers5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonControllingInterestsOthers5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsDeclaredToNonControllingInterests5').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('AcquisitionOfNonControllingInterests5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ComprehensiveIncomeStockholdersEquity5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetIncome5').value.replaceAll(/,/g, ''));
                                 document.getElementById('PRO-4.1.15').value = numUSD.format(-a);
@@ -21696,6 +21998,7 @@
                                 a = a + parseInt(document.getElementById('RetainedEarningsOthers6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NonControllingInterestsOthers6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsDeclaredToNonControllingInterests6').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('AcquisitionOfNonControllingInterests6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ComprehensiveIncomeStockholdersEquity6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetIncome6').value.replaceAll(/,/g, ''));
                                 document.getElementById('PRO-4.1.16').value = numUSD.format(-a);

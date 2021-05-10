@@ -46,22 +46,40 @@ CashFlow_GLs = []
 
 # Regular Expressions
 RegularExpressions = [
-    'AndAdditionalPaidInCapitalParValueSharesAuthorizedAndSharesIssuedAndOutstandingRespectively',
-    'NoParValueAuthorizedSharesIssuedSharesAnd',
-    'ParValuePerShareAndAdditionalPaidInCapitalSharesAuthorizedSharesIssued',
-    'ParValuePerShareAndAdditionalPaidInCapitalSharesAuthorized(SharesIssued)',
-    'ParValueSharesAuthorizedSharesIssuedAndOutstanding(IssuedAndOutstandingIn)AndCapitalInExcessOfParValue',
-    'ParValuePerShareSharesAuthorizedAtJanuaryAndJanuaryRespectivelySharesIssuedAndOutstandingAtJanuarySharesIssuedAndOutstandingAtJanuary',
-    'ParValuePerShareSharesAuthorizedAndNoSharesIssuedAndOutstandingAtJanuaryAndJanuaryRespectively',
-    'ParValueSharesAuthorizedAtDecemberAndDecemberSharesAndSharesIssuedAndOutstandingAtDecemberAndDecemberRespectively',
-    'ParValue(SharesAuthorizedAndIssuedAndOutstandingRespectively)',
-    'OfAtMarchAndAtMarch',
-    'ParValueAuthorizedSharesAtMarchAndMarchRespectivelyIssuedSharesAndAtMarchAndMarchRespectively',
-    'ParValueAuthorizedSharesInAndIssuedSharesInAndInOutstandingSharesInAndIn',
-    'ParValueAuthorizedSharesInAndIssuedAndOutstandingSharesInAndIn',
-    'ParValueAuthorizedSharesInAndNoneIssuedAndOutstanding',
-    'ParValuePerShareSharesAuthorizedAndSharesIssuedAndOutstandingAtSeptemberAndSeptemberRespectively',
+    'AndAdditional',
+    'AtJanuary',
+    'AuthorizedShares',
+    'AndJanuary',
+    'AndOutstanding',
+    'AndPaidInCapital',
+    'AndAdditionalPaidInCapital',
+    'ParValue'
+    'SharesAuthorized',
+    'SharesIssued'
+    'Respectively',
+    'OfParValue',
+    'OutstandingAt',
+    'AtDecember',
+    'AndDecember',
+    'SharesAnd',
+    'AndIssued',
+    'OfAt',
+    'MarchAnd',
+    'AtMarch',
+    'IssuedShare',
+    'AndMarch',
+    'InAndIssued',
+    'SharesInAndIn',
+    'OutstandingShares',
+    'InAndIn',
+    'InAndNone',
+    'IssuedAndOutstanding',
+    'PerShare',
+    'AtSeptember',
+    'AndSeptember',
     'NetOfAccumulatedAmortization',
+    'AsOfDecember',
+    '()',
 ]
 
 entities = Entity.objects.all().order_by(
@@ -85,7 +103,7 @@ for count in range(0, ll):
     e = entities[count]
     #
     if ll == 1:
-        e = Entity.objects.get(TradingSymbol='BKNG')
+        e = Entity.objects.get(TradingSymbol='WCRS')
     #
     phases = [
         'Phase 7.2',
@@ -729,7 +747,6 @@ for count in range(0, ll):
                                             ]
                                             b = [
                                                 'Asset',
-                                                'LongTermLiabilities',
                                                 'OtherLongTermLiabilit',
                                                 'OtherNonCurrentLiabilit',
                                                 'OtherNoncurrentLiabilit',
@@ -780,11 +797,11 @@ for count in range(0, ll):
                                                 'Asset',
                                                 'Accrued',
                                                 'Businesses',
-                                                'ContractLiabilities',
+                                                'Contract',
                                                 'Current',
                                                 'Equity',
                                                 'Lease',
-                                                'LiabilitiesHeldForSale',
+                                                'HeldForSale',
                                                 'LongTermLiabilit',
                                                 'NonCurrent',
                                                 'Noncurrent',
@@ -1240,7 +1257,7 @@ for count in range(0, ll):
                                                     q = [
                                                         'Investment',
                                                         'Securities',
-                                                        'TradingAssets',
+                                                        'Trading',
                                                     ]
                                                     b = [
                                                         'AssetsCurrent',
@@ -1507,6 +1524,7 @@ for count in range(0, ll):
                                                 if r < CurrentAssetsRank:
                                                     d = key
                                                     q = [
+                                                        'LoansReceivable',
                                                         'NonTradeReceivable',
                                                         'OtherReceivable',
                                                     ]
@@ -1764,7 +1782,7 @@ for count in range(0, ll):
                                                     q = [
                                                         'Discontinued',
                                                         'AssetsHeldForSale',
-                                                        'AssetsOfBusinessesHeldForSale',
+                                                        'BusinessesHeldForSale',
                                                     ]
                                                     b = [
                                                         'AssetsCurrent',
@@ -1866,8 +1884,7 @@ for count in range(0, ll):
                                                 if r < AssetsRank:
                                                     d = key
                                                     q = [
-                                                        'Receivables',
-                                                        'NotesReceivable',
+                                                        'Receivable',
                                                     ]
                                                     b = [
                                                         'Intangible',
@@ -1960,7 +1977,6 @@ for count in range(0, ll):
                                                     q = [
                                                         'Investment',
                                                         'Securities',
-                                                        'RestrictedCash',
                                                     ]
                                                     b = [
                                                         'Intangible',
@@ -2082,7 +2098,6 @@ for count in range(0, ll):
                                                         'CapitalLease',
                                                         'FinanceLease',
                                                         'FinancingLease',
-                                                        'FinancingObligation',
                                                     ]
                                                     b = [
                                                         'Due',
@@ -2235,7 +2250,7 @@ for count in range(0, ll):
                                                         'Intangible',
                                                         'Software',
                                                         'Trademarks',
-                                                        'InProcessResearch',
+                                                        'Research',
                                                     ]
                                                     b = [
                                                         'Liabilit',
@@ -2413,10 +2428,11 @@ for count in range(0, ll):
                                                 if r < AssetsRank:
                                                     d = key
                                                     q = [
+                                                        'DefinedBenefit',
                                                         'Pension',
                                                     ]
                                                     b = [
-                                                        'Expense',
+                                                        'Liability',
                                                     ]
                                                     for l in q:
                                                         if l in d:
@@ -2553,8 +2569,8 @@ for count in range(0, ll):
                                                     q = [
                                                         'Accrued',
                                                         'Payable',
-                                                        'SalesRebatesAndDiscounts',
-                                                        'Warranty',
+                                                        'SalesRebates',
+                                                        'Discounts',
                                                     ]
                                                     b = [
                                                         'Benefit',
@@ -2608,7 +2624,7 @@ for count in range(0, ll):
                                                 if r < CurrentLiabilitiesRank:
                                                     d = key
                                                     q = [
-                                                        'AccruedBenefitsAndWithholdings',
+                                                        'AccruedBenefits',
                                                         'BonusAndBenefits',
                                                         'Compensation',
                                                         'Payroll',
@@ -2665,7 +2681,6 @@ for count in range(0, ll):
                                                         'CapitalLease',
                                                     ]
                                                     b = [
-                                                        'Assets',
                                                         'LongTerm',
                                                         'NonCurrent',
                                                         'Noncurrent',
@@ -2755,7 +2770,7 @@ for count in range(0, ll):
                                                 if r < CurrentLiabilitiesRank:
                                                     d = key
                                                     q = [
-                                                        'ContractWithCustomerLiabilit',
+                                                        'ContractWithCustomer',
                                                         'ContractLiabilit',
                                                         'CustomerAdvancePayment',
                                                         'DeferredIncome',
@@ -3377,6 +3392,7 @@ for count in range(0, ll):
                                                         'CapitalLease',
                                                         'FinancingLease',
                                                         'FinancingObligation',
+                                                        'Rent',
                                                     ]
                                                     b = [
                                                         'Asset',
@@ -3422,6 +3438,7 @@ for count in range(0, ll):
                                                     d = key
                                                     q = [
                                                         'Lease',
+                                                        'Rent',
                                                     ]
                                                     b = [
                                                         'Asset',
@@ -3454,6 +3471,50 @@ for count in range(0, ll):
                                                                     OperatingLeasesNonCurrent.append(ARCHvalue)
                                             r = r + 1
                                         tb.OperatingLeasesNonCurrent = -sum(OperatingLeasesNonCurrent)
+                                    except:
+                                        pass
+                                    #
+                                    # lease incentive obligation
+                                    try:
+                                        LeaseIncentiveObligation = []
+                                        r = 0
+                                        for key, value in BalanceSheet.items():
+                                            if r > CurrentLiabilitiesRank:
+                                                if r < LiabilitiesRank:
+                                                    d = key
+                                                    q = [
+                                                        'LeaseIncentive',
+                                                    ]
+                                                    b = [
+                                                        'Asset',
+                                                        'Debt',
+                                                    ]
+                                                    for l in q:
+                                                        if l in d:
+                                                            h = 'p'
+                                                            for p in b:
+                                                                u = 0
+                                                                while u < len(b):
+                                                                    if p in d:
+                                                                        h = ''
+                                                                    u = u + 1
+                                                            if h == 'p':
+                                                                try:
+                                                                    i = 0
+                                                                    while BalanceSheet[key][i] == None:
+                                                                        i = i + 1
+                                                                    ARCHvalue = BalanceSheet[key][i]
+                                                                    BalanceSheet[key][i] = None
+                                                                except:
+                                                                    if BalanceSheet[key] != None:
+                                                                        ARCHvalue = BalanceSheet[key]
+                                                                        BalanceSheet[key] = None
+                                                                    else:
+                                                                        ARCHvalue = 0
+                                                                if ARCHvalue != 0:
+                                                                    LeaseIncentiveObligation.append(ARCHvalue)
+                                            r = r + 1
+                                        tb.LeaseIncentiveObligation = -sum(LeaseIncentiveObligation)
                                     except:
                                         pass
                                     #
@@ -3558,11 +3619,11 @@ for count in range(0, ll):
                                                         'IncomeTaxes',
                                                         'LongTermIncomeTaxes',
                                                         'Tax',
-                                                        'Warranty',
                                                     ]
                                                     b = [
                                                         'Deferred',
                                                         'LongTerm',
+                                                        'Warrant',
                                                     ]
                                                     for l in q:
                                                         if l in d:
@@ -3603,8 +3664,8 @@ for count in range(0, ll):
                                                     d = key
                                                     q = [
                                                         'DeferredIncomeTax',
-                                                        'DeferredTaxLiabilit',
-                                                        'LongTermUSTransitionTaxLiability',
+                                                        'DeferredTax',
+                                                        'TransitionTaxLiability',
                                                     ]
                                                     b = [
                                                         'Asset',
@@ -3647,7 +3708,7 @@ for count in range(0, ll):
                                                 if r < LiabilitiesRank:
                                                     d = key
                                                     q = [
-                                                        'ExhibitorServicesAgreement',
+                                                        'ExhibitorServices',
                                                         'OtherLongTermLiabilit',
                                                         'OtherNonCurrentLiabilit',
                                                         'OtherNoncurrentLiabilit',
@@ -3739,9 +3800,8 @@ for count in range(0, ll):
                                                 if r < LiabilitiesRank:
                                                     d = key
                                                     q = [
-                                                        'NoncurrentLiabilitiesOfDiscontinuedOperations',
-                                                        'NonCurrentLiabilitiesOfDiscontinuedOperations',
-                                                        'LiabilitiesHeldForSale',
+                                                        'DiscontinuedOperations',
+                                                        'HeldForSale',
                                                     ]
                                                     b = [
                                                         'Asset',
@@ -3785,6 +3845,7 @@ for count in range(0, ll):
                                                 'tb.PreferredSharesLiability',
                                                 'tb.RetirementBenefits',
                                                 'tb.OperatingLeasesNonCurrent',
+                                                'tb.LeaseIncentiveObligation',
                                                 'tb.FinanceLeasesNonCurrent',
                                                 'tb.DeferredRevenueAndDepositsNonCurrent',
                                                 'tb.ContingentConsideration',
@@ -3800,6 +3861,7 @@ for count in range(0, ll):
                                                 '{:,}'.format(tb.PreferredSharesLiability),
                                                 '{:,}'.format(tb.RetirementBenefits),
                                                 '{:,}'.format(tb.OperatingLeasesNonCurrent),
+                                                '{:,}'.format(tb.LeaseIncentiveObligation),
                                                 '{:,}'.format(tb.FinanceLeasesNonCurrent),
                                                 '{:,}'.format(tb.DeferredRevenueAndDepositsNonCurrent),
                                                 '{:,}'.format(tb.ContingentConsideration),
@@ -4077,7 +4139,8 @@ for count in range(0, ll):
                                                 if r < LiabilitiesAndStockholdersEquityRank:
                                                     d = key
                                                     q = [
-                                                        'EmployeeBenefitTrust',
+                                                        'EmployeeBenefit',
+                                                        'Trust',
                                                     ]
                                                     b = [
                                                         'Asset',
@@ -4216,22 +4279,23 @@ for count in range(0, ll):
                                         b = [
                                             'Before',
                                             'ContinuingOperation',
-                                            'CostOfGoods',
-                                            'CostOfOperations',
-                                            'Debt',
+                                            'Cost',
+                                            'CreditLosses',
                                             'DiscontinuedOperation',
                                             'Equity',
+                                            'Extinguishment',
                                             'Gain',
-                                            'Income(Loss)FromOperations',
-                                            'LossOnDisposal',
-                                            'LossesFromMarketable',
-                                            'LossFromOperations',
-                                            'NonConsolidatedEntities',
+                                            'Operations',
+                                            'Disposal',
+                                            'FromOperations',
+                                            'ForeignCurrency',
+                                            'NonConsolidated',
                                             'Operating',
                                             'Other',
                                             'Marketable',
                                             'Miscellaneous',
                                             'PerShare',
+                                            'Provisions',
                                             'Research',
                                             'Revenue',
                                             'Sales',
@@ -4282,8 +4346,7 @@ for count in range(0, ll):
                                         if r < NetIncomeRank:
                                             d = key
                                             q = [
-                                                'GrossMargin',
-                                                'GrossProfit',
+                                                'Gross',
                                             ]
                                             b = [
                                                 'DiscontinuedOperation',
@@ -4328,8 +4391,9 @@ for count in range(0, ll):
                                             if r < GrossMarginRank:
                                                     d = key
                                                     q = [
-                                                        'TotalRevenue',
                                                         'TotalNetRevenue',
+                                                        'TotalRevenue',
+                                                        'TotalSales',
                                                     ]
                                                     b = [
                                                         'Cost',
@@ -4377,15 +4441,17 @@ for count in range(0, ll):
                                             if r < GrossMarginRank:
                                                 d = key
                                                 q = [
-                                                    'AmortizationOfPurchasedIntagible',
+                                                    'Amortization',
                                                     'CostOfSales',
+                                                    'CostOfRevenues',
+                                                    'Depreciation',
                                                     'FilmExhibitionCost',
                                                     'FoodAndBeverageCost',
+                                                    'InformationTechnology',
                                                     'Merchandise',
                                                     'Occupancy',
-                                                    'OperatingCostAndExpensesTotal',
-                                                    'OperatingExpense',
                                                     'Payroll',
+                                                    'Personel',
                                                     'Product',
                                                     'Rent',
                                                     'Services',
@@ -4393,22 +4459,25 @@ for count in range(0, ll):
                                                     'TotalNetCost',
                                                 ]
                                                 b = [
-                                                    'BiocatalystProductSales',
-                                                    'BiocatalystResearchAndDevelopment',
+                                                    'Administrative',
+                                                    'ResearchAndDevelopment',
+                                                    'CostsOfSoftware',
                                                     'CostAndExpenses',
                                                     'CostsAndExpenses',
                                                     'CostsExpensesAndOther',
-                                                    'CostOfProducts',
+                                                    'CostOfProduct',
+                                                    'CostOfSales',
                                                     'CostOfService',
                                                     'Funded',
                                                     'Income',
+                                                    'Interest',
                                                     'OperatingExpenses',
-                                                    'MarketingAndSales',
+                                                    'Marketing',
                                                     'MergerAcquisition',
                                                     'ProductSale',
                                                     'Restructuring',
-                                                    'Revenue',
                                                     'SalesAndOtherExpenses',
+                                                    'TotalRevenue',
                                                 ]
                                                 s = 'a'
                                                 for l in q:
@@ -4456,7 +4525,7 @@ for count in range(0, ll):
                                             q = [
                                                 'EarningsFromOperations',
                                                 'IncomeFromOperations',
-                                                'Income(Loss)FromOperations',
+                                                '(Loss)FromOperations',
                                                 'LossFromOperations',
                                                 'OperatingEarnings',
                                                 'OperatingIncome',
@@ -4705,16 +4774,14 @@ for count in range(0, ll):
                                             if r < GrossMarginRank:
                                                 d = key
                                                 q = [
-                                                    'Services',
-                                                    'Sales',
                                                     'Cost',
-                                                    'FoodAndBeverageCost',
-                                                    'FilmExhibitionCost',
                                                     'Merchandise',
-                                                    'OtherOperating',
                                                     'Payroll',
+                                                    'Personnel',
                                                     'Product',
                                                     'Rent',
+                                                    'Sales',
+                                                    'Services',
                                                 ]
                                                 b = [
                                                     'BiocatalystProductSales',
@@ -4729,9 +4796,9 @@ for count in range(0, ll):
                                                     'Merger',
                                                     'ProductSale',
                                                     'Restructuring',
-                                                    'Revenue',
                                                     'SalesAndOtherExpenses',
                                                     'TotalOperatingExpenses',
+                                                    'TotalRevenue',
                                                 ]
                                                 c = [
                                                     'TotalCost',
@@ -4787,8 +4854,9 @@ for count in range(0, ll):
                                             if r < OperatingIncomeRank:
                                                 d = key
                                                 q = [
-                                                    'Research',
                                                     'Development',
+                                                    'Engineering',
+                                                    'Research',
                                                 ]
                                                 b = [
                                                     'DiscontinuedOperation',
@@ -4837,34 +4905,31 @@ for count in range(0, ll):
                                                     'Amortization',
                                                     'Depreciation',
                                                     'Depletion',
-                                                    'FinanceLeaseObligations',
-                                                    'GeneralAndAdministrative',
-                                                    'GeneralAdministrative',
+                                                    'FinanceLease',
                                                     'InformationTechnology',
                                                     'MarketingAndSales',
                                                     'OperatingExpenses',
-                                                    'OtherCostAndExpensesOperating',
-                                                    'OtherOperatingExpenses',
-                                                    'OtherOperatingIncomeExpenses',
+                                                    'ExpensesOperating',
+                                                    'OperatingIncomeExpenses',
                                                     'Personnel',
                                                     'Marketing',
                                                     'SalesAndOtherExpense',
-                                                    'SellingAndAdministrative',
-                                                    'SellingGeneralAndAdministrative',
                                                 ]
                                                 b = [
-                                                    'CostOfSalesOperatingExpensesAndOtherNet',
+                                                    'CostOfSales',
                                                     'CostsExpensesAndOther',
                                                     'DiscontinuedOperation',
-                                                    'InterestIncome',
-                                                    'InterestExpense',
+                                                    'Interest',
                                                     'Impairment',
                                                     'LegalSettlement',
                                                     'Merger',
                                                     'NonOperating',
                                                     'OtherIncome',
-                                                    'Other(Expense)Income',
-                                                    'OtherNet(Income)Expense',
+                                                    'Other(Expense)',
+                                                    'OtherNetIncome',
+                                                    'OtherNetExpense',
+                                                    'OtherNet(Income)',
+                                                    'OtherNet(Expense)',
                                                     'Research',
                                                     'Restructuring',
                                                     'SpecialCharges',
@@ -4934,51 +4999,60 @@ for count in range(0, ll):
                                     r = 0
                                     for key, value in IncomeStatement.items():
                                         if r < NetIncomeRank:
-                                            d = key
-                                            q = [
-                                                'Contingency',
-                                                'GainOnSale',
-                                                'GoodwillImpairmentCharge',
-                                                'Impairment',
-                                                'LossOnExtinguishmentOfDebt',
-                                                'Settlement',
-                                                'Merger',
-                                                'Restructuring',
-                                                'Special',
-                                                'WriteOff',
-                                            ]
-                                            b = [
-                                                'DiscontinuedOperation',
-                                                'Investment',
-                                                'Research',
-                                            ]
-                                            for l in q:
-                                                if l in d:
-                                                    h = 'p'
-                                                    for p in b:
-                                                        u = 0
-                                                        while u < len(b):
-                                                            if p in d:
-                                                                h = ''
-                                                            u = u + 1
-                                                    if h == 'p':
-                                                        try:
-                                                            i = 0
-                                                            while IncomeStatement[key][i] == None:
-                                                                i = i + 1
-                                                            ARCHvalue = IncomeStatement[key][i]
-                                                            IncomeStatement[key][i] = None
-                                                        except:
-                                                            if IncomeStatement[key] != None:
-                                                                ARCHvalue = IncomeStatement[key]
-                                                                IncomeStatement[key] = None
-                                                            else:
-                                                                ARCHvalue = 0
-                                                        if ARCHvalue != 0:
-                                                            ImpairmentRestructuringAndOtherSpecialCharges.append(ARCHvalue)
-                                                            ImpairmentRestructuringAndOtherSpecialChargesRank = r
-                                                            print(d)
-                                                            print('{:,}'.format(value))
+                                            if r > GrossMarginRank:
+                                                d = key
+                                                q = [
+                                                    'Contingency',
+                                                    'Disposal',
+                                                    'GainOnSale',
+                                                    '(Gain)OnSale',
+                                                    'GainOnDisposal',
+                                                    '(Gain)OnDisposal',
+                                                    'Impairment',
+                                                    'ExtinguishmentOfDebt',
+                                                    'Settlement',
+                                                    'Merger',
+                                                    'Restructuring',
+                                                    'Special',
+                                                    'WriteOff',
+                                                    'LossOnSale',
+                                                    '(Loss)OnSale',
+                                                    'LossOnDisposal',
+                                                    '(Loss)OnDisposal',
+                                                    'Proceed',
+                                                ]
+                                                b = [
+                                                    'DiscontinuedOperation',
+                                                    'Investment',
+                                                    'Research',
+                                                ]
+                                                for l in q:
+                                                    if l in d:
+                                                        h = 'p'
+                                                        for p in b:
+                                                            u = 0
+                                                            while u < len(b):
+                                                                if p in d:
+                                                                    h = ''
+                                                                u = u + 1
+                                                        if h == 'p':
+                                                            try:
+                                                                i = 0
+                                                                while IncomeStatement[key][i] == None:
+                                                                    i = i + 1
+                                                                ARCHvalue = IncomeStatement[key][i]
+                                                                IncomeStatement[key][i] = None
+                                                            except:
+                                                                if IncomeStatement[key] != None:
+                                                                    ARCHvalue = IncomeStatement[key]
+                                                                    IncomeStatement[key] = None
+                                                                else:
+                                                                    ARCHvalue = 0
+                                                            if ARCHvalue != 0:
+                                                                ImpairmentRestructuringAndOtherSpecialCharges.append(ARCHvalue)
+                                                                ImpairmentRestructuringAndOtherSpecialChargesRank = r
+                                                                print(d)
+                                                                print('{:,}'.format(value))
                                         r = r + 1
                                     tb.ImpairmentRestructuringAndOtherSpecialCharges = sum(ImpairmentRestructuringAndOtherSpecialCharges)
                                     #
@@ -4997,57 +5071,78 @@ for count in range(0, ll):
                                     r = 0
                                     for key, value in IncomeStatement.items():
                                         if r < NetIncomeRank:
-                                            d = key
-                                            q = [
-                                                'CorporateBorrowing',
-                                                'Debt',
-                                                'Disposal',
-                                                'ExhibitorServices',
-                                                'Finance',
-                                                'InterestIncome',
-                                                'InterestExpense',
-                                                'Investment',
-                                                'MarketableEquitySecurit',
-                                                'MarketableSecurit',
-                                                'NonOperating',
-                                                'OtherIncome',
-                                                'OtherNet(Income)Expense',
-                                            ]
-                                            b = [
-                                                'Research',
-                                            ]
-                                            g = [
-                                                '(Income)',
-                                                '(Earnings)',
-                                            ]
-                                            for l in q:
-                                                if l in d:
-                                                    h = 'p'
-                                                    for p in b:
-                                                        u = 0
-                                                        while u < len(b):
-                                                            if p in d:
-                                                                h = ''
-                                                            u = u + 1
-                                                    if h == 'p':
-                                                        y = 1
-                                                        for f in g:
-                                                            if f in d:
-                                                                y = -1
-                                                        try:
-                                                            i = 0
-                                                            while IncomeStatement[key][i] == None:
-                                                                i = i + 1
-                                                            ARCHvalue = abs(IncomeStatement[key][i]) * y
-                                                            IncomeStatement[key][i] = None
-                                                        except:
-                                                            if IncomeStatement[key] != None:
-                                                                ARCHvalue = abs(IncomeStatement[key]) * y
-                                                                IncomeStatement[key] = None
-                                                            else:
-                                                                ARCHvalue = 0
-                                                        if ARCHvalue != 0:
-                                                            NonOperatingIncome.append(ARCHvalue)
+                                            if r > GrossMarginRank:
+                                                d = key
+                                                q = [
+                                                    'Borrowing',
+                                                    'Debt',
+                                                    'Exhibitor',
+                                                    'Finance',
+                                                    'Currency',
+                                                    'Interest',
+                                                    'Investment',
+                                                    'Marketable',
+                                                    'Securit',
+                                                    'NonOperating',
+                                                    'OtherIncome',
+                                                    'OtherExpense',
+                                                    'OtherNet(Income)',
+                                                    'OtherNet(Expense)',
+                                                    'OtherNetIncome',
+                                                    'OtherNetExpense',
+                                                ]
+                                                b = [
+                                                    'Contingency',
+                                                    'Disposal',
+                                                    'GainOnSale',
+                                                    '(Gain)OnSale',
+                                                    'GainOnDisposal',
+                                                    '(Gain)OnDisposal',
+                                                    'Impairment',
+                                                    'ExtinguishmentOfDebt',
+                                                    'Settlement',
+                                                    'Merger',
+                                                    'Restructuring',
+                                                    'Special',
+                                                    'WriteOff',
+                                                    'LossOnSale',
+                                                    '(Loss)OnSale',
+                                                    'LossOnDisposal',
+                                                    '(Loss)OnDisposal',
+                                                    'Proceed',
+                                                ]
+                                                g = [
+                                                    '(Income)',
+                                                    '(Earnings)',
+                                                ]
+                                                for l in q:
+                                                    if l in d:
+                                                        h = 'p'
+                                                        for p in b:
+                                                            u = 0
+                                                            while u < len(b):
+                                                                if p in d:
+                                                                    h = ''
+                                                                u = u + 1
+                                                        if h == 'p':
+                                                            y = 1
+                                                            for f in g:
+                                                                if f in d:
+                                                                    y = -1
+                                                            try:
+                                                                i = 0
+                                                                while IncomeStatement[key][i] == None:
+                                                                    i = i + 1
+                                                                ARCHvalue = abs(IncomeStatement[key][i]) * y
+                                                                IncomeStatement[key][i] = None
+                                                            except:
+                                                                if IncomeStatement[key] != None:
+                                                                    ARCHvalue = abs(IncomeStatement[key]) * y
+                                                                    IncomeStatement[key] = None
+                                                                else:
+                                                                    ARCHvalue = 0
+                                                            if ARCHvalue != 0:
+                                                                NonOperatingIncome.append(ARCHvalue)
                                         r = r + 1
                                     tb.NonOperatingIncome = -sum(NonOperatingIncome)
                                 except:
@@ -5397,7 +5492,6 @@ for count in range(0, ll):
                                             q = [
                                                 'Hedge',
                                                 'Derivatives',
-                                                'NetGains(Losses)RealizedAndIncludedInNetIncome',
                                             ]
                                             b = [
                                                 'ContinuingOperations',
@@ -5439,20 +5533,33 @@ for count in range(0, ll):
                                         if r < ComprehensiveIncomeRank:
                                             d = key
                                             q = [
-                                                'ChangeInNetUnrealizedGains(Losses)OnSecurities',
-                                                'ChangeInNetUnrealizedGainsAndLossesOnSecurities',
-                                                'ChangeInUnrealizedGain(Loss)OnAvailableForSale',
-                                                'ChangeInUnrealizedGainLossOnAvailableForSale',
-                                                'MarketableDebtSecurities',
-                                                'MarketableSecurities',
-                                                'NetGains(Losses)RealizedAndIncludedInNetIncome',
-                                                'UnrealizedLossesOnInvestment',
-                                                'UnrealizedGainsOnInvestment',
-                                                'UnrealizedGains(Losses)OnInvestment',
+                                                '(Losses)OnSecurit',
+                                                'LossesOnSecurit',
+                                                '(Loss)OnSecurit',
+                                                'LossOnSecurit',
+                                                '(Gains)OnSecurit',
+                                                '(Gain)OnSecurit',
+                                                'GainsOnSecurit',
+                                                'GainOnSecurit',
+                                                'GainOnAvailableForSale',
+                                                'GainsOnAvailableForSale',
+                                                '(Gain)OnAvailableForSale',
+                                                '(Gains)OnAvailableForSale',
+                                                'LossOnAvailableForSale',
+                                                'LossesOnAvailableForSale',
+                                                '(Loss)OnAvailableForSale',
+                                                '(Losses)OnAvailableForSale',
+                                                'MarketableDebt',
+                                                'MarketableSecurit',
+                                                'LossesOnInvestment',
+                                                'LossOnInvestment',
+                                                '(Losses)OnInvestment',
+                                                '(Loss)OnInvestment',
+                                                '(Gains)OnInvestment',
+                                                '(Gain)OnInvestment',
+                                                'GainsOnInvestment',
+                                                'GainOnInvestment',
                                                 'SecuritiesAdjustment',
-                                                'UnrealizedGainOnSecurities',
-                                                'UnrealizedHoldingGain(Loss)OnSecurities',
-                                                'OtherComprehensiveIncome',
                                             ]
                                             b = [
                                                 'ContinuingOperations',
@@ -5495,6 +5602,7 @@ for count in range(0, ll):
                                             d = key
                                             q = [
                                                 'Pension',
+                                                'DefinedBenefit',
                                             ]
                                             b = [
                                                 'Currency',
@@ -5538,9 +5646,11 @@ for count in range(0, ll):
                                         if r < ComprehensiveIncomeRank:
                                             d = key
                                             q = [
-                                                'Benefit(Provision)ForIncomeTaxes',
+                                                'BenefitForIncomeTax',
+                                                '(Benefit)ForIncomeTax',
+                                                'ProvisionForIncomeTax',
+                                                '(Provision)ForIncomeTax',
                                                 'IncomeTaxes',
-                                                'ProvisionForIncomeTaxes',
                                                 'TaxBenefit',
                                             ]
                                             b = [
@@ -5656,11 +5766,10 @@ for count in range(0, ll):
                                         if r > LiabilitiesAndStockholdersEquityRank:
                                             d = key
                                             q = [
-                                                'CommonStockIssued',
-                                                'ProceedsCommonStockOfferings',
-                                                'ProceedsFromIssuance',
-                                                'StockIssuedDuringPeriodValue',
-                                                'StockIssuance',
+                                                'CommonStockIssu',
+                                                'CommonStockOfferings',
+                                                'IssuedCommon',
+                                                'IssuanceOfCommon',
                                             ]
                                             b = [
                                                 'Debt',
@@ -5705,7 +5814,8 @@ for count in range(0, ll):
                                         if r > LiabilitiesAndStockholdersEquityRank:
                                             d = key
                                             q = [
-                                                'EquityBasedCompensationExpense',
+                                                'EquityBasedCompensation',
+                                                'EquityBasedArrangements',
                                                 'EquityBasedPaymentArrangements',
                                                 'ShareBasedCompensation',
                                                 'StockBasedCompendation',
@@ -5799,11 +5909,13 @@ for count in range(0, ll):
                                         if r > LiabilitiesAndStockholdersEquityRank:
                                             d = key
                                             q = [
-                                                'DividendsAndDividendEquivalentsDeclaredToNoncontrollingInterest',
-                                                'DistributionsToNonControllingInterests',
-                                                'DistributionToAndAcquisitionOfNoncontrollingInterest',
+                                                'DividendEquivalentsDeclaredToNoncontrollingInterest',
+                                                'DividendEquivalentsDeclaredToNonControllingInterest',
+                                                'DividendDeclaredToNoncontrollingInterest',
+                                                'DividendDeclaredToNonControllingInterest',
                                             ]
                                             b = [
+                                                'Acquisition',
                                                 'Retirement',
                                                 'Repurchase',
                                                 'InShares',
@@ -5837,6 +5949,54 @@ for count in range(0, ll):
                                 except:
                                     pass
                                 #
+                                # acquisition of non controlling interests
+                                try:
+                                    AcquisitionOfNonControllingInterests = []
+                                    r = 0
+                                    for key, value in StockholdersEquityStatement.items():
+                                        if r > LiabilitiesAndStockholdersEquityRank:
+                                            d = key
+                                            q = [
+                                                'AcquisitionOfNonControllingInterests',
+                                                'AcquisitionOfNoncontrollingInterests',
+                                                'RepaymentOfNonControllingInterests',
+                                                'RepaymentOfNoncontrollingInterests',
+                                                'DistributionsToNoncontrollingInterests',
+                                                'DistributionsToNonControllingInterests',
+                                            ]
+                                            b = [
+                                                'Dividend',
+                                                'InShares',
+                                            ]
+                                            for l in q:
+                                                if l in d:
+                                                    h = 'p'
+                                                    for p in b:
+                                                        u = 0
+                                                        while u < len(b):
+                                                            if p in d:
+                                                                h = ''
+                                                            u = u + 1
+                                                    if h == 'p':
+                                                        try:
+                                                            i = len(value) - 1
+                                                            while StockholdersEquityStatement[key][i] == None:
+                                                                i = i - 1
+                                                            ARCHvalue = StockholdersEquityStatement[key][i]
+                                                            StockholdersEquityStatement[key][i] = None
+                                                        except:
+                                                            if StockholdersEquityStatement[key] != None:
+                                                                ARCHvalue = StockholdersEquityStatement[key]
+                                                                StockholdersEquityStatement[key] = None
+                                                            else:
+                                                                ARCHvalue = 0
+                                                        if ARCHvalue != 0:
+                                                            AcquisitionOfNonControllingInterests.append(ARCHvalue)
+                                        r = r + 1
+                                    tb.AcquisitionOfNonControllingInterests = -sum(AcquisitionOfNonControllingInterests)
+                                except:
+                                    pass
+                                #
                                 # common stock repurchased and retired
                                 try:
                                     CommonStockRepurchasedAndRetired = []
@@ -5845,14 +6005,14 @@ for count in range(0, ll):
                                         if r > LiabilitiesAndStockholdersEquityRank:
                                             d = key
                                             q = [
-                                                'AcquisitionOfCommonStockInExchangeOffer',
+                                                'AcquisitionOfCommon',
                                                 'CommonStockRepurchased',
+                                                'PurchaseOfCompanyShare',
                                                 'PurchaseOfCompanyStock',
-                                                'PurchaseOfTreasuryShares',
-                                                'PurchaseOfTreasurySharesValue',
+                                                'PurchaseOfTreasuryShare',
                                                 'RepurchasesOfCommonStock',
                                                 'RepurchaseOfCommonStock',
-                                                'RetirementOfTreasurySharesValue',
+                                                'RetirementOfTreasuryShares',
                                                 'ShareRepurchases',
                                                 'StockRepurchased',
                                             ]
@@ -5897,13 +6057,13 @@ for count in range(0, ll):
                                         if r > LiabilitiesAndStockholdersEquityRank:
                                             d = key
                                             q = [
-                                                'AdoptionOfNewAccountingStandardsNetOfIncomeTaxes',
-                                                'CumulativeEffectOfChangeInAccountingPrinciple',
-                                                'ReclassificationOfStrandedTaxEffectsAndAdoptionOfNewAccountingStandards',
-                                                'ReclassificationOfStrandedTaxEffectsProvisional',
+                                                'AdoptionOfNewAccountingStandards',
+                                                'ChangeInAccountingPrinciple',
+                                                'ReclassificationOfStrandedTaxEffects',
                                                 'CumulativeEffectAdjustment',
                                             ]
                                             b = [
+                                                'Distribution',
                                                 'Dividend',
                                                 'InShares',
                                             ]
@@ -5947,6 +6107,7 @@ for count in range(0, ll):
                                             'tb.ShareBasedCompensation',
                                             'tb.DividendsAndDividendEquivalentsDeclared',
                                             'tb.DividendsDeclaredToNonControllingInterests',
+                                            'tb.AcquisitionOfNonControllingInterests',
                                             'tb.CommonStockRepurchasedAndRetired',
                                             'tb.EffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts',
                                             ],
@@ -5957,6 +6118,7 @@ for count in range(0, ll):
                                             '{:,}'.format(tb.ShareBasedCompensation),
                                             '{:,}'.format(tb.DividendsAndDividendEquivalentsDeclared),
                                             '{:,}'.format(tb.DividendsDeclaredToNonControllingInterests),
+                                            '{:,}'.format(tb.AcquisitionOfNonControllingInterests),
                                             '{:,}'.format(tb.CommonStockRepurchasedAndRetired),
                                             '{:,}'.format(tb.EffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts),
                                             ],
@@ -5986,7 +6148,7 @@ for count in range(0, ll):
                                     for key, value in CashFlowStatement.items():
                                         d = key
                                         q = [
-                                            'Exchange',
+                                            'ExchangeRate',
                                         ]
                                         b = [
                                             'Acquire',
@@ -6044,8 +6206,8 @@ for count in range(0, ll):
                                         d = key
                                         q = [
                                             'OperatingActivities',
-                                            'CashProvidedByOperations',
-                                            'CashProvidedFromOperations',
+                                            'CashProvidedByOperation',
+                                            'CashProvidedFromOperation',
                                             'CashProvidedFrom(UsedFor)Operations',
                                             'Cash(UsedFor)ProvidedFromOperations',
                                         ]
@@ -6335,7 +6497,8 @@ for count in range(0, ll):
                                             if r > FinancingActivitiesRank:
                                                 d = key
                                                 q = [
-                                                    'CashPaidForIncomeTaxes',
+                                                    'CashPaidForIncomeTax',
+                                                    'CashPaidForTax',
                                                     'IncomeTaxesPaid',
                                                 ]
                                                 b = [
@@ -6433,7 +6596,6 @@ for count in range(0, ll):
                                             skip = ''
                                             d = key
                                             if r < OperatingActivitiesRank:
-                                                print(d)
                                                 for g in f:
                                                     if g in d:
                                                         skip = 'skip'
@@ -6727,34 +6889,50 @@ for count in range(0, ll):
                                                 d = key
                                                 q = [
                                                     'InvestmentGain',
-                                                    'InsuranceProceedsReceivedForDamage',
                                                     'LossesOnDisposal',
+                                                    '(Losses)OnDisposal',
                                                     'LossOnDisposal',
+                                                    '(Loss)OnDisposal',
                                                     'Loss(Gain)',
                                                     'LossOnDebtConversion',
+                                                    '(Loss)OnDebtConversion',
+                                                    'LossesOnDebtConversion',
+                                                    '(Losses)OnDebtConversion',
+                                                    'GainOnDebtConversion',
+                                                    'GainsOnDebtConversion',
+                                                    '(Gain)OnDebtConversion',
+                                                    '(Gains)OnDebtConversion',
                                                     'LossOnDisposal',
                                                     'GainRelatedTo',
                                                     'Gain(Loss',
                                                     'GainOnDisposal',
+                                                    '(Gain)OnDisposal',
+                                                    'GainsOnDisposal',
+                                                    '(Gains)OnDisposal',
                                                     'GainOnDisposition',
                                                     'GainOnDivestiture',
                                                     'GainOnInsurance',
                                                     'GainOnSale',
                                                     'GainRelatedToDisposition',
+                                                    'GainsRelatedToDisposition',
+                                                    '(Gain)RelatedToDisposition',
+                                                    '(Gains)RelatedToDisposition',
                                                     '(Gain)Loss',
                                                     '(Gain)AndLoss',
                                                     '(Gains)AndLoss',
                                                     '(Gains)Loss',
                                                     '(Gains)Loss',
                                                     '(Gains)AndLoss',
-                                                    'MarkToMarket',
                                                     'MarketableEquitySecurit',
                                                     'MarketableSecurit',
-                                                    'NetInvestmentGains',
-                                                    'Net(Gain)OnDispositionOfAssets',
+                                                    'InvestmentLoss',
+                                                    'DispositionOfAssets',
+                                                    'SaleOfAssets',
+                                                    'SalesOfAssets',
                                                     'SaleOfBuilding',
+                                                    'SalesOfBuilding',
                                                     'SaleOfBusiness',
-                                                    'SettlementLoss(Gain)',
+                                                    'SalesOfBusiness',
                                                 ]
                                                 b = [
                                                     'Acquire',
@@ -6769,7 +6947,9 @@ for count in range(0, ll):
                                                 ]
                                                 k = [
                                                     'Gain(Loss)',
+                                                    'Gain(Losses)',
                                                     'Gains(Losses)',
+                                                    'Gains(Loss)',
                                                 ]
                                                 for l in q:
                                                     if l in d:
@@ -6818,12 +6998,19 @@ for count in range(0, ll):
                                                 d = key
                                                 q = [
                                                     'BadDebt',
-                                                    'ClassActionSettlement',
+                                                    'Settlement',
                                                     'DebtDiscount',
                                                     'Depletion',
                                                     'DiscontinuedOperation',
                                                     'Impairment',
                                                     'LossOnExtinguishmentOfDebt',
+                                                    'LossesOnExtinguishmentOfDebt',
+                                                    '(Loss)OnExtinguishmentOfDebt',
+                                                    '(Losses)OnExtinguishmentOfDebt',
+                                                    'GainOnExtinguishmentOfDebt',
+                                                    'GainsOnExtinguishmentOfDebt',
+                                                    '(Gain)OnExtinguishmentOfDebt',
+                                                    '(Gains)OnExtinguishmentOfDebt',
                                                     'Refinancing',
                                                     'Restructuring',
                                                     'Special',
@@ -6876,7 +7063,7 @@ for count in range(0, ll):
                                             if r < OperatingActivitiesRank:
                                                 d = key
                                                 q = [
-                                                    'AccruedBenefitsAndWithholdings',
+                                                    'AccruedBenefits',
                                                     'Compensation',
                                                 ]
                                                 b = [
@@ -6938,7 +7125,9 @@ for count in range(0, ll):
                                                 d = key
                                                 q = [
                                                     'EquityBasedCompensation',
+                                                    'EquityBasedEmployeeCompensation',
                                                     'EquityBasedPayment',
+                                                    'EquityBasedEmployeePayment',
                                                     'ShareBasedCompensation',
                                                     'ShareBasedEmployeeCompensation',
                                                     'StockBasedCompensation',
@@ -7000,15 +7189,19 @@ for count in range(0, ll):
                                                 d = key
                                                 q = [
                                                     'IncomeTax',
-                                                    'DeferredIncomeTax',
                                                     'DeferredTax',
-                                                    'Deferredincometaxexpenseforcashflow',
+                                                    'DeferredBenefitForIncomeTax',
+                                                    'DeferredBenefitsForIncomeTax',
+                                                    'DeferredBenefitForTax',
+                                                    'DeferredBenefitsForTax',
+                                                    'CurrentTax',
+                                                    'TaxProvision',
+                                                    'Deferredincometax',
                                                     'TaxAct',
-                                                    'TaxBenefits',
+                                                    'TaxBenefit',
                                                     'TaxPayable',
                                                 ]
                                                 b = [
-                                                    'Payment',
                                                     'Purchase',
                                                     'Acquisition',
                                                     'Acquire',
@@ -7051,8 +7244,8 @@ for count in range(0, ll):
                                             if r < OperatingActivitiesRank:
                                                 d = key
                                                 q = [
-                                                    'Amortization(Accretion)OfPremium(Discount)OnMarketableDebtSecurit',
-                                                    'AmortizationAccretionOfMarketableDebtSecurit',
+                                                    'Amortization(Accretion)',
+                                                    'AmortizationAccretion',
                                                     'DebtIssuanceCost',
                                                     'ForeignCurrency',
                                                     'LandlordContribution',
@@ -7103,7 +7296,7 @@ for count in range(0, ll):
                                             if r < OperatingActivitiesRank:
                                                 d = key
                                                 q = [
-                                                    'CreditLossesAndChargebacks'
+                                                    'CreditLossesAndChargebacks',
                                                     'DoubtfulAccounts',
                                                     'Receivable',
                                                     'UncollectibleProvision',
@@ -7297,7 +7490,7 @@ for count in range(0, ll):
                                                     'AccountPayable',
                                                     'AccountsPayable',
                                                     'AccruedLiabilit',
-                                                    'AccruedExpenses',
+                                                    'AccruedExpense',
                                                 ]
                                                 b = [
                                                     'Acquire',
@@ -7344,7 +7537,7 @@ for count in range(0, ll):
                                             if r < OperatingActivitiesRank:
                                                 d = key
                                                 q = [
-                                                    'ContractWithCustomerLiability',
+                                                    'ContractWithCustomer',
                                                     'DeferredRevenue',
                                                     'CustomerDeposits',
                                                 ]
@@ -7393,6 +7586,7 @@ for count in range(0, ll):
                                                 d = key
                                                 q = [
                                                     'BenefitCost',
+                                                    'BenefitsCost',
                                                     'Pension',
                                                     'Retirement',
                                                 ]
@@ -7440,6 +7634,7 @@ for count in range(0, ll):
                                             if r < OperatingActivitiesRank:
                                                 d = key
                                                 q = [
+                                                    'CapitalLease',
                                                     'FinanceLease',
                                                     'FinancingLease',
                                                     'FinancingObligation',
@@ -7574,18 +7769,8 @@ for count in range(0, ll):
                                                 d = key
                                                 q = [
                                                     'CurrentAssetsAndCurrentLiabilit',
-                                                    'DiscountedConvertible',
-                                                    'Equity(Income)Loss',
-                                                    'EquityIn(Earnings)LossFromNonConsolidated',
-                                                    'EquityInLossFromNonConsolidated',
-                                                    'Financ',
                                                     'Other',
-                                                    'Guarantee',
                                                     'Miscellaneous',
-                                                    'NonTrade',
-                                                    'InterestExpense',
-                                                    'PurchasePremiumAndPremiumAmortization',
-                                                    'Research',
                                                 ]
                                                 b = [
                                                     'NetChangeInOperatingAssetsAndLiabilities',
@@ -7708,7 +7893,7 @@ for count in range(0, ll):
                                                         'Maturitie',
                                                         'NoteReceivable',
                                                         'NotesReceivable',
-                                                        'Securitie',
+                                                        'Securit',
                                                         'TradingAsset',
                                                     ]
                                                     b = [
@@ -7764,15 +7949,15 @@ for count in range(0, ll):
                                                     q = [
                                                         'ConvertibleNote',
                                                         'FinancialInstrument',
-                                                        'Investments',
-                                                        'Securities',
+                                                        'Investment',
+                                                        'Securit',
                                                         'TradingAsset',
                                                         'Maturities',
                                                         'NotesReceivable',
-                                                        'ProceedsFromDispositionOfLongTermAsset',
-                                                        'ProceedsFromSaleLeaseBack',
-                                                        'ProceedsFromSaleOfMajorityOwnedSubs',
-                                                        'ProceedsFromTheSettlementOfNetInvestment',
+                                                        'DispositionOfLongTermAsset',
+                                                        'SaleLeaseBack',
+                                                        'SaleOfMajorityOwnedSubs',
+                                                        'SettlementOfNetInvestment',
                                                         'PromissoryNote',
                                                         'ReturnOfCapital',
                                                     ]
@@ -7877,7 +8062,7 @@ for count in range(0, ll):
                                                     d = key
                                                     q = [
                                                         'Property',
-                                                        'DisposalOfAssets',
+                                                        'DisposalOfAsset',
                                                         'SaleOfBuilding',
                                                     ]
                                                     b = [
@@ -7926,19 +8111,19 @@ for count in range(0, ll):
                                                 if r < InvestingActivitiesRank:
                                                     d = key
                                                     q = [
-                                                        'AcquireBusinesses',
-                                                        'AcquisitionOfBusinesses',
+                                                        'AcquireBusiness',
+                                                        'AcquiredBusiness',
+                                                        'AcquisitionOfBusiness',
                                                         'AcquisitionOfValero',
                                                         'AcquisitionOfUndividedInterest',
                                                         'AcquisitionsNetOfCashAcquired',
                                                         'BusinessAcquisitions',
                                                         'BusinessCombinations',
                                                         'CashPaidForAcquisitions',
-                                                        'DiverstitureOfBusinesses',
                                                         'Intangible',
                                                         'PeruAcquisition',
                                                         'Mergers',
-                                                        'PurchasesOfAffAssets',
+                                                        'PurchasesOfAffAsset',
                                                         'PurchasesOfRestaurant',
                                                         'PurchasesOfStores',
                                                         'Software',
@@ -7989,10 +8174,10 @@ for count in range(0, ll):
                                                     d = key
                                                     q = [
                                                         'Divestiture',
-                                                        'ProceedsFromTheSaleOfMonster',
-                                                        'ProceedsFromTransferOfDistributionRights',
-                                                        'ProceedsFromTheDisposalOfCertainOperations',
-                                                        'ReverseRepurchaseAgreements',
+                                                        'SaleOfMonster',
+                                                        'TransferOfDistributionRights',
+                                                        'DisposalOfCertainOperations',
+                                                        'ReverseRepurchaseAgreement',
                                                         'SaleOfAsset',
                                                         'SalesOfAsset',
                                                         'SaleOfBusiness',
@@ -8085,7 +8270,8 @@ for count in range(0, ll):
                                                 if r < InvestingActivitiesRank:
                                                     d = key
                                                     q = [
-                                                        'ReceiptOfGovernmentGrants',
+                                                        'Grants',
+                                                        'Subsidies',
                                                     ]
                                                     b = [
                                                         'Acquisition',
@@ -8262,7 +8448,6 @@ for count in range(0, ll):
                                                     q = [
                                                         'Other',
                                                         'NetTransferOfCash',
-                                                        'Research',
                                                         'RestrictedCash',
                                                     ]
                                                     b = [
@@ -8366,11 +8551,12 @@ for count in range(0, ll):
                                                 if r < FinancingActivitiesRank:
                                                     d = key
                                                     q = [
+                                                        'CapitalLease',
                                                         'FinanceLease',
                                                         'FinancingLease',
                                                         'FinancingObligation',
                                                         'PrincipalPaymentsOnCapitalLease',
-                                                        'PrincipalPaymentsUnderCapitalAndFinancingLease',
+                                                        'PrincipalPaymentsUnderCapital',
                                                         'CollateralizedLease',
                                                     ]
                                                     b = [
@@ -8531,8 +8717,8 @@ for count in range(0, ll):
                                                 if r < FinancingActivitiesRank:
                                                     d = key
                                                     q = [
-                                                        'IssuanceOfCommonStock',
-                                                        'IssuancesOfCommonStock',
+                                                        'IssuanceOfCommon',
+                                                        'IssuancesOfCommon',
                                                         'IssuanceOfStock',
                                                         'IssuancesOfStock',
                                                         'NetProceedsFromEquityOffering',
@@ -8591,37 +8777,41 @@ for count in range(0, ll):
                                                         'ShareRepurchasesToSatisfyTax',
                                                         'ShareBasedTaxWithholdings',
                                                         'StockBasedTaxWithholdings',
-                                                        'TaxBenefitForShare',
-                                                        'TaxBenefitForStock',
-                                                        'TaxBenefitFromShare',
-                                                        'TaxBenefitFromStock',
-                                                        'TaxBenefitsForShare',
-                                                        'TaxBenefitsForStock',
-                                                        'TaxBenefitsFromEquity',
-                                                        'TaxBenefitFromExercise',
-                                                        'TaxBenefitsFromEquity',
-                                                        'TaxBenefitsFromShare',
-                                                        'TaxBenefitsFromStock',
-                                                        'TaxBenefitsFromStock',
-                                                        'TaxBenefitsOnStock',
+                                                        'BenefitForShare',
+                                                        'BenefitForStock',
+                                                        'BenefitFromShare',
+                                                        'BenefitFromStock',
+                                                        'BenefitsForShare',
+                                                        'BenefitsForStock',
+                                                        'BenefitsFromEquity',
+                                                        'BenefitFromExercise',
+                                                        'BenefitsFromEquity',
+                                                        'BenefitsFromShare',
+                                                        'BenefitsFromStock',
+                                                        'BenefitsFromStock',
+                                                        'BenefitsOnStock',
                                                         'TaxesRelatedToNetShareSettlement',
                                                         'TaxesRemittedOnShare',
                                                         'TaxesOnStockBasedCompensation',
-                                                        'TaxesPaidRelatedToNetShareSettlement',
-                                                        'TaxesWithheldAndRemittedOnShare',
-                                                        'TaxesWithheldAndRemittedOnStock',
-                                                        'TaxWithholdingsOnEquity',
-                                                        'TaxWithholdingOnEquity',
-                                                        'TaxWithholdingOnStockBased',
-                                                        'TaxWithholdingsOnStockBased',
-                                                        'TaxWithholdingsForEquity',
-                                                        'TaxWithholdingForEquity',
-                                                        'TaxWithholdingForShareBased',
-                                                        'TaxWithholdingForNetShareSettledEquityAwards',
-                                                        'TaxWithholdingsOnShareBased',
-                                                        'TaxesPaidForRestrictedUnitWithholdings',
-                                                        'TaxesPaidUponTheVestingOfEquity',
-                                                        'TaxesPaidUponTheVestingOfRestrictedStockUnits',
+                                                        'PaidRelatedToNetShareSettlement',
+                                                        'WithheldAndRemittedOnShare',
+                                                        'WithheldAndRemittedOnStock',
+                                                        'WithholdingsOnEquity',
+                                                        'WithholdingOnEquity',
+                                                        'WithholdingOnStockBased',
+                                                        'WithholdingsOnStockBased',
+                                                        'WithholdingsForEquity',
+                                                        'WithholdingForEquity',
+                                                        'WithholdingForShareBased',
+                                                        'WithholdingForNetShareSettledEquityAwards',
+                                                        'WithholdingsOnShareBased',
+                                                        'PaidForRestrictedUnitWithholdings',
+                                                        'PaidUponTheVestingOfEquity',
+                                                        'PaidUponTheVestingOfRestrictedStockUnits',
+                                                        'TaxesRelatedToNetShare',
+                                                        'TaxRelatedToNetShare',
+                                                        'TaxesRelatedToNetStock',
+                                                        'TaxRelatedToNetStock',
                                                     ]
                                                     b = [
                                                         'Proceeds',
@@ -8665,6 +8855,10 @@ for count in range(0, ll):
                                                     d = key
                                                     q = [
                                                         'ExerciseOfEquityAward',
+                                                        'ShareBasedAward',
+                                                        'StockBasedAward',
+                                                        'ShareBasedCompensation',
+                                                        'StockBasedCompensation',
                                                         'StockOption',
                                                         'StockPurchasePlan',
                                                         'SharePurchasePlan',
@@ -8716,6 +8910,8 @@ for count in range(0, ll):
                                                     ]
                                                     b = [
                                                         'Proceeds',
+                                                        'NonControllingInterest',
+                                                        'NoncontrollingInterest',
                                                     ]
                                                     for l in q:
                                                         if l in d:
@@ -8756,8 +8952,9 @@ for count in range(0, ll):
                                                 if r < FinancingActivitiesRank:
                                                     d = key
                                                     q = [
-                                                        'ContingentAcquisitionConsideration',
+                                                        'ContingentAcquisition',
                                                         'ContingentConsideration',
+                                                        'HoldbackPaymentRelatedToAcquisition',
                                                         'HoldbackPaymentRelatedToPriorAcquisition',
                                                     ]
                                                     b = [
@@ -8801,17 +8998,20 @@ for count in range(0, ll):
                                                 if r < FinancingActivitiesRank:
                                                     d = key
                                                     q = [
+                                                        'CreditAgreement',
                                                         'Debt',
                                                         'Loan',
                                                         'Note',
                                                     ]
                                                     b = [
                                                         'Convertible',
+                                                        'DebtIssuanceCost',
                                                         'Payment',
                                                         'Purchase',
                                                         'Repayment',
                                                         'Repurchase',
                                                         'Revolv',
+                                                        'ShortTerm',
                                                     ]
                                                     for l in q:
                                                         if l in d:
@@ -8851,6 +9051,7 @@ for count in range(0, ll):
                                                 if r < FinancingActivitiesRank:
                                                     d = key
                                                     q = [
+                                                        'CreditAgreement',
                                                         'Debt',
                                                         'FinancingRepayments',
                                                         'Loan',
@@ -9138,6 +9339,50 @@ for count in range(0, ll):
                                     except:
                                         pass
                                     #
+                                    # Net Change In Forward And Hedges Classified As Financing Activities
+                                    try:
+                                        NetChangeInForwardAndHedgesClassifiedAsFinancingActivities = []
+                                        r = 0
+                                        for key, value in CashFlowStatement.items():
+                                            if r > InvestingActivitiesRank:
+                                                if r < FinancingActivitiesRank:
+                                                    d = key
+                                                    q = [
+                                                        'Forward',
+                                                        'Hedg',
+                                                    ]
+                                                    b = [
+                                                        'Invest',
+                                                    ]
+                                                    for l in q:
+                                                        if l in d:
+                                                            h = 'p'
+                                                            for p in b:
+                                                                u = 0
+                                                                while u < len(b):
+                                                                    if p in d:
+                                                                        h = ''
+                                                                    u = u + 1
+                                                            if h == 'p':
+                                                                try:
+                                                                    i = 0
+                                                                    while CashFlowStatement[key][i] == None:
+                                                                        i = i + 1
+                                                                    ARCHvalue = CashFlowStatement[key][i]
+                                                                    CashFlowStatement[key][i] = None
+                                                                except:
+                                                                    if CashFlowStatement[key] != None:
+                                                                        ARCHvalue = CashFlowStatement[key]
+                                                                        CashFlowStatement[key] = None
+                                                                    else:
+                                                                        ARCHvalue = 0
+                                                                if ARCHvalue != 0:
+                                                                    NetChangeInForwardAndHedgesClassifiedAsFinancingActivities.append(ARCHvalue)
+                                            r = r + 1
+                                        cf.NetChangeInForwardAndHedgesClassifiedAsFinancingActivities = sum(NetChangeInForwardAndHedgesClassifiedAsFinancingActivities)
+                                    except:
+                                        pass
+                                    #
                                     # Net Change In Non Controlling Interests
                                     try:
                                         NetChangeInNonControllingInterests = []
@@ -9148,7 +9393,7 @@ for count in range(0, ll):
                                                     d = key
                                                     q = [
                                                         'NonControllingInterest',
-                                                        'NonControllingInterest',
+                                                        'NoncontrollingInterest',
                                                     ]
                                                     b = [
                                                         'CommercialPaper',
@@ -9273,6 +9518,7 @@ for count in range(0, ll):
                                                 'cf.RepaymentsOfConvertible',
                                                 'cf.IssuanceOfConvertible',
                                                 'cf.NetChangeInShortTermBorrowings',
+                                                'cf.NetChangeInForwardAndHedgesClassifiedAsFinancingActivities',
                                                 'cf.NetChangeInNonControllingInterests',
                                                 'cf.ProceedsFromStockOptionExercices',
                                                 'cf.OtherFinancingActivities',
@@ -9293,6 +9539,7 @@ for count in range(0, ll):
                                                 '{:,}'.format(cf.RepaymentsOfConvertible),
                                                 '{:,}'.format(cf.IssuanceOfConvertible),
                                                 '{:,}'.format(cf.NetChangeInShortTermBorrowings),
+                                                '{:,}'.format(cf.NetChangeInForwardAndHedgesClassifiedAsFinancingActivities),
                                                 '{:,}'.format(cf.NetChangeInNonControllingInterests),
                                                 '{:,}'.format(cf.ProceedsFromStockOptionExercices),
                                                 '{:,}'.format(cf.OtherFinancingActivities),
@@ -9421,6 +9668,7 @@ for count in range(0, ll):
                             if backwards == '':
                                 c = prioryeara.NonControllingInterests
                                 c = c - tb.DividendsDeclaredToNonControllingInterests
+                                c = c - tb.AcquisitionOfNonControllingInterests
                                 c = c - tb.NonControllingInterestsOthers
                                 tb.NonControllingInterestsBeginning = c
                             else:
@@ -9624,7 +9872,6 @@ for count in range(0, ll):
                                     tb.EmployeeCompensationCurrent,
                                     tb.OperatingLeasesCurrent,
                                     tb.FinanceLeasesCurrent,
-                                    tb.CapitalLeaseAndFinancingObligationsCurrent,
                                     tb.DeferredRevenueAndDepositsCurrent,
                                     tb.AccruedTaxLiabilities,
                                     tb.DeferredTaxLiabilitiesCurrent,
@@ -9689,8 +9936,8 @@ for count in range(0, ll):
                                     tb.PreferredSharesLiability,
                                     tb.RetirementBenefits,
                                     tb.OperatingLeasesNonCurrent,
+                                    tb.LeaseIncentiveObligation,
                                     tb.FinanceLeasesNonCurrent,
-                                    tb.CapitalLeaseAndFinancingObligationsNonCurrent,
                                     tb.DeferredRevenueAndDepositsNonCurrent,
                                     tb.ContingentConsideration,
                                     tb.AccruedTaxLiabilitiesNonCurrent,
@@ -9812,7 +10059,6 @@ for count in range(0, ll):
                             except:
                                 pass
                             #
-                            #
                             # operating expenses
                             try:
                                 #
@@ -9872,7 +10118,6 @@ for count in range(0, ll):
                             except:
                                 pass
                             #
-                            #
                             # operating income
                             try:
                                 Anomaly = 0
@@ -9919,7 +10164,6 @@ for count in range(0, ll):
                                     pass
                             except:
                                 pass
-                            #
                             #
                             # income before taxes
                             try:
@@ -9974,7 +10218,6 @@ for count in range(0, ll):
                                     pass
                             except:
                                 pass
-                            #
                             #
                             # net income
                             try:
@@ -10376,6 +10619,7 @@ for count in range(0, ll):
                                 Components = [
                                     tb.NonControllingInterestsBeginning,
                                     tb.DividendsDeclaredToNonControllingInterests,
+                                    tb.AcquisitionOfNonControllingInterests,
                                     tb.NonControllingInterestsOthers,
                                 ]
                                 #
@@ -10638,6 +10882,7 @@ for count in range(0, ll):
                                     cf.RepaymentsOfLongTermDebt,
                                     cf.FinancingCosts,
                                     cf.NetChangeInShortTermBorrowings,
+                                    cf.NetChangeInForwardAndHedgesClassifiedAsFinancingActivities,
                                     cf.NetChangeInNonControllingInterests,
                                     cf.ProceedsFromRepaymentsOfCommercialPaper,
                                     cf.RepaymentsOfConvertible,
@@ -10726,12 +10971,11 @@ for count in range(0, ll):
                                 z = tb.ShortTermBorrowings
                                 z = z + tb.CommercialPapers
                                 z = z + tb.FinanceLeasesCurrent
-                                z = z + tb.CapitalLeaseAndFinancingObligationsCurrent
                                 z = z + tb.ShortTermPortionOfLongTermDebt
                                 z = z + tb.LongTermDebt
                                 z = z + tb.OperatingLeasesNonCurrent
                                 z = z + tb.FinanceLeasesNonCurrent
-                                z = z + tb.CapitalLeaseAndFinancingObligationsNonCurrent
+                                z = z + tb.LeaseIncentiveObligation
                                 z = z * -0.035
                                 a.NormalizedTheoricalInterestCharge = z
                                 a.save()
@@ -11069,17 +11313,7 @@ for count in range(0, ll):
                 # counter
                 for dbcount in range(0, len(entities)):
                     #
-                    #
-                    #######################
-                    print(dbcount)
-                    #
-                    #
-                    #
                     ee = entities[dbcount]
-                    #
-                    #
-                    print(ee)
-                    #
                     #
                     if ee.Status == 'Audited':   
                         db.audited = db.audited + 1
