@@ -68,7 +68,7 @@ class Entity(models.Model):
     TradingSymbol = models.CharField(max_length=7, null=False, unique=True)
     EntityCentralIndexKey = models.CharField(max_length=10)
     Industry = models.CharField(max_length=61)
-    EntityIncorporationStateCountryCode = models.CharField(max_length=44)
+    IndustryCode = models.CharField(max_length=44)
     Region = models.CharField(max_length=44)
     CurrentFiscalYearEndDate = models.CharField(max_length=13, default=0)
     SecurityExchangeName = models.CharField(max_length=55, default=0)
