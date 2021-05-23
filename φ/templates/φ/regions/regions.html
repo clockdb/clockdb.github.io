@@ -1,0 +1,48 @@
+{% extends "φ/layout.html" %}
+
+{% block body %}
+
+<!--- SCRIPT --->
+<script>       
+
+    // DOCUMENT TITLE
+    document.title = 'clockdb.com | regions'
+
+</script>
+
+<!--- MENU --->
+
+<Section id="φ" style='padding-bottom:27%'>
+    <table style='width:90%'>
+        <tbody>
+            <tr>
+                <td colspan='1'>
+                    <h3 style="text-align:center; font-weight:bold;"></h2>
+                </td>
+                <td colspan='1'>
+                    <h3 style="text-align:center; font-weight:bold;"></h2>
+                </td>
+            </tr>
+            {% for region in regions %}
+            <tr>
+                <td colspan='1'>
+                    <a href="/regions/{{ region.db }}">
+                        <button>
+                            <h3 style='text-align:center; padding-bottom:1%'><b>{{ region.Description }}</h4></b>
+                        </button>
+                    </a>
+                </td>
+                <td>
+                    <a href="/regions/{{ region.db }}">
+                
+                        <button>
+                            <h3 style='text-align:center'><b>{{ region.Len }}</h4></b>
+                        </button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

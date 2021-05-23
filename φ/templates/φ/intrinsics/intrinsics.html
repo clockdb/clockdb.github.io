@@ -1,0 +1,62 @@
+{% extends "φ/layout.html" %}
+{% block body %}
+<script>       
+    document.title = 'clockdb.com | intrinsics'
+</script>
+<Section id="φ" style='padding-bottom:27%'>
+    <table style='width:90%'>
+        <tbody>
+            <tr>
+                <td colspan='1'>
+                    <h3 style="text-align:center; font-weight:bold; border-bottom: ridge;">from</h2>
+                </td>
+                <td colspan='1'>
+                    <h3 style="text-align:center; font-weight:bold; border-bottom: ridge;">to</h2>
+                </td>
+                <td colspan='1'>
+                    <h3 style="text-align:center; font-weight:bold; border-bottom: ridge;">len<To/h2>
+                </td>
+            </tr>
+            {% for intrinsic in intrinsics %}
+            <tr>
+                <td colspan='1'>
+                    <a href="/intrinsics/{{ intrinsic.db }}">
+                        <button>
+                            <h3 class='intrinsic' style='text-align:center; padding-bottom:1%; font-weight:bold;'>{{ intrinsic.dbp }}</h3>
+                        </button>
+                    </a>
+                </td>
+                <td colspan='1'>
+                    <a href="/intrinsics/{{ intrinsic.db }}">
+                        <button>
+                            <h3 class='intrinsic' style='text-align:center; padding-bottom:1%; font-weight:bold;'>{{ intrinsic.db }}</h3>
+                        </button>
+                    </a>
+                </td>
+                <td>
+                    <a href="/intrinsics/{{ intrinsic.db }}">
+                        <button>
+                            <h3 class='Len' style='text-align:center'><b>{{ intrinsic.Len }}</h3></b>
+                        </button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script>
+        // CLASS intrinsic FORMAT
+        document.addEventListener('DOMContentLoaded', function() {
+            var numUSD = new Intl.NumberFormat("en-US", {
+                format: "number",
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+            })
+            l = document.querySelectorAll('.intrinsic').length
+            for (let i = 0; i < l; i++) {
+                a = document.getElementsByClassName("intrinsic")[i].innerHTML;
+                document.getElementsByClassName('intrinsic')[i].innerHTML = numUSD.format(a) + ' B $';
+            }
+        })
+    </script>
+{% endblock %}

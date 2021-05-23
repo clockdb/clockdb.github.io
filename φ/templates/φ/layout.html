@@ -6,7 +6,7 @@
 
     <head>
         
-        <Title>clockdb</Title>
+        <Title>clockdb.com</Title>
 
         <meta charset="UTF-8">
 
@@ -17,6 +17,7 @@
         <link rel="icon" href="{% static 'φ/img/favicon.ico' %}" type="image/x-icon">
 
         <style>
+            
             /**/
             *{
                 margin: 0;
@@ -367,30 +368,10 @@
                 border-spacing: 37px;
                 vertical-align: middle;
             }
-            input#Calculator {
-                width: 18%; 
-                position: fixed; 
-                bottom: 0; 
-                right: 0; 
-                padding-right: 10px; 
-                background-color:#0D47A1;
-                color: white; 
-                font-weight: bold; 
-                text-shadow: 1px 1px rgb(73, 73, 73); 
-                outline:rgb(73, 73, 73);
-                box-shadow: 0px 4px 10px rgba(0,0,0,.3);
-            }
-            input:hover#Calculator {
-                background-color:#0D47A1;
-                width: 24%;
-                font-size: 17px;
-                transition: all 1.5s;
-            }
-            input:focus#Calculator {
-                background-color:#0D47A1;
-                width: 24%;
-                font-size: 17px;
-                transition: all .5s ease-out;
+            #φ select {
+                border-top: none;
+                border-left: none;
+                text-align: right;
             }
             @media (max-width: 599px) {
                 #φ h1 {
@@ -476,11 +457,11 @@
 
         <label class="label">
         
-            <a href="{% url 'φ:index' %}"><h5>
+            <a href="{% url 'φ:menu' %}"><h5>
                 ≡
             </h5></a>
         
-            <a href="{% url 'φ:database' %}"><h6>
+            <a href="{% url 'φ:index' %}"><h6>
                 db
             </h6></a>
 
@@ -495,65 +476,56 @@
     </Section>
 
     <script>
+        
+        function HighLight(e) {
+            position = event.target
+            position.select()
+        };
 
         // F keys
-        
         document.addEventListener('keydown', (event) => {
-            keys = [27, 112, 113, 114, 115]
+            i = 27
+            ii = 112
+            iii = 113
+            iv = 114
+            v = 115
+            vi = 116
+            vii = 117
+            viii = 118
+            ix = 119
+            x = 120
+            keys = [i, ii, iii, iv, v, vi, vii, viii, ix, x]
             if (keys.includes(event.keyCode)) {
                 event.preventDefault();
-                if (event.keyCode == 27) {
-                    window.close();
+                if (event.keyCode == i) {
+                    location.reload();
                 }
-                if (event.keyCode == 112) {
+                if (event.keyCode == ii) {
                     window.open("{% url 'φ:master' %}", '_top');
                 }
-                if (event.keyCode == 113) {
-                    window.open("{% url 'φ:database' %}", '_top');
+                if (event.keyCode == iii) {
+                    window.open("{% url 'φ:phases' %}", '_top');
                 }
-                if (event.keyCode == 114) {
-                    window.open("{% url 'φ:economics' %}", '_top');
+                if (event.keyCode == iv) {
+                    window.open("{% url 'φ:documentation' %}", '_top');
                 }
-                if (event.keyCode == 115) {
-                    window.open("{% url 'φ:overview' %}", '_top');
+                if (event.keyCode == v) {
+                    window.open("{% url 'φ:index' %}", '_top');
                 }
-            }
-        });
-
-        // ctrl number keys
-        document.addEventListener('keydown', (event) => {
-            keys = [49, 50, 51, 52, 53, 54, 55, 56, 57]
-            if (keys.includes(event.keyCode)) {
-                if (event.keyCode == 49 && (event.ctrlKey || event.metaKey)) {
-                    window.open("{% url 'φ:phase1' %}", '_top');
+                if (event.keyCode == vi) {
+                    window.open("{% url 'φ:intrinsics' %}", '_top');
                 }
-                if (event.keyCode == 50 && (event.ctrlKey || event.metaKey)) {
-                    window.open("{% url 'φ:phase2' %}", '_top');
+                if (event.keyCode == vii) {
+                    window.open("{% url 'φ:capitalizations' %}", '_top');
                 }
-                if (event.keyCode == 51 && (event.ctrlKey || event.metaKey)) {
-                    window.open("{% url 'φ:phase3' %}", '_top');
+                if (event.keyCode == viii) {
+                    window.open("{% url 'φ:industries' %}", '_top');
                 }
-                if (event.keyCode == 52 && (event.ctrlKey || event.metaKey)) {
-                    window.open("{% url 'φ:phase4' %}", '_top');
-                }
-                if (event.keyCode == 53 && (event.ctrlKey || event.metaKey)) {
-                    window.open("{% url 'φ:phase5' %}", '_top');
-                }
-                if (event.keyCode == 54 && (event.ctrlKey || event.metaKey)) {
-                    window.open("{% url 'φ:phase6' %}", '_top');
-                }
-                if (event.keyCode == 55 && (event.ctrlKey || event.metaKey)) {
-                    window.open("{% url 'φ:phase7' %}", '_top');
-                }
-                if (event.keyCode == 56 && (event.ctrlKey || event.metaKey)) {
-                    window.open("{% url 'φ:phase8' %}", '_top');
-                }
-                if (event.keyCode == 57 && (event.ctrlKey || event.metaKey)) {
-                    window.open("{% url 'φ:prepared' %}", '_top');
+                if (event.keyCode == ix) {
+                    window.open("{% url 'φ:regions' %}", '_top');
                 }
             }
         });
-
         
         // List of entities
         let myURL = new URL('http://www.clockdb.com/');

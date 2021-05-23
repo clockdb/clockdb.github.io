@@ -1,0 +1,152 @@
+{% extends "φ/layout.html" %}
+
+{% block body %}
+
+<!--- SCRIPT --->
+<script>       
+
+    // DOCUMENT TITLE
+    document.title = 'clockdb.com | menu'
+
+</script>
+
+<!--- MENU --->
+
+<section class="φ" style="padding-top:157px;">
+
+        <a href="{% url 'φ:database' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>GLOBAL RANKING</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">based on return on total asset</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:index' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>FILTER</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">look for rankings under specific conditions</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:intrinsics' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>INTRINSIC VALUES</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">filter by intrinsic values</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:capitalizations' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>CAPITALIZATIONS</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">filter by capitalizations</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:industries' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>INDUSTRIES</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">filter by industries</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:regions' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>REGIONS</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">filter by regions</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:master' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>MASTER</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">progress and statistics</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:documentation' %}">
+       
+            <button>
+                
+                <h4 style='text-align:center'><b>DOCUMENTATION</h4></b>
+                <h5 style="color:#8A9096; padding-bottom:5%">material, information and commands</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:commands' %}">
+       
+            <button>
+                
+                <h4 style='text-align:center'><b>COMMANDS</h4></b>
+                <h5 style="color:#8A9096; padding-bottom:5%">keyboard shortcuts</h5>
+
+            </button>
+
+        </a>
+        
+        <a href="https://github.com/clockdb/clockdb.github.io" target="Blank">
+       
+            <button>
+                
+                <h4 style='text-align:center'><b>GITHUB</h4></b>
+                <h5 style="color:#8A9096; padding-bottom:5%">clockdb.github.io</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:about' %}">
+       
+            <button>
+                
+                <h4 style='text-align:center'><b>ABOUT</h4></b>
+                <h5 style="color:#8A9096; padding-bottom:5%">clockdb.com</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:disclaimer' %}" style="padding-bottom:17%">
+       
+            <button>
+                
+                <h4 style='text-align:center'><b>DISCLAIMER</h4></b>
+                <h5 style="color:#8A9096; padding-bottom:5%">limitation of liability, terms and conditions, etc.</h5>
+
+            </button>
+
+        </a>
+
+    </section>
+
+
+{% endblock %}

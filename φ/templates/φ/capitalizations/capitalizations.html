@@ -1,0 +1,62 @@
+{% extends "φ/layout.html" %}
+{% block body %}
+<script>       
+    document.title = 'clockdb.com | capitalizations'
+</script>
+<Section id="φ" style='padding-bottom:27%'>
+    <table style='width:90%'>
+        <tbody>
+            <tr>
+                <td colspan='1'>
+                    <h3 style="text-align:center; font-weight:bold; border-bottom: ridge;">from</h2>
+                </td>
+                <td colspan='1'>
+                    <h3 style="text-align:center; font-weight:bold; border-bottom: ridge;">to</h2>
+                </td>
+                <td colspan='1'>
+                    <h3 style="text-align:center; font-weight:bold; border-bottom: ridge;">len<To/h2>
+                </td>
+            </tr>
+            {% for capitalization in capitalizations %}
+            <tr>
+                <td colspan='1'>
+                    <a href="/capitalizations/{{ capitalization.db }}">
+                        <button>
+                            <h3 class='capitalization' style='text-align:center; padding-bottom:1%; font-weight:bold;'>{{ capitalization.dbp }}</h3>
+                        </button>
+                    </a>
+                </td>
+                <td colspan='1'>
+                    <a href="/capitalizations/{{ capitalization.db }}">
+                        <button>
+                            <h3 class='capitalization' style='text-align:center; padding-bottom:1%; font-weight:bold;'>{{ capitalization.db }}</h3>
+                        </button>
+                    </a>
+                </td>
+                <td>
+                    <a href="/capitalizations/{{ capitalization.db }}">
+                        <button>
+                            <h3 class='Len' style='text-align:center'><b>{{ capitalization.Len }}</h3></b>
+                        </button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script>
+        // CLASS CAPITALIZATION FORMAT
+        document.addEventListener('DOMContentLoaded', function() {
+            var numUSD = new Intl.NumberFormat("en-US", {
+                format: "number",
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+            })
+            l = document.querySelectorAll('.capitalization').length
+            for (let i = 0; i < l; i++) {
+                a = document.getElementsByClassName("capitalization")[i].innerHTML;
+                document.getElementsByClassName('capitalization')[i].innerHTML = numUSD.format(a)
+            }
+        })
+    </script>
+{% endblock %}

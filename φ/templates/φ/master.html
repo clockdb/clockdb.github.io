@@ -17,367 +17,104 @@
     <table style='width:90%'>
 
         <tbody>
-
-                <tr></tr>
-                <tr>
-                    <td colspan='1' style="border-bottom: ridge;">
-                        <h3 style="text-align:center; font-weight:bold;"></h3>
-                    </td>
-                    <td style="border-bottom: ridge;" >
-                        <h3 style="text-align:center; font-weight:bold;"></h2>
-                    </td>
-                </tr>
-                <tr></tr>
-                
-                <tr>
-                    <td colspan='1' style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:database' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>Audited</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                    <td style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>{{ db.audited }}</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan='1' style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>Progress</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                    <td style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>{{ db.progress }}% </b></h3>
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan='1' style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase7' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>Entities Equivalent</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                    <td style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase7' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>{{ db.completed }} </b></h3>
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan='1' style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase7' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>Onboarded</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                    <td style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase7' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>{{ db.onboarded }} </b></h3>
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan='1' style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:overview' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>Total</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                    <td style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:overview' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>{{ db.total }} </b></h3>
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-
-                <tr></tr>
-                <tr>
-                    <td colspan='1' style="border-bottom: ridge;">
-                        <h3 style="text-align:center; font-weight:bold;"></h2>
-                    </td>
-                    <td style="border-bottom: ridge;" >
-                        <h3 style="text-align:center; font-weight:bold;"></h2>
-                    </td>
-                </tr>
-                <tr></tr>
-                
-                <tr>
-                    <td colspan='1' style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:prepared' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>Prepared</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                    <td style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:prepared' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>{{ db.prepared }}</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan='1' style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase8' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>Phase 8</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                    <td style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase8' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>{{ db.phase8 }}</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan='1' style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase7.8' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>Phase 7.8</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                    <td style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase7.8' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>{{ db.phase78 }}</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan='1' style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase7.7' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>Phase 7.7</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                    <td style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase7.7' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>{{ db.phase77 }}</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan='1' style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase7.6' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>Phase 7.6</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                    <td style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase7.6' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>{{ db.phase76 }}</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan='1' style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase7.5' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>Phase 7.5</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                    <td style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase7.5' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>{{ db.phase75 }}</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan='1' style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase7.4' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>Phase 7.4</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                    <td style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase7.4' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>{{ db.phase74 }}</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan='1' style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase7.3' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>Phase 7.3</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                    <td style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase7.3' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>{{ db.phase73 }}</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan='1' style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase7.2' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>Phase 7.2</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                    <td style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase7.2' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>{{ db.phase72 }}</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan='1' style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase7.1' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>Phase 7.1</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                    <td style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase7.1' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>{{ db.phase71 }}</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan='1' style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase6' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>Phase 6</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                    <td style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase6' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>{{ db.phase6 }}</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan='1' style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase5' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>Phase 5</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                    <td style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase5' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>{{ db.phase5 }}</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan='1' style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase4' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>Phase 4</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                    <td style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase4' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>{{ db.phase4 }}</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan='1' style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase3' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>Phase 3</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                    <td style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase3' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>{{ db.phase3 }}</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan='1' style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase2' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>Phase 2</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                    <td style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase2' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>{{ db.phase2 }}</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan='1' style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase1' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>Phase 1</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                    <td style="vertical-align:bottom;" style='padding-top: 24px;'>
-                        <a href="{% url 'φ:phase1' %}">
-                            <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
-                                <h3 style="text-align:center;"><b>{{ db.phase1 }}</b></h3>
-                            </button>
-                        </a>
-                    </td>
-                </tr>
+    
+            <tr></tr>
+            <tr>
+                <td colspan='2' style="border-bottom: ridge;">
+                    <h3 style="text-align:center; font-weight:bold;"></h3>
+                </td>
+            </tr>
+            <tr></tr>
             
+            <tr>
+                <td colspan='1' style="vertical-align:bottom;" style='padding-top: 24px;'>
+                    <a href="{% url 'φ:database' %}">
+                        <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
+                            <h3 style="text-align:center;"><b> Audited </b></h3>
+                        </button>
+                    </a>
+                </td>
+                <td style="vertical-align:bottom;" style='padding-top: 24px;'>
+                    <a href="{% url 'φ:database' %}">
+                        <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
+                            <h3 style="text-align:center;"><b>{{ master.audited }}</b></h3>
+                        </button>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan='1' style="vertical-align:bottom;" style='padding-top: 24px;'>
+                    <a href="{% url 'φ:phases' %}">
+                        <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
+                            <h3 style="text-align:center;"><b>Progress</b></h3>
+                        </button>
+                    </a>
+                </td>
+                <td style="vertical-align:bottom;" style='padding-top: 24px;'>
+                    <a href="">
+                        <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
+                            <h3 style="text-align:center;"><b>{{ master.progress }}%</b></h3>
+                        </button>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan='1' style="vertical-align:bottom;" style='padding-top: 24px;'>
+                    <a href="{% url 'φ:phases' %}">
+                        <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
+                            <h3 style="text-align:center;"><b>Entities Equivalent</b></h3>
+                        </button>
+                    </a>
+                </td>
+                <td style="vertical-align:bottom;" style='padding-top: 24px;'>
+                    <a href="{% url 'φ:phases' %}">
+                        <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
+                            <h3 style="text-align:center;"><b>{{ master.eq }}</b></h3>
+                        </button>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan='1' style="vertical-align:bottom;" style='padding-top: 24px;'>
+                    <a href="{% url 'φ:phases' %}">
+                        <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
+                            <h3 style="text-align:center;"><b>Onboarded</b></h3>
+                        </button>
+                    </a>
+                </td>
+                <td style="vertical-align:bottom;" style='padding-top: 24px;'>
+                    <a href="{% url 'φ:phases' %}">
+                        <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
+                            <h3 style="text-align:center;"><b>{{ master.onboarded }}</b></h3>
+                        </button>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan='1' style="vertical-align:bottom;" style='padding-top: 24px;'>
+                    <a href="{% url 'φ:phases' %}">
+                        <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
+                            <h3 style="text-align:center;"><b>Total</b></h3>
+                        </button>
+                    </a>
+                </td>
+                <td style="vertical-align:bottom;" style='padding-top: 24px;'>
+                    <a href="{% url 'φ:phases' %}">
+                        <button style='vertical-align:bottom; padding-bottom: 1%; padding-top: 24px;'>
+                            <h3 style="text-align:center;"><b>{{ master.entities }}</b></h3>
+                        </button>
+                    </a>
+                </td>
+            </tr>
+            
+            <tr></tr>
+            <tr>
+                <td colspan='2' style="border-bottom: ridge;">
+                    <h3 style="text-align:center; font-weight:bold;"></h3>
+                </td>
+            </tr>
+            <tr></tr>
+
         </tbody>
     </table>
 </Section>

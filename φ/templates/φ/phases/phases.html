@@ -6,129 +6,45 @@
 <script>       
 
     // DOCUMENT TITLE
-    document.title = 'clockdb.com | mining phases'
+    document.title = 'clockdb.com | ' + 'phases {{ phase.db }}'
 
 </script>
 
 <!--- MENU --->
 
-<div class="text">
-
-    <ul>
-
-        <a href="{% url 'φ:database' %}">
-           
-            <button>
+<Section id="φ" style='padding-bottom:27%'>
+    <table style='width:90%'>
+        <tbody>
+            <tr>
+                <td colspan='1'>
+                    <h3 style="text-align:center; font-weight:bold;"></h2>
+                </td>
+                <td colspan='1'>
+                    <h3 style="text-align:center; font-weight:bold;"></h2>
+                </td>
+            </tr>
+            {% for phase in phases %}
+            <tr>
+                <td colspan='1'>
+                    <a href="/phases/{{ phase.db }}">
+                        <button>
+                            <h3 style='text-align:center; padding-bottom:1%'><b>{{ phase.Description }}</h4></b>
+                            <h5 style="text-align:center; color:#8A9096; padding-bottom:1%"><b>Phase {{ phase.db }}</h4></b>
+                        </button>
+                    </a>
+                </td>
+                <td>
+                    <a href="/phases/{{ phase.db }}">
                 
-                <h4 style='text-align:center'><b>REVIEWED</b></h4>
-                <h5 style="color:#8A9096; padding-bottom:5%">reviewed audited financial statements and valuations ({{db.audited}})</h5>
-
-            </button>
-
-        </a>
-
-        <a href="{% url 'φ:prepared' %}">
-           
-            <button>
-                
-                <h4 style='text-align:center'><b>PREPARED</b></h4>
-                <h5 style="color:#8A9096; padding-bottom:5%">prepared audited financial statements and valuations ({{db.prepared}})</h5>
-
-            </button>
-
-        </a>
-        
-        <a href="{% url 'φ:phase8' %}">
-           
-            <button>
-                
-                <h4 style='text-align:center'><b>PHASE 8</b></h4>
-                <h5 style="color:#8A9096; padding-bottom:5%">securities and market data ({{db.phase8}})</h5>
-
-            </button>
-
-        </a>
-
-        <a href="{% url 'φ:phase7' %}">
-           
-            <button>
-                
-                <h4 style='text-align:center'><b>PHASE 7</b></h4>
-                <h5 style="color:#8A9096; padding-bottom:5%">financial statements ({{db.phase7}})</h5>
-
-            </button>
-
-        </a>
-
-        <a href="{% url 'φ:phase6' %}">
-           
-            <button>
-                
-                <h4 style='text-align:center'><b>PHASE 6</b></h4>
-                <h5 style="color:#8A9096; padding-bottom:5%">urls ({{db.phase6}})</h5>
-
-            </button>
-
-        </a>
-
-        <a href="{% url 'φ:phase5' %}">
-           
-            <button>
-                
-                <h4 style='text-align:center'><b>PHASE 5</b></h4>
-                <h5 style="color:#8A9096; padding-bottom:5%">amend ({{db.phase5}})</h5>
-
-            </button>
-
-        </a>
-
-        <a href="{% url 'φ:phase4' %}">
-           
-            <button>
-                
-                <h4 style='text-align:center'><b>PHASE 4</b></h4>
-                <h5 style="color:#8A9096; padding-bottom:5%">accession numbers and fiscal year end ({{db.phase4}})</h5>
-
-            </button>
-
-        </a>
-
-        <a href="{% url 'φ:phase3' %}">
-           
-            <button>
-                
-                <h4 style='text-align:center'><b>PHASE 3</b></h4>
-                <h5 style="color:#8A9096; padding-bottom:5%">financial, cashflow and audit templates ({{db.phase3}})</h5>
-
-            </button>
-
-        </a>
-
-        <a href="{% url 'φ:phase2' %}">
-           
-            <button>
-                
-                <h4 style='text-align:center'><b>PHASE 2</b></h4>
-                <h5 style="color:#8A9096; padding-bottom:5%">name, industry and region ({{db.phase2}})</h5>
-
-            </button>
-
-        </a>
-
-        <a href="{% url 'φ:phase1' %}" style="padding-bottom:17%">
-           
-            <button>
-                
-                <h4 style='text-align:center'><b>PHASE 1</b></h4>
-                <h5 style="color:#8A9096; padding-bottom:5%">central index keys ({{db.phase1}})</h5>
-
-            </button>
-
-        </a>
-
-    </ul>
-    
-</div>
-
+                        <button>
+                            <h3 style='text-align:center'><b>{{ phase.Len }}</h4></b>
+                            <h5 style="text-align:center; color:#8A9096; padding-bottom:1%"><b></h4></b>
+                        </button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
 {% endblock %}

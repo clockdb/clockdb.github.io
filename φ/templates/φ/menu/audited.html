@@ -1,0 +1,57 @@
+{% extends "φ/layout.html" %}
+
+{% block body %}
+
+<!--- SCRIPT --->
+<script>       
+
+    // DOCUMENT TITLE
+    document.title = 'clockdb.com | audited'
+
+</script>
+
+<!--- MENU --->
+
+<div class="text">
+
+    <ul>
+
+        <a href="{% url 'φ:database' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>GLOBAL RANKING</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">based on return on total asset</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:economics' %}">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>MACROECONOMICS</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">consolidated, industrial, regional, capitalization</h5>
+
+            </button>
+
+        </a>
+
+        <a href="{% url 'φ:master' %}" style="padding-bottom:17%">
+           
+            <button>
+                
+                <h4 style='text-align:center'><b>MASTER</b></h4>
+                <h5 style="color:#8A9096; padding-bottom:5%">progress and statistics</h5>
+
+            </button>
+
+        </a>
+
+    </ul>
+    
+</div>
+
+
+{% endblock %}

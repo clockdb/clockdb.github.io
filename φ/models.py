@@ -1,93 +1,126 @@
 from django.db import models, migrations
+from django.db.models.fields import IntegerField
 
-class Database(models.Model):
-    #
-    phase1 = models.IntegerField(default=0)
-    #
-    phase2 = models.IntegerField(default=0)
-    #
-    phase3 = models.IntegerField(default=0)
-    #
-    phase4 = models.IntegerField(default=0)
-    #
-    phase41 = models.IntegerField(default=0)
-    #
-    phase42 = models.IntegerField(default=0)
-    #
-    phase43 = models.IntegerField(default=0)
-    #
-    phase5 = models.IntegerField(default=0)
-    #
-    phase6 = models.IntegerField(default=0)
-    #
-    phase61 = models.IntegerField(default=0)
-    #
-    phase62 = models.IntegerField(default=0)
-    #
-    phase63 = models.IntegerField(default=0)
-    #
-    phase64 = models.IntegerField(default=0)
-    #
-    phase65 = models.IntegerField(default=0)
-    #
-    phase7 = models.IntegerField(default=0)
-    #
-    phase71 = models.IntegerField(default=0)
-    #
-    phase72 = models.IntegerField(default=0)
-    #
-    phase73 = models.IntegerField(default=0)
-    #
-    phase74 = models.IntegerField(default=0)
-    #
-    phase75 = models.IntegerField(default=0)
-    #
-    phase76 = models.IntegerField(default=0)
-    #
-    phase77 = models.IntegerField(default=0)
-    #
-    phase78 = models.IntegerField(default=0)
-    #
-    phase8 = models.IntegerField(default=0)
-    #
-    prepared = models.IntegerField(default=0)
-    #
+
+class Master(models.Model):
+    entities = models.IntegerField(default=0)
     audited = models.IntegerField(default=0)
-    #
-    total = models.IntegerField(default=0)
-    #
+    capitalizations = models.IntegerField(default=0)
+    industries = models.IntegerField(default=0)
+    regions = models.IntegerField(default=0)
+    eq = models.IntegerField(default=0)
     onboarded = models.IntegerField(default=0)
-    #
-    completed = models.IntegerField(default=0)
-    #
     progress = models.FloatField(default=0)
+
+
+class Capitalization(models.Model):
+    db = models.IntegerField(default=0, unique=True)
+    dbp = models.IntegerField(default=0)
+    leader = models.CharField(max_length=93, default='')
+    Len = models.IntegerField(default=0)
+    #
+    def __str__(self):
+        return f"{self.dbp}, {self.db}, {self.Len}"
+
+class PeriodEndDate(models.Model):
+    db = models.DateField(null=True, unique=True)
+    dbp = models.DateField(null=True)
+    Len = models.IntegerField(default=0)
+    #
+    def __str__(self):
+        return f"{self.dbp}, {self.db}, {self.Len}"
+
+class Intrinsic(models.Model):
+    db = models.IntegerField(default=0, unique=True)
+    Description = models.CharField(max_length=21)
+    Len = models.IntegerField(default=0)
+    #
+    def __str__(self):
+        return f"{self.db}, {self.Description}, {self.Len}"
+
+class Phase(models.Model):
+    db = models.IntegerField(default=0, unique=True)
+    Description = models.CharField(max_length=93)
+    Len = models.IntegerField(default=0)
+    #
+    def __str__(self):
+        return f"{self.db}, {self.Description}, {self.Len}"
+
+class Region(models.Model):
+    db = models.IntegerField(default=0, unique=True)
+    Description = models.CharField(max_length=44)
+    Len = models.IntegerField(default=0)
+    #
+    def __str__(self):
+        return f"{self.db}, {self.Description}, {self.Len}"
+
+class Sector(models.Model):
+    db = models.IntegerField(default=0, unique=True)
+    Description = models.CharField(max_length=44)
+    #
+    def __str__(self):
+        return f"{self.db}, {self.Description}"
+
+class Industry(models.Model):
+    db = models.IntegerField(default=0, unique=True)
+    Sector_db = models.IntegerField(default=0)
+    Description = models.CharField(max_length=61)
+    Len = models.IntegerField(default=0)
+    #
+    def __str__(self):
+        return f"{self.db}, {self.Description}, {self.Len}"
+
 
 class Entity(models.Model):
     #
+    db = models.IntegerField(default=0)
+    #
+    Capitalization_db = models.IntegerField(default=0)
+    Intrinsic_db = models.IntegerField(default=0)
+    Industry_db = models.IntegerField(default=0)
+    PeriodEndDate_db = models.DateField(null=True)
+    Region_db = models.IntegerField(default=0)
+    Sector_db = models.IntegerField(default=0)
+    #
     EntityRegistrantName = models.CharField(max_length=93)
-    TradingSymbol = models.CharField(max_length=7, null=False, unique=True)
     EntityCentralIndexKey = models.CharField(max_length=10)
-    Industry = models.CharField(max_length=61)
-    IndustryCode = models.CharField(max_length=10, default='')
+    #
+    Industry = models.CharField(max_length=61, default='')
+    #
+    Industry_SEC = models.CharField(max_length=61)
+    Industry_SEC_db = models.IntegerField(default=0)
+    Industry_SECCode = models.CharField(max_length=10, default='')
+    #
     Region = models.CharField(max_length=44)
     RegionCode = models.CharField(max_length=4, default='')
-    CurrentFiscalYearEndDate = models.CharField(max_length=13, default=0)
-    SecurityExchangeName = models.CharField(max_length=55, default=0)
-    Regulator = models.CharField(max_length=3)
-    Update = models.DateField(null=True)
-    UpdateDateAndTime = models.DateTimeField(null=True)
-    StockPriceUpdate = models.DateTimeField(null=True)
-    Clockφ = models.IntegerField(default=0)
-    ClockφChange = models.IntegerField(default=0)
-    Bridgeφ = models.CharField(max_length=100, default=0)
-    Status = models.CharField(max_length=7, default=0)
-    Reviewed = models.IntegerField(default=0)
-    Anomalies = models.CharField(max_length=100, default=0)
-    SECurl = models.CharField(max_length=66, default=0)    
     #
-    MarketCapitalization = models.IntegerField(default=0)
-    StockPrice = models.IntegerField(default=0)
-    EntityCommonStockSharesOutstanding = models.IntegerField(default=0)
+    SecurityExchangeName = models.CharField(max_length=55, default=0)
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True)
+    #
+    SECurl = models.CharField(max_length=66, default=0)    
+    URL = models.CharField(max_length=99, default='')
+    #
+    SEC_Update = models.DateField(null=True)
+    SEC_UpdateDateAndTime = models.DateTimeField(null=True)
+    #
+    SecuritiesUpdate = models.DateTimeField(null=True)
+    #
+    OpinionφLastYear = models.CharField(max_length=55, default='')
+    OpinionφSecondLastYear = models.CharField(max_length=55, default='')
+    OpinionφThirdLastYear = models.CharField(max_length=55, default='')
+    OpinionφFourthLastYear = models.CharField(max_length=55, default='')
+    #
+    ClockφLastYear = models.IntegerField(default=0)
+    ClockφSecondLastYear = models.IntegerField(default=0)
+    ClockφThirdLastYear = models.IntegerField(default=0)
+    ClockφFourthLastYear = models.IntegerField(default=0)
+    #
+    BridgeφLastYear = models.CharField(max_length=100, default=0)
+    BridgeφSecondLastYear = models.CharField(max_length=100, default=0)
+    BridgeφThirdLastYear = models.CharField(max_length=100, default=0)
+    BridgeφFourthLastYear = models.CharField(max_length=100, default=0)
+    #
+    Anomalies = models.CharField(max_length=100, default=0)
     #
     AnomaliesRatio1 = models.IntegerField(default=9999)
     AnomaliesRatio2 = models.IntegerField(default=9999)
@@ -97,6 +130,31 @@ class Entity(models.Model):
     AnomaliesRatio6 = models.IntegerField(default=9999)
     #
     NumberOfYearsAudited = models.IntegerField(default=0)
+    #
+    CommonSharesIntrinsicValueLastYear = models.IntegerField(default=0)
+    CommonSharesIntrinsicValueSecondLastYear = models.IntegerField(default=0)
+    CommonSharesIntrinsicValueThirdLastYear = models.IntegerField(default=0)
+    CommonSharesIntrinsicValueFourthLastYear = models.IntegerField(default=0)
+    #
+    MarketCapitalizationLastYear = models.IntegerField(default=0)
+    MarketCapitalizationSecondLastYear = models.IntegerField(default=0)
+    MarketCapitalizationThirdLastYear = models.IntegerField(default=0)
+    MarketCapitalizationFourthLastYear = models.IntegerField(default=0)
+    #
+    CommonShareIntrinsicValueLastYear = models.IntegerField(default=0)
+    CommonShareIntrinsicValueSecondLastYear = models.IntegerField(default=0)
+    CommonShareIntrinsicValueThirdLastYear = models.IntegerField(default=0)
+    CommonShareIntrinsicValueFourthLastYear = models.IntegerField(default=0)
+    #
+    CommonSharePriceLastYear = models.FloatField(default=0)
+    CommonSharePriceSecondLastYear = models.FloatField(default=0)
+    CommonSharePriceThirdLastYear = models.FloatField(default=0)
+    CommonSharePriceFourthLastYear = models.FloatField(default=0)
+    #
+    CommonSharesOutstandingLastYear = models.IntegerField(default=0)
+    CommonSharesOutstandingSecondLastYear = models.IntegerField(default=0)
+    CommonSharesOutstandingThirdLastYear = models.IntegerField(default=0)
+    CommonSharesOutstandingFourthLastYear = models.IntegerField(default=0)
     #
     accessionnumberlastyear = models.CharField(max_length=20, default='')
     accessionnumbersecondlastyear = models.CharField(max_length=20, default='')
@@ -146,13 +204,13 @@ class Entity(models.Model):
     urlcomprehensiveincomesixthlastyear =  models.CharField(max_length=170, default='')
     urlcomprehensiveincomeseventhlastyear =  models.CharField(max_length=170, default='')
     #
-    urlstockholdersequitylastyear =  models.CharField(max_length=170, default='')
-    urlstockholdersequitysecondlastyear =  models.CharField(max_length=170, default='')
-    urlstockholdersequitythirdlastyear =  models.CharField(max_length=170, default='')
-    urlstockholdersequityfourthlastyear =  models.CharField(max_length=170, default='')
-    urlstockholdersequityfifthlastyear =  models.CharField(max_length=170, default='')
-    urlstockholdersequitysixthlastyear =  models.CharField(max_length=170, default='')
-    urlstockholdersequityseventhlastyear =  models.CharField(max_length=170, default='')
+    urlshareholdersequitylastyear =  models.CharField(max_length=170, default='')
+    urlshareholdersequitysecondlastyear =  models.CharField(max_length=170, default='')
+    urlshareholdersequitythirdlastyear =  models.CharField(max_length=170, default='')
+    urlshareholdersequityfourthlastyear =  models.CharField(max_length=170, default='')
+    urlshareholdersequityfifthlastyear =  models.CharField(max_length=170, default='')
+    urlshareholdersequitysixthlastyear =  models.CharField(max_length=170, default='')
+    urlshareholdersequityseventhlastyear =  models.CharField(max_length=170, default='')
     #
     urlcashflowlastyear =  models.CharField(max_length=170, default='')
     urlcashflowsecondlastyear =  models.CharField(max_length=170, default='')
@@ -172,22 +230,26 @@ class Entity(models.Model):
     def __str__(self):
         return f"{self.TradingSymbol}"
 
+
+class Puck(models.Model):
+    db = IntegerField(default=0)
+
+
 class AuditData(models.Model):
     #
     # General - Audit
     #
-    EntityRegistrantName = models.CharField(max_length=93)
-    TradingSymbol = models.CharField(max_length=13, default=0)
+    db = models.IntegerField(default=0)
     AccessionNumber = models.CharField(max_length=20, default='')
     AmendmentFlag = models.CharField(max_length=5, default=0)
-    PeriodEndDate = models.DateField(null=True)
     CurrentFiscalYearEndDate = models.CharField(max_length=7, default=0)
     DocumentFiscalPeriodFocus = models.CharField(max_length=2, default=0)
     DocumentFiscalYearFocus = models.CharField(max_length=4, default=0)
     DocumentPeriodEndDate = models.CharField(max_length=13, default=0)
+    EntityRegistrantName = models.CharField(max_length=93)
     Period = models.CharField(max_length=27, default=0)
-    #
-    Status = models.CharField(max_length=7, default='')
+    PeriodEndDate = models.DateField(null=True)
+    TradingSymbol = models.CharField(max_length=13, default=0)
     #
     # Balance Sheets - Audit
     #
@@ -197,8 +259,8 @@ class AuditData(models.Model):
     CurrentLiabilities = models.IntegerField(default=0)
     NonCurrentLiabilities = models.IntegerField(default=0)
     Liabilities = models.IntegerField(default=0)
-    StockholdersEquity = models.IntegerField(default=0)
-    LiabilitiesAndStockholdersEquity = models.IntegerField(default=0)
+    ShareholdersEquity = models.IntegerField(default=0)
+    LiabilitiesAndShareholdersEquity = models.IntegerField(default=0)
     #
     AnomalyCurrentAssets = models.IntegerField(default=0)
     AnomalyCurrentAssetsSEC = models.IntegerField(default=0)
@@ -210,9 +272,9 @@ class AuditData(models.Model):
     AnomalyNonCurrentLiabilities = models.IntegerField(default=0)
     AnomalyNonCurrentLiabilitiesSEC = models.IntegerField(default=0)
     AnomalyLiabilities = models.IntegerField(default=0)
-    AnomalyStockholdersEquity = models.IntegerField(default=0)
-    AnomalyStockholdersEquitySEC = models.IntegerField(default=0)
-    AnomalyLiabilitiesAndStockholdersEquity = models.IntegerField(default=0)
+    AnomalyShareholdersEquity = models.IntegerField(default=0)
+    AnomalyShareholdersEquitySEC = models.IntegerField(default=0)
+    AnomalyLiabilitiesAndShareholdersEquity = models.IntegerField(default=0)
     #
     #
     # Income Statements - Audit
@@ -242,9 +304,9 @@ class AuditData(models.Model):
     AnomalyComprehensiveIncome = models.IntegerField(default=0)
     #
     #
-    # Stockholders Equity - Audit
+    # Shareholders Equity - Audit
     #
-    StockholdersEquityBeginning = models.IntegerField(default=0)
+    ShareholdersEquityBeginning = models.IntegerField(default=0)
     #
     ConvertibleDebt = models.IntegerField(default=0)
     CommonShares = models.IntegerField(default=0)
@@ -268,7 +330,7 @@ class AuditData(models.Model):
     OperatingActivities = models.IntegerField(default=0)
     InvestingActivities = models.IntegerField(default=0)
     FinancingActivities = models.IntegerField(default=0)
-    IncreaseDecreaseInCash = models.IntegerField(default=0)
+    increaseDecreaseInCash = models.IntegerField(default=0)
     #
     AnomalyOperatingActivities = models.IntegerField(default=0)
     AnomalyOperatingActivitiesSEC = models.IntegerField(default=0)
@@ -281,8 +343,10 @@ class AuditData(models.Model):
     # Supplemental - Audit
     #
     MarketCapitalization = models.IntegerField(default=0)
-    EntityCommonStockSharesOutstanding = models.IntegerField(default=0)
-    StockPrice = models.FloatField(default=0)
+    CommonSharesOutstanding = models.IntegerField(default=0)
+    CommonSharePrice = models.FloatField(default=0)
+    CommonSharePriceUpdate = models.FloatField(default=0)
+    URLoustandingshares = models.CharField(max_length=100, default='')
     #
     NormalizedTheoricalInterestCharge = models.IntegerField(default=0)
     TheoricalTaxRate = models.FloatField(default=0)
@@ -292,20 +356,21 @@ class AuditData(models.Model):
     def __str__(self):
         return f"{self.TradingSymbol}:{self.Period}"
 
+
 class CashFlow(models.Model):
     #
     # General - Cash Flow
     #
-    EntityRegistrantName = models.CharField(max_length=93)
-    TradingSymbol = models.CharField(max_length=13, default=0)
     AccessionNumber = models.CharField(max_length=20, default='')
     AmendmentFlag = models.CharField(max_length=5, default=0)
-    PeriodEndDate = models.DateField(null=True)
     CurrentFiscalYearEndDate = models.CharField(max_length=7, default=0)
     DocumentFiscalPeriodFocus = models.CharField(max_length=2, default=0)
     DocumentFiscalYearFocus = models.CharField(max_length=4, default=0)
     DocumentPeriodEndDate = models.CharField(max_length=13, default=0)
+    EntityRegistrantName = models.CharField(max_length=93)
     Period = models.CharField(max_length=27, default=0)
+    PeriodEndDate = models.DateField(null=True)
+    TradingSymbol = models.CharField(max_length=13, default=0)
     #
     # Cash - Cash Flow
     #
@@ -350,10 +415,10 @@ class CashFlow(models.Model):
     # Financing Activities - Cash Flow
     #
     FinanceLeasePrincipalPayments = models.IntegerField(default=0)
-    ProceedsFromIssuanceOfCommonStock = models.IntegerField(default=0)
-    ProceedsFromStockOptionExercices = models.IntegerField(default=0)
+    ProceedsFromIssuanceOfCommonShares = models.IntegerField(default=0)
+    ProceedsFromSharePurchasePlanAndOptionsExercice = models.IntegerField(default=0)
     PaymentsRelatedToTaxWithholdingForShareBasedCompensation = models.IntegerField(default=0)
-    PaymentsForRepurchaseOfCommonStock = models.IntegerField(default=0)
+    PaymentsForRepurchaseOfCommonShares = models.IntegerField(default=0)
     PaymentsOfDividends = models.IntegerField(default=0)
     IncreaseDecreaseDeferredContingentConsideration = models.IntegerField(default=0)
     ProceedsFromIssuanceOfLongTermDebt = models.IntegerField(default=0)
@@ -377,25 +442,26 @@ class CashFlow(models.Model):
     def __str__(self):
         return f"{self.TradingSymbol}:{self.Period}"
 
+
 class TrialBalance(models.Model):
     #
     #
     # General - Trial Balance
     #
-    EntityRegistrantName = models.CharField(max_length=93)
-    TradingSymbol = models.CharField(max_length=13, default=0)
     AccessionNumber = models.CharField(max_length=20, default='')
     AmendmentFlag = models.CharField(max_length=5, default=0)
-    PeriodEndDate = models.DateField(null=True)
     CurrentFiscalYearEndDate = models.CharField(max_length=7, default=0)
     DocumentFiscalPeriodFocus = models.CharField(max_length=2, default=0)
     DocumentFiscalYearFocus = models.CharField(max_length=4, default=0)
     DocumentPeriodEndDate = models.CharField(max_length=13, default=0)
-    PeriodOfReport = models.CharField(max_length=13, default=0)
-    NumberOfDays = models.IntegerField(default=0)
+    EntityRegistrantName = models.CharField(max_length=93)
     FilingDate = models.CharField(max_length=13, default=0)
-    Period = models.CharField(max_length=27, default=0)
     Link = models.CharField(max_length=360, default=0)
+    NumberOfDays = models.IntegerField(default=0)
+    Period = models.CharField(max_length=27, default=0)
+    PeriodEndDate = models.DateField(null=True)
+    PeriodOfReport = models.CharField(max_length=13, default=0)
+    TradingSymbol = models.CharField(max_length=13, default=0)
     #
     #
     # Current Assets - Trial Balance
@@ -465,20 +531,20 @@ class TrialBalance(models.Model):
     DiscontinuedOperationsLiabilitiesNonCurrent = models.IntegerField(default=0)
     #
     #
-    # Stockholders Equity - Trial Balance
+    # Shareholders Equity - Trial Balance
     #
     # convertible debt
     ConvertibleDebtBeginning = models.IntegerField(default=0)
     #
     # common shares
     CommonSharesBeginning = models.IntegerField(default=0)
-    CommonStockIssued = models.IntegerField(default=0)
+    CommonSharesIssued = models.IntegerField(default=0)
     ShareBasedCompensation = models.IntegerField(default=0)
     #
     # retained earnings
     RetainedEarningsBeginning = models.IntegerField(default=0)
     DividendsAndDividendEquivalentsDeclared = models.IntegerField(default=0)
-    CommonStockRepurchasedAndRetired = models.IntegerField(default=0)
+    CommonSharesRepurchasedAndRetired = models.IntegerField(default=0)
     EffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts = models.IntegerField(default=0)
     RetainedEarningsOthers = models.IntegerField(default=0)
     #
@@ -523,3 +589,2933 @@ class TrialBalance(models.Model):
     #
     def __str__(self):
         return f"{self.TradingSymbol}:{self.Period}"
+
+
+
+# Balance Sheet
+
+
+# Current Assets Components
+
+
+class Cash(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class ShortTermInvestments(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AccountsReceivable(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class WorkInProgress(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class Inventories(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class PrepaidExpenses(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class NonTradeReceivables(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class PrepaidTaxAssetsCurrent(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class DeferredTaxAssetsCurrent(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class RightOfUseAssetsCurrent(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class OtherCurrentAssets(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class DiscontinuedOperationsCurrent(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+# Non Current Assets Components
+
+
+class LongTermReceivables(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class DeferredCharges(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class Investments(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class PropertyPlantAndEquipment(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class OperatingLeaseRightOfUseAssets(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class FinanceLeaseRightOfUseAssets(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class IntangibleAssets(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class Goodwill(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class RefundableTaxAssetsNonCurrent(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class DeferredTaxAssetsNonCurrent(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class DefinedBenefitPensionAndOtherSimilarPlans(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class OtherNonCurrentAssets(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class DiscontinuedOperations(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+# Current Liabilities Components
+
+
+class AccountsPayableAndAccruedLiabilities(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class EmployeeCompensationCurrent(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class OperatingLeasesCurrent(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class FinanceLeasesCurrent(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class DeferredRevenueAndDepositsCurrent(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AccruedTaxLiabilities(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class DeferredTaxLiabilitiesCurrent(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class CommercialPapers(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class ShortTermBorrowings(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class OtherCurrentLiabilities(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class DiscontinuedOperationsLiabilitiesCurrent(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class DividendsPayable(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class ShortTermPortionOfLongTermDebt(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+# Non Current Liabilities Components
+
+
+class LongTermDebt(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class PreferredSharesLiability(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class RetirementBenefits(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class OperatingLeasesNonCurrent(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class FinanceLeasesNonCurrent(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class LeaseIncentiveObligation(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class DeferredRevenueAndDepositsNonCurrent(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class ContingentConsideration(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AccruedTaxLiabilitiesNonCurrent(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class DeferredTaxLiabilitiesNonCurrent(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class OtherNonCurrentLiabilities(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class RedeemableNonControllingInterests(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class DiscontinuedOperationsLiabilitiesNonCurrent(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+# Shareholders Equity Components
+
+
+class ConvertibleDebtBeginning(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class CommonSharesBeginning(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class CommonShareIssued(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class ShareBasedCompensation(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class RetainedEarningsBeginning(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class DividendsAndDividendEquivalentsDeclared(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class CommonSharesRepurchasedAndRetired(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class EffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class RetainedEarningsOthers(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AccumulatedOtherComprehensiveIncomeBeginning(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class TreasurySharesBeginning(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class PurchaseAndSellOfTreasuryShares(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class EmployeeBenefitTrustBeginning(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class NonControllingInterestsBeginning(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class DividendsDeclaredToNonControllingInterests(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AcquisitionOfNonControllingInterests(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class NonControllingInterestsOthers(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+# Income Statement Components
+
+
+class Sales(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class CostOfSales(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class ResearchAndDevelopment(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class SellingGeneralAdministrativeAndMarketing(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class ImpairmentRestructuringAndOtherSpecialCharges(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class NonOperatingIncome(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class IncomeTaxExpenseBenefit(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class EquityMethodInvesteesIncome(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class NetIncomeFromDiscontinuedOperations(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+# Comprehensive Income Components
+
+
+class ChangeInForeignCurrencyTranslationAdjustment(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class ChangeInUnrealizedGainsLossesOnDerivativeInstruments(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class ChangeInUnrealizedGainsLossesOnInvestments(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class ChangeInDefinedBenefitPensionAndOtherSimilarPlans(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class IncomeTaxOnOtherComprehensiveIncome(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+# Balance Sheet Totals
+
+
+class CurrentAssets(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class NonCurrentAssets(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class Assets(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class CurrentLiabilities(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class NonCurrentLiabilities(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class Liabilities(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class ShareholdersEquity(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class LiabilitiesAndShareholdersEquity(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+# Balance Sheet Anomalies
+
+
+class AnomalyCurrentAssets(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AnomalyCurrentAssetsSEC(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AnomalyNonCurrentAssets(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AnomalyNonCurrentAssetsSEC(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AnomalyAssets(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AnomalyCurrentLiabilities(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AnomalyCurrentLiabilitiesSEC(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AnomalyNonCurrentLiabilities(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AnomalyNonCurrentLiabilitiesSEC(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AnomalyLiabilities(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AnomalyShareholdersEquity(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AnomalyShareholdersEquitySEC(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AnomalyLiabilitiesAndShareholdersEquity(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+# Income Statement Totals
+
+
+class TotalSales(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class TotalCostOfSales(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class GrossMargin(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class OperatingExpenses(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class OperatingIncome(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class IncomeBeforeTaxes(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class NetIncome(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class NetIncomeAttributableToNonControllingInterest(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+# Income Statement Anomalies
+
+
+class AnomalyGrossMargin(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AnomalyOperatingExpenses(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AnomalyOperatingIncome(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AnomalyIncomeBeforeTaxes(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AnomalyNetIncome(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class OtherComprehensiveIncome(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+# Comprehensive Income
+
+
+class ComprehensiveIncome(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+# Comprehensive Income Anomalies
+
+
+class AnomalyOtherComprehensiveIncome(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AnomalyComprehensiveIncome(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+# Shareholders' Equity Components
+
+
+class ShareholdersEquityBeginning(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class ConvertibleDebt(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class CommonShares(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class RetainedEarnings(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AccumulatedOtherComprehensiveIncome(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class TreasuryShares(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class EmployeeBenefitTrust(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class NonControllingInterests(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+# Shareholders' Equity Anomalies
+
+
+class AnomalyConvertibleDebt(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AnomalyCommonShares(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AnomalyRetainedEarnings(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AnomalyAccumulatedOtherComprehensiveIncome(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AnomalyTreasuryShares(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AnomalyEmployeeBenefitTrust(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AnomalyNonControllingInterests(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+# Cash Flow Components
+
+
+class CashBeginningBalance(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class EffectOfExchangeRateOnCash(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+# Operating Activities Components
+
+
+class DepreciationDepletionAndAmortization(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class GainRelatedToDisposalOrSale(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class RestructuringAndOtherSpecialCharges(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AccruedEmployeeCompensation(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class ShareBasedCompensationCF(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class IncreaseDecreaseInIncomeTaxExpenseBenefit(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class OtherNonCashIncomeExpense(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class IncreaseDecreaseInAccountsReceivable(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssets(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class IncreaseDecreaseInInventories(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class IncreaseDecreaseInOtherReceivables(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class IncreaseDecreaseInAccountsPayableAndAccruedLiabilities(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class IncreaseDecreaseInContractWithCustomerLiability(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class IncreaseDecreaseInRetirementBenefits(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class IncreaseDecreaseFinanceLeaseCurrent(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class IncreaseDecreaseOperatingLeaseCurrent(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class IncreaseDecreaseInFairValueOfDerivativesOperating(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class IncreaseDecreaseInOtherOperatingActivities(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+# Investing Activities Components
+
+
+class PaymentsToAcquireInvestments(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class ProceedsOfInvestments(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class PaymentsToAcquirePropertyPlantAndEquipment(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class ProceedsFromDisposalsOfPropertyAndEquipment(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class PaymentsToAcquireBusinessesAndIntangibles(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class ProceedsFromDisposalsOfBusinessesAndIntangibles(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class ProceedsRelatedToInsuranceSettlement(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class ReveiptOfGovernmentGrants(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class PaymentOfLicenseFee(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class InvestingActivitiesInDiscontinuedOperations(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class OtherInvestingActivities(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+# Financing Activities Components
+
+
+class FinanceLeasePrincipalPayments(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class ProceedsFromIssuanceOfCommonShares(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class ProceedsFromSharePurchasePlanAndOptionsExercice(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class PaymentsRelatedToTaxWithholdingForShareBasedCompensation(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class PaymentsForRepurchaseOfCommonShares(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class PaymentsOfDividends(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class IncreaseDecreaseDeferredContingentConsideration(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class ProceedsFromIssuanceOfLongTermDebt(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class RepaymentsOfLongTermDebt(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class FinancingCosts(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class NetChangeInShortTermBorrowings(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class NetChangeInForwardAndHedgesClassifiedAsFinancingActivities(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class NetChangeInNonControllingInterests(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class ProceedsFromRepaymentsOfCommercialPaper(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class RepaymentsOfConvertible(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class IssuanceOfConvertible(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class EquityInvesteeAdvancesRepayments(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class OtherFinancingActivities(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class CashPaidForTaxes(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class CashPaidForInterest(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+
+# Cash Flow Totals
+
+
+class OperatingActivities(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class InvestingActivities(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class FinancingActivities(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class IncreaseDecreaseInCash(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+# Cash Flow Anomalies
+
+
+class AnomalyOperatingActivities(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AnomalyOperatingActivitiesSEC(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AnomalyInvestingActivities(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AnomalyInvestingActivitiesSEC(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AnomalyFinancingActivities(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class AnomalyFinancingActivitiesSEC(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+# Market And Securities
+
+
+class MarketCapitalization(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class CommonSharesOutstanding(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class CommonSharePrice(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+# Additional Information
+
+
+class NormalizedTheoricalInterestCharge(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class TheoricalTaxRate(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+class TheoricalOperatingIncomeAttributableToNonControllingInterests(models.Model):
+    #
+    TradingSymbol = models.CharField(max_length=7, null=False, unique=True),
+    PeriodEndDate = models.DateField(null=False, unique=True),
+    Nature = models.CharField(max_length=50, null=False, unique=True),
+    Behavior = models.CharField(max_length=17, null=False, unique=True),
+    GL = models.CharField(max_length=99, null=False, unique=True),
+    ref = models.CharField(max_length=99, null=False, unique=True),
+    Value = models.IntegerField(default=0),
+    #
+    def __str__(self):
+        return f"{self.TradingSymbol}, {self.PeriodEndDate}, {self.GL}, {self.Value}"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Industry_SEC(models.Model):
+    db = models.IntegerField(default=0)
+    Code = models.CharField(max_length=9, default='')
+    Description = models.CharField(max_length=61)
+    Len = models.IntegerField(default=0)
+    #
+    def __str__(self):
+        return f"{self.db}, {self.Description}, {self.Len}"
