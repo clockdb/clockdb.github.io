@@ -86,68 +86,73 @@
         document.getElementById(a).style.display = 'table-row';
     }
 
+    function EnterSearch(EnterSearch) {
+        //
+        //
+        p = 0
+        //
+        url = '/'
+        //
+        a = document.getElementById('Industry')
+        a = a.options[a.selectedIndex].value;
+        url = url + a + '/'
+        //
+        f = 0
+        l = 59
+        for (let i = 0; i < l; i++) {
+            try {
+                h = i + 'row'
+                g = document.getElementById(h).style.display
+                if (g == 'table-row') {
+                    h = document.getElementById(i)
+                    aa = h.options[h.selectedIndex].value;
+                    f = 1
+                }
+            } catch {}
+        }
+        if (f != 1) {
+            aa = 'any'
+        } else {
+            if (a == 'any') {
+                aa = 'any'
+            }
+        }
+        url = url + aa + '/'
+        //
+        a = document.getElementById('PeriodEndDate')
+        a = a.options[a.selectedIndex].value;
+        url = url + a + '/'
+        //
+        a = document.getElementById('Phase')
+        a = a.options[a.selectedIndex].value;
+        url = url + a + '/'
+        //
+        a = document.getElementById('Region')
+        a = a.options[a.selectedIndex].value;
+        url = url + a + '/'
+        //
+        a = document.getElementById('Order')
+        a = a.options[a.selectedIndex].value;
+        url = url + a + '/'
+        //
+        a = document.getElementById('Sort')
+        a = a.options[a.selectedIndex].value;
+        url = url + a + '/'
+        //
+        window.location.replace(url);
+    }
+
     // search
     document.addEventListener('keydown', (event) => {
         keys = [13]
         if (keys.includes(event.keyCode)) {
-            //
-            p = 0
-            //
-            url = '/'
-            //
-            a = document.getElementById('Industry')
-            a = a.options[a.selectedIndex].value;
-            url = url + a + '/'
-            //
-            f = 0
-            l = 59
-            for (let i = 0; i < l; i++) {
-                try {
-                    h = i + 'row'
-                    g = document.getElementById(h).style.display
-                    if (g == 'table-row') {
-                        h = document.getElementById(i)
-                        aa = h.options[h.selectedIndex].value;
-                        f = 1
-                    }
-                } catch {}
-            }
-            if (f != 1) {
-                aa = 'any'
-            } else {
-                if (a == 'any') {
-                    aa = 'any'
-                }
-            }
-            url = url + aa + '/'
-            //
-            a = document.getElementById('PeriodEndDate')
-            a = a.options[a.selectedIndex].value;
-            url = url + a + '/'
-            //
-            a = document.getElementById('Phase')
-            a = a.options[a.selectedIndex].value;
-            url = url + a + '/'
-            //
-            a = document.getElementById('Region')
-            a = a.options[a.selectedIndex].value;
-            url = url + a + '/'
-            //
-            a = document.getElementById('Order')
-            a = a.options[a.selectedIndex].value;
-            url = url + a + '/'
-            //
-            a = document.getElementById('Sort')
-            a = a.options[a.selectedIndex].value;
-            url = url + a + '/'
-            //
-            window.location.replace(url);
+            EnterSearch();
         }
     })
     
 </script>
 <Section id="φ">
-    <table style="border-bottom: ridge; border-top: ridge;">
+    <table style="border-top: ridge;">
         <tbody>
             <tr></tr>
             <tr></tr>
@@ -1362,7 +1367,7 @@
             <tr></tr>
             <tr></tr>
             <tr></tr>
-            <tr class='wip'>
+            <tr>
                 <td colspan='2'>
                     <h3 style=""><b>Work In Progress</b></h2>
                 </td>
@@ -1375,10 +1380,15 @@
                     </form>
                 </td>
             </tr>
-            <tr class='wip'></tr>
-            <tr class='wip'></tr>
-            <tr class='wip'></tr>
-            <tr class='wip'></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr>
+                <td colspan='6' style="border-top: ridge; border-bottom: ridge;">
+                    <button onclick="EnterSearch()">
+                        <h3 style="text-align:center; font-weight:bold;">Search</h3>
+                    </button>
+                </td>
+            </tr>
         </tbody>
     </table>
     {% block results %}
