@@ -24449,54 +24449,30 @@
         document.getElementById('p').innerHTML = '';
         document.getElementById('q').innerHTML = '';
         //
-        a = parseInt(document.getElementById('Clockφ1').innerHTML.replaceAll(/,/g, '')) / 100
-        aa = parseFloat(document.getElementById('ExpectedGrowth1').value.replaceAll(/,/g, ''))
-        aaa = parseFloat(document.getElementById('CharacteristicIncomeBeforeInterestAfterTaxes1').value.replaceAll(/,/g, ''))
-        x = parseInt(document.getElementById('MarketCapitalization1').value.replaceAll(/,/g, ''));
+        a = document.getElementById('Opinionφ1').innerHTML
         //
         b = document.getElementById('Bridgeφ1').innerHTML
         c = document.getElementById('Bridgeφ2').innerHTML
+        c = document.getElementById('Bridgeφ3').innerHTML
         //
         if (b.length === 98) {
             if (c.length === 98) {
-                document.getElementById('o').innerHTML = '⬤';
-                document.getElementById('p').innerHTML = 'Audited.';
-            }
-        }
-        //
-        m = '';
-        //
-        if (x == 0) {
-            m = 'x';
-        }
-        if (a < 0.7) {
-            if (m == '') {
-                m = 'red';
-            }
-        }
-        //
-        if (aa > 1) {
-            if (m == '') {
-                m = 'red';
-            }
-        }
-        //
-        if (aaa < 1) {
-            if (m == '') {
-                m = 'red';
-            }
-        }
-        //
-        if (a > 1) {
-            if (aa < 1) {
-                if (aaa > 1) {
-                    if (m == '') {
-                        m = 'red';
-                    }
+                if (d.length === 98) {
+                    document.getElementsByClassName('o')[i].innerHTML = '⬤';
+                    document.getElementsByClassName('p')[i].innerHTML = 'Audited.';
+
                 }
             }
         }
-        if (m == '') {
+        //
+        if (a == 'Hedge For A Loss In Value') {
+            m = 'red';
+        }
+        //
+        if (a == 'Buy') {
+            m = 'green'
+        }
+        if (a == '') {
             m = 'gold'
         }
         //

@@ -97,9 +97,6 @@
             //
             a = document.getElementById('Industry')
             a = a.options[a.selectedIndex].value;
-            if (a == 'any') {
-               p = p + 1
-            }
             url = url + a + '/'
             //
             f = 0
@@ -126,9 +123,6 @@
             //
             a = document.getElementById('PeriodEndDate')
             a = a.options[a.selectedIndex].value;
-            if (a == 'any') {
-               p = p + 1
-            }
             url = url + a + '/'
             //
             a = document.getElementById('Phase')
@@ -137,9 +131,6 @@
             //
             a = document.getElementById('Region')
             a = a.options[a.selectedIndex].value;
-            if (a == 'any') {
-               p = p + 1
-            }
             url = url + a + '/'
             //
             a = document.getElementById('Order')
@@ -150,9 +141,7 @@
             a = a.options[a.selectedIndex].value;
             url = url + a + '/'
             //
-            if (p != 3) {
-                window.location.replace(url);
-            }
+            window.location.replace(url);
         }
     })
     

@@ -20,8 +20,8 @@
                 <tr>
                     <td>
                         <a href="/{{ entity.TradingSymbol }}">
-                            <h4 id='o' style="color:Black; font-weight:bold; text-shadow: 1px 1px rgb(73, 73, 73); display:inline; padding-right:27px;"></h4>
-                            <h4 id="EntityRegistrantName" style="color:Black; font-weight:bold; text-shadow: 1px 1px rgb(73, 73, 73); display:inline;">{{ entity.EntityRegistrantName }} ({{ entity.TradingSymbol }})</h4>
+                            <h4 id='o' class='o' style="color:Black; font-weight:bold; text-shadow: 1px 1px rgb(73, 73, 73); display:inline; padding-right:27px;"></h4>
+                            <h4 id="EntityRegistrantName" class="EntityRegistrantName" style="color:Black; font-weight:bold; text-shadow: 1px 1px rgb(73, 73, 73); display:inline;">{{ entity.EntityRegistrantName }} ({{ entity.TradingSymbol }})</h4>
                         </a>
                     </td>
                 </tr>
@@ -42,7 +42,7 @@
             </tbody>
         </table>
 
-        <!--- opinions --->
+        <!--- opinion --->
             <table style="border-bottom:solid #0D47A1">
                 <body>
                     <tr>
@@ -58,10 +58,10 @@
                 <tr></tr>
                 <tr>
                     <td colspan="4"></td>
-                    <td colspan="2"><h5 id="DateSummary1" style="text-align:center">{{ entity.lastyear }}</h5></td>
-                    <td colspan="2"><h5 id="DateSummary2" style="text-align:center">{{ entity.secondlastyear }}</h5></td>
-                    <td colspan="2"><h5 id="DateSummary3" style="text-align:center">{{ entity.thirdlastyear }}</h5></td>
-                    <td colspan="2"><h5 id="DateSummary4" style="text-align:center">{{ entity.fourthlastyear }}</h5></td>
+                    <td colspan="2"><h5 id="DateSummary1" class='DateSummary1' style="text-align:center">{{ entity.lastyear }}</h5></td>
+                    <td colspan="2"><h5 id="DateSummary2" class='DateSummary2' style="text-align:center">{{ entity.secondlastyear }}</h5></td>
+                    <td colspan="2"><h5 id="DateSummary3" class='DateSummary3' style="text-align:center">{{ entity.thirdlastyear }}</h5></td>
+                    <td colspan="2"><h5 id="DateSummary4" class='DateSummary4' style="text-align:center">{{ entity.fourthlastyear }}</h5></td>
                 </tr>
                 <tr></tr>
                 <tr>
@@ -77,7 +77,7 @@
                 <tr></tr>
                 <tr>
                     <td colspan="4"></td>
-                    <td colspan="2"><h6 style="text-align: center;">Share Price as of {{ entity.SecuritiesUpdate }}</h6></td>
+                    <td colspan="2"><h6 style="text-align: center;">Price as of {{ entity.SecuritiesUpdate }}</h6></td>
                 </tr>
                 <tr></tr>
                 <tr></tr>
@@ -85,15 +85,15 @@
                 <tr></tr>
                 <tr>
                     <td colspan="2"><h5 style="margin-left:0px;">OPINION</h5></td>
-                    <td style="color:#0d47a1; text-align:center; font-weight:bold;">(a)</td>
+                    <td style="color:#0d47a1; text-align:center; font-weight:bold;"><a href="/{{ entity.TradingSymbol }}">(a)</a></td>
                     <td>
                         <input type="checkbox" style="height: 16px;" id="OpinionφCheckbox"></input>
                         <input type="checkbox" style="height: 16px;" id="OpinionφCheckbox2"></input>
                     </td>
-                    <td colspan="2" id="Opinionφ1" style="font-weight:bold; text-align:center">{{ entity.OpinionφLastYear }}</td>
-                    <td colspan="2" id="Opinionφ2" style="font-weight:lighter; text-align:center">{{ entity.OpinionφSecondLastYear }}</td>
-                    <td colspan="2" id="Opinionφ3" style="font-weight:lighter; text-align:center">{{ entity.OpinionφThirdLastYear }}</td>
-                    <td colspan="2" id="Opinionφ4" style="font-weight:lighter; text-align:center">{{ entity.OpinionφFourthLastYear }}</td>
+                    <td colspan="2" id="Opinionφ1" class ="Opinionφ1" style="font-weight:bold; text-align:center">{{ entity.OpinionφLastYear }}</td>
+                    <td colspan="2" id="Opinionφ2" class ="Opinionφ2" style="font-weight:lighter; text-align:center">{{ entity.OpinionφSecondLastYear }}</td>
+                    <td colspan="2" id="Opinionφ3" class ="Opinionφ3" style="font-weight:lighter; text-align:center">{{ entity.OpinionφThirdLastYear }}</td>
+                    <td colspan="2" id="Opinionφ4" class ="Opinionφ4" style="font-weight:lighter; text-align:center">{{ entity.OpinionφFourthLastYear }}</td>
                     <td colspan="2" style="display:none;" id="Opinionφ5" style="font-weight:lighter; text-align:center"></td>
                     <td colspan="2" style="display:none;" id="Opinionφ6" style="font-weight:lighter; text-align:center"></td>
                 </tr>
@@ -101,15 +101,15 @@
                 <tr></tr>
                 <tr>
                     <td colspan="2"><h5 style="margin-left:0px;">VALUATION</h5></td></td>
-                    <td style="color:#0d47a1; text-align:center; font-weight:bold;">(b)</td>
+                    <td style="color:#0d47a1; text-align:center; font-weight:bold;"><a href="/{{ entity.TradingSymbol }}">(b)</a></td>
                     <td>
                         <input type="checkbox" style="height: 16px;" id="ClockφCheckbox"></input>
                         <input type="checkbox" style="height: 16px;" id="ClockφCheckbox2"></input>
                     </td>
-                    <td colspan="2" class="ratio" id="Clockφ1" style="border-bottom:double black; font-weight:bold; text-align:right;">{{ entity.ClockφLastYear }}</td>
-                    <td colspan="2" class="ratio" id="Clockφ2" style="border-bottom:double black; font-weight:lighter; text-align:right;">{{ entity.ClockφSecondLastYear }}</td>
-                    <td colspan="2" class="ratio" id="Clockφ3" style="border-bottom:double black; font-weight:lighter; text-align:right;">{{ entity.ClockφThirdLastYear }}</td>
-                    <td colspan="2" class="ratio" id="Clockφ4" style="border-bottom:double black; font-weight:lighter; text-align:right;">{{ entity.ClockφFourthLastYear }}</td>
+                    <td colspan="2" id="Clockφ1" class="Clockφ1" style="border-bottom:double black; font-weight:bold; text-align:right;">{{ entity.ClockφLastYear }}%</td>
+                    <td colspan="2" id="Clockφ2" class="Clockφ2" style="border-bottom:double black; font-weight:lighter; text-align:right;">{{ entity.ClockφSecondLastYear }}%</td>
+                    <td colspan="2" id="Clockφ3" class="Clockφ3" style="border-bottom:double black; font-weight:lighter; text-align:right;">{{ entity.ClockφThirdLastYear }}%</td>
+                    <td colspan="2" id="Clockφ4" class="Clockφ4" style="border-bottom:double black; font-weight:lighter; text-align:right;">{{ entity.ClockφFourthLastYear }}%</td>
                     <td colspan="2" style="display:none;" id="Clockφ5" style="font-weight:lighter; text-align:right;"></td>
                     <td colspan="2" style="display:none;" id="Clockφ6" style="font-weight:lighter; text-align:right;"></td>
                 </tr>
@@ -122,10 +122,10 @@
                         <input type="checkbox" style="height: 16px;" id="BridgeφCheckbox"></input>
                         <input type="checkbox" style="height: 16px;" id="BridgeφCheckbox2"></input>
                     </td>
-                    <td colspan="2" id="Bridgeφ1" style="font-weight:bold; text-align:center">{{ entity.BridgeφLastYear }}</td>
-                    <td colspan="2" id="Bridgeφ2" style="font-weight:lighter; text-align:center">{{ entity.BridgeφSecondLastYear }}</td>
-                    <td colspan="2" id="Bridgeφ3" style="font-weight:lighter; text-align:center">{{ entity.BridgeφThirdLastYear }}</td>
-                    <td colspan="2" id="Bridgeφ4" style="font-weight:lighter; text-align:center">{{ entity.BridgeφFourthLastYear }}</td>
+                    <td colspan="2" id="Bridgeφ1" class="Bridgeφ1" style="font-weight:bold; text-align:center">{{ entity.BridgeφLastYear }}</td>
+                    <td colspan="2" id="Bridgeφ2" class="Bridgeφ2" style="font-weight:lighter; text-align:center">{{ entity.BridgeφSecondLastYear }}</td>
+                    <td colspan="2" id="Bridgeφ3" class="Bridgeφ3" style="font-weight:lighter; text-align:center">{{ entity.BridgeφThirdLastYear }}</td>
+                    <td colspan="2" id="Bridgeφ4" class="Bridgeφ4" style="font-weight:lighter; text-align:center">{{ entity.BridgeφFourthLastYear }}</td>
                     <td colspan="2" style="display:none;" id="Bridgeφ5" style="font-weight:lighter; text-align:center"></td>
                     <td colspan="2" style="display:none;" id="Bridgeφ6" style="font-weight:lighter; text-align:center"></td>
                 </tr>
@@ -136,7 +136,7 @@
                         <h4 id='q' style="color:rgb(73, 73, 73); font-weight:bold; text-align: left;"></h4>
                     </td>
                     <td colspan="2">
-                        <h6 id='p' style="font-style:italic; color:rgb(73, 73, 73); font-weight:bold; text-align: center;"></h4>
+                        <h6 id='p' class='p' style="font-style:italic; color:rgb(73, 73, 73); font-weight:bold; text-align: center;"></h4>
                     </td>
                 </tr>
                 <tr></tr>
@@ -148,36 +148,36 @@
                 <tr></tr>
                 <tr>
                     <td colspan="2"><h6>Common Shares' Intrinsic Value</h6></td>
-                    <td><button data-page="IntrinsicValues" style="text-align:center; font-weight:bold;"></button></td>
+                    <td><button data-page="IntrinsicValue" style="text-align:center; font-weight:bold;"></button></td>
                     <td>
-                        <input type="checkbox" style="height: 16px;" id="IntrinsicValuesCheckbox"></input>
-                        <input type="checkbox" style="height: 16px;" id="IntrinsicValuesCheckbox2"></input>
+                        <input type="checkbox" style="height: 16px;" id="IntrinsicValueCheckbox"></input>
+                        <input type="checkbox" style="height: 16px;" id="IntrinsicValueCheckbox2"></input>
                     </td>
-                    <td colspan="2"><input value={{ entity.CommonSharesIntrinsicValueLastYear }} id="IntrinsicValues1" style="font-weight:bold;" onclick="HighLight()"></input></td>
-                    <td colspan="2"><input value={{ entity.CommonSharesIntrinsicValueSecondLastYear }} id="IntrinsicValues2" onclick="HighLight()"></input></td>
-                    <td colspan="2"><input value={{ entity.CommonSharesIntrinsicValueThirdLastYear }} id="IntrinsicValues3" onclick="HighLight()"></input></td>
-                    <td colspan="2"><input value={{ entity.CommonSharesIntrinsicValueFourthLastYear }} id="IntrinsicValues4" onclick="HighLight()"></input></td>
-                    <td colspan="2" style="display:none;"><input id="IntrinsicValues5" onclick="HighLight()"></input></td>
-                    <td colspan="2" style="display:none;"><input id="IntrinsicValues6" onclick="HighLight()"></input></td>
+                    <td colspan="2"><input value={{ entity.CommonSharesIntrinsicValueLastYear }} class="IntrinsicValue1" id="IntrinsicValue1" style="font-weight:bold;" onclick="HighLight()"></input></td>
+                    <td colspan="2"><input value={{ entity.CommonSharesIntrinsicValueSecondLastYear }} class="IntrinsicValue2" id="IntrinsicValue2" onclick="HighLight()"></input></td>
+                    <td colspan="2"><input value={{ entity.CommonSharesIntrinsicValueThirdLastYear }} class="IntrinsicValue3" id="IntrinsicValue3" onclick="HighLight()"></input></td>
+                    <td colspan="2"><input value={{ entity.CommonSharesIntrinsicValueFourthLastYear }} class="IntrinsicValue4" id="IntrinsicValue4" onclick="HighLight()"></input></td>
+                    <td colspan="2" style="display:none;"><input id="IntrinsicValue5" onclick="HighLight()"></input></td>
+                    <td colspan="2" style="display:none;"><input id="IntrinsicValue6" onclick="HighLight()"></input></td>
                 </tr>
                 <tr></tr>
                 <tr>
                     <td colspan="2"><h6>Market Capitalization Attributable To Common Shares</h6></td>
-                    <td style="color:#0d47a1; text-align:center; font-weight:bold;">(c)</td>
+                    <td style="color:#0d47a1; text-align:center; font-weight:bold;"><a href="/{{ entity.TradingSymbol }}">(c)</a></td>
                     <td>
                         <input type="checkbox" style="height: 16px;" id="MarketCapitalizationCheckbox"></input>
                         <input type="checkbox" style="height: 16px;" id="MarketCapitalizationCheckbox2"></input>
                     </td>
-                    <td colspan="2"><input value={{ entity.MarketCapitalizationLastYear }} class="clock" id ="MarketCapitalization1" style="font-weight:bold;" onclick="HighLight()"></input></td>
-                    <td colspan="2"><input value={{ entity.MarketCapitalizationSecondLastYear }} class="clock" id ="MarketCapitalization2" onclick="HighLight()"></input></td>
-                    <td colspan="2"><input value={{ entity.MarketCapitalizationThirdLastYear }} class="clock" id ="MarketCapitalization3" onclick="HighLight()"></input></td>
-                    <td colspan="2"><input value={{ entity.MarketCapitalizationFourthLastYear }} class="clock" id ="MarketCapitalization4" onclick="HighLight()"></input></td>
+                    <td colspan="2"><input value={{ entity.MarketCapitalizationLastYear }} class="MarketCapitalization1" id ="MarketCapitalization1" style="font-weight:bold;" onclick="HighLight()"></input></td>
+                    <td colspan="2"><input value={{ entity.MarketCapitalizationSecondLastYear }} class="MarketCapitalization2" id ="MarketCapitalization2" onclick="HighLight()"></input></td>
+                    <td colspan="2"><input value={{ entity.MarketCapitalizationThirdLastYear }} class="MarketCapitalization3" id ="MarketCapitalization3" onclick="HighLight()"></input></td>
+                    <td colspan="2"><input value={{ entity.MarketCapitalizationFourthLastYear }} class="MarketCapitalization4" id ="MarketCapitalization4" onclick="HighLight()"></input></td>
                     <td colspan="2" style="display:none;"><input id ="MarketCapitalization5" onclick="HighLight()"></input></td>
                     <td colspan="2" style="display:none;"><input id ="MarketCapitalization6" onclick="HighLight()"></input></td>
                 <tr></tr>
                 <tr>
                     <td colspan="2"><h6>{{ entity.TradingSymbol }} Common Share Intrinsic Value Per Unit</h6></td>
-                    <td style="color:#0d47a1; text-align:center; font-weight:bold;">(d)</td>
+                    <td style="color:#0d47a1; text-align:center; font-weight:bold;"><a href="/{{ entity.TradingSymbol }}">(d)</a></td>
                     <td>
                         <input type="checkbox" style="height: 16px;" id="IntrinsicValueOfACommonSharesCheckbox"></input>
                         <input type="checkbox" style="height: 16px;" id="IntrinsicValueOfACommonSharesCheckbox2"></input>
@@ -192,7 +192,7 @@
                 <tr></tr>
                 <tr>
                     <td colspan="2"><h6>{{ entity.TradingSymbol }} Common Share Price Per Unit</h6></td>
-                    <td style="color:#0d47a1; text-align:center; font-weight:bold;">(e)</td>
+                    <td style="color:#0d47a1; text-align:center; font-weight:bold;"><a href="/{{ entity.TradingSymbol }}">(e)</a></td>
                     <td>
                         <input type="checkbox" style="height: 16px;" id="SharePriceCheckbox"></input>
                         <input type="checkbox" style="height: 16px;" id="SharePriceCheckbox2"></input>
@@ -207,7 +207,7 @@
                 <tr></tr>
                 <tr>
                     <td colspan="2"><h6>Adjusted Number Of Common Shares Outstanding</h6></td>
-                    <td style="color:#0d47a1; text-align:center; font-weight:bold;">(f)</td>
+                    <td style="color:#0d47a1; text-align:center; font-weight:bold;"><a href="/{{ entity.TradingSymbol }}">(f)</a></td>
                     <td>
                         <input type="checkbox" style="height: 16px;" id="CommonSharesOutstandingCheckbox"></input>
                         <input type="checkbox" style="height: 16px;" id="CommonSharesOutstandingCheckbox2"></input>
@@ -224,43 +224,84 @@
                 <tr></tr>
                 <tr></tr>
                 <tr></tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
             </tbody>
         </table>
+
+        <!--- line chart --->
+        <table style="border-bottom:solid #0D47A1">
+            <tbody>
+                <tr>
+                    <td style='text-align:center;'>
+                        <canvas id='LineChart' class='LineChart'></canvas>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.3/Chart.min.js"></script>
+                    </td>
+                </tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+            </tbody>
+        </table>
+
     {% endfor %}
+
         <table>
             <tbody>
                 <tr></tr>
                 <tr></tr>
                 <tr></tr>
                 <tr></tr>
+                <tr></tr>
                 <tr>
-                    <td style="color:#0d47a1; text-align:left; font-weight:bold; vertical-align:top;">(a)</td>
-                    <td style="text-align:left;" colspan="16">My opinion over the integrity of the financial statements reproduced in the database from the reading of the sec database.</td>
-                </tr>
-                <tr>
-                    <td style="color:#0d47a1; text-align:left; font-weight:bold; vertical-align:top;">(b)</td>
-                    <td style="text-align:left;" colspan="16">Quotient of the intrinsic value over the market value.</td>
-                </tr>
-                <tr>
-                    <td style="color:#0d47a1; text-align:left; font-weight:bold; vertical-align:top;">(c)</td>
-                    <td style="text-align:left;" colspan="16">Product of the number of common shares outstanding by the price of one share at the time of update for current period (time of filing in other cases).</td>
-                </tr>
-                <tr>
-                    <td style="color:#0d47a1; text-align:left; font-weight:bold; vertical-align:top;">(d)</td>
-                    <td style="text-align:left;" colspan="16">Quotient of the intrinsic value of the whole entity over the number of shares (units) outstanding.</td>
-                </tr>
-                <tr>
-                    <td style="color:#0d47a1; text-align:left; font-weight:bold; vertical-align:top;">(e)</td>
-                    <td style="text-align:left;" colspan="16">Most recent price per unit at time of data gathering for current period (time of filing in other cases).</td>
-                </tr>
-                <tr>
-                    <td style="color:#0d47a1; text-align:left; font-weight:bold; vertical-align:top;">(f)</td>
-                    <td style="text-align:left;" colspan="16">The number of shares (units) outstanding of each of registrant's common share (classes of capital or other ownership interests) as stated on the cover of related periodic report.</td>
+                    <td style="color:#0d47a1; text-align:left; font-weight:bold; vertical-align:top;">N.B.:</td>
+                    <td style="text-align:left;" colspan="20">Market Capitalization values are smoothed between report dates. The value for the most recent period end date is at time of data gathering.</td>
                 </tr>
             </tbody>
         </table>
 
         <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                //
+                l = document.querySelectorAll('.EntityRegistrantName').length
+                //
+                for (let i = 0; i < l; i++) {
+                        //
+                    a = document.getElementsByClassName('Opinionφ1')[i].innerHTML
+                    //
+                    b = document.getElementsByClassName('Bridgeφ1')[i].innerHTML
+                    c = document.getElementsByClassName('Bridgeφ2')[i].innerHTML
+                    d = document.getElementsByClassName('Bridgeφ3')[i].innerHTML
+                    //
+                    if (b.length === 98) {
+                        if (c.length === 98) {
+                            if (d.length === 98) {
+                                document.getElementsByClassName('o')[i].innerHTML = '⬤';
+                                document.getElementsByClassName('p')[i].innerHTML = 'Audited.';
+        
+                            }
+                        }
+                    }
+                    //
+                    m = ''
+                    //
+                    if (a == 'Hedge For A Loss In Value') {
+                        m = 'red';
+                    }
+                    //
+                    if (a == 'Buy') {
+                        m = 'green'
+                    }
+                    if (a == 'None') {
+                        m = 'gold'
+                    }
+                    //
+                    document.getElementsByClassName('o')[i].style.color = m;
+                }
+            })
             document.addEventListener('DOMContentLoaded', function() {
                 var numUSD = new Intl.NumberFormat("en-US", {
                     format: "number",
@@ -271,6 +312,110 @@
                 for (let i = 0; i < l; i++) {
                     a = document.getElementsByClassName("clock")[i].value;
                     document.getElementsByClassName('clock')[i].value = numUSD.format(a);
+                }
+                l = document.querySelectorAll('.IntrinsicValue1').length
+                for (let i = 0; i < l; i++) {
+                    a = document.getElementsByClassName("IntrinsicValue1")[i].value;
+                    document.getElementsByClassName('IntrinsicValue1')[i].value = numUSD.format(a);
+                }
+                l = document.querySelectorAll('.IntrinsicValue2').length
+                for (let i = 0; i < l; i++) {
+                    a = document.getElementsByClassName("IntrinsicValue2")[i].value;
+                    document.getElementsByClassName('IntrinsicValue2')[i].value = numUSD.format(a);
+                }
+                l = document.querySelectorAll('.IntrinsicValue3').length
+                for (let i = 0; i < l; i++) {
+                    a = document.getElementsByClassName("IntrinsicValue3")[i].value;
+                    document.getElementsByClassName('IntrinsicValue3')[i].value = numUSD.format(a);
+                }
+                l = document.querySelectorAll('.IntrinsicValue4').length
+                for (let i = 0; i < l; i++) {
+                    a = document.getElementsByClassName("IntrinsicValue4")[i].value;
+                    document.getElementsByClassName('IntrinsicValue4')[i].value = numUSD.format(a);
+                }
+                l = document.querySelectorAll('.MarketCapitalization1').length
+                for (let i = 0; i < l; i++) {
+                    a = document.getElementsByClassName("MarketCapitalization1")[i].value;
+                    document.getElementsByClassName('MarketCapitalization1')[i].value = numUSD.format(a);
+                }
+                l = document.querySelectorAll('.MarketCapitalization2').length
+                for (let i = 0; i < l; i++) {
+                    a = document.getElementsByClassName("MarketCapitalization2")[i].value;
+                    document.getElementsByClassName('MarketCapitalization2')[i].value = numUSD.format(a);
+                }
+                l = document.querySelectorAll('.MarketCapitalization3').length
+                for (let i = 0; i < l; i++) {
+                    a = document.getElementsByClassName("MarketCapitalization3")[i].value;
+                    document.getElementsByClassName('MarketCapitalization3')[i].value = numUSD.format(a);
+                }
+                l = document.querySelectorAll('.MarketCapitalization4').length
+                for (let i = 0; i < l; i++) {
+                    a = document.getElementsByClassName("MarketCapitalization4")[i].value;
+                    document.getElementsByClassName('MarketCapitalization4')[i].value = numUSD.format(a);
+                }
+                l = document.querySelectorAll('.Opinionφ1').length
+                for (let i = 0; i < l; i++) {
+                    a = document.getElementsByClassName("Opinionφ1")[i].innerHTML;
+                    if (a == 'None') {
+                        a = ''
+                    }
+                    document.getElementsByClassName('Opinionφ1')[i].innerHTML = a;
+                }
+                l = document.querySelectorAll('.Opinionφ2').length
+                for (let i = 0; i < l; i++) {
+                    a = document.getElementsByClassName("Opinionφ2")[i].innerHTML;
+                    if (a == 'None') {
+                        a = ''
+                    }
+                    document.getElementsByClassName('Opinionφ2')[i].innerHTML = a;
+                }
+                l = document.querySelectorAll('.Opinionφ3').length
+                for (let i = 0; i < l; i++) {
+                    a = document.getElementsByClassName("Opinionφ3")[i].innerHTML;
+                    if (a == 'None') {
+                        a = ''
+                    }
+                    document.getElementsByClassName('Opinionφ3')[i].innerHTML = a;
+                }
+                l = document.querySelectorAll('.Opinionφ4').length
+                for (let i = 0; i < l; i++) {
+                    a = document.getElementsByClassName("Opinionφ4")[i].innerHTML;
+                    if (a == 'None') {
+                        a = ''
+                    }
+                    document.getElementsByClassName('Opinionφ4')[i].innerHTML = a;
+                }
+                l = document.querySelectorAll('.Clockφ1').length
+                for (let i = 0; i < l; i++) {
+                    a = document.getElementsByClassName("Clockφ1")[i].innerHTML;
+                    if (a == 'None%') {
+                        a = 'NaN%'
+                    }
+                    document.getElementsByClassName('Clockφ1')[i].innerHTML = a;
+                }
+                l = document.querySelectorAll('.Clockφ2').length
+                for (let i = 0; i < l; i++) {
+                    a = document.getElementsByClassName("Clockφ2")[i].innerHTML;
+                    if (a == 'None%') {
+                        a = 'NaN%'
+                    }
+                    document.getElementsByClassName('Clockφ2')[i].innerHTML = a;
+                }
+                l = document.querySelectorAll('.Clockφ3').length
+                for (let i = 0; i < l; i++) {
+                    a = document.getElementsByClassName("Clockφ3")[i].innerHTML;
+                    if (a == 'None%') {
+                        a = 'NaN%'
+                    }
+                    document.getElementsByClassName('Clockφ3')[i].innerHTML = a;
+                }
+                l = document.querySelectorAll('.Clockφ4').length
+                for (let i = 0; i < l; i++) {
+                    a = document.getElementsByClassName("Clockφ4")[i].innerHTML;
+                    if (a == 'None%') {
+                        a = 'NaN%'
+                    }
+                    document.getElementsByClassName('Clockφ4')[i].innerHTML = a;
                 }
             })
             document.addEventListener('DOMContentLoaded', function() {
@@ -283,6 +428,202 @@
                 for (let i = 0; i < l; i++) {
                     a = document.getElementsByClassName("price")[i].value;
                     document.getElementsByClassName('price')[i].value = numUSD.format(a);
+                }
+            })
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                //
+                l = document.querySelectorAll('.EntityRegistrantName').length
+                //
+                for (let q = 0; q < l; q++) {
+                    //
+                    a = 0
+                    a = Math.max(a, parseInt(document.getElementsByClassName('IntrinsicValue1')[q].value.replaceAll(/,/g, '')));
+                    if (Number.isNaN(Number(a))) {
+                        a = 1
+                    }
+                    //
+                    b = 0
+                    b = Math.max(b, parseInt(document.getElementsByClassName('IntrinsicValue2')[q].value.replaceAll(/,/g, '')));
+                    if (Number.isNaN(Number(b))) {
+                        b = 1
+                    }
+                    //
+                    c = 0
+                    c = Math.max(c, parseInt(document.getElementsByClassName('IntrinsicValue3')[q].value.replaceAll(/,/g, '')));
+                    if (Number.isNaN(Number(c))) {
+                        c = 1
+                    }
+                    //
+                    d = 0
+                    d = Math.max(d, parseInt(document.getElementsByClassName('IntrinsicValue4')[q].value.replaceAll(/,/g, '')));
+                    if (Number.isNaN(Number(d))) {
+                        d = 1
+                    }
+                    //
+                    e = 0
+                    e = Math.max(e, parseInt(document.getElementsByClassName('MarketCapitalization1')[q].value.replaceAll(/,/g, '')));
+                    if (Number.isNaN(Number(e))) {
+                        e = 1
+                    }
+                    //
+                    f = 0
+                    f = Math.max(f, parseInt(document.getElementsByClassName('MarketCapitalization2')[q].value.replaceAll(/,/g, '')));
+                    if (Number.isNaN(Number(f))) {
+                        f = 1
+                    }
+                    //
+                    g = 0
+                    g = Math.max(g, parseInt(document.getElementsByClassName('MarketCapitalization3')[q].value.replaceAll(/,/g, '')));
+                    if (Number.isNaN(Number(g))) {
+                        g = 1
+                    }
+                    //
+                    h = 0
+                    h = Math.max(h, parseInt(document.getElementsByClassName('MarketCapitalization4')[q].value.replaceAll(/,/g, '')));
+                    if (Number.isNaN(Number(h))) {
+                        h = 1
+                    }
+                    //
+                    i = Math.max(a, b, c, d, e, f, g, h)
+                    //
+                    if (i/1000000000 > 1) {
+                        dad = 1000000000;
+                        scale = '(in billions)';
+                    } else {
+                        if (i/1000000 > 1) {
+                            dad = 1000000;
+                            scale = '(in millions)';
+                        } else {
+                            dad = 1000;
+                            scale = '(in thousands)';
+                        }
+                    }
+                    //
+                    const lastyear = document.getElementsByClassName('DateSummary1')[q].innerHTML.replaceAll(/,/g, '');
+                    const secondlastyear = document.getElementsByClassName('DateSummary2')[q].innerHTML.replaceAll(/,/g, '');
+                    const thirdlastyear = document.getElementsByClassName('DateSummary3')[q].innerHTML.replaceAll(/,/g, '');
+                    const fourthlastyear = document.getElementsByClassName('DateSummary4')[q].innerHTML.replaceAll(/,/g, '');
+                    //
+                    if (a == 1) {
+                        a = NaN
+                    } else {
+                        a = a / dad;
+                    }
+                    let lastyearIntrinsicValue = Math.round(a * 1000)/1000
+                    //
+                    if (b == 1) {
+                        a = NaN
+                    } else {
+                        a = b / dad;
+                    }
+                    let secondlastyearIntrinsicValue = Math.round(a * 1000)/1000
+                    //
+                    if (c == 1) {
+                        a = NaN
+                    } else {
+                        a = c / dad;
+                    }
+                    let thirdlastyearIntrinsicValue = Math.round(a * 1000)/1000
+                    //
+                    //
+                    //
+                    if (d == 1) {
+                        a = NaN
+                    } else {
+                        a = d / dad;
+                    }
+                    let fourthlastyearIntrinsicValue = Math.round(a * 1000)/1000
+                    //
+                    if (e == 1) {
+                        a = NaN
+                    } else {
+                        a = e / dad;
+                    }
+                    let lastyearMarketCap = Math.round(a * 1000)/1000
+                    //
+                    if (f == 1) {
+                        a = NaN
+                    } else {
+                        a = f / dad;
+                    }
+                    let secondlastyearMarketCap = Math.round(a * 1000)/1000
+                    //
+                    if (g == 1) {
+                        a = NaN
+                    } else {
+                        a = g / dad;
+                    }
+                    let thirdlastyearMarketCap = Math.round(a * 1000)/1000
+                    //
+                    if (h == 1) {
+                        a = NaN
+                    } else {
+                        a = h / dad;
+                    }
+                    let fourthlastyearMarketCap = Math.round(a * 1000)/1000
+                    //
+                    const chart = document.getElementsByClassName('LineChart')[q];
+                    chart.width = window.innerWidth*0.8;
+                    chart.height = window.innerHeight/2.8;
+                    //
+                    let lineChart = new Chart(chart, {
+                        type: 'line',
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true,
+                                    }
+                                }]
+                            }
+                        },
+                        data: {
+                            labels: [lastyear, secondlastyear, thirdlastyear, fourthlastyear],
+                            datasets: [
+                                {
+                                    label: 'intrinsic value ' + scale,
+                                    fill: false,
+                                    lineTension: 0.5,
+                                    borderColor: 'green',
+                                    borderCapStyle: 'butt',
+                                    borderDash: [],
+                                    borderDashOffset: 0.0,
+                                    borderJoinStyle: 'miter',
+                                    pointBorderColor: 'rgba(75,192,192,1)',
+                                    pointBackgroundColor: '#fff',
+                                    pointBorderWidth: 1,
+                                    pointBorderRadius: 5,
+                                    pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+                                    pointHoverBorderColor: 'rgba(75,192,192,1)',
+                                    pointHoverBorderWidth: 2,
+                                    pointHitRadius: 10,
+                                    data: [lastyearIntrinsicValue, secondlastyearIntrinsicValue, thirdlastyearIntrinsicValue, fourthlastyearIntrinsicValue],
+                                },
+                                {
+                                    label: 'market capitalization ' + scale,
+                                    fill: false,
+                                    lineTension: 0.5,
+                                    borderColor: 'red',
+                                    borderCapStyle: 'butt', 
+                                    borderDash: [],
+                                    borderDashOffset: 0.0,
+                                    borderJoinStyle: 'miter',
+                                    pointBorderColor: 'rgba(75,192,192,1)',
+                                    pointBackgroundColor: '#fff',
+                                    pointBorderWidth: 1,
+                                    pointBorderRadius: 5,
+                                    pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+                                    pointHoverBorderColor: 'rgba(75,192,192,1)',
+                                    pointHoverBorderWidth: 2,
+                                    pointRadius: 1,
+                                    pointHitRadius: 10,
+                                    data: [lastyearMarketCap, secondlastyearMarketCap, thirdlastyearMarketCap, fourthlastyearMarketCap],
+                                },
+                            ]
+                        }
+                    });
                 }
             })
         </script>

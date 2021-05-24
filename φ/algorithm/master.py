@@ -96,22 +96,30 @@ entities = Entity.objects.all().order_by(
     'TradingSymbol',
 )
 
+auditcompleted = [
+    21,
+    20,
+
+]
+
 marketdata = [
+    21,
     20,
     19,
     18,
-    #
-    17,
-    16,
-    15,
-    14,
-    13,
-    12,
-    11,
 ]
 
 phases = [
-    11,
+    20,
+    19,
+    18,
+#    17,
+#    16,
+#    15,
+#    14,
+#    13,
+#    12,
+#    11,
 ]
 
 ll = 1
@@ -119,13 +127,13 @@ ll = len(entities)
 
 # master
 try:
-    # entities
+    # loop
     for count in range(0, ll):
         #
         e = entities[count]
         #
         if ll == 1:
-            e = Entity.objects.get(TradingSymbol='AAPL')
+            e = Entity.objects.get(TradingSymbol='CYAN')
         #
         if e.db in phases:
             #
@@ -167,11 +175,7 @@ try:
                         #
                         a = AuditData.objects.get(TradingSymbol=e.TradingSymbol, PeriodEndDate=periodenddate)
                         #
-                        print(a)
-                        #
-                        print(a.db)
-                        #
-                        if a.db not in marketdata:
+                        if a.db not in auditcompleted:
                             #
                             a.db = 0
                             #
@@ -9576,7 +9580,7 @@ try:
                         #
                         a = AuditData.objects.get(TradingSymbol=e.TradingSymbol, PeriodEndDate=periodenddate)
                         #
-                        if a.db not in marketdata:
+                        if a.db not in auditcompleted:
                             #
                             print(137 * '-' + '\n')
                             print(e.EntityRegistrantName)
@@ -9722,7 +9726,7 @@ try:
                         #
                         a = AuditData.objects.get(TradingSymbol=e.TradingSymbol, PeriodEndDate=periodenddate)
                         #
-                        if a.db not in marketdata:
+                        if a.db not in auditcompleted:
                             # 
                             tb = TrialBalance.objects.get(TradingSymbol=e.TradingSymbol, PeriodEndDate=periodenddate)
                             #
@@ -10940,207 +10944,7 @@ try:
                                 pass
             except:
                 pass
-            #
-            # outstanding shares
-            try:
-                #
-                periodenddates.sort(reverse=True)
-                #
-                for periodenddate in periodenddates:
-                    #
-                    if periodenddate != None:
-                        #
-                        if e.db in marketdata:
-                            #
-                            try:
-                                #
-                                a = AuditData.objects.get(TradingSymbol=e.TradingSymbol, PeriodEndDate=periodenddate)
-                                #
-                                if a.CommonSharesOutstanding == 0:
-                                    #
-                                    acc = a.AccessionNumber
-                                    #
-                                    OutstandingShares = []
-                                    #
-                                    c = 'https://www.sec.gov/Archives/edgar/data/'
-                                    try:
-                                        c = c + e.EntityCentralIndexKey
-                                        c = c + '/' + acc.replace('-','')
-                                        c = c + '/' 'R1.htm'
-                                        #
-                                        a.URLoustandingshares = c
-                                        #
-                                        r = 0
-                                        while r < 10:
-                                            try:
-                                                c = requests.get(c).content
-                                                r = 10
-                                            except:
-                                                r = r + 1
-                                                time.sleep(1)
-                                        #
-                                        r = 0
-                                        while r < 10:
-                                            try:
-                                                c = BeautifulSoup(c, 'html')
-                                                r = 10
-                                            except:
-                                                r = r + 1
-                                                time.sleep(1)
-                                        #
-                                        r = 0
-                                        while r < 10:
-                                            try:
-                                                q = c.find_all('tr')
-                                                r = 10
-                                            except:
-                                                r = r + 1
-                                                time.sleep(1)
-                                    except:
-                                        pass
-                                    #
-                                    p = 0
-                                    while p < len(q) - 1:
-                                        try:
-                                            d = q[p].find_all('a')[0].text
-                                            if 'OUTSTANDING' in d.upper():
-                                                OutstandingShares.append(p)
-                                        except:
-                                            pass
-                                        p = p + 1
-                                        #
-                                    b = 0
-                                    for h in OutstandingShares:
-                                        #
-                                        b = b + int(q[h].find_all('td', class_='nump')[0].text.replace(',',''))
-                                    #
-                                    # dad
-                                    d = c.find_all('tr')[0].text
-                                    q = [
-                                        b,
-                                        d,
-                                    ]
-                                    #
-                                    dad = 0
-                                    for p in q:
-                                        if 'SHARES IN MILLIONS' in d.upper():
-                                            dad = 1000000
-                                        elif 'SHARES IN THOUSANDS' in d.upper():
-                                            dad = 1000
-                                        else:
-                                            dad = 1
-                                    #
-                                    c = b * dad
-                                    a.CommonSharesOutstanding = c
-                                    #
-                                    if a.PeriodEndDate == periodenddates[0]:
-                                        e.CommonSharesOutstanding = c
-                                    #
-                                    a.save()
-                                    e.save()
-                                    #
-                                    print(e.EntityRegistrantName)
-                                    print('shares outstanding')
-                                    print(a.PeriodEndDate)
-                                    print(137*'-' + '\n')
-                                    print(str('{:,}'.format(a.CommonSharesOutstanding)))
-                                    print('\n' + 137*'-' + '\n')
-                            except:
-                                pass
-            except:
-                pass               
-            #
-            # filing dates
-            try:
-                #
-                periodenddates.sort(reverse=True)
-                #
-                for periodenddate in periodenddates:
-                    #
-                    if periodenddate != None:
-                        #
-                        if e.db in marketdata:
-                            #
-                            a = AuditData.objects.get(TradingSymbol=e.TradingSymbol, PeriodEndDate=periodenddate)
-                            #
-                            if a.CommonSharePrice == 0:
-                                #
-                                acc = a.AccessionNumber
-                                #
-                                try:
-                                    c = 0
-                                    q = 0
-                                    p = ''
-                                    while q < 9:
-                                        if p == '':
-                                            try:
-                                                d = periodenddate
-                                                d = d - datetime.timedelta(days=q)
-                                                b = 'https://api.marketstack.com/v1/tickers/' + e.TradingSymbol + '/eod/' + str(d)
-                                                b = requests.get(b, API)
-                                                c = b.json()['close']
-                                                if c != 0:
-                                                    p = 'h'
-                                            except:
-                                                time.sleep(1)
-                                        else:
-                                            pass
-                                        q = q + 1
-                                    if p == 'h':
-                                        a.CommonSharePrice = c
-                                except:
-                                    pass
-                                #
-                                # market capitalization
-                                try:
-                                    c = c * a.CommonSharesOutstanding
-                                    a.MarketCapitalization = c
-                                except:
-                                    pass
-                                #
-                                a.save()
-                                #
-                                print(e.EntityRegistrantName)
-                                print('stock price')
-                                print(a.PeriodEndDate)
-                                print(137*'-' + '\n')
-                                print(str('{:,}'.format(a.CommonSharePrice)))
-                                print(str('{:,}'.format(a.MarketCapitalization)))
-                                print(137*'-' + '\n')
-            except:
-                pass
-            #
-            # current stock price
-            try:
-                #
-                d = requests.get('https://api.marketstack.com/v1/tickers/' + e.TradingSymbol + '/eod', API)
-                p = d.json()['data']['name']
-                q = d.json()['data']['symbol']
-                b = d.json()['data']['eod'][0]['date']
-                c = d.json()['data']['eod'][0]['close']
-                #
-                e.CommonSharePriceLastYear = c
-                e.save()
-                #
-                # market capitalization
-                try:
-                    #
-                    u = e.CommonSharesOutstandingLastYear
-                    c = u * c
-                    e.MarketCapitalization = c
-                    #
-                    print(e.EntityRegistrantName)
-                    print('current stock price & market capitalization')
-                    print(137*'-' + '\n')
-                    print(str('{:,}'.format(e.CommonSharePriceLastYear)))
-                    print(str('{:,}'.format(e.MarketCapitalizationLastYear)))
-                    print(137*'-' + '\n')
-                    #
-                except:
-                    pass
-            except:
-                pass
-            #
+            #            
             # additional information
             try:
                 #
@@ -11231,6 +11035,227 @@ try:
             except:
                 pass
             #
+            # outstanding shares
+            try:
+                #
+                periodenddates.sort(reverse=True)
+                #
+                for periodenddate in periodenddates:
+                    #
+                    if periodenddate != None:
+                        #
+                        if e.db in marketdata:
+                            #
+                            try:
+                                #
+                                a = AuditData.objects.get(TradingSymbol=e.TradingSymbol, PeriodEndDate=periodenddate)
+                                #
+                                acc = a.AccessionNumber
+                                #
+                                OutstandingShares = []
+                                #
+                                c = 'https://www.sec.gov/Archives/edgar/data/'
+                                try:
+                                    c = c + e.EntityCentralIndexKey
+                                    c = c + '/' + acc.replace('-','')
+                                    c = c + '/' 'R1.htm'
+                                    #
+                                    a.URLoustandingshares = c
+                                    #
+                                    r = 0
+                                    while r < 10:
+                                        try:
+                                            c = requests.get(c).content
+                                            r = 10
+                                        except:
+                                            r = r + 1
+                                            time.sleep(1)
+                                    #
+                                    r = 0
+                                    while r < 10:
+                                        try:
+                                            c = BeautifulSoup(c, 'html')
+                                            r = 10
+                                        except:
+                                            r = r + 1
+                                            time.sleep(1)
+                                    #
+                                    r = 0
+                                    while r < 10:
+                                        try:
+                                            q = c.find_all('tr')
+                                            r = 10
+                                        except:
+                                            r = r + 1
+                                            time.sleep(1)
+                                except:
+                                    pass
+                                #
+                                p = 0
+                                while p < len(q) - 1:
+                                    try:
+                                        d = q[p].find_all('a')[0].text
+                                        if 'OUTSTANDING' in d.upper():
+                                            OutstandingShares.append(p)
+                                    except:
+                                        pass
+                                    p = p + 1
+                                    #
+                                b = 0
+                                for h in OutstandingShares:
+                                    #
+                                    b = b + int(q[h].find_all('td', class_='nump')[0].text.replace(',',''))
+                                #
+                                # dad
+                                d = c.find_all('tr')[0].text
+                                q = [
+                                    b,
+                                    d,
+                                ]
+                                #
+                                dad = 0
+                                for p in q:
+                                    if 'SHARES IN MILLIONS' in d.upper():
+                                        dad = 1000000
+                                    elif 'SHARES IN THOUSANDS' in d.upper():
+                                        dad = 1000
+                                    else:
+                                        dad = 1
+                                #
+                                c = b * dad
+                                a.CommonSharesOutstanding = c
+                                #
+                                if a.PeriodEndDate == periodenddates[0]:
+                                    e.CommonSharesOutstandingLastYear = c
+                                if a.PeriodEndDate == periodenddates[1]:
+                                    e.CommonSharesOutstandingSecondLastYear = c
+                                if a.PeriodEndDate == periodenddates[2]:
+                                    e.CommonSharesOutstandingThirdLastYear = c
+                                if a.PeriodEndDate == periodenddates[3]:
+                                    e.CommonSharesOutstandingFourthLastYear = c
+                                #
+                                a.save()
+                                e.save()
+                                #
+                                print(e.EntityRegistrantName)
+                                print('shares outstanding')
+                                print(a.PeriodEndDate)
+                                print(137*'-' + '\n')
+                                print(str('{:,}'.format(a.CommonSharesOutstanding)))
+                                print('\n' + 137*'-' + '\n')
+                            except:
+                                pass
+            except:
+                pass               
+            #
+            # filing dates
+            try:
+                #
+                periodenddates.sort(reverse=True)
+                #
+                for periodenddate in periodenddates:
+                    #
+                    if periodenddate != None:
+                        #
+                        if e.db in marketdata:
+                            #
+                            a = AuditData.objects.get(TradingSymbol=e.TradingSymbol, PeriodEndDate=periodenddate)
+                            #
+                            acc = a.AccessionNumber
+                            #
+                            try:
+                                c = 0
+                                q = 0
+                                p = ''
+                                while q < 9:
+                                    if p == '':
+                                        try:
+                                            d = periodenddate
+                                            d = d - datetime.timedelta(days=q)
+                                            b = 'https://api.marketstack.com/v1/tickers/' + e.TradingSymbol + '/eod/' + str(d)
+                                            b = requests.get(b, API)
+                                            c = b.json()['close']
+                                            if c != 0:
+                                                p = 'h'
+                                        except:
+                                            time.sleep(1)
+                                    else:
+                                        pass
+                                    q = q + 1
+                                if p == 'h':
+                                    a.CommonSharePrice = c
+                                    #
+                                    if a.PeriodEndDate == periodenddates[0]:
+                                        e.CommonSharePriceLastYear = c
+                                    if a.PeriodEndDate == periodenddates[1]:
+                                        e.CommonSharePriceSecondLastYear = c
+                                    if a.PeriodEndDate == periodenddates[2]:
+                                        e.CommonSharePriceThirdLastYear = c
+                                    if a.PeriodEndDate == periodenddates[3]:
+                                        e.CommonSharePriceFourthLastYear = c
+                            except:
+                                pass
+                            #
+                            # market capitalization
+                            try:
+                                c = c * a.CommonSharesOutstanding
+                                a.MarketCapitalization = c
+                                #
+                                if a.PeriodEndDate == periodenddates[0]:
+                                    e.MarketCapitalizationLastYear = c
+                                if a.PeriodEndDate == periodenddates[1]:
+                                    e.MarketCapitalizationSecondLastYear = c
+                                if a.PeriodEndDate == periodenddates[2]:
+                                    e.MarketCapitalizationThirdLastYear = c
+                                if a.PeriodEndDate == periodenddates[3]:
+                                    e.MarketCapitalizationFourthLastYear = c
+                            except:
+                                pass
+                            #
+                            a.save()
+                            #
+                            print(e.EntityRegistrantName)
+                            print('stock price')
+                            print(a.PeriodEndDate)
+                            print(137*'-' + '\n')
+                            print(str('{:,}'.format(a.CommonSharePrice)))
+                            print(str('{:,}'.format(a.MarketCapitalization)))
+                            print(137*'-' + '\n')
+            except:
+                pass
+            #
+            # current stock price
+            try:
+                #
+                d = requests.get('https://api.marketstack.com/v1/tickers/' + e.TradingSymbol + '/eod', API)
+                p = d.json()['data']['name']
+                q = d.json()['data']['symbol']
+                b = d.json()['data']['eod'][0]['date']
+                c = d.json()['data']['eod'][0]['close']
+                #
+                e.CommonSharePriceLastYear = c
+                e.SecuritiesUpdate = datetime.datetime.today()
+                e.save()
+                #
+                # market capitalization
+                try:
+                    #
+                    u = e.CommonSharesOutstandingLastYear
+                    c = u * c
+                    e.MarketCapitalization = c
+                    #
+                    print(e.EntityRegistrantName)
+                    print('current stock price & market capitalization')
+                    print(137*'-' + '\n')
+                    print(str('{:,}'.format(e.CommonSharePriceLastYear)))
+                    print(str('{:,}'.format(e.MarketCapitalizationLastYear)))
+                    print(137*'-' + '\n')
+                    #
+                except:
+                    pass
+            except:
+                pass
+            #
             # web application
             try:
                 #
@@ -11295,38 +11320,31 @@ try:
                         #
                         # last year
                         if i == 0:
-                            f = 0
                             e.AnomaliesRatio1 = c
                             a = AuditData.objects.get(TradingSymbol=e.TradingSymbol, Period='lastyear')
                         #
                         # second last year
                         if i == 1:
-                            f = 3
                             e.AnomaliesRatio2 = c
                             a = AuditData.objects.get(TradingSymbol=e.TradingSymbol, Period='secondlastyear')
-                            a.db = 0
                         #
                         # third last year
                         if i == 2:
-                            f = 0
                             e.AnomaliesRatio3 = c
                             a = AuditData.objects.get(TradingSymbol=e.TradingSymbol, Period='thirdlastyear')
                         #
                         # fourth last year
                         if i == 3:
-                            f = 0
                             e.AnomaliesRatio4 = c
                             a = AuditData.objects.get(TradingSymbol=e.TradingSymbol, Period='fourthlastyear')
                         #
                         # fifth last year
                         if i == 4:
-                            f = 0
                             e.AnomaliesRatio5 = c
                             a = AuditData.objects.get(TradingSymbol=e.TradingSymbol, Period='fifthlastyear')
                         #
                         # sixth last year
                         if i == 5:
-                            f = 0
                             e.AnomaliesRatio6 = c
                             a = AuditData.objects.get(TradingSymbol=e.TradingSymbol, Period='sixthlastyear')
                         #
@@ -11353,7 +11371,7 @@ try:
                 #
                 # clock, intrinsic value, market capitalization, bridge and opinion to db.
                 try:
-                    # clock
+                    #
                     aa = [
                         'Clockφ1',
                         'Clockφ2',
@@ -11363,10 +11381,10 @@ try:
                         'IntrinsicValues2',
                         'IntrinsicValues3',
                         'IntrinsicValues4',
-                        'MarketCapitalization1',
-                        'MarketCapitalization2',
-                        'MarketCapitalization3',
-                        'MarketCapitalization4',
+                        'IntrinsicValueOfACommonShares1',
+                        'IntrinsicValueOfACommonShares2',
+                        'IntrinsicValueOfACommonShares3',
+                        'IntrinsicValueOfACommonShares4',
                         'Bridgeφ1',
                         'Bridgeφ2',
                         'Bridgeφ3',
@@ -11376,8 +11394,6 @@ try:
                         'Opinionφ3',
                         'Opinionφ4',
                     ]
-                    #
-                    print(aa)
                     #
                     dd = [
                         ',',
@@ -11391,12 +11407,14 @@ try:
                     #
                     for a in aa:
                         #
-                        print(a)
+                        g = driver.find_element_by_id(a)
                         #
-                        c = driver.find_element_by_id(a).get_attribute('value')
+                        c = g.get_attribute('innerHTML')
                         #
-                        cc = []
+                        if c == '':
+                            c = g.get_attribute('value')
                         #
+                        w = ''
                         if i < 12:
                             #
                             for d in dd:
@@ -11404,15 +11422,24 @@ try:
                                     c = c.replace(d,'')
                                 except:
                                     pass
+                            #
                             for q in qq:
                                 try:
-                                    c = c.replace(q,0)
+                                    if q in c:
+                                        c = None
                                 except:
                                     pass
                             #
-                            c = int(c)
-                        #
-                        print(c)
+                            try:
+                                if '%' in c:
+                                    c = float(int(c.replace('%','')))
+                            except:
+                                pass
+                            #
+                            try:
+                                c = float(c)
+                            except:
+                                pass
                         #
                         if a == aa[0]:
                             e.ClockφLastYear = c
@@ -11431,13 +11458,13 @@ try:
                         if a == aa[7]:
                             e.CommonSharesIntrinsicValueFourthLastYear = c
                         if a == aa[8]:
-                            e.MarketCapitalizationLastYear = c
+                            e.CommonShareIntrinsicValueLastYear = c
                         if a == aa[9]:
-                            e.MarketCapitalizationSecondLastYear = c
+                            e.CommonShareIntrinsicValueSecondLastYear = c
                         if a == aa[10]:
-                            e.MarketCapitalizationThirdLastYear = c
+                            e.CommonShareIntrinsicValueThirdLastYear = c
                         if a == aa[11]:
-                            e.MarketCapitalizationFourthLastYear = c
+                            e.CommonShareIntrinsicValueFourthLastYear = c
                         if a == aa[12]:
                             e.BridgeφLastYear = c
                         if a == aa[13]:
@@ -11467,7 +11494,7 @@ try:
             except:
                 pass
             #
-            # entity db
+            # db
             try:
                 e.db = 12 + lt
                 if e.db > 17:
@@ -11509,11 +11536,20 @@ try:
             except:
                 pass
     #
-    # db
+    # db stats
     try:
         # variables
         try:
+            entities = Entity.objects.all()
             Audited = Entity.objects.all().filter(db=21)
+            Prepared = Entity.objects.all().filter(db=20)
+            MarketAndSecuritiesPhase = Entity.objects.all().filter(db=19)
+            SixYearAudited = Entity.objects.all().filter(db=18)
+            FiveYearAudited = Entity.objects.all().filter(db=17)
+            FourYearAudited = Entity.objects.all().filter(db=16)
+            ThreeYearAudited = Entity.objects.all().filter(db=15)
+            TwoYearAudited = Entity.objects.all().filter(db=14)
+            OneYearAudited = Entity.objects.all().filter(db=13)
             #
             Capitalizations = Capitalization.objects.all().order_by('db')
             #
@@ -11530,24 +11566,6 @@ try:
         except:
             pass
         #
-        # intrinsics
-        for i in range(0, len(Intrinsics)):
-            try:
-                r = Intrinsics[i]
-                r.Len = len(Entity.objects.all().filter(Intrinsic_db=r.db))
-                r.save()
-            except:
-                pass
-        #
-        # capitalizations
-        for i in range(0, len(Capitalizations)):
-            try:
-                r = Capitalizations[i]
-                r.Len = len(Entity.objects.all().filter(Capitalization_db=r.db))
-                r.save()
-            except:
-                pass
-        #
         # phases
         for i in range(0, len(Phases)):
             try:
@@ -11557,23 +11575,35 @@ try:
             except:
                 pass
         #
-        # industries
-        for i in range(0, len(Industries)):
-            try:
-                r = Industries[i]
-                r.Len = len(Entity.objects.all().filter(Industry_db=r.db))
-                r.save()
-            except:
-                pass
-        #
-        # regions
-        for i in range(0, len(Regions)):
-            try:
-                r = Regions[i]
-                r.Len = len(Entity.objects.all().filter(Region_db=r.db))
-                r.save()
-            except:
-                pass
+        # progress
+        try:
+            progress = [
+                len(Audited),
+                len(Prepared),
+                len(MarketAndSecuritiesPhase),
+                len(SixYearAudited),
+                len(FiveYearAudited) * 5/6,
+                len(FourYearAudited) * 4/6,
+                len(ThreeYearAudited) * 3/6,
+                len(TwoYearAudited) * 2/6,
+                len(OneYearAudited) * 1/6,
+            ]
+            eq = sum(progress)
+            progress = round(eq / len(entities) * 1000) / 10
+            #
+            onboarded = [
+                len(Audited),
+                len(Prepared),
+                len(MarketAndSecuritiesPhase),
+                len(SixYearAudited),
+                len(FiveYearAudited),
+                len(FourYearAudited),
+                len(ThreeYearAudited),
+                len(TwoYearAudited),
+                len(OneYearAudited),
+            ]
+        except:
+            pass
         #
         # master
         try:
@@ -11582,9 +11612,9 @@ try:
             #
             m.entities = len(entities)
             m.audited = len(Audited)
-            m.capitalizations = len(Capitalizations)
-            m.industries = len(Industries)
-            m.regions = len(Regions)
+            m.onboarded = sum(onboarded)
+            m.eq = eq
+            m.progress = progress
             #
             m.save()
         except:
@@ -11593,9 +11623,5 @@ try:
         pass
 except:
     pass
-
-
-
-
 
 

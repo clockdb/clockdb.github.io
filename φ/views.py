@@ -179,8 +179,8 @@ def analysis(request, entity_TradingSymbol):
     })
 
 
-def database(request):
-    return render(request, "./φ/database.html", {
+def ranking(request):
+    return render(request, "./φ/ranking/ranking.html", {
         "entities": Entity.objects.all()
         .order_by('-ClockφLastYear')
         .filter(db=21)
@@ -203,7 +203,7 @@ def index(request):
 
 
 def master(request):
-    return render(request, "./φ/master.html", {
+    return render(request, "./φ/master/master.html", {
         "master": Master.objects.all().first()
     })
 
@@ -237,7 +237,7 @@ def results(
         if order_db != 'any':
             if order_db != '+':
                 sort = order_db + sort
-        e = e.order_by(sort, a, b, c, d, ee, f, g, h) 
+        e = e.order_by(sort, a, b, c, d, ee, f, g, h)
     #
     if industry_db != 'any':
         e = e.filter(Industry_db=industry_db)
@@ -253,6 +253,8 @@ def results(
     #
     if region_db != 'any':
         e = e.filter(Region_db=region_db)
+    #
+    e = e.exclude(ClockφLastYear=0)
     #
     g = len(e)
     #

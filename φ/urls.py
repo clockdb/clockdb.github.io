@@ -6,21 +6,15 @@ app_name = "φ"
 
 urlpatterns = [
     #
-    # administrative
-    #
     path("about/", views.about, name="about"),
     #
     path("commands/", views.commands, name="commands"),
-    #
-    path("database/", views.database, name="database"),
     #
     path("disclaimer/", views.disclaimer, name="disclaimer"),
     #
     path("documentation/", views.documentation, name="documentation"),
     #
     path("", views.index, name="index"),
-    #
-    # high level
     #
     path("capitalizations/", views.capitalizations, name="capitalizations"),
     path("capitalizations/<str:capitalization_db>/", views.capitalization, name="capitalization"),
@@ -37,19 +31,17 @@ urlpatterns = [
     path("regions/", views.regions, name="regions"),
     path("regions/<str:region_db>/", views.region, name="region"),
     #
-    # master
-    #
     path("master/", views.master, name="master"),
     #
     path("menu/", views.menu, name="menu"),
+    #
+    path("ranking/", views.ranking, name="ranking"),
     #
     path(
         "<str:industry_db>/<str:industry_SEC_db>/<str:periodenddate_db>/<str:db>/<str:region_db>/<str:order_db>/<str:sort_db>/",
         views.results,
         name="results"
         ),
-    #
-    # analysis
     #
     path("<str:entity_TradingSymbol>/", views.analysis, name="analysis"),
     path("<str:entity_TradingSymbol>/Community", views.analysis, name="analysis"),
