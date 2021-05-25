@@ -140,9 +140,22 @@
                 checkbox.checked = true;
             }
         }
-    })    
+    });    
     
-    // main keys
+    // main 
+    document.addEventListener('keydown', (event) => {
+        i = 32
+        keys = [i]
+        if (keys.includes(event.keyCode)) {
+            event.preventDefault();
+            if (event.keyCode == i) {
+                a = 'Main'
+            }
+            document.getElementById(a).style.display = 'block';
+        }
+    });    
+    
+    // keys
     document.addEventListener('keydown', (event) => {
         i = 110
         ii = 107
@@ -1066,12 +1079,12 @@
                             <input type="checkbox" style="height: 16px;" id="AmendCheckbox"></input>
                             <input type="checkbox" style="height: 16px;" id="AmendCheckbox2"></input>
                         </td>
-                        <td colspan="2" id="Status1" style="font-weight:bold;">{{ AuditData_lastyear.Status }}</td>
-                        <td colspan="2" id="Status2">{{ AuditData_secondlastyear.Status }}</td>
-                        <td colspan="2" id="Status3">{{ AuditData_thirdlastyear.Status }}</td>
-                        <td colspan="2" id="Status4">{{ AuditData_fourthlastyear.Status }}</td>
-                        <td colspan="2" id="Status5">{{ AuditData_fifthlastyear.Status }}</td>
-                        <td colspan="2" id="Status6">{{ AuditData_sixthlastyear.Status }}</td>
+                        <td colspan="2" id="Status1" style="font-weight:bold;">{{ AuditData_lastyear.db }}</td>
+                        <td colspan="2" id="Status2">{{ AuditData_secondlastyear.db }}</td>
+                        <td colspan="2" id="Status3">{{ AuditData_thirdlastyear.db }}</td>
+                        <td colspan="2" id="Status4">{{ AuditData_fourthlastyear.db }}</td>
+                        <td colspan="2" id="Status5">{{ AuditData_fifthlastyear.db }}</td>
+                        <td colspan="2" id="Status6">{{ AuditData_sixthlastyear.db }}</td>
                     </tr>
                     <tr>
                         <td colspan="2"><h6>Work In Progress</h6></td>
@@ -1080,7 +1093,7 @@
                             <input type="checkbox" style="height: 16px;" id="AmendCheckbox"></input>
                             <input type="checkbox" style="height: 16px;" id="AmendCheckbox2"></input>
                         </td>
-                        <td colspan="2" id="Status1" style="font-weight:bold;">{{ entity.Status }}</td>
+                        <td colspan="2" id="Status1" style="font-weight:bold;">{{ entity.db }}</td>
                         <td colspan="2" id="Status2"></td>
                         <td colspan="2" id="Status3"></td>
                         <td colspan="2" id="Status4"></td>
@@ -24498,7 +24511,6 @@
         if (b.length === 98) {
             if (c.length === 98) {
                 if (d.length === 98) {
-                    console.log('s')
                     document.getElementById('o').innerHTML = '⬤';
                     document.getElementById('p').innerHTML = 'Audited.';
                 }
