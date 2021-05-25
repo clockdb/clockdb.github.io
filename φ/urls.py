@@ -16,26 +16,10 @@ urlpatterns = [
     #
     path("", views.index, name="index"),
     #
-    path("capitalizations/", views.capitalizations, name="capitalizations"),
-    path("capitalizations/<str:capitalization_db>/", views.capitalization, name="capitalization"),
-    #
-    path("industries/", views.industries, name="industries"),
-    path("industries/<str:industry_db>/", views.industry, name="industry"),
-    #
-    path("intrinsics/", views.intrinsics, name="intrinsics"),
-    path("intrinsics/<str:intrinsic_db>/", views.intrinsic, name="intrinsic"),
-    #
     path("phases/", views.phases, name="phases"),
     path("phases/<str:db>/", views.phase, name="phase"),
     #
-    path("regions/", views.regions, name="regions"),
-    path("regions/<str:region_db>/", views.region, name="region"),
-    #
     path("master/", views.master, name="master"),
-    #
-    path("menu/", views.menu, name="menu"),
-    #
-    path("ranking/", views.ranking, name="ranking"),
     #
     path(
         "<str:industry_db>/<str:industry_SEC_db>/<str:periodenddate_db>/<str:db>/<str:region_db>/<str:order_db>/<str:sort_db>/",
@@ -51,6 +35,9 @@ urlpatterns = [
     path("<str:entity_TradingSymbol>/Summary", views.analysis, name="analysis"),
     path("<str:entity_TradingSymbol>/Graph", views.analysis, name="analysis"),
     path("<str:entity_TradingSymbol>/Opinion", views.analysis, name="analysis"),
+    path("<str:entity_TradingSymbol>/Options", views.analysis, name="analysis"),
+    path("<str:entity_TradingSymbol>/Documentation", views.analysis, name="analysis"),
+    path("<str:entity_TradingSymbol>/Commands", views.analysis, name="analysis"),
     path("<str:entity_TradingSymbol>/Context", views.analysis, name="analysis"),
     path("<str:entity_TradingSymbol>/AnnualCashFlow", views.analysis, name="analysis"),
     path("<str:entity_TradingSymbol>/AnnualBalanceSheets", views.analysis, name="analysis"),

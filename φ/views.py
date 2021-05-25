@@ -21,68 +21,6 @@ def documentation(request):
     return render(request, "./φ/administrative/documentation.html")
 
 
-def capitalization(request, capitalization_db):
-    return render(request, "./φ/capitalizations/capitalization.html", {
-        #
-        "capitalization": Capitalization.objects
-        .get(db=capitalization_db),
-        #
-        "entities": Entity.objects.all()
-        .order_by('-MarketCapitalizationLastYear')
-        .filter(Capitalization_db=capitalization_db),
-    })
-
-
-def capitalizations(request):
-    return render(request, "./φ/capitalizations/capitalizations.html", {
-        "capitalizations": Capitalization.objects.all()
-        .order_by('-db')
-    })
-
-
-def industries(request):
-    return render(request, "./φ/industries/industries.html", {
-        "industries": Industry.objects.all()
-        .order_by('Description')
-    })
-
-
-def industry(request, industry_db):
-    return render(request, "./φ/industries/industry.html", {
-        #
-        "industry": Industry.objects.get(db=industry_db),
-        #
-        "entities": Entity.objects.all()
-        .filter(Industry_db=industry_db)
-        .order_by('-MarketCapitalizationLastYear'),
-    })
-
-
-def intrinsic(request, intrinsic_db):
-    return render(request, "./φ/intrinsics/intrinsic.html", {
-        #
-        "intrinsic": Intrinsic.objects.get(db=intrinsic_db),
-        #
-        "entities": Entity.objects.all()
-        .filter(Intrinsic_db=intrinsic_db)
-        .order_by('-CommonSharesIntrinsicValueLastYear'),
-    })
-
-
-def intrinsics(request):
-    return render(request, "./φ/intrinsics/intrinsics.html", {
-        "intrinsics": Intrinsic.objects.all()
-        .order_by('-db')
-        .exclude(db=0)
-    })
-
-
-def menu(request):
-    return render(request, "./φ/menu/menu.html", {
-        "master": Master.objects.all().first()
-    })
-
-
 def phase(request, db):
     return render(request, "./φ/phases/phase.html", {
         #
@@ -105,25 +43,6 @@ def phase(request, db):
 def phases(request):
     return render(request, "./φ/phases/phases.html", {
         "phases": Phase.objects.all().order_by('-db')
-    })
-
-
-def region(request, region_db):
-    return render(request, "./φ/regions/region.html", {
-        #
-        "region": Region.objects.get(db=region_db),
-        #
-        "entities": Entity.objects.all()
-        .filter(Region_db=region_db)
-        .order_by('-MarketCapitalizationLastYear'),
-    })
-
-
-def regions(request):
-    return render(request, "./φ/regions/regions.html", {
-        "regions": Region.objects.all()
-        .order_by('Description')
-        .exclude(Len=0)
     })
 
 
@@ -176,14 +95,6 @@ def analysis(request, entity_TradingSymbol):
         "AuditData_fourthlastyear": AuditData_fourthlastyear,
         "AuditData_fifthlastyear": AuditData_fifthlastyear,
         "AuditData_sixthlastyear": AuditData_sixthlastyear,
-    })
-
-
-def ranking(request):
-    return render(request, "./φ/ranking/ranking.html", {
-        "entities": Entity.objects.all()
-        .order_by('-ClockφLastYear')
-        .filter(db=21)
     })
 
 

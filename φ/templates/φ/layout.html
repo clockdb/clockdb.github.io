@@ -28,12 +28,8 @@
                 font-family: 'Verdana', sans-serif;
                 height: 100%;
             }
-            section {
-                padding-top: 47px;
-            }
             nav {
-                position: fixed;
-                height: 80px;
+                height: 50px;
                 width: 100%;
                 background: rgb(13, 72, 160);
                 box-shadow: 0px 4px 10px rgba(0,0,0,.3);
@@ -50,24 +46,12 @@
             nav .label a:hover {
                 color: #D8D8D8;
             }
-            nav .label h5 {
-                margin-left: 3.5%;
-                padding-top: 17px;
-                position: fixed;
-            }
-            nav .label h6 {
-                margin-left: 92%;
-                padding-top:19px;
-                position: fixed;
-            }
             input {
                 font-family: 'Dubai';
+                width: 98.5%;
+                margin-top: 4px;
+                margin-left: 0.5%;
                 font-size: 27px;
-                width: 78%;
-                height: 45px;
-                margin-top: 10px;
-                margin-left: 10%;
-                margin-right: 27px;
                 text-indent: 10px;
             }
             input:hover {
@@ -85,19 +69,17 @@
                 width: 100%;
                 border: none;
                 outline: none;
-                box-shadow: 1px 1px 1px;
+                box-shadow: 1px 1px;
             }
             button:hover {
                 box-shadow: 1px 2px 3px;
                 text-shadow: 0.1px 0.2 px 0.3px #0D47A1;
+                background-color: #E5E4E2;
                 transition: all 0.2s ease-out;
             }
             @media (max-width: 599px) {
                 body {
                     width: 100%;
-                }
-                section {
-                    padding-top: 34px;
                 }
                 nav {
                     width: 100%;
@@ -147,7 +129,6 @@
                     margin-top: 174px;
                     text-align: left;
                     padding: 3%;
-                    
                 }
             }
             /* Text */
@@ -325,7 +306,8 @@
                 text-align: right;
                 border-collapse: separate;
                 border: 2px;
-                margin: 2px;
+                padding-top: 12px;
+                padding-bottom: 12px;
                 background: transparent;
                 width: 90%;
                 padding-right: 10px; 
@@ -360,9 +342,14 @@
                 vertical-align: middle;
             }
             #φ select {
+                font-family: Verdana;
+                font-size: 15px;
+                letter-spacing: 0.05rem;
+                text-align:center;
                 border-top: none;
                 border-left: none;
                 text-align: right;
+                background-color: white;
             }
             @media (max-width: 599px) {
                 #φ h1 {
@@ -416,6 +403,9 @@
                     width: 100% ;
                     border-spacing: 17px;
                 }
+                #φ select {
+                    font-size: 8px;
+                }
             }
         </style>
 
@@ -425,29 +415,23 @@
 <!-- Body -->
 <body id='body'>
 
-    <!-- Label -->
-    <nav style="padding-top:7px;">
 
-        <input 
-            id="search"
-            autofocus placeholder="Type here to search" 
-            type="text" 
-            autocomplete="off"  
-            style="outline: 0ch; position: fixed;">
-
-        <label class="label">
-        
-            <a href="{% url 'φ:menu' %}"><h5>
-                ≡
-            </h5></a>
-        
-            <a href="{% url 'φ:index' %}"><h6>
-                db
-            </h6></a>
-
-        </label>
-        
-    </nav>
+    <Section>
+    
+        <!-- Label -->
+        <nav style="padding-top:7px;">
+    
+            <input 
+                id="search"
+                autofocus placeholder="Type here to search" 
+                type="text" 
+                autocomplete="off"  
+                style="outline: 0ch;">
+        </input>
+    
+        </nav>
+    
+    </Section>
 
     <!-- Search results -->
     <ul id="text"></ul>
@@ -491,18 +475,6 @@
                 }
                 if (event.keyCode == v) {
                     window.open("{% url 'φ:index' %}", '_top');
-                }
-                if (event.keyCode == vi) {
-                    window.open("{% url 'φ:intrinsics' %}", '_top');
-                }
-                if (event.keyCode == vii) {
-                    window.open("{% url 'φ:capitalizations' %}", '_top');
-                }
-                if (event.keyCode == viii) {
-                    window.open("{% url 'φ:industries' %}", '_top');
-                }
-                if (event.keyCode == ix) {
-                    window.open("{% url 'φ:regions' %}", '_top');
                 }
             }
         });

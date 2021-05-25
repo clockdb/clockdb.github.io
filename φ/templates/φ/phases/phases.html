@@ -23,11 +23,13 @@
                     <h3 style="text-align:center; font-weight:bold;"></h2>
                 </td>
             </tr>
+            <tr></tr>
+            <tr></tr>
             {% for phase in phases %}
             <tr>
                 <td colspan='1'>
                     <a href="/phases/{{ phase.db }}">
-                        <button>
+                        <button style="box-shadow: none; background-color:white;">
                             <h3 style='text-align:center; padding-bottom:1%'><b>{{ phase.Description }}</h4></b>
                             <h5 style="text-align:center; color:#8A9096; padding-bottom:1%"><b>Phase {{ phase.db }}</h4></b>
                         </button>
@@ -36,7 +38,7 @@
                 <td>
                     <a href="/phases/{{ phase.db }}">
                 
-                        <button>
+                        <button style="box-shadow: none; background-color:white;">
                             <h3 style='text-align:center'><b>{{ phase.Len }}</h4></b>
                             <h5 style="text-align:center; color:#8A9096; padding-bottom:1%"><b></h4></b>
                         </button>
