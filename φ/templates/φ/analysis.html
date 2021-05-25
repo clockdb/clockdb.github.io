@@ -29,7 +29,7 @@
     });
     document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('Graph').style.display = 'block';
-        window.scrollTo(0, 60);
+        window.scrollTo(0, 0);
     })
 
     // enter
@@ -147,7 +147,8 @@
         i = 110
         ii = 107
         iii = 13
-        keys = [i, ii, iii]
+        iv = 32
+        keys = [i, ii, iii, iv]
         if (keys.includes(event.keyCode) && (event.ctrlKey || event.metaKey)) {
             event.preventDefault();
             if (event.keyCode == i) {
@@ -159,16 +160,13 @@
             if (event.keyCode == iii) {
                 a = 'Opinion'
             }
+            if (event.keyCode == iv) {
+                a = 'Main'
+            }
             document.querySelectorAll('div').forEach(div => {
                 div.style.display = 'none';
             })
             document.getElementById(a).style.display = 'block';
-            if (event.keyCode == ii) {
-                window.scrollTo(0, 60);
-            } else {
-                window.scrollTo(0, 200);
-            }
-            history.pushState({a}, ``, `/{{ entity.TradingSymbol }}/${a}`);
         }
     });
 
@@ -226,7 +224,7 @@
                     div.style.display = 'none';
                 })
                 document.getElementById(a).style.display = 'block';
-                window.scrollTo(0, 200);
+                window.scrollTo(0, 0);
                 history.pushState({a}, ``, `/{{ entity.TradingSymbol }}/${a}`);
             }
         }
@@ -697,45 +695,47 @@
 <!--- buttons --->
 
         <!--- MAIN --->
-        <table style="border-bottom: ridge; border-top: ridge;">
-            <tbody>
-                <tr>
-<!---                
-                    <td>
-                        <button data-page="Community" name="Community">
-                            <h2>Community</h2>
-                        </button>
-                    </td>
--->
-                    <td>
-                        <button data-page="Arch">
-                            <h2>Financials</h2>
-                        </button>
-                    </td>
-                    <td style="display:none;" id="BridgeCell">
-                        <button data-page="Bridge" name="Bridge">
-                            <h2>Audit</h2>
-                        </button>
-                    </td>
-                    <td>
-                        <button data-page="Clock">
-                            <h2>Valuation</h2>
-                        </button>
-                    </td>
-                    <td>
-                        <button data-page="Opinion" name="Opinion">
-                            <h2>Opinion</h2>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div id="Main">
+            <table>
+                <tbody>
+                    <tr>
+    <!---                
+                        <td>
+                            <button data-page="Community" name="Community">
+                                <h2>Community</h2>
+                            </button>
+                        </td>
+    -->
+                        <td>
+                            <button data-page="Arch">
+                                <h2>Financials</h2>
+                            </button>
+                        </td>
+                        <td style="display:none;" id="BridgeCell">
+                            <button data-page="Bridge" name="Bridge">
+                                <h2>Audit</h2>
+                            </button>
+                        </td>
+                        <td>
+                            <button data-page="Clock">
+                                <h2>Valuation</h2>
+                            </button>
+                        </td>
+                        <td>
+                            <button data-page="Opinion" name="Opinion">
+                                <h2>Opinion</h2>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <!--- FINANCIALS --->
         <div id="Arch">
 
             <!--- ANNUAL FINANCIAL --->
-            <table style="border-bottom: ridge;">
+            <table>
                 <tbody>
                     <tr>
                         <td>
@@ -761,7 +761,7 @@
                     </tr>
                 </body>
             </table>
-            <table style="border-bottom: ridge;">
+            <table>
                 <body>
                     <tr>
                         <td>
@@ -789,7 +789,7 @@
         <div id="Clock">
 
             <!--- FINANCIAL RATIOS, INTRINSIC VALUES AND SUMMARY --->
-            <table style="border-bottom: ridge;">
+            <table>
                 <tbody>
                     <tr>
                         <td>
@@ -812,8 +812,8 @@
             </table>
 
             <!--- CAPITALIZED INCOME, CAPITALIZED CASH FLOW, CAPITALIZED FORECAST & FAIR MARKET VALUE --->
-            <table style="border-bottom: ridge;">
-                <body></body>
+            <table>
+                <body>
                     <tr>
                         <td>
                             <button data-page="AdditionalInformation">
@@ -843,7 +843,7 @@
 
         <!--- AUDIT --->
         <div id="Bridge">
-            <table style="border-bottom: ridge;">
+            <table>
                 <tbody>
                     <tr>
                         <td>
@@ -880,7 +880,7 @@
         <div id="Procedures">      
 
             <!--- PROCEDURES ANNUAL FINANCIAL STATEWMENTS --->
-            <table style="border-bottom: ridge;">
+            <table>
                 <tbody>
                     <tr>
                         <td>
@@ -916,7 +916,7 @@
 
         <!--- COMMUNITY --->
         <div id="Community">
-            <table style="border-bottom: ridge;">
+            <table>
                 <body>
                     <tr>
                         <td>
@@ -943,7 +943,7 @@
 <!--- HEADER --->
         
         <!--- ENTITIES, INDUSTRY AND REGION --->
-        <table style="padding-top:33px;">
+        <table style="padding-top:77px; padding-bottom:57px;">
             <tbody>
                 <tr>
                     <td>
@@ -977,6 +977,7 @@
             </table>
             <table style="border-bottom:solid #0D47A1; padding-bottom:57px;">
                 <body>
+                    <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
@@ -1094,6 +1095,7 @@
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
+                    <tr></tr>
                 </tbody>
             </table>
         </div>
@@ -1109,6 +1111,7 @@
             </table>
             <table style="border-bottom:solid #0D47A1">
                 <body>
+                    <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
@@ -2923,6 +2926,7 @@
                     <tr><tr>
                     <tr><tr>
                     <tr><tr>
+                    <tr><tr>
                 </body>
             </table>
         </div>
@@ -2938,6 +2942,7 @@
             </table>
             <table style="border-bottom:solid #0D47A1; padding-bottom:57px;">
                 <body>
+                    <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
@@ -7339,6 +7344,7 @@
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
+                    <tr></tr>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">TB</td>
                         <td style="text-align:left;" colspan="20" >Trial Balance</td>
@@ -7358,6 +7364,7 @@
             </table>
             <table style="border-bottom:solid #0D47A1">
                 <body>
+                    <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
@@ -8130,10 +8137,12 @@
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
+                    <tr></tr>
                 </tbody>
             </table>
             <table>
                 <tbody>
+                    <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
@@ -8157,6 +8166,7 @@
             </table>
             <table style="border-bottom:solid #0D47A1">
                 <body>
+                    <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
@@ -8670,10 +8680,12 @@
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
+                    <tr></tr>
                 </tbody>
             </table>
             <table>
                 <tbody>
+                    <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
@@ -8701,6 +8713,7 @@
             </table>
             <table style="border-bottom:solid #0D47A1">
                 <body>
+                    <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
@@ -10145,10 +10158,12 @@
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
+                    <tr></tr>
                 </tbody>
             </table>
             <table>
                 <tbody>
+                    <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
@@ -10180,6 +10195,7 @@
             </table>
             <table style="border-bottom:solid #0D47A1; padding-bottom:57px">
                 <body>
+                    <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
@@ -13689,6 +13705,7 @@
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
+                    <tr></tr>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">IS</td>
                         <td style="text-align:left;" colspan="20" >Income Statement</td>
@@ -13715,6 +13732,7 @@
             </table>
             <table style="border-bottom:solid #0D47A1">
                 <body>
+                    <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
@@ -14960,10 +14978,12 @@
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
+                    <tr></tr>
                 </tbody>
             </table>
             <table>
                 <tbody>
+                    <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
@@ -15085,6 +15105,7 @@
             </table>
             <table style="border-bottom:solid #0D47A1; padding-bottom:57px">
                 <body>
+                    <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
@@ -15251,6 +15272,7 @@
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
+                    <tr></tr>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">(a)</td>
                         <td style="text-align:justify;" colspan="20" ><b>Reinvestment Of Maintenance:</b>
@@ -15292,6 +15314,7 @@
             </table>
             <table style="border-bottom:solid #0D47A1">
                 <body>
+                    <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
@@ -15765,10 +15788,12 @@
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
+                    <tr></tr>
                 </tbody>
             </table>
             <table>
                 <tbody>
+                    <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
@@ -15821,6 +15846,7 @@
             </table>
             <table style="border-bottom:solid #0D47A1">
                 <body>
+                    <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
@@ -16954,10 +16980,12 @@
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
+                    <tr></tr>
                 </tbody>
             </table>
             <table>
                 <tbody>
+                    <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
@@ -17057,6 +17085,7 @@
             </table>
             <table style="border-bottom:solid #0D47A1">
                 <body>
+                    <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
@@ -18035,10 +18064,12 @@
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
+                    <tr></tr>
                 </tbody>
             </table>
             <table>
                 <tbody>
+                    <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
@@ -18138,6 +18169,7 @@
             </table>
             <table>
                 <body>
+                    <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
@@ -18398,6 +18430,7 @@
             </table>
             <table style="border-bottom:solid #0D47A1">
                 <tbody>
+                    <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
@@ -18893,6 +18926,11 @@
             </table>
             <table style="border-bottom:solid #0D47A1">
                 <tbody>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
                     <tr>
                         <td style='text-align:center;'>
                             <canvas id='LineChart'></canvas>
@@ -19214,6 +19252,7 @@
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
+                    <tr></tr>
                     <tr>
                         <td colspan='5'><h6><b>Target level of assurance</b></h6></td>
                         <td></td>
@@ -19443,6 +19482,7 @@
                         </td>
                         <td colspan="5"><input class="account" id="MaterialityThresholdValue6" style="border-bottom:double black; font-weight:bold;" onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
+                    <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
@@ -24449,18 +24489,18 @@
         document.getElementById('p').innerHTML = '';
         document.getElementById('q').innerHTML = '';
         //
-        a = document.getElementById('Opinionφ1').innerHTML
+        a = document.getElementById('Opinionφ1').innerHTML;
         //
-        b = document.getElementById('Bridgeφ1').innerHTML
-        c = document.getElementById('Bridgeφ2').innerHTML
-        c = document.getElementById('Bridgeφ3').innerHTML
+        b = document.getElementById('Bridgeφ1').innerHTML;
+        c = document.getElementById('Bridgeφ2').innerHTML;
+        d = document.getElementById('Bridgeφ3').innerHTML;
         //
         if (b.length === 98) {
             if (c.length === 98) {
                 if (d.length === 98) {
-                    document.getElementsByClassName('o')[i].innerHTML = '⬤';
-                    document.getElementsByClassName('p')[i].innerHTML = 'Audited.';
-
+                    console.log('s')
+                    document.getElementById('o').innerHTML = '⬤';
+                    document.getElementById('p').innerHTML = 'Audited.';
                 }
             }
         }
@@ -24470,10 +24510,10 @@
         }
         //
         if (a == 'Buy') {
-            m = 'green'
+            m = 'green';
         }
         if (a == '') {
-            m = 'gold'
+            m = 'gold';
         }
         //
         document.getElementById('o').style.color = m;

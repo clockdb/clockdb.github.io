@@ -85,10 +85,12 @@
                 width: 100%;
                 border: none;
                 outline: none;
+                box-shadow: 1px 1px 1px;
             }
             button:hover {
-                font-weight: bold;
-                color: #696969;
+                box-shadow: 1px 2px 3px;
+                text-shadow: 0.1px 0.2 px 0.3px #0D47A1;
+                transition: all 0.2s ease-out;
             }
             @media (max-width: 599px) {
                 body {
@@ -305,13 +307,10 @@
                 border-spacing: 10px;
                 text-align: right;
                 vertical-align: middle;
-                padding: 1px;
                 border-right: 1px;
             }
             #φ td {
                 font-size: 10px;
-                padding-top: 5px;
-                padding-bottom: 5px;
             }
             #φ button {
                 padding: 13px;
@@ -319,14 +318,6 @@
                 font-family: 'Verdana';
                 font-size: 11px;
                 text-align: center;
-            }
-            #φ button:hover {
-                color: #696969;
-                outline: none;
-            }
-            #φ button:focus {
-                color: #696969;
-                outline: none;
             }
             #φ input {
                 font-family: 'Verdana';
@@ -340,15 +331,15 @@
                 padding-right: 10px; 
             }
             #φ input:hover {
-                background-color: #D8D8D8;
                 transition: all 0.3s ease-out;
             }
             #φ input:focus {
-                background-color: #C0C0C0;
+                background-color: #E5E4E2;
+                box-shadow: 1px 2px 3px;
                 transition: all 0.3s ease-out;
             }
             ::selection {
-                background:#C0C0C0;
+                background:#E5E4E2;
                 color: black;
                 transition: all 0.3s ease-out;
             }
@@ -424,17 +415,6 @@
                 #φ canvas {
                     width: 100% ;
                     border-spacing: 17px;
-                }
-                input#Calculator {
-                    width: 18%; 
-                    padding-right:10px; 
-                }
-                input:hover#Calculator {
-                    font-size: 13px;
-                }
-                input:focus#Calculator {
-                    width: 26%;
-                    font-size: 13px;
                 }
             }
         </style>
