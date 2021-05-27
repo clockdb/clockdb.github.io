@@ -31,6 +31,7 @@
             nav {
                 height: 50px;
                 width: 100%;
+                text-align: center;
                 background: rgb(13, 72, 160);
                 box-shadow: 0px 4px 10px rgba(0,0,0,.3);
                 transition: all .3s;
@@ -48,7 +49,7 @@
             }
             input {
                 font-family: 'Dubai';
-                width: 100%;
+                width: 99%;
                 margin-top: 4px;
                 font-size: 27px;
                 text-indent: 10px;
@@ -77,6 +78,9 @@
                 transition: all 0.2s ease-out;
             }
             @media (max-width: 599px) {
+                td {
+                    padding-top: 1.5%;
+                }
                 input {
                     font-size: 15px;
                     height: 30px;
@@ -96,7 +100,7 @@
                 width: 100%;
                 color: black;
                 display: inline-block;
-                margin-top: 17%;
+                margin-top: 13%;
             }
             ul a:hover {
                 color: #696969;
@@ -104,9 +108,7 @@
             @media (max-width: 599px) {
                 ul a {
                     font-size: 17px;
-                    margin-top: 174px;
-                    text-align: left;
-                    padding: 3%;
+                    margin-top: 27%;
                 }
             }
             /* Text */
@@ -334,26 +336,26 @@
                     font-size: 15px;
                 }
                 #φ h2 {
-                    font-size: 8px;
+                    font-size: 10px;
                 }
                 #φ h3 {
-                    font-size: 8px;
+                    font-size: 10px;
                 }
                 #φ h4 {
-                    font-size: 13px;
+                    font-size: 15px;
                 }
                 #φ h5 {
-                    font-size: 7px;
+                    font-size: 9px;
                 }
                 #φ h6 {
-                    font-size: 7px;
+                    font-size: 9px;
                 }
                 #φ p {
-                    font-size: 6px;
+                    font-size: 8px;
                     padding-bottom: 2%; 
                 }
                 #φ sup {
-                    font-size: 5px;
+                    font-size: 7px;
                 }
                 #φ table {
                     table-layout: auto;
@@ -362,27 +364,27 @@
                     border-right: 1px;
                 }
                 #φ td {
-                    font-size: 5px;
+                    font-size: 7px;
                 }
                 #φ button {
-                    font-size: 5px;
+                    font-size: 7px;
                     padding: 0px;
                     padding-top: 3px;
                     padding-bottom: 3px;
                 }
                 #φ input {
-                    font-size: 5px;
+                    font-size: 7px;
                     padding-right:10px; 
                 }
                 #φ div {
-                    font-size: 9px;
+                    font-size: 11px;
                 }
                 #φ canvas {
                     width: 100% ;
                     border-spacing: 17px;
                 }
                 #φ select {
-                    font-size: 8px;
+                    font-size: 10px;
                 }
             }
         </style>
@@ -412,10 +414,7 @@
     </Section>
 
     <!-- Search results -->
-    <ul id="text"></ul>
-
-    <Section>
-    </Section>
+    <ul id="SearchResults"></ul>
 
     <script>
         
@@ -443,13 +442,13 @@
                     location.reload();
                 }
                 if (event.keyCode == ii) {
-                    window.open("{% url 'φ:master' %}", '_top');
+                    window.open("{% url 'φ:documentation' %}", '_blank');
                 }
                 if (event.keyCode == iii) {
                     window.open("{% url 'φ:phases' %}", '_top');
                 }
                 if (event.keyCode == iv) {
-                    window.open("{% url 'φ:documentation' %}", '_top');
+                    window.open("{% url 'φ:master' %}", '_top');
                 }
                 if (event.keyCode == v) {
                     window.open("{% url 'φ:index' %}", '_top');
@@ -4510,19 +4509,23 @@
             { name: 'ZYNEX INC (ZYXI)' , url: './ZYXI'}, 
         ];
 
-        const list = document.getElementById('text');  
+        const list = document.getElementById('SearchResults');  
         
         function setList(group) {
             clearList();
-            for (const entitie of group) {
+
+            for (const entity of group) {
                 const a = document.createElement('a');
-                const link = document.createTextNode(entitie.name);
+                const link = document.createTextNode(entity.name);
                 a.appendChild(link);
-                a.href = myURL.pathname + (entitie.url)
+                a.href = myURL.pathname + (entity.url)
                 list.appendChild(a);
             }
             if (group.length === 0) {
                 setNoResults();
+                document.getElementById('SearchResults').style.marginBottom = '0%';
+            } else {
+                document.getElementById('SearchResults').style.marginBottom = '13%';
             }
         }
 
@@ -4561,13 +4564,14 @@
             let value = event.target.value;
             if (value && value.trim().length > 0) {
                 value = value.trim().toUpperCase();
-                setList(entities.filter(entitie => {
-                    return entitie.name.includes(value);
-                }).sort((entitieA, entitieB) => {
-                    return getRelevancy(entitieB.name, value) - getRelevancy(entitieA.name, value);
+                setList(entities.filter(entity => {
+                    return entity.name.includes(value);
+                }).sort((entityA, entityB) => {
+                    return getRelevancy(entityB.name, value) - getRelevancy(entityA.name, value);
                 }));
             } else {
                 clearList();
+                document.getElementById('SearchResults').style.marginBottom = '0%';
             }
         });
 
@@ -4575,6 +4579,7 @@
         document.addEventListener('click', function() {
             document.getElementById('search').value = '';
             clearList();
+            document.getElementById('SearchResults').style.marginBottom = '0%';
         })
 
     </script>

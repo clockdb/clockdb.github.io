@@ -434,7 +434,7 @@
     
     document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('Graph').style.display = 'block';
-        window.scrollTo(0, 0);
+        window.scrollTo(0, 115);
     })
 
     function Enter(Enter) {
@@ -515,6 +515,7 @@
         BalanceIncomeTaxOnOtherComprehensiveIncome();
         BalanceComprehensiveIncome();
         BalanceShareholdersEquityBeginning();
+        BalanceShareholdersEquityBeginningi();
         BalanceCommonSharesIssued();
         BalanceShareBasedCompensation();
         BalanceDividendsAndDividendEquivalentsDeclared();
@@ -683,6 +684,7 @@
         BalanceComprehensiveIncomeAnomalies();
         BalanceShareholdersEquityComponents();
         BalanceShareholdersEquityAnomalies();
+        BalanceShareholdersEquityAnomaliesi();
         CashFlowCashBeginning();
         CashBalanceSheetsAudit();
         CashFlowCashAnomaly();
@@ -691,6 +693,7 @@
         BalanceAnomaliesCurrentLiabilities();
         BalanceAnomaliesNonCurrentLiabilities();
         BalanceAnomaliesShareholdersEquity();
+        AnomaliesShareholdersEquityi();
         BalanceAnomaliesBalanceSheets();
         BalanceAnomaliesGrossMargin();
         BalanceAnomaliesOperatingIncome();
@@ -703,6 +706,8 @@
         AccountingEquationAnomalySummary();
         BalanceSheetsAnomalySummary();
         IncomeAnomalySummary();
+        ComprehensiveIncomeAnomalySummary();
+        ShareholdersEquityAnomalySummary();
         CashFlowAnomalySummary();
         MarketCapitalizationAnomalySummary();
         WorstCaseScenario();
@@ -972,18 +977,23 @@
                 <body>
                     <tr>
                         <td>
+                            <button data-page="Commands">
+                                <h3 style="text-align:center">Commands</h3>
+                            </button>
+                        </td>
+                        <td>
                             <button data-page="Documentation">
                                 <h3 style="text-align:center">Documentation</h3>
                             </button>
                         </td>
                         <td>
                             <button data-page="Commands">
-                                <h3 style="text-align:center">Commands</h3>
+                                <h3 style="text-align:center">Disclaimer</h3>
                             </button>
                         </td>
                         <td>
                             <button data-page="Commands">
-                                <h3 style="text-align:center">Disclaimer</h3>
+                                <h3 style="text-align:center">About</h3>
                             </button>
                         </td>
                     </tr>
@@ -1000,17 +1010,22 @@
                 <tr>
                     <td>
                         <h4 id='o' style="color:Black; font-weight:bold; text-shadow: 1px 1px rgb(73, 73, 73); display:inline; padding-right:27px;"></h4>
-                        <h4 id="EntityRegistrantName" style="color:Black; font-weight:bold; text-shadow: 1px 1px rgb(73, 73, 73); display:inline;"></h4>
+                        <h4 id="EntityRegistrantName" style="color:Black; font-weight:bold; text-shadow: 1px 1px rgb(73, 73, 73); display:inline;">{{ entity.EntityRegistrantName }} ({{ entity.TradingSymbol }})</h4>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <h3 id="Industry" style="color:rgb(73, 73, 73); font-weight:bold; text-align: right;"></h4>
+                        <h3 id="Industry" style="color:rgb(73, 73, 73); font-weight:bold; text-align: right;">{{ entity.Industry_SEC }}</h4>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <h3 id="Region" style="color:rgb(73, 73, 73); font-weight:bold; text-align: right;"></h4>
+                        <h3 id="Region" style="color:rgb(73, 73, 73); font-weight:bold; text-align: right;">{{ entity.Region }}</h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3 id='Phase' style="color:rgb(73, 73, 73); font-weight:bold; text-align: right;">{{ entity.db }}</h4>
                     </td>
                 </tr>
             </tbody>
@@ -20487,8 +20502,8 @@
                                 a = a + parseInt(document.getElementById('PreferredSharesLiability5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetirementBenefits5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('OperatingLeasesNonCurrent5').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('FinanceLeasesNonCurrent4').value.replaceAll(/,/g, ''));
-                                a = a + parseInt(document.getElementById('LeaseIncentiveObligation4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('FinanceLeasesNonCurrent5').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('LeaseIncentiveObligation5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ContingentConsideration5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('AccruedTaxLiabilitiesNonCurrent5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DeferredTaxLiabilitiesNonCurrent5').value.replaceAll(/,/g, ''));
@@ -21849,8 +21864,229 @@
             <table style="border-bottom:solid #0D47A1">
                 <body>
                     <tr>
-                        <td><h3 style="font-weight:bold; margin-left:0px;">Shareholders Equity Statements - Procedures</h3></td>
+                        <td><h3 style="font-weight:bold; margin-left:0px;">Shareholders' Equity Statements - Procedures</h3></td>
                     </tr>
+                </body>
+            </table>
+            <table>
+                <body>
+                    <tr>
+                        <td style="padding-top:37px"><h6><b>PROCEDURE 4.0</b></h6></td>
+                    </tr>
+                    <tr>
+                       <td style="text-align:left">The beginning balances are equivalent to the ending balances.</td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan="2"><h6><b>ASSERTIONS</b></h6></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left">Cut-off, existence, completeness and accuracy.</td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan="2"><h6><b>SCOPE</b></h6></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left">Yearly</td>
+                    </tr>
+                </body>
+            </table>
+            <table style="border-bottom:solid #0D47A1; padding-bottom:37px">
+                <body>
+                    <tr>
+                        <td colspan="4"></td>
+                        <script>
+                            function DateProcedureAnnualShareholdersEquityiii(DateProcedureAnnualShareholdersEquityiii) {
+                                document.getElementById('DateProcedureAnnualShareholdersEquityiii1').innerHTML = document.getElementById('TrialBalanceDate1').innerHTML;
+                                document.getElementById('DateProcedureAnnualShareholdersEquityiii2').innerHTML = document.getElementById('TrialBalanceDate2').innerHTML;
+                                document.getElementById('DateProcedureAnnualShareholdersEquityiii3').innerHTML = document.getElementById('TrialBalanceDate3').innerHTML;
+                                document.getElementById('DateProcedureAnnualShareholdersEquityiii4').innerHTML = document.getElementById('TrialBalanceDate4').innerHTML;
+                                document.getElementById('DateProcedureAnnualShareholdersEquityiii5').innerHTML = document.getElementById('TrialBalanceDate5').innerHTML;
+                                document.getElementById('DateProcedureAnnualShareholdersEquityiii6').innerHTML = document.getElementById('TrialBalanceDate6').innerHTML;
+                            };
+                            window.addEventListener('DOMContentLoaded', DateProcedureAnnualShareholdersEquityiii)
+                            window.addEventListener('keyup', function() {
+                                var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
+                                if (event.keyCode in formulakeylist) {
+                                    DateProcedureAnnualShareholdersEquityiii();
+                                }
+                            })
+                        </script>
+                        <td colspan="2"><h5 id="DateProcedureAnnualShareholdersEquityiii1" style="text-align:center;"></h5></td>
+                        <td colspan="2"><h5 id="DateProcedureAnnualShareholdersEquityiii2" style="text-align:center;"></h5></td>
+                        <td colspan="2"><h5 id="DateProcedureAnnualShareholdersEquityiii3" style="text-align:center;"></h5></td>
+                        <td colspan="2"><h5 id="DateProcedureAnnualShareholdersEquityiii4" style="text-align:center;"></h5></td>
+                        <td colspan="2"><h5 id="DateProcedureAnnualShareholdersEquityiii5" style="text-align:center;"></h5></td>
+                        <td colspan="2"><h5 id="DateProcedureAnnualShareholdersEquityiii6" style="text-align:center;"></h5></td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan='2'><h5 id="TrialBalanceAmend1" style="font-weight:bold; text-align:center" onclick="HighLight()" onfocusout="Enter()">{{ entity.amendlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmend2" style="font-weight:bold; text-align:center" onclick="HighLight()" onfocusout="Enter()">{{ entity.amendsecondlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmend3" style="font-weight:bold; text-align:center" onclick="HighLight()" onfocusout="Enter()">{{ entity.amendthirdlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmend4" style="font-weight:bold; text-align:center" onclick="HighLight()" onfocusout="Enter()">{{ entity.amendfourthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmend5" style="font-weight:bold; text-align:center" onclick="HighLight()" onfocusout="Enter()">{{ entity.amendfifthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmend6" style="font-weight:bold; text-align:center" onclick="HighLight()" onfocusout="Enter()">{{ entity.amendsixthlastyear }}</td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_lastyear.Link }} target="_blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_secondlastyear.Link }} target="_blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_thirdlastyear.Link }} target="_blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_fourthlastyear.Link }} target="_blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_fifthlastyear.Link }} target="_blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_sixthlastyear.Link }} target="_blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>   
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;">Beginning Balance</td>
+                        <td style="text-align:center"><button data-page="AnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">SE</button></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="PRO-4.0.11Checkbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="PRO-4.0.11Checkbox2"></input>
+                        </td>
+                        <script>
+                            function BalanceShareholdersEquityBeginningi(BalanceShareholdersEquityBeginningi) {
+                                var numUSD = new Intl.NumberFormat("en-US", {
+                                    format: "number"
+                                })
+                                a = parseInt(document.getElementById('ShareholdersEquityBeginning1').value.replaceAll(/,/g, ''));
+                                document.getElementById('PRO-4.0.11').value = numUSD.format(-a);
+                                // Second Last Year 
+                                a = parseInt(document.getElementById('ShareholdersEquityBeginning2').value.replaceAll(/,/g, ''));
+                                document.getElementById('PRO-4.0.12').value = numUSD.format(-a);
+                                // Third Last Year
+                                a = parseInt(document.getElementById('ShareholdersEquityBeginning3').value.replaceAll(/,/g, ''));
+                                document.getElementById('PRO-4.0.13').value = numUSD.format(-a);
+                                // Fourth Last Year
+                                a = parseInt(document.getElementById('ShareholdersEquityBeginning4').value.replaceAll(/,/g, ''));
+                                document.getElementById('PRO-4.0.14').value = numUSD.format(-a);
+                                // Fifth Last Year
+                                a = parseInt(document.getElementById('ShareholdersEquityBeginning5').value.replaceAll(/,/g, ''));
+                                document.getElementById('PRO-4.0.15').value = numUSD.format(-a);
+                                // Sixth Last Year
+                                a = parseInt(document.getElementById('ShareholdersEquityBeginning6').value.replaceAll(/,/g, ''));
+                                document.getElementById('PRO-4.0.16').value = numUSD.format(-a);
+                            };
+                            window.addEventListener('DOMContentLoaded', BalanceShareholdersEquityBeginningi)
+                            window.addEventListener('keyup', function() {
+                                var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
+                                if (event.keyCode in formulakeylist) {
+                                    BalanceShareholdersEquityBeginningi();
+                                }
+                            })
+                        </script>
+                        <td colspan="2"><input class="account" id="PRO-4.0.11" style="font-weight:bold;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-4.0.12" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-4.0.13" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-4.0.14" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-4.0.15" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-4.0.16" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;">Ending Balance Of Prior Year</td>
+                        <td style="text-align:center"><button data-page="AnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">SE</button></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="PRO-4.0.21Checkbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="PRO-4.0.21Checkbox2"></input>
+                        </td>
+                        <script>
+                            function BalanceShareholdersEquityComponents(BalanceShareholdersEquityComponents) {
+                                var numUSD = new Intl.NumberFormat("en-US", {
+                                    format: "number"
+                                })
+                                a = parseInt(document.getElementById('ShareholdersEquity2').value.replaceAll(/,/g, ''));
+                                document.getElementById('PRO-4.0.21').value = numUSD.format(-a);
+                                // Second Last Year 
+                                a = parseInt(document.getElementById('ShareholdersEquity3').value.replaceAll(/,/g, ''));
+                                document.getElementById('PRO-4.0.22').value = numUSD.format(-a);
+                                // Third Last Year
+                                a = parseInt(document.getElementById('ShareholdersEquity4').value.replaceAll(/,/g, ''));
+                                document.getElementById('PRO-4.0.23').value = numUSD.format(-a);
+                                // Fourth Last Year
+                                a = parseInt(document.getElementById('ShareholdersEquity5').value.replaceAll(/,/g, ''));
+                                document.getElementById('PRO-4.0.24').value = numUSD.format(-a);
+                                // Fifth Last Year
+                                a = parseInt(document.getElementById('ShareholdersEquity6').value.replaceAll(/,/g, ''));
+                                document.getElementById('PRO-4.0.25').value = numUSD.format(-a);
+                                // Fifth Last Year
+                                a = parseInt(document.getElementById('ShareholdersEquityBeginning6').value.replaceAll(/,/g, ''));
+                                document.getElementById('PRO-4.0.26').value = numUSD.format(-a);
+                            };
+                            window.addEventListener('DOMContentLoaded', BalanceShareholdersEquityComponents)
+                            window.addEventListener('keyup', function() {
+                                var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
+                                if (event.keyCode in formulakeylist) {
+                                    BalanceShareholdersEquityComponents();
+                                }
+                            })
+                        </script>
+                        <td colspan="2"><input class="account" id="PRO-4.0.21"  style="border-bottom-style:ridge; font-weight:bold;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-4.0.22"  style="border-bottom-style:ridge;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-4.0.23"  style="border-bottom-style:ridge;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-4.0.24"  style="border-bottom-style:ridge;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-4.0.25"  style="border-bottom-style:ridge;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-4.0.26"  style="border-bottom-style:ridge;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;">Anomaly</td>
+                        <td style="text-align:center; font-weight:bold;">db</td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="PRO-4.1.31Checkbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="PRO-4.1.31Checkbox2"></input>
+                        </td>
+                        <script>
+                            function BalanceShareholdersEquityAnomaliesi(BalanceShareholdersEquityAnomaliesi) {
+                                var numUSD = new Intl.NumberFormat("en-US", {
+                                    format: "number"
+                                })
+                                // Last Year
+                                a = parseInt(document.getElementById('PRO-4.0.11').value.replaceAll(/,/g, ''));
+                                b = parseInt(document.getElementById('PRO-4.0.21').value.replaceAll(/,/g, ''));
+                                document.getElementById('PRO-4.0.31').value = numUSD.format((a - b));
+                                // Second Last Year
+                                a = parseInt(document.getElementById('PRO-4.0.12').value.replaceAll(/,/g, ''));
+                                b = parseInt(document.getElementById('PRO-4.0.22').value.replaceAll(/,/g, ''));
+                                document.getElementById('PRO-4.0.32').value = numUSD.format((a - b));
+                                // Third Last Year
+                                a = parseInt(document.getElementById('PRO-4.0.13').value.replaceAll(/,/g, ''));
+                                b = parseInt(document.getElementById('PRO-4.0.23').value.replaceAll(/,/g, ''));
+                                document.getElementById('PRO-4.0.33').value = numUSD.format((a - b));
+                                // Fourth Last Year
+                                a = parseInt(document.getElementById('PRO-4.0.14').value.replaceAll(/,/g, ''));
+                                b = parseInt(document.getElementById('PRO-4.0.24').value.replaceAll(/,/g, ''));
+                                document.getElementById('PRO-4.0.34').value = numUSD.format((a - b));
+                                // Fifth Last Year
+                                a = parseInt(document.getElementById('PRO-4.0.15').value.replaceAll(/,/g, ''));
+                                b = parseInt(document.getElementById('PRO-4.0.25').value.replaceAll(/,/g, ''));
+                                document.getElementById('PRO-4.0.35').value = numUSD.format((a - b));
+                                // Sixth Last Year
+                                a = parseInt(document.getElementById('PRO-4.0.16').value.replaceAll(/,/g, ''));
+                                b = parseInt(document.getElementById('PRO-4.0.26').value.replaceAll(/,/g, ''));
+                                document.getElementById('PRO-4.0.36').value = numUSD.format((a - b));
+                            };
+                            window.addEventListener('DOMContentLoaded', BalanceShareholdersEquityAnomaliesi)
+                            window.addEventListener('keyup', function() {
+                                var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
+                                if (event.keyCode in formulakeylist) {
+                                    BalanceShareholdersEquityAnomaliesi();
+                                }
+                            })
+                        </script>
+                        <td colspan="2"><input class="account" id="PRO-4.0.31" style="border-bottom:double black; font-weight:bold;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-4.0.32" style="border-bottom:double black" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-4.0.33" style="border-bottom:double black" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-4.0.34" style="border-bottom:double black" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-4.0.35" style="border-bottom:double black" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-4.0.36" style="border-bottom:double black" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
                 </body>
             </table>
             <table>
@@ -22253,12 +22489,12 @@
                             <input type="checkbox" style="height: 16px; box-shadow: none;" id="PRO-4.2.3Checkbox"></input>
                             <input type="checkbox" style="height: 16px; box-shadow: none;" id="PRO-4.2.3Checkbox2"></input>
                         </td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.41" style="font-weight:bold;" value={{ AuditData_lastyear.AnomalyAnomalyTreasuryShares }} onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.42" value={{ AuditData_secondlastyear.AnomalyAnomalyTreasuryShares }} onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.43" value={{ AuditData_thirdlastyear.AnomalyAnomalyTreasuryShares }} onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.44" value={{ AuditData_fourthlastyear.AnomalyAnomalyTreasuryShares }} onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.45" value={{ AuditData_fifthlastyear.AnomalyAnomalyTreasuryShares }} onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.46" value={{ AuditData_sixthlastyear.AnomalyAnomalyTreasuryShares }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.41" style="font-weight:bold;" value={{ AuditData_lastyear.AnomalyTreasuryShares }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.42" value={{ AuditData_secondlastyear.AnomalyTreasuryShares }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.43" value={{ AuditData_thirdlastyear.AnomalyTreasuryShares }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.44" value={{ AuditData_fourthlastyear.AnomalyTreasuryShares }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.45" value={{ AuditData_fifthlastyear.AnomalyTreasuryShares }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.46" value={{ AuditData_sixthlastyear.AnomalyTreasuryShares }} onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align:left;">Employee Benefit Trust</td>
@@ -22932,49 +23168,49 @@
                             <input type="checkbox" style="height: 16px; box-shadow: none;" id="AnomaliesShareholdersEquityCheckbox2"></input>
                         </td>
                         <script>
-                            function BalanceAnomaliesShareholdersEquity(BalanceAnomaliesShareholdersEquity) {
+                            function AnomaliesShareholdersEquityi(AnomaliesShareholdersEquityi) {
                                 var numUSD = new Intl.NumberFormat("en-US", {
                                     format: "number"
                                 })
                                 // Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.151').value.replaceAll(/,/g, '')));
                                 b = Math.abs(parseInt(document.getElementById('PRO-1.3.51').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesShareholdersEquity1').value = numUSD.format(Math.max(a, b));
+                                document.getElementById('AnomaliesShareholdersEquityi1').value = numUSD.format(Math.max(a, b));
                                 // Second Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.152').value.replaceAll(/,/g, '')));
                                 b = Math.abs(parseInt(document.getElementById('PRO-1.3.52').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesShareholdersEquity2').value = numUSD.format(Math.max(a, b));
+                                document.getElementById('AnomaliesShareholdersEquityi2').value = numUSD.format(Math.max(a, b));
                                 // Third Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.153').value.replaceAll(/,/g, '')));
                                 b = Math.abs(parseInt(document.getElementById('PRO-1.3.53').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesShareholdersEquity3').value = numUSD.format(Math.max(a, b));
+                                document.getElementById('AnomaliesShareholdersEquityi3').value = numUSD.format(Math.max(a, b));
                                 // Fourth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.154').value.replaceAll(/,/g, '')));
                                 b = Math.abs(parseInt(document.getElementById('PRO-1.3.54').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesShareholdersEquity4').value = numUSD.format(Math.max(a, b));
+                                document.getElementById('AnomaliesShareholdersEquityi4').value = numUSD.format(Math.max(a, b));
                                 // Fifth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.155').value.replaceAll(/,/g, '')));
                                 b = Math.abs(parseInt(document.getElementById('PRO-1.3.55').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesShareholdersEquity5').value = numUSD.format(Math.max(a, b));
+                                document.getElementById('AnomaliesShareholdersEquityi5').value = numUSD.format(Math.max(a, b));
                                 // Sixth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-1.2.156').value.replaceAll(/,/g, '')));
                                 b = Math.abs(parseInt(document.getElementById('PRO-1.3.56').value.replaceAll(/,/g, '')));
-                                document.getElementById('AnomaliesShareholdersEquity6').value = numUSD.format(Math.max(a, b));
+                                document.getElementById('AnomaliesShareholdersEquityi6').value = numUSD.format(Math.max(a, b));
                             };
-                            window.addEventListener('DOMContentLoaded', BalanceAnomaliesShareholdersEquity)
+                            window.addEventListener('DOMContentLoaded', AnomaliesShareholdersEquityi)
                             window.addEventListener('keyup', function() {
                                 var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
                                 if (event.keyCode in formulakeylist) {
-                                    BalanceAnomaliesShareholdersEquity();
+                                    AnomaliesShareholdersEquityi();
                                 }
                             })
                         </script>
-                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquity1" style="border-bottom-style:ridge; font-weight:bold;" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquity2" style="border-bottom-style:ridge" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquity3" style="border-bottom-style:ridge" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquity4" style="border-bottom-style:ridge" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquity5" style="border-bottom-style:ridge" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquity6" style="border-bottom-style:ridge" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquityi1" style="border-bottom-style:ridge; font-weight:bold;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquityi2" style="border-bottom-style:ridge" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquityi3" style="border-bottom-style:ridge" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquityi4" style="border-bottom-style:ridge" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquityi5" style="border-bottom-style:ridge" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquityi6" style="border-bottom-style:ridge" onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
                     <tr>
                         <td colspan='2'></td>
@@ -22993,42 +23229,42 @@
                                 a = a + Math.abs(parseInt(document.getElementById('AnomaliesNonCurrentAssets1').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('AnomaliesCurrentLiabilities1').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('AnomaliesNonCurrentLiabilities1').value.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('AnomaliesShareholdersEquity1').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('AnomaliesShareholdersEquityi1').value.replaceAll(/,/g, '')));
                                 document.getElementById('TotalAnomaliesBalanceSheets1').value = numUSD.format(a);
                                 // Second Last Year
                                 a = Math.abs(parseInt(document.getElementById('AnomaliesCurrentAssets2').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('AnomaliesNonCurrentAssets2').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('AnomaliesCurrentLiabilities2').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('AnomaliesNonCurrentLiabilities2').value.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('AnomaliesShareholdersEquity2').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('AnomaliesShareholdersEquityi2').value.replaceAll(/,/g, '')));
                                 document.getElementById('TotalAnomaliesBalanceSheets2').value = numUSD.format(a);
                                 // Third Last Year
                                 a = Math.abs(parseInt(document.getElementById('AnomaliesCurrentAssets3').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('AnomaliesNonCurrentAssets3').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('AnomaliesCurrentLiabilities3').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('AnomaliesNonCurrentLiabilities3').value.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('AnomaliesShareholdersEquity3').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('AnomaliesShareholdersEquityi3').value.replaceAll(/,/g, '')));
                                 document.getElementById('TotalAnomaliesBalanceSheets3').value = numUSD.format(a);
                                 // Fourth Last Year
                                 a = Math.abs(parseInt(document.getElementById('AnomaliesCurrentAssets4').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('AnomaliesNonCurrentAssets4').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('AnomaliesCurrentLiabilities4').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('AnomaliesNonCurrentLiabilities4').value.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('AnomaliesShareholdersEquity4').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('AnomaliesShareholdersEquityi4').value.replaceAll(/,/g, '')));
                                 document.getElementById('TotalAnomaliesBalanceSheets4').value = numUSD.format(a);
                                 // Fifth Last Year
                                 a = Math.abs(parseInt(document.getElementById('AnomaliesCurrentAssets5').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('AnomaliesNonCurrentAssets5').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('AnomaliesCurrentLiabilities5').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('AnomaliesNonCurrentLiabilities5').value.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('AnomaliesShareholdersEquity5').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('AnomaliesShareholdersEquityi5').value.replaceAll(/,/g, '')));
                                 document.getElementById('TotalAnomaliesBalanceSheets5').value = numUSD.format(a);
                                 // Sixth Last Year
                                 a = Math.abs(parseInt(document.getElementById('AnomaliesCurrentAssets6').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('AnomaliesNonCurrentAssets6').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('AnomaliesCurrentLiabilities6').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('AnomaliesNonCurrentLiabilities6').value.replaceAll(/,/g, '')));
-                                a = a + Math.abs(parseInt(document.getElementById('AnomaliesShareholdersEquity6').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('AnomaliesShareholdersEquityi6').value.replaceAll(/,/g, '')));
                                 document.getElementById('TotalAnomaliesBalanceSheets6').value = numUSD.format(a);
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAnomaliesBalanceSheets)
@@ -23255,13 +23491,80 @@
                                 }
                             })
                         </script>
-                        <td colspan="2"><input class="account" id="AnomaliesNetIncome1" style="font-weight:bold;" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesNetIncome2" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesNetIncome3" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesNetIncome4" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesNetIncome5" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesNetIncome6" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesNetIncome1" style="border-bottom-style:ridge; font-weight:bold;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesNetIncome2" style="border-bottom-style:ridge;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesNetIncome3" style="border-bottom-style:ridge;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesNetIncome4" style="border-bottom-style:ridge;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesNetIncome5" style="border-bottom-style:ridge;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesNetIncome6" style="border-bottom-style:ridge;" onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
+                    <tr></tr>
+                    <script>
+                        function BalanceAnomaliesIncomeStatements(BalanceAnomaliesIncomeStatements) {
+                            var numUSD = new Intl.NumberFormat("en-US", {
+                                format: "number"
+                            })
+                            // Last Year
+                            a = Math.abs(parseInt(document.getElementById('AnomaliesGrossMargin1').value.replaceAll(/,/g, '')));
+                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesOperatingIncome1').value.replaceAll(/,/g, '')));
+                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesIncomeLossBeforeTaxes1').value.replaceAll(/,/g, '')));
+                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesNetIncome1').value.replaceAll(/,/g, '')));
+                            document.getElementById('TotalAnomaliesIncomeStatement1').value = numUSD.format(a);
+                            // Second Last Year
+                            a = Math.abs(parseInt(document.getElementById('AnomaliesGrossMargin2').value.replaceAll(/,/g, '')));
+                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesOperatingIncome2').value.replaceAll(/,/g, '')));
+                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesIncomeLossBeforeTaxes2').value.replaceAll(/,/g, '')));
+                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesNetIncome2').value.replaceAll(/,/g, '')));
+                            document.getElementById('TotalAnomaliesIncomeStatement2').value = numUSD.format(a);
+                            // Third Last Year
+                            a = Math.abs(parseInt(document.getElementById('AnomaliesGrossMargin3').value.replaceAll(/,/g, '')));
+                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesOperatingIncome3').value.replaceAll(/,/g, '')));
+                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesIncomeLossBeforeTaxes3').value.replaceAll(/,/g, '')));
+                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesNetIncome3').value.replaceAll(/,/g, '')));
+                            document.getElementById('TotalAnomaliesIncomeStatement3').value = numUSD.format(a);
+                            // Fourth Last Year
+                            a = Math.abs(parseInt(document.getElementById('AnomaliesGrossMargin4').value.replaceAll(/,/g, '')));
+                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesOperatingIncome4').value.replaceAll(/,/g, '')));
+                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesIncomeLossBeforeTaxes4').value.replaceAll(/,/g, '')));
+                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesNetIncome4').value.replaceAll(/,/g, '')));
+                            document.getElementById('TotalAnomaliesIncomeStatement4').value = numUSD.format(a);
+                            // Fifth Last Year
+                            a = Math.abs(parseInt(document.getElementById('AnomaliesGrossMargin5').value.replaceAll(/,/g, '')));
+                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesOperatingIncome5').value.replaceAll(/,/g, '')));
+                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesIncomeLossBeforeTaxes5').value.replaceAll(/,/g, '')));
+                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesNetIncome5').value.replaceAll(/,/g, '')));
+                            document.getElementById('TotalAnomaliesIncomeStatement5').value = numUSD.format(a);
+                            // Sixth Last Year
+                            a = Math.abs(parseInt(document.getElementById('AnomaliesGrossMargin6').value.replaceAll(/,/g, '')));
+                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesOperatingIncome6').value.replaceAll(/,/g, '')));
+                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesIncomeLossBeforeTaxes6').value.replaceAll(/,/g, '')));
+                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesNetIncome6').value.replaceAll(/,/g, '')));
+                            document.getElementById('TotalAnomaliesIncomeStatement6').value = numUSD.format(a);
+                        };
+                        window.addEventListener('DOMContentLoaded', BalanceAnomaliesIncomeStatements)
+                        window.addEventListener('keyup', function() {
+                            var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
+                            if (event.keyCode in formulakeylist) {
+                                BalanceAnomaliesIncomeStatements();
+                            }
+                        })
+                    </script>
+                    <tr>
+                        <td colspan='2'></td>
+                        <td></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="TotalAnomaliesIncomeStatementCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="TotalAnomaliesIncomeStatementCheckbox2"></input>
+                        </td>
+                        <td colspan="2"><input id="TotalAnomaliesIncomeStatement1" style="border-bottom:double black; font-weight:bold;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input id="TotalAnomaliesIncomeStatement2" style="border-bottom:double black" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input id="TotalAnomaliesIncomeStatement3" style="border-bottom:double black" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input id="TotalAnomaliesIncomeStatement4" style="border-bottom:double black" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input id="TotalAnomaliesIncomeStatement5" style="border-bottom:double black" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input id="TotalAnomaliesIncomeStatement6" style="border-bottom:double black" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr>
@@ -23303,83 +23606,113 @@
                                 }
                             })
                         </script>
-                        <td colspan="2"><input class="account" id="AnomaliesComprehensiveIncome1" style="border-bottom-style:ridge; font-weight:bold;" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesComprehensiveIncome2" style="border-bottom-style:ridge;" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesComprehensiveIncome3" style="border-bottom-style:ridge;" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesComprehensiveIncome4" style="border-bottom-style:ridge;" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesComprehensiveIncome5" style="border-bottom-style:ridge;" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesComprehensiveIncome6" style="border-bottom-style:ridge;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesComprehensiveIncome1" style="border-bottom:double black; font-weight:bold;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesComprehensiveIncome2" style="border-bottom:double black;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesComprehensiveIncome3" style="border-bottom:double black;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesComprehensiveIncome4" style="border-bottom:double black;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesComprehensiveIncome5" style="border-bottom:double black;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesComprehensiveIncome6" style="border-bottom:double black;" onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
-                    <script>
-                        function BalanceAnomaliesIncomeStatements(BalanceAnomaliesIncomeStatements) {
-                            var numUSD = new Intl.NumberFormat("en-US", {
-                                format: "number"
-                            })
-                            // Last Year
-                            a = Math.abs(parseInt(document.getElementById('AnomaliesGrossMargin1').value.replaceAll(/,/g, '')));
-                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesOperatingIncome1').value.replaceAll(/,/g, '')));
-                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesIncomeLossBeforeTaxes1').value.replaceAll(/,/g, '')));
-                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesNetIncome1').value.replaceAll(/,/g, '')));
-                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesComprehensiveIncome1').value.replaceAll(/,/g, '')));
-                            document.getElementById('TotalAnomaliesIncomeStatement1').value = numUSD.format(a);
-                            // Second Last Year
-                            a = Math.abs(parseInt(document.getElementById('AnomaliesGrossMargin2').value.replaceAll(/,/g, '')));
-                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesOperatingIncome2').value.replaceAll(/,/g, '')));
-                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesIncomeLossBeforeTaxes2').value.replaceAll(/,/g, '')));
-                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesNetIncome2').value.replaceAll(/,/g, '')));
-                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesComprehensiveIncome2').value.replaceAll(/,/g, '')));
-                            document.getElementById('TotalAnomaliesIncomeStatement2').value = numUSD.format(a);
-                            // Third Last Year
-                            a = Math.abs(parseInt(document.getElementById('AnomaliesGrossMargin3').value.replaceAll(/,/g, '')));
-                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesOperatingIncome3').value.replaceAll(/,/g, '')));
-                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesIncomeLossBeforeTaxes3').value.replaceAll(/,/g, '')));
-                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesNetIncome3').value.replaceAll(/,/g, '')));
-                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesComprehensiveIncome3').value.replaceAll(/,/g, '')));
-                            document.getElementById('TotalAnomaliesIncomeStatement3').value = numUSD.format(a);
-                            // Fourth Last Year
-                            a = Math.abs(parseInt(document.getElementById('AnomaliesGrossMargin4').value.replaceAll(/,/g, '')));
-                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesOperatingIncome4').value.replaceAll(/,/g, '')));
-                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesIncomeLossBeforeTaxes4').value.replaceAll(/,/g, '')));
-                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesNetIncome4').value.replaceAll(/,/g, '')));
-                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesComprehensiveIncome4').value.replaceAll(/,/g, '')));
-                            document.getElementById('TotalAnomaliesIncomeStatement4').value = numUSD.format(a);
-                            // Fifth Last Year
-                            a = Math.abs(parseInt(document.getElementById('AnomaliesGrossMargin5').value.replaceAll(/,/g, '')));
-                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesOperatingIncome5').value.replaceAll(/,/g, '')));
-                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesIncomeLossBeforeTaxes5').value.replaceAll(/,/g, '')));
-                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesNetIncome5').value.replaceAll(/,/g, '')));
-                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesComprehensiveIncome5').value.replaceAll(/,/g, '')));
-                            document.getElementById('TotalAnomaliesIncomeStatement5').value = numUSD.format(a);
-                            // Sixth Last Year
-                            a = Math.abs(parseInt(document.getElementById('AnomaliesGrossMargin6').value.replaceAll(/,/g, '')));
-                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesOperatingIncome6').value.replaceAll(/,/g, '')));
-                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesIncomeLossBeforeTaxes6').value.replaceAll(/,/g, '')));
-                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesNetIncome6').value.replaceAll(/,/g, '')));
-                            a = a + Math.abs(parseInt(document.getElementById('AnomaliesComprehensiveIncome6').value.replaceAll(/,/g, '')));
-                            document.getElementById('TotalAnomaliesIncomeStatement6').value = numUSD.format(a);
-                        };
-                        window.addEventListener('DOMContentLoaded', BalanceAnomaliesIncomeStatements)
-                        window.addEventListener('keyup', function() {
-                            var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
-                            if (event.keyCode in formulakeylist) {
-                                BalanceAnomaliesIncomeStatements();
-                            }
-                        })
-                    </script>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
                     <tr>
-                        <td colspan='2'></td>
-                        <td></td>
+                        <td colspan="2"><h6><b>Shareholders' Equity</b></h6></td>
+                        <td style="text-align:center"><button data-page="ProcedureAnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">P</button></td>
                         <td>
-                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="TotalAnomaliesIncomeStatementCheckbox"></input>
-                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="TotalAnomaliesIncomeStatementCheckbox2"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="AnomaliesComprehensiveIncomeCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="AnomaliesComprehensiveIncomeCheckbox2"></input>
                         </td>
-                        <td colspan="2"><input id="TotalAnomaliesIncomeStatement1" style="border-bottom:double black; font-weight:bold;" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2"><input id="TotalAnomaliesIncomeStatement2" style="border-bottom:double black" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2"><input id="TotalAnomaliesIncomeStatement3" style="border-bottom:double black" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2"><input id="TotalAnomaliesIncomeStatement4" style="border-bottom:double black" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2"><input id="TotalAnomaliesIncomeStatement5" style="border-bottom:double black" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2"><input id="TotalAnomaliesIncomeStatement6" style="border-bottom:double black" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <script>
+                            function BalanceAnomaliesShareholdersEquity(BalanceAnomaliesShareholdersEquity) {
+                                var numUSD = new Intl.NumberFormat("en-US", {
+                                    format: "number"
+                                })
+                                // Last Year
+                                c = Math.abs(parseInt(document.getElementById('PRO-4.0.31').value.replaceAll(/,/g, '')));
+                                b = Math.abs(parseInt(document.getElementById('PRO-4.1.31').value.replaceAll(/,/g, '')));
+                                a = Math.abs(parseInt(document.getElementById('PRO-4.2.01').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.11').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.21').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.31').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.41').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.51').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.61').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesShareholdersEquity1').value = numUSD.format(Math.max(a, b, c));
+                                // Second Last Year
+                                c = Math.abs(parseInt(document.getElementById('PRO-4.0.32').value.replaceAll(/,/g, '')));
+                                b = Math.abs(parseInt(document.getElementById('PRO-4.1.32').value.replaceAll(/,/g, '')));
+                                a = Math.abs(parseInt(document.getElementById('PRO-4.2.02').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.12').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.22').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.32').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.42').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.52').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.62').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesShareholdersEquity2').value = numUSD.format(Math.max(a, b, c));
+                                // Third Last Year
+                                c = Math.abs(parseInt(document.getElementById('PRO-4.0.33').value.replaceAll(/,/g, '')));
+                                b = Math.abs(parseInt(document.getElementById('PRO-4.1.33').value.replaceAll(/,/g, '')));
+                                a = Math.abs(parseInt(document.getElementById('PRO-4.2.03').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.13').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.23').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.33').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.43').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.53').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.63').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesShareholdersEquity3').value = numUSD.format(Math.max(a, b, c));
+                                // Fourth Last Year
+                                c = Math.abs(parseInt(document.getElementById('PRO-4.0.34').value.replaceAll(/,/g, '')));
+                                b = Math.abs(parseInt(document.getElementById('PRO-4.1.34').value.replaceAll(/,/g, '')));
+                                a = Math.abs(parseInt(document.getElementById('PRO-4.2.04').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.14').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.24').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.34').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.44').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.54').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.64').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesShareholdersEquity4').value = numUSD.format(Math.max(a, b, c));
+                                // Fifth Last Year
+                                c = Math.abs(parseInt(document.getElementById('PRO-4.0.35').value.replaceAll(/,/g, '')));
+                                b = Math.abs(parseInt(document.getElementById('PRO-4.1.35').value.replaceAll(/,/g, '')));
+                                a = Math.abs(parseInt(document.getElementById('PRO-4.2.05').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.15').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.25').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.35').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.45').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.55').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.65').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesShareholdersEquity5').value = numUSD.format(Math.max(a, b, c));
+                                // Sixth Last Year
+                                c = Math.abs(parseInt(document.getElementById('PRO-4.0.36').value.replaceAll(/,/g, '')));
+                                b = Math.abs(parseInt(document.getElementById('PRO-4.1.36').value.replaceAll(/,/g, '')));
+                                a = Math.abs(parseInt(document.getElementById('PRO-4.2.06').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.16').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.26').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.36').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.46').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.56').value.replaceAll(/,/g, '')));
+                                a = a + Math.abs(parseInt(document.getElementById('PRO-4.2.66').value.replaceAll(/,/g, '')));
+                                document.getElementById('AnomaliesShareholdersEquity6').value = numUSD.format(Math.max(a, b, c));
+                            };
+                            window.addEventListener('DOMContentLoaded', BalanceAnomaliesShareholdersEquity)
+                            window.addEventListener('keyup', function() {
+                                var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
+                                if (event.keyCode in formulakeylist) {
+                                    BalanceAnomaliesShareholdersEquity();
+                                }
+                            })
+                        </script>
+                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquity1" style="border-bottom:double black; font-weight:bold;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquity2" style="border-bottom:double black;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquity3" style="border-bottom:double black;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquity4" style="border-bottom:double black;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquity5" style="border-bottom:double black;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquity6" style="border-bottom:double black;" onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
+                    <tr></tr>
+                    <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr>
@@ -23708,6 +24041,98 @@
                             <td colspan="2"><input class="account" id="IncomeAnomalySummary6" style="border-bottom-style:ridge;" onclick="HighLight()" onfocusout="Enter()"></input></td>
                         </tr>
                         <tr>
+                            <td colspan="2"><h6><b>Comprehensive Income</b></h6></td>
+                            <td style="text-align:center"><button data-page="ProcedureAnnualComprehensiveIncome" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">P</button></td>
+                            <td>
+                                <input type="checkbox" style="height: 16px; box-shadow: none;" id="ComprehensiveIncomeAnomalySummaryCheckbox"></input>
+                                <input type="checkbox" style="height: 16px; box-shadow: none;" id="ComprehensiveIncomeAnomalySummaryCheckbox2"></input>
+                            </td>
+                            <script>
+                                function ComprehensiveIncomeAnomalySummary(ComprehensiveIncomeAnomalySummary) {
+                                    var numUSD = new Intl.NumberFormat("en-US", {
+                                        format: "number"
+                                    })
+                                    // Last Year
+                                    a = parseInt(document.getElementById('AnomaliesComprehensiveIncome1').value.replaceAll(/,/g, ''));
+                                    document.getElementById('ComprehensiveIncomeAnomalySummary1').value = numUSD.format(a);
+                                    // Second Last Year
+                                    a = parseInt(document.getElementById('AnomaliesComprehensiveIncome2').value.replaceAll(/,/g, ''));
+                                    document.getElementById('ComprehensiveIncomeAnomalySummary2').value = numUSD.format(a);
+                                    // Third Last Year
+                                    a = parseInt(document.getElementById('AnomaliesComprehensiveIncome3').value.replaceAll(/,/g, ''));
+                                    document.getElementById('ComprehensiveIncomeAnomalySummary3').value = numUSD.format(a);
+                                    // Fourth Last Year
+                                    a = parseInt(document.getElementById('AnomaliesComprehensiveIncome4').value.replaceAll(/,/g, ''));
+                                    document.getElementById('ComprehensiveIncomeAnomalySummary4').value = numUSD.format(a);
+                                    // Fifth Last Year
+                                    a = parseInt(document.getElementById('AnomaliesComprehensiveIncome5').value.replaceAll(/,/g, ''));
+                                    document.getElementById('ComprehensiveIncomeAnomalySummary5').value = numUSD.format(a);
+                                    // Sixth Last Year
+                                    a = parseInt(document.getElementById('AnomaliesComprehensiveIncome6').value.replaceAll(/,/g, ''));
+                                    document.getElementById('ComprehensiveIncomeAnomalySummary6').value = numUSD.format(a);
+                                };
+                                window.addEventListener('DOMContentLoaded', ComprehensiveIncomeAnomalySummary)
+                                window.addEventListener('keyup', function() {
+                                    var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
+                                    if (event.keyCode in formulakeylist) {
+                                        ComprehensiveIncomeAnomalySummary();
+                                    }
+                                })
+                            </script>
+                            <td colspan="2"><input class="account" id="ComprehensiveIncomeAnomalySummary1" style="border-bottom-style:ridge; font-weight:bold;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                            <td colspan="2"><input class="account" id="ComprehensiveIncomeAnomalySummary2" style="border-bottom-style:ridge;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                            <td colspan="2"><input class="account" id="ComprehensiveIncomeAnomalySummary3" style="border-bottom-style:ridge;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                            <td colspan="2"><input class="account" id="ComprehensiveIncomeAnomalySummary4" style="border-bottom-style:ridge;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                            <td colspan="2"><input class="account" id="ComprehensiveIncomeAnomalySummary5" style="border-bottom-style:ridge;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                            <td colspan="2"><input class="account" id="ComprehensiveIncomeAnomalySummary6" style="border-bottom-style:ridge;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><h6><b>Shareholders' Equity</b></h6></td>
+                            <td style="text-align:center"><button data-page="ProcedureAnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">P</button></td>
+                            <td>
+                                <input type="checkbox" style="height: 16px; box-shadow: none;" id="ShareholdersEquityAnomalySummaryCheckbox"></input>
+                                <input type="checkbox" style="height: 16px; box-shadow: none;" id="ShareholdersEquityAnomalySummaryCheckbox2"></input>
+                            </td>
+                            <script>
+                                function ShareholdersEquityAnomalySummary(ShareholdersEquityAnomalySummary) {
+                                    var numUSD = new Intl.NumberFormat("en-US", {
+                                        format: "number"
+                                    })
+                                    // Last Year
+                                    a = parseInt(document.getElementById('AnomaliesShareholdersEquity1').value.replaceAll(/,/g, ''));
+                                    document.getElementById('ShareholdersEquityAnomalySummary1').value = numUSD.format(a);
+                                    // Second Last Year
+                                    a = parseInt(document.getElementById('AnomaliesShareholdersEquity2').value.replaceAll(/,/g, ''));
+                                    document.getElementById('ShareholdersEquityAnomalySummary2').value = numUSD.format(a);
+                                    // Third Last Year
+                                    a = parseInt(document.getElementById('AnomaliesShareholdersEquity3').value.replaceAll(/,/g, ''));
+                                    document.getElementById('ShareholdersEquityAnomalySummary3').value = numUSD.format(a);
+                                    // Fourth Last Year
+                                    a = parseInt(document.getElementById('AnomaliesShareholdersEquity4').value.replaceAll(/,/g, ''));
+                                    document.getElementById('ShareholdersEquityAnomalySummary4').value = numUSD.format(a);
+                                    // Fifth Last Year
+                                    a = parseInt(document.getElementById('AnomaliesShareholdersEquity5').value.replaceAll(/,/g, ''));
+                                    document.getElementById('ShareholdersEquityAnomalySummary5').value = numUSD.format(a);
+                                    // Sixth Last Year
+                                    a = parseInt(document.getElementById('AnomaliesShareholdersEquity6').value.replaceAll(/,/g, ''));
+                                    document.getElementById('ShareholdersEquityAnomalySummary6').value = numUSD.format(a);
+                                };
+                                window.addEventListener('DOMContentLoaded', ShareholdersEquityAnomalySummary)
+                                window.addEventListener('keyup', function() {
+                                    var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
+                                    if (event.keyCode in formulakeylist) {
+                                        ShareholdersEquityAnomalySummary();
+                                    }
+                                })
+                            </script>
+                            <td colspan="2"><input class="account" id="ShareholdersEquityAnomalySummary1" style="border-bottom-style:ridge; font-weight:bold;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                            <td colspan="2"><input class="account" id="ShareholdersEquityAnomalySummary2" style="border-bottom-style:ridge;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                            <td colspan="2"><input class="account" id="ShareholdersEquityAnomalySummary3" style="border-bottom-style:ridge;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                            <td colspan="2"><input class="account" id="ShareholdersEquityAnomalySummary4" style="border-bottom-style:ridge;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                            <td colspan="2"><input class="account" id="ShareholdersEquityAnomalySummary5" style="border-bottom-style:ridge;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                            <td colspan="2"><input class="account" id="ShareholdersEquityAnomalySummary6" style="border-bottom-style:ridge;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        </tr>
+                        <tr>
                             <td colspan="2"><h6><b>Cash Flow</b></h6></td>
                             <td style="text-align:center"><button data-page="ProcedureAnnualCashFlow" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">P</button></td>
                             <td>
@@ -23813,43 +24238,55 @@
                                     b = Math.abs(parseInt(document.getElementById('AccountingEquationAnomalySummary1').value.replaceAll(/,/g, '')));
                                     c = Math.abs(parseInt(document.getElementById('BalanceSheetsAnomalySummary1').value.replaceAll(/,/g, '')));
                                     d = Math.abs(parseInt(document.getElementById('IncomeAnomalySummary1').value.replaceAll(/,/g, '')));
-                                    e = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary1').value.replaceAll(/,/g, '')));
-                                    document.getElementById('AnomaliesWorstCaseScenario1').value = numUSD.format(Math.max(a, b, c, d, e))
+                                    e = Math.abs(parseInt(document.getElementById('ComprehensiveIncomeAnomalySummary1').value.replaceAll(/,/g, '')));
+                                    f = Math.abs(parseInt(document.getElementById('ShareholdersEquityAnomalySummary1').value.replaceAll(/,/g, '')));
+                                    g = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary1').value.replaceAll(/,/g, '')));
+                                    document.getElementById('AnomaliesWorstCaseScenario1').value = numUSD.format(Math.max(a, b, c, d, e, f, g))
                                     // Second Last Year
                                     a = Math.abs(parseInt(document.getElementById('TrialBalanceAnomalySummary2').value.replaceAll(/,/g, '')));
                                     b = Math.abs(parseInt(document.getElementById('AccountingEquationAnomalySummary2').value.replaceAll(/,/g, '')));
                                     c = Math.abs(parseInt(document.getElementById('BalanceSheetsAnomalySummary2').value.replaceAll(/,/g, '')));
                                     d = Math.abs(parseInt(document.getElementById('IncomeAnomalySummary2').value.replaceAll(/,/g, '')));
-                                    e = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary2').value.replaceAll(/,/g, '')));
-                                    document.getElementById('AnomaliesWorstCaseScenario2').value = numUSD.format(Math.max(a, b, c, d, e))
+                                    e = Math.abs(parseInt(document.getElementById('ComprehensiveIncomeAnomalySummary2').value.replaceAll(/,/g, '')));
+                                    f = Math.abs(parseInt(document.getElementById('ShareholdersEquityAnomalySummary2').value.replaceAll(/,/g, '')));
+                                    g = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary2').value.replaceAll(/,/g, '')));
+                                    document.getElementById('AnomaliesWorstCaseScenario2').value = numUSD.format(Math.max(a, b, c, d, e, f, g))
                                     // Third Last Year
                                     a = Math.abs(parseInt(document.getElementById('TrialBalanceAnomalySummary3').value.replaceAll(/,/g, '')));
                                     b = Math.abs(parseInt(document.getElementById('AccountingEquationAnomalySummary3').value.replaceAll(/,/g, '')));
                                     c = Math.abs(parseInt(document.getElementById('BalanceSheetsAnomalySummary3').value.replaceAll(/,/g, '')));
                                     d = Math.abs(parseInt(document.getElementById('IncomeAnomalySummary3').value.replaceAll(/,/g, '')));
-                                    e = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary3').value.replaceAll(/,/g, '')));
-                                    document.getElementById('AnomaliesWorstCaseScenario3').value = numUSD.format(Math.max(a, b, c, d, e))
+                                    e = Math.abs(parseInt(document.getElementById('ComprehensiveIncomeAnomalySummary3').value.replaceAll(/,/g, '')));
+                                    f = Math.abs(parseInt(document.getElementById('ShareholdersEquityAnomalySummary3').value.replaceAll(/,/g, '')));
+                                    g = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary3').value.replaceAll(/,/g, '')));
+                                    document.getElementById('AnomaliesWorstCaseScenario3').value = numUSD.format(Math.max(a, b, c, d, e, f, g))
                                     // Fourth Last Year
                                     a = Math.abs(parseInt(document.getElementById('TrialBalanceAnomalySummary4').value.replaceAll(/,/g, '')));
                                     b = Math.abs(parseInt(document.getElementById('AccountingEquationAnomalySummary4').value.replaceAll(/,/g, '')));
                                     c = Math.abs(parseInt(document.getElementById('BalanceSheetsAnomalySummary4').value.replaceAll(/,/g, '')));
                                     d = Math.abs(parseInt(document.getElementById('IncomeAnomalySummary4').value.replaceAll(/,/g, '')));
-                                    e = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary4').value.replaceAll(/,/g, '')));
-                                    document.getElementById('AnomaliesWorstCaseScenario4').value = numUSD.format(Math.max(a, b, c, d, e))
+                                    e = Math.abs(parseInt(document.getElementById('ComprehensiveIncomeAnomalySummary4').value.replaceAll(/,/g, '')));
+                                    f = Math.abs(parseInt(document.getElementById('ShareholdersEquityAnomalySummary4').value.replaceAll(/,/g, '')));
+                                    g = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary4').value.replaceAll(/,/g, '')));
+                                    document.getElementById('AnomaliesWorstCaseScenario4').value = numUSD.format(Math.max(a, b, c, d, e, f, g))
                                     // Fifth Last Year
                                     a = Math.abs(parseInt(document.getElementById('TrialBalanceAnomalySummary5').value.replaceAll(/,/g, '')));
                                     b = Math.abs(parseInt(document.getElementById('AccountingEquationAnomalySummary5').value.replaceAll(/,/g, '')));
                                     c = Math.abs(parseInt(document.getElementById('BalanceSheetsAnomalySummary5').value.replaceAll(/,/g, '')));
                                     d = Math.abs(parseInt(document.getElementById('IncomeAnomalySummary5').value.replaceAll(/,/g, '')));
-                                    e = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary5').value.replaceAll(/,/g, '')));
-                                    document.getElementById('AnomaliesWorstCaseScenario5').value = numUSD.format(Math.max(a, b, c, d, e))
+                                    e = Math.abs(parseInt(document.getElementById('ComprehensiveIncomeAnomalySummary5').value.replaceAll(/,/g, '')));
+                                    f = Math.abs(parseInt(document.getElementById('ShareholdersEquityAnomalySummary5').value.replaceAll(/,/g, '')));
+                                    g = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary5').value.replaceAll(/,/g, '')));
+                                    document.getElementById('AnomaliesWorstCaseScenario5').value = numUSD.format(Math.max(a, b, c, d, e, f, g))
                                     // Sixth Last Year
                                     a = Math.abs(parseInt(document.getElementById('TrialBalanceAnomalySummary6').value.replaceAll(/,/g, '')));
                                     b = Math.abs(parseInt(document.getElementById('AccountingEquationAnomalySummary6').value.replaceAll(/,/g, '')));
                                     c = Math.abs(parseInt(document.getElementById('BalanceSheetsAnomalySummary6').value.replaceAll(/,/g, '')));
                                     d = Math.abs(parseInt(document.getElementById('IncomeAnomalySummary6').value.replaceAll(/,/g, '')));
-                                    e = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary6').value.replaceAll(/,/g, '')));
-                                    document.getElementById('AnomaliesWorstCaseScenario6').value = numUSD.format(Math.max(a, b, c, d, e))
+                                    e = Math.abs(parseInt(document.getElementById('ComprehensiveIncomeAnomalySummary6').value.replaceAll(/,/g, '')));
+                                    f = Math.abs(parseInt(document.getElementById('ShareholdersEquityAnomalySummary6').value.replaceAll(/,/g, '')));
+                                    g = Math.abs(parseInt(document.getElementById('CashFlowAnomalySummary6').value.replaceAll(/,/g, '')));
+                                    document.getElementById('AnomaliesWorstCaseScenario6').value = numUSD.format(Math.max(a, b, c, d, e, f, g))
                                 };
                                 window.addEventListener('DOMContentLoaded', WorstCaseScenario)
                                 window.addEventListener('keyup', function() {
@@ -24512,7 +24949,7 @@
             <tr>
                 <td>
                     <h6 style="text-align: center">
-                        as of {{ entity.UpdateDateAndTime }} | <a href="{% url 'φ:disclaimer' %}" target="_blank">© clockdb.com</a> | beta 1.3.25.13.14.1
+                        as of {{ entity.SEC_Update }} | <a href="{% url 'φ:disclaimer' %}" target="_blank">© clockdb.com</a> | beta 5.12.9
                     </h6>
                 </td>
             </tr>
@@ -24522,24 +24959,7 @@
 
 <script>
 
-    function Header(Header) {
-        document.getElementById('EntityRegistrantName').innerHTML = '{{ entity.EntityRegistrantName }} ({{ entity.TradingSymbol }})';
-        document.getElementById('Industry').innerHTML = '{{ entity.Industry_SEC }}';
-        document.getElementById('Region').innerHTML = '{{ entity.Region }}';
-    };
-    window.addEventListener('DOMContentLoaded', Header)
-    window.addEventListener('keyup', function() {
-        var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
-        if (event.keyCode in formulakeylist) {
-            Header();
-        }
-    })
-
     function Puck(Puck) {
-        //
-        document.getElementById('o').innerHTML = '';
-        document.getElementById('p').innerHTML = '';
-        document.getElementById('q').innerHTML = '';
         //
         a = document.getElementById('Opinionφ1').innerHTML;
         //
@@ -24551,7 +24971,10 @@
             if (c.length === 98) {
                 if (d.length === 98) {
                     document.getElementById('o').innerHTML = '⬤';
-                    document.getElementById('p').innerHTML = 'Audited.';
+                    f = document.getElementById('Phase').innerHTML;
+                    if (f == 21) {
+                        document.getElementById('p').innerHTML = 'Audited.';
+                    }
                 }
             }
         }

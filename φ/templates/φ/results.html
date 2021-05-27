@@ -43,6 +43,13 @@
                         </a>
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        <a href="/{{ entity.TradingSymbol }}">
+                            <h3 id='Phase' class='Phase' style="color:rgb(73, 73, 73); font-weight:bold; text-align: right;">{{ entity.db }}</h4>
+                        </a>
+                    </td>
+                </tr>
             </tbody>
         </table>
 
@@ -152,7 +159,7 @@
                 <tr></tr>
                 <tr>
                     <td colspan="2"><h6>Common Shares' Intrinsic Value</h6></td>
-                    <td style="text-align:center; font-weight:bold;"><a href="/{{ entity.TradingSymbol }}" style="color:black;">IS</a></td>
+                    <td style="text-align:center; font-weight:bold;"><a href="/{{ entity.TradingSymbol }}" style="color:black;">IV</a></td>
                     <td>
                         <input type="checkbox" style="height: 16px; box-shadow: none;" id="IntrinsicValueCheckbox"></input>
                         <input type="checkbox" style="height: 16px; box-shadow: none;" id="IntrinsicValueCheckbox2"></input>
@@ -281,8 +288,10 @@
                         if (c.length === 98) {
                             if (d.length === 98) {
                                 document.getElementsByClassName('o')[i].innerHTML = '⬤';
-                                document.getElementsByClassName('p')[i].innerHTML = 'Audited.';
-        
+                                f = document.getElementsByClassName('Phase')[i].innerHTML;
+                                if (f == 21) {
+                                    document.getElementsByClassName('p')[i].innerHTML = 'Audited.';
+                                }
                             }
                         }
                     }
