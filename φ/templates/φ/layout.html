@@ -425,7 +425,7 @@
 
         // F keys
         document.addEventListener('keydown', (event) => {
-            i = 27
+            i = 
             ii = 112
             iii = 113
             iv = 114
@@ -438,9 +438,6 @@
             keys = [i, ii, iii, iv, v, vi, vii, viii, ix, x]
             if (keys.includes(event.keyCode)) {
                 event.preventDefault();
-                if (event.keyCode == i) {
-                    location.reload();
-                }
                 if (event.keyCode == ii) {
                     window.open("{% url 'φ:documentation' %}", '_blank');
                 }
@@ -452,6 +449,9 @@
                 }
                 if (event.keyCode == v) {
                     window.open("{% url 'φ:index' %}", '_top');
+                }
+                if (event.keyCode == vi) {
+                    location.reload();
                 }
             }
         });

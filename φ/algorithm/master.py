@@ -40,11 +40,25 @@ API = {
     'access_key': 'ecae621d4718099f0d660a237c429450',
 }
 
-IncomeStatement_GLs = []
-ComprehensiveIncome_GLs = []
-BalanceSheet_GLs = []
-ShareholdersEquity_GLs = []
-CashFlow_GLs = []
+# Machine Learning
+try:
+    CurrentAssetsGL = []
+    NonCurrentAssetsGL = []
+    CurrentLiabilitiesGL = []
+    NonCurrentLiabilitiesGL = []
+    ShareholdersEquityBalanceGL = []
+    GrossMarginGL = []
+    OperatingExpensesGL = []
+    OperatingIncomeGL = []
+    IncomeBeforeTaxesGL = []
+    NetIncomeGL = []
+    OtherComprehensiveIncomeGL = []
+    ShareholdersEquityGL = []
+    OperatingActivitiesGL = []
+    InvestingActivitiesGL = []
+    FinancingActivitiesGL = []
+except:
+    pass
 
 RegularExpressions = [
     'AndAdditional',
@@ -54,7 +68,7 @@ RegularExpressions = [
     'AndOutstanding',
     'AndPaidInCapital',
     'AndAdditionalPaidInCapital',
-    'ParValue'
+    'ParValue',
     'SharesAuthorized',
     'SharesIssued'
     'Respectively',
@@ -101,6 +115,10 @@ auditcompleted = [
 ]
 
 marketdata = [
+    20,
+]
+
+phases = [
     21,
     20,
     19,
@@ -110,17 +128,18 @@ marketdata = [
     15,
     14,
     13,
-]
-
-phases = [
-    20,
-    19,
-    18,
-    17,
-    16,
-    15,
-    14,
-    13,
+    12,
+    11,
+    10,
+    9,
+    8,
+    7,
+    6,
+    5,
+    4,
+    3,
+    2,
+    1
 ]
 
 ll = 1
@@ -128,7 +147,8 @@ ll = len(entities)
 
 # master
 try:
-    # loop
+    #
+    # entities
     for count in range(0, ll):
         #
         e = entities[count]
@@ -290,8 +310,49 @@ try:
                                                 #
                                                 GL = re.sub(r"[^a-zA-Z()]", "", GL_SEC)
                                                 #
-                                                for y in RegularExpressions:
-                                                    GL = GL.replace(y,'')
+                                                if statement == SE:
+                                                    #
+                                                    ss = []
+                                                    i = 1
+                                                    #
+                                                    for s in statement_data['headers'][0]:
+                                                        #
+                                                        f = s.lower().title()
+                                                        #
+                                                        f = re.sub(r"[^a-zA-Z()]", "", f)
+                                                        #
+                                                        for y in RegularExpressions:
+                                                            f = f.replace(y,'')
+                                                        #
+                                                        ss.append(f)
+                                                        #
+                                                        i = i + 1
+                                                    #
+                                                    try:
+                                                        GL_row1 = ''
+                                                        GL_row2 = ''
+                                                        GL_row3 = ''
+                                                        GL_row4 = ''
+                                                        GL_row5 = ''
+                                                        GL_row6 = ''
+                                                        GL_row7 = ''
+                                                        GL_row8 = ''
+                                                        GL_row9 = ''
+                                                        #
+                                                        GL_row1 = GL + ss[1]
+                                                        GL_row2 = GL + ss[2]
+                                                        GL_row3 = GL + ss[3]
+                                                        GL_row4 = GL + ss[4]
+                                                        GL_row5 = GL + ss[5]
+                                                        GL_row6 = GL + ss[6]
+                                                        GL_row7 = GL + ss[7]
+                                                        GL_row8 = GL + ss[8]
+                                                        GL_row9 = GL + ss[9]
+                                                    except:
+                                                        pass
+                                                else:
+                                                    for y in RegularExpressions:
+                                                        GL = GL.replace(y,'')
                                                 #
                                                 # statement, currency, scale
                                                 try:
@@ -339,66 +400,206 @@ try:
                                                     #
                                                     x = m[5].find_all('td')[1].text
                                                     #
-                                                    if z > 10:
-                                                        g = (z - 3)
-                                                        g = t[g]
+                                                    if statement == SE:
+                                                        #
+                                                        try:
+                                                            try:
+                                                                value_row1 = 0
+                                                                l = t[1]
+                                                                if l == '':
+                                                                    l = 0
+                                                                w = 1
+                                                                if '(' in l:
+                                                                    w = -1
+                                                                #
+                                                                l = re.sub(r"[^.0123456789]", "", str(l))
+                                                                l = float(l)
+                                                                value_row1 = l * dad * w
+                                                            except:
+                                                                pass
+                                                            try:
+                                                                value_row2 = 0
+                                                                l = t[2]
+                                                                if l == '':
+                                                                    l = 0
+                                                                w = 1
+                                                                if '(' in l:
+                                                                    w = -1
+                                                                #
+                                                                l = re.sub(r"[^.0123456789]", "", str(l))
+                                                                l = float(l)
+                                                                value_row2 = l * dad * w
+                                                            except:
+                                                                pass
+                                                            try:
+                                                                value_row3 = 0
+                                                                l = t[3]
+                                                                if l == '':
+                                                                    l = 0
+                                                                w = 1
+                                                                if '(' in l:
+                                                                    w = -1
+                                                                #
+                                                                l = re.sub(r"[^.0123456789]", "", str(l))
+                                                                l = float(l)
+                                                                value_row3 = l * dad * w
+                                                            except:
+                                                                pass
+                                                            try:
+                                                                value_row4 = 0
+                                                                l = t[4]
+                                                                if l == '':
+                                                                    l = 0
+                                                                w = 1
+                                                                if '(' in l:
+                                                                    w = -1
+                                                                #
+                                                                l = re.sub(r"[^.0123456789]", "", str(l))
+                                                                l = float(l)
+                                                                value_row4 = l * dad * w
+                                                            except:
+                                                                pass
+                                                            try:
+                                                                value_row5 = 0
+                                                                l = t[5]
+                                                                if l == '':
+                                                                    l = 0
+                                                                w = 1
+                                                                if '(' in l:
+                                                                    w = -1
+                                                                #
+                                                                l = re.sub(r"[^.0123456789]", "", str(l))
+                                                                l = float(l)
+                                                                value_row4 = l * dad * w
+                                                            except:
+                                                                pass
+                                                            try:
+                                                                value_row6 = 0
+                                                                l = t[6]
+                                                                if l == '':
+                                                                    l = 0
+                                                                w = 1
+                                                                if '(' in l:
+                                                                    w = -1
+                                                                #
+                                                                l = re.sub(r"[^.0123456789]", "", str(l))
+                                                                l = float(l)
+                                                                value_row6 = l * dad * w
+                                                            except:
+                                                                pass
+                                                            try:
+                                                                value_row7 = 0
+                                                                l = t[7]
+                                                                if l == '':
+                                                                    l = 0
+                                                                w = 1
+                                                                if '(' in l:
+                                                                    w = -1
+                                                                #
+                                                                l = re.sub(r"[^.0123456789]", "", str(l))
+                                                                l = float(l)
+                                                                value_row7 = l * dad * w
+                                                            except:
+                                                                pass
+                                                            try:
+                                                                value_row8 = 0
+                                                                l = t[8]
+                                                                if l == '':
+                                                                    l = 0
+                                                                w = 1
+                                                                if '(' in l:
+                                                                    w = -1
+                                                                #
+                                                                l = re.sub(r"[^.0123456789]", "", str(l))
+                                                                l = float(l)
+                                                                value_row8 = l * dad * w
+                                                            except:
+                                                                pass
+                                                            try:
+                                                                value_row9 = 0
+                                                                l = t[9]
+                                                                if l == '':
+                                                                    l = 0
+                                                                w = 1
+                                                                if '(' in l:
+                                                                    w = -1
+                                                                #
+                                                                l = re.sub(r"[^.0123456789]", "", str(l))
+                                                                l = float(l)
+                                                                value_row9 = l * dad * w
+                                                            except:
+                                                                pass
+                                                        except:
+                                                            pass
                                                     #
-                                                    elif z > 3:
-                                                        if x == '' :
-                                                            g = t[2]
+                                                    else:
+                                                        if z > 10:
+                                                            g = (z - 3)
+                                                            g = t[g]
+                                                        #
+                                                        elif z > 3:
+                                                            if x == '' :
+                                                                g = t[2]
+                                                            else:
+                                                                g = t[1]
                                                         else:
                                                             g = t[1]
-                                                    else:
-                                                        g = t[1]
-                                                    #
-                                                    if g == '':
-                                                        g = 0
-                                                    #
-                                                    w = 1
-                                                    if '(' in g:
-                                                        w = -1
-                                                    #
-                                                    g = re.sub(r"[^.0123456789]", "", str(g))
-                                                    g = float(g)
-                                                    #
-                                                    value = int(g * w * dad)
+                                                        #
+                                                        if g == '':
+                                                            g = 0
+                                                        #
+                                                        w = 1
+                                                        if '(' in g:
+                                                            w = -1
+                                                        #
+                                                        g = re.sub(r"[^.0123456789]", "", str(g))
+                                                        g = float(g)
+                                                        #
+                                                        value = int(g * w * dad)
                                                     #
                                                     # Arching
                                                     try:
                                                         #
                                                         if statement == BS:
-                                                            while GL in BalanceSheet:
-                                                                GL = GL + str('i')
                                                             append_value(BalanceSheet, GL, value)
-                                                            BalanceSheet_GLs.append(GL)
                                                             print('Balance Sheet, ' + GL + ': ' + str('{:,}'.format(value)))
                                                         #
                                                         if statement == IS:
-                                                            while GL in IncomeStatement:
-                                                                GL = GL + str('i')
                                                             append_value(IncomeStatement, GL, value)
-                                                            IncomeStatement_GLs.append(GL)
                                                             print('Income Statement, ' + GL + ': ' + str('{:,}'.format(value)))
                                                         #
                                                         if statement == CI:
-                                                            while GL in ComprehensiveIncomeStatement:
-                                                                GL = GL + str('i')
                                                             append_value(ComprehensiveIncomeStatement, GL, value)
-                                                            ComprehensiveIncome_GLs.append(GL)
                                                             print('Comprehensive Income, ' + GL + ': ' + str('{:,}'.format(value)))
                                                         #
                                                         if statement == SE:
-                                                            while GL in ShareholdersEquityStatement:
-                                                                GL = GL + str('i')
-                                                            append_value(ShareholdersEquityStatement, GL, value)
-                                                            ShareholdersEquity_GLs.append(GL)
-                                                            print('Shareholders Equity, ' + GL + ': ' + str('{:,}'.format(value)))
+                                                            try:
+                                                                append_value(ShareholdersEquityStatement, GL_row1, value_row1)
+                                                                append_value(ShareholdersEquityStatement, GL_row2, value_row2)
+                                                                append_value(ShareholdersEquityStatement, GL_row3, value_row3)
+                                                                append_value(ShareholdersEquityStatement, GL_row4, value_row4)
+                                                                append_value(ShareholdersEquityStatement, GL_row5, value_row5)
+                                                                append_value(ShareholdersEquityStatement, GL_row6, value_row6)
+                                                                append_value(ShareholdersEquityStatement, GL_row7, value_row7)
+                                                                append_value(ShareholdersEquityStatement, GL_row8, value_row8)
+                                                                append_value(ShareholdersEquityStatement, GL_row9, value_row9)
+                                                            except:
+                                                                pass
+                                                            try:
+                                                                print('Shareholders Equity, ' + GL_row1 + ': ' + str('{:,}'.format(value_row1)))
+                                                                print('Shareholders Equity, ' + GL_row2 + ': ' + str('{:,}'.format(value_row2)))
+                                                                print('Shareholders Equity, ' + GL_row3 + ': ' + str('{:,}'.format(value_row3)))
+                                                                print('Shareholders Equity, ' + GL_row4 + ': ' + str('{:,}'.format(value_row4)))
+                                                                print('Shareholders Equity, ' + GL_row5 + ': ' + str('{:,}'.format(value_row5)))
+                                                                print('Shareholders Equity, ' + GL_row6 + ': ' + str('{:,}'.format(value_row6)))
+                                                                print('Shareholders Equity, ' + GL_row7 + ': ' + str('{:,}'.format(value_row7)))
+                                                                print('Shareholders Equity, ' + GL_row8 + ': ' + str('{:,}'.format(value_row8)))
+                                                                print('Shareholders Equity, ' + GL_row9 + ': ' + str('{:,}'.format(value_row9)))
+                                                            except:
+                                                                pass
                                                         #
                                                         if statement == CF:
-                                                            while GL in CashFlowStatement:
-                                                                GL = GL + str('i')
                                                             append_value(CashFlowStatement, GL, value)
-                                                            CashFlow_GLs.append(GL)
                                                             print('Cashflow, ' + GL + ': ' + str('{:,}'.format(value)))
                                                         #
                                                         else:
@@ -1844,44 +2045,61 @@ try:
                                         # ML
                                         try:
                                             w = None
+                                            a.CurrentAssetsGL_i = ''
                                             m = None 
+                                            a.CurrentAssetsGL_ii = ''
                                             t = None
+                                            a.CurrentAssetsGL_iii = ''
                                             r = 0
                                             for key, value in BalanceSheet.items():
                                                 if r > CashRank:
                                                     if r < CurrentAssetsRank:
                                                         d = key
-                                                        try:
-                                                            i = 0
-                                                            while BalanceSheet[key][i] == None:
-                                                                i = i + 1
-                                                            ARCHvalue = BalanceSheet[key][i]
-                                                            BalanceSheet[key][i] = None
-                                                        except:
-                                                            if BalanceSheet[key] != None:
-                                                                ARCHvalue = BalanceSheet[key]
-                                                                BalanceSheet[key] = None
-                                                            else:
-                                                                ARCHvalue = 0
-                                                        if ARCHvalue != 0:
+                                                        b = [
+                                                            'Total',
+                                                        ]
+                                                        h = 'p'
+                                                        for p in b:
+                                                            u = 0
+                                                            while u < len(b):
+                                                                if p in d:
+                                                                    h = ''
+                                                                u = u + 1
+                                                        if h == 'p':
                                                             try:
-                                                                #
-                                                                if w is None:
-                                                                    a.AnomalyCurrentAssetsGL_i = d
-                                                                    a.AnomalyCurrentAssetsValue_i = ARCHvalue
-                                                                    w = ''
-                                                                #
-                                                                elif m is None:
-                                                                    a.AnomalyCurrentAssetsGL_ii = d
-                                                                    a.AnomalyCurrentAssetsValue_ii = ARCHvalue
-                                                                    m = ''
-                                                                #
-                                                                elif t is None:
-                                                                    a.AnomalyCurrentAssetsGL_iii = d
-                                                                    a.AnomalyCurrentAssetsValue_iii = ARCHvalue
-                                                                    t = ''
+                                                                i = 0
+                                                                while BalanceSheet[key][i] == None:
+                                                                    i = i + 1
+                                                                ARCHvalue = BalanceSheet[key][i]
+                                                                BalanceSheet[key][i] = None
                                                             except:
-                                                                pass
+                                                                if BalanceSheet[key] != None:
+                                                                    ARCHvalue = BalanceSheet[key]
+                                                                    BalanceSheet[key] = None
+                                                                else:
+                                                                    ARCHvalue = 0
+                                                            if ARCHvalue != 0:
+                                                                try:
+                                                                    #
+                                                                    if w is None:
+                                                                        a.CurrentAssetsGL_i = d
+                                                                        w = ''
+                                                                    #
+                                                                    elif m is None:
+                                                                        a.CurrentAssetsGL_ii = d
+                                                                        m = ''
+                                                                    #
+                                                                    elif t is None:
+                                                                        a.CurrentAssetsGL_iii = d
+                                                                        t = ''
+                                                                    else:
+                                                                        pass
+                                                                    #
+                                                                    if d not in CurrentAssetsGL:
+                                                                        CurrentAssetsGL.append(d)
+                                                                    #
+                                                                except:
+                                                                    pass
                                                 r = r + 1
                                         except:
                                             pass
@@ -2573,44 +2791,61 @@ try:
                                         # ML
                                         try:
                                             w = None
+                                            a.NonCurrentAssetsGL_i = ''
                                             m = None
+                                            a.NonCurrentAssetsGL_ii = ''
                                             t = None
+                                            a.NonCurrentAssetsGL_iii = ''
                                             r = 0
                                             for key, value in BalanceSheet.items():
                                                 if r > CurrentAssetsRank:
                                                     if r < AssetsRank:
                                                         d = key
-                                                        try:
-                                                            i = 0
-                                                            while BalanceSheet[key][i] == None:
-                                                                i = i + 1
-                                                            ARCHvalue = BalanceSheet[key][i]
-                                                            BalanceSheet[key][i] = None
-                                                        except:
-                                                            if BalanceSheet[key] != None:
-                                                                ARCHvalue = BalanceSheet[key]
-                                                                BalanceSheet[key] = None
-                                                            else:
-                                                                ARCHvalue = 0
-                                                        if ARCHvalue != 0:
+                                                        b = [
+                                                            'Total',
+                                                        ]
+                                                        h = 'p'
+                                                        for p in b:
+                                                            u = 0
+                                                            while u < len(b):
+                                                                if p in d:
+                                                                    h = ''
+                                                                u = u + 1
+                                                        if h == 'p':
                                                             try:
-                                                                #
-                                                                if w is None:
-                                                                    a.AnomalyNonCurrentAssetsGL_i = d
-                                                                    a.AnomalyNonCurrentAssetsValue_i = ARCHvalue
-                                                                    w = ''
-                                                                #
-                                                                elif m is None:
-                                                                    a.AnomalyNonCurrentAssetsGL_ii = d
-                                                                    a.AnomalyNonCurrentAssetsValue_ii = ARCHvalue
-                                                                    m = ''
-                                                                #
-                                                                elif t is None:
-                                                                    a.AnomalyNonCurrentAssetsGL_iii = d
-                                                                    a.AnomalyNonCurrentAssetsValue_iii = ARCHvalue
-                                                                    t = ''
+                                                                i = 0
+                                                                while BalanceSheet[key][i] == None:
+                                                                    i = i + 1
+                                                                ARCHvalue = BalanceSheet[key][i]
+                                                                BalanceSheet[key][i] = None
                                                             except:
-                                                                pass
+                                                                if BalanceSheet[key] != None:
+                                                                    ARCHvalue = BalanceSheet[key]
+                                                                    BalanceSheet[key] = None
+                                                                else:
+                                                                    ARCHvalue = 0
+                                                            if ARCHvalue != 0:
+                                                                try:
+                                                                    #
+                                                                    if w is None:
+                                                                        a.NonCurrentAssetsGL_i = d
+                                                                        w = ''
+                                                                    #
+                                                                    elif m is None:
+                                                                        a.NonCurrentAssetsGL_ii = d
+                                                                        m = ''
+                                                                    #
+                                                                    elif t is None:
+                                                                        a.NonCurrentAssetsGL_iii = d
+                                                                        t = ''
+                                                                    else:
+                                                                        pass
+                                                                    #
+                                                                    if d not in NonCurrentAssetsGL:
+                                                                        NonCurrentAssetsGL.append(d)
+                                                                    #
+                                                                except:
+                                                                    pass
                                                 r = r + 1
                                         except:
                                             pass
@@ -3297,44 +3532,61 @@ try:
                                         # ML
                                         try:
                                             w = None
+                                            a.CurrentLiabilitiesGL_i = ''
                                             m = None
+                                            a.CurrentLiabilitiesGL_ii = ''
                                             t = None
+                                            a.CurrentLiabilitiesGL_iii = ''
                                             r = 0
                                             for key, value in BalanceSheet.items():
                                                 if r > AssetsRank:
                                                     if r < CurrentLiabilitiesRank:
                                                         d = key
-                                                        try:
-                                                            i = 0
-                                                            while BalanceSheet[key][i] == None:
-                                                                i = i + 1
-                                                            ARCHvalue = BalanceSheet[key][i]
-                                                            BalanceSheet[key][i] = None
-                                                        except:
-                                                            if BalanceSheet[key] != None:
-                                                                ARCHvalue = BalanceSheet[key]
-                                                                BalanceSheet[key] = None
-                                                            else:
-                                                                ARCHvalue = 0
-                                                        if ARCHvalue != 0:
+                                                        b = [
+                                                            'Total',
+                                                        ]
+                                                        h = 'p'
+                                                        for p in b:
+                                                            u = 0
+                                                            while u < len(b):
+                                                                if p in d:
+                                                                    h = ''
+                                                                u = u + 1
+                                                        if h == 'p':
                                                             try:
-                                                                #
-                                                                if w is None:
-                                                                    a.AnomalyCurrentLiabilitiesGL_i = d
-                                                                    a.AnomalyCurrentLiabilitiesValue_i = ARCHvalue
-                                                                    w = ''
-                                                                #
-                                                                elif m is None:
-                                                                    a.AnomalyCurrentLiabilitiesGL_ii = d
-                                                                    a.AnomalyCurrentLiabilitiesValue_ii = ARCHvalue
-                                                                    m = ''
-                                                                #
-                                                                elif t is None:
-                                                                    a.AnomalyCurrentLiabilitiesGL_iii = d
-                                                                    a.AnomalyCurrentLiabilitiesValue_iii = ARCHvalue
-                                                                    t = ''
+                                                                i = 0
+                                                                while BalanceSheet[key][i] == None:
+                                                                    i = i + 1
+                                                                ARCHvalue = BalanceSheet[key][i]
+                                                                BalanceSheet[key][i] = None
                                                             except:
-                                                                pass
+                                                                if BalanceSheet[key] != None:
+                                                                    ARCHvalue = BalanceSheet[key]
+                                                                    BalanceSheet[key] = None
+                                                                else:
+                                                                    ARCHvalue = 0
+                                                            if ARCHvalue != 0:
+                                                                try:
+                                                                    #
+                                                                    if w is None:
+                                                                        a.CurrentLiabilitiesGL_i = d
+                                                                        w = ''
+                                                                    #
+                                                                    elif m is None:
+                                                                        a.CurrentLiabilitiesGL_ii = d
+                                                                        m = ''
+                                                                    #
+                                                                    elif t is None:
+                                                                        a.CurrentLiabilitiesGL_iii = d
+                                                                        t = ''
+                                                                    else:
+                                                                        pass
+                                                                    #
+                                                                    if d not in CurrentLiabilitiesGL:
+                                                                        CurrentLiabilitiesGL.append(d)
+                                                                    #
+                                                                except:
+                                                                    pass
                                                 r = r + 1
                                         except:
                                             pass
@@ -3988,44 +4240,61 @@ try:
                                         # ML
                                         try:
                                             w = None
+                                            a.NonCurrentLiabilitiesGL_i = ''
                                             m = None
+                                            a.NonCurrentLiabilitiesGL_ii = ''
                                             t = None
+                                            a.NonCurrentLiabilitiesGL_iii = ''
                                             r = 0
                                             for key, value in BalanceSheet.items():
                                                 if r > CurrentLiabilitiesRank:
                                                     if r < LiabilitiesRank:
                                                         d = key
-                                                        try:
-                                                            i = 0
-                                                            while BalanceSheet[key][i] == None:
-                                                                i = i + 1
-                                                            ARCHvalue = BalanceSheet[key][i]
-                                                            BalanceSheet[key][i] = None
-                                                        except:
-                                                            if BalanceSheet[key] != None:
-                                                                ARCHvalue = BalanceSheet[key]
-                                                                BalanceSheet[key] = None
-                                                            else:
-                                                                ARCHvalue = 0
-                                                        if ARCHvalue != 0:
+                                                        b = [
+                                                            'Total',
+                                                        ]
+                                                        h = 'p'
+                                                        for p in b:
+                                                            u = 0
+                                                            while u < len(b):
+                                                                if p in d:
+                                                                    h = ''
+                                                                u = u + 1
+                                                        if h == 'p':
                                                             try:
-                                                                #
-                                                                if w is None:
-                                                                    a.AnomalyNonCurrentLiabilitiesGL_i = d
-                                                                    a.AnomalyNonCurrentLiabilitiesValue_i = ARCHvalue
-                                                                    w = ''
-                                                                #
-                                                                elif m is None:
-                                                                    a.AnomalyNonCurrentLiabilitiesGL_ii = d
-                                                                    a.AnomalyNonCurrentLiabilitiesValue_ii = ARCHvalue
-                                                                    m = ''
-                                                                #
-                                                                elif t is None:
-                                                                    a.AnomalyNonCurrentLiabilitiesGL_iii = d
-                                                                    a.AnomalyNonCurrentLiabilitiesValue_iii = ARCHvalue
-                                                                    t = ''
+                                                                i = 0
+                                                                while BalanceSheet[key][i] == None:
+                                                                    i = i + 1
+                                                                ARCHvalue = BalanceSheet[key][i]
+                                                                BalanceSheet[key][i] = None
                                                             except:
-                                                                pass
+                                                                if BalanceSheet[key] != None:
+                                                                    ARCHvalue = BalanceSheet[key]
+                                                                    BalanceSheet[key] = None
+                                                                else:
+                                                                    ARCHvalue = 0
+                                                            if ARCHvalue != 0:
+                                                                try:
+                                                                    #
+                                                                    if w is None:
+                                                                        a.NonCurrentLiabilitiesGL_i = d
+                                                                        w = ''
+                                                                    #
+                                                                    elif m is None:
+                                                                        a.NonCurrentLiabilitiesGL_ii = d
+                                                                        m = ''
+                                                                    #
+                                                                    elif t is None:
+                                                                        a.NonCurrentLiabilitiesGL_iii = d
+                                                                        t = ''
+                                                                    else:
+                                                                        pass
+                                                                    #
+                                                                    if d not in NonCurrentLiabilitiesGL:
+                                                                        NonCurrentLiabilitiesGL.append(d)
+                                                                    #
+                                                                except:
+                                                                    pass
                                                 r = r + 1
                                         except:
                                             pass
@@ -4421,44 +4690,64 @@ try:
                                         # ML
                                         try:
                                             w = None
+                                            a.ShareholdersEquityGL_i = ''
                                             m = None
+                                            a.ShareholdersEquityGL_ii = ''
                                             t = None
+                                            a.ShareholdersEquityGL_iii = ''
                                             r = 0
                                             for key, value in BalanceSheet.items():
                                                 if r > LiabilitiesRank:
                                                     if r < LiabilitiesAndShareholdersEquityRank:
                                                         d = key
-                                                        try:
-                                                            i = 0
-                                                            while BalanceSheet[key][i] == None:
-                                                                i = i + 1
-                                                            ARCHvalue = BalanceSheet[key][i]
-                                                            BalanceSheet[key][i] = None
-                                                        except:
-                                                            if BalanceSheet[key] != None:
-                                                                ARCHvalue = BalanceSheet[key]
-                                                                BalanceSheet[key] = None
-                                                            else:
-                                                                ARCHvalue = 0
-                                                        if ARCHvalue != 0:
+                                                        b = [
+                                                            'Total',
+                                                            'Beginning',
+                                                            'Ending',
+                                                            'BalancesAt',
+                                                        ]
+                                                        h = 'p'
+                                                        for p in b:
+                                                            u = 0
+                                                            while u < len(b):
+                                                                if p in d:
+                                                                    h = ''
+                                                                u = u + 1
+                                                        if h == 'p':
                                                             try:
-                                                                #
-                                                                if w is None:
-                                                                    a.AnomalyShareholdersEquityGL_i = d
-                                                                    a.AnomalyShareholdersEquityValue_i = ARCHvalue
-                                                                    w = ''
-                                                                #
-                                                                elif m is None:
-                                                                    a.AnomalyShareholdersEquityGL_ii = d
-                                                                    a.AnomalyShareholdersEquityValue_ii = ARCHvalue
-                                                                    m = ''
-                                                                #
-                                                                elif t is None:
-                                                                    a.AnomalyShareholdersEquityGL_iii = d
-                                                                    a.AnomalyShareholdersEquityValue_iii = ARCHvalue
-                                                                    t = ''
+                                                                i = 0
+                                                                while BalanceSheet[key][i] == None:
+                                                                    i = i + 1
+                                                                ARCHvalue = BalanceSheet[key][i]
+                                                                BalanceSheet[key][i] = None
                                                             except:
-                                                                pass
+                                                                if BalanceSheet[key] != None:
+                                                                    ARCHvalue = BalanceSheet[key]
+                                                                    BalanceSheet[key] = None
+                                                                else:
+                                                                    ARCHvalue = 0
+                                                            if ARCHvalue != 0:
+                                                                try:
+                                                                    #
+                                                                    if w is None:
+                                                                        a.ShareholdersEquityGL_i = d
+                                                                        w = ''
+                                                                    #
+                                                                    elif m is None:
+                                                                        a.ShareholdersEquityGL_ii = d
+                                                                        m = ''
+                                                                    #
+                                                                    elif t is None:
+                                                                        a.ShareholdersEquityGL_iii = d
+                                                                        t = ''
+                                                                    else:
+                                                                        pass
+                                                                    #
+                                                                    if d not in ShareholdersEquityGL:
+                                                                        ShareholdersEquityGL.append(d)
+                                                                    #
+                                                                except:
+                                                                    pass
                                                 r = r + 1
                                         except:
                                             pass
@@ -5573,43 +5862,60 @@ try:
                                     # ML
                                     try:
                                         w = None
+                                        a.NetIncomeGL_i = ''
                                         m = None
+                                        a.NetIncomeGL_ii = ''
                                         t = None
+                                        a.NetIncomeGL_iii = ''
                                         r = 0
                                         for key, value in IncomeStatement.items():
                                             if r < NetIncomeRank:
                                                 d = key
-                                                try:
-                                                    i = 0
-                                                    while IncomeStatement[key][i] == None:
-                                                        i = i + 1
-                                                    ARCHvalue = IncomeStatement[key][i]
-                                                    IncomeStatement[key][i] = None
-                                                except:
-                                                    if IncomeStatement[key] != None:
-                                                        ARCHvalue = IncomeStatement[key]
-                                                        IncomeStatement[key] = None
-                                                    else:
-                                                        ARCHvalue = 0
-                                                if ARCHvalue != 0:
+                                                b = [
+                                                    'Total',
+                                                ]
+                                                h = 'p'
+                                                for p in b:
+                                                    u = 0
+                                                    while u < len(b):
+                                                        if p in d:
+                                                            h = ''
+                                                        u = u + 1
+                                                if h == 'p':
                                                     try:
-                                                        #
-                                                        if w is None:
-                                                            a.AnomalyNetIncomeGL_i = d
-                                                            a.AnomalyNetIncomeValue_i = ARCHvalue
-                                                            w = ''
-                                                        #
-                                                        elif m is None:
-                                                            a.AnomalyNetIncomeGL_ii = d
-                                                            a.AnomalyNetIncomeValue_ii = ARCHvalue
-                                                            m = ''
-                                                        #
-                                                        elif t is None:
-                                                            a.AnomalyNetIncomeGL_iii = d
-                                                            a.AnomalyNetIncomeValue_iii = ARCHvalue
-                                                            t = ''
+                                                        i = 0
+                                                        while IncomeStatement[key][i] == None:
+                                                            i = i + 1
+                                                        ARCHvalue = IncomeStatement[key][i]
+                                                        IncomeStatement[key][i] = None
                                                     except:
-                                                        pass
+                                                        if IncomeStatement[key] != None:
+                                                            ARCHvalue = IncomeStatement[key]
+                                                            IncomeStatement[key] = None
+                                                        else:
+                                                            ARCHvalue = 0
+                                                    if ARCHvalue != 0:
+                                                        try:
+                                                            #
+                                                            if w is None:
+                                                                a.NetIncomeGL_i = d
+                                                                w = ''
+                                                            #
+                                                            elif m is None:
+                                                                a.NetIncomeGL_ii = d
+                                                                m = ''
+                                                            #
+                                                            elif t is None:
+                                                                a.NetIncomeGL_iii = d
+                                                                t = ''
+                                                            else:
+                                                                pass
+                                                            #
+                                                            if d not in NetIncomeGL:
+                                                                NetIncomeGL.append(d)
+                                                            #
+                                                        except:
+                                                            pass
                                             r = r + 1
                                     except:
                                         pass
@@ -5693,7 +5999,8 @@ try:
                                             b = [
                                                 'Accumulated',
                                                 'ContinuingOperations',
-                                                'NetOtherComprehensiveIncome',
+                                                'OtherComprehensiveIncome',
+                                                'TotalChangeIn',
                                             ]
                                             for l in q:
                                                 if l in d:
@@ -5742,6 +6049,7 @@ try:
                                                 ]
                                                 b = [
                                                     'ContinuingOperations',
+                                                    'TotalChangeIn',
                                                 ]
                                                 for l in q:
                                                     if l in d:
@@ -5782,9 +6090,11 @@ try:
                                                 q = [
                                                     'Hedge',
                                                     'Derivatives',
+                                                    'RealizedAndIncludedInNetIncome',
                                                 ]
                                                 b = [
                                                     'ContinuingOperations',
+                                                    'TotalChangeIn',
                                                 ]
                                                 for l in q:
                                                     if l in d:
@@ -5853,6 +6163,7 @@ try:
                                                 ]
                                                 b = [
                                                     'ContinuingOperations',
+                                                    'TotalChangeIn',
                                                 ]
                                                 for l in q:
                                                     if l in d:
@@ -5898,6 +6209,7 @@ try:
                                                     'Currency',
                                                     'Derivatives',
                                                     'Investments',
+                                                    'TotalChangeIn',
                                                 ]
                                                 for l in q:
                                                     if l in d:
@@ -5944,8 +6256,8 @@ try:
                                                     'TaxBenefit',
                                                 ]
                                                 b = [
-                                                    'ChangeIn',
                                                     'BeforeIncomeTaxe',
+                                                    'TotalChangeIn',
                                                 ]
                                                 for l in q:
                                                     if l in d:
@@ -5979,43 +6291,64 @@ try:
                                     # ML
                                     try:
                                         w = None
+                                        a.OtherComprehensiveIncomeGL_i = ''
+                                        #
                                         m = None
+                                        a.OtherComprehensiveIncomeGL_ii = ''
+                                        #
                                         t = None
+                                        a.OtherComprehensiveIncomeGL_iii = ''
                                         r = 0
                                         for key, value in ComprehensiveIncomeStatement.items():
                                             if r < ComprehensiveIncomeRank:
                                                 d = key
-                                                try:
-                                                    i = 0
-                                                    while ComprehensiveIncomeStatement[key][i] == None:
-                                                        i = i + 1
-                                                    ARCHvalue = ComprehensiveIncomeStatement[key][i]
-                                                    ComprehensiveIncomeStatement[key][i] = None
-                                                except:
-                                                    if ComprehensiveIncomeStatement[key] != None:
-                                                        ARCHvalue = ComprehensiveIncomeStatement[key]
-                                                        ComprehensiveIncomeStatement[key] = None
-                                                    else:
-                                                        ARCHvalue = 0
-                                                if ARCHvalue != 0:
-                                                    try:
-                                                        #
-                                                        if w is None:
-                                                            a.AnomalyOtherComprehensiveIncomeGL_i = d
-                                                            a.AnomalyOtherComprehensiveIncomeValue_i = ARCHvalue
-                                                            w = ''
-                                                        #
-                                                        elif m is None:
-                                                            a.AnomalyOtherComprehensiveIncomeGL_ii = d
-                                                            a.AnomalyOtherComprehensiveIncomeValue_ii = ARCHvalue
-                                                            m = ''
-                                                        #
-                                                        elif t is None:
-                                                            a.AnomalyOtherComprehensiveIncomeGL_iii = d
-                                                            a.AnomalyOtherComprehensiveIncomeValue_iii = ARCHvalue
-                                                            t = ''
-                                                    except:
-                                                        pass
+                                                b = [
+                                                    'TotalChangeIn',
+                                                    'TotalOtherComprehensive',
+                                                ]
+                                                if d != 'NetIncome':
+                                                    h = 'p'
+                                                    for p in b:
+                                                        u = 0
+                                                        while u < len(b):
+                                                            if p in d:
+                                                                h = ''
+                                                            u = u + 1
+                                                    if h == 'p':
+                                                        try:
+                                                            i = 0
+                                                            while ComprehensiveIncomeStatement[key][i] == None:
+                                                                i = i + 1
+                                                            ARCHvalue = ComprehensiveIncomeStatement[key][i]
+                                                            ComprehensiveIncomeStatement[key][i] = None
+                                                        except:
+                                                            if ComprehensiveIncomeStatement[key] != None:
+                                                                ARCHvalue = ComprehensiveIncomeStatement[key]
+                                                                ComprehensiveIncomeStatement[key] = None
+                                                            else:
+                                                                ARCHvalue = 0
+                                                        if ARCHvalue != 0:
+                                                            try:
+                                                                #
+                                                                if w is None:
+                                                                    a.OtherComprehensiveIncomeGL_i = d
+                                                                    w = ''
+                                                                #
+                                                                elif m is None:
+                                                                    a.OtherComprehensiveIncomeGL_ii = d
+                                                                    m = ''
+                                                                #
+                                                                elif t is None:
+                                                                    a.OtherComprehensiveIncomeGL_iii = d
+                                                                    t = ''
+                                                                else:
+                                                                    pass
+                                                                #
+                                                                if d not in OtherComprehensiveIncomeGL:
+                                                                    OtherComprehensiveIncomeGL.append(d)
+                                                                #
+                                                            except:
+                                                                pass
                                             r = r + 1
                                     except:
                                         pass
@@ -6065,34 +6398,34 @@ try:
                                     #
                                     # Rank
                                     try:
-                                        a = 0
                                         r = 0
+                                        t = 0
                                         for key, value in ShareholdersEquityStatement.items():
                                             d = key
                                             q = [
-                                                'Ending',
-                                                'Balances',
+                                                'EndingBalances',
                                             ]
                                             b = [
                                                 'InShares',
                                             ]
-                                            if a < 3:
-                                                for l in q:
-                                                    if l in d:
-                                                        h = 'p'
-                                                        for p in b:
-                                                            u = 0
-                                                            while u < len(b):
-                                                                if p in d:
-                                                                    h = ''
-                                                                u = u + 1
-                                                        if h == 'p':
-                                                            if value != 0:
-                                                                ShareholdersEquityRank = r
-                                                                a = a + 1
-                                                                #
-                                                                print('Shareholders Equity Rank: ' + str(r))
+                                            for l in q:
+                                                if l in d:
+                                                    h = 'p'
+                                                    for p in b:
+                                                        u = 0
+                                                        while u < len(b):
+                                                            if p in d:
+                                                                h = ''
+                                                            u = u + 1
+                                                    if h == 'p':
+                                                        if value != 0:
+                                                            t = t + 1
+                                                            print(d)
+                                                            print(value)
+                                                            print(t)
                                             r = r + 1
+                                        ShareholdersEquityRank = t / z - 1
+                                        print('Shareholders Equity Rank: ' + str(ShareholdersEquityRank))
                                     except:
                                         pass
                                     #
@@ -6114,6 +6447,9 @@ try:
                                                     'Retirement',
                                                     'Repurchase',
                                                     'InShares',
+                                                    'Total',
+                                                    'Beginning',
+                                                    'Ending',
                                                 ]
                                                 for l in q:
                                                     if l in d:
@@ -6139,12 +6475,14 @@ try:
                                                                     ARCHvalue = 0
                                                             if ARCHvalue != 0:
                                                                 CommonSharesIssued.append(ARCHvalue)
+                                                                print(d)
+                                                                print('{:,}'.format(value))
                                             r = r + 1
                                         tb.CommonSharesIssued = -sum(CommonSharesIssued)
                                     except:
                                         pass
                                     #
-                                    # share based compensation and other shareholders equity components
+                                    # share based compensation (Common Shares Component)
                                     try:
                                         ShareBasedCompensation = []
                                         r = 0
@@ -6152,17 +6490,23 @@ try:
                                             if r > ShareholdersEquityRank:
                                                 d = key
                                                 q = [
+                                                    'EquityAward',
                                                     'EquityBasedCompensation',
                                                     'EquityBasedArrangements',
                                                     'EquityBasedPaymentArrangements',
                                                     'ShareBasedCompensation',
                                                     'StockBasedCompendation',
                                                     'SharesWithheldRelatedToNetShareSettlement',
+                                                    'StockWithheldRelatedToNetShareSettlement',
                                                 ]
                                                 b = [
+                                                    'RetainedEarnings',
                                                     'Retirement',
                                                     'Repurchase',
                                                     'InShares',
+                                                    'Total',
+                                                    'Beginning',
+                                                    'Ending',
                                                 ]
                                                 for l in q:
                                                     if l in d:
@@ -6188,8 +6532,65 @@ try:
                                                                     ARCHvalue = 0
                                                             if ARCHvalue != 0:
                                                                 ShareBasedCompensation.append(ARCHvalue)
+                                                                print(d)
+                                                                print('{:,}'.format(value))
                                             r = r + 1
                                         tb.ShareBasedCompensation = -sum(ShareBasedCompensation)
+                                    except:
+                                        pass
+                                    #
+                                    # share based compensation (Retained Earnings Component)
+                                    try:
+                                        ShareBasedCompensationRetainedEarnings = []
+                                        r = 0
+                                        for key, value in ShareholdersEquityStatement.items():
+                                            if r > ShareholdersEquityRank:
+                                                d = key
+                                                q = [
+                                                    'EquityBasedCompensation',
+                                                    'EquityBasedArrangements',
+                                                    'EquityBasedPaymentArrangements',
+                                                    'ShareBasedCompensation',
+                                                    'StockBasedCompendation',
+                                                    'SharesWithheldRelatedToNetShareSettlement',
+                                                    'StockWithheldRelatedToNetShareSettlement',
+                                                ]
+                                                b = [
+                                                    'Retirement',
+                                                    'Repurchase',
+                                                    'InShares',
+                                                    'Total',
+                                                    'Beginning',
+                                                    'Ending',
+                                                ]
+                                                for l in q:
+                                                    if l in d:
+                                                        h = 'p'
+                                                        for p in b:
+                                                            u = 0
+                                                            while u < len(b):
+                                                                if p in d:
+                                                                    h = ''
+                                                                u = u + 1
+                                                        if h == 'p':
+                                                            try:
+                                                                i = len(value) - 1
+                                                                while ShareholdersEquityStatement[key][i] == None:
+                                                                    i = i - 1
+                                                                ARCHvalue = ShareholdersEquityStatement[key][i]
+                                                                ShareholdersEquityStatement[key][i] = None
+                                                            except:
+                                                                if ShareholdersEquityStatement[key] != None:
+                                                                    ARCHvalue = ShareholdersEquityStatement[key]
+                                                                    ShareholdersEquityStatement[key] = None
+                                                                else:
+                                                                    ARCHvalue = 0
+                                                            if ARCHvalue != 0:
+                                                                ShareBasedCompensationRetainedEarnings.append(ARCHvalue)
+                                                                print(d)
+                                                                print('{:,}'.format(value))
+                                            r = r + 1
+                                        tb.ShareBasedCompensationRetainedEarnings = -sum(ShareBasedCompensationRetainedEarnings)
                                     except:
                                         pass
                                     #
@@ -6208,6 +6609,9 @@ try:
                                                     'Repurchase',
                                                     'NoncontrollingInterest',
                                                     'InShares',
+                                                    'Total',
+                                                    'Beginning',
+                                                    'Ending',
                                                 ]
                                                 for l in q:
                                                     if l in d:
@@ -6234,6 +6638,8 @@ try:
                                                             if ARCHvalue != 0:
                                                                 ARCHvalue = -abs(ARCHvalue)
                                                                 DividendsAndDividendEquivalentsDeclared.append(ARCHvalue)
+                                                                print(d)
+                                                                print('{:,}'.format(value))
                                             r = r + 1
                                         tb.DividendsAndDividendEquivalentsDeclared = -sum(DividendsAndDividendEquivalentsDeclared)
                                     except:
@@ -6257,6 +6663,9 @@ try:
                                                     'Retirement',
                                                     'Repurchase',
                                                     'InShares',
+                                                    'Total',
+                                                    'Beginning',
+                                                    'Ending',
                                                 ]
                                                 for l in q:
                                                     if l in d:
@@ -6282,6 +6691,8 @@ try:
                                                                     ARCHvalue = 0
                                                             if ARCHvalue != 0:
                                                                 DividendsDeclaredToNonControllingInterests.append(ARCHvalue)
+                                                                print(d)
+                                                                print('{:,}'.format(value))
                                             r = r + 1
                                         tb.DividendsDeclaredToNonControllingInterests = -sum(DividendsDeclaredToNonControllingInterests)
                                     except:
@@ -6305,6 +6716,9 @@ try:
                                                 b = [
                                                     'Dividend',
                                                     'InShares',
+                                                    'Total',
+                                                    'Beginning',
+                                                    'Ending',
                                                 ]
                                                 for l in q:
                                                     if l in d:
@@ -6330,6 +6744,8 @@ try:
                                                                     ARCHvalue = 0
                                                             if ARCHvalue != 0:
                                                                 AcquisitionOfNonControllingInterests.append(ARCHvalue)
+                                                                print(d)
+                                                                print('{:,}'.format(value))
                                             r = r + 1
                                         tb.AcquisitionOfNonControllingInterests = -sum(AcquisitionOfNonControllingInterests)
                                     except:
@@ -6357,6 +6773,9 @@ try:
                                                 b = [
                                                     'Dividend',
                                                     'InShares',
+                                                    'Total',
+                                                    'Beginning',
+                                                    'Ending',
                                                 ]
                                                 for l in q:
                                                     if l in d:
@@ -6382,6 +6801,8 @@ try:
                                                                     ARCHvalue = 0
                                                             if ARCHvalue != 0:
                                                                 CommonSharesRepurchasedAndRetired.append(ARCHvalue)
+                                                                print(d)
+                                                                print('{:,}'.format(value))
                                             r = r + 1
                                         tb.CommonSharesRepurchasedAndRetired = -sum(CommonSharesRepurchasedAndRetired)
                                     except:
@@ -6399,11 +6820,15 @@ try:
                                                     'ChangeInAccountingPrinciple',
                                                     'ReclassificationOfStrandedTaxEffects',
                                                     'CumulativeEffectAdjustment',
+                                                    'CumulativeOfChangeInAccounting',
                                                 ]
                                                 b = [
                                                     'Distribution',
                                                     'Dividend',
                                                     'InShares',
+                                                    'Total',
+                                                    'Beginning',
+                                                    'Ending',
                                                 ]
                                                 for l in q:
                                                     if l in d:
@@ -6429,11 +6854,81 @@ try:
                                                                     ARCHvalue = 0
                                                             if ARCHvalue != 0:
                                                                 EffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts.append(ARCHvalue)
+                                                                print(d)
+                                                                print('{:,}'.format(value))
                                             r = r + 1
                                         tb.EffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts = sum(EffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts)
                                     except:
                                         pass
                                     #
+                                    # ML
+                                    try:
+                                        w = None
+                                        a.ShareholdersEquityGL_i = ''
+                                        #
+                                        m = None
+                                        a.ShareholdersEquityGL_ii = ''
+                                        #
+                                        t = None
+                                        a.ShareholdersEquityGL_iii = ''
+                                        r = 0
+                                        for key, value in ShareholdersEquityStatement.items():
+                                            if r > ShareholdersEquityRank:
+                                                d = key
+                                                b = [
+                                                    'BalancesAt'
+                                                    'Beginning',
+                                                    'Ending',
+                                                    'InShares',
+                                                    'NetIncome',
+                                                    'OtherComprehensiveIncome',
+                                                    'Total',
+                                                ]
+                                                h = 'p'
+                                                for p in b:
+                                                    u = 0
+                                                    while u < len(b):
+                                                        if p in d:
+                                                            h = ''
+                                                        u = u + 1
+                                                if h == 'p':
+                                                    try:
+                                                        i = 0
+                                                        while ShareholdersEquityStatement[key][i] == None:
+                                                            i = i + 1
+                                                        ARCHvalue = ShareholdersEquityStatement[key][i]
+                                                        ShareholdersEquityStatement[key][i] = None
+                                                    except:
+                                                        if ShareholdersEquityStatement[key] != None:
+                                                            ARCHvalue = ShareholdersEquityStatement[key]
+                                                            ShareholdersEquityStatement[key] = None
+                                                        else:
+                                                            ARCHvalue = 0
+                                                    if ARCHvalue != 0:
+                                                        try:
+                                                            #
+                                                            if w is None:
+                                                                a.ShareholdersEquityGL_i = d
+                                                                w = ''
+                                                            #
+                                                            elif m is None:
+                                                                a.ShareholdersEquityGL_ii = d
+                                                                m = ''
+                                                            #
+                                                            elif t is None:
+                                                                a.ShareholdersEquityGL_iii = d
+                                                                t = ''
+                                                            else:
+                                                                pass
+                                                            #
+                                                            if d not in ShareholdersEquityGL:
+                                                                ShareholdersEquityGL.append(d)
+                                                            #
+                                                        except:
+                                                            pass
+                                            r = r + 1
+                                    except:
+                                        pass
                                     # dataframe
                                     try:
                                         #
@@ -6443,6 +6938,7 @@ try:
                                                 [
                                                 'tb.CommonSharesIssued',
                                                 'tb.ShareBasedCompensation',
+                                                'tb.ShareBasedCompensationRetainedEarnings',
                                                 'tb.DividendsAndDividendEquivalentsDeclared',
                                                 'tb.DividendsDeclaredToNonControllingInterests',
                                                 'tb.AcquisitionOfNonControllingInterests',
@@ -6454,6 +6950,7 @@ try:
                                                 [
                                                 '{:,}'.format(tb.CommonSharesIssued),
                                                 '{:,}'.format(tb.ShareBasedCompensation),
+                                                '{:,}'.format(tb.ShareBasedCompensationRetainedEarnings),
                                                 '{:,}'.format(tb.DividendsAndDividendEquivalentsDeclared),
                                                 '{:,}'.format(tb.DividendsDeclaredToNonControllingInterests),
                                                 '{:,}'.format(tb.AcquisitionOfNonControllingInterests),
@@ -6779,6 +7276,11 @@ try:
                                             c = tb.Cash
                                         c = c - a.IncreaseDecreaseInCash
                                         cf.CashBeginningBalance = c
+                                        #
+                                        c = cf.CashBeginningBalance
+                                        c = c + a.IncreaseDecreaseInCash
+                                        c = c - tb.Cash
+                                        a.CashFlowCashExplainedDifference = c
                                     except:
                                         pass
                                     #
@@ -7149,7 +7651,6 @@ try:
                                             pass
                                     except:
                                         pass
-                                    #
                                     #
                                     # operating activities components
                                     try:
@@ -8153,46 +8654,64 @@ try:
                                         # ML
                                         try:
                                             w = None
+                                            a.OperatingActivitiesGL_i = ''
                                             m = None
+                                            a.OperatingActivitiesGL_ii = ''
                                             t = None
+                                            a.OperatingActivitiesGL_iii = ''
                                             r = 0
                                             for key, value in CashFlowStatement.items():
                                                 if r < OperatingActivitiesRank:
                                                     d = key
-                                                    try:
-                                                        i = 0
-                                                        while CashFlowStatement[key][i] == None:
-                                                            i = i + 1
-                                                        ARCHvalue = CashFlowStatement[key][i]
-                                                        CashFlowStatement[key][i] = None
-                                                    except:
-                                                        if CashFlowStatement[key] != None:
-                                                            ARCHvalue = CashFlowStatement[key]
-                                                            CashFlowStatement[key] = None
-                                                        else:
-                                                            ARCHvalue = 0
-                                                    if ARCHvalue != 0:
+                                                    b = [
+                                                        'Total',
+                                                    ]
+                                                    h = 'p'
+                                                    for p in b:
+                                                        u = 0
+                                                        while u < len(b):
+                                                            if p in d:
+                                                                h = ''
+                                                            u = u + 1
+                                                    if h == 'p':
                                                         try:
-                                                            #
-                                                            if w is None:
-                                                                a.AnomalyOperatingActivitiesGL_i = d
-                                                                a.AnomalyOperatingActivitiesValue_i = ARCHvalue
-                                                                w = ''
-                                                            #
-                                                            elif m is None:
-                                                                a.AnomalyOperatingActivitiesGL_ii = d
-                                                                a.AnomalyOperatingActivitiesValue_ii = ARCHvalue
-                                                                m = ''
-                                                            #
-                                                            elif t is None:
-                                                                a.AnomalyOperatingActivitiesGL_iii = d
-                                                                a.AnomalyOperatingActivitiesValue_iii = ARCHvalue
-                                                                t = ''
+                                                            i = 0
+                                                            while CashFlowStatement[key][i] == None:
+                                                                i = i + 1
+                                                            ARCHvalue = CashFlowStatement[key][i]
+                                                            CashFlowStatement[key][i] = None
                                                         except:
-                                                            pass
+                                                            if CashFlowStatement[key] != None:
+                                                                ARCHvalue = CashFlowStatement[key]
+                                                                CashFlowStatement[key] = None
+                                                            else:
+                                                                ARCHvalue = 0
+                                                        if ARCHvalue != 0:
+                                                            try:
+                                                                #
+                                                                if w is None:
+                                                                    a.OperatingActivitiesGL_i = d
+                                                                    w = ''
+                                                                #
+                                                                elif m is None:
+                                                                    a.OperatingActivitiesGL_ii = d
+                                                                    m = ''
+                                                                #
+                                                                elif t is None:
+                                                                    a.OperatingActivitiesGL_iii = d
+                                                                    t = ''
+                                                                else:
+                                                                    pass
+                                                                #
+                                                                if d not in OperatingActivitiesGL:
+                                                                    OperatingActivitiesGL.append(d)
+                                                            #
+                                                            except:
+                                                                pass
                                                 r = r + 1
                                         except:
                                             pass
+                                        #
                                         # dataframe
                                         try:
                                             #
@@ -8873,44 +9392,61 @@ try:
                                         # ML
                                         try:
                                             w = None
+                                            a.InvestingActivitiesGL_i = ''
                                             m = None
+                                            a.InvestingActivitiesGL_ii = ''
                                             t = None
+                                            a.InvestingActivitiesGL_iii = ''
                                             r = 0
                                             for key, value in CashFlowStatement.items():
                                                 if r > OperatingActivitiesRank:
                                                     if r < InvestingActivitiesRank:
                                                         d = key
-                                                        try:
-                                                            i = 0
-                                                            while CashFlowStatement[key][i] == None:
-                                                                i = i + 1
-                                                            ARCHvalue = CashFlowStatement[key][i]
-                                                            CashFlowStatement[key][i] = None
-                                                        except:
-                                                            if CashFlowStatement[key] != None:
-                                                                ARCHvalue = CashFlowStatement[key]
-                                                                CashFlowStatement[key] = None
-                                                            else:
-                                                                ARCHvalue = 0
-                                                        if ARCHvalue != 0:
+                                                        b = [
+                                                            'Total',
+                                                        ]
+                                                        h = 'p'
+                                                        for p in b:
+                                                            u = 0
+                                                            while u < len(b):
+                                                                if p in d:
+                                                                    h = ''
+                                                                u = u + 1
+                                                        if h == 'p':
                                                             try:
-                                                                #
-                                                                if w is None:
-                                                                    a.AnomalyInvestingActivitiesGL_i = d
-                                                                    a.AnomalyInvestingActivitiesValue_i = ARCHvalue
-                                                                    w = ''
-                                                                #
-                                                                elif m is None:
-                                                                    a.AnomalyInvestingActivitiesGL_ii = d
-                                                                    a.AnomalyInvestingActivitiesValue_ii = ARCHvalue
-                                                                    m = ''
-                                                                #
-                                                                elif t is None:
-                                                                    a.AnomalyInvestingActivitiesGL_iii = d
-                                                                    a.AnomalyInvestingActivitiesValue_iii = ARCHvalue
-                                                                    t = ''
+                                                                i = 0
+                                                                while CashFlowStatement[key][i] == None:
+                                                                    i = i + 1
+                                                                ARCHvalue = CashFlowStatement[key][i]
+                                                                CashFlowStatement[key][i] = None
                                                             except:
-                                                                pass
+                                                                if CashFlowStatement[key] != None:
+                                                                    ARCHvalue = CashFlowStatement[key]
+                                                                    CashFlowStatement[key] = None
+                                                                else:
+                                                                    ARCHvalue = 0
+                                                            if ARCHvalue != 0:
+                                                                try:
+                                                                    #
+                                                                    if w is None:
+                                                                        a.InvestingActivitiesGL_i = d
+                                                                        w = ''
+                                                                    #
+                                                                    elif m is None:
+                                                                        a.InvestingActivitiesGL_ii = d
+                                                                        m = ''
+                                                                    #
+                                                                    elif t is None:
+                                                                        a.InvestingActivitiesGL_iii = d
+                                                                        t = ''
+                                                                    else:
+                                                                        pass
+                                                                    #
+                                                                    if d not in InvestingActivitiesGL:
+                                                                        InvestingActivitiesGL.append(d)
+                                                                    #
+                                                                except:
+                                                                    pass
                                                 r = r + 1
                                         except:
                                             pass
@@ -9908,44 +10444,61 @@ try:
                                         # ML
                                         try:
                                             w = None
+                                            a.FinancingActivitiesGL_i = ''
                                             m = None
+                                            a.FinancingActivitiesGL_ii = ''
                                             t = None
+                                            a.FinancingActivitiesGL_iii = ''
                                             r = 0
                                             for key, value in CashFlowStatement.items():
                                                 if r > InvestingActivitiesRank:
                                                     if r < FinancingActivitiesRank:
                                                         d = key
-                                                        try:
-                                                            i = 0
-                                                            while CashFlowStatement[key][i] == None:
-                                                                i = i + 1
-                                                            ARCHvalue = CashFlowStatement[key][i]
-                                                            CashFlowStatement[key][i] = None
-                                                        except:
-                                                            if CashFlowStatement[key] != None:
-                                                                ARCHvalue = CashFlowStatement[key]
-                                                                CashFlowStatement[key] = None
-                                                            else:
-                                                                ARCHvalue = 0
-                                                        if ARCHvalue != 0:
+                                                        b = [
+                                                            'Total',
+                                                        ]
+                                                        h = 'p'
+                                                        for p in b:
+                                                            u = 0
+                                                            while u < len(b):
+                                                                if p in d:
+                                                                    h = ''
+                                                                u = u + 1
+                                                        if h == 'p':
                                                             try:
-                                                                #
-                                                                if w is None:
-                                                                    a.AnomalyFinancingActivitiesGL_i = d
-                                                                    a.AnomalyFinancingActivitiesValue_i = ARCHvalue
-                                                                    w = ''
-                                                                #
-                                                                elif m is None:
-                                                                    a.AnomalyFinancingActivitiesGL_ii = d
-                                                                    a.AnomalyFinancingActivitiesValue_ii = ARCHvalue
-                                                                    m = ''
-                                                                #
-                                                                elif t is None:
-                                                                    a.AnomalyFinancingActivitiesGL_iii = d
-                                                                    a.AnomalyFinancingActivitiesValue_iii = ARCHvalue
-                                                                    t = ''
+                                                                i = 0
+                                                                while CashFlowStatement[key][i] == None:
+                                                                    i = i + 1
+                                                                ARCHvalue = CashFlowStatement[key][i]
+                                                                CashFlowStatement[key][i] = None
                                                             except:
-                                                                pass
+                                                                if CashFlowStatement[key] != None:
+                                                                    ARCHvalue = CashFlowStatement[key]
+                                                                    CashFlowStatement[key] = None
+                                                                else:
+                                                                    ARCHvalue = 0
+                                                            if ARCHvalue != 0:
+                                                                try:
+                                                                    #
+                                                                    if w is None:
+                                                                        a.FinancingActivitiesGL_i = d
+                                                                        w = ''
+                                                                    #
+                                                                    elif m is None:
+                                                                        a.FinancingActivitiesGL_ii = d
+                                                                        m = ''
+                                                                    #
+                                                                    elif t is None:
+                                                                        a.FinancingActivitiesGL_iii = d
+                                                                        t = ''
+                                                                    else:
+                                                                        pass
+                                                                    #
+                                                                    if d not in FinancingActivitiesGL:
+                                                                        FinancingActivitiesGL.append(d)
+                                                                    #
+                                                                except:
+                                                                    pass
                                                 r = r + 1
                                         except:
                                             pass
@@ -10010,12 +10563,11 @@ try:
                                     pass
                                 #
                                 # save
-                                tb.save()
-                                cf.save()
                                 a.save()
+                                cf.save()
+                                tb.save()
                             except:
                                 pass
-                            #
             except:
                 pass
             #
@@ -10089,6 +10641,7 @@ try:
                                     c = a.RetainedEarnings
                                     c = c - tb.DividendsAndDividendEquivalentsDeclared
                                     c = c - tb.CommonSharesRepurchasedAndRetired
+                                    c = c - tb.ShareBasedCompensationRetainedEarnings
                                     c = c - tb.EffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts
                                     c = c - a.NetIncome
                                     tb.RetainedEarningsBeginning = c
@@ -10161,7 +10714,6 @@ try:
                                 a.save()
                             except:
                                 pass
-                            #
             except:
                 pass
             #
@@ -10914,9 +11466,8 @@ try:
                                     c = c - Anomaly
                                     a.OtherComprehensiveIncome = c
                                     #
-                                    c = a.AnomalyOtherComprehensiveIncome
-                                    c = c + Anomaly
-                                    a.AnomalyOtherComprehensiveIncome = c
+                                    c = Anomaly
+                                    a.AnomalyAccumulatedOtherComprehensiveIncome = c
                                     #
                                     # dataframe
                                     try:
@@ -10959,8 +11510,8 @@ try:
                                         tb.RetainedEarningsBeginning,
                                         tb.DividendsAndDividendEquivalentsDeclared,
                                         tb.CommonSharesRepurchasedAndRetired,
+                                        tb.ShareBasedCompensationRetainedEarnings,
                                         tb.EffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts,
-                                        tb.RetainedEarningsOthers,
                                         a.NetIncome,
                                     ]
                                     #
@@ -11974,7 +12525,7 @@ try:
             #
             # time of update
             try:
-                e.SEC_Update = now
+                e.SEC_Update = datetime.datetime.today()
             except:
                 pass
             #
@@ -11985,6 +12536,111 @@ try:
                 print('\n' + e.db + ', ' + str(e.NumberOfYearsAudited) + '\n' + 137 * '-' + '\n')
             except:
                 pass
+    #
+    # machine learning
+    try:
+        #
+        # clear
+        try:
+            f = glob.glob('A:/clock/φ/algorithm/machine learning/ml.txt')
+            if f != []:
+                os.remove(f)
+        except:
+            pass
+        #
+        c = './φ/algorithm/machine learning/'
+        #
+        # current assets
+        CurrentAssetsGL.sort()
+        with open(c + 'CurrentAssetsGL.txt', 'w') as ml:
+            for g in CurrentAssetsGL:
+                ml.write(g + " \n")
+        #
+        # non current assets
+        NonCurrentAssetsGL.sort()
+        with open(c + 'NonCurrentAssetsGL.txt', 'w') as ml:
+            for g in NonCurrentAssetsGL:
+                ml.write(g + " \n")
+        #
+        # current liabilities
+        CurrentLiabilitiesGL.sort()
+        with open(c + 'CurrentLiabilitiesGL.txt', 'w') as ml:
+            for g in CurrentLiabilitiesGL:
+                ml.write(g + " \n")
+        #
+        # non current liabilities
+        NonCurrentLiabilitiesGL.sort()
+        with open(c + 'NonCurrentLiabilitiesGL.txt', 'w') as ml:
+            for g in NonCurrentLiabilitiesGL:
+                ml.write(g + " \n")
+        #
+        # non current liabilities
+        ShareholdersEquityBalanceGL.sort()
+        with open(c + 'ShareholdersEquityBalanceGL.txt', 'w') as ml:
+            for g in ShareholdersEquityBalanceGL:
+                ml.write(g + " \n")
+        #
+        # gross margin
+        GrossMarginGL.sort()
+        with open(c + 'GrossMarginGL.txt', 'w') as ml:
+            for g in GrossMarginGL:
+                ml.write(g + " \n")
+        #
+        # operating expenses
+        OperatingExpensesGL.sort()
+        with open(c + 'OperatingExpensesGL.txt', 'w') as ml:
+            for g in OperatingExpensesGL:
+                ml.write(g + " \n")
+        #
+        # operating income
+        OperatingIncomeGL.sort()
+        with open(c + 'OperatingIncomeGL.txt', 'w') as ml:
+            for g in OperatingIncomeGL:
+                ml.write(g + " \n")
+        #
+        # income before taxes
+        IncomeBeforeTaxesGL.sort()
+        with open(c + 'IncomeBeforeTaxesGL.txt', 'w') as ml:
+            for g in IncomeBeforeTaxesGL:
+                ml.write(g + " \n")
+        #
+        # net income
+        NetIncomeGL.sort()
+        with open(c + 'NetIncomeGL.txt', 'w') as ml:
+            for g in NetIncomeGL:
+                ml.write(g + " \n")
+        #
+        # other comprehensive income
+        OtherComprehensiveIncomeGL.sort()
+        with open(c + 'OtherComprehensiveIncomeGL.txt', 'w') as ml:
+            for g in OtherComprehensiveIncomeGL:
+                ml.write(g + " \n")
+        #
+        # shareholders equity
+        ShareholdersEquityGL.sort()
+        with open(c + 'ShareholdersEquityGL.txt', 'w') as ml:
+            for g in ShareholdersEquityGL:
+                ml.write(g + " \n")
+        #
+        # operating activities
+        OperatingActivitiesGL.sort()
+        with open(c + 'OperatingActivitiesGL.txt', 'w') as ml:
+            for g in OperatingActivitiesGL:
+                ml.write(g + " \n")
+        #
+        # investing activities
+        InvestingActivitiesGL.sort()
+        with open(c + 'InvestingActivitiesGL.txt', 'w') as ml:
+            for g in InvestingActivitiesGL:
+                ml.write(g + " \n")
+        #
+        # financing activities
+        FinancingActivitiesGL.sort()
+        with open(c + 'FinancingActivitiesGL.txt', 'w') as ml:
+            for g in FinancingActivitiesGL:
+                ml.write(g + " \n")
+    except:
+        pass
     #
     # db stats
     try:

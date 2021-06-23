@@ -299,7 +299,6 @@
     document.addEventListener('keydown', function(event) {
         if (event.code == 'Numpad0' && (event.winKey || event.metaKey)) {
             event.preventDefault();
-            document.getElementById('BridgeCell').style.display = 'block';
             document.querySelectorAll('div').forEach(div => {
                 div.style.display = 'none';
             })
@@ -314,7 +313,6 @@
     document.addEventListener('keydown', function(event) {
         if (event.code == 'Numpad6' && (event.winKey || event.metaKey)) {
             event.preventDefault();
-            document.getElementById('BridgeCell').style.display = 'block';
             document.querySelectorAll('div').forEach(div => {
                 div.style.display = 'none';
             })
@@ -329,7 +327,6 @@
     document.addEventListener('keydown', function(event) {
         if (event.code == 'Numpad7' && (event.winKey || event.metaKey)) {
             event.preventDefault();
-            document.getElementById('BridgeCell').style.display = 'block';
             document.querySelectorAll('div').forEach(div => {
                 div.style.display = 'none';
             })
@@ -344,7 +341,6 @@
     document.addEventListener('keydown', function(event) {
         if (event.code == 'Numpad8' && (event.winKey || event.metaKey)) {
             event.preventDefault();
-            document.getElementById('BridgeCell').style.display = 'block';
             document.querySelectorAll('div').forEach(div => {
                 div.style.display = 'none';
             })
@@ -359,7 +355,6 @@
     document.addEventListener('keydown', function(event) {
         if (event.code == 'Numpad2' && (event.winKey || event.metaKey)) {
             event.preventDefault();
-            document.getElementById('BridgeCell').style.display = 'block';
             document.querySelectorAll('div').forEach(div => {
                 div.style.display = 'none';
             })
@@ -374,7 +369,6 @@
     document.addEventListener('keydown', function(event) {
         if (event.code == 'Numpad3' && (event.winKey || event.metaKey)) {
             event.preventDefault();
-            document.getElementById('BridgeCell').style.display = 'block';
             document.querySelectorAll('div').forEach(div => {
                 div.style.display = 'none';
             })
@@ -389,7 +383,6 @@
     document.addEventListener('keydown', function(event) {
         if (event.code == 'Numpad4' && (event.winKey || event.metaKey)) {
             event.preventDefault();
-            document.getElementById('BridgeCell').style.display = 'block';
             document.querySelectorAll('div').forEach(div => {
                 div.style.display = 'none';
             })
@@ -404,7 +397,6 @@
     document.addEventListener('keydown', function(event) {
         if (event.code == 'Numpad5' && (event.winKey || event.metaKey)) {
             event.preventDefault();
-            document.getElementById('BridgeCell').style.display = 'block';
             document.querySelectorAll('div').forEach(div => {
                 div.style.display = 'none';
             })
@@ -419,7 +411,6 @@
     document.addEventListener('keydown', function(event) {
         if (event.code == 'Numpad1' && (event.winKey || event.metaKey)) {
             event.preventDefault();
-            document.getElementById('BridgeCell').style.display = 'block';
             document.querySelectorAll('div').forEach(div => {
                 div.style.display = 'none';
             })
@@ -518,6 +509,7 @@
         BalanceShareholdersEquityBeginningi();
         BalanceCommonSharesIssued();
         BalanceShareBasedCompensation();
+        BalanceShareBasedCompensationRetainedEarnings();
         BalanceDividendsAndDividendEquivalentsDeclared();
         BalanceCommonSharesRepurchasedAndRetired();
         BalanceEffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts();
@@ -687,6 +679,7 @@
         BalanceShareholdersEquityAnomaliesi();
         CashFlowCashBeginning();
         CashBalanceSheetsAudit();
+        CashBalanceSheetsAuditExplainedDifference();
         CashFlowCashAnomaly();
         BalanceAnomaliesCurrentAssets();
         BalanceAnomaliesNonCurrentAssets();
@@ -737,7 +730,7 @@
                             <h2>Financials</h2>
                         </button>
                     </td>
-                    <td colspan='3' style="display:none;" id="BridgeCell">
+                    <td colspan='3'>
                         <button data-page="Bridge" name="Bridge">
                             <h2>Audit</h2>
                         </button>
@@ -2027,6 +2020,20 @@
                         <td colspan='2'><input value={{ TrialBalance_fifthlastyear.DividendsAndDividendEquivalentsDeclared }} class="clock" id="TrialBalanceDividendsAndDividendEquivalentsDeclared5" onclick="HighLight()" onfocusout="Enter()"></input></td>
                         <td colspan='2'><input value={{ TrialBalance_sixthlastyear.DividendsAndDividendEquivalentsDeclared }} class="clock" id="TrialBalanceDividendsAndDividendEquivalentsDeclared6" onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
+                    <tr id="TrialBalanceShareBasedCompensationRetainedEarningsRow">
+                        <td colspan="2"><h6><b>Share Based Compensation - Retained Earnings</b></h6></td>
+                        <td style="text-align:center; font-weight:bold;">db</td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="TrialBalanceShareBasedCompensationRetainedEarningsCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="TrialBalanceShareBasedCompensationRetainedEarningsCheckbox2"></input>
+                        </td>
+                        <td colspan='2'><input value={{ TrialBalance_lastyear.ShareBasedCompensationRetainedEarnings }} class="clock" id="TrialBalanceShareBasedCompensationRetainedEarnings1" style="font-weight:bold;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan='2'><input value={{ TrialBalance_secondlastyear.ShareBasedCompensationRetainedEarnings }} class="clock" id="TrialBalanceShareBasedCompensationRetainedEarnings2" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan='2'><input value={{ TrialBalance_thirdlastyear.ShareBasedCompensationRetainedEarnings }} class="clock" id="TrialBalanceShareBasedCompensationRetainedEarnings3" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan='2'><input value={{ TrialBalance_fourthlastyear.ShareBasedCompensationRetainedEarnings }} class="clock" id="TrialBalanceShareBasedCompensationRetainedEarnings4" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan='2'><input value={{ TrialBalance_fifthlastyear.ShareBasedCompensationRetainedEarnings }} class="clock" id="TrialBalanceShareBasedCompensationRetainedEarnings5" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan='2'><input value={{ TrialBalance_sixthlastyear.ShareBasedCompensationRetainedEarnings }} class="clock" id="TrialBalanceShareBasedCompensationRetainedEarnings6" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
                     <tr id="TrialBalanceEffectOfAdoptionOfNewAccountingPronouncementOrTaxCutsRow">
                         <td colspan="2"><h6><b>Effect Of Adoption Of New Accounting Pronouncement Or Tax Cuts</b></h6></td>
                         <td style="text-align:center; font-weight:bold;">db</td>
@@ -2442,6 +2449,7 @@
                                 // Retained Earnings
                                 a = a + parseInt(document.getElementById('TrialBalanceRetainedEarningsAccumulatedDeficit1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceDividendsAndDividendEquivalentsDeclared1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('TrialBalanceShareBasedCompensationRetainedEarnings1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceCommonSharesRepurchasedAndRetired1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceEffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceRetainedEarningsOthers1').value.replaceAll(/,/g, ''));
@@ -2541,6 +2549,7 @@
                                 // Retained Earnings
                                 a = a + parseInt(document.getElementById('TrialBalanceRetainedEarningsAccumulatedDeficit2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceDividendsAndDividendEquivalentsDeclared2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('TrialBalanceShareBasedCompensationRetainedEarnings2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceCommonSharesRepurchasedAndRetired2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceEffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceRetainedEarningsOthers2').value.replaceAll(/,/g, ''));
@@ -2641,6 +2650,7 @@
                                 // Retained Earnings
                                 a = a + parseInt(document.getElementById('TrialBalanceRetainedEarningsAccumulatedDeficit3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceDividendsAndDividendEquivalentsDeclared3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('TrialBalanceShareBasedCompensationRetainedEarnings3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceCommonSharesRepurchasedAndRetired3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceEffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceRetainedEarningsOthers3').value.replaceAll(/,/g, ''));
@@ -2741,6 +2751,7 @@
                                 // Retained Earnings
                                 a = a + parseInt(document.getElementById('TrialBalanceRetainedEarningsAccumulatedDeficit4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceDividendsAndDividendEquivalentsDeclared4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('TrialBalanceShareBasedCompensationRetainedEarnings4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceCommonSharesRepurchasedAndRetired4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceEffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceRetainedEarningsOthers4').value.replaceAll(/,/g, ''));
@@ -2841,6 +2852,7 @@
                                 // Retained Earnings
                                 a = a + parseInt(document.getElementById('TrialBalanceRetainedEarningsAccumulatedDeficit5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceDividendsAndDividendEquivalentsDeclared5').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('TrialBalanceShareBasedCompensationRetainedEarnings5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceCommonSharesRepurchasedAndRetired5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceEffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceRetainedEarningsOthers5').value.replaceAll(/,/g, ''));
@@ -2941,6 +2953,7 @@
                                 // Retained Earnings
                                 a = a + parseInt(document.getElementById('TrialBalanceRetainedEarningsAccumulatedDeficit6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceDividendsAndDividendEquivalentsDeclared6').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('TrialBalanceShareBasedCompensationRetainedEarnings6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceCommonSharesRepurchasedAndRetired6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceEffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('TrialBalanceRetainedEarningsOthers6').value.replaceAll(/,/g, ''));
@@ -7289,12 +7302,12 @@
                     <tr></tr>
                     <tr></tr>
                     <tr>
-                        <td colspan="6"><h6><b>NOTE 5: ShareHOLDERS' EQUITY</b></h6></td>
+                        <td colspan="6"><h6><b>NOTE 5: SHAREHOLDERS' EQUITY</b></h6></td>
                     </tr>
                     <tr></tr>
                     <tr id='ConvertibleDebtRow'>
                         <td colspan="2"><h6>Convertible Debt</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button data-page="AnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">SE</button></td>
                         <td>
                             <input type="checkbox" style="height: 16px; box-shadow: none;" id="ConvertibleDebtCheckbox"></input>
                             <input type="checkbox" style="height: 16px; box-shadow: none;" id="ConvertibleDebtCheckbox2"></input>
@@ -7308,7 +7321,7 @@
                     </tr>
                     <tr id='CommonSharesRow'>
                         <td colspan="2"><h6>Common Shares</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button data-page="AnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">SE</button></td>
                         <td>
                             <input type="checkbox" style="height: 16px; box-shadow: none;" id="CommonSharesCheckbox"></input>
                             <input type="checkbox" style="height: 16px; box-shadow: none;" id="CommonSharesCheckbox2"></input>
@@ -7322,7 +7335,7 @@
                     </tr>
                     <tr id='RetainedEarningsRow'>
                         <td colspan="2"><h6>Retained Earnings (Accumulated Deficit)</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button data-page="AnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">SE</button></td>
                         <td>
                             <input type="checkbox" style="height: 16px; box-shadow: none;" id="RetainedEarningsAccumulatedDeficitCheckbox"></input>
                             <input type="checkbox" style="height: 16px; box-shadow: none;" id="RetainedEarningsAccumulatedDeficitCheckbox2"></input>
@@ -7336,7 +7349,7 @@
                     </tr>
                     <tr id='AccumulatedOtherComprehensiveIncomeRow'>
                         <td colspan="2"><h6>Accumulated Other Comprehensive Income (Loss)</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button data-page="AnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">SE</button></td>
                         <td>
                             <input type="checkbox" style="height: 16px; box-shadow: none;" id="AccumulatedOtherComprehensiveIncomeLossCheckbox"></input>
                             <input type="checkbox" style="height: 16px; box-shadow: none;" id="AccumulatedOtherComprehensiveIncomeLossCheckbox2"></input>
@@ -7350,7 +7363,7 @@
                     </tr>
                     <tr id='TreasurySharesRow'>
                         <td colspan="2"><h6>Treasury Shares</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button data-page="AnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">SE</button></td>
                         <td>
                             <input type="checkbox" style="height: 16px; box-shadow: none;" id="TreasurySharesCheckbox"></input>
                             <input type="checkbox" style="height: 16px; box-shadow: none;" id="TreasurySharesCheckbox2"></input>
@@ -7364,7 +7377,7 @@
                     </tr>
                     <tr id='EmployeeBenefitTrustRow'>
                         <td colspan="2"><h6>Employee Benefit Trust</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button data-page="AnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">SE</button></td>
                         <td>
                             <input type="checkbox" style="height: 16px; box-shadow: none;" id="EmployeeBenefitTrustCheckbox"></input>
                             <input type="checkbox" style="height: 16px; box-shadow: none;" id="EmployeeBenefitTrustCheckbox2"></input>
@@ -7378,7 +7391,7 @@
                     </tr>
                     <tr id='NonControllingInterestsRow'>
                         <td colspan="2"><h6>Non Controlling Interests</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button data-page="AnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">SE</button></td>
                         <td>
                             <input type="checkbox" style="height: 16px; box-shadow: none;" id="NonControllingInterestsCheckbox"></input>
                             <input type="checkbox" style="height: 16px; box-shadow: none;" id="NonControllingInterestsCheckbox2"></input>
@@ -9054,6 +9067,75 @@
                         <td colspan="2"><input class="account" id="ShareBasedCompensation5" onclick="HighLight()" onfocusout="Enter()"></input></td>
                         <td colspan="2"><input class="account" id="ShareBasedCompensation6" onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
+                    <tr id='ShareBasedCompensationRetainedEarningsRow'>
+                        <td colspan="2"><h6>Share Based Compensation - Retained Earnings Component</h6></td>
+                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="ShareBasedCompensationRetainedEarningsCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="ShareBasedCompensationRetainedEarningsCheckbox2"></input>
+                        </td>
+                        <script>
+                            function BalanceShareBasedCompensationRetainedEarnings(BalanceShareBasedCompensationRetainedEarnings) {
+                                var numUSD = new Intl.NumberFormat("en-US", {
+                                    format: "number"
+                                })
+                                z = 0
+                                // last year
+                                a = -Math.round(parseInt(document.getElementById('TrialBalanceShareBasedCompensationRetainedEarnings1').value.replaceAll(/,/g, '')))
+                                document.getElementById('ShareBasedCompensationRetainedEarnings1').value = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // second last year
+                                a = -Math.round(parseInt(document.getElementById('TrialBalanceShareBasedCompensationRetainedEarnings2').value.replaceAll(/,/g, '')))
+                                document.getElementById('ShareBasedCompensationRetainedEarnings2').value = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // third last year
+                                a = -Math.round(parseInt(document.getElementById('TrialBalanceShareBasedCompensationRetainedEarnings3').value.replaceAll(/,/g, '')))
+                                document.getElementById('ShareBasedCompensationRetainedEarnings3').value = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // fourth last year
+                                a = -Math.round(parseInt(document.getElementById('TrialBalanceShareBasedCompensationRetainedEarnings4').value.replaceAll(/,/g, '')))
+                                document.getElementById('ShareBasedCompensationRetainedEarnings4').value = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // fifth last year
+                                a = -Math.round(parseInt(document.getElementById('TrialBalanceShareBasedCompensationRetainedEarnings5').value.replaceAll(/,/g, '')))
+                                document.getElementById('ShareBasedCompensationRetainedEarnings5').value = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // sixth last year
+                                a = -Math.round(parseInt(document.getElementById('TrialBalanceShareBasedCompensationRetainedEarnings6').value.replaceAll(/,/g, '')))
+                                document.getElementById('ShareBasedCompensationRetainedEarnings6').value = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                if (z == 6) {
+                                    document.getElementById('ShareBasedCompensationRetainedEarningsRow').style.display = 'none';
+                                    document.getElementById('TrialBalanceShareBasedCompensationRetainedEarningsRow').style.display = 'none';
+                                }
+                            };
+                            window.addEventListener('DOMContentLoaded', BalanceShareBasedCompensationRetainedEarnings)
+                            window.addEventListener('keyup', function() {
+                                var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
+                                if (event.keyCode in formulakeylist) {
+                                    BalanceShareBasedCompensationRetainedEarnings();
+                                }
+                            })
+                        </script>
+                        <td colspan="2"><input class="account" id="ShareBasedCompensationRetainedEarnings1" style="font-weight:bold;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="ShareBasedCompensationRetainedEarnings2" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="ShareBasedCompensationRetainedEarnings3" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="ShareBasedCompensationRetainedEarnings4" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="ShareBasedCompensationRetainedEarnings5" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="ShareBasedCompensationRetainedEarnings6" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
                     <tr id='DividendsAndDividendEquivalentsDeclaredRow'>
                         <td colspan="2"><h6>Dividends And Dividend Equivalents Declared</h6></td>
                         <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
@@ -9608,7 +9690,7 @@
                     </tr>
                     <tr>
                         <td colspan="2"><h6>Other Comprehensive Income (Loss)</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button data-page="AnnualComprehensiveIncome" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CI</button></td>
                         <td>
                             <input type="checkbox" style="height: 16px; box-shadow: none;" id="ComprehensiveIncomeShareholdersEquityCheckbox"></input>
                             <input type="checkbox" style="height: 16px; box-shadow: none;" id="ComprehensiveIncomeShareholdersEquityCheckbox2"></input>
@@ -9728,6 +9810,7 @@
                                 a = parseInt(document.getElementById('ShareholdersEquityBeginning1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesIssued1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShareBasedCompensation1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ShareBasedCompensationRetainedEarnings1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesRepurchasedAndRetired1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('EffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts1').value.replaceAll(/,/g, ''));
@@ -9743,6 +9826,7 @@
                                 a = parseInt(document.getElementById('ShareholdersEquityBeginning2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesIssued2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShareBasedCompensation2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ShareBasedCompensationRetainedEarnings2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesRepurchasedAndRetired2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('EffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts2').value.replaceAll(/,/g, ''));
@@ -9758,6 +9842,7 @@
                                 a = parseInt(document.getElementById('ShareholdersEquityBeginning3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesIssued3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShareBasedCompensation3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ShareBasedCompensationRetainedEarnings3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesRepurchasedAndRetired3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('EffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts3').value.replaceAll(/,/g, ''));
@@ -9773,6 +9858,7 @@
                                 a = parseInt(document.getElementById('ShareholdersEquityBeginning4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesIssued4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShareBasedCompensation4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ShareBasedCompensationRetainedEarnings4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesRepurchasedAndRetired4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('EffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts4').value.replaceAll(/,/g, ''));
@@ -9788,6 +9874,7 @@
                                 a = parseInt(document.getElementById('ShareholdersEquityBeginning5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesIssued5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShareBasedCompensation5').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ShareBasedCompensationRetainedEarnings5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesRepurchasedAndRetired5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('EffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts5').value.replaceAll(/,/g, ''));
@@ -9803,6 +9890,7 @@
                                 a = parseInt(document.getElementById('ShareholdersEquityBeginning6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesIssued6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShareBasedCompensation6').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ShareBasedCompensationRetainedEarnings6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesRepurchasedAndRetired6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('EffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts6').value.replaceAll(/,/g, ''));
@@ -9817,6 +9905,7 @@
                                 ////////////////////
                                 // Convertible Debt (Balance Sheets) 
                                 // Last Year
+                                z = 0
                                 a = -parseInt(document.getElementById('TrialBalanceConvertibleDebt1').value.replaceAll(/,/g, ''));
                                 document.getElementById('ConvertibleDebt1').value = numUSD.format(Math.round(a));
                                 if (a == 0) {
@@ -9920,6 +10009,7 @@
                                 a = -parseInt(document.getElementById('TrialBalanceRetainedEarningsAccumulatedDeficit1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesRepurchasedAndRetired1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ShareBasedCompensationRetainedEarnings1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('EffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetainedEarningsOthers1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetIncomeLossShareholdersEquity1').value.replaceAll(/,/g, ''));
@@ -9928,6 +10018,7 @@
                                 a = -parseInt(document.getElementById('TrialBalanceRetainedEarningsAccumulatedDeficit2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesRepurchasedAndRetired2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ShareBasedCompensationRetainedEarnings2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('EffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetainedEarningsOthers2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetIncomeLossShareholdersEquity2').value.replaceAll(/,/g, ''));
@@ -9936,6 +10027,7 @@
                                 a = -parseInt(document.getElementById('TrialBalanceRetainedEarningsAccumulatedDeficit3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesRepurchasedAndRetired3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ShareBasedCompensationRetainedEarnings3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('EffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetainedEarningsOthers3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetIncomeLossShareholdersEquity3').value.replaceAll(/,/g, ''));
@@ -9944,6 +10036,7 @@
                                 a = -parseInt(document.getElementById('TrialBalanceRetainedEarningsAccumulatedDeficit4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesRepurchasedAndRetired4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ShareBasedCompensationRetainedEarnings4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('EffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetainedEarningsOthers4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetIncomeLossShareholdersEquity4').value.replaceAll(/,/g, ''));
@@ -9952,6 +10045,7 @@
                                 a = -parseInt(document.getElementById('TrialBalanceRetainedEarningsAccumulatedDeficit5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesRepurchasedAndRetired5').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ShareBasedCompensationRetainedEarnings5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('EffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetainedEarningsOthers5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetIncomeLossShareholdersEquity5').value.replaceAll(/,/g, ''));
@@ -9960,6 +10054,7 @@
                                 a = -parseInt(document.getElementById('TrialBalanceRetainedEarningsAccumulatedDeficit6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesRepurchasedAndRetired6').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ShareBasedCompensationRetainedEarnings6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('EffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('RetainedEarningsOthers6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetIncomeLossShareholdersEquity6').value.replaceAll(/,/g, ''));
@@ -19153,7 +19248,7 @@
                                                     label: 'intrinsic value ' + scale,
                                                     fill: false,
                                                     lineTension: 0.5,
-                                                    borderColor: 'green',
+                                                    borderColor: '#0D47A1',
                                                     borderCapStyle: 'butt',
                                                     borderDash: [],
                                                     borderDashOffset: 0.0,
@@ -20849,6 +20944,50 @@
                         <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.3.16" value={{ AuditData_sixthlastyear.AnomalyCurrentAssets }} onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
                     <tr>
+                        <td colspan="2" style="text-align:left;">Missing Vocabulary</td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLCurrentAssetsCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLCurrentAssetsCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentAssets1" style="font-weight:bold;" value={{ AuditData_lastyear.AnomalyCurrentAssetsGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentAssets2" value={{ AuditData_secondlastyear.AnomalyCurrentAssetsGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentAssets3" value={{ AuditData_thirdlastyear.AnomalyCurrentAssetsGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentAssets4" value={{ AuditData_fourthlastyear.AnomalyCurrentAssetsGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentAssets5" value={{ AuditData_fifthlastyear.AnomalyCurrentAssetsGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentAssets6" value={{ AuditData_sixthlastyear.AnomalyCurrentAssetsGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"></td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLCurrentAssetsiCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLCurrentAssetsiCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentAssetsi1" style="font-weight:bold;" value={{ AuditData_lastyear.AnomalyCurrentAssetsGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentAssetsi2" value={{ AuditData_secondlastyear.AnomalyCurrentAssetsGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentAssetsi3" value={{ AuditData_thirdlastyear.AnomalyCurrentAssetsGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentAssetsi4" value={{ AuditData_fourthlastyear.AnomalyCurrentAssetsGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentAssetsi5" value={{ AuditData_fifthlastyear.AnomalyCurrentAssetsGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentAssetsi6" value={{ AuditData_sixthlastyear.AnomalyCurrentAssetsGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"></td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLCurrentAssetsiiCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLCurrentAssetsiiCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentAssetsii1" style="font-weight:bold;" value={{ AuditData_lastyear.AnomalyCurrentAssetsGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentAssetsii2" value={{ AuditData_secondlastyear.AnomalyCurrentAssetsGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentAssetsii3" value={{ AuditData_thirdlastyear.AnomalyCurrentAssetsGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentAssetsii4" value={{ AuditData_fourthlastyear.AnomalyCurrentAssetsGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentAssetsii5" value={{ AuditData_fifthlastyear.AnomalyCurrentAssetsGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentAssetsii6" value={{ AuditData_sixthlastyear.AnomalyCurrentAssetsGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
                         <td colspan="2" style="text-align:left;">Non-Current Assets</td>
                         <td style="text-align:center"><button data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">BS</button></td>
                         <td>
@@ -20862,6 +21001,50 @@
                         <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.3.25" value={{ AuditData_fifthlastyear.AnomalyNonCurrentAssets }} onclick="HighLight()" onfocusout="Enter()"></input></td>
                         <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.3.26" value={{ AuditData_sixthlastyear.AnomalyNonCurrentAssets }} onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;">Missing Vocabulary</td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLNonCurrentAssetsCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLNonCurrentAssetsCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentAssets1" style="font-weight:bold;" value={{ AuditData_lastyear.AnomalyNonCurrentAssetsGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentAssets2" value={{ AuditData_secondlastyear.AnomalyNonCurrentAssetsGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentAssets3" value={{ AuditData_thirdlastyear.AnomalyNonCurrentAssetsGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentAssets4" value={{ AuditData_fourthlastyear.AnomalyNonCurrentAssetsGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentAssets5" value={{ AuditData_fifthlastyear.AnomalyNonCurrentAssetsGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentAssets6" value={{ AuditData_sixthlastyear.AnomalyNonCurrentAssetsGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"></td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLNonCurrentAssetsiCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLNonCurrentAssetsiCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentAssetsi1" style="font-weight:bold;" value={{ AuditData_lastyear.AnomalyNonCurrentAssetsGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentAssetsi2" value={{ AuditData_secondlastyear.AnomalyNonCurrentAssetsGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentAssetsi3" value={{ AuditData_thirdlastyear.AnomalyNonCurrentAssetsGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentAssetsi4" value={{ AuditData_fourthlastyear.AnomalyNonCurrentAssetsGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentAssetsi5" value={{ AuditData_fifthlastyear.AnomalyNonCurrentAssetsGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentAssetsi6" value={{ AuditData_sixthlastyear.AnomalyNonCurrentAssetsGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"></td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLNonCurrentAssetsiiCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLNonCurrentAssetsiiCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentAssetsii1" style="font-weight:bold;" value={{ AuditData_lastyear.AnomalyNonCurrentAssetsGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentAssetsii2" value={{ AuditData_secondlastyear.AnomalyNonCurrentAssetsGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentAssetsii3" value={{ AuditData_thirdlastyear.AnomalyNonCurrentAssetsGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentAssetsii4" value={{ AuditData_fourthlastyear.AnomalyNonCurrentAssetsGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentAssetsii5" value={{ AuditData_fifthlastyear.AnomalyNonCurrentAssetsGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentAssetsii6" value={{ AuditData_sixthlastyear.AnomalyNonCurrentAssetsGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
                     <tr>
                         <td colspan="2" style="text-align:left;">Current Liabilities</td>
                         <td style="text-align:center"><button data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">BS</button></td>
@@ -20877,6 +21060,50 @@
                         <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.3.36" value={{ AuditData_sixthlastyear.AnomalyCurrentLiabilities }} onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
                     <tr>
+                        <td colspan="2" style="text-align:left;">Missing Vocabulary</td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLCurrentLiabilitiesCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLCurrentLiabilitiesCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentLiabilities1" style="font-weight:bold;" value={{ AuditData_lastyear.AnomalyCurrentLiabilitiesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentLiabilities2" value={{ AuditData_secondlastyear.AnomalyCurrentLiabilitiesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentLiabilities3" value={{ AuditData_thirdlastyear.AnomalyCurrentLiabilitiesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentLiabilities4" value={{ AuditData_fourthlastyear.AnomalyCurrentLiabilitiesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentLiabilities5" value={{ AuditData_fifthlastyear.AnomalyCurrentLiabilitiesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentLiabilities6" value={{ AuditData_sixthlastyear.AnomalyCurrentLiabilitiesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"></td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLCurrentLiabilitiesiCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLCurrentLiabilitiesiCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentLiabilitiesi1" style="font-weight:bold;" value={{ AuditData_lastyear.AnomalyCurrentLiabilitiesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentLiabilitiesi2" value={{ AuditData_secondlastyear.AnomalyCurrentLiabilitiesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentLiabilitiesi3" value={{ AuditData_thirdlastyear.AnomalyCurrentLiabilitiesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentLiabilitiesi4" value={{ AuditData_fourthlastyear.AnomalyCurrentLiabilitiesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentLiabilitiesi5" value={{ AuditData_fifthlastyear.AnomalyCurrentLiabilitiesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentLiabilitiesi6" value={{ AuditData_sixthlastyear.AnomalyCurrentLiabilitiesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"></td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLCurrentLiabilitiesiiCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLCurrentLiabilitiesiiCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentLiabilitiesii1" style="font-weight:bold;" value={{ AuditData_lastyear.AnomalyCurrentLiabilitiesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentLiabilitiesii2" value={{ AuditData_secondlastyear.AnomalyCurrentLiabilitiesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentLiabilitiesii3" value={{ AuditData_thirdlastyear.AnomalyCurrentLiabilitiesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentLiabilitiesii4" value={{ AuditData_fourthlastyear.AnomalyCurrentLiabilitiesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentLiabilitiesii5" value={{ AuditData_fifthlastyear.AnomalyCurrentLiabilitiesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLCurrentLiabilitiesii6" value={{ AuditData_sixthlastyear.AnomalyCurrentAssetsGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
                         <td colspan="2" style="text-align:left;">Non-Current Liabilities</td>
                         <td style="text-align:center"><button data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">BS</button></td>
                         <td>
@@ -20891,6 +21118,50 @@
                         <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.3.46" value={{ AuditData_sixthlastyear.AnomalyNonCurrentLiabilities }} onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
                     <tr>
+                        <td colspan="2" style="text-align:left;">Missing Vocabulary</td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLNonCurrentLiabilitiesCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLNonCurrentLiabilitiesCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentLiabilities1" style="font-weight:bold;" value={{ AuditData_lastyear.AnomalyNonCurrentLiabilitiesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentLiabilities2" value={{ AuditData_secondlastyear.AnomalyNonCurrentLiabilitiesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentLiabilities3" value={{ AuditData_thirdlastyear.AnomalyNonCurrentLiabilitiesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentLiabilities4" value={{ AuditData_fourthlastyear.AnomalyNonCurrentLiabilitiesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentLiabilities5" value={{ AuditData_fifthlastyear.AnomalyNonCurrentLiabilitiesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentLiabilities6" value={{ AuditData_sixthlastyear.AnomalyNonCurrentLiabilitiesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"></td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLNonCurrentLiabilitiesiCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLNonCurrentLiabilitiesiCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentLiabilitiesi1" style="font-weight:bold;" value={{ AuditData_lastyear.AnomalyNonCurrentLiabilitiesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentLiabilitiesi2" value={{ AuditData_secondlastyear.AnomalyNonCurrentLiabilitiesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentLiabilitiesi3" value={{ AuditData_thirdlastyear.AnomalyNonCurrentLiabilitiesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentLiabilitiesi4" value={{ AuditData_fourthlastyear.AnomalyNonCurrentLiabilitiesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentLiabilitiesi5" value={{ AuditData_fifthlastyear.AnomalyNonCurrentLiabilitiesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentLiabilitiesi6" value={{ AuditData_sixthlastyear.AnomalyNonCurrentLiabilitiesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"></td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLNonCurrentLiabilitiesiiCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLNonCurrentLiabilitiesiiCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentLiabilitiesii1" style="font-weight:bold;" value={{ AuditData_lastyear.AnomalyNonCurrentLiabilitiesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentLiabilitiesii2" value={{ AuditData_secondlastyear.AnomalyNonCurrentLiabilitiesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentLiabilitiesii3" value={{ AuditData_thirdlastyear.AnomalyNonCurrentLiabilitiesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentLiabilitiesii4" value={{ AuditData_fourthlastyear.AnomalyNonCurrentLiabilitiesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentLiabilitiesii5" value={{ AuditData_fifthlastyear.AnomalyNonCurrentLiabilitiesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNonCurrentLiabilitiesii6" value={{ AuditData_sixthlastyear.AnomalyNonCurrentLiabilitiesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
                         <td colspan="2" style="text-align:left;">Shareholders' Equity</td>
                         <td style="text-align:center"><button data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">BS</button></td>
                         <td>
@@ -20903,6 +21174,48 @@
                         <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.3.54" value={{ AuditData_fourthlastyear.AnomalyShareholdersEquity }} onclick="HighLight()" onfocusout="Enter()"></input></td>
                         <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.3.55" value={{ AuditData_fifthlastyear.AnomalyShareholdersEquity }} onclick="HighLight()" onfocusout="Enter()"></input></td>
                         <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.3.56" value={{ AuditData_sixthlastyear.AnomalyShareholdersEquity }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;">Missing Vocabulary</td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="ShareholdersEquityCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="ShareholdersEquityCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="ShareholdersEquity1" style="font-weight:bold;" value={{ AuditData_lastyear.ShareholdersEquityGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="ShareholdersEquity2" value={{ AuditData_secondlastyear.ShareholdersEquityGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="ShareholdersEquity3" value={{ AuditData_thirdlastyear.ShareholdersEquityGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="ShareholdersEquity4" value={{ AuditData_fourthlastyear.ShareholdersEquityGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="ShareholdersEquity5" value={{ AuditData_fifthlastyear.ShareholdersEquityGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="ShareholdersEquity6" value={{ AuditData_sixthlastyear.ShareholdersEquityGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"></td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="ShareholdersEquityiCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="ShareholdersEquityiCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="ShareholdersEquityi1" style="font-weight:bold;" value={{ AuditData_lastyear.ShareholdersEquityGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="ShareholdersEquityi2" value={{ AuditData_secondlastyear.ShareholdersEquityGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="ShareholdersEquityi3" value={{ AuditData_thirdlastyear.ShareholdersEquityGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="ShareholdersEquityi4" value={{ AuditData_fourthlastyear.ShareholdersEquityGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="ShareholdersEquityi5" value={{ AuditData_fifthlastyear.ShareholdersEquityGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="ShareholdersEquityi6" value={{ AuditData_sixthlastyear.ShareholdersEquityGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"></td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="ShareholdersEquityiiCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="ShareholdersEquityiiCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="ShareholdersEquityii1" style="font-weight:bold;" value={{ AuditData_lastyear.ShareholdersEquityGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="ShareholdersEquityii2" value={{ AuditData_secondlastyear.ShareholdersEquityGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="ShareholdersEquityii3" value={{ AuditData_thirdlastyear.ShareholdersEquityGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="ShareholdersEquityii4" value={{ AuditData_fourthlastyear.ShareholdersEquityGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="ShareholdersEquityii5" value={{ AuditData_fifthlastyear.ShareholdersEquityGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="ShareholdersEquityii6" value={{ AuditData_sixthlastyear.ShareholdersEquityGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
                 </body>
             </table>
@@ -21595,6 +21908,50 @@
                         <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.2.16" value={{ AuditData_sixthlastyear.AnomalyGrossMargin }} onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
                     <tr>
+                        <td colspan="2" style="text-align:left;">Missing Vocabulary</td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLGrossMarginCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLGrossMarginCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLGrossMargin1" style="font-weight:bold;" value={{ AuditData_lastyear.GrossMarginGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLGrossMargin2" value={{ AuditData_secondlastyear.GrossMarginGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLGrossMargin3" value={{ AuditData_thirdlastyear.GrossMarginGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLGrossMargin4" value={{ AuditData_fourthlastyear.GrossMarginGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLGrossMargin5" value={{ AuditData_fifthlastyear.GrossMarginGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLGrossMargin6" value={{ AuditData_sixthlastyear.GrossMarginGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"></td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLGrossMarginiCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLGrossMarginiCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLGrossMargini1" style="font-weight:bold;" value={{ AuditData_lastyear.GrossMarginGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLGrossMargini2" value={{ AuditData_secondlastyear.GrossMarginGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLGrossMargini3" value={{ AuditData_thirdlastyear.GrossMarginGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLGrossMargini4" value={{ AuditData_fourthlastyear.GrossMarginGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLGrossMargini5" value={{ AuditData_fifthlastyear.GrossMarginGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLGrossMargini6" value={{ AuditData_sixthlastyear.GrossMarginGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"></td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLGrossMarginiiCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLGrossMarginiiCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLGrossMarginii1" style="font-weight:bold;" value={{ AuditData_lastyear.GrossMarginGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLGrossMarginii2" value={{ AuditData_secondlastyear.GrossMarginGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLGrossMarginii3" value={{ AuditData_thirdlastyear.GrossMarginGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLGrossMarginii4" value={{ AuditData_fourthlastyear.GrossMarginGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLGrossMarginii5" value={{ AuditData_fifthlastyear.GrossMarginGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLGrossMarginii6" value={{ AuditData_sixthlastyear.GrossMarginGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
                         <td colspan="2" style="text-align:left;">Operating Income (Loss)</td>
                         <td style="text-align:center"><button data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
                         <td>
@@ -21608,6 +21965,50 @@
                         <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.2.25" value={{ AuditData_fifthlastyear.AnomalyOperatingIncome }} onclick="HighLight()" onfocusout="Enter()"></input></td>
                         <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.2.26" value={{ AuditData_sixthlastyear.AnomalyOperatingIncome }} onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;">Missing Vocabulary</td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLOperatingIncomeCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLOperatingIncomeCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingIncome1" style="font-weight:bold;" value={{ AuditData_lastyear.OperatingIncomeGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingIncome2" value={{ AuditData_secondlastyear.OperatingIncomeGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingIncome3" value={{ AuditData_thirdlastyear.OperatingIncomeGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingIncome4" value={{ AuditData_fourthlastyear.OperatingIncomeGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingIncome5" value={{ AuditData_fifthlastyear.OperatingIncomeGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingIncome6" value={{ AuditData_sixthlastyear.OperatingIncomeGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"></td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLOperatingIncomeiCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLOperatingIncomeiCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingIncomei1" style="font-weight:bold;" value={{ AuditData_lastyear.OperatingIncomeGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingIncomei2" value={{ AuditData_secondlastyear.OperatingIncomeGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingIncomei3" value={{ AuditData_thirdlastyear.OperatingIncomeGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingIncomei4" value={{ AuditData_fourthlastyear.OperatingIncomeGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingIncomei5" value={{ AuditData_fifthlastyear.OperatingIncomeGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingIncomei6" value={{ AuditData_sixthlastyear.OperatingIncomeGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"></td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLOperatingIncomeiiCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLOperatingIncomeiiCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingIncomeii1" style="font-weight:bold;" value={{ AuditData_lastyear.OperatingIncomeGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingIncomeii2" value={{ AuditData_secondlastyear.OperatingIncomeGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingIncomeii3" value={{ AuditData_thirdlastyear.OperatingIncomeGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingIncomeii4" value={{ AuditData_fourthlastyear.OperatingIncomeGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingIncomeii5" value={{ AuditData_fifthlastyear.OperatingIncomeGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingIncomeii6" value={{ AuditData_sixthlastyear.OperatingIncomeGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
                     <tr>
                         <td colspan="2" style="text-align:left;">Income (Loss) Before Taxes</td>
                         <td style="text-align:center"><button data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
@@ -21623,6 +22024,50 @@
                         <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.2.36" value={{ AuditData_sixthlastyear.AnomalyIncomeBeforeTaxes }} onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
                     <tr>
+                        <td colspan="2" style="text-align:left;">Missing Vocabulary</td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLIncomeBeforeTaxesCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLIncomeBeforeTaxesCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLIncomeBeforeTaxes1" style="font-weight:bold;" value={{ AuditData_lastyear.IncomeBeforeTaxesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLIncomeBeforeTaxes2" value={{ AuditData_secondlastyear.IncomeBeforeTaxesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLIncomeBeforeTaxes3" value={{ AuditData_thirdlastyear.IncomeBeforeTaxesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLIncomeBeforeTaxes4" value={{ AuditData_fourthlastyear.IncomeBeforeTaxesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLIncomeBeforeTaxes5" value={{ AuditData_fifthlastyear.IncomeBeforeTaxesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLIncomeBeforeTaxes6" value={{ AuditData_sixthlastyear.IncomeBeforeTaxesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"></td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLIncomeBeforeTaxesiCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLIncomeBeforeTaxesiCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLIncomeBeforeTaxesi1" style="font-weight:bold;" value={{ AuditData_lastyear.IncomeBeforeTaxesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLIncomeBeforeTaxesi2" value={{ AuditData_secondlastyear.IncomeBeforeTaxesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLIncomeBeforeTaxesi3" value={{ AuditData_thirdlastyear.IncomeBeforeTaxesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLIncomeBeforeTaxesi4" value={{ AuditData_fourthlastyear.IncomeBeforeTaxesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLIncomeBeforeTaxesi5" value={{ AuditData_fifthlastyear.IncomeBeforeTaxesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLIncomeBeforeTaxesi6" value={{ AuditData_sixthlastyear.IncomeBeforeTaxesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"></td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLIncomeBeforeTaxesiiCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLIncomeBeforeTaxesiiCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLIncomeBeforeTaxesii1" style="font-weight:bold;" value={{ AuditData_lastyear.IncomeBeforeTaxesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLIncomeBeforeTaxesii2" value={{ AuditData_secondlastyear.IncomeBeforeTaxesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLIncomeBeforeTaxesii3" value={{ AuditData_thirdlastyear.IncomeBeforeTaxesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLIncomeBeforeTaxesii4" value={{ AuditData_fourthlastyear.IncomeBeforeTaxesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLIncomeBeforeTaxesii5" value={{ AuditData_fifthlastyear.IncomeBeforeTaxesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLIncomeBeforeTaxesii6" value={{ AuditData_sixthlastyear.IncomeBeforeTaxesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
                         <td colspan="2" style="text-align:left;">Net Income</td>
                         <td style="text-align:center"><button data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
                         <td>
@@ -21635,6 +22080,48 @@
                         <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.2.44" value={{ AuditData_fourthlastyear.AnomalyNetIncome }} onclick="HighLight()" onfocusout="Enter()"></input></td>
                         <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.2.45" value={{ AuditData_fifthlastyear.AnomalyNetIncome }} onclick="HighLight()" onfocusout="Enter()"></input></td>
                         <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.2.46" value={{ AuditData_sixthlastyear.AnomalyNetIncome }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;">Missing Vocabulary</td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLNetIncomeCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLNetIncomeCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNetIncome1" style="font-weight:bold;" value={{ AuditData_lastyear.NetIncomeGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNetIncome2" value={{ AuditData_secondlastyear.NetIncomeGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNetIncome3" value={{ AuditData_thirdlastyear.NetIncomeGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNetIncome4" value={{ AuditData_fourthlastyear.NetIncomeGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNetIncome5" value={{ AuditData_fifthlastyear.NetIncomeGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNetIncome6" value={{ AuditData_sixthlastyear.NetIncomeGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"></td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLNetIncomeiCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLNetIncomeiCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNetIncomei1" style="font-weight:bold;" value={{ AuditData_lastyear.NetIncomeGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNetIncomei2" value={{ AuditData_secondlastyear.NetIncomeGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNetIncomei3" value={{ AuditData_thirdlastyear.NetIncomeGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNetIncomei4" value={{ AuditData_fourthlastyear.NetIncomeGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNetIncomei5" value={{ AuditData_fifthlastyear.NetIncomeGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNetIncomei6" value={{ AuditData_sixthlastyear.NetIncomeGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"></td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLNetIncomeiiCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLNetIncomeiiCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNetIncomeii1" style="font-weight:bold;" value={{ AuditData_lastyear.NetIncomeGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNetIncomeii2" value={{ AuditData_secondlastyear.NetIncomeGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNetIncomeii3" value={{ AuditData_thirdlastyear.NetIncomeGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNetIncomeii4" value={{ AuditData_fourthlastyear.NetIncomeGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNetIncomeii5" value={{ AuditData_fifthlastyear.NetIncomeGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLNetIncomeii6" value={{ AuditData_sixthlastyear.NetIncomeGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
                 </body>
             </table>
@@ -21855,6 +22342,137 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
+                </body>
+            </table>
+            <table>
+                <body>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
+                        <td style="padding-top:37px"><h6><b>PROCEDURE 3.2</b></h6></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left">The comprehensive income statements transactions are appropriately classified.</td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan="2"><h6><b>ASSERTIONS</b></h6></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left">Classification.</td>
+                    </tr>
+                </body>
+            </table>
+            <table>
+                <body>
+                    <tr>
+                        <td colspan="4"></td>
+                        <script>
+                            function DateProcedureAnnualComprehensiveIncomeStatements(DateProcedureAnnualComprehensiveIncomeStatements) {
+                                document.getElementById('DateProcedureAnnualComprehensiveIncomeStatements1').innerHTML = document.getElementById('TrialBalanceDate1').innerHTML;
+                                document.getElementById('DateProcedureAnnualComprehensiveIncomeStatements2').innerHTML = document.getElementById('TrialBalanceDate2').innerHTML;
+                                document.getElementById('DateProcedureAnnualComprehensiveIncomeStatements3').innerHTML = document.getElementById('TrialBalanceDate3').innerHTML;
+                                document.getElementById('DateProcedureAnnualComprehensiveIncomeStatements4').innerHTML = document.getElementById('TrialBalanceDate4').innerHTML;
+                                document.getElementById('DateProcedureAnnualComprehensiveIncomeStatements5').innerHTML = document.getElementById('TrialBalanceDate5').innerHTML;
+                                document.getElementById('DateProcedureAnnualComprehensiveIncomeStatements6').innerHTML = document.getElementById('TrialBalanceDate6').innerHTML;
+                            };
+                            window.addEventListener('DOMContentLoaded', DateProcedureAnnualComprehensiveIncomeStatements)
+                            window.addEventListener('keyup', function() {
+                                var formulakeylist = {'9': true, '13': true, '38': true, '40': true, '112': true, '113': true};
+                                if (event.keyCode in formulakeylist) {
+                                    DateProcedureAnnualComprehensiveIncomeStatements();
+                                }
+                            })
+                        </script>
+                        <td colspan="2"><h5 id="DateProcedureAnnualComprehensiveIncomeStatements1" style="text-align:center;"></h5></td>
+                        <td colspan="2"><h5 id="DateProcedureAnnualComprehensiveIncomeStatements2" style="text-align:center;"></h5></td>
+                        <td colspan="2"><h5 id="DateProcedureAnnualComprehensiveIncomeStatements3" style="text-align:center;"></h5></td>
+                        <td colspan="2"><h5 id="DateProcedureAnnualComprehensiveIncomeStatements4" style="text-align:center;"></h5></td>
+                        <td colspan="2"><h5 id="DateProcedureAnnualComprehensiveIncomeStatements5" style="text-align:center;"></h5></td>
+                        <td colspan="2"><h5 id="DateProcedureAnnualComprehensiveIncomeStatements6" style="text-align:center;"></h5></td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan='2'><h5 id="TrialBalanceAmend1" style="font-weight:bold; text-align:center" onclick="HighLight()" onfocusout="Enter()">{{ entity.amendlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmend2" style="font-weight:bold; text-align:center" onclick="HighLight()" onfocusout="Enter()">{{ entity.amendsecondlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmend3" style="font-weight:bold; text-align:center" onclick="HighLight()" onfocusout="Enter()">{{ entity.amendthirdlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmend4" style="font-weight:bold; text-align:center" onclick="HighLight()" onfocusout="Enter()">{{ entity.amendfourthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmend5" style="font-weight:bold; text-align:center" onclick="HighLight()" onfocusout="Enter()">{{ entity.amendfifthlastyear }}</td>
+                        <td colspan='2'><h5 id="TrialBalanceAmend6" style="font-weight:bold; text-align:center" onclick="HighLight()" onfocusout="Enter()">{{ entity.amendsixthlastyear }}</td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan='4'></td>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_lastyear.Link }} target="_blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_secondlastyear.Link }} target="_blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_thirdlastyear.Link }} target="_blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_fourthlastyear.Link }} target="_blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_fifthlastyear.Link }} target="_blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a href={{ TrialBalance_sixthlastyear.Link }} target="_blank" style="color:#0D47A1;"><h6 style="text-align:center">Filings</h6></a>   
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;">Other Comprehensive Income</td>
+                        <td style="text-align:center"><button data-page="AnnualComprehensiveIncome" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CI</button></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="PRO-3.2.1Checkbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="PRO-3.2.1Checkbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-3.2.11" style="font-weight:bold;" value={{ AuditData_lastyear.AnomalyOtherComprehensiveIncome }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-3.2.12" value={{ AuditData_secondlastyear.AnomalyOtherComprehensiveIncome }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-3.2.13" value={{ AuditData_thirdlastyear.AnomalyOtherComprehensiveIncome }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-3.2.14" value={{ AuditData_fourthlastyear.AnomalyOtherComprehensiveIncome }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-3.2.15" value={{ AuditData_fifthlastyear.AnomalyOtherComprehensiveIncome }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-3.2.16" value={{ AuditData_sixthlastyear.AnomalyOtherComprehensiveIncome }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;">Missing Vocabulary</td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLComprehensiveIncomeiCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLComprehensiveIncomeiCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLComprehensiveIncomei1" style="font-weight:bold;" value={{ AuditData_lastyear.OtherComprehensiveIncomeGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLComprehensiveIncomei2" value={{ AuditData_secondlastyear.OtherComprehensiveIncomeGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLComprehensiveIncomei3" value={{ AuditData_thirdlastyear.OtherComprehensiveIncomeGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLComprehensiveIncomei4" value={{ AuditData_fourthlastyear.OtherComprehensiveIncomeGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLComprehensiveIncomei5" value={{ AuditData_fifthlastyear.OtherComprehensiveIncomeGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLComprehensiveIncomei6" value={{ AuditData_sixthlastyear.OtherComprehensiveIncomeGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"></td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLComprehensiveIncomeiiCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLComprehensiveIncomeiiCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLComprehensiveIncomeii1" style="font-weight:bold;" value={{ AuditData_lastyear.OtherComprehensiveIncomeGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLComprehensiveIncomeii2" value={{ AuditData_secondlastyear.OtherComprehensiveIncomeGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLComprehensiveIncomeii3" value={{ AuditData_thirdlastyear.OtherComprehensiveIncomeGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLComprehensiveIncomeii4" value={{ AuditData_fourthlastyear.OtherComprehensiveIncomeGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLComprehensiveIncomeii5" value={{ AuditData_fifthlastyear.OtherComprehensiveIncomeGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLComprehensiveIncomeii6" value={{ AuditData_sixthlastyear.OtherComprehensiveIncomeGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"></td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLComprehensiveIncomeiiiCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLComprehensiveIncomeiiiCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLComprehensiveIncomeiii1" style="font-weight:bold;" value={{ AuditData_lastyear.OtherComprehensiveIncomeGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLComprehensiveIncomeiii2" value={{ AuditData_secondlastyear.OtherComprehensiveIncomeGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLComprehensiveIncomeiii3" value={{ AuditData_thirdlastyear.OtherComprehensiveIncomeGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLComprehensiveIncomeiii4" value={{ AuditData_fourthlastyear.OtherComprehensiveIncomeGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLComprehensiveIncomeiii5" value={{ AuditData_fifthlastyear.OtherComprehensiveIncomeGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLComprehensiveIncomeiii6" value={{ AuditData_sixthlastyear.OtherComprehensiveIncomeGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
                 </body>
             </table>
         </div>
@@ -22179,6 +22797,7 @@
                                 a = parseInt(document.getElementById('ShareholdersEquityBeginning1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesIssued1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShareBasedCompensation1').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ShareBasedCompensationRetainedEarnings1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesRepurchasedAndRetired1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PurchaseAndSellOfTreasuryShares1').value.replaceAll(/,/g, ''));
@@ -22194,6 +22813,7 @@
                                 a = parseInt(document.getElementById('ShareholdersEquityBeginning2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesIssued2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShareBasedCompensation2').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ShareBasedCompensationRetainedEarnings2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesRepurchasedAndRetired2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PurchaseAndSellOfTreasuryShares2').value.replaceAll(/,/g, ''));
@@ -22209,6 +22829,7 @@
                                 a = parseInt(document.getElementById('ShareholdersEquityBeginning3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesIssued3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShareBasedCompensation3').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ShareBasedCompensationRetainedEarnings3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesRepurchasedAndRetired3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PurchaseAndSellOfTreasuryShares3').value.replaceAll(/,/g, ''));
@@ -22224,6 +22845,7 @@
                                 a = parseInt(document.getElementById('ShareholdersEquityBeginning4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesIssued4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShareBasedCompensation4').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ShareBasedCompensationRetainedEarnings4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesRepurchasedAndRetired4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PurchaseAndSellOfTreasuryShares4').value.replaceAll(/,/g, ''));
@@ -22239,6 +22861,7 @@
                                 a = parseInt(document.getElementById('ShareholdersEquityBeginning5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesIssued5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShareBasedCompensation5').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ShareBasedCompensationRetainedEarnings5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesRepurchasedAndRetired5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PurchaseAndSellOfTreasuryShares5').value.replaceAll(/,/g, ''));
@@ -22254,6 +22877,7 @@
                                 a = parseInt(document.getElementById('ShareholdersEquityBeginning6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesIssued6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShareBasedCompensation6').value.replaceAll(/,/g, ''));
+                                a = a + parseInt(document.getElementById('ShareBasedCompensationRetainedEarnings6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesRepurchasedAndRetired6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PurchaseAndSellOfTreasuryShares6').value.replaceAll(/,/g, ''));
@@ -22524,6 +23148,50 @@
                         <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.65" value={{ AuditData_fifthlastyear.AnomalyNonControllingInterests }} onclick="HighLight()" onfocusout="Enter()"></input></td>
                         <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.2.66" value={{ AuditData_sixthlastyear.AnomalyNonControllingInterests }} onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;">Missing Vocabulary</td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLShareholdersEquityiCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLShareholdersEquityiCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLShareholdersEquityi1" style="font-weight:bold;" value={{ AuditData_lastyear.ShareholdersEquityBalanceGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLShareholdersEquityi2" value={{ AuditData_secondlastyear.ShareholdersEquityBalanceGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLShareholdersEquityi3" value={{ AuditData_thirdlastyear.ShareholdersEquityBalanceGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLShareholdersEquityi4" value={{ AuditData_fourthlastyear.ShareholdersEquityBalanceGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLShareholdersEquityi5" value={{ AuditData_fifthlastyear.ShareholdersEquityBalanceGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLShareholdersEquityi6" value={{ AuditData_sixthlastyear.ShareholdersEquityBalanceGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"></td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLShareholdersEquityiiCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLShareholdersEquityiiCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLShareholdersEquityii1" style="font-weight:bold;" value={{ AuditData_lastyear.ShareholdersEquityBalanceGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLShareholdersEquityii2" value={{ AuditData_secondlastyear.ShareholdersEquityBalanceGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLShareholdersEquityii3" value={{ AuditData_thirdlastyear.ShareholdersEquityBalanceGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLShareholdersEquityii4" value={{ AuditData_fourthlastyear.ShareholdersEquityBalanceGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLShareholdersEquityii5" value={{ AuditData_fifthlastyear.ShareholdersEquityBalanceGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLShareholdersEquityii6" value={{ AuditData_sixthlastyear.ShareholdersEquityBalanceGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"></td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLShareholdersEquityiiiCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLShareholdersEquityiiiCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLShareholdersEquityiii1" style="font-weight:bold;" value={{ AuditData_lastyear.ShareholdersEquityBalanceGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLShareholdersEquityiii2" value={{ AuditData_secondlastyear.ShareholdersEquityBalanceGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLShareholdersEquityiii3" value={{ AuditData_thirdlastyear.ShareholdersEquityBalanceGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLShareholdersEquityiii4" value={{ AuditData_fourthlastyear.ShareholdersEquityBalanceGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLShareholdersEquityiii5" value={{ AuditData_fifthlastyear.ShareholdersEquityBalanceGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLShareholdersEquityiii6" value={{ AuditData_sixthlastyear.ShareholdersEquityBalanceGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
                 </body>
             </table>
         </div>
@@ -22701,12 +23369,26 @@
                                 }
                             })
                         </script>
-                        <td colspan="2"><input class="account" id="PRO-5.1.21" style="border-bottom-style:ridge; font-weight:bold;" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-5.1.22" style="border-bottom-style:ridge" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-5.1.23" style="border-bottom-style:ridge" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-5.1.24" style="border-bottom-style:ridge" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-5.1.25" style="border-bottom-style:ridge" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-5.1.26" style="border-bottom-style:ridge" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-5.1.21" style="font-weight:bold;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-5.1.22" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-5.1.23" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-5.1.24" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-5.1.25" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-5.1.26" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;">Explained Differences</td>
+                        <td style="text-align:center; font-weight:bold;">db</td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="PRO-5.1.3Checkbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="PRO-5.1.3Checkbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-5.1.31" style="font-weight:bold;" value={{ AuditData_lastyear.CashFlowCashExplainedDifference }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-5.1.32" value={{ AuditData_secondlastyear.CashFlowCashExplainedDifference }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-5.1.33" value={{ AuditData_thirdlastyear.CashFlowCashExplainedDifference }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-5.1.34" value={{ AuditData_fourthlastyear.CashFlowCashExplainedDifference }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-5.1.35" value={{ AuditData_fifthlastyear.CashFlowCashExplainedDifference }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-5.1.36" value={{ AuditData_sixthlastyear.CashFlowCashExplainedDifference }} onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
                     <tr>
                         <td colspan="3" style="text-align:left;">Anomaly</td>
@@ -22722,27 +23404,33 @@
                                 // Last Year
                                 a = parseInt(document.getElementById('PRO-5.1.11').value.replaceAll(/,/g, ''));
                                 a = a - parseInt(document.getElementById('PRO-5.1.21').value.replaceAll(/,/g, ''));
-                                document.getElementById('PRO-5.1.31').value = numUSD.format(-a);
+                                a = a - parseInt(document.getElementById('PRO-5.1.31').value.replaceAll(/,/g, ''));
+                                document.getElementById('PRO-5.1.41').value = numUSD.format(-a);
                                 // Second Last Year
                                 a = parseInt(document.getElementById('PRO-5.1.12').value.replaceAll(/,/g, ''));
                                 a = a - parseInt(document.getElementById('PRO-5.1.22').value.replaceAll(/,/g, ''));
-                                document.getElementById('PRO-5.1.32').value = numUSD.format(-a);
+                                a = a - parseInt(document.getElementById('PRO-5.1.32').value.replaceAll(/,/g, ''));
+                                document.getElementById('PRO-5.1.42').value = numUSD.format(-a);
                                 // Third Last Year
                                 a = parseInt(document.getElementById('PRO-5.1.13').value.replaceAll(/,/g, ''));
                                 a = a - parseInt(document.getElementById('PRO-5.1.23').value.replaceAll(/,/g, ''));
-                                document.getElementById('PRO-5.1.33').value = numUSD.format(-a);
+                                a = a - parseInt(document.getElementById('PRO-5.1.33').value.replaceAll(/,/g, ''));
+                                document.getElementById('PRO-5.1.43').value = numUSD.format(-a);
                                 // Fourth Last Year
                                 a = parseInt(document.getElementById('PRO-5.1.14').value.replaceAll(/,/g, ''));
                                 a = a - parseInt(document.getElementById('PRO-5.1.24').value.replaceAll(/,/g, ''));
-                                document.getElementById('PRO-5.1.34').value = numUSD.format(-a);
+                                a = a - parseInt(document.getElementById('PRO-5.1.34').value.replaceAll(/,/g, ''));
+                                document.getElementById('PRO-5.1.44').value = numUSD.format(-a);
                                 // Fifth Last Year
                                 a = parseInt(document.getElementById('PRO-5.1.15').value.replaceAll(/,/g, ''));
                                 a = a - parseInt(document.getElementById('PRO-5.1.25').value.replaceAll(/,/g, ''));
-                                document.getElementById('PRO-5.1.35').value = numUSD.format(-a);
+                                a = a - parseInt(document.getElementById('PRO-5.1.35').value.replaceAll(/,/g, ''));
+                                document.getElementById('PRO-5.1.45').value = numUSD.format(-a);
                                 // Sixth Last Year
                                 a = parseInt(document.getElementById('PRO-5.1.16').value.replaceAll(/,/g, ''));
                                 a = a - parseInt(document.getElementById('PRO-5.1.26').value.replaceAll(/,/g, ''));
-                                document.getElementById('PRO-5.1.36').value = numUSD.format(a);
+                                a = a - parseInt(document.getElementById('PRO-5.1.36').value.replaceAll(/,/g, ''));
+                                document.getElementById('PRO-5.1.46').value = numUSD.format(a);
                             };
                             window.addEventListener('DOMContentLoaded', CashFlowCashAnomaly)
                             window.addEventListener('keyup', function() {
@@ -22752,12 +23440,12 @@
                                 }
                             })
                         </script>
-                        <td colspan="2"><input class="account" id="PRO-5.1.31" style="border-bottom:double black; font-weight:bold;" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-5.1.32" style="border-bottom:double black" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-5.1.33" style="border-bottom:double black" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-5.1.34" style="border-bottom:double black" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-5.1.35" style="border-bottom:double black" onclick="HighLight()" onfocusout="Enter()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-5.1.36" style="border-bottom:double black" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-5.1.41" style="border-bottom:double black; font-weight:bold;" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-5.1.42" style="border-bottom:double black" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-5.1.43" style="border-bottom:double black" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-5.1.44" style="border-bottom:double black" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-5.1.45" style="border-bottom:double black" onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-5.1.46" style="border-bottom:double black" onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
                 </body>
             </table>
@@ -22851,6 +23539,50 @@
                         <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-5.2.16" value={{ AuditData_sixthlastyear.AnomalyOperatingActivities }} onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
                     <tr>
+                        <td colspan="2" style="text-align:left;">Missing Vocabulary</td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLOperatingActivitiesCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLOperatingActivitiesCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingActivities1" style="font-weight:bold;" value={{ AuditData_lastyear.OperatingActivitiesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingActivities2" value={{ AuditData_secondlastyear.OperatingActivitiesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingActivities3" value={{ AuditData_thirdlastyear.OperatingActivitiesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingActivities4" value={{ AuditData_fourthlastyear.OperatingActivitiesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingActivities5" value={{ AuditData_fifthlastyear.OperatingActivitiesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingActivities6" value={{ AuditData_sixthlastyear.OperatingActivitiesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"></td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLOperatingActivitiesiCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLOperatingActivitiesiCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingActivitiesi1" style="font-weight:bold;" value={{ AuditData_lastyear.OperatingActivitiesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingActivitiesi2" value={{ AuditData_secondlastyear.OperatingActivitiesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingActivitiesi3" value={{ AuditData_thirdlastyear.OperatingActivitiesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingActivitiesi4" value={{ AuditData_fourthlastyear.OperatingActivitiesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingActivitiesi5" value={{ AuditData_fifthlastyear.OperatingActivitiesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingActivitiesi6" value={{ AuditData_sixthlastyear.OperatingActivitiesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"></td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLOperatingActivitiesiiCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLOperatingActivitiesiiCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingActivitiesii1" style="font-weight:bold;" value={{ AuditData_lastyear.OperatingActivitiesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingActivitiesii2" value={{ AuditData_secondlastyear.OperatingActivitiesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingActivitiesii3" value={{ AuditData_thirdlastyear.OperatingActivitiesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingActivitiesii4" value={{ AuditData_fourthlastyear.OperatingActivitiesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingActivitiesii5" value={{ AuditData_fifthlastyear.OperatingActivitiesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLOperatingActivitiesii6" value={{ AuditData_sixthlastyear.OperatingActivitiesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
                         <td colspan="2" style="text-align:left;">Investing Activities</td>
                         <td style="text-align:center"><button data-page="AnnualCashFlow" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CF</button></td>
                         <td>
@@ -22865,6 +23597,50 @@
                         <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-5.2.26" value={{ AuditData_sixthlastyear.AnomalyInvestingActivities }} onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
                     <tr>
+                        <td colspan="2" style="text-align:left;">Missing Vocabulary</td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLInvestingActivitiesCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLInvestingActivitiesCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLInvestingActivities1" style="font-weight:bold;" value={{ AuditData_lastyear.InvestingActivitiesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLInvestingActivities2" value={{ AuditData_secondlastyear.InvestingActivitiesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLInvestingActivities3" value={{ AuditData_thirdlastyear.InvestingActivitiesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLInvestingActivities4" value={{ AuditData_fourthlastyear.InvestingActivitiesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLInvestingActivities5" value={{ AuditData_fifthlastyear.InvestingActivitiesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLInvestingActivities6" value={{ AuditData_sixthlastyear.InvestingActivitiesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"></td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLInvestingActivitiesiCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLInvestingActivitiesiCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLInvestingActivitiesi1" style="font-weight:bold;" value={{ AuditData_lastyear.InvestingActivitiesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLInvestingActivitiesi2" value={{ AuditData_secondlastyear.InvestingActivitiesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLInvestingActivitiesi3" value={{ AuditData_thirdlastyear.InvestingActivitiesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLInvestingActivitiesi4" value={{ AuditData_fourthlastyear.InvestingActivitiesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLInvestingActivitiesi5" value={{ AuditData_fifthlastyear.InvestingActivitiesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLInvestingActivitiesi6" value={{ AuditData_sixthlastyear.InvestingActivitiesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"></td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLInvestingActivitiesiiCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLInvestingActivitiesiiCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLInvestingActivitiesii1" style="font-weight:bold;" value={{ AuditData_lastyear.InvestingActivitiesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLInvestingActivitiesii2" value={{ AuditData_secondlastyear.InvestingActivitiesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLInvestingActivitiesii3" value={{ AuditData_thirdlastyear.InvestingActivitiesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLInvestingActivitiesii4" value={{ AuditData_fourthlastyear.InvestingActivitiesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLInvestingActivitiesii5" value={{ AuditData_fifthlastyear.InvestingActivitiesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLInvestingActivitiesii6" value={{ AuditData_sixthlastyear.InvestingActivitiesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
                         <td colspan="2" style="text-align:left;">Financing Activities</td>
                         <td style="text-align:center"><button data-page="AnnualCashFlow" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CF</button></td>
                         <td>
@@ -22878,6 +23654,50 @@
                         <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-5.2.35" value={{ AuditData_fifthlastyear.AnomalyFinancingActivities }} onclick="HighLight()" onfocusout="Enter()"></input></td>
                         <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-5.2.36" value={{ AuditData_sixthlastyear.AnomalyFinancingActivities }} onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;">Missing Vocabulary</td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLFinancingActivitiesCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLFinancingActivitiesCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLFinancingActivities1" style="font-weight:bold;" value={{ AuditData_lastyear.FinancingActivitiesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLFinancingActivities2" value={{ AuditData_secondlastyear.FinancingActivitiesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLFinancingActivities3" value={{ AuditData_thirdlastyear.FinancingActivitiesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLFinancingActivities4" value={{ AuditData_fourthlastyear.FinancingActivitiesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLFinancingActivities5" value={{ AuditData_fifthlastyear.FinancingActivitiesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLFinancingActivities6" value={{ AuditData_sixthlastyear.FinancingActivitiesGL_i }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"></td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLFinancingActivitiesiCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLFinancingActivitiesiCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLFinancingActivitiesi1" style="font-weight:bold;" value={{ AuditData_lastyear.FinancingActivitiesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLFinancingActivitiesi2" value={{ AuditData_secondlastyear.FinancingActivitiesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLFinancingActivitiesi3" value={{ AuditData_thirdlastyear.FinancingActivitiesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLFinancingActivitiesi4" value={{ AuditData_fourthlastyear.FinancingActivitiesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLFinancingActivitiesi5" value={{ AuditData_fifthlastyear.FinancingActivitiesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLFinancingActivitiesi6" value={{ AuditData_sixthlastyear.FinancingActivitiesGL_ii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"></td>
+                        <td style="text-align:center"></td>
+                        <td>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLFinancingActivitiesiiCheckbox"></input>
+                            <input type="checkbox" style="height: 16px; box-shadow: none;" id="MLFinancingActivitiesiiCheckbox2"></input>
+                        </td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLFinancingActivitiesii1" style="font-weight:bold;" value={{ AuditData_lastyear.FinancingActivitiesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLFinancingActivitiesii2" value={{ AuditData_secondlastyear.FinancingActivitiesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLFinancingActivitiesii3" value={{ AuditData_thirdlastyear.FinancingActivitiesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLFinancingActivitiesii4" value={{ AuditData_fourthlastyear.FinancingActivitiesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLFinancingActivitiesii5" value={{ AuditData_fifthlastyear.FinancingActivitiesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MLFinancingActivitiesii6" value={{ AuditData_sixthlastyear.FinancingActivitiesGL_iii }} onclick="HighLight()" onfocusout="Enter()"></input></td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
                 </body>
             </table>
         </div>
@@ -23581,21 +24401,27 @@
                                 })
                                 // Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-3.1.31').value.replaceAll(/,/g, '')));
+                                b = Math.abs(parseInt(document.getElementById('PRO-3.2.11').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesComprehensiveIncome1').value = numUSD.format(Math.max(a, b));
                                 // Second Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-3.1.32').value.replaceAll(/,/g, '')));
+                                b = Math.abs(parseInt(document.getElementById('PRO-3.2.12').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesComprehensiveIncome2').value = numUSD.format(Math.max(a, b));
                                 // Third Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-3.1.33').value.replaceAll(/,/g, '')));
+                                b = Math.abs(parseInt(document.getElementById('PRO-3.2.13').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesComprehensiveIncome3').value = numUSD.format(Math.max(a, b));
                                 // Fourth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-3.1.34').value.replaceAll(/,/g, '')));
+                                b = Math.abs(parseInt(document.getElementById('PRO-3.2.14').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesComprehensiveIncome4').value = numUSD.format(Math.max(a, b));
                                 // Fifth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-3.1.35').value.replaceAll(/,/g, '')));
+                                b = Math.abs(parseInt(document.getElementById('PRO-3.2.15').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesComprehensiveIncome5').value = numUSD.format(Math.max(a, b));
                                 // Sixth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-3.1.36').value.replaceAll(/,/g, '')));
+                                b = Math.abs(parseInt(document.getElementById('PRO-3.2.16').value.replaceAll(/,/g, '')));
                                 document.getElementById('AnomaliesComprehensiveIncome6').value = numUSD.format(Math.max(a, b));
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAnomaliesComprehensiveIncome)
@@ -23734,37 +24560,37 @@
                                 a = Math.abs(parseInt(document.getElementById('PRO-5.2.11').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.21').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.31').value.replaceAll(/,/g, '')));
-                                b = Math.abs(parseInt(document.getElementById('PRO-5.1.31').value.replaceAll(/,/g, '')));
+                                b = Math.abs(parseInt(document.getElementById('PRO-5.1.41').value.replaceAll(/,/g, '')));
                                 document.getElementById('TotalAnomaliesCashFlow1').value = numUSD.format(Math.max(a, b));
                                 // Second Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-5.2.12').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.22').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.32').value.replaceAll(/,/g, '')));
-                                b = Math.abs(parseInt(document.getElementById('PRO-5.1.32').value.replaceAll(/,/g, '')));
+                                b = Math.abs(parseInt(document.getElementById('PRO-5.1.42').value.replaceAll(/,/g, '')));
                                 document.getElementById('TotalAnomaliesCashFlow2').value = numUSD.format(Math.max(a, b));
                                 // Third Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-5.2.13').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.23').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.33').value.replaceAll(/,/g, '')));
-                                b = Math.abs(parseInt(document.getElementById('PRO-5.1.33').value.replaceAll(/,/g, '')));
+                                b = Math.abs(parseInt(document.getElementById('PRO-5.1.43').value.replaceAll(/,/g, '')));
                                 document.getElementById('TotalAnomaliesCashFlow3').value = numUSD.format(Math.max(a, b));
                                 // Fourth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-5.2.14').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.24').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.34').value.replaceAll(/,/g, '')));
-                                b = Math.abs(parseInt(document.getElementById('PRO-5.1.34').value.replaceAll(/,/g, '')));
+                                b = Math.abs(parseInt(document.getElementById('PRO-5.1.44').value.replaceAll(/,/g, '')));
                                 document.getElementById('TotalAnomaliesCashFlow4').value = numUSD.format(Math.max(a, b));
                                 // Fifth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-5.2.15').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.25').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.35').value.replaceAll(/,/g, '')));
-                                b = Math.abs(parseInt(document.getElementById('PRO-5.1.35').value.replaceAll(/,/g, '')));
+                                b = Math.abs(parseInt(document.getElementById('PRO-5.1.45').value.replaceAll(/,/g, '')));
                                 document.getElementById('TotalAnomaliesCashFlow5').value = numUSD.format(Math.max(a, b));
                                 // Sixth Last Year
                                 a = Math.abs(parseInt(document.getElementById('PRO-5.2.16').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.26').value.replaceAll(/,/g, '')));
                                 a = a + Math.abs(parseInt(document.getElementById('PRO-5.2.36').value.replaceAll(/,/g, '')));
-                                b = Math.abs(parseInt(document.getElementById('PRO-5.1.36').value.replaceAll(/,/g, '')));
+                                b = Math.abs(parseInt(document.getElementById('PRO-5.1.46').value.replaceAll(/,/g, '')));
                                 document.getElementById('TotalAnomaliesCashFlow6').value = numUSD.format(Math.max(a, b));
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAnomaliesCash)
@@ -24984,7 +25810,7 @@
         }
         //
         if (a == 'Buy') {
-            m = 'green';
+            m = '#0D47A1';
         }
         if (a == '') {
             m = 'gold';
