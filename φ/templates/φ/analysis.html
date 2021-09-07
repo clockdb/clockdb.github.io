@@ -470,7 +470,7 @@
     })
 
     function HighLight(HighLight) {
-        
+        console.log('HighLight')
     }
 
     function Enter(Enter) {
@@ -4952,7 +4952,11 @@
         <div id="Arch" style="margin-left:8%; width:24%; position: absolute;">
 
             <!--- ANNUAL FINANCIAL --->
-            <table style="border: 1px solid #E5E4E2; background-color:white">
+            <table style="
+                border: 1px solid #E5E4E2;
+                background-color:white;
+                box-shadow: 2px 2px 1px 1px #E5E4E2;
+                border-radius: 15px;">
                 <tbody>
                     <tr>
                         <td>
@@ -5013,7 +5017,11 @@
 
             <!--- FINANCIAL RATIOS, INTRINSIC VALUES AND SUMMARY --->
             <!--- CAPITALIZED INCOME, CAPITALIZED CASH FLOW, CAPITALIZED FORECAST & FAIR MARKET VALUE --->
-            <table style="border: 1px solid #E5E4E2; background-color:white">
+            <table style="
+            border: 1px solid #E5E4E2;
+            background-color:white;
+            box-shadow: 2px 2px 1px 1px #E5E4E2;
+            border-radius: 15px;">
                 <tbody>
                     <tr>
                         <td>
@@ -5070,7 +5078,11 @@
 
         <!--- AUDIT --->
         <div id="Bridge" style="margin-left:19.7%; width:24%; position: absolute;">
-            <table style="border: 1px solid #E5E4E2; background-color:white">
+            <table style="
+                border: 1px solid #E5E4E2;
+                background-color:white;
+                box-shadow: 2px 2px 1px 1px #E5E4E2;
+                border-radius: 15px;">
                 <tbody>
                     <tr>
                         <td>
@@ -5115,7 +5127,11 @@
         <div id="Procedures" style="margin-left:19.7%; width:24%; position: absolute;">      
 
             <!--- PROCEDURES ANNUAL FINANCIAL STATEMENTS --->
-            <table style="border: 1px solid #E5E4E2; background-color:white">
+            <table style="
+            border: 1px solid #E5E4E2;
+            background-color:white;
+            box-shadow: 2px 2px 1px 1px #E5E4E2;
+            border-radius: 15px;">
                 <tbody>
                     <tr>
                         <td>
@@ -5159,7 +5175,11 @@
 
         <!--- COMMUNITY --->
         <div id="Community" style="width:24%; position: absolute;">
-            <table>
+            <table style="
+                border: 1px solid #E5E4E2;
+                background-color:white;
+                box-shadow: 2px 2px 1px 1px #E5E4E2;
+                border-radius: 15px;">
                 <tbody>
                     <tr>
                         <td>
@@ -5188,7 +5208,11 @@
 
         <!--- OPTIONS --->
         <div id="Options" style="margin-left:4% ;width:24%; position: absolute;">
-            <table style="border: 1px solid #E5E4E2; background-color:white">
+            <table style="
+                border: 1px solid #E5E4E2;
+                background-color:white;
+                box-shadow: 2px 2px 1px 1px #E5E4E2;
+                border-radius: 15px;">
                 <tbody>
                     <tr>
                         <td>
@@ -14503,7 +14527,9 @@
             <table style="border-bottom:solid #0D47A1">
                 <tbody>
                     <tr>
-                        <td><h3 style="font-weight:bold; margin-left:0px;">Statements Of Cash Flow</h3></td>
+                        <td colspan='2'><h3 style="font-weight:bold; margin-left:0px;">Statements Of Cash Flow</h3></td>
+                        <td><button data-page="AnnualCashFlow" onclick="HighLight()">≡</button></td>
+                        <td colspan='5'>
                     </tr>
                 </body>
             </table>
