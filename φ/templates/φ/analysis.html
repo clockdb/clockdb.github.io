@@ -7,6 +7,25 @@
     // document title
     document.title = '{{ entity.TradingSymbol }} | ' + 'clockdb.com'
 
+    // save
+    function Save(filename, html) {
+        document.getElementById('Options').style.display = 'none';
+        filename = document.getElementById('EntityRegistrantName').innerHTML
+        filename = filename + '.html'
+        html = document.querySelector("html").innerHTML
+        var element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + 
+        encodeURIComponent(html));
+        element.setAttribute('download', filename);
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
+    }
+
     // pages
     window.onpopstate = function(event) {
         showPage(event.state.page);
@@ -21,6 +40,7 @@
                 'Procedures',
                 'Community',
                 'Options',
+                'Save',
             ]
             if (a == 'block') {
                 if (skip.includes(page)) {
@@ -46,11 +66,16 @@
                     'Procedures',
                     'Community',
                     'Options',
+                    'Save',
                 ]
                 const url = this.dataset.page;
                 if (skip.includes(url)) {
                 } else {
-                    history.pushState({page: url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+                    try {
+                        history.pushState({page: url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+                    } catch {
+
+                    }
                 }
                 showPage(this.dataset.page);
                 window.scrollTo(0, 0);
@@ -5229,8 +5254,8 @@
                 <tbody>
                     <tr>
                         <td>
-                            <button data-page="Options">
-                                <h3>Save</h3>
+                            <button data-page="Save">
+                                <h3 onclick="Save()">Save</h3>
                             </button>
                         </td>
                     </tr>
