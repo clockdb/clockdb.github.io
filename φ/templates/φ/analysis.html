@@ -5229,6 +5229,13 @@
                 <tbody>
                     <tr>
                         <td>
+                            <button data-page="Options">
+                                <h3>Save</h3>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                             <button data-page="Settings">
                                 <h3>Settings</h3>
                             </button>
@@ -5313,8 +5320,8 @@
                     <tr></tr>
                     <tr></tr>
                     <tr>
-                        <td colspan="7"><h6>Trial Balances (unhide empty rows)</h6></td>
-                        <td colspan="1" id="Setting1" style="font-weight:bold;"><input type="checkbox"></input></td>
+                        <td colspan="7"><h6>Trial Balances (hide empty rows)</h6></td>
+                        <td colspan="1" style="font-weight:bold;"><input type="checkbox" id="TrialBalanceUnhideCheckbox" checked=true onfocusout="Enter()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -5322,8 +5329,8 @@
                     <tr></tr>
                     <tr></tr>
                     <tr>
-                        <td colspan="7"><h6>Cash Flow (unhide empty rows)</h6></td>
-                        <td colspan="1" id="Setting2" style="font-weight:bold;"><input type="checkbox"></input></td>
+                        <td colspan="7"><h6>Cash Flow (hide empty rows)</h6></td>
+                        <td colspan="1" style="font-weight:bold;"><input type="checkbox" id="CashFlowUnhideCheckbox" checked=true onfocusout="Enter()"></input></td>
                     </tr>
                 </tbody>
             </table>
@@ -7561,6 +7568,12 @@
                                 // display
                                 if (z == 6) {
                                     document.getElementById('CashRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceCashRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceCash)
@@ -7629,6 +7642,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('ShortTermInvestmentsRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceSherTermInvestmentsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceShortTermInvestments)
@@ -7697,6 +7716,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('AccountsReceivableRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceAccountsReceivableRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAccountsReceivable)
@@ -7765,6 +7790,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('WorkInProgressRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceWorkInProgressRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceWorkInProgress)
@@ -7833,6 +7864,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('InventoriesRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceInventoriesRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceInventories)
@@ -7901,6 +7938,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('PrepaidExpensesRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalancePrepaidExpensesRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalancePrepaidExpenses)
@@ -7969,6 +8012,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('NonTradeReceivablesRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceNonTradeReceivablesRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceNonTradeReceivables)
@@ -8037,6 +8086,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('PrepaidTaxAssetsCurrentRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalancePrepaidTaxAssetsCurrentRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalancePrepaidTaxAssetsCurrent)
@@ -8105,6 +8160,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('DeferredTaxAssetsCurrentRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceDeferredTaxAssetsCurrentRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceDeferredTaxAssetsCurrent)
@@ -8173,6 +8234,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('RightOfUseAssetsCurrentRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceRightOfUseAssetsCurrentRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceRightOfUseAssetsCurrent)
@@ -8241,6 +8308,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('OtherCurrentAssetsRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceOtherCurrentAssetsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceOtherCurrentAssets)
@@ -8309,6 +8382,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('DiscontinuedOperationsCurrentRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceDiscontinuedOperationsCurrentRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceDiscontinuedOperationsCurrent)
@@ -8502,6 +8581,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('LongTermReceivablesRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceLongTermReceivablesRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceLongTermReceivables)
@@ -8570,6 +8655,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('DeferredChargesRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceDeferredChargesRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceDeferredCharges)
@@ -8638,6 +8729,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('InvestmentsRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceInvestmentsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceInvestments)
@@ -8706,6 +8803,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('PropertyPlantAndEquipmentRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalancePropertyPlantAndEquipmentRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalancePropertyPlantAndEquipment)
@@ -8774,6 +8877,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('OperatingLeaseRightOfUseAssetsRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceOperatingLeaseRightOfUseAssetsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceOperatingLeaseRightOfUseAssets)
@@ -8842,6 +8951,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('FinanceLeaseRightOfUseAssetsRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceFinanceLeaseRightOfUseAssetsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceFinanceLeaseRightOfUseAssets)
@@ -8910,6 +9025,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('IntangibleAssetsRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceIntangibleAssetsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceIntangibleAssets)
@@ -8978,6 +9099,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('GoodwillRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceGoodwillRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceGoodwill)
@@ -9046,6 +9173,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('RefundableTaxAssetsNonCurrentRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceRefundableTaxAssetsNonCurrentRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceRefundableTaxAssetsNonCurrent)
@@ -9114,6 +9247,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('DeferredTaxAssetsNonCurrentRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceDeferredTaxAssetsNonCurrentRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceDeferredTaxAssetsNonCurrent)
@@ -9182,6 +9321,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('DefinedBenefitPensionAndOtherSimilarPlansRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceDefinedBenefitPensionAndOtherSimilarPlansRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceDefinedBenefitPensionAndOtherSimilarPlans)
@@ -9250,6 +9395,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('OtherNonCurrentAssetsRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceOtherNonCurrentAssetsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceOtherNonCurrentAssets)
@@ -9318,6 +9469,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('DiscontinuedOperationsRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceDiscontinuedOperationsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceDiscontinuedOperationsNonCurrent)
@@ -9548,6 +9705,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('AccountsPayableAndAccruedLiabilitiesRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceAccountsPayableAndAccruedLiabilitiesRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAccountsPayableAndAccruedLiabilities)
@@ -9616,6 +9779,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('EmployeeCompensationCurrentRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceEmployeeCompensationCurrentRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceEmployeeCompensationCurrent)
@@ -9684,6 +9853,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('OperatingLeasesCurrentRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceOperatingLeasesCurrentRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceOperatingLeasesCurrent)
@@ -9752,6 +9927,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('FinanceLeasesCurrentRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceFinanceLeasesCurrentRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceFinanceLeasesCurrent)
@@ -9820,6 +10001,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('DeferredRevenueAndDepositsCurrentRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceDeferredRevenueAndDepositsCurrentRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceDeferredRevenueAndDepositsCurrent)
@@ -9888,6 +10075,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('AccruedTaxLiabilitiesRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceAccruedTaxLiabilitiesRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAccruedTaxLiabilities)
@@ -9956,6 +10149,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('DeferredTaxLiabilitiesCurrentRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceDeferredTaxLiabilitiesCurrentRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceDeferredTaxLiabilitiesCurrent)
@@ -10024,6 +10223,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('CommercialPapersRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceCommercialPapersRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceCommercialPapers)
@@ -10092,6 +10297,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('ShortTermBorrowingsRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceShortTermBorrowingsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceShortTermBorrowings)
@@ -10160,6 +10371,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('OtherCurrentLiabilitiesRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceOtherCurrentLiabilitiesRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceOtherCurrentLiabilities)
@@ -10228,6 +10445,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('DiscontinuedOperationsLiabilitiesCurrentRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceDiscontinuedOperationsLiabilitiesCurrentRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceDiscontinuedOperationsLiabilitiesCurrent)
@@ -10296,6 +10519,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('DividendsPayableRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceDividendsPayableRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceDividendsPayable)
@@ -10364,6 +10593,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('ShortTermPortionOfLongTermDebtRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceShortTermPortionOfLongTermDebtRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceShortTermPortionOfLongTermDebt)
@@ -10563,6 +10798,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('LongTermDebtRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceLongTermDebtRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceLongTermDebt)
@@ -10631,6 +10872,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('PreferredSharesLiabilityRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalancePreferredSharesLiabilityRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalancePreferredSharesLiability)
@@ -10699,6 +10946,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('RetirementBenefitsRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceRetirementBenefitsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceRetirementBenefits)
@@ -10767,6 +11020,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('OperatingLeasesNonCurrentRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceOperatingLeasesNonCurrentRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceOperatingLeasesNonCurrent)
@@ -10835,6 +11094,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('FinanceLeasesNonCurrentRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceFinanceLeasesNonCurrentRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceFinanceLeasesNonCurrent)
@@ -10903,6 +11168,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('LeaseIncentiveObligationRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceLeaseIncentiveObligationRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceLeaseIncentiveObligation)
@@ -10971,6 +11242,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('ContingentConsiderationRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceContingentConsiderationRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceContingentConsideration)
@@ -11039,6 +11316,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('AccruedTaxLiabilitiesNonCurrentRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceAccruedTaxLiabilitiesNonCurrentRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAccruedTaxLiabilitiesNonCurrent)
@@ -11107,6 +11390,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('DeferredTaxLiabilitiesNonCurrentRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceDeferredTaxLiabilitiesNonCurrentRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceDeferredTaxLiabilitiesNonCurrent)
@@ -11175,6 +11464,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('DeferredRevenueAndDepositsNonCurrentRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceDeferredRevenueAndDepositsNonCurrentRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceDeferredRevenueAndDepositsNonCurrent)
@@ -11243,6 +11538,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('OtherNonCurrentLiabilitiesRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceOtherNonCurrentLiabilitiesRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceOtherNonCurrentLiabilities)
@@ -11311,6 +11612,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('RedeemableNonControllingInterestsRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceRedeemableNonControllingInterestsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceRedeemableNonControllingInterests)
@@ -11379,6 +11686,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('DiscontinuedOperationsLiabilitiesNonCurrentRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceDiscontinuedOperationsLiabilitiesNonCurrentRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceDiscontinuedOperationsLiabilitiesNonCurrent)
@@ -11837,6 +12150,12 @@
                                     document.getElementById('CostOfSalesRow').style.display = 'none';
                                     document.getElementById('GrossMarginRow').style.display = 'none';
                                     //
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceCostOfSalesRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceCostOfSales)
@@ -11957,6 +12276,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('ResearchAndDevelopmentRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceResearchAndDevelopmentRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceResearchAndDevelopment)
@@ -12117,6 +12442,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('ImpairmentRestructuringAndOtherSpecialChargesRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceImpairmentRestructuringAndOtherSpecialChargesRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceImpairmentRestructuringAndOtherSpecialCharges)
@@ -12311,6 +12642,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('EquityMethodInvesteesIncomeRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceEquityMethodInvesteesIncomeRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceEquityMethodInvesteesIncome)
@@ -12379,6 +12716,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('NetIncomeFromDiscontinuedOperationsRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceNetIncomeFromDiscontinuedOperationsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceNetIncomeFromDiscontinuedOperations)
@@ -12633,6 +12976,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('ChangeInForeignCurrencyTranslationAdjustmentRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceChangeInForeignCurrencyTranslationAdjustmentRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceChangeInForeignCurrencyTranslationAdjustment)
@@ -12701,6 +13050,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('ChangeInUnrealizedGainsLossesOnDerivativeInstrumentsRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceChangeInUnrealizedGainsLossesOnDerivativeInstrumentsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceChangeInUnrealizedGainsLossesOnDerivativeInstruments)
@@ -12769,6 +13124,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('ChangeInUnrealizedGainsLossesOnInvestmentsRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceChangeInUnrealizedGainsLossesOnInvestmentsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceChangeInUnrealizedGainsLossesOnInvestments)
@@ -12837,6 +13198,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('ChangeInDefinedBenefitPensionAndOtherSimilarPlansRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceChangeInDefinedBenefitPensionAndOtherSimilarPlansRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceChangeInDefinedBenefitPensionAndOtherSimilarPlans)
@@ -12905,6 +13272,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('IncomeTaxOnOtherComprehensiveIncomeRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceIncomeTaxOnOtherComprehensiveIncomeRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceIncomeTaxOnOtherComprehensiveIncome)
@@ -13222,6 +13595,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('CommonSharesIssuedRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceCommonSharesIssuedRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceCommonSharesIssued)
@@ -13290,6 +13669,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('ShareBasedCompensationRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceShareBasedCompensationRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceShareBasedCompensation)
@@ -13358,6 +13743,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('ShareBasedCompensationRetainedEarningsRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceShareBasedCompensationRetainedEarningsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceShareBasedCompensationRetainedEarnings)
@@ -13426,6 +13817,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('DividendsAndDividendEquivalentsDeclaredRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceDividendsAndDividendEquivalentsDeclaredRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceDividendsAndDividendEquivalentsDeclared)
@@ -13494,6 +13891,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('CommonSharesRepurchasedAndRetiredRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceCommonSharesRepurchasedAndRetiredRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceCommonSharesRepurchasedAndRetired)
@@ -13562,6 +13965,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('EffectOfAdoptionOfNewAccountingPronouncementOrTaxCutsRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceEffectOfAdoptionOfNewAccountingPronouncementOrTaxCutsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceEffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts)
@@ -13630,6 +14039,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('RetainedEarningsOthersRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceRetainedEarningsOthersRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceRetainedEarningsOthers)
@@ -13698,6 +14113,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('PurchaseAndSellOfTreasurySharesRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalancePurchaseAndSellOfTreasurySharesRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalancePurchaseAndSellOfTreasuryShares)
@@ -13766,6 +14187,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('DividendsDeclaredToNonControllingInterestsRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceDividendsDeclaredToNonControllingInterestsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceDividendsDeclaredToNonControllingInterests)
@@ -13834,6 +14261,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('AcquisitionOfNonControllingInterestsRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceAcquisitionOfNonControllingInterestsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceAcquisitionOfNonControllingInterests)
@@ -13902,6 +14335,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('NonControllingInterestsOthersRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceNonControllingInterestsOthersRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceNonControllingInterestsOthers)
@@ -14174,6 +14613,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('ConvertibleDebtRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceConvertibleDebtRow').style.display = a
                                 }
                                 ////////////////////
                                 // Common Shares (Balance Sheets) 
@@ -14336,6 +14781,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('TreasurySharesRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceTreasurySharesRow').style.display = a
                                 }
                                 ////////////////////
                                 // Non Controlling Interests (Balance Sheets) 
@@ -14378,6 +14829,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('EmployeeBenefitTrustRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceEmployeeBenefitTrustRow').style.display = a
                                 }
                                 ////////////////////
                                 // Non Controlling Interests (Balance Sheets) 
@@ -14438,6 +14895,12 @@
                                 }
                                 if (z == 6) {
                                     document.getElementById('NonControllingInterestsRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceNonControllingInterestsRow').style.display = a
                                 }
                                 ////////////////////
                                 // Shareholders Equity (Balance Sheets) 
@@ -14735,7 +15198,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('EffectOfExchangeRateOnCashRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('EffectOfExchangeRateOnCashRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', EffectOfExchangeRateOnCashRow)
@@ -14862,7 +15330,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('DepreciationDepletionAndAmortizationRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('DepreciationDeplationAndAmortizationRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', DepreciationDepletionAndAmortizationRow)
@@ -14921,7 +15394,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('GainRelatedToDisposalOrSaleRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('GainRelatedToDisposalOrSaleRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', GainRelatedToDisposalOrSaleRow)
@@ -14980,7 +15458,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('RestructuringAndOtherSpecialChargesRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('RestructuringAndOtherSpecialChargesRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', RestructuringAndOtherSpecialChargesRow)
@@ -15039,7 +15522,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('AccruedEmployeeCompensationRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('AccruedEmployeeCompensationRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', AccruedEmployeeCompensationRow)
@@ -15098,7 +15586,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('ShareBasedCompensationOperatingActivitiesRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('ShareBasedCompensationOperatingActivitiesRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', ShareBasedCompensationOperatingActivitiesRow)
@@ -15157,7 +15650,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('IncreaseDecreaseInIncomeTaxExpenseBenefitRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('IncreaseDecreaseInIncomeTaxExpenseBenefitRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', IncreaseDecreaseInIncomeTaxExpenseBenefitRow)
@@ -15216,7 +15714,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('OtherNonCashIncomeExpenseRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('OtherNonCashIncomeExpenseRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', OtherNonCashIncomeExpenseRow)
@@ -15275,7 +15778,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('IncreaseDecreaseInAccountsReceivableRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('IncreaseDecreaseInAccountsReceivableRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', IncreaseDecreaseInAccountsReceivableRow)
@@ -15334,7 +15842,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssetsRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssetsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssetsRow)
@@ -15393,7 +15906,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('IncreaseDecreaseInInventoriesRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('IncreaseDecreaseInInventoriesRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', IncreaseDecreaseInInventoriesRow)
@@ -15452,7 +15970,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('IncreaseDecreaseInOtherReceivablesRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('IncreaseDecreaseInOtherReceivablesRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', IncreaseDecreaseInOtherReceivablesRow)
@@ -15511,7 +16034,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('IncreaseDecreaseInAccountsPayableRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('IncreaseDecreaseInAccountsPayableRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', IncreaseDecreaseInAccountsPayableRow)
@@ -15570,7 +16098,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('IncreaseDecreaseInContractWithCustomerLiabilityRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('IncreaseDecreaseInContractWithCustomerLiabilityRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', IncreaseDecreaseInContractWithCustomerLiabilityRow)
@@ -15629,7 +16162,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('IncreaseDecreaseInRetirementBenefitsRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('IncreaseDecreaseInRetirementBenefitsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', IncreaseDecreaseInRetirementBenefitsRow)
@@ -15688,7 +16226,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('IncreaseDecreaseFinanceLeaseCurrentRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('IncreaseDecreaseFinanceLeaseCurrentRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', IncreaseDecreaseFinanceLeaseCurrentRow)
@@ -15747,7 +16290,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('IncreaseDecreaseOperatingLeaseCurrentRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('IncreaseDecreaseOperatingLeaseCurrentRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', IncreaseDecreaseOperatingLeaseCurrentRow)
@@ -15806,7 +16354,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('IncreaseDecreaseInFairValueOfDerivativesOperatingRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('IncreaseDecreaseInFairValueOfDerivativesOperatingRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', IncreaseDecreaseInFairValueOfDerivativesOperatingRow)
@@ -15865,7 +16418,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('IncreaseDecreaseInOtherOperatingActivitiesRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('IncreaseDecreaseInOtherOperatingActivitiesRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', IncreaseDecreaseInOtherOperatingActivitiesRow)
@@ -16091,7 +16649,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('PaymentsToAcquireInvestmentsRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('PaymentsToAcquireInvestmentsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', PaymentsToAcquireInvestmentsRow)
@@ -16150,7 +16713,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('ProceedsOfInvestmentsRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('ProceedsOfInvestmentsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', ProceedsOfInvestmentsRow)
@@ -16209,7 +16777,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('PaymentsToAcquirePropertyPlantAndEquipmentRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('PaymentsToAcquirePropertyPlantAndEquipmentRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', PaymentsToAcquirePropertyPlantAndEquipmentRow)
@@ -16268,7 +16841,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('ProceedsFromDisposalsOfPropertyAndEquipmentRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('ProceedsFromDisposalsOfPropertyAndEquipmentRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', ProceedsFromDisposalsOfPropertyAndEquipmentRow)
@@ -16327,7 +16905,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('PaymentsToAcquireBusinessesAndIntangiblesRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('PaymentsToAcquireBusinessesAndIntangiblesRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', PaymentsToAcquireBusinessesAndIntangiblesRow)
@@ -16386,7 +16969,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('ProceedsFromDisposalsOfBusinessesAndIntangiblesRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('ProceedsFromDisposalsOfBusinessesAndIntangiblesRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', ProceedsFromDisposalsOfBusinessesAndIntangiblesRow)
@@ -16445,7 +17033,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('ProceedsRelatedToInsuranceSettlementRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('ProceedsRelatedToInsuranceSettlementRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', ProceedsRelatedToInsuranceSettlementRow)
@@ -16504,7 +17097,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('ReveiptOfGovernmentGrantsRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('ReveiptOfGovernmentGrantsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', ReveiptOfGovernmentGrantsRow)
@@ -16563,7 +17161,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('EquityInvesteeAdvancesRepaymentsRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('EquityInvesteeAdvancesRepaymentsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', EquityInvesteeAdvancesRepaymentsRow)
@@ -16622,7 +17225,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('PaymentOfLicenseFeeRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('PaymentOfLicenseFeeRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', PaymentOfLicenseFeeRow)
@@ -16681,7 +17289,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('OtherInvestingActivitiesRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('OtherInvestingActivitiesRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', OtherInvestingActivitiesRow)
@@ -16740,7 +17353,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('InvestingActivitiesInDiscontinuedOperationsRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('InvestingActivitiesInDiscontinuedOperationsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', InvestingActivitiesInDiscontinuedOperationsRow)
@@ -16923,7 +17541,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('FinanceLeasePrincipalPaymentsRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('FinanceLeasePrincipalPaymentsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', FinanceLeasePrincipalPaymentsRow)
@@ -16982,7 +17605,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('ProceedsFromIssuanceOfCommonSharesRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('ProceedsFromIssuanceOfCommonSharesRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', ProceedsFromIssuanceOfCommonSharesRow)
@@ -17041,7 +17669,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('ProceedsFromSharePurchasePlanAndOptionsExerciceRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('ProceedsFromSharePurchasePlanAndOptionsExerciceRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', ProceedsFromSharePurchasePlanAndOptionsExerciceRow)
@@ -17100,7 +17733,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('PaymentsRelatedToTaxWithholdingForShareBasedCompensationRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('PaymentsRelatedToTaxWithholdingForShareBasedCompensationRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', PaymentsRelatedToTaxWithholdingForShareBasedCompensationRow)
@@ -17159,7 +17797,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('PaymentsForRepurchaseOfCommonSharesRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('PaymentsForRepurchaseOfCommonSharesRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', PaymentsForRepurchaseOfCommonSharesRow)
@@ -17218,7 +17861,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('PaymentsOfDividendsRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('PaymentsOfDividendsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', PaymentsOfDividendsRow)
@@ -17277,7 +17925,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('IncreaseDecreaseDeferredContingentConsiderationRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('IncreaseDecreaseDeferredContingentConsiderationRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', IncreaseDecreaseDeferredContingentConsiderationRow)
@@ -17336,7 +17989,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('ProceedsFromIssuanceOfLongTermDebtRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('ProceedsFromIssuanceOfLongTermDebtRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', ProceedsFromIssuanceOfLongTermDebtRow)
@@ -17395,7 +18053,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('RepaymentsOfLongTermDebtRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('RepaymentsOfLongTermDebtRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', RepaymentsOfLongTermDebtRow)
@@ -17454,7 +18117,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('FinancingCostsRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('FinancingCostsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', FinancingCostsRow)
@@ -17513,7 +18181,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('NetChangeInShortTermBorrowingsRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('NetChangeInShortTermBorrowingsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', NetChangeInShortTermBorrowingsRow)
@@ -17572,7 +18245,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('NetChangeInForwardAndHedgesClassifiedAsFinancingActivitiesRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('NetChangeInForwardAndHedgesClassifiedAsFinancingActivitiesRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', NetChangeInForwardAndHedgesClassifiedAsFinancingActivitiesRow)
@@ -17631,7 +18309,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('NetChangeInNonControllingInterestsRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('NetChangeInNonControllingInterestsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', NetChangeInNonControllingInterestsRow)
@@ -17690,7 +18373,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('ProceedsFromRepaymentsOfCommercialPaperRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('ProceedsFromRepaymentsOfCommercialPaperRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', ProceedsFromRepaymentsOfCommercialPaperRow)
@@ -17749,7 +18437,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('RepaymentsOfConvertibleRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('RepaymentsOfConvertibleRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', RepaymentsOfConvertibleRow)
@@ -17808,7 +18501,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('IssuanceOfConvertibleRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('IssuanceOfConvertibleRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', IssuanceOfConvertibleRow)
@@ -17867,7 +18565,12 @@
                                     z = z + 1
                                 }
                                 if (z == 6) {
-                                    document.getElementById('OtherFinancingActivitiesRow').style.display = 'none';
+                                    if (document.getElementById('CashFlowUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('OtherFinancingActivitiesRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', OtherFinancingActivitiesRow)
