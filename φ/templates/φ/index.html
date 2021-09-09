@@ -4325,6 +4325,21 @@
                             document.getElementById('SearchResults').style.display = 'none'
                         })
 
+                        // escape 
+                        document.addEventListener('keydown', (event) => {
+                            i = 27
+                            keys = [i]
+                            if (keys.includes(event.keyCode)) {
+                                event.preventDefault();
+                                if (event.keyCode == i) {
+                                    document.getElementById('search').value = '';
+                                    clearList();
+                                    document.getElementById('SearchResults').style.marginBottom = '0%';
+                                    document.getElementById('SearchResults').style.display = 'none'
+                                }
+                            }
+                        });
+
                     </script>
                 </td>
             </tr>
