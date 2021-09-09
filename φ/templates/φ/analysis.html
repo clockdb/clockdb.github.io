@@ -7,6 +7,11 @@
     // document title
     document.title = '{{ entity.TradingSymbol }} | ' + 'clockdb.com'
 
+    // URL on load
+    document.addEventListener('DOMContentLoaded', function() {
+        history.pushState(``, ``, `/{{ entity.TradingSymbol }}/`);
+    })
+
     // save
     function Save(filename, html) {
         document.getElementById('Options').style.display = 'none';
@@ -849,8 +854,8 @@
                         <!-- Search results -->
                         <ul id="SearchResults" style="
                             display:block;
-                            border-right: 1px solid #E5E4E2;
-                            border-left: 1px solid #E5E4E2;
+                            border-right: 1px solid #0D47A1;
+                            border-left: 1px solid #0D47A1;
                             "></ul>
                         <script>
                             
@@ -4991,9 +4996,9 @@
 
             <!--- ANNUAL FINANCIAL --->
             <table style="
-                border: 1px solid #E5E4E2;
+                border: 2px solid #E5E4E2;
                 background-color:white;
-                box-shadow: 2px 2px 1px 1px #E5E4E2;
+                box-shadow: 1px 1px 1px 1px #000009;
                 border-radius: 15px;">
                 <tbody>
                     <tr>
@@ -5056,9 +5061,9 @@
             <!--- FINANCIAL RATIOS, INTRINSIC VALUES AND SUMMARY --->
             <!--- CAPITALIZED INCOME, CAPITALIZED CASH FLOW, CAPITALIZED FORECAST & FAIR MARKET VALUE --->
             <table style="
-                border: 1px solid #E5E4E2;
+                border: 2px solid #E5E4E2;
                 background-color:white;
-                box-shadow: 2px 2px 1px 1px #E5E4E2;
+                box-shadow: 1px 1px 1px 1px #000009;
                 border-radius: 15px;">
                 <tbody>
                     <tr>
@@ -5117,9 +5122,9 @@
         <!--- AUDIT --->
         <div id="Bridge" style="margin-left:19.7%; width:24%; position: absolute;">
             <table style="
-                border: 1px solid #E5E4E2;
+                border: 2px solid #E5E4E2;
                 background-color:white;
-                box-shadow: 2px 2px 1px 1px #E5E4E2;
+                box-shadow: 1px 1px 1px 1px #000009;
                 border-radius: 15px;">
                 <tbody>
                     <tr>
@@ -5166,9 +5171,9 @@
 
             <!--- PROCEDURES ANNUAL FINANCIAL STATEMENTS --->
             <table style="
-                border: 1px solid #E5E4E2;
+                border: 2px solid #E5E4E2;
                 background-color:white;
-                box-shadow: 2px 2px 1px 1px #E5E4E2;
+                box-shadow: 1px 1px 1px 1px #000009;
                 border-radius: 15px;">
                 <tbody>
                     <tr>
@@ -5214,9 +5219,9 @@
         <!--- COMMUNITY --->
         <div id="Community" style="width:24%; position: absolute;">
             <table style="
-                border: 1px solid #E5E4E2;
+                border: 2px solid #E5E4E2;
                 background-color:white;
-                box-shadow: 2px 2px 1px 1px #E5E4E2;
+                box-shadow: 1px 1px 1px 1px #000009;
                 border-radius: 15px;">
                 <tbody>
                     <tr>
@@ -5247,9 +5252,9 @@
         <!--- OPTIONS --->
         <div id="Options" style="margin-left:4% ;width:24%; position: absolute;">
             <table style="
-                border: 1px solid #E5E4E2;
+                border: 2px solid #E5E4E2;
                 background-color:white;
-                box-shadow: 2px 2px 1px 1px #E5E4E2;
+                box-shadow: 1px 1px 1px 1px #000009;
                 border-radius: 15px;">
                 <tbody>
                     <tr>

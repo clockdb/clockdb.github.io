@@ -142,8 +142,8 @@ phases = [
     1
 ]
 
-ll = 1
 ll = len(entities)
+ll = 1
 
 # master
 try:
@@ -154,7 +154,7 @@ try:
         e = entities[count]
         #
         if ll == 1:
-            e = Entity.objects.get(TradingSymbol='AAPL')
+            e = Entity.objects.get(TradingSymbol='FB')
         #
         if e.db in phases:
             #
