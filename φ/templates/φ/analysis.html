@@ -853,10 +853,10 @@
                     <td style="margin-left:57%; position:absolute; width:32.5%; background-color:white">
                         <!-- Search results -->
                         <ul id="SearchResults" style="
-                            display:block;
-                            border-right: 1px solid #0D47A1;
-                            border-left: 1px solid #0D47A1;
-                            "></ul>
+                            border: 2px solid #E5E4E2;
+                            box-shadow: 1px 1px 1px 1px #000009;
+                            border-radius: 7px; display:none">
+                            </ul>
                         <script>
                             
                             // List of entities
@@ -4915,6 +4915,9 @@
                             const list = document.getElementById('SearchResults');  
                             
                             function setList(group) {
+
+                                document.getElementById('SearchResults').style.display = ''
+
                                 clearList();
 
                                 for (const entity of group) {
@@ -4975,6 +4978,7 @@
                                 } else {
                                     clearList();
                                     document.getElementById('SearchResults').style.marginBottom = '0%';
+                                    document.getElementById('SearchResults').style.display = 'none'
                                 }
                             });
 
@@ -4983,6 +4987,7 @@
                                 document.getElementById('search').value = '';
                                 clearList();
                                 document.getElementById('SearchResults').style.marginBottom = '0%';
+                                document.getElementById('SearchResults').style.display = 'none'
                             })
 
                         </script>
