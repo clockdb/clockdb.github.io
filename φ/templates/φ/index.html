@@ -152,7 +152,7 @@
     
 </script>
 
-<Section id="φ" style='margin-top:17%;'>
+<Section id="φ" style='margin-top:13%;'>
     <table>
         <tbody>
             <tr>
@@ -5579,12 +5579,20 @@
             <tr></tr>
             <tr></tr>
             <tr>
-                <td colspan='4'></td>
+                <td colspan='4' style="text-align:left">
+                    <a href="{% url 'φ:phases' %}" target="_blank" style="color:black;">Phases</a>
+                     | 
+                    <a href="{% url 'φ:master' %}" target="_blank" style="color:black;">Master</a>
+                </td>
                 <td colspan='2'>
                     <button onclick="EnterSearch()"
                         style="
-                            border: 1px solid black;
-                            padding: 5px;
+                            border: 2px solid #E5E4E2;
+                            box-shadow: 1px 1px 1px 1px #000009;
+                            border-radius: 9px;
+                            padding: 9px;
+                            margin-top: 50px;
+                            margin-bottom : 50px;
                         ">
                         <h2 style="
                             text-align: right;

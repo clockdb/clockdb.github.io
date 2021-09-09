@@ -217,25 +217,6 @@
                 checkbox.checked = true;
             }
         }
-    });    
-    
-    // main 
-    document.addEventListener('keydown', (event) => {
-        i = 32
-        keys = [i]
-        if (keys.includes(event.keyCode)) {
-            event.preventDefault();
-            if (event.keyCode == i) {
-                a = 'Main'
-            }
-            b = document.getElementById(a).style.display
-            if (b == 'none') {
-                document.getElementById(a).style.display = 'table';
-            }
-            if (b == 'table') {
-                document.getElementById(a).style.display = 'none';
-            }
-        }
     });
     
     // keys
@@ -258,7 +239,7 @@
             document.querySelectorAll('div').forEach(div => {
                 div.style.display = 'none';
             })
-            document.getElementById('Main').style.display = 'none';
+            
             document.getElementById(a).style.display = 'block';
             window.scrollTo(0, 0)
         }
@@ -317,7 +298,7 @@
                 document.querySelectorAll('div').forEach(div => {
                     div.style.display = 'none';
                 })
-                document.getElementById('Main').style.display = 'none';
+                
                 document.getElementById(a).style.display = 'block';
                 window.scrollTo(0, 0);
                 history.pushState({a}, ``, `/{{ entity.TradingSymbol }}/${a}`);
@@ -373,7 +354,7 @@
                 document.querySelectorAll('div').forEach(div => {
                     div.style.display = 'none';
                 })
-                document.getElementById('Main').style.display = 'none';
+                
                 document.getElementById(a).style.display = 'block';
                 window.scrollTo(0, 0);
                 history.pushState({a}, ``, `/{{ entity.TradingSymbol }}/${a}`);
@@ -388,7 +369,7 @@
             document.querySelectorAll('div').forEach(div => {
                 div.style.display = 'none';
             })
-            document.getElementById('Main').style.display = 'none';
+            
             document.getElementById('AuditSummary').style.display = 'block';
             const url = 'AuditSummary'
             //
@@ -402,7 +383,7 @@
             document.querySelectorAll('div').forEach(div => {
                 div.style.display = 'none';
             })
-            document.getElementById('Main').style.display = 'none';
+            
             document.getElementById('AuditDetailed').style.display = 'block';
             const url = 'AuditDetailed'
             //
@@ -416,7 +397,7 @@
             document.querySelectorAll('div').forEach(div => {
                 div.style.display = 'none';
             })
-            document.getElementById('Main').style.display = 'none';
+            
             document.getElementById('MaterialityThreshold').style.display = 'block';
             const url = 'MaterialityThreshold'
             //
@@ -430,7 +411,7 @@
             document.querySelectorAll('div').forEach(div => {
                 div.style.display = 'none';
             })
-            document.getElementById('Main').style.display = 'none';
+            
             document.getElementById('Mission').style.display = 'block';
             const url = 'Mission'
             //
@@ -444,7 +425,7 @@
             document.querySelectorAll('div').forEach(div => {
                 div.style.display = 'none';
             })
-            document.getElementById('Main').style.display = 'none';
+            
             document.getElementById('ProcedureAnnualBalanceSheets').style.display = 'block';
             const url = 'ProcedureAnnualBalanceSheets'
             //
@@ -458,7 +439,7 @@
             document.querySelectorAll('div').forEach(div => {
                 div.style.display = 'none';
             })
-            document.getElementById('Main').style.display = 'none';
+            
             document.getElementById('ProcedureAnnualIncomeStatements').style.display = 'block';
             const url = 'ProcedureAnnualIncomeStatements'
             //
@@ -472,7 +453,7 @@
             document.querySelectorAll('div').forEach(div => {
                 div.style.display = 'none';
             })
-            document.getElementById('Main').style.display = 'none';
+            
             document.getElementById('ProcedureAnnualComprehensiveIncome').style.display = 'block';
             const url = 'ProcedureAnnualComprehensiveIncome'
             //
@@ -486,7 +467,7 @@
             document.querySelectorAll('div').forEach(div => {
                 div.style.display = 'none';
             })
-            document.getElementById('Main').style.display = 'none';
+            
             document.getElementById('ProcedureAnnualShareholdersEquity').style.display = 'block';
             const url = 'ProcedureAnnualShareholdersEquity'
             //
@@ -500,7 +481,7 @@
             document.querySelectorAll('div').forEach(div => {
                 div.style.display = 'none';
             })
-            document.getElementById('Main').style.display = 'none';
+            
             document.getElementById('ProcedureAnnualCashFlow').style.display = 'block';
             const url = 'ProcedureAnnualCashFlow'
             //
