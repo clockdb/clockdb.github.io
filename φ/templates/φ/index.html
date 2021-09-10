@@ -4264,8 +4264,8 @@
                                 list.appendChild(a);
                             }
                             if (group.length === 0) {
-                                setNoResults();
                                 document.getElementById('SearchResults').style.marginBottom = '0%';
+                                document.getElementById('SearchResults').style.display = 'none';
                             } else {
                                 document.getElementById('SearchResults').style.marginBottom = '0%';
                             }
@@ -4357,11 +4357,15 @@
             <tr></tr>
             <tr>
                 <td colspan='3'>
-                    <h2 style="text-align: left; letter-spacing: 2px;">Sort</h2>
+                    <h2 style="text-align: left;">Sort</h2>
                 </td>
                 <td colspan='3'>
                     <form>
-                        <select id="Sort" name="Sort">
+                        <select id="Sort" name="Sort" style="
+                            font-family: 'Verdana', sans-serif;
+                            font-size: 12px;
+                            letter-spacing: 2px;
+                            ">
                             <option value=any selected></option>
                             <option value=ClockφLastYear>Clockdb Ratio</option>
                             <option value=lastyear>Period End Date</option>
@@ -4380,7 +4384,11 @@
                 </td>
                 <td colspan='3'>
                     <form>
-                        <select id="Order" name="Order">
+                        <select id="Order" name="Order" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=+>Ascending</option>
                             <option value=->Descending</option>
@@ -4401,7 +4409,11 @@
                 </td>
                 <td colspan='3'>
                     <form>
-                        <select id="Industry" name="Industry" onfocusout=industry()>
+                        <select id="Industry" name="Industry" onfocusout=industry() style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any></option>
                             <option value=33>Aeronautical</option>
                             <option value=24>Aerospacial</option>
@@ -4452,7 +4464,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=1 name="Engineering & Laboratory">
+                        <select id=1 name="Engineering & Laboratory" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=3822>Auto Controls For Regulating Residential & Comml Environments</option>
                             <option value=3826>Laboratory Analytical Instruments</option>
@@ -4470,7 +4486,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=2 name="Real Estate">
+                        <select id=2 name="Real Estate" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=7011>Hotels & Motels</option>
                             <option value=7000>Hotels, Rooming Houses, Camps & Other Lodging Places</option>
@@ -4490,7 +4510,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=3 name="Transportation, Routing & Courier">
+                        <select id=3 name="Transportation, Routing & Courier" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=4513>Air Courier Services</option>
                             <option value=4512>Air Transportation, Scheduled</option>
@@ -4508,7 +4532,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=4 name="Insurance">
+                        <select id=4 name="Insurance" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=6321>Accident & Health Insurance</option>
                             <option value=6331>Fire, Marine & Casualty Insurance</option>
@@ -4525,7 +4553,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=5 name="Computer & Semiconductors">
+                        <select id=5 name="Computer & Semiconductors" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=3570>Computer & Office Equipment</option>
                             <option value=3577>Computer Peripheral Equipment, Nec</option>
@@ -4546,7 +4578,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=6 name="Industrial, Machinery & Equipment">
+                        <select id=6 name="Industrial, Machinery & Equipment" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=3585>Air-Cond & Warm Air Heatg Equip & Comm & Indl Refrig Equip</option>
                             <option value=3562>Ball & Roller Bearings</option>
@@ -4582,7 +4618,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=7 name="Military, Marine & Surety">
+                        <select id=7 name="Military, Marine & Surety" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=3760>Guided Missiles & Space Vehicles & Parts</option>
                             <option value=3480>Ordnance & Accessories, (No Vehicles/Guided Missiles)</option>
@@ -4595,7 +4635,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=8 name="Finance, Legal, Management & Consulting">
+                        <select id=8 name="Finance, Legal, Management & Consulting" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=6199>Finance Services</option>
                             <option value=6282>Investment Advice</option>
@@ -4617,7 +4661,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=9 name="Health Care">
+                        <select id=9 name="Health Care" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=3843>Dental Equipment & Supplies</option>
                             <option value=3845>Electromedical & Electrotherapeutic Apparatus</option>
@@ -4649,7 +4697,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=10 name="Wholesale, Distribution & Storage">
+                        <select id=10 name="Wholesale, Distribution & Storage" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=5130>Wholesale-Apparel, Piece Goods & Notions</option>
                             <option value=5160>Wholesale-Chemicals & Allied Products</option>
@@ -4684,7 +4736,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=11 name="Banking">
+                        <select id=11 name="Banking" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=6029>Commercial Banks, Nec</option>
                             <option value=6099>Functions Related To Depository Banking, Nec</option>
@@ -4702,7 +4758,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=12 name="Building & Infrastructures">
+                        <select id=12 name="Building & Infrastructures" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=1700>Construction - Special Trade Contractors</option>
                             <option value=3531>Construction Machinery & Equip</option>
@@ -4725,7 +4785,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=13 name="Energy">
+                        <select id=13 name="Energy" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=1220>Bituminous Coal & Lignite Mining</option>
                             <option value=1221>Bituminous Coal & Lignite Surface Mining</option>
@@ -4752,7 +4816,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=14 name="Wood Products">
+                        <select id=14 name="Wood Products" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=2780>Blankbooks, Looseleaf Binders & Bookbindg & Relatd Work</option>
                             <option value=2670>Converted Paper & Paperboard Prods (No Contaners/Boxes)</option>
@@ -4771,7 +4839,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=15 name="Art, Sports & Culture">
+                        <select id=15 name="Art, Sports & Culture" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=2731>Books: Publishing Or Publishing & Printing</option>
                             <option value=3942>Dolls & Stuffed Toys</option>
@@ -4799,7 +4871,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=16 name="Information Technology">
+                        <select id=16 name="Information Technology" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=3578>Calculating & Accounting Machines (No Electronic Computers)</option>
                             <option value=7373>Services-Computer Integrated Systems Design</option>
@@ -4815,7 +4891,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=17 name="Chemical Engineering">
+                        <select id=17 name="Chemical Engineering" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=3290>Abrasive, Asbestos & Misc Nonmetallic Mineral Prods</option>
                             <option value=2891>Adhesives & Sealants</option>
@@ -4849,7 +4929,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=18 name="Food">
+                        <select id=18 name="Food" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=2050>Bakery Products</option>
                             <option value=2080>Beverages</option>
@@ -4879,7 +4963,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=19 name="Telecommunication">
+                        <select id=19 name="Telecommunication" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=4841>Cable & Other Pay Television Services</option>
                             <option value=3669>Communications Equipment, Nec</option>
@@ -4901,7 +4989,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=20 name="Electric">
+                        <select id=20 name="Electric" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=4931>Electric & Other Services Combined</option>
                             <option value=3634>Electric Housewares & Fans</option>
@@ -4922,7 +5014,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=21 name="Agriculture & Forestry">
+                        <select id=21 name="Agriculture & Forestry" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=2870>Agricultural Chemicals</option>
                         </select>
@@ -4933,7 +5029,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=22 name="Mining & Quarrying">
+                        <select id=22 name="Mining & Quarrying" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=1040>Gold And Silver Ores</option>
                             <option value=3412>Metal Shipping Barrels, Drums, Kegs & Pails</option>
@@ -4952,7 +5052,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=23 name="Textile & Leather">
+                        <select id=23 name="Textile & Leather" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=2300>Apparel & Other Finishd Prods Of Fabrics & Similar Matl</option>
                             <option value=2211>Broadwoven Fabric Mills, Cotton</option>
@@ -4971,7 +5075,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=24 name="Aerospacial">
+                        <select id=24 name="Aerospacial" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=3721>Aircraft</option>
                             <option value=3720>Aircraft & Parts</option>
@@ -4985,7 +5093,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=25 name="Patent Owners & Lessors">
+                        <select id=25 name="Patent Owners & Lessors" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=6794>Patent Owners & Lessors</option>
                             <option value=7510>Services-Auto Rental & Leasing (No Drivers)</option>
@@ -4999,7 +5111,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=27 name="Metal Manufacturing">
+                        <select id=27 name="Metal Manufacturing" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=3470>Coating, Engraving & Allied Services</option>
                             <option value=3420>Cutlery, Handtools & General Hardware</option>
@@ -5026,7 +5142,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=28 name="Automobile & Motor Vehicules">
+                        <select id=28 name="Automobile & Motor Vehicules" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=2451>Mobile Homes</option>
                             <option value=3716>Motor Homes</option>
@@ -5042,7 +5162,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=29 name="Educational">
+                        <select id=29 name="Educational" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=8351>Services-Child Day Care Services</option>
                             <option value=8200>Services-Educational Services</option>
@@ -5054,7 +5178,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=30 name="Marketing & Advertising">
+                        <select id=30 name="Marketing & Advertising" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=7310>Services-Advertising</option>
                             <option value=7311>Services-Advertising Agencies</option>
@@ -5067,7 +5195,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=31 name="Furniture & Fixtures">
+                        <select id=31 name="Furniture & Fixtures" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=3430>Heating Equip, Except Elec & Warm Air; & Plumbing Fixtures</option>
                             <option value=2510>Household Furniture</option>
@@ -5083,7 +5215,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=32 name="Breweries & Bottlers">
+                        <select id=32 name="Breweries & Bottlers" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=2082>Malt Beverages</option>
                         </select>
@@ -5094,7 +5230,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=33 name="Aeronautical">
+                        <select id=33 name="Aeronautical" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=3812>Search, Detection, Navagation, Guidance, Aeronautical Sys</option>
                             <option value=3730>Ship & Boat Building & Repairing</option>
@@ -5106,7 +5246,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=34 name="Railroads">
+                        <select id=34 name="Railroads" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=3743>Railroad Equipment</option>
                             <option value=4013>Railroad Switching & Terminal Establishments</option>
@@ -5119,7 +5263,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=35 name="Tobacco Products">
+                        <select id=35 name="Tobacco Products" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=2111>Cigarettes</option>
                             <option value=2100>Tobacco Products</option>
@@ -5131,7 +5279,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=37 name="Pharmaceutical">
+                        <select id=37 name="Pharmaceutical" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=2834>Pharmaceutical Preparations</option>
                             <option value=8731>Services-Commercial Physical & Biological Research</option>
@@ -5143,7 +5295,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=38 name="Retail">
+                        <select id=38 name="Retail" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=5600>Retail-Apparel & Accessory Stores</option>
                             <option value=5531>Retail-Auto & Home Supply Stores</option>
@@ -5178,7 +5334,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=39 name="Brokers, Investors, Savings Institutions">
+                        <select id=39 name="Brokers, Investors, Savings Institutions" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=6221>Commodity Contracts Brokers & Dealers</option>
                             <option value=6799>Investors, Nec</option>
@@ -5195,7 +5355,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=40 name="Credit & Collection Agencies">
+                        <select id=40 name="Credit & Collection Agencies" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=6111>Federal & Federally-Sponsored Credit Agencies</option>
                             <option value=7320>Services-Consumer Credit Reporting, Collection Agencies</option>
@@ -5207,7 +5371,11 @@
                 <td colspan='3'></td>
                 <td colspan='3'>
                     <form>
-                        <select id=41 name="Blank Checks">
+                        <select id=41 name="Blank Checks" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=6770>Blank Checks</option>
                         </select>
@@ -5220,7 +5388,11 @@
                 </td>
                 <td colspan='3'>
                     <form>
-                        <select id="Region" name="Region">
+                        <select id="Region" name="Region" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=1>Alabama</option>
                             <option value=2>Alaska</option>
@@ -5540,7 +5712,11 @@
                 </td>
                 <td colspan='3'>
                     <form>
-                        <select id="PeriodEndDate" name="PeriodEndDate">
+                        <select id="PeriodEndDate" name="PeriodEndDate" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=any selected></option>
                             <option value=2021-05-31>Mai 2021</option>
                             <option value=2021-04-30>April 2021</option>
@@ -5568,7 +5744,11 @@
                 </td>
                 <td colspan='3'>
                     <form>
-                        <select id="Phase" name="Phase">
+                        <select id="Phase" name="Phase" style="
+                        font-family: 'Verdana', sans-serif;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        ">
                             <option value=21 selected></option>
                             <option value=any>Include</option>
                         </select>

@@ -844,7 +844,7 @@
                         <script>
                             
                             // List of entities
-                            let myURL = new URL('http://www.clockdb.com/');
+                            let myURL = new URL('https://www.clockdb.com/');
 
                             const entities = [
                                 { name: 'AGILENT TECHNOLOGIES, INC. (A)' , url: './A'}, 
@@ -4912,8 +4912,8 @@
                                     list.appendChild(a);
                                 }
                                 if (group.length === 0) {
-                                    setNoResults();
                                     document.getElementById('SearchResults').style.marginBottom = '0%';
+                                    document.getElementById('SearchResults').style.display = 'none';
                                 } else {
                                     document.getElementById('SearchResults').style.marginBottom = '0%';
                                 }
