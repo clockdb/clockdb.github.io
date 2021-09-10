@@ -7611,7 +7611,7 @@
                         <td colspan="2"><input class="account" id="Cash6" onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
                     <tr id='ShortTermInvestmentsRow'>
-                        <td colspan="2"><h6>Short-Term Investments</h6></td>
+                        <td colspan="2"><h6>Short Term Investments</h6></td>
                         <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td>
                             <input type="checkbox" style="height: 16px; box-shadow: none;" id="ShortTermInvestmentsCheckbox"></input>
@@ -7666,7 +7666,7 @@
                                     } else {
                                         a = '';
                                     }
-                                    document.getElementById('TrialBalanceSherTermInvestmentsRow').style.display = a
+                                    document.getElementById('TrialBalanceShortTermInvestmentsRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceShortTermInvestments)
@@ -11917,7 +11917,7 @@
                         <td colspan="2"><input class="account" id="CommonShares5" onclick="HighLight()" onfocusout="Enter()"></input></td>
                         <td colspan="2"><input class="account" id="CommonShares6" onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
-                    <tr id='RetainedEarningsRow'>
+                    <tr id='RetainedEarningsAccumulatedDeficitRow'>
                         <td colspan="2"><h6>Retained Earnings (Accumulated Deficit)</h6></td>
                         <td style="text-align:center"><button data-page="AnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">SE</button></td>
                         <td>
@@ -11931,7 +11931,7 @@
                         <td colspan="2"><input class="account" id="RetainedEarningsAccumulatedDeficit5" onclick="HighLight()" onfocusout="Enter()"></input></td>
                         <td colspan="2"><input class="account" id="RetainedEarningsAccumulatedDeficit6" onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
-                    <tr id='AccumulatedOtherComprehensiveIncomeRow'>
+                    <tr id='AccumulatedOtherComprehensiveIncomeLossRow'>
                         <td colspan="2"><h6>Accumulated Other Comprehensive Income (Loss)</h6></td>
                         <td style="text-align:center"><button data-page="AnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">SE</button></td>
                         <td>
@@ -12082,7 +12082,7 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr>
+                    <tr id="SalesRow">
                         <td colspan="2"><h6><b>Sales</b></h6></td>
                         <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td>
@@ -12094,12 +12094,40 @@
                                 var numUSD = new Intl.NumberFormat("en-US", {
                                     format: "number"
                                 })
+                                z = 0
                                 document.getElementById('Sales1').value = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceSales1').value.replaceAll(/,/g, ''))));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
                                 document.getElementById('Sales2').value = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceSales2').value.replaceAll(/,/g, ''))));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
                                 document.getElementById('Sales3').value = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceSales3').value.replaceAll(/,/g, ''))));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
                                 document.getElementById('Sales4').value = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceSales4').value.replaceAll(/,/g, ''))));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
                                 document.getElementById('Sales5').value = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceSales5').value.replaceAll(/,/g, ''))));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
                                 document.getElementById('Sales6').value = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceSales6').value.replaceAll(/,/g, ''))));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                if (z == 6) {
+                                    //
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceSalesRow').style.display = a
+                                }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceSales)
                             window.addEventListener('keyup', function() {
@@ -12330,12 +12358,45 @@
                                 var numUSD = new Intl.NumberFormat("en-US", {
                                     format: "number"
                                 })
-                                document.getElementById('SellingGeneralAdministrativeAndMarketing1').value = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceSellingGeneralAdministrativeAndMarketing1').value.replaceAll(/,/g, ''))));
-                                document.getElementById('SellingGeneralAdministrativeAndMarketing2').value = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceSellingGeneralAdministrativeAndMarketing2').value.replaceAll(/,/g, ''))));
-                                document.getElementById('SellingGeneralAdministrativeAndMarketing3').value = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceSellingGeneralAdministrativeAndMarketing3').value.replaceAll(/,/g, ''))));
-                                document.getElementById('SellingGeneralAdministrativeAndMarketing4').value = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceSellingGeneralAdministrativeAndMarketing4').value.replaceAll(/,/g, ''))));
-                                document.getElementById('SellingGeneralAdministrativeAndMarketing5').value = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceSellingGeneralAdministrativeAndMarketing5').value.replaceAll(/,/g, ''))));
-                                document.getElementById('SellingGeneralAdministrativeAndMarketing6').value = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceSellingGeneralAdministrativeAndMarketing6').value.replaceAll(/,/g, ''))));
+                                z = 0
+                                a = parseInt(document.getElementById('TrialBalanceSellingGeneralAdministrativeAndMarketing1').value.replaceAll(/,/g, ''));
+                                document.getElementById('SellingGeneralAdministrativeAndMarketing1').value = numUSD.format(-Math.round(a));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                a = parseInt(document.getElementById('TrialBalanceSellingGeneralAdministrativeAndMarketing2').value.replaceAll(/,/g, ''));
+                                document.getElementById('SellingGeneralAdministrativeAndMarketing2').value = numUSD.format(-Math.round(a));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                a = parseInt(document.getElementById('TrialBalanceSellingGeneralAdministrativeAndMarketing3').value.replaceAll(/,/g, ''));
+                                document.getElementById('SellingGeneralAdministrativeAndMarketing3').value = numUSD.format(-Math.round(a));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                a = parseInt(document.getElementById('TrialBalanceSellingGeneralAdministrativeAndMarketing4').value.replaceAll(/,/g, ''));
+                                document.getElementById('SellingGeneralAdministrativeAndMarketing4').value = numUSD.format(-Math.round(a));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                a = parseInt(document.getElementById('TrialBalanceSellingGeneralAdministrativeAndMarketing5').value.replaceAll(/,/g, ''));
+                                document.getElementById('SellingGeneralAdministrativeAndMarketing5').value = numUSD.format(-Math.round(a));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                a = parseInt(document.getElementById('TrialBalanceSellingGeneralAdministrativeAndMarketing6').value.replaceAll(/,/g, ''));
+                                document.getElementById('SellingGeneralAdministrativeAndMarketing6').value = numUSD.format(-Math.round(a));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                if (z == 6) {
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceSellingGeneralAdministrativeAndMarketingRow').style.display = a
+                                }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceSellingGeneralAdministrativeAndMarketing)
                             window.addEventListener('keyup', function() {
@@ -12496,12 +12557,45 @@
                                 var numUSD = new Intl.NumberFormat("en-US", {
                                     format: "number"
                                 })
-                                document.getElementById('NonOperatingIncomeExpense1').value = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceNonOperatingIncomeExpense1').value.replaceAll(/,/g, ''))));
-                                document.getElementById('NonOperatingIncomeExpense2').value = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceNonOperatingIncomeExpense2').value.replaceAll(/,/g, ''))));
-                                document.getElementById('NonOperatingIncomeExpense3').value = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceNonOperatingIncomeExpense3').value.replaceAll(/,/g, ''))));
-                                document.getElementById('NonOperatingIncomeExpense4').value = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceNonOperatingIncomeExpense4').value.replaceAll(/,/g, ''))));
-                                document.getElementById('NonOperatingIncomeExpense5').value = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceNonOperatingIncomeExpense5').value.replaceAll(/,/g, ''))));
-                                document.getElementById('NonOperatingIncomeExpense6').value = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceNonOperatingIncomeExpense6').value.replaceAll(/,/g, ''))));
+                                z = 0
+                                a = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceNonOperatingIncomeExpense1').value.replaceAll(/,/g, ''))));
+                                document.getElementById('NonOperatingIncomeExpense1').value = a;
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                a = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceNonOperatingIncomeExpense2').value.replaceAll(/,/g, ''))));
+                                document.getElementById('NonOperatingIncomeExpense2').value = a;
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                a = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceNonOperatingIncomeExpense3').value.replaceAll(/,/g, ''))));
+                                document.getElementById('NonOperatingIncomeExpense3').value = a;
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                a = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceNonOperatingIncomeExpense4').value.replaceAll(/,/g, ''))));
+                                document.getElementById('NonOperatingIncomeExpense4').value = a;
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                a = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceNonOperatingIncomeExpense5').value.replaceAll(/,/g, ''))));
+                                document.getElementById('NonOperatingIncomeExpense5').value = a;
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                a = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceNonOperatingIncomeExpense6').value.replaceAll(/,/g, ''))));
+                                document.getElementById('NonOperatingIncomeExpense6').value = a;
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                if (z == 6) {
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceNonOperatingIncomeExpenseRow').style.display = a
+                                }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceNonOperatingIncomeExpense)
                             window.addEventListener('keyup', function() {
@@ -12588,12 +12682,45 @@
                                 var numUSD = new Intl.NumberFormat("en-US", {
                                     format: "number"
                                 })
-                                document.getElementById('IncomeTaxExpenseBenefit1').value = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceIncomeTaxExpenseBenefit1').value.replaceAll(/,/g, ''))));
-                                document.getElementById('IncomeTaxExpenseBenefit2').value = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceIncomeTaxExpenseBenefit2').value.replaceAll(/,/g, ''))));
-                                document.getElementById('IncomeTaxExpenseBenefit3').value = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceIncomeTaxExpenseBenefit3').value.replaceAll(/,/g, ''))));
-                                document.getElementById('IncomeTaxExpenseBenefit4').value = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceIncomeTaxExpenseBenefit4').value.replaceAll(/,/g, ''))));
-                                document.getElementById('IncomeTaxExpenseBenefit5').value = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceIncomeTaxExpenseBenefit5').value.replaceAll(/,/g, ''))));
-                                document.getElementById('IncomeTaxExpenseBenefit6').value = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceIncomeTaxExpenseBenefit6').value.replaceAll(/,/g, ''))));
+                                z = 0
+                                a = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceIncomeTaxExpenseBenefit1').value.replaceAll(/,/g, ''))));
+                                document.getElementById('IncomeTaxExpenseBenefit1').value = a;
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                a = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceIncomeTaxExpenseBenefit2').value.replaceAll(/,/g, ''))));
+                                document.getElementById('IncomeTaxExpenseBenefit2').value = a;
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                a = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceIncomeTaxExpenseBenefit3').value.replaceAll(/,/g, ''))));
+                                document.getElementById('IncomeTaxExpenseBenefit3').value = a;
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                a = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceIncomeTaxExpenseBenefit4').value.replaceAll(/,/g, ''))));
+                                document.getElementById('IncomeTaxExpenseBenefit4').value = a;
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                a = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceIncomeTaxExpenseBenefit5').value.replaceAll(/,/g, ''))));
+                                document.getElementById('IncomeTaxExpenseBenefit5').value = a;
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                a = numUSD.format(-Math.round(parseInt(document.getElementById('TrialBalanceIncomeTaxExpenseBenefit6').value.replaceAll(/,/g, ''))));
+                                document.getElementById('IncomeTaxExpenseBenefit6').value = a;
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                if (z == 6) {
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceIncomeTaxExpenseBenefitRow').style.display = a
+                                }
                             };
                             window.addEventListener('DOMContentLoaded', BalanceIncomeTaxExpenseBenefit)
                             window.addEventListener('keyup', function() {
@@ -14642,64 +14769,121 @@
                                 ////////////////////
                                 // Common Shares (Balance Sheets) 
                                 // Last Year
+                                z = 0
                                 a = -parseInt(document.getElementById('TrialBalanceCommonShares1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesIssued1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShareBasedCompensation1').value.replaceAll(/,/g, ''));
                                 document.getElementById('CommonShares1').value = numUSD.format(Math.round(a));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
                                 // Second Last Year
                                 a = -parseInt(document.getElementById('TrialBalanceCommonShares2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesIssued2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShareBasedCompensation2').value.replaceAll(/,/g, ''));
                                 document.getElementById('CommonShares2').value = numUSD.format(Math.round(a));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
                                 // Third Last Year
                                 a = -parseInt(document.getElementById('TrialBalanceCommonShares3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesIssued3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShareBasedCompensation3').value.replaceAll(/,/g, ''));
                                 document.getElementById('CommonShares3').value = numUSD.format(Math.round(a));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
                                 // Fourth Last Year
                                 a = -parseInt(document.getElementById('TrialBalanceCommonShares4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesIssued4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShareBasedCompensation4').value.replaceAll(/,/g, ''));
                                 document.getElementById('CommonShares4').value = numUSD.format(Math.round(a));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
                                 // Fifth Year
                                 a = -parseInt(document.getElementById('TrialBalanceCommonShares5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesIssued5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShareBasedCompensation5').value.replaceAll(/,/g, ''));
                                 document.getElementById('CommonShares5').value = numUSD.format(Math.round(a));
-                                // Fifth Year
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Sixth Year
                                 a = -parseInt(document.getElementById('TrialBalanceCommonShares6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesIssued6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ShareBasedCompensation6').value.replaceAll(/,/g, ''));
                                 document.getElementById('CommonShares6').value = numUSD.format(Math.round(a));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                if (z == 6) {
+                                    document.getElementById('CommonSharesRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceCommonSharesRow').style.display = a
+                                }
                                 ////////////////////
                                 // Accumulated Other Comprehensive Income (Loss), Net of Tax (Balance Sheets) 
                                 // Last Year
+                                z = 0
                                 a = -parseInt(document.getElementById('TrialBalanceAccumulatedOtherComprehensiveIncomeLoss1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ComprehensiveIncomeShareholdersEquity1').value.replaceAll(/,/g, ''));
                                 document.getElementById('AccumulatedOtherComprehensiveIncomeLoss1').value = numUSD.format(Math.round(a));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
                                 // Second Last Year
                                 a = -parseInt(document.getElementById('TrialBalanceAccumulatedOtherComprehensiveIncomeLoss2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ComprehensiveIncomeShareholdersEquity2').value.replaceAll(/,/g, ''));
                                 document.getElementById('AccumulatedOtherComprehensiveIncomeLoss2').value = numUSD.format(Math.round(a));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
                                 // Third Last Year
                                 a = -parseInt(document.getElementById('TrialBalanceAccumulatedOtherComprehensiveIncomeLoss3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ComprehensiveIncomeShareholdersEquity3').value.replaceAll(/,/g, ''));
                                 document.getElementById('AccumulatedOtherComprehensiveIncomeLoss3').value = numUSD.format(Math.round(a));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
                                 // Fourth Last Year
                                 a = -parseInt(document.getElementById('TrialBalanceAccumulatedOtherComprehensiveIncomeLoss4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ComprehensiveIncomeShareholdersEquity4').value.replaceAll(/,/g, ''));
                                 document.getElementById('AccumulatedOtherComprehensiveIncomeLoss4').value = numUSD.format(Math.round(a));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
                                 // Fifth Year
                                 a = -parseInt(document.getElementById('TrialBalanceAccumulatedOtherComprehensiveIncomeLoss5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ComprehensiveIncomeShareholdersEquity5').value.replaceAll(/,/g, ''));
                                 document.getElementById('AccumulatedOtherComprehensiveIncomeLoss5').value = numUSD.format(Math.round(a));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
                                 // Sixth Year
                                 a = -parseInt(document.getElementById('TrialBalanceAccumulatedOtherComprehensiveIncomeLoss6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('ComprehensiveIncomeShareholdersEquity6').value.replaceAll(/,/g, ''));
                                 document.getElementById('AccumulatedOtherComprehensiveIncomeLoss6').value = numUSD.format(Math.round(a));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                if (z == 6) {
+                                    document.getElementById('AccumulatedOtherComprehensiveIncomeLossRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceAccumulatedOtherComprehensiveIncomeLossRow').style.display = a
+                                }
                                 ////////////////////
                                 // Retained Earnings (Accumulated Deficit) (Balance Sheets) 
                                 // Last Year
+                                z = 0
                                 a = -parseInt(document.getElementById('TrialBalanceRetainedEarningsAccumulatedDeficit1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('CommonSharesRepurchasedAndRetired1').value.replaceAll(/,/g, ''));
@@ -14708,6 +14892,9 @@
                                 a = a + parseInt(document.getElementById('RetainedEarningsOthers1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetIncomeLossShareholdersEquity1').value.replaceAll(/,/g, ''));
                                 document.getElementById('RetainedEarningsAccumulatedDeficit1').value = numUSD.format(Math.round(a));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
                                 // Second Last Year
                                 a = -parseInt(document.getElementById('TrialBalanceRetainedEarningsAccumulatedDeficit2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared2').value.replaceAll(/,/g, ''));
@@ -14717,6 +14904,9 @@
                                 a = a + parseInt(document.getElementById('RetainedEarningsOthers2').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetIncomeLossShareholdersEquity2').value.replaceAll(/,/g, ''));
                                 document.getElementById('RetainedEarningsAccumulatedDeficit2').value = numUSD.format(Math.round(a));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
                                 // Third Last Year
                                 a = -parseInt(document.getElementById('TrialBalanceRetainedEarningsAccumulatedDeficit3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared3').value.replaceAll(/,/g, ''));
@@ -14726,6 +14916,9 @@
                                 a = a + parseInt(document.getElementById('RetainedEarningsOthers3').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetIncomeLossShareholdersEquity3').value.replaceAll(/,/g, ''));
                                 document.getElementById('RetainedEarningsAccumulatedDeficit3').value = numUSD.format(Math.round(a));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
                                 // Fourth Last Year
                                 a = -parseInt(document.getElementById('TrialBalanceRetainedEarningsAccumulatedDeficit4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared4').value.replaceAll(/,/g, ''));
@@ -14735,6 +14928,9 @@
                                 a = a + parseInt(document.getElementById('RetainedEarningsOthers4').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetIncomeLossShareholdersEquity4').value.replaceAll(/,/g, ''));
                                 document.getElementById('RetainedEarningsAccumulatedDeficit4').value = numUSD.format(Math.round(a));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
                                 // Fifth Year
                                 a = -parseInt(document.getElementById('TrialBalanceRetainedEarningsAccumulatedDeficit5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared5').value.replaceAll(/,/g, ''));
@@ -14744,6 +14940,9 @@
                                 a = a + parseInt(document.getElementById('RetainedEarningsOthers5').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetIncomeLossShareholdersEquity5').value.replaceAll(/,/g, ''));
                                 document.getElementById('RetainedEarningsAccumulatedDeficit5').value = numUSD.format(Math.round(a));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
                                 // Sixth Year
                                 a = -parseInt(document.getElementById('TrialBalanceRetainedEarningsAccumulatedDeficit6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared6').value.replaceAll(/,/g, ''));
@@ -14753,10 +14952,23 @@
                                 a = a + parseInt(document.getElementById('RetainedEarningsOthers6').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('NetIncomeLossShareholdersEquity6').value.replaceAll(/,/g, ''));
                                 document.getElementById('RetainedEarningsAccumulatedDeficit6').value = numUSD.format(Math.round(a));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                if (z == 6) {
+                                    document.getElementById('RetainedEarningsAccumulatedDeficitRow').style.display = 'none';
+                                    if (document.getElementById('TrialBalanceUnhideCheckbox').checked == true) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                    document.getElementById('TrialBalanceRetainedEarningsAccumulatedDeficitRow').style.display = a
+                                }
                                 ////////////////////
                                 // Treasury Shares (Balance Sheets) 
                                 z = 0
                                 // Last Year
+                                z = 0
                                 a = -parseInt(document.getElementById('TrialBalanceTreasuryShares1').value.replaceAll(/,/g, ''));
                                 a = a + parseInt(document.getElementById('PurchaseAndSellOfTreasuryShares1').value.replaceAll(/,/g, ''));
                                 document.getElementById('TreasuryShares1').value = numUSD.format(Math.round(a));
@@ -15308,7 +15520,7 @@
                         <td colspan="2"><input class="clock" id="NetIncomeCashFlow5" onclick="HighLight()" onfocusout="Enter()"></input></td>
                         <td colspan="2"><input class="clock" id="NetIncomeCashFlow6" onclick="HighLight()" onfocusout="Enter()"></input></td>
                     </tr>
-                    <tr>
+                    <tr id="DepreciationDepletionAndAmortizationRow">
                         <td colspan="2"><h6>Depreciation, Depletion And Amortization</h6></td>
                         <td style="text-align:center; font-weight:bold;">db</td>
                         <td>
@@ -15354,7 +15566,7 @@
                                     } else {
                                         a = '';
                                     }
-                                    document.getElementById('DepreciationDeplationAndAmortizationRow').style.display = a
+                                    document.getElementById('DepreciationDepletionAndAmortizationRow').style.display = a
                                 }
                             };
                             window.addEventListener('DOMContentLoaded', DepreciationDepletionAndAmortizationRow)
