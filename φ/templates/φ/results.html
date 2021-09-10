@@ -71,7 +71,7 @@
                 <tr></tr>
                 <tr></tr>
                 <tr>
-                    <td colspan="4"></td>
+                    <td colspan="3"></td>
                     <td colspan="2"><h5 id="DateSummary1" class='DateSummary1' style="text-align:center">{{ entity.lastyear }}</h5></td>
                     <td colspan="2"><h5 id="DateSummary2" class='DateSummary2' style="text-align:center">{{ entity.secondlastyear }}</h5></td>
                     <td colspan="2"><h5 id="DateSummary3" class='DateSummary3' style="text-align:center">{{ entity.thirdlastyear }}</h5></td>
@@ -79,7 +79,7 @@
                 </tr>
                 <tr></tr>
                 <tr>
-                    <td colspan='4'></td>
+                    <td colspan='3'></td>
                     <td colspan='2'><h5 id="TrialBalanceAmend1" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendlastyear }}</td>
                     <td colspan='2'><h5 id="TrialBalanceAmend2" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendsecondlastyear }}</td>
                     <td colspan='2'><h5 id="TrialBalanceAmend3" style="font-weight:bold; text-align:center" onclick="HighLight()">{{ entity.amendthirdlastyear }}</td>
@@ -90,7 +90,7 @@
                 <tr></tr>
                 <tr></tr>
                 <tr>
-                    <td colspan="4"></td>
+                    <td colspan="3"></td>
                     <td colspan="2"><h6 style="text-align: center;">Price as of {{ entity.SecuritiesUpdate }}</h6></td>
                 </tr>
                 <tr></tr>
@@ -100,10 +100,6 @@
                 <tr>
                     <td colspan="2"><h5 style="margin-left:0px;">OPINION</h5></td>
                     <td style="text-align:center; font-weight:bold;"><a href="/{{ entity.TradingSymbol }}" style="color:#0d47a1;">(a)</a></td>
-                    <td>
-                        <input type="checkbox" style="height: 16px; box-shadow: none;" id="OpinionφCheckbox"></input>
-                        <input type="checkbox" style="height: 16px; box-shadow: none;" id="OpinionφCheckbox2"></input>
-                    </td>
                     <td colspan="2" id="Opinionφ1" class ="Opinionφ1" style="font-weight:bold; text-align:center">{{ entity.OpinionφLastYear }}</td>
                     <td colspan="2" id="Opinionφ2" class ="Opinionφ2" style="font-weight:lighter; text-align:center">{{ entity.OpinionφSecondLastYear }}</td>
                     <td colspan="2" id="Opinionφ3" class ="Opinionφ3" style="font-weight:lighter; text-align:center">{{ entity.OpinionφThirdLastYear }}</td>
@@ -116,10 +112,6 @@
                 <tr>
                     <td colspan="2"><h5 style="margin-left:0px;">VALUATION</h5></td></td>
                     <td style="text-align:center; font-weight:bold;"><a href="/{{ entity.TradingSymbol }}" style="color:#0d47a1;">(b)</a></td>
-                    <td>
-                        <input type="checkbox" style="height: 16px; box-shadow: none;" id="ClockφCheckbox"></input>
-                        <input type="checkbox" style="height: 16px; box-shadow: none;" id="ClockφCheckbox2"></input>
-                    </td>
                     <td colspan="2" id="Clockφ1" class="Clockφ1" style="border-bottom:double black; font-weight:bold; text-align:right;">{{ entity.ClockφLastYear }}%</td>
                     <td colspan="2" id="Clockφ2" class="Clockφ2" style="border-bottom:double black; font-weight:lighter; text-align:right;">{{ entity.ClockφSecondLastYear }}%</td>
                     <td colspan="2" id="Clockφ3" class="Clockφ3" style="border-bottom:double black; font-weight:lighter; text-align:right;">{{ entity.ClockφThirdLastYear }}%</td>
@@ -132,10 +124,6 @@
                 <tr>
                     <td colspan="2"><h5 style="margin-left:0px;">AUDIT</h5></td>
                     <td style="text-align:center; font-weight:bold;"><a href="/{{ entity.TradingSymbol }}" style="color:black;">AS</a></td>
-                    <td>
-                        <input type="checkbox" style="height: 16px; box-shadow: none;" id="BridgeφCheckbox"></input>
-                        <input type="checkbox" style="height: 16px; box-shadow: none;" id="BridgeφCheckbox2"></input>
-                    </td>
                     <td colspan="2" id="Bridgeφ1" class="Bridgeφ1" style="font-weight:bold; text-align:center">{{ entity.BridgeφLastYear }}</td>
                     <td colspan="2" id="Bridgeφ2" class="Bridgeφ2" style="font-weight:lighter; text-align:center">{{ entity.BridgeφSecondLastYear }}</td>
                     <td colspan="2" id="Bridgeφ3" class="Bridgeφ3" style="font-weight:lighter; text-align:center">{{ entity.BridgeφThirdLastYear }}</td>
@@ -163,10 +151,6 @@
                 <tr>
                     <td colspan="2"><h6>Common Shares' Intrinsic Value</h6></td>
                     <td style="text-align:center; font-weight:bold;"><a href="/{{ entity.TradingSymbol }}" style="color:black;">IV</a></td>
-                    <td>
-                        <input type="checkbox" style="height: 16px; box-shadow: none;" id="IntrinsicValueCheckbox"></input>
-                        <input type="checkbox" style="height: 16px; box-shadow: none;" id="IntrinsicValueCheckbox2"></input>
-                    </td>
                     <td colspan="2"><input value={{ entity.CommonSharesIntrinsicValueLastYear }} class="IntrinsicValue1" id="IntrinsicValue1" style="font-weight:bold;" onclick="HighLight()"></input></td>
                     <td colspan="2"><input value={{ entity.CommonSharesIntrinsicValueSecondLastYear }} class="IntrinsicValue2" id="IntrinsicValue2" onclick="HighLight()"></input></td>
                     <td colspan="2"><input value={{ entity.CommonSharesIntrinsicValueThirdLastYear }} class="IntrinsicValue3" id="IntrinsicValue3" onclick="HighLight()"></input></td>
@@ -178,10 +162,6 @@
                 <tr>
                     <td colspan="2"><h6>Market Capitalization Attributable To Common Shares</h6></td>
                     <td style="text-align:center; font-weight:bold;"><a href="/{{ entity.TradingSymbol }}" style="color:#0d47a1;">(c)</a></td>
-                    <td>
-                        <input type="checkbox" style="height: 16px; box-shadow: none;" id="MarketCapitalizationCheckbox"></input>
-                        <input type="checkbox" style="height: 16px; box-shadow: none;" id="MarketCapitalizationCheckbox2"></input>
-                    </td>
                     <td colspan="2"><input value={{ entity.MarketCapitalizationLastYear }} class="MarketCapitalization1" id ="MarketCapitalization1" style="font-weight:bold;" onclick="HighLight()"></input></td>
                     <td colspan="2"><input value={{ entity.MarketCapitalizationSecondLastYear }} class="MarketCapitalization2" id ="MarketCapitalization2" onclick="HighLight()"></input></td>
                     <td colspan="2"><input value={{ entity.MarketCapitalizationThirdLastYear }} class="MarketCapitalization3" id ="MarketCapitalization3" onclick="HighLight()"></input></td>
@@ -192,10 +172,6 @@
                 <tr>
                     <td colspan="2"><h6>{{ entity.TradingSymbol }} Common Share Intrinsic Value Per Unit</h6></td>
                     <td style="text-align:center; font-weight:bold;"><a href="/{{ entity.TradingSymbol }}" style="color:#0d47a1;">(d)</a></td>
-                    <td>
-                        <input type="checkbox" style="height: 16px; box-shadow: none;" id="IntrinsicValueOfACommonSharesCheckbox"></input>
-                        <input type="checkbox" style="height: 16px; box-shadow: none;" id="IntrinsicValueOfACommonSharesCheckbox2"></input>
-                    </td>
                     <td colspan="2"><input value={{ entity.CommonShareIntrinsicValueLastYear }} class="price" id="IntrinsicValueOfACommonShares1" style="font-weight:bold;" onclick="HighLight()"></td>
                     <td colspan="2"><input value={{ entity.CommonShareIntrinsicValueSecondLastYear }} class="price" id="IntrinsicValueOfACommonShares2" onclick="HighLight()"></td>
                     <td colspan="2"><input value={{ entity.CommonShareIntrinsicValueThirdLastYear }} class="price" id="IntrinsicValueOfACommonShares3" onclick="HighLight()"></td>
@@ -207,10 +183,6 @@
                 <tr>
                     <td colspan="2"><h6>{{ entity.TradingSymbol }} Common Share Price Per Unit</h6></td>
                     <td style="text-align:center; font-weight:bold;"><a href="/{{ entity.TradingSymbol }}" style="color:#0d47a1;">(e)</a></td>
-                    <td>
-                        <input type="checkbox" style="height: 16px; box-shadow: none;" id="SharePriceCheckbox"></input>
-                        <input type="checkbox" style="height: 16px; box-shadow: none;" id="SharePriceCheckbox2"></input>
-                    </td>
                     <td colspan="2"><input value={{ entity.CommonSharePriceLastYear }} class="priceinput" id="SharePrice1" style="font-weight:bold;" onclick="HighLight()"></input></td>
                     <td colspan="2"><input value={{ entity.CommonSharePriceSecondLastYear }} class="priceinput" id="SharePrice2" onclick="HighLight()"></input></td>
                     <td colspan="2"><input value={{ entity.CommonSharePriceThirdLastYear }} class="priceinput" id="SharePrice3" onclick="HighLight()"></input></td>
@@ -222,10 +194,6 @@
                 <tr>
                     <td colspan="2"><h6>Adjusted Number Of Common Shares Outstanding</h6></td>
                     <td style="text-align:center; font-weight:bold;"><a href="/{{ entity.TradingSymbol }}" style="color:#0d47a1;">(f)</a></td>
-                    <td>
-                        <input type="checkbox" style="height: 16px; box-shadow: none;" id="CommonSharesOutstandingCheckbox"></input>
-                        <input type="checkbox" style="height: 16px; box-shadow: none;" id="CommonSharesOutstandingCheckbox2"></input>
-                    </td>
                     <td colspan="2"><input value={{ entity.CommonSharesOutstandingLastYear }} class="clock" id="CommonSharesOutstanding1" style="font-weight:bold;" onclick="HighLight()"></input></td>
                     <td colspan="2"><input value={{ entity.CommonSharesOutstandingSecondLastYear }} class="clock" id="CommonSharesOutstanding2" onclick="HighLight()"></input></td>
                     <td colspan="2"><input value={{ entity.CommonSharesOutstandingThirdLastYear }} class="clock" id="CommonSharesOutstanding3" onclick="HighLight()"></input></td>
