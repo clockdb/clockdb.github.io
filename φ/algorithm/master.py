@@ -154,7 +154,7 @@ try:
         e = entities[count]
         #
         if ll == 1:
-            e = Entity.objects.get(TradingSymbol='FB')
+            e = Entity.objects.get(TradingSymbol='MODEL')
         #
         if e.db in phases:
             #

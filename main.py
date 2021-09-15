@@ -1,12 +1,15 @@
 import sys
+from PyQt5 import QtWidgets
+from PyQt5.uic import loadUI
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtWebEngineWidgets import *
 
 
-class MainWindow(QMainWindow):
+class Window(QMainWindow):
+
     def __init__(self):
-        super(MainWindow, self).__init__()
+        super(Window, self).__init__()
         self.browser = QWebEngineView()
         self.browser.setUrl(QUrl('http://www.clockdb.com'))
         self.setCentralWidget(self.browser)
@@ -14,19 +17,20 @@ class MainWindow(QMainWindow):
 
         navbar = QToolBar()
         self.addToolBar(navbar)
-        back_btn = QAction('Back', self)
+        
+        back_btn = QAction('←', self)
         back_btn.triggered.connect(self.browser.back)
         navbar.addAction(back_btn)
 
-        forward_btn = QAction('Forward', self)
+        forward_btn = QAction('→', self)
         forward_btn.triggered.connect(self.browser.forward)
         navbar.addAction(forward_btn)
 
-        reload_btn = QAction('Reload', self)
+        reload_btn = QAction('⟳', self)
         reload_btn.triggered.connect(self.browser.reload)
         navbar.addAction(reload_btn)
 
-        home_btn = QAction('Home', self)
+        home_btn = QAction('⌂', self)
         home_btn.triggered.connect(self.navigate_home)
         navbar.addAction(home_btn)
 
@@ -47,7 +51,10 @@ class MainWindow(QMainWindow):
         self.url_bar.setText(q.toString())
 
 
-app = QApplication(sys.argv)
-QApplication.setApplicationName("arch tech")
-window = MainWindow()
-app.exec()
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    win = Window()
+    win.setWindowTitle("Arch Browser")
+    win.show()
+    sys.exit(app.exec_())
+

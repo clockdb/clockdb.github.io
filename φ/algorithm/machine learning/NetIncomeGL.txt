@@ -1,2 +1,0 @@
-InterestAndOtherIncome(Expense)Net 
-InterestAndOtherIncomeNet 
