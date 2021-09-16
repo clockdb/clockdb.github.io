@@ -115,7 +115,6 @@ auditcompleted = [
 ]
 
 marketdata = [
-    20,
 ]
 
 phases = [
@@ -154,7 +153,7 @@ try:
         e = entities[count]
         #
         if ll == 1:
-            e = Entity.objects.get(TradingSymbol='MODEL')
+            e = Entity.objects.get(TradingSymbol='FB')
         #
         if e.db in phases:
             #
@@ -11951,6 +11950,8 @@ try:
                 #
                 periodenddates.sort(reverse=True)
                 #
+                print(periodenddates)
+                #
                 for periodenddate in periodenddates:
                     #
                     if periodenddate != None:
@@ -11965,10 +11966,25 @@ try:
                             print(137 * '-' + '\n')
                             #
                             tb = TrialBalance.objects.get(TradingSymbol=e.TradingSymbol, PeriodEndDate=periodenddate)
+                            cf = CashFlow.objects.get(TradingSymbol=e.TradingSymbol, PeriodEndDate=periodenddate)
                             a = AuditData.objects.get(TradingSymbol=e.TradingSymbol, PeriodEndDate=periodenddate)
                             #
                             # additional informations
                             try:
+                                #
+                                # Target Working Capital
+                                try:
+                                    z = 1.2
+                                    a.TargetWorkingCapital = z
+                                except:
+                                    pass
+                                #
+                                # Historical Reinvestment Of Maintenance
+                                try:
+                                    z = -cf.PaymentsToAcquirePropertyPlantAndEquipment
+                                    a.HistoricalReinvestmentOfMaintenance = z
+                                except:
+                                    pass
                                 #
                                 # Theorical Annual Interest Charge
                                 try:
@@ -11982,7 +11998,19 @@ try:
                                     z = z + tb.LeaseIncentiveObligation
                                     z = z * -0.035
                                     a.NormalizedTheoricalInterestCharge = z
-                                    a.save()
+                                except:
+                                    pass
+                                #
+                                # Normalized Dividend Payment To Non Controlling Interests
+                                try:
+                                    z = tb.DividendsDeclaredToNonControllingInterests
+                                    a.NormalizedDividendPaymentToNonControllingInterests = z
+                                except:
+                                    pass
+                                #
+                                # Normalized Dividend Payment To Preferred Shareholders
+                                try:
+                                    a.NormalizedDividendPaymentToPreferredShareholders = 0
                                 except:
                                     pass
                                 #
@@ -11990,20 +12018,13 @@ try:
                                 try:
                                     z = tb.IncomeTaxExpenseBenefit
                                     z = z / -a.IncomeBeforeTaxes
-                                    z = min(0.30, z)
+                                    z = min(0.35, z)
                                     z = max(0.15, z)
                                     a.TheoricalTaxRate = z
-                                    a.save()
                                 except:
                                     pass
                                 #
-                                # Theorical Operating Income Attributable to minority interests
-                                try:
-                                    z = abs(a.NetIncomeAttributableToNonControllingInterest) / abs(a.NetIncome) 
-                                    a.TheoricalOperatingIncomeAttributableToNonControllingInterests = z
-                                    a.save()
-                                except:
-                                    pass
+                                a.save()
                                 #
                                 # dataframe
                                 try:
@@ -12013,16 +12034,22 @@ try:
                                             #
                                             [
                                             'a.NormalizedTheoricalInterestCharge',
+                                            'a.HistoricalReinvestmentOfMaintenance',
+                                            'a.NormalizedDividendPaymentToNonControllingInterests',
+                                            'a.NormalizedDividendPaymentToPreferredShareholders',
                                             'a.TheoricalTaxRate',
-                                            'a.TheoricalOperatingIncomeAttributableToNonControllingInterests',
+                                            'a.TargetWorkingCapital',
                                             ],
                                         #
                                         '.':
                                             #
                                             [
                                             '{:,}'.format(a.NormalizedTheoricalInterestCharge),
+                                            '{:,}'.format(a.HistoricalReinvestmentOfMaintenance),
+                                            '{:,}'.format(a.NormalizedDividendPaymentToNonControllingInterests),
+                                            '{:,}'.format(a.NormalizedDividendPaymentToPreferredShareholders),
                                             '{:,}'.format(a.TheoricalTaxRate),
-                                            '{:,}'.format(a.TheoricalOperatingIncomeAttributableToNonControllingInterests),
+                                            '{:,}'.format(a.TargetWorkingCapital),
                                             ],
                                     })
                                     print(df)

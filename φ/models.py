@@ -350,6 +350,7 @@ class AuditData(models.Model):
     #
     ConvertibleDebt = models.IntegerField(default=0)
     CommonShares = models.IntegerField(default=0)
+    PreferredShares = models.IntegerField(default=0)
     RetainedEarnings = models.IntegerField(default=0)
     AccumulatedOtherComprehensiveIncome = models.IntegerField(default=0)
     TreasuryShares = models.IntegerField(default=0)
@@ -359,6 +360,8 @@ class AuditData(models.Model):
     AnomalyConvertibleDebt = models.IntegerField(default=0)
     #
     AnomalyCommonShares = models.IntegerField(default=0)
+    #
+    AnomalyPreferredShares = models.IntegerField(default=0)
     #
     AnomalyRetainedEarnings = models.IntegerField(default=0)
     #
@@ -411,9 +414,14 @@ class AuditData(models.Model):
     CommonSharePriceUpdate = models.FloatField(default=0)
     URLoustandingshares = models.CharField(max_length=100, default='')
     #
+    TargetWorkingCapital = models.FloatField(default=1.2)
+    HistoricalReinvestmentOfMaintenance = models.IntegerField(default=0)
     NormalizedTheoricalInterestCharge = models.IntegerField(default=0)
-    TheoricalTaxRate = models.FloatField(default=0)
-    TheoricalOperatingIncomeAttributableToNonControllingInterests = models.FloatField(default=0) 
+    NormalizedDividendPaymentToNonControllingInterests = models.IntegerField(default=0)
+    NormalizedDividendPaymentToPreferredShareholders = models.IntegerField(default=0)
+    NormalizedTheoricalInterestCharge = models.IntegerField(default=0)
+    TheoricalTaxRate = models.FloatField(default=0.25)
+    CapitalizationRateFloor = models.FloatField(default=0.021)
     #
     #
     def __str__(self):
@@ -601,6 +609,9 @@ class TrialBalance(models.Model):
     CommonSharesBeginning = models.IntegerField(default=0)
     CommonSharesIssued = models.IntegerField(default=0)
     ShareBasedCompensation = models.IntegerField(default=0)
+    #
+    # preferred shares
+    PreferredSharesBeginning = models.IntegerField(default=0)
     #
     # retained earnings
     RetainedEarningsBeginning = models.IntegerField(default=0)
