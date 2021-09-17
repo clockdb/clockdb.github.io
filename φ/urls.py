@@ -62,6 +62,10 @@ urlpatterns = [
     path("<str:entity_TradingSymbol>/IntrinsicValues", views.analysis, name="analysis"),
     path("<str:entity_TradingSymbol>/CapitalizationRate", views.analysis, name="analysis"),
     #
+    path("<str:entity_TradingSymbol>/Files", views.analysis, name="analysis"),
+    path("<str:entity_TradingSymbol>/ReferenceMap", views.analysis, name="analysis"),
+    
+    #
 ]
 
 urlpatterns += staticfiles_urlpatterns()
