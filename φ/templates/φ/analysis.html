@@ -1235,7 +1235,7 @@
             ['NonOperatingExpensesREF6', document.getElementById('NonOperatingExpensesREF6').value, 'Context'],
             ['EquityMethodInvesteesIncomeREF6', document.getElementById('EquityMethodInvesteesIncomeREF6').value, 'Context'],
             ['DiscontinuedOperationsREF6', document.getElementById('DiscontinuedOperationsREF6').value, 'Context'],
-            ['IncomeTaxREF6', document.getElementById('IncomeTaxREF6').value, 'Context'],
+            ['IncomeTaxesREF6', document.getElementById('IncomeTaxesREF6').value, 'Context'],
             ['OtherComprehensiveIncomeREF6', document.getElementById('OtherComprehensiveIncomeREF6').value, 'Context'],
             ['OperatingActivitiesREF6', document.getElementById('OperatingActivitiesREF6').value, 'Context'],
             ['InvestingActivitiesREF6', document.getElementById('InvestingActivitiesREF6').value, 'Context'],
@@ -1385,114 +1385,122 @@
                     'AnomaliesFiles',
                     'OpinionFiles',
                 ]
+                
+                console.log(this);
+
                 const url = this.dataset.page;
 
-                if (skip.includes(url)) {
+                if (url == null) {
                 } else {
-                    try {
-                        history.pushState({page: url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
-                    } catch {
-
-                    }
-                }
-                if (url.slice(-5) == 'Files') {
-                    
-                    if (url == 'Files') {
-
-                        showPage(this.dataset.page);
-                        window.scrollTo(0, 0);
-
-                        FilesButton();
-
+                
+                    if (skip.includes(url)) {
                     } else {
-
-                        if (url == 'CurrentAssetsFiles') {
-                            SupportingDocumentsCurrentAssets();
+                        try {
+                            history.pushState({page: url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+                        } catch {
                         }
-                        if (url == 'NonCurrentAssetsFiles') {
-                            SupportingDocumentsNonCurrentAssets();
-                        }
-                        if (url == 'CurrentLiabilitiesFiles') {
-                            SupportingDocumentsCurrentLiabilities();
-                        }
-                        if (url == 'NonCurrentLiabilitiesFiles') {
-                            SupportingDocumentsNonCurrentLiabilities();
-                        }
-                        if (url == 'ShareholdersEquityFiles') {
-                            SupportingDocumentsShareholdersEquity();
-                        }
-                        if (url == 'GrossMarginFiles') {
-                            SupportingDocumentsGrossMargin();
-                        }
-                        if (url == 'OperatingExpensesFiles') {
-                            SupportingDocumentsOperatingExpenses();
-                        }
-                        if (url == 'ImpairmentAndRestructuringFiles') {
-                            SupportingDocumentsImpairmentAndRestructuringFiles();
-                        }
-                        if (url == 'NonOperatingExpensesFiles') {
-                            SupportingDocumentsNonOperatingExpenses();
-                        }
-                        if (url == 'EquityMethodInvesteesIncomeFiles') {
-                            SupportingDocumentsEquityMethodInvesteesIncome();
-                        }
-                        if (url == 'DiscontinuedOperationsFiles') {
-                            SupportingDocumentsDiscontinuedOperations();
-                        }
-                        if (url == 'IncomeTaxFiles') {
-                            SupportingDocumentsIncomeTax();
-                        }
-                        if (url == 'OtherComprehensiveIncomeFiles') {
-                            SupportingDocumentsOtherComprehensiveIncome();
-                        }
-                        if (url == 'OperatingActivitiesFiles') {
-                            SupportingDocumentsOperatingActivities();
-                        }
-                        if (url == 'InvestingActivitiesFiles') {
-                            SupportingDocumentsInvestingActivities();
-                        }
-                        if (url == 'FinancingActivitiesFiles') {
-                            SupportingDocumentsFinancingActivities();
-                        }
-                        if (url == 'EffectOfExchangeRateOnCashFiles') {
-                            SupportingDocumentsEffectOfExchangeRateOnCash();
-                        }
-                        if (url == 'MissionFiles') {
-                            SupportingDocumentsMission();
-                        }
-                        if (url == 'MaterialityFiles') {
-                            SupportingDocumentsMateriality();
-                        }
-                        if (url == 'BalanceSheetsProcedureFiles') {
-                            SupportingDocumentsBalanceSheetsProcedure();
-                        }
-                        if (url == 'IncomeStatementsProcedureFiles') {
-                            SupportingDocumentsIncomeStatementsProcedure();
-                        }
-                        if (url == 'ComprehensiveIncomeProcedureFiles') {
-                            SupportingDocumentsComprehensiveIncomeProcedure();
-                        }
-                        if (url == 'ShareholdersEquityProcedureFiles') {
-                            SupportingDocumentsShareholdersEquityProcedure();
-                        }
-                        if (url == 'CashFlowProcedureFiles') {
-                            SupportingDocumentsCashFlowProcedure();
-                        }
-                        if (url == 'AnomaliesFiles') {
-                            SupportingDocumentsAnomalies();
-                        }
-                        if (url == 'OpinionFiles') {
-                            SupportingDocumentsOpinion();
-                        }
-                        showPage('Files');
-                        window.scrollTo(0, 0);
-                        
-                        history.pushState({page: url}, ``, `/{{ entity.TradingSymbol }}/Files`);
                     }
-                } else {
+                    try {
+                        if (url.slice(-5) == 'Files') {
+                        
+                            if (url == 'Files') {
 
-                    showPage(this.dataset.page);
-                    window.scrollTo(0, 0);
+                                showPage(this.dataset.page);
+                                window.scrollTo(0, 0);
+
+                                FilesButton();
+
+                            } else {
+
+                                if (url == 'CurrentAssetsFiles') {
+                                    SupportingDocumentsCurrentAssets();
+                                }
+                                if (url == 'NonCurrentAssetsFiles') {
+                                    SupportingDocumentsNonCurrentAssets();
+                                }
+                                if (url == 'CurrentLiabilitiesFiles') {
+                                    SupportingDocumentsCurrentLiabilities();
+                                }
+                                if (url == 'NonCurrentLiabilitiesFiles') {
+                                    SupportingDocumentsNonCurrentLiabilities();
+                                }
+                                if (url == 'ShareholdersEquityFiles') {
+                                    SupportingDocumentsShareholdersEquity();
+                                }
+                                if (url == 'GrossMarginFiles') {
+                                    SupportingDocumentsGrossMargin();
+                                }
+                                if (url == 'OperatingExpensesFiles') {
+                                    SupportingDocumentsOperatingExpenses();
+                                }
+                                if (url == 'ImpairmentAndRestructuringFiles') {
+                                    SupportingDocumentsImpairmentAndRestructuringFiles();
+                                }
+                                if (url == 'NonOperatingExpensesFiles') {
+                                    SupportingDocumentsNonOperatingExpenses();
+                                }
+                                if (url == 'EquityMethodInvesteesIncomeFiles') {
+                                    SupportingDocumentsEquityMethodInvesteesIncome();
+                                }
+                                if (url == 'DiscontinuedOperationsFiles') {
+                                    SupportingDocumentsDiscontinuedOperations();
+                                }
+                                if (url == 'IncomeTaxFiles') {
+                                    SupportingDocumentsIncomeTax();
+                                }
+                                if (url == 'OtherComprehensiveIncomeFiles') {
+                                    SupportingDocumentsOtherComprehensiveIncome();
+                                }
+                                if (url == 'OperatingActivitiesFiles') {
+                                    SupportingDocumentsOperatingActivities();
+                                }
+                                if (url == 'InvestingActivitiesFiles') {
+                                    SupportingDocumentsInvestingActivities();
+                                }
+                                if (url == 'FinancingActivitiesFiles') {
+                                    SupportingDocumentsFinancingActivities();
+                                }
+                                if (url == 'EffectOfExchangeRateOnCashFiles') {
+                                    SupportingDocumentsEffectOfExchangeRateOnCash();
+                                }
+                                if (url == 'MissionFiles') {
+                                    SupportingDocumentsMission();
+                                }
+                                if (url == 'MaterialityFiles') {
+                                    SupportingDocumentsMateriality();
+                                }
+                                if (url == 'BalanceSheetsProcedureFiles') {
+                                    SupportingDocumentsBalanceSheetsProcedure();
+                                }
+                                if (url == 'IncomeStatementsProcedureFiles') {
+                                    SupportingDocumentsIncomeStatementsProcedure();
+                                }
+                                if (url == 'ComprehensiveIncomeProcedureFiles') {
+                                    SupportingDocumentsComprehensiveIncomeProcedure();
+                                }
+                                if (url == 'ShareholdersEquityProcedureFiles') {
+                                    SupportingDocumentsShareholdersEquityProcedure();
+                                }
+                                if (url == 'CashFlowProcedureFiles') {
+                                    SupportingDocumentsCashFlowProcedure();
+                                }
+                                if (url == 'AnomaliesFiles') {
+                                    SupportingDocumentsAnomalies();
+                                }
+                                if (url == 'OpinionFiles') {
+                                    SupportingDocumentsOpinion();
+                                }
+                                showPage('Files');
+                                window.scrollTo(0, 0);
+                                
+                                history.pushState({page: url}, ``, `/{{ entity.TradingSymbol }}/Files`);
+                            }
+                        } else {
+                            showPage(this.dataset.page);
+                            window.scrollTo(0, 0);
+                        }
+                    } catch {
+                    }
                 }
             }
         });
@@ -30976,7 +30984,7 @@
             <table style="border-bottom:solid #0D47A1"> 
                 <tbody>
                     <tr>
-                        <td><h3 style="font-weight:bold; margin-left:0px;">Files</h3></td>
+                        <td><h3 id="FilesLabel" style="font-weight:bold; margin-left:0px;">Files</h3></td>
                     </tr>
                 </tbody>
             </table>
@@ -30988,22 +30996,15 @@
                     <tr></tr>
                     <tr>
                         <td>
-                            <button id="AddFile">Add File</button>
+                            <label id="AddFile">Add File</label>
                         </td>
                         <td>
-                            <button id="DeleteFile">Delete File</button>
+                            <label id="DeleteFile">Delete File</label>
                         </td>
                         <td>
-                            <button id="Folder">Folder</button>
+                            <label id="Folder" for="Files1">Folder</label>
                         </td>
-                        <script>
-                            function Folder() {
-                                document.getElementById('Folder').onclick = () => {
-                                    document.getElementById('Files1').click();
-                                }
-                            }
-                        </script>
-                        <td colspan='7'><input type='file' id="Files1" multiple onchange="Files()"></input></td>
+                        <td colspan='7'><input type='file' id="Files1" style="visibility: hidden" multiple onchange="Files()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -31282,17 +31283,17 @@
                 <tr>
                     <td colspan="5" style="text-align: left"> Income Taxes </td>
                     <td></td>
-                    <td><input id="IncomeTaxREF1" style="display:none" onfocusout="Compile()"></input></td>
-                    <td><input id="IncomeTaxREF2" style="display:none" onfocusout="Compile()"></input></td>
-                    <td><input id="IncomeTaxREF3" style="display:none" onfocusout="Compile()"></input></td>
-                    <td><input id="IncomeTaxREF4" style="display:none" onfocusout="Compile()"></input></td>
-                    <td><input id="IncomeTaxREF5" style="display:none" onfocusout="Compile()"></input></td>
+                    <td><input id="IncomeTaxesREF1" style="display:none" onfocusout="Compile()"></input></td>
+                    <td><input id="IncomeTaxesREF2" style="display:none" onfocusout="Compile()"></input></td>
+                    <td><input id="IncomeTaxesREF3" style="display:none" onfocusout="Compile()"></input></td>
+                    <td><input id="IncomeTaxesREF4" style="display:none" onfocusout="Compile()"></input></td>
+                    <td><input id="IncomeTaxesREF5" style="display:none" onfocusout="Compile()"></input></td>
                     <td></td>
                     <td>
-                        <input type="checkbox" id="IncomeTaxREFCheckbox"></input>
-                        <input type="checkbox" id="IncomeTaxREFCheckbox2"></input>
+                        <input type="checkbox" id="IncomeTaxesREFCheckbox"></input>
+                        <input type="checkbox" id="IncomeTaxesREFCheckbox2"></input>
                     </td>
-                    <td colspan='5'><input id="IncomeTaxREF6" onfocusout="Compile()" onchange="IncomeTaxREF()" value="80"></input></td>
+                    <td colspan='5'><input id="IncomeTaxesREF6" onfocusout="Compile()" onchange="IncomeTaxesREF()" value="80"></input></td>
                 </tr>
                 <tr>
                     <td colspan="5" style="text-align: left"> Other Comprehensive Income </td>
@@ -31564,9 +31565,9 @@
                             document.getElementsByClassName('DiscontinuedOperationsFiles')[i].innerHTML = document.getElementById("DiscontinuedOperationsREF6").value
                         }
                     }
-                    function IncomeTaxREF() {
+                    function IncomeTaxesREF() {
                         for (let i = 0; i < document.querySelectorAll('.IncomeTaxFiles').length; i++) {
-                            document.getElementsByClassName('IncomeTaxFiles')[i].innerHTML = document.getElementById("IncomeTaxREF6").value
+                            document.getElementsByClassName('IncomeTaxFiles')[i].innerHTML = document.getElementById("IncomeTaxesREF6").value
                         }
                     }
                     function OtherComprehensiveIncomeREF() {
@@ -32222,7 +32223,7 @@
         NonOperatingExpensesREF();
         EquityMethodInvesteesIncomeREF();
         DiscontinuedOperationsREF();
-        IncomeTaxREF();
+        IncomeTaxesREF();
         OtherComprehensiveIncomeREF();
         OperatingActivitiesREF();
         InvestingActivitiesREF();
@@ -32264,16 +32265,13 @@
             }
         }
 
-        if (z == 0) {
-            
-            headerrow = document.getElementsByClassName('header');
-            
-            for(let i = 0; i < headerrow.length; i++) {
-
-                header = headerrow[i]
-            
+        headerrow = document.getElementsByClassName('header');
+        for(let i = 0; i < headerrow.length; i++) {
+            header = headerrow[i]
+            if (z == 0) {
                 header.style.display = 'none'
-            
+            } else {
+                header.style.display = ''
             }
         
         }
@@ -32283,102 +32281,127 @@
     function SupportingDocumentsCurrentAssets() {
         const key = document.getElementById('CurrentAssetsREF6').value;
         SupportingDocuments(key);
+        document.getElementById('FilesLabel').innerHTML = "Files \\ Current Assets (" + document.getElementById('CurrentAssetsREF6').value + ") \\"
     }
     function SupportingDocumentsNonCurrentAssets() {
         const key = document.getElementById('NonCurrentAssetsREF6').value;
         SupportingDocuments(key);
+        document.getElementById('FilesLabel').innerHTML = "Files \\ Non-Current Assets (" + document.getElementById('NonCurrentAssetsREF6').value + ") \\"
     }
     function SupportingDocumentsCurrentLiabilities() {
         const key = document.getElementById('CurrentLiabilitiesREF6').value;
         SupportingDocuments(key);
+        document.getElementById('FilesLabel').innerHTML = "Files \\ Current Liabilities (" + document.getElementById('CurrentLiabilitiesREF6').value + ") \\"
     }
     function SupportingDocumentsNonCurrentLiabilities() {
         const key = document.getElementById('NonCurrentLiabilitiesREF6').value;
         SupportingDocuments(key);
+        document.getElementById('FilesLabel').innerHTML = "Files \\ Non-Current Liabilities (" + document.getElementById('NonCurrentLiabilitiesREF6').value + ") \\"
     }
     function SupportingDocumentsShareholdersEquity() {
         const key = document.getElementById('ShareholdersEquityREF6').value;
         SupportingDocuments(key);
+        document.getElementById('FilesLabel').innerHTML = "Files \\ Shareholders' Equity (" + document.getElementById('ShareholdersEquityREF6').value + ") \\"
     }
     function SupportingDocumentsGrossMargin() {
         const key = document.getElementById('GrossMarginREF6').value;
         SupportingDocuments(key);
+        document.getElementById('FilesLabel').innerHTML = "Files \\ Gross Margin (" + document.getElementById('GrossMarginREF6').value + ") \\"
     }
     function SupportingDocumentsOperatingExpenses() {
         const key = document.getElementById('OperatingExpensesREF6').value;
         SupportingDocuments(key);
+        document.getElementById('FilesLabel').innerHTML = "Files \\ Operating Expenses (" + document.getElementById('OperatingExpensesREF6').value + ") \\"
     }
     function SupportingDocumentsImpairmentAndRestructuring() {
         const key = document.getElementById('ImpairmentAndRestructuringREF6').value;
         SupportingDocuments(key);
+        document.getElementById('FilesLabel').innerHTML = "Files \\ Impairment And Restructuring (" + document.getElementById('ImpairmentAndRestructuringREF6').value + ") \\"
     }
     function SupportingDocumentsNonOperatingExpenses() {
         const key = document.getElementById('NonOperatingExpensesREF6').value;
         SupportingDocuments(key);
+        document.getElementById('FilesLabel').innerHTML = "Files \\ Non-Operating Expenses (" + document.getElementById('NonOperatingExpensesREF6').value + ") \\"
     }
     function SupportingDocumentsEquityMethodInvesteesIncome() {
         const key = document.getElementById('EquityMethodInvesteesIncomeREF6').value;
         SupportingDocuments(key);
+        document.getElementById('FilesLabel').innerHTML = "Files \\ Equity Method Investees Income (" + document.getElementById('EquityMethodInvesteesIncomeREF6').value + ") \\"
     }
     function SupportingDocumentsDiscontinuedOperations() {
         const key = document.getElementById('DiscontinuedOperationsREF6').value;
         SupportingDocuments(key);
+        document.getElementById('FilesLabel').innerHTML = "Files \\ Discontinued Operations (" + document.getElementById('DiscontinuedOperationsREF6').value + ") \\"
     }
     function SupportingDocumentsIncomeTax() {
-        const key = document.getElementById('IncomeTaxREF6').value;
+        const key = document.getElementById('IncomeTaxesREF6').value;
         SupportingDocuments(key);
+        document.getElementById('FilesLabel').innerHTML = "Files \\ Income Taxes (" + document.getElementById('IncomeTaxesREF6').value + ") \\"
     }
     function SupportingDocumentsOtherComprehensiveIncome() {
         const key = document.getElementById('OtherComprehensiveIncomeREF6').value;
         SupportingDocuments(key);
+        document.getElementById('FilesLabel').innerHTML = "Files \\ Comprehensive Income (" + document.getElementById('OtherComprehensiveIncomeREF6').value + ") \\"
     }
     function SupportingDocumentsOperatingActivities() {
         const key = document.getElementById('OperatingActivitiesREF6').value;
         SupportingDocuments(key);
+        document.getElementById('FilesLabel').innerHTML = "Files \\ Operating Activities (" + document.getElementById('OperatingActivitiesREF6').value + ") \\"
     }
     function SupportingDocumentsInvestingActivities() {
         const key = document.getElementById('InvestingActivitiesREF6').value;
         SupportingDocuments(key);
+        document.getElementById('FilesLabel').innerHTML = "Files \\ Investing Activities (" + document.getElementById('InvestingActivitiesREF6').value + ") \\"
     }
     function SupportingDocumentsFinancingActivities() {
         const key = document.getElementById('FinancingActivitiesREF6').value;
         SupportingDocuments(key);
+        document.getElementById('FilesLabel').innerHTML = "Files \\ Financing Activities (" + document.getElementById('FinancingActivitiesREF6').value + ") \\"
     }
     function SupportingDocumentsMission() {
         const key = document.getElementById('MissionREF6').value;
         SupportingDocuments(key);
+        document.getElementById('FilesLabel').innerHTML = "Files \\ Mission (" + document.getElementById('MissionREF6').value + ") \\"
     }
     function SupportingDocumentsMateriality() {
         const key = document.getElementById('MaterialityREF6').value;
         SupportingDocuments(key);
+        document.getElementById('FilesLabel').innerHTML = "Files \\ Materiality Threshold (" + document.getElementById('MaterialityREF6').value + ") \\"
     }
     function SupportingDocumentsBalanceSheetsProcedure() {
         const key = document.getElementById('BalanceSheetsProcedureREF6').value;
         SupportingDocuments(key);
+        document.getElementById('FilesLabel').innerHTML = "Files \\ Balance Sheets Procedures (" + document.getElementById('BalanceSheetsProcedureREF6').value + ") \\"
     }
     function SupportingDocumentsIncomeStatementsProcedure() {
         const key = document.getElementById('IncomeStatementsProcedureREF6').value;
         SupportingDocuments(key);
+        document.getElementById('FilesLabel').innerHTML = "Files \\ Income Statements Procedures (" + document.getElementById('IncomeStatementsProcedureREF6').value + ") \\"
     }
     function SupportingDocumentsComprehensiveIncomeProcedure() {
         const key = document.getElementById('ComprehensiveIncomeProcedureREF6').value;
         SupportingDocuments(key);
+        document.getElementById('FilesLabel').innerHTML = "Files \\ Comprehensive Income Procedures (" + document.getElementById('ComprehensiveIncomeProcedureREF6').value + ") \\"
     }
     function SupportingDocumentsShareholdersEquityProcedure() {
         const key = document.getElementById('ShareholdersEquityProcedureREF6').value;
         SupportingDocuments(key);
+        document.getElementById('FilesLabel').innerHTML = "Files \\ Shareholders' Equity Procedures (" + document.getElementById('ShareholdersEquityProcedureREF6').value + ") \\"
     }
     function SupportingDocumentsCashFlowProcedure() {
         const key = document.getElementById('CashFlowProcedureREF6').value;
         SupportingDocuments(key);
+        document.getElementById('FilesLabel').innerHTML = "Files \\ Cash Flow Procedures (" + document.getElementById('CashFlowProcedureREF6').value + ") \\"
     }
     function SupportingDocumentsAnomalies() {
         const key = document.getElementById('AnomaliesREF6').value;
         SupportingDocuments(key);
+        document.getElementById('FilesLabel').innerHTML = "Files \\ Anomalies (" + document.getElementById('AnomaliesREF6').value + ") \\"
     }
     function SupportingDocumentsOpinion() {
         const key = document.getElementById('OpinionREF6').value;
         SupportingDocuments(key);
+        document.getElementById('FilesLabel').innerHTML = "Files \\ Opinion (" + document.getElementById('OpinionREF6').value + ") \\"
     }
 
 
@@ -32390,17 +32413,14 @@
             var c = referencerows[i]
             c.style.display = '';
         }
+        
+        document.getElementById('FilesLabel').innerHTML = "Files"
 
         headerrow = document.getElementsByClassName('header');
-        
         for(let i = 0; i < headerrow.length; i++) {
-
             header = headerrow[i]
-        
             header.style.display = ''
-        
         }
-
     }
 
     
