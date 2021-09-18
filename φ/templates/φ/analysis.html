@@ -24013,10 +24013,10 @@
                             <input type="checkbox" id="WeightCCFIVCheckbox"></input>
                             <input type="checkbox" id="WeightCCFIVCheckbox2"></input>
                         </td>
-                        <td colspan="2"><input class="ratio" id="WeightCCFIV1" value=3 style="font-weight:bold;" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2"><input class="ratio" id="WeightCCFIV2" value=3 onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2"><input class="ratio" id="WeightCCFIV3" value=3 onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2"><input class="ratio" id="WeightCCFIV4" value=3 onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="proportion" id="WeightCCFIV1" value=3 style="font-weight:bold;" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="proportion" id="WeightCCFIV2" value=3 onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="proportion" id="WeightCCFIV3" value=3 onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="proportion" id="WeightCCFIV4" value=3 onfocusout="Compile()" onchange='FormatCell()'></input></td>
                         <td colspan="2" style="display:none;"><input id="WeightCCFIV5" onfocusout="Compile()"></input></td>
                         <td colspan="2" style="display:none;"><input id="WeightCCFIV6" onfocusout="Compile()"></input></td>
                     </tr>
@@ -24098,12 +24098,27 @@
                             <input type="checkbox" id="WeightCIIVCheckbox"></input>
                             <input type="checkbox" id="WeightCIIVCheckbox2"></input>
                         </td>
-                        <td colspan="2"><input class="ratio" id="WeightCIIV1" value=1 style="font-weight:bold;" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2"><input class="ratio" id="WeightCIIV2" value=1 onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2"><input class="ratio" id="WeightCIIV3" value=1 onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2"><input class="ratio" id="WeightCIIV4" value=1 onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="display:none;"><input class="ratio" id="WeightCIIV5" onfocusout="Compile()"></input></td>
-                        <td colspan="2" style="display:none;"><input class="ratio" id="WeightCIIV6" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="proportion" id="WeightCIIV1" value=1 style="font-weight:bold;" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="proportion" id="WeightCIIV2" value=1 onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="proportion" id="WeightCIIV3" value=1 onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="proportion" id="WeightCIIV4" value=1 onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2" style="display:none;"><input id="WeightCIIV5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="display:none;"><input id="WeightCIIV6" onfocusout="Compile()"></input></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style='text-align: left;'><h5 style="margin-left:0px;">Weighted Intrinsic Value</h5></td>
+                        <td style="color:#0d47a1; text-align:center; font-weight:bold;"></td>
+                        <td></td>
+                        <td>
+                            <input type="checkbox" id="WeightedIVCheckbox"></input>
+                            <input type="checkbox" id="WeightedIVCheckbox2"></input>
+                        </td>
+                        <td colspan="2"><input class="clock" id="WeightedIV1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="clock" id="WeightedIV2" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="clock" id="WeightedIV3" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="clock" id="WeightedIV4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="display:none;"><input id="WeightedIV5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="display:none;"><input id="WeightedIV6" onfocusout="Compile()"></input></td>
                     </tr>
                 </tbody>
             </table>
@@ -24296,6 +24311,7 @@
                                 h = parseInt(document.getElementById('BalanceSheetsShareholdersEquity1').value.replaceAll(/,/g, ''));
                                 i = Math.max(g, h, 0)
                                 document.getElementById('IntrinsicValues1').value = numUSD.format(i)
+                                document.getElementById('WeightedIV1').value = numUSD.format(i)
                                 // Column 2
                                 a = parseInt(document.getElementById('IntrinsicValuesCI2').value.replaceAll(/,/g, ''));
                                 b = parseInt(document.getElementById('WeightCIIV2').value.replaceAll(/,/g, ''));
@@ -24305,6 +24321,7 @@
                                 h = parseInt(document.getElementById('BalanceSheetsShareholdersEquity2').value.replaceAll(/,/g, ''));
                                 i = Math.max(g, h, 0)
                                 document.getElementById('IntrinsicValues2').value = numUSD.format(i)
+                                document.getElementById('WeightedIV2').value = numUSD.format(i)
                                 // Column 3
                                 a = parseInt(document.getElementById('IntrinsicValuesCI3').value.replaceAll(/,/g, ''));
                                 b = parseInt(document.getElementById('WeightCIIV3').value.replaceAll(/,/g, ''));
@@ -24314,6 +24331,7 @@
                                 h = parseInt(document.getElementById('BalanceSheetsShareholdersEquity3').value.replaceAll(/,/g, ''));
                                 i = Math.max(g, h, 0)
                                 document.getElementById('IntrinsicValues3').value = numUSD.format(i)
+                                document.getElementById('WeightedIV3').value = numUSD.format(i)
                                 // Column 4
                                 a = parseInt(document.getElementById('IntrinsicValuesCI4').value.replaceAll(/,/g, ''));
                                 b = parseInt(document.getElementById('WeightCIIV4').value.replaceAll(/,/g, ''));
@@ -24323,6 +24341,7 @@
                                 h = parseInt(document.getElementById('BalanceSheetsShareholdersEquity4').value.replaceAll(/,/g, ''));
                                 i = Math.max(g, h, 0)
                                 document.getElementById('IntrinsicValues4').value = numUSD.format(i)
+                                document.getElementById('WeightedIV4').value = numUSD.format(i)
                             };
                         </script>
                         <td colspan="2"><input id="IntrinsicValues1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
