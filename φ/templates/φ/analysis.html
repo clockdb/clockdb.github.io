@@ -21119,7 +21119,7 @@
                                     d = -parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared1').value.replaceAll(/,/g, ''));
                                     d = d + -parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared2').value.replaceAll(/,/g, ''));
                                     d = d + -parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared3').value.replaceAll(/,/g, ''));
-                                    d = d + -parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared4').value.replaceAll(/,/g, ''));
+                                    Dividend = d + -parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared4').value.replaceAll(/,/g, ''));
                                     //
                                     i = parseInt(document.getElementById('NormalizedTheoricalInterestCharge1').value.replaceAll(/,/g, ''));
                                     i = i + parseInt(document.getElementById('NormalizedTheoricalInterestCharge2').value.replaceAll(/,/g, ''));
@@ -21131,41 +21131,37 @@
                                     t = t + -parseInt(document.getElementById('TheoricalTaxRate3').value.replaceAll(/,/g, ''))/100;
                                     t = t + -parseInt(document.getElementById('TheoricalTaxRate4').value.replaceAll(/,/g, ''))/100;
                                     //
-                                    Dividend = d / a
+                                    DividendProportion = Dividend / a
                                     Interest = (i * (1-t)) / a
-                                    WeightedAverageCostOfTotalAssets = (Dividend + Interest)
+                                    WeightedAverageCostOfTotalAssets = (DividendProportion + Interest)
                                     //
                                     document.getElementById('WeightedAverageCostOfTotalAssets1').value = numUSD.format(WeightedAverageCostOfTotalAssets); 
                                     document.getElementById('WeightedAverageCostOfTotalAssets2').value = numUSD.format(WeightedAverageCostOfTotalAssets);
                                     document.getElementById('WeightedAverageCostOfTotalAssets3').value = numUSD.format(WeightedAverageCostOfTotalAssets);
                                     document.getElementById('WeightedAverageCostOfTotalAssets4').value = numUSD.format(WeightedAverageCostOfTotalAssets);
                                     //
-                                    f = parseInt(document.getElementById('NormalizedDividendPaymentToNonControllingInterests1').value.replaceAll(/,/g, ''));
-                                    f = f + parseInt(document.getElementById('NormalizedDividendPaymentToNonControllingInterests2').value.replaceAll(/,/g, ''));
-                                    f = f + parseInt(document.getElementById('NormalizedDividendPaymentToNonControllingInterests3').value.replaceAll(/,/g, ''));
-                                    f = f + parseInt(document.getElementById('NormalizedDividendPaymentToNonControllingInterests4').value.replaceAll(/,/g, ''));
-                                    f = f + parseInt(document.getElementById('NormalizedDividendPaymentToPreferredShareholders1').value.replaceAll(/,/g, ''));
-                                    f = f + parseInt(document.getElementById('NormalizedDividendPaymentToPreferredShareholders2').value.replaceAll(/,/g, ''));
-                                    f = f + parseInt(document.getElementById('NormalizedDividendPaymentToPreferredShareholders3').value.replaceAll(/,/g, ''));
-                                    f = f + parseInt(document.getElementById('NormalizedDividendPaymentToPreferredShareholders4').value.replaceAll(/,/g, ''));
+                                    f = -parseInt(document.getElementById('NormalizedDividendPaymentToNonControllingInterests1').value.replaceAll(/,/g, ''));
+                                    f = f -parseInt(document.getElementById('NormalizedDividendPaymentToNonControllingInterests2').value.replaceAll(/,/g, ''));
+                                    f = f -parseInt(document.getElementById('NormalizedDividendPaymentToNonControllingInterests3').value.replaceAll(/,/g, ''));
+                                    f = f -parseInt(document.getElementById('NormalizedDividendPaymentToNonControllingInterests4').value.replaceAll(/,/g, ''));
+                                    f = f -parseInt(document.getElementById('NormalizedDividendPaymentToPreferredShareholders1').value.replaceAll(/,/g, ''));
+                                    f = f -parseInt(document.getElementById('NormalizedDividendPaymentToPreferredShareholders2').value.replaceAll(/,/g, ''));
+                                    f = f -parseInt(document.getElementById('NormalizedDividendPaymentToPreferredShareholders3').value.replaceAll(/,/g, ''));
+                                    f = f -parseInt(document.getElementById('NormalizedDividendPaymentToPreferredShareholders4').value.replaceAll(/,/g, ''));
                                     //
-                                    g = parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared1').value.replaceAll(/,/g, ''));
-                                    g = g + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared2').value.replaceAll(/,/g, ''));
-                                    g = g + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared3').value.replaceAll(/,/g, ''));
-                                    g = g + parseInt(document.getElementById('DividendsAndDividendEquivalentsDeclared4').value.replaceAll(/,/g, ''));
                                     //
-                                    if (g == 0) {
+                                    if (Dividend == 0) {
                                         h = 0
                                     } else {
-                                        h = 1 - (f / g)
+                                        h = 1 - (-f / Dividend)
                                     }
                                     //
-                                    i = -Dividend * h
+                                    DividendProportion = -DividendProportion * h
                                     //
-                                    document.getElementById('CostOfTotalAssetsAccruingToCommonShareholders1').value = numUSD.format(i);
-                                    document.getElementById('CostOfTotalAssetsAccruingToCommonShareholders2').value = numUSD.format(i);
-                                    document.getElementById('CostOfTotalAssetsAccruingToCommonShareholders3').value = numUSD.format(i);
-                                    document.getElementById('CostOfTotalAssetsAccruingToCommonShareholders4').value = numUSD.format(i);
+                                    document.getElementById('CostOfTotalAssetsAccruingToCommonShareholders1').value = numUSD.format(DividendProportion);
+                                    document.getElementById('CostOfTotalAssetsAccruingToCommonShareholders2').value = numUSD.format(DividendProportion);
+                                    document.getElementById('CostOfTotalAssetsAccruingToCommonShareholders3').value = numUSD.format(DividendProportion);
+                                    document.getElementById('CostOfTotalAssetsAccruingToCommonShareholders4').value = numUSD.format(DividendProportion);
                                 };
                             };
                         </script>
