@@ -21805,13 +21805,38 @@
                                 });
                                 if (document.getElementById('OpenEditor').checked == false) {
                                     z = 0
+                                    zz = 0
                                     // Last Year
-                                    a = -parseInt(document.getElementById('HistoricalReinvestmentOfMaintenance1').value.replaceAll(/,/g, ''));
-                                    a = a - parseInt(document.getElementById('HistoricalReinvestmentOfMaintenance2').value.replaceAll(/,/g, ''));
-                                    a = a - parseInt(document.getElementById('HistoricalReinvestmentOfMaintenance3').value.replaceAll(/,/g, ''));
-                                    a = a - parseInt(document.getElementById('HistoricalReinvestmentOfMaintenance4').value.replaceAll(/,/g, ''));
-                                    a = a - parseInt(document.getElementById('HistoricalReinvestmentOfMaintenance5').value.replaceAll(/,/g, ''));
-                                    a = a - parseInt(document.getElementById('HistoricalReinvestmentOfMaintenance6').value.replaceAll(/,/g, ''));
+                                    b = -parseInt(document.getElementById('HistoricalReinvestmentOfMaintenance1').value.replaceAll(/,/g, ''));
+                                    a = b
+                                    if (b == 0) {
+                                        zz = zz + 1
+                                    }
+                                    b = -parseInt(document.getElementById('HistoricalReinvestmentOfMaintenance2').value.replaceAll(/,/g, ''));
+                                    a = a + b
+                                    if (b == 0) {
+                                        zz = zz + 1
+                                    }
+                                    b = -parseInt(document.getElementById('HistoricalReinvestmentOfMaintenance3').value.replaceAll(/,/g, ''));
+                                    a = a + b
+                                    if (b == 0) {
+                                        zz = zz + 1
+                                    }
+                                    b = -parseInt(document.getElementById('HistoricalReinvestmentOfMaintenance4').value.replaceAll(/,/g, ''));
+                                    a = a + b
+                                    if (b == 0) {
+                                        zz = zz + 1
+                                    }
+                                    b = -parseInt(document.getElementById('HistoricalReinvestmentOfMaintenance5').value.replaceAll(/,/g, ''));
+                                    a = a + b
+                                    if (b == 0) {
+                                        zz = zz + 1
+                                    }
+                                    b = -parseInt(document.getElementById('HistoricalReinvestmentOfMaintenance6').value.replaceAll(/,/g, ''));
+                                    a = a + b
+                                    if (b == 0) {
+                                        zz = zz + 1
+                                    }
                                     //
                                     b = parseInt(document.getElementById('Sales1').value.replaceAll(/,/g, ''));
                                     if (b == 0) {
@@ -21842,14 +21867,14 @@
                                     if (b == 0) {
                                         z = z + 1
                                     }
-                                    b = 6 - b
+                                    b = 6 - z
                                     document.getElementById('AnnualReinvestmentOfMaintenanceCCF1').value = numUSD.format(a / b);
                                     document.getElementById('AnnualReinvestmentOfMaintenanceCCF2').value = numUSD.format(a / b);
                                     document.getElementById('AnnualReinvestmentOfMaintenanceCCF3').value = numUSD.format(a / b);
                                     document.getElementById('AnnualReinvestmentOfMaintenanceCCF4').value = numUSD.format(a / b);
                                     document.getElementById('AnnualReinvestmentOfMaintenanceCCF5').value = numUSD.format(a / b);
                                     document.getElementById('AnnualReinvestmentOfMaintenanceCCF6').value = numUSD.format(a / b);
-                                    if (z == 6) {
+                                    if (zz == 6) {
                                         if (document.getElementById('TrialBalancesUnhideCheckbox').checked == false) {
                                             a = 'none';
                                         } else {
