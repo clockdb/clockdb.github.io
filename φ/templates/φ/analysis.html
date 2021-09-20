@@ -1375,6 +1375,7 @@
                 'Procedures',
                 'Community',
                 'Options',
+                'General',
                 'Import',
                 'Save',
             ]
@@ -1400,6 +1401,7 @@
                     'Clock',
                     'Bridge',
                     'Options',
+                    'General',
                 ]
                 const url = this.dataset.page;
                 if (menus.includes(url)) {
@@ -1423,6 +1425,7 @@
                     'Procedures',
                     'Community',
                     'Options',
+                    'General',
                     'Import',
                     'Save',
                     'uploadconfirm',
@@ -1957,6 +1960,11 @@
         <table id='Main'>
             <tbody>
                 <tr>
+                    <td>
+                        <button data-page="General" name="General">
+                            <h2>≀</h2>
+                        </button>
+                    </td>
                     <td>
                         <button data-page="Options" name="Options">
                             <h2>≡</h2>
@@ -6459,30 +6467,42 @@
                             </button>
                         </td>
                     </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--- GENERAL --->
+        <div id="General" style="margin-left:1% ;width:24%; position: absolute;">
+            <table style="
+                border: 2px solid #E5E4E2;
+                background-color:white;
+                box-shadow: 1px 1px 1px 1px #000009;
+                border-radius: 15px;">
+                <tbody>
                     <tr>
                         <td>
-                            <button data-page="Options">
+                            <button data-page="General">
                                 <a href="/commands/" target="_blank"><h3>Commands</h3></a>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <button data-page="Options">
+                            <button data-page="General">
                                 <a href="/documentation/" target="_blank"><h3>Documentation</h3></a>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <button data-page="Options">
+                            <button data-page="General">
                                 <a href="/disclaimer/" target="_blank"><h3>Disclaimer</h3></a>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <button data-page="Options">
+                            <button data-page="General">
                                 <a href="/about/" target="_blank"><h3>About</h3></a>
                             </button>
                         </td>
