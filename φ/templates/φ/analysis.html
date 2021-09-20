@@ -6,7 +6,7 @@
 
     // URL on load
     document.addEventListener('DOMContentLoaded', function() {
-        history.pushState(``, ``, `/{{ entity.TradingSymbol }}/`);
+        history.pushState(``, ``, `/` + document.getElementById('TradingSymbol1').value + `/`);
     })
 
     // document title
@@ -16,6 +16,12 @@
     function newFile() {
         url = "/MODEL/"       
         window.open(url); 
+    }
+
+    // trading symbol
+    function TradingSymbol() {
+        history.pushState(``, ``, `/` + document.getElementById('TradingSymbol1').value + `/Context/`);
+        document.title = document.getElementById('TradingSymbol1').value +' | ' + 'Clockdb'
     }
 
     //
@@ -43,6 +49,7 @@
 
         // other class
         RowClass = [
+            'Date',
             'Context',
             'Opinion',
             'Price',
@@ -81,6 +88,14 @@
                     document.getElementById(input1).value = 0
                 }
 
+                var a = document.getElementById(trid).className
+
+                if (a == 'Date') {
+
+                    document.getElementById(input1).value = '';
+
+                }
+
             }
 
         };
@@ -112,6 +127,7 @@
             // settings
             ['UnhideCheckbox', document.getElementById('UnhideCheckbox').checked, 'Checkbox'],
             ['OpenEditor', document.getElementById('OpenEditor').checked, 'Checkbox'],
+        //
         ];  
 
         rows = document.querySelectorAll('tr');
@@ -119,6 +135,7 @@
         RowClass = [
             'Checkbox',
             'Context',
+            'ContextDate',
             'Date',
             'TrialBalance',
             'Opinion',
@@ -245,13 +262,13 @@
 
         var formateddate = year + '-' + month + '-' + day;
 
-        b = "{{ entity.amendlastyear }}"
+        b = document.getElementById('Amend1').value
 
         if (b == "") {
             a = ""
         }
 
-        var file_name = "{{ entity.TradingSymbol }}" + " " + formateddate + a + b + ".csv"
+        var file_name = document.getElementById('TradingSymbol1').value + " " + formateddate + a + b + ".csv"
         
         hiddenElement.download = file_name;
         hiddenElement.click();
@@ -363,7 +380,7 @@
                     if (skip.includes(url)) {
                     } else {
                         try {
-                            history.pushState({page: url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+                            history.pushState({page: url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
                         } catch {
                         }
                     }
@@ -723,7 +740,7 @@
             document.getElementById('AuditSummary').style.display = 'block';
             const url = 'AuditSummary'
             //
-            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
             window.scrollTo(0, 0);
         }
     });
@@ -737,7 +754,7 @@
             document.getElementById('AuditDetailed').style.display = 'block';
             const url = 'AuditDetailed'
             //
-            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
             window.scrollTo(0, 0);
         }
     });
@@ -751,7 +768,7 @@
             document.getElementById('MaterialityThreshold').style.display = 'block';
             const url = 'MaterialityThreshold'
             //
-            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
             window.scrollTo(0, 0);
         }
     });    
@@ -765,7 +782,7 @@
             document.getElementById('Mission').style.display = 'block';
             const url = 'Mission'
             //
-            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
             window.scrollTo(0, 0);
         }
     });
@@ -779,7 +796,7 @@
             document.getElementById('ProcedureAnnualBalanceSheets').style.display = 'block';
             const url = 'ProcedureAnnualBalanceSheets'
             //
-            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
             window.scrollTo(0, 0);
         }
     });
@@ -793,7 +810,7 @@
             document.getElementById('ProcedureAnnualIncomeStatements').style.display = 'block';
             const url = 'ProcedureAnnualIncomeStatements'
             //
-            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
             window.scrollTo(0, 0);
         }
     });
@@ -807,7 +824,7 @@
             document.getElementById('ProcedureAnnualComprehensiveIncome').style.display = 'block';
             const url = 'ProcedureAnnualComprehensiveIncome'
             //
-            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
             window.scrollTo(0, 0);
         }
     });
@@ -821,7 +838,7 @@
             document.getElementById('ProcedureAnnualShareholdersEquity').style.display = 'block';
             const url = 'ProcedureAnnualShareholdersEquity'
             //
-            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
             window.scrollTo(0, 0);
         }
     });
@@ -835,7 +852,7 @@
             document.getElementById('ProcedureAnnualCashFlow').style.display = 'block';
             const url = 'ProcedureAnnualCashFlow'
             //
-            history.pushState({url}, ``, `/{{ entity.TradingSymbol }}/${url}`);
+            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
             window.scrollTo(0, 0);
         }
     });
@@ -5455,6 +5472,9 @@
                                         if (c == 'Context') {
                                             document.getElementById(b).value = a;
                                         }
+                                        if (c == 'ContextDate') {
+                                            document.getElementById(b).value = a;
+                                        }
                                         if (c == 'Date') {
                                             document.getElementById(b).value = a;
                                         }
@@ -5571,19 +5591,19 @@
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr id="ContextDateRow" class="Date">
+                    <tr id="ContextDateRow" class="ContextDate">
                         <td colspan='3'></td>
                         <td style="text-align:center; font-weight:bold;"></td>
                         <td>
                             <input type="checkbox" id="ContextDateCheckbox"></input>
                             <input type="checkbox" id="ContextDateCheckbox2"></input>
                         </td>
-                        <td colspan='2'><input id="ContextDate1" style="font-weight:bold; text-align:center" value="{{ entity.lastyear }}" onfocusout="Compile()"></input></td>
-                        <td colspan='2'><input id="ContextDate2" style="font-weight:bold; text-align:center" value="{{ entity.secondlastyear }}" onfocusout="Compile()"></input></td>
-                        <td colspan='2'><input id="ContextDate3" style="font-weight:bold; text-align:center" value="{{ entity.thirdlastyear }}" onfocusout="Compile()"></input></td>
-                        <td colspan='2'><input id="ContextDate4" style="font-weight:bold; text-align:center" value="{{ entity.fourthlastyear }}" onfocusout="Compile()"></input></td>
-                        <td colspan='2'><input id="ContextDate5" style="font-weight:bold; text-align:center" value="{{ entity.fifthlastyear }}" onfocusout="Compile()"></input></td>
-                        <td colspan='2'><input id="ContextDate6" style="font-weight:bold; text-align:center" value="{{ entity.sixthlastyear }}" onfocusout="Compile()"></input></td>
+                        <td colspan='2' style="padding-top:57px"><input id="ContextDate1" style="font-weight:bold; text-align:center;" value="{{ entity.lastyear }}" onfocusout="Compile()"></input></td>
+                        <td colspan='2' style="padding-top:57px"><input id="ContextDate2" style="font-weight:bold; text-align:center;" value="{{ entity.secondlastyear }}" onfocusout="Compile()"></input></td>
+                        <td colspan='2' style="padding-top:57px"><input id="ContextDate3" style="font-weight:bold; text-align:center;" value="{{ entity.thirdlastyear }}" onfocusout="Compile()"></input></td>
+                        <td colspan='2' style="padding-top:57px"><input id="ContextDate4" style="font-weight:bold; text-align:center;" value="{{ entity.fourthlastyear }}" onfocusout="Compile()"></input></td>
+                        <td colspan='2' style="padding-top:57px"><input id="ContextDate5" style="font-weight:bold; text-align:center;" value="{{ entity.fifthlastyear }}" onfocusout="Compile()"></input></td>
+                        <td colspan='2' style="padding-top:57px"><input id="ContextDate6" style="font-weight:bold; text-align:center;" value="{{ entity.sixthlastyear }}" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr id="AmendRow" class="Context">
@@ -5593,12 +5613,12 @@
                             <input type="checkbox" id="AmendCheckbox"></input>
                             <input type="checkbox" id="AmendDateCheckbox2"></input>
                         </td>
-                        <td colspan='2'><input id="Amend1" style="font-weight:bold; text-align:center" value="{{ entity.amendlastyear }}" onfocusout="Compile()"></input></td>
-                        <td colspan='2'><input id="Amend2" style="font-weight:bold; text-align:center" value="{{ entity.amendsecondlastyear }}" onfocusout="Compile()"></input></td>
-                        <td colspan='2'><input id="Amend3" style="font-weight:bold; text-align:center" value="{{ entity.amendthirdlastyear }}" onfocusout="Compile()"></input></td>
-                        <td colspan='2'><input id="Amend4" style="font-weight:bold; text-align:center" value="{{ entity.amendfourthlastyear }}" onfocusout="Compile()"></input></td>
-                        <td colspan='2'><input id="Amend5" style="font-weight:bold; text-align:center" value="{{ entity.amendfifthlastyear }}" onfocusout="Compile()"></input></td>
-                        <td colspan='2'><input id="Amend6" style="font-weight:bold; text-align:center" value="{{ entity.amendsixthlastyear }}" onfocusout="Compile()"></input></td>
+                        <td colspan='2' style="padding-bottom:28px"><input id="Amend1" style="font-weight:bold; text-align:center;" value="{{ entity.amendlastyear }}" onfocusout="Compile()"></input></td>
+                        <td colspan='2' style="padding-bottom:28px"><input id="Amend2" style="font-weight:bold; text-align:center;" value="{{ entity.amendsecondlastyear }}" onfocusout="Compile()"></input></td>
+                        <td colspan='2' style="padding-bottom:28px"><input id="Amend3" style="font-weight:bold; text-align:center;" value="{{ entity.amendthirdlastyear }}" onfocusout="Compile()"></input></td>
+                        <td colspan='2' style="padding-bottom:28px"><input id="Amend4" style="font-weight:bold; text-align:center;" value="{{ entity.amendfourthlastyear }}" onfocusout="Compile()"></input></td>
+                        <td colspan='2' style="padding-bottom:28px"><input id="Amend5" style="font-weight:bold; text-align:center;" value="{{ entity.amendfifthlastyear }}" onfocusout="Compile()"></input></td>
+                        <td colspan='2' style="padding-bottom:28px"><input id="Amend6" style="font-weight:bold; text-align:center;" value="{{ entity.amendsixthlastyear }}" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -5646,7 +5666,7 @@
                             <input type="checkbox" id="TradingSymbolCheckbox"></input>
                             <input type="checkbox" id="TradingSymbolCheckbox2"></input>
                         </td>
-                        <td colspan="2"><input value="{{ entity.TradingSymbol }}"" id="TradingSymbol1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input value="{{ entity.TradingSymbol }}" id="TradingSymbol1" style="font-weight:bold;" onfocusout="TradingSymbol()"></input></td>
                         <td colspan="2"><input id="TradingSymbol2" onfocusout="Compile()"></input></td>
                         <td colspan="2"><input id="TradingSymbol3" onfocusout="Compile()"></input></td>
                         <td colspan="2"><input id="TradingSymbol4" onfocusout="Compile()"></input></td>
@@ -5731,7 +5751,7 @@
                         <td colspan="2"><input id="WIP5" onfocusout="Compile()"></input></td>
                         <td colspan="2"><input id="WIP6" onfocusout="Compile()"></input></td>
                     </tr>
-                    <tr id="SharePriceAsOfRow" class="Context">
+                    <tr id="SharePriceAsOfRow" class="Date">
                         <td colspan="4"><h6>Share Price As Of</h6></td>
                         <td>
                             <input type="checkbox" id="SharePriceAsOfCheckbox"></input>
@@ -5744,7 +5764,7 @@
                         <td colspan="2"><input id="SharePriceAsOf5" onfocusout="Compile()"></input></td>
                         <td colspan="2"><input id="SharePriceAsOf6" onfocusout="Compile()"></input></td>
                     </tr>
-                    <tr id="PreparedRow" class="Context">
+                    <tr id="PreparedRow" class="Date">
                         <td colspan="4"><h6>Prepared</h6></td>
                         <td>
                             <input type="checkbox" id="PreparedCheckbox"></input>
@@ -7638,12 +7658,12 @@
                                 document.getElementById('TrialBalance6').value = numUSD.format(Math.round(a));
                             };
                         </script>
-                        <td colspan="2"><input id="TrialBalance1" style="border-top-style:ridge; border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input id="TrialBalance2"  style="border-top-style:ridge; border-bottom:double" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input id="TrialBalance3"  style="border-top-style:ridge; border-bottom:double" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input id="TrialBalance4"  style="border-top-style:ridge; border-bottom:double" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input id="TrialBalance5"  style="border-top-style:ridge; border-bottom:double" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input id="TrialBalance6"  style="border-top-style:ridge; border-bottom:double" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge; border-bottom:double black;"><input id="TrialBalance1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge; border-bottom:double black;"><input id="TrialBalance2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge; border-bottom:double black;"><input id="TrialBalance3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge; border-bottom:double black;"><input id="TrialBalance4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge; border-bottom:double black;"><input id="TrialBalance5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge; border-bottom:double black;"><input id="TrialBalance6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr><tr>
                     <tr><tr>
@@ -7749,12 +7769,12 @@
                             <input type="checkbox" id="NonCurrentAssetsCheckbox"></input>
                             <input type="checkbox" id="NonCurrentAssetsCheckbox2"></input>
                         </td>
-                        <td colspan="2"><input class="account" id="NonCurrentAssets1" style="border-bottom-style:ridge; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="NonCurrentAssets2" style="border-bottom-style:ridge" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="NonCurrentAssets3" style="border-bottom-style:ridge" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="NonCurrentAssets4" style="border-bottom-style:ridge" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="NonCurrentAssets5" style="border-bottom-style:ridge" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="NonCurrentAssets6" style="border-bottom-style:ridge" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="NonCurrentAssets1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="NonCurrentAssets2" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="NonCurrentAssets3" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="NonCurrentAssets4" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="NonCurrentAssets5" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="NonCurrentAssets6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="TotalAssetsRow">
                         <td colspan="2"></td>
@@ -7764,12 +7784,12 @@
                             <input type="checkbox" id="TotalAssetsCheckbox"></input>
                             <input type="checkbox" id="TotalAssetsCheckbox2"></input>
                         </td>
-                        <td colspan="2"><input class="account" id="TotalAssets1" style="border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="TotalAssets2" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="TotalAssets3" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="TotalAssets4" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="TotalAssets5" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="TotalAssets6" style="border-bottom:double black" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="TotalAssets1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="TotalAssets2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="TotalAssets3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="TotalAssets4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="TotalAssets5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="TotalAssets6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -7800,12 +7820,12 @@
                             <input type="checkbox" id="NonCurrentLiabilitiesCheckbox"></input>
                             <input type="checkbox" id="NonCurrentLiabilitiesCheckbox2"></input>
                         </td>
-                        <td colspan="2"><input class="account" id="NonCurrentLiabilities1" style="border-bottom-style:ridge; font-weight:bold;" style="font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="NonCurrentLiabilities2" style="border-bottom-style:ridge" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="NonCurrentLiabilities3" style="border-bottom-style:ridge" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="NonCurrentLiabilities4" style="border-bottom-style:ridge" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="NonCurrentLiabilities5" style="border-bottom-style:ridge" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="NonCurrentLiabilities6" style="border-bottom-style:ridge" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="NonCurrentLiabilities1" style="font-weight:bold;" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="NonCurrentLiabilities2" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="NonCurrentLiabilities3" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="NonCurrentLiabilities4" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="NonCurrentLiabilities5" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="NonCurrentLiabilities6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr>
                         <td colspan="3"></td>
@@ -7814,12 +7834,12 @@
                             <input type="checkbox" id="TotalLiabilitiesCheckbox"></input>
                             <input type="checkbox" id="TotalLiabilitiesCheckbox2"></input>
                         </td>
-                        <td colspan="2"><input class="account" id="TotalLiabilities1" style="border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="TotalLiabilities2" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="TotalLiabilities3" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="TotalLiabilities4" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="TotalLiabilities5" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="TotalLiabilities6" style="border-bottom:double black" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="TotalLiabilities1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="TotalLiabilities2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="TotalLiabilities3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="TotalLiabilities4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="TotalLiabilities5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="TotalLiabilities6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr id="BalanceSheetsShareholdersEquityRow">
@@ -7830,12 +7850,12 @@
                             <input type="checkbox" id="BalanceSheetsShareholdersEquityCheckbox"></input>
                             <input type="checkbox" id="BalanceSheetsShareholdersEquityCheckbox2"></input>
                         </td>
-                        <td colspan="2"><input class="account" id="BalanceSheetsShareholdersEquity1" style="border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="BalanceSheetsShareholdersEquity2" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="BalanceSheetsShareholdersEquity3" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="BalanceSheetsShareholdersEquity4" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="BalanceSheetsShareholdersEquity5" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="BalanceSheetsShareholdersEquity6" style="border-bottom:double black" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="account" id="BalanceSheetsShareholdersEquity1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="account" id="BalanceSheetsShareholdersEquity2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="account" id="BalanceSheetsShareholdersEquity3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="account" id="BalanceSheetsShareholdersEquity4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="account" id="BalanceSheetsShareholdersEquity5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="account" id="BalanceSheetsShareholdersEquity6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr id="LiabilitiesAndShareholdersShareholdersEquityRow">
@@ -7845,12 +7865,12 @@
                             <input type="checkbox" id="LiabilitiesAndShareholdersShareholdersEquityCheckbox"></input>
                             <input type="checkbox" id="LiabilitiesAndShareholdersShareholdersEquityCheckbox2"></input>
                         </td>
-                        <td colspan="2"><input class="account" id="LiabilitiesAndShareholdersShareholdersEquity1" style="border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="LiabilitiesAndShareholdersShareholdersEquity2" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="LiabilitiesAndShareholdersShareholdersEquity3" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="LiabilitiesAndShareholdersShareholdersEquity4" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="LiabilitiesAndShareholdersShareholdersEquity5" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="LiabilitiesAndShareholdersShareholdersEquity6" style="border-bottom:double black" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="account" id="LiabilitiesAndShareholdersShareholdersEquity1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="account" id="LiabilitiesAndShareholdersShareholdersEquity2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="account" id="LiabilitiesAndShareholdersShareholdersEquity3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="account" id="LiabilitiesAndShareholdersShareholdersEquity4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="account" id="LiabilitiesAndShareholdersShareholdersEquity5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="account" id="LiabilitiesAndShareholdersShareholdersEquity6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -8782,12 +8802,12 @@
                                 document.getElementById('CurrentAssets6').value = numUSD.format(Math.round(a));
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="CurrentAssetsNote1" style="border-bottom:double black; border-top-style:ridge; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="CurrentAssetsNote2" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="CurrentAssetsNote3" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="CurrentAssetsNote4" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="CurrentAssetsNote5" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="CurrentAssetsNote6" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="CurrentAssetsNote1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="CurrentAssetsNote2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="CurrentAssetsNote3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="CurrentAssetsNote4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="CurrentAssetsNote5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="CurrentAssetsNote6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -9820,12 +9840,12 @@
                                 document.getElementById('TotalAssets6').value = numUSD.format(Math.round(a));
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="NonCurrentAssetsNote1" style="border-bottom:double black; border-top-style:ridge; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="NonCurrentAssetsNote2" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="NonCurrentAssetsNote3" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="NonCurrentAssetsNote4" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="NonCurrentAssetsNote5" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="NonCurrentAssetsNote6" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="NonCurrentAssetsNote1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="NonCurrentAssetsNote2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="NonCurrentAssetsNote3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="NonCurrentAssetsNote4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="NonCurrentAssetsNote5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="NonCurrentAssetsNote6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -10829,12 +10849,12 @@
                                 document.getElementById('CurrentLiabilities6').value = numUSD.format(Math.round(a));
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="CurrentLiabilitiesNote1" style="border-bottom:double black; border-top-style:ridge; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="CurrentLiabilitiesNote2" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="CurrentLiabilitiesNote3" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="CurrentLiabilitiesNote4" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="CurrentLiabilitiesNote5" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="CurrentLiabilitiesNote6" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="CurrentLiabilitiesNote1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="CurrentLiabilitiesNote2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="CurrentLiabilitiesNote3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="CurrentLiabilitiesNote4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="CurrentLiabilitiesNote5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="CurrentLiabilitiesNote6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -11867,12 +11887,12 @@
                                 document.getElementById('TotalLiabilities6').value = numUSD.format(Math.round(a));
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="NonCurrentLiabilitiesNote1" style="border-bottom:double black; border-top-style:ridge; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="NonCurrentLiabilitiesNote2" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="NonCurrentLiabilitiesNote3" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="NonCurrentLiabilitiesNote4" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="NonCurrentLiabilitiesNote5" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="NonCurrentLiabilitiesNote6" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="NonCurrentLiabilitiesNote1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="NonCurrentLiabilitiesNote2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="NonCurrentLiabilitiesNote3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="NonCurrentLiabilitiesNote4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="NonCurrentLiabilitiesNote5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="NonCurrentLiabilitiesNote6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -11993,12 +12013,12 @@
                             <input type="checkbox" id="ShareholdersEquityNoteCheckbox"></input>
                             <input type="checkbox" id="ShareholdersEquityNoteCheckbox2"></input>
                         </td>
-                        <td colspan="2"><input class="account" id="ShareholdersEquityNote1" style="border-bottom:double black; border-top-style:ridge; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="ShareholdersEquityNote2" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="ShareholdersEquityNote3" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="ShareholdersEquityNote4" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="ShareholdersEquityNote5" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="ShareholdersEquityNote6" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="ShareholdersEquityNote1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="ShareholdersEquityNote2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="ShareholdersEquityNote3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="ShareholdersEquityNote4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="ShareholdersEquityNote5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="ShareholdersEquityNote6" onfocusout="Compile()"></input></td>
                     </tr>
                 </tbody>
             </table>
@@ -12208,12 +12228,12 @@
                                 };
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="CostOfSales1" style="border-bottom-style:ridge; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="CostOfSales2" style="border-bottom-style:ridge" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="CostOfSales3" style="border-bottom-style:ridge" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="CostOfSales4" style="border-bottom-style:ridge" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="CostOfSales5" style="border-bottom-style:ridge" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="CostOfSales6" style="border-bottom-style:ridge" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="CostOfSales1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="CostOfSales2" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="CostOfSales3" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="CostOfSales4" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="CostOfSales5" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="CostOfSales6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="GrossMarginRow">
                         <td colspan="2"><h6><b>Gross Margin</b></h6></td>
@@ -12254,12 +12274,12 @@
                                 document.getElementById('GrossMargin6').value = numUSD.format(Math.round(a));
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="GrossMargin1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="GrossMargin2" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="GrossMargin3" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="GrossMargin4" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="GrossMargin5" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="GrossMargin6" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge;"><input class="account" id="GrossMargin1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge;"><input class="account" id="GrossMargin2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge;"><input class="account" id="GrossMargin3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge;"><input class="account" id="GrossMargin4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge;"><input class="account" id="GrossMargin5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge;"><input class="account" id="GrossMargin6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id='ResearchAndDevelopmentRow'>
                         <td colspan="2"><h6>Research And Development</h6></td>
@@ -12382,12 +12402,12 @@
                                 }
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="SellingGeneralAdministrativeAndMarketing1" style="border-bottom-style:ridge; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="SellingGeneralAdministrativeAndMarketing2" style="border-bottom-style:ridge" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="SellingGeneralAdministrativeAndMarketing3" style="border-bottom-style:ridge" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="SellingGeneralAdministrativeAndMarketing4" style="border-bottom-style:ridge" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="SellingGeneralAdministrativeAndMarketing5" style="border-bottom-style:ridge" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="SellingGeneralAdministrativeAndMarketing6" style="border-bottom-style:ridge" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="SellingGeneralAdministrativeAndMarketing1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="SellingGeneralAdministrativeAndMarketing2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="SellingGeneralAdministrativeAndMarketing3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="SellingGeneralAdministrativeAndMarketing4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="SellingGeneralAdministrativeAndMarketing5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="SellingGeneralAdministrativeAndMarketing6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="OperatingIncomeRow">
                         <td colspan="2"><h6><b>Operating Income (Loss)</b></h6></td>
@@ -12563,12 +12583,12 @@
                                 }
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="NonOperatingIncomeExpense1" style="border-bottom-style:ridge; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="NonOperatingIncomeExpense2" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="NonOperatingIncomeExpense3" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="NonOperatingIncomeExpense4" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="NonOperatingIncomeExpense5" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="NonOperatingIncomeExpense6" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="NonOperatingIncomeExpense1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="NonOperatingIncomeExpense2" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="NonOperatingIncomeExpense3" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="NonOperatingIncomeExpense4" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="NonOperatingIncomeExpense5" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="NonOperatingIncomeExpense6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="IncomeBeforeTaxesRow">
                         <td colspan="2"><h6><b>Income (Loss) Before Taxes</b></h6></td>
@@ -12615,12 +12635,12 @@
                                 document.getElementById('IncomeBeforeTaxes6').value = numUSD.format(Math.round(a));
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="IncomeBeforeTaxes1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="IncomeBeforeTaxes2" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="IncomeBeforeTaxes3" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="IncomeBeforeTaxes4" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="IncomeBeforeTaxes5" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="IncomeBeforeTaxes6" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge;"><input class="account" id="IncomeBeforeTaxes1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge;"><input class="account" id="IncomeBeforeTaxes2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge;"><input class="account" id="IncomeBeforeTaxes3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge;"><input class="account" id="IncomeBeforeTaxes4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge;"><input class="account" id="IncomeBeforeTaxes5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge;"><input class="account" id="IncomeBeforeTaxes6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="IncomeTaxExpenseBenefitRow">
                         <td colspan="2"><h6>Income Taxes</h6></td>
@@ -12870,12 +12890,12 @@
                                 document.getElementById('NetIncome6').value = numUSD.format(Math.round(a));
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="NetIncome1" style="border-bottom:double black; border-top-style:ridge; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="NetIncome2" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="NetIncome3" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="NetIncome4" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="NetIncome5" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="NetIncome6" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="NetIncome1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="NetIncome2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="NetIncome3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="NetIncome4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="NetIncome5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="NetIncome6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -13397,12 +13417,12 @@
                                 document.getElementById('ComprehensiveIncome6').value = numUSD.format(Math.round(a));
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="ComprehensiveIncome1" style="border-bottom:double black; border-top-style:ridge; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="ComprehensiveIncome2" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="ComprehensiveIncome3" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="ComprehensiveIncome4" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="ComprehensiveIncome5" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="ComprehensiveIncome6" style="border-bottom:double black; border-top-style:ridge;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="ComprehensiveIncome1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="ComprehensiveIncome2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="ComprehensiveIncome3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="ComprehensiveIncome4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="ComprehensiveIncome5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="ComprehensiveIncome6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -15028,12 +15048,12 @@
                                 document.getElementById('LiabilitiesAndShareholdersShareholdersEquity6').value = numUSD.format(Math.round(a));
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="ShareholdersEquity1" style="border-top-style:ridge; border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="ShareholdersEquity2" style="border-top-style:ridge; border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="ShareholdersEquity3" style="border-top-style:ridge; border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="ShareholdersEquity4" style="border-top-style:ridge; border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="ShareholdersEquity5" style="border-top-style:ridge; border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="ShareholdersEquity6" style="border-top-style:ridge; border-bottom:double black" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="ShareholdersEquity1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="ShareholdersEquity2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="ShareholdersEquity3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="ShareholdersEquity4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="ShareholdersEquity5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="ShareholdersEquity6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -15259,12 +15279,12 @@
                             <input type="checkbox" id="CashEndingBalanceCheckbox"></input>
                             <input type="checkbox" id="CashEndingBalanceCheckbox2"></input>
                         </td>
-                        <td colspan="2"><input class="clock" id="CashEndingBalance1" style="border-top-style:ridge; border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="clock" id="CashEndingBalance2" style="border-top-style:ridge; border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="clock" id="CashEndingBalance3" style="border-top-style:ridge; border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="clock" id="CashEndingBalance4" style="border-top-style:ridge; border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="clock" id="CashEndingBalance5" style="border-top-style:ridge; border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="clock" id="CashEndingBalance6" style="border-top-style:ridge; border-bottom:double black" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="clock" id="CashEndingBalance1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="clock" id="CashEndingBalance2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="clock" id="CashEndingBalance3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="clock" id="CashEndingBalance4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="clock" id="CashEndingBalance5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="clock" id="CashEndingBalance6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -16504,12 +16524,12 @@
                                 document.getElementById('OperatingActivities6').value = numUSD.format(Math.round(a));
                             };
                         </script>
-                        <td colspan="2"><input class="clock" id="OperatingActivitiesNote1" style="border-top-style:ridge; border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="clock" id="OperatingActivitiesNote2" style="border-top-style:ridge; border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="clock" id="OperatingActivitiesNote3" style="border-top-style:ridge; border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="clock" id="OperatingActivitiesNote4" style="border-top-style:ridge; border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="clock" id="OperatingActivitiesNote5" style="border-top-style:ridge; border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="clock" id="OperatingActivitiesNote6" style="border-top-style:ridge; border-bottom:double black" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="clock" id="OperatingActivitiesNote1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="clock" id="OperatingActivitiesNote2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="clock" id="OperatingActivitiesNote3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="clock" id="OperatingActivitiesNote4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="clock" id="OperatingActivitiesNote5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="clock" id="OperatingActivitiesNote6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -17318,12 +17338,12 @@
                                 document.getElementById('InvestingActivities6').value = numUSD.format(Math.round(a));
                             };
                         </script>
-                        <td colspan="2"><input class="clock" id="InvestingActivitiesNote1" style="border-top-style:ridge; border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="clock" id="InvestingActivitiesNote2" style="border-top-style:ridge; border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="clock" id="InvestingActivitiesNote3" style="border-top-style:ridge; border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="clock" id="InvestingActivitiesNote4" style="border-top-style:ridge; border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="clock" id="InvestingActivitiesNote5" style="border-top-style:ridge; border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="clock" id="InvestingActivitiesNote6" style="border-top-style:ridge; border-bottom:double black" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge; border-bottom:double black" ><input class="clock" id="InvestingActivitiesNote1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge; border-bottom:double black" ><input class="clock" id="InvestingActivitiesNote2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge; border-bottom:double black" ><input class="clock" id="InvestingActivitiesNote3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge; border-bottom:double black" ><input class="clock" id="InvestingActivitiesNote4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge; border-bottom:double black" ><input class="clock" id="InvestingActivitiesNote5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge; border-bottom:double black" ><input class="clock" id="InvestingActivitiesNote6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -18500,12 +18520,12 @@
                                 document.getElementById('CashEndingBalance6').value = numUSD.format(Math.round(a));
                             };
                         </script>
-                        <td colspan="2"><input class="clock" id="FinancingActivitiesNote1" style="border-top-style:ridge; border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="clock" id="FinancingActivitiesNote2" style="border-top-style:ridge; border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="clock" id="FinancingActivitiesNote3" style="border-top-style:ridge; border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="clock" id="FinancingActivitiesNote4" style="border-top-style:ridge; border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="clock" id="FinancingActivitiesNote5" style="border-top-style:ridge; border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="clock" id="FinancingActivitiesNote6" style="border-top-style:ridge; border-bottom:double black" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="clock" id="FinancingActivitiesNote1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="clock" id="FinancingActivitiesNote2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="clock" id="FinancingActivitiesNote3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="clock" id="FinancingActivitiesNote4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="clock" id="FinancingActivitiesNote5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="clock" id="FinancingActivitiesNote6" onfocusout="Compile()"></input></td>
                     </tr>
                 </tbody>
             </table>
@@ -23382,10 +23402,10 @@
                             <input type="checkbox" id="WeightedIVCheckbox"></input>
                             <input type="checkbox" id="WeightedIVCheckbox2"></input>
                         </td>
-                        <td colspan="2"><input class="clock" id="WeightedIV1" style="border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="clock" id="WeightedIV2" style="border-bottom:double black;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="clock" id="WeightedIV3" style="border-bottom:double black;"onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="clock" id="WeightedIV4" style="border-bottom:double black;"onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="clock" id="WeightedIV1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="clock" id="WeightedIV2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="clock" id="WeightedIV3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="clock" id="WeightedIV4" onfocusout="Compile()"></input></td>
                         <td colspan="2" style="display:none;"><input id="WeightedIV5" onfocusout="Compile()"></input></td>
                         <td colspan="2" style="display:none;"><input id="WeightedIV6" onfocusout="Compile()"></input></td>
                     </tr>
@@ -23533,7 +23553,7 @@
                             <input type="checkbox" id="BridgeφCheckbox"></input>
                             <input type="checkbox" id="BridgeφCheckbox2"></input>
                         </td>
-                        <td colspan="2" id="Bridgeφ1" style="font-weight:bold; text-align:center; padding-bottom:57px"></td>
+                        <td colspan="2" id="Bridgeφ1" style="font-weight:bold; text-align:center;"></td>
                         <td colspan="2" id="Bridgeφ2" style="font-weight:lighter; text-align:center"></td>
                         <td colspan="2" id="Bridgeφ3" style="font-weight:lighter; text-align:center"></td>
                         <td colspan="2" id="Bridgeφ4" style="font-weight:lighter; text-align:center"></td>
@@ -24424,7 +24444,7 @@
                             <input type="checkbox" id="MarketCapMaterialityThresholdCheckbox"></input>
                             <input type="checkbox" id="MarketCapMaterialityThresholdCheckbox2"></input>
                         </td>
-                        <td colspan='5'><input id="MarketCapMaterialityThreshold6" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
+                        <td colspan='5'><input id="MarketCapMaterialityThreshold6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr id="MaterialityThresholdValueRow">
@@ -24443,7 +24463,7 @@
                                 d = parseInt(document.getElementById('RevenuesMaterialityThreshold6').value.replaceAll(/,/g, ''));
                                 e = parseInt(document.getElementById('NetAssetMaterialityThreshold6').value.replaceAll(/,/g, ''));
                                 a = (a + b + c + d + e) / 5
-                                a = Math.max(a, b, e)
+                                a = Math.max(a, b)
                                 document.getElementById('MaterialityThresholdValue6').value = numUSD.format(a);
                             };
                         </script>
@@ -24457,7 +24477,7 @@
                             <input type="checkbox" id="MaterialityThresholdValueCheckbox"></input>
                             <input type="checkbox" id="MaterialityThresholdValueCheckbox2"></input>
                         </td>
-                        <td colspan="5"><input class="account" id="MaterialityThresholdValue6" style="border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="5" style="border-top-style:ridge; border-bottom:double black;"><input class="account" id="MaterialityThresholdValue6" style="font-weight:bold;" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -24631,12 +24651,12 @@
                                 document.getElementById('PRO-1.1.26').value = numUSD.format(a);
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="PRO-1.1.21" style="border-bottom-style:ridge; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.1.22" style="border-bottom-style:ridge" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.1.23" style="border-bottom-style:ridge" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.1.24" style="border-bottom-style:ridge" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.1.25" style="border-bottom-style:ridge" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.1.26" style="border-bottom-style:ridge" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-1.1.21" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-1.1.22" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-1.1.23" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-1.1.24" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-1.1.25" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-1.1.26" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="PRO-1.1.3Row">
                         <td colspan="4"><h6><b>ACCURACY ANOMALIES</b></h6></td>
@@ -24675,12 +24695,12 @@
                                 document.getElementById('PRO-1.1.36').value = numUSD.format(a);
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="PRO-1.1.31" style="border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.1.32" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.1.33" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.1.34" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.1.35" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.1.36" style="border-bottom:double black" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.1.31" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.1.32" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.1.33" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.1.34" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.1.35" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.1.36" onfocusout="Compile()"></input></td>
                     </tr>
                 </tbody>
             </table>
@@ -24870,12 +24890,12 @@
                             <input type="checkbox" id="PRO-1.2.2Checkbox"></input>
                             <input type="checkbox" id="PRO-1.2.2Checkbox2"></input>
                         </td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.2.21" style="font-weight:bold;" value = "{{ AuditData_lastyear.CurrentAssets }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.2.22" value = "{{ AuditData_secondlastyear.CurrentAssets }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.2.23" value = "{{ AuditData_thirdlastyear.CurrentAssets }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.2.24" value = "{{ AuditData_fourthlastyear.CurrentAssets }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.2.25" value = "{{ AuditData_fifthlastyear.CurrentAssets }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.2.26" value = "{{ AuditData_sixthlastyear.CurrentAssets }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-1.2.21" style="font-weight:bold;" value = "{{ AuditData_lastyear.CurrentAssets }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-1.2.22" value = "{{ AuditData_secondlastyear.CurrentAssets }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-1.2.23" value = "{{ AuditData_thirdlastyear.CurrentAssets }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-1.2.24" value = "{{ AuditData_fourthlastyear.CurrentAssets }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-1.2.25" value = "{{ AuditData_fifthlastyear.CurrentAssets }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-1.2.26" value = "{{ AuditData_sixthlastyear.CurrentAssets }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                     </tr>
                     <tr id="PRO-1.2.3Row">
                         <td colspan="4" style="text-align:left;">Anomaly</td>
@@ -24914,12 +24934,12 @@
                                 document.getElementById('PRO-1.2.36').value = numUSD.format((a - b));
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="PRO-1.2.31" style="border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.2.32" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.2.33" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.2.34" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.2.35" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.2.36" style="border-bottom:double black" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.2.31" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.2.32" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.2.33" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.2.34" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.2.35" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.2.36" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -25044,12 +25064,12 @@
                             <input type="checkbox" id="PRO-1.2.5Checkbox"></input>
                             <input type="checkbox" id="PRO-1.2.5Checkbox2"></input>
                         </td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.2.51" style="font-weight:bold;" value = "{{ AuditData_lastyear.NonCurrentAssets }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.2.52" value = "{{ AuditData_secondlastyear.NonCurrentAssets }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.2.53" value = "{{ AuditData_thirdlastyear.NonCurrentAssets }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.2.54" value = "{{ AuditData_fourthlastyear.NonCurrentAssets }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.2.55" value = "{{ AuditData_fifthlastyear.NonCurrentAssets }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.2.56" value = "{{ AuditData_sixthlastyear.NonCurrentAssets }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-1.2.51" style="font-weight:bold;" value = "{{ AuditData_lastyear.NonCurrentAssets }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-1.2.52" value = "{{ AuditData_secondlastyear.NonCurrentAssets }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-1.2.53" value = "{{ AuditData_thirdlastyear.NonCurrentAssets }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-1.2.54" value = "{{ AuditData_fourthlastyear.NonCurrentAssets }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-1.2.55" value = "{{ AuditData_fifthlastyear.NonCurrentAssets }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-1.2.56" value = "{{ AuditData_sixthlastyear.NonCurrentAssets }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                     </tr>
                     <tr id="PRO-1.2.6Row">
                         <td colspan="4" style="text-align:left;">Anomaly</td>
@@ -25088,12 +25108,12 @@
                                 document.getElementById('PRO-1.2.66').value = numUSD.format((a - b));
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="PRO-1.2.61" style="border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.2.62" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.2.63" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.2.64" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.2.65" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.2.66" style="border-bottom:double black" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.2.61" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.2.62" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.2.63" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.2.64" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.2.65" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.2.66" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -25218,12 +25238,12 @@
                             <input type="checkbox" id="PRO-1.2.8Checkbox"></input>
                             <input type="checkbox" id="PRO-1.2.8Checkbox2"></input>
                         </td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.2.81" style="font-weight:bold;" value = "{{ AuditData_lastyear.CurrentLiabilities }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.2.82" value = "{{ AuditData_secondlastyear.CurrentLiabilities }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.2.83" value = "{{ AuditData_thirdlastyear.CurrentLiabilities }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.2.84" value = "{{ AuditData_fourthlastyear.CurrentLiabilities }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.2.85" value = "{{ AuditData_fifthlastyear.CurrentLiabilities }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.2.86" value = "{{ AuditData_sixthlastyear.CurrentLiabilities }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-1.2.81" style="font-weight:bold;" value = "{{ AuditData_lastyear.CurrentLiabilities }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-1.2.82" value = "{{ AuditData_secondlastyear.CurrentLiabilities }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-1.2.83" value = "{{ AuditData_thirdlastyear.CurrentLiabilities }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-1.2.84" value = "{{ AuditData_fourthlastyear.CurrentLiabilities }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-1.2.85" value = "{{ AuditData_fifthlastyear.CurrentLiabilities }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-1.2.86" value = "{{ AuditData_sixthlastyear.CurrentLiabilities }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                     </tr>
                     <tr id="PRO-1.2.9Row">
                         <td colspan="4" style="text-align:left;">Anomaly</td>
@@ -25262,12 +25282,12 @@
                                 document.getElementById('PRO-1.2.96').value = numUSD.format(a - b);
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="PRO-1.2.91" style="border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.2.92" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.2.93" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.2.94" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.2.95" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.2.96" style="border-bottom:double black" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.2.91" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.2.92" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.2.93" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.2.94" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.2.95" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.2.96" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -25392,12 +25412,12 @@
                             <input type="checkbox" id="PRO-1.2.11Checkbox"></input>
                             <input type="checkbox" id="PRO-1.2.11Checkbox2"></input>
                         </td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.2.111" style="font-weight:bold;" value = "{{ AuditData_lastyear.NonCurrentLiabilities }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.2.112" value = "{{ AuditData_secondlastyear.NonCurrentLiabilities }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.2.113" value = "{{ AuditData_thirdlastyear.NonCurrentLiabilities }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.2.114" value = "{{ AuditData_fourthlastyear.NonCurrentLiabilities }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.2.115" value = "{{ AuditData_fifthlastyear.NonCurrentLiabilities }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.2.116" value = "{{ AuditData_sixthlastyear.NonCurrentLiabilities }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-1.2.111" style="font-weight:bold;" value = "{{ AuditData_lastyear.NonCurrentLiabilities }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-1.2.112" value = "{{ AuditData_secondlastyear.NonCurrentLiabilities }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-1.2.113" value = "{{ AuditData_thirdlastyear.NonCurrentLiabilities }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-1.2.114" value = "{{ AuditData_fourthlastyear.NonCurrentLiabilities }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-1.2.115" value = "{{ AuditData_fifthlastyear.NonCurrentLiabilities }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-1.2.116" value = "{{ AuditData_sixthlastyear.NonCurrentLiabilities }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                     </tr>
                     <tr id="PRO-1.2.12Row">
                         <td colspan="4" style="text-align:left;">Anomaly</td>
@@ -25436,12 +25456,12 @@
                                 document.getElementById('PRO-1.2.126').value = numUSD.format((a - b));
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="PRO-1.2.121" style="border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.2.122" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.2.123" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.2.124" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.2.125" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.2.126" style="border-bottom:double black" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.2.121" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.2.122" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.2.123" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.2.124" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.2.125" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.2.126" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -25530,12 +25550,12 @@
                             <input type="checkbox" id="PRO-1.2.14Checkbox"></input>
                             <input type="checkbox" id="PRO-1.2.14Checkbox2"></input>
                         </td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.2.141" style="font-weight:bold;" value = "{{ AuditData_lastyear.ShareholdersEquity }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.2.142" value = "{{ AuditData_secondlastyear.ShareholdersEquity }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.2.143" value = "{{ AuditData_thirdlastyear.ShareholdersEquity }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.2.144" value = "{{ AuditData_fourthlastyear.ShareholdersEquity }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.2.145" value = "{{ AuditData_fifthlastyear.ShareholdersEquity }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-1.2.146" value = "{{ AuditData_sixthlastyear.ShareholdersEquity }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-1.2.141" style="font-weight:bold;" value = "{{ AuditData_lastyear.ShareholdersEquity }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-1.2.142" value = "{{ AuditData_secondlastyear.ShareholdersEquity }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-1.2.143" value = "{{ AuditData_thirdlastyear.ShareholdersEquity }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-1.2.144" value = "{{ AuditData_fourthlastyear.ShareholdersEquity }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-1.2.145" value = "{{ AuditData_fifthlastyear.ShareholdersEquity }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-1.2.146" value = "{{ AuditData_sixthlastyear.ShareholdersEquity }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                     </tr>
                     <tr id="PRO-1.2.15Row">
                         <td colspan="4" style="text-align:left;">Anomaly</td>
@@ -25574,12 +25594,12 @@
                                 document.getElementById('PRO-1.2.156').value = numUSD.format((a - b));
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="PRO-1.2.151" style="border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.2.152" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.2.153" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.2.154" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.2.155" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-1.2.156" style="border-bottom:double black" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.2.151" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.2.152" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.2.153" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.2.154" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.2.155" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-1.2.156" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -26086,12 +26106,12 @@
                             <input type="checkbox" id="PRO-2.1.2Checkbox"></input>
                             <input type="checkbox" id="PRO-2.1.2Checkbox2"></input>
                         </td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.1.21" style="font-weight:bold;" value = "{{ AuditData_lastyear.GrossMargin }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.1.22" value = "{{ AuditData_secondlastyear.GrossMargin }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.1.23" value = "{{ AuditData_thirdlastyear.GrossMargin }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.1.24" value = "{{ AuditData_fourthlastyear.GrossMargin }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.1.25" value = "{{ AuditData_fifthlastyear.GrossMargin }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.1.26" value = "{{ AuditData_sixthlastyear.GrossMargin }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-2.1.21" style="font-weight:bold;" value = "{{ AuditData_lastyear.GrossMargin }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-2.1.22" value = "{{ AuditData_secondlastyear.GrossMargin }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-2.1.23" value = "{{ AuditData_thirdlastyear.GrossMargin }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-2.1.24" value = "{{ AuditData_fourthlastyear.GrossMargin }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-2.1.25" value = "{{ AuditData_fifthlastyear.GrossMargin }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-2.1.26" value = "{{ AuditData_sixthlastyear.GrossMargin }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                     </tr>
                     <tr id="PRO-2.1.3Row">
                         <td colspan="4" style="text-align:left;">Anomaly</td>
@@ -26130,12 +26150,12 @@
                                 document.getElementById('PRO-2.1.36').value = numUSD.format(a - b);
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="PRO-2.1.31" style="border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-2.1.32" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-2.1.33" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-2.1.34" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-2.1.35" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-2.1.36" style="border-bottom:double black" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-2.1.31" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-2.1.32" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-2.1.33" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-2.1.34" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-2.1.35" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-2.1.36" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -26202,12 +26222,12 @@
                             <input type="checkbox" id="PRO-2.1.5Checkbox"></input>
                             <input type="checkbox" id="PRO-2.1.5Checkbox2"></input>
                         </td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.1.51" style="font-weight:bold;" value = "{{ AuditData_lastyear.OperatingIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.1.52" value = "{{ AuditData_secondlastyear.OperatingIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.1.53" value = "{{ AuditData_thirdlastyear.OperatingIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.1.54" value = "{{ AuditData_fourthlastyear.OperatingIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.1.55" value = "{{ AuditData_fifthlastyear.OperatingIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.1.56" value = "{{ AuditData_sixthlastyear.OperatingIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-2.1.51" style="font-weight:bold;" value = "{{ AuditData_lastyear.OperatingIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-2.1.52" value = "{{ AuditData_secondlastyear.OperatingIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-2.1.53" value = "{{ AuditData_thirdlastyear.OperatingIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-2.1.54" value = "{{ AuditData_fourthlastyear.OperatingIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-2.1.55" value = "{{ AuditData_fifthlastyear.OperatingIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-2.1.56" value = "{{ AuditData_sixthlastyear.OperatingIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                     </tr>
                     <tr id="PRO-2.1.6Row">
                         <td colspan="4" style="text-align:left;">Anomaly</td>
@@ -26246,12 +26266,12 @@
                                 document.getElementById('PRO-2.1.66').value = numUSD.format(a - b);
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="PRO-2.1.61" style="border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-2.1.62" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-2.1.63" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-2.1.64" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-2.1.65" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-2.1.66" style="border-bottom:double black" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-2.1.61" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-2.1.62" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-2.1.63" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-2.1.64" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-2.1.65" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-2.1.66" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -26318,12 +26338,12 @@
                             <input type="checkbox" id="PRO-2.1.8Checkbox"></input>
                             <input type="checkbox" id="PRO-2.1.8Checkbox2"></input>
                         </td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.1.81" style="font-weight:bold;" value = "{{ AuditData_lastyear.IncomeBeforeTaxes }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.1.82" value = "{{ AuditData_secondlastyear.IncomeBeforeTaxes }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.1.83" value = "{{ AuditData_thirdlastyear.IncomeBeforeTaxes }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.1.84" value = "{{ AuditData_fourthlastyear.IncomeBeforeTaxes }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.1.85" value = "{{ AuditData_fifthlastyear.IncomeBeforeTaxes }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.1.86" value = "{{ AuditData_sixthlastyear.IncomeBeforeTaxes }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-2.1.81" style="font-weight:bold;" value = "{{ AuditData_lastyear.IncomeBeforeTaxes }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-2.1.82" value = "{{ AuditData_secondlastyear.IncomeBeforeTaxes }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-2.1.83" value = "{{ AuditData_thirdlastyear.IncomeBeforeTaxes }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-2.1.84" value = "{{ AuditData_fourthlastyear.IncomeBeforeTaxes }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-2.1.85" value = "{{ AuditData_fifthlastyear.IncomeBeforeTaxes }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-2.1.86" value = "{{ AuditData_sixthlastyear.IncomeBeforeTaxes }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                     </tr>
                     <tr id="PRO-2.1.9Row">
                         <td colspan="4" style="text-align:left;">Anomaly</td>
@@ -26362,12 +26382,12 @@
                                 document.getElementById('PRO-2.1.96').value = numUSD.format((a - b));
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="PRO-2.1.91" style="border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-2.1.92" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-2.1.93" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-2.1.94" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-2.1.95" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-2.1.96" style="border-bottom:double black" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-2.1.91" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-2.1.92" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-2.1.93" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-2.1.94" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-2.1.95" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-2.1.96" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -26440,12 +26460,12 @@
                             <input type="checkbox" id="PRO-2.1.11Checkbox"></input>
                             <input type="checkbox" id="PRO-2.1.11Checkbox2"></input>
                         </td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.1.111" style="font-weight:bold;" value = "{{ AuditData_lastyear.NetIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.1.112" value = "{{ AuditData_secondlastyear.NetIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.1.113" value = "{{ AuditData_thirdlastyear.NetIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.1.114" value = "{{ AuditData_fourthlastyear.NetIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.1.115" value = "{{ AuditData_fifthlastyear.NetIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-2.1.116" value = "{{ AuditData_sixthlastyear.NetIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-2.1.111" style="font-weight:bold;" value = "{{ AuditData_lastyear.NetIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-2.1.112" value = "{{ AuditData_secondlastyear.NetIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-2.1.113" value = "{{ AuditData_thirdlastyear.NetIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-2.1.114" value = "{{ AuditData_fourthlastyear.NetIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-2.1.115" value = "{{ AuditData_fifthlastyear.NetIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-2.1.116" value = "{{ AuditData_sixthlastyear.NetIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                     </tr>
                     <tr id="PRO-2.1.12Row">
                         <td colspan="4" style="text-align:left;">Anomaly</td>
@@ -26484,12 +26504,12 @@
                                 document.getElementById('PRO-2.1.126').value = numUSD.format(a - b);
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="PRO-2.1.121" style="border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-2.1.122" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-2.1.123" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-2.1.124" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-2.1.125" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-2.1.126" style="border-bottom:double black" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-2.1.121" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-2.1.122" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-2.1.123" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-2.1.124" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-2.1.125" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-2.1.126" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -26958,12 +26978,12 @@
                             <input type="checkbox" id="PRO-3.1.2Checkbox"></input>
                             <input type="checkbox" id="PRO-3.1.2Checkbox2"></input>
                         </td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-3.1.21" style="font-weight:bold;" value = "{{ AuditData_lastyear.OtherComprehensiveIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-3.1.22" value = "{{ AuditData_secondlastyear.OtherComprehensiveIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-3.1.23" value = "{{ AuditData_thirdlastyear.OtherComprehensiveIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-3.1.24" value = "{{ AuditData_fourthlastyear.OtherComprehensiveIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-3.1.25" value = "{{ AuditData_fifthlastyear.OtherComprehensiveIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-3.1.26" value = "{{ AuditData_sixthlastyear.OtherComprehensiveIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-3.1.21" style="font-weight:bold;" value = "{{ AuditData_lastyear.OtherComprehensiveIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-3.1.22" value = "{{ AuditData_secondlastyear.OtherComprehensiveIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-3.1.23" value = "{{ AuditData_thirdlastyear.OtherComprehensiveIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-3.1.24" value = "{{ AuditData_fourthlastyear.OtherComprehensiveIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-3.1.25" value = "{{ AuditData_fifthlastyear.OtherComprehensiveIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-3.1.26" value = "{{ AuditData_sixthlastyear.OtherComprehensiveIncome }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                     </tr>
                     <tr id="PRO-3.1.3Row">
                         <td colspan="4" style="text-align:left;">Anomaly</td>
@@ -27002,12 +27022,12 @@
                                 document.getElementById('PRO-3.1.36').value = numUSD.format((a));
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="PRO-3.1.31" style="border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-3.1.32" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-3.1.33" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-3.1.34" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-3.1.35" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-3.1.36" style="border-bottom:double black" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-3.1.31" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-3.1.32" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-3.1.33" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-3.1.34" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-3.1.35" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-3.1.36" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -27316,12 +27336,12 @@
                                 document.getElementById('PRO-4.0.26').value = numUSD.format(-a);
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="PRO-4.0.21"  style="border-bottom-style:ridge; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-4.0.22"  style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-4.0.23"  style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-4.0.24"  style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-4.0.25"  style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-4.0.26"  style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-4.0.21" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-4.0.22" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-4.0.23" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-4.0.24" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-4.0.25" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="PRO-4.0.26" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="PRO-4.0.3Row">
                         <td colspan="4" style="text-align:left;">Anomaly</td>
@@ -27360,12 +27380,12 @@
                                 document.getElementById('PRO-4.0.36').value = numUSD.format((a - b));
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="PRO-4.0.31" style="border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-4.0.32" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-4.0.33" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-4.0.34" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-4.0.35" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-4.0.36" style="border-bottom:double black" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-4.0.31" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-4.0.32" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-4.0.33" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-4.0.34" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-4.0.35" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-4.0.36" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -27572,12 +27592,12 @@
                             <input type="checkbox" id="PRO-4.1.2Checkbox"></input>
                             <input type="checkbox" id="PRO-4.1.2Checkbox2"></input>
                         </td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.1.21" style="font-weight:bold;" value = "{{ AuditData_lastyear.ShareholdersEquity }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.1.22" value = "{{ AuditData_secondlastyear.ShareholdersEquity }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.1.23" value = "{{ AuditData_thirdlastyear.ShareholdersEquity }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.1.24" value = "{{ AuditData_fourthlastyear.ShareholdersEquity }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.1.25" value = "{{ AuditData_fifthlastyear.ShareholdersEquity }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-4.1.26" value = "{{ AuditData_sixthlastyear.ShareholdersEquity }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-4.1.21" style="font-weight:bold;" value = "{{ AuditData_lastyear.ShareholdersEquity }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-4.1.22" value = "{{ AuditData_secondlastyear.ShareholdersEquity }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-4.1.23" value = "{{ AuditData_thirdlastyear.ShareholdersEquity }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-4.1.24" value = "{{ AuditData_fourthlastyear.ShareholdersEquity }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-4.1.25" value = "{{ AuditData_fifthlastyear.ShareholdersEquity }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-4.1.26" value = "{{ AuditData_sixthlastyear.ShareholdersEquity }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                     </tr>
                     <tr id="PRO-4.1.3Row">
                         <td colspan="4" style="text-align:left;">Anomaly</td>
@@ -27616,12 +27636,12 @@
                                 document.getElementById('PRO-4.1.36').value = numUSD.format((a - b));
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="PRO-4.1.31" style="border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-4.1.32" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-4.1.33" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-4.1.34" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-4.1.35" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-4.1.36" style="border-bottom:double black" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-4.1.31" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-4.1.32" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-4.1.33" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-4.1.34" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-4.1.35" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-4.1.36" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -28035,12 +28055,12 @@
                             <input type="checkbox" id="PRO-5.1.3Checkbox"></input>
                             <input type="checkbox" id="PRO-5.1.3Checkbox2"></input>
                         </td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-5.1.31" style="font-weight:bold;" value = "{{ AuditData_lastyear.CashFlowCashExplainedDifference }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-5.1.32" value = "{{ AuditData_secondlastyear.CashFlowCashExplainedDifference }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-5.1.33" value = "{{ AuditData_thirdlastyear.CashFlowCashExplainedDifference }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-5.1.34" value = "{{ AuditData_fourthlastyear.CashFlowCashExplainedDifference }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-5.1.35" value = "{{ AuditData_fifthlastyear.CashFlowCashExplainedDifference }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2" style="border-bottom-style:ridge;"><input class="clock" id="PRO-5.1.36" value = "{{ AuditData_sixthlastyear.CashFlowCashExplainedDifference }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-5.1.31" style="font-weight:bold;" value = "{{ AuditData_lastyear.CashFlowCashExplainedDifference }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-5.1.32" value = "{{ AuditData_secondlastyear.CashFlowCashExplainedDifference }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-5.1.33" value = "{{ AuditData_thirdlastyear.CashFlowCashExplainedDifference }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-5.1.34" value = "{{ AuditData_fourthlastyear.CashFlowCashExplainedDifference }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-5.1.35" value = "{{ AuditData_fifthlastyear.CashFlowCashExplainedDifference }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input class="clock" id="PRO-5.1.36" value = "{{ AuditData_sixthlastyear.CashFlowCashExplainedDifference }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                     </tr>
                     <tr id="PRO-5.1.4Row">
                         <td colspan="4" style="text-align:left;">Anomaly</td>
@@ -28085,12 +28105,12 @@
                                 document.getElementById('PRO-5.1.46').value = numUSD.format(a);
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="PRO-5.1.41" style="border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-5.1.42" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-5.1.43" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-5.1.44" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-5.1.45" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="PRO-5.1.46" style="border-bottom:double black" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-5.1.41" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-5.1.42" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-5.1.43" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-5.1.44" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-5.1.45" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black; border-top-style:ridge;"><input class="account" id="PRO-5.1.46" onfocusout="Compile()"></input></td>
                     </tr>
                 </tbody>
             </table>
@@ -28649,12 +28669,12 @@
                                 document.getElementById('AnomaliesShareholdersEquityi6').value = numUSD.format(Math.max(a, b));
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquityi1" style="border-bottom-style:ridge; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquityi2" style="border-bottom-style:ridge" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquityi3" style="border-bottom-style:ridge" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquityi4" style="border-bottom-style:ridge" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquityi5" style="border-bottom-style:ridge" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquityi6" style="border-bottom-style:ridge" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquityi1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquityi2" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquityi3" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquityi4" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquityi5" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquityi6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="TotalAnomaliesBalanceSheetsRow">
                         <td colspan='2'></td>
@@ -28713,12 +28733,12 @@
                                 document.getElementById('TotalAnomaliesBalanceSheets6').value = numUSD.format(a);
                             };
                         </script>
-                        <td colspan="2"><input id="TotalAnomaliesBalanceSheets1" style="border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input id="TotalAnomaliesBalanceSheets2" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input id="TotalAnomaliesBalanceSheets3" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input id="TotalAnomaliesBalanceSheets4" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input id="TotalAnomaliesBalanceSheets5" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input id="TotalAnomaliesBalanceSheets6" style="border-bottom:double black" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge; border-bottom:double black;"><input id="TotalAnomaliesBalanceSheets1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge; border-bottom:double black;"><input id="TotalAnomaliesBalanceSheets2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge; border-bottom:double black;"><input id="TotalAnomaliesBalanceSheets3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge; border-bottom:double black;"><input id="TotalAnomaliesBalanceSheets4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge; border-bottom:double black;"><input id="TotalAnomaliesBalanceSheets5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge; border-bottom:double black;"><input id="TotalAnomaliesBalanceSheets6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -28899,12 +28919,12 @@
                                 document.getElementById('AnomaliesNetIncome6').value = numUSD.format(Math.max(a, b));
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="AnomaliesNetIncome1" style="border-bottom-style:ridge; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesNetIncome2" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesNetIncome3" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesNetIncome4" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesNetIncome5" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesNetIncome6" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesNetIncome1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesNetIncome2" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesNetIncome3" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesNetIncome4" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesNetIncome5" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input class="account" id="AnomaliesNetIncome6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <script>
@@ -28958,12 +28978,12 @@
                             <input type="checkbox" id="TotalAnomaliesIncomeStatementCheckbox"></input>
                             <input type="checkbox" id="TotalAnomaliesIncomeStatementCheckbox2"></input>
                         </td>
-                        <td colspan="2"><input id="TotalAnomaliesIncomeStatement1" style="border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input id="TotalAnomaliesIncomeStatement2" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input id="TotalAnomaliesIncomeStatement3" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input id="TotalAnomaliesIncomeStatement4" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input id="TotalAnomaliesIncomeStatement5" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input id="TotalAnomaliesIncomeStatement6" style="border-bottom:double black" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge; border-bottom:double black;"><input id="TotalAnomaliesIncomeStatement1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge; border-bottom:double black;"><input id="TotalAnomaliesIncomeStatement2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge; border-bottom:double black;"><input id="TotalAnomaliesIncomeStatement3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge; border-bottom:double black;"><input id="TotalAnomaliesIncomeStatement4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge; border-bottom:double black;"><input id="TotalAnomaliesIncomeStatement5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge; border-bottom:double black;"><input id="TotalAnomaliesIncomeStatement6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -29008,12 +29028,12 @@
                                 document.getElementById('AnomaliesComprehensiveIncome6').value = numUSD.format(Math.max(a, b));
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="AnomaliesComprehensiveIncome1" style="border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesComprehensiveIncome2" style="border-bottom:double black;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesComprehensiveIncome3" style="border-bottom:double black;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesComprehensiveIncome4" style="border-bottom:double black;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesComprehensiveIncome5" style="border-bottom:double black;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesComprehensiveIncome6" style="border-bottom:double black;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="account" id="AnomaliesComprehensiveIncome1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="account" id="AnomaliesComprehensiveIncome2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="account" id="AnomaliesComprehensiveIncome3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="account" id="AnomaliesComprehensiveIncome4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="account" id="AnomaliesComprehensiveIncome5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="account" id="AnomaliesComprehensiveIncome6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -29100,12 +29120,12 @@
                                 document.getElementById('AnomaliesShareholdersEquity6').value = numUSD.format(Math.max(a, b, c));
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquity1" style="border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquity2" style="border-bottom:double black;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquity3" style="border-bottom:double black;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquity4" style="border-bottom:double black;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquity5" style="border-bottom:double black;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="AnomaliesShareholdersEquity6" style="border-bottom:double black;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="account" id="AnomaliesShareholdersEquity1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="account" id="AnomaliesShareholdersEquity2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="account" id="AnomaliesShareholdersEquity3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="account" id="AnomaliesShareholdersEquity4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="account" id="AnomaliesShareholdersEquity5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="account" id="AnomaliesShareholdersEquity6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -29165,12 +29185,12 @@
                                 document.getElementById('TotalAnomaliesCashFlow6').value = numUSD.format(Math.max(a, b));
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="TotalAnomaliesCashFlow1" style="border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="TotalAnomaliesCashFlow2" style="border-bottom:double black;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="TotalAnomaliesCashFlow3" style="border-bottom:double black;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="TotalAnomaliesCashFlow4" style="border-bottom:double black;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="TotalAnomaliesCashFlow5" style="border-bottom:double black;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="TotalAnomaliesCashFlow6" style="border-bottom:double black;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="account" id="TotalAnomaliesCashFlow1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="account" id="TotalAnomaliesCashFlow2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="account" id="TotalAnomaliesCashFlow3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="account" id="TotalAnomaliesCashFlow4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="account" id="TotalAnomaliesCashFlow5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input class="account" id="TotalAnomaliesCashFlow6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -29295,12 +29315,12 @@
                                 document.getElementById('TrialBalanceAnomalySummary6').value = numUSD.format(a);
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="TrialBalanceAnomalySummary1" style="border-bottom-style:ridge; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="TrialBalanceAnomalySummary2" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="TrialBalanceAnomalySummary3" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="TrialBalanceAnomalySummary4" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="TrialBalanceAnomalySummary5" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="TrialBalanceAnomalySummary6" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="TrialBalanceAnomalySummary1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="TrialBalanceAnomalySummary2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="TrialBalanceAnomalySummary3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="TrialBalanceAnomalySummary4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="TrialBalanceAnomalySummary5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="TrialBalanceAnomalySummary6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="AccountingEquationAnomalySummaryRow">
                         <td colspan="4"><h6><b>Accounting Equation</b></h6></td>
@@ -29333,12 +29353,12 @@
                                 document.getElementById('AccountingEquationAnomalySummary6').value = numUSD.format(a);
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="AccountingEquationAnomalySummary1" style="border-bottom-style:ridge; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="AccountingEquationAnomalySummary2" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="AccountingEquationAnomalySummary3" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="AccountingEquationAnomalySummary4" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="AccountingEquationAnomalySummary5" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="AccountingEquationAnomalySummary6" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="AccountingEquationAnomalySummary1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="AccountingEquationAnomalySummary2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="AccountingEquationAnomalySummary3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="AccountingEquationAnomalySummary4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="AccountingEquationAnomalySummary5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="AccountingEquationAnomalySummary6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="BalanceSheetsAnomalySummaryRow">
                         <td colspan="2"><h6><b>Balance Sheets</b></h6></td>
@@ -29373,12 +29393,12 @@
                                 document.getElementById('BalanceSheetsAnomalySummary6').value = numUSD.format(a);
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="BalanceSheetsAnomalySummary1" style="border-bottom-style:ridge; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="BalanceSheetsAnomalySummary2" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="BalanceSheetsAnomalySummary3" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="BalanceSheetsAnomalySummary4" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="BalanceSheetsAnomalySummary5" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="BalanceSheetsAnomalySummary6" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="BalanceSheetsAnomalySummary1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="BalanceSheetsAnomalySummary2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="BalanceSheetsAnomalySummary3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="BalanceSheetsAnomalySummary4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="BalanceSheetsAnomalySummary5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="BalanceSheetsAnomalySummary6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="IncomeAnomalySummaryRow">
                         <td colspan="4"><h6><b>Income</b></h6></td>
@@ -29411,12 +29431,12 @@
                                 document.getElementById('IncomeAnomalySummary6').value = numUSD.format(a);
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="IncomeAnomalySummary1" style="border-bottom-style:ridge; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="IncomeAnomalySummary2" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="IncomeAnomalySummary3" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="IncomeAnomalySummary4" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="IncomeAnomalySummary5" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="IncomeAnomalySummary6" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="IncomeAnomalySummary1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="IncomeAnomalySummary2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="IncomeAnomalySummary3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="IncomeAnomalySummary4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="IncomeAnomalySummary5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="IncomeAnomalySummary6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="ComprehensiveIncomeAnomalySummaryRow">
                         <td colspan="4"><h6><b>Comprehensive Income</b></h6></td>
@@ -29449,12 +29469,12 @@
                                 document.getElementById('ComprehensiveIncomeAnomalySummary6').value = numUSD.format(a);
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="ComprehensiveIncomeAnomalySummary1" style="border-bottom-style:ridge; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="ComprehensiveIncomeAnomalySummary2" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="ComprehensiveIncomeAnomalySummary3" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="ComprehensiveIncomeAnomalySummary4" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="ComprehensiveIncomeAnomalySummary5" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="ComprehensiveIncomeAnomalySummary6" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="ComprehensiveIncomeAnomalySummary1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="ComprehensiveIncomeAnomalySummary2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="ComprehensiveIncomeAnomalySummary3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="ComprehensiveIncomeAnomalySummary4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="ComprehensiveIncomeAnomalySummary5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="ComprehensiveIncomeAnomalySummary6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="ShareholdersEquityAnomalySummaryRow">
                         <td colspan="4"><h6><b>Shareholders' Equity</b></h6></td>
@@ -29487,12 +29507,12 @@
                                 document.getElementById('ShareholdersEquityAnomalySummary6').value = numUSD.format(a);
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="ShareholdersEquityAnomalySummary1" style="border-bottom-style:ridge; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="ShareholdersEquityAnomalySummary2" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="ShareholdersEquityAnomalySummary3" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="ShareholdersEquityAnomalySummary4" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="ShareholdersEquityAnomalySummary5" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="ShareholdersEquityAnomalySummary6" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="ShareholdersEquityAnomalySummary1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="ShareholdersEquityAnomalySummary2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="ShareholdersEquityAnomalySummary3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="ShareholdersEquityAnomalySummary4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="ShareholdersEquityAnomalySummary5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="ShareholdersEquityAnomalySummary6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="CashFlowAnomalySummaryRow">
                         <td colspan="4"><h6><b>Cash Flow</b></h6></td>
@@ -29525,12 +29545,12 @@
                                 document.getElementById('CashFlowAnomalySummary6').value = numUSD.format(a);
                             };
                         </script>
-                        <td colspan="2"><input class="account" id="CashFlowAnomalySummary1" style="border-bottom-style:ridge; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="CashFlowAnomalySummary2" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="CashFlowAnomalySummary3" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="CashFlowAnomalySummary4" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="CashFlowAnomalySummary5" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input class="account" id="CashFlowAnomalySummary6" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="CashFlowAnomalySummary1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="CashFlowAnomalySummary2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="CashFlowAnomalySummary3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="CashFlowAnomalySummary4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="CashFlowAnomalySummary5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input class="account" id="CashFlowAnomalySummary6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="MarketCapitalizationAnomalySummaryRow">
                         <td colspan="4"><h6><b>Market Capitalization</b></h6></td>
@@ -29562,12 +29582,12 @@
                                 }
                             };
                         </script>
-                        <td colspan="2"><input id="MarketCapitalizationAnomalySummary1" style="border-bottom-style:ridge; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input id="MarketCapitalizationAnomalySummary2" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input id="MarketCapitalizationAnomalySummary3" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input id="MarketCapitalizationAnomalySummary4" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input id="MarketCapitalizationAnomalySummary5" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input id="MarketCapitalizationAnomalySummary6" style="border-bottom-style:ridge;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MarketCapitalizationAnomalySummary1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MarketCapitalizationAnomalySummary2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MarketCapitalizationAnomalySummary3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MarketCapitalizationAnomalySummary4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MarketCapitalizationAnomalySummary5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom-style:ridge;"><input id="MarketCapitalizationAnomalySummary6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -29641,12 +29661,12 @@
                             <input type="checkbox" id="AnomaliesWorstCaseScenarioCheckbox"></input>
                             <input type="checkbox" id="AnomaliesWorstCaseScenarioCheckbox2"></input>
                         </td>
-                        <td colspan="2"><input id="AnomaliesWorstCaseScenario1" style="border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input id="AnomaliesWorstCaseScenario2" style="border-bottom:double black;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input id="AnomaliesWorstCaseScenario3" style="border-bottom:double black;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input id="AnomaliesWorstCaseScenario4" style="border-bottom:double black;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input id="AnomaliesWorstCaseScenario5" style="border-bottom:double black;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input id="AnomaliesWorstCaseScenario6" style="border-bottom:double black;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input id="AnomaliesWorstCaseScenario1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input id="AnomaliesWorstCaseScenario2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input id="AnomaliesWorstCaseScenario3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input id="AnomaliesWorstCaseScenario4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input id="AnomaliesWorstCaseScenario5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input id="AnomaliesWorstCaseScenario6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="AnomaliesRatioRow">
                         <td colspan='4'><h6></h6></td>
@@ -29729,12 +29749,12 @@
                                 document.getElementById('AnomaliesRatio6').value = numUSD.format(a)
                             };
                         </script>
-                        <td colspan="2"><input id="AnomaliesMaterialityThreshold1" style="border-bottom:double black; font-weight:bold;" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input id="AnomaliesMaterialityThreshold2" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input id="AnomaliesMaterialityThreshold3" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input id="AnomaliesMaterialityThreshold4" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input id="AnomaliesMaterialityThreshold5" style="border-bottom:double black" onfocusout="Compile()"></input></td>
-                        <td colspan="2"><input id="AnomaliesMaterialityThreshold6" style="border-bottom:double black" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input id="AnomaliesMaterialityThreshold1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input id="AnomaliesMaterialityThreshold2" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input id="AnomaliesMaterialityThreshold3" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input id="AnomaliesMaterialityThreshold4" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input id="AnomaliesMaterialityThreshold5" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-bottom:double black;"><input id="AnomaliesMaterialityThreshold6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
