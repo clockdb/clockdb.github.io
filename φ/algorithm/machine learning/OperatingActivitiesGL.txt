@@ -1,2 +1,3 @@
+CashAndCashEquivalentsBeginningOfTheYear 
+CashCashEquivalentsAndRestrictedCashBeginningBalances 
 NetIncome 
-PartnersPayable 

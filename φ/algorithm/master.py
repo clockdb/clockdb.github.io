@@ -138,11 +138,11 @@ phases = [
     4,
     3,
     2,
-    1
+    1,
 ]
 
-ll = len(entities)
 ll = 1
+ll = len(entities)
 
 # master
 try:
@@ -153,7 +153,7 @@ try:
         e = entities[count]
         #
         if ll == 1:
-            e = Entity.objects.get(TradingSymbol='FB')
+            e = Entity.objects.get(TradingSymbol='AAPL')
         #
         if e.db in phases:
             #
@@ -11979,10 +11979,10 @@ try:
                                 except:
                                     pass
                                 #
-                                # Historical Reinvestment Of Maintenance
+                                # Reinvestment Of Maintenance
                                 try:
                                     z = -cf.PaymentsToAcquirePropertyPlantAndEquipment
-                                    a.HistoricalReinvestmentOfMaintenance = z
+                                    a.ReinvestmentOfMaintenance = z
                                 except:
                                     pass
                                 #
@@ -12034,7 +12034,7 @@ try:
                                             #
                                             [
                                             'a.NormalizedTheoricalInterestCharge',
-                                            'a.HistoricalReinvestmentOfMaintenance',
+                                            'a.ReinvestmentOfMaintenance',
                                             'a.NormalizedDividendPaymentToNonControllingInterests',
                                             'a.NormalizedDividendPaymentToPreferredShareholders',
                                             'a.TheoricalTaxRate',
@@ -12045,7 +12045,7 @@ try:
                                             #
                                             [
                                             '{:,}'.format(a.NormalizedTheoricalInterestCharge),
-                                            '{:,}'.format(a.HistoricalReinvestmentOfMaintenance),
+                                            '{:,}'.format(a.ReinvestmentOfMaintenance),
                                             '{:,}'.format(a.NormalizedDividendPaymentToNonControllingInterests),
                                             '{:,}'.format(a.NormalizedDividendPaymentToPreferredShareholders),
                                             '{:,}'.format(a.TheoricalTaxRate),

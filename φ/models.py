@@ -415,7 +415,7 @@ class AuditData(models.Model):
     URLoustandingshares = models.CharField(max_length=100, default='')
     #
     TargetWorkingCapital = models.FloatField(default=1.2)
-    HistoricalReinvestmentOfMaintenance = models.IntegerField(default=0)
+    ReinvestmentOfMaintenance = models.IntegerField(default=0)
     NormalizedTheoricalInterestCharge = models.IntegerField(default=0)
     NormalizedDividendPaymentToNonControllingInterests = models.IntegerField(default=0)
     NormalizedDividendPaymentToPreferredShareholders = models.IntegerField(default=0)
