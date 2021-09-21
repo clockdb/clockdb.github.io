@@ -28,6 +28,15 @@
     function Rollover() {
 
         Save();
+        UnhideCheckbox();
+
+        var a = document.getElementById('ClearCheckboxes').checked
+        
+        if (a == true) {
+            
+            ClearCheckboxes();
+
+        }
 
         // date class
         var d = document.getElementById('ContextDate1').value
@@ -5434,8 +5443,6 @@
                             //
                             UnhideCheckbox();
                             //
-                            console.log('clear 2')
-                            //
                             var numUSD = new Intl.NumberFormat("en-US", {
                                 format: "number"
                             })
@@ -5569,21 +5576,19 @@
                         <script> 
 
                             function UnhideCheckbox() {
-
                                 
                                 rows = document.querySelectorAll('tr');
 
                                 for(let i = 1; i <= rows.length; i++) {
 
+
                                     try {
 
                                         row = rows[i];
-
                                         console.log(row)
 
                                         row.style.display = '';
-
-                                        console.log('clear')
+                                        console.log(row.style.display)
 
                                     } catch {
                                     }
@@ -5614,8 +5619,45 @@
                     <tr></tr>
                     <tr>
                         <td colspan="7"><h6>Open Editor</h6></td>
-                        <td colspan="1" style="font-weight:bold;"><input type="checkbox" id="OpenEditor" style="visibility: visible" onchange="Compile()" onfocusout="Compile()"></input></td>
+                        <td colspan="1" style="font-weight:bold;"><input type="checkbox" id="OpenEditor" style="visibility: visible" onchange="OpenEditor()" onfocusout="Compile()"></input></td>
                     </tr>
+                    <script>
+                        function OpenEditor() {
+
+                        }
+                    </script>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan="7"><h6>Clear Checkbox On Rollover</h6></td>
+                        <td colspan="1" style="font-weight:bold;"><input type="checkbox" id="ClearCheckboxes" style="visibility: visible" onchange="CheckClearCheckboxes()" onfocusout="Compile()"></input></td>
+                    </tr>
+                    <script>
+                        function ClearCheckboxes() {
+
+                            rows = document.querySelectorAll('tr');
+
+                            for(let i = 1; i <= rows.length; i++) {
+
+                                try {
+                                    row = rows[i]
+
+                                    Checkboxes = row.id.replace('Row', 'Checkbox')
+                                    Checkboxes2 = row.id.replace('Row', 'Checkbox2')
+
+                                    document.getElementById(Checkboxes).checked = false;
+                                    document.getElementById(Checkboxes).style.visibility = 'hidden'
+                                    document.getElementById(Checkboxes2).checked = false;
+                                    document.getElementById(Checkboxes2).style.visibility = 'hidden'
+                                } catch {}
+
+                            }
+
+                        };
+                    </script>
                 </tbody>
             </table>
         </div>
