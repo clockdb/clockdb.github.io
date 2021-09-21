@@ -120,6 +120,8 @@
             // settings
             ['UnhideCheckbox', document.getElementById('UnhideCheckbox').checked, 'Checkbox'],
             ['OpenEditor', document.getElementById('OpenEditor').checked, 'Checkbox'],
+            ['ClearCheckboxes', document.getElementById('ClearCheckboxes').checked, 'Checkbox'],
+            
         //
         ];  
 
@@ -140,17 +142,17 @@
             'REF',
         ]
 
-        numbers = [
+        ClockClass = [
             'TrialBalance',
             'Opinion',
+            'OpinionFour',
         ]
 
-        numbersFour = [
+        FourColumns = [
             'OpinionFour',
         ]
 
         csvFileDataExtension = []
-
         //
         for(let i = 0; i < rows.length; i++) {
             
@@ -179,7 +181,7 @@
                 g = document.getElementById(checkbox1).checked
                 h = document.getElementById(checkbox2).checked
 
-                if (numbers.includes(trclass)) {
+                if (ClockClass.includes(trclass)) {
                     a = parseInt(a.replaceAll(/,/g, ''))
                     b = parseInt(b.replaceAll(/,/g, ''))
                     c = parseInt(c.replaceAll(/,/g, ''))
@@ -188,12 +190,8 @@
                     f = parseInt(f.replaceAll(/,/g, ''))
                 }
 
-                if (numbersFour.includes(trclass)) {
+                if (FourColumns.includes(trclass)) {
 
-                    a = parseInt(a.replaceAll(/,/g, ''))
-                    b = parseInt(b.replaceAll(/,/g, ''))
-                    c = parseInt(c.replaceAll(/,/g, ''))
-                    d = parseInt(d.replaceAll(/,/g, ''))
                     a = [input1, a, trclass]
                     b = [input2, b, trclass]
                     c = [input3, c, trclass]
@@ -5709,14 +5707,64 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr>
-                        <td colspan='5'></td>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_lastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_secondlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_thirdlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fourthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fifthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_sixthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
+                    <script>
+                        function FilingsHref() {
+                            var z = 0
+                            var a = document.getElementById('url1').value;
+                            document.getElementById('Filings1').href = a;
+                            if (a.length < 5) {
+                                z = z + 1
+                            }
+                            var a = document.getElementById('url2').value;
+                            document.getElementById('Filings2').href = a;
+                            if (a.length < 5) {
+                                z = z + 1
+                            }
+                            var a = document.getElementById('url3').value;
+                            document.getElementById('Filings3').href = a;
+                            if (a.length < 5) {
+                                z = z + 1
+                            }
+                            var a = document.getElementById('url4').value;
+                            document.getElementById('Filings4').href = a;
+                            if (a.length < 5) {
+                                z = z + 1
+                            }
+                            var a = document.getElementById('url5').value;
+                            document.getElementById('Filings5').href = a;
+                            if (a.length < 5) {
+                                z = z + 1
+                            }
+                            var a = document.getElementById('url6').value;
+                            document.getElementById('Filings6').href = a;
+                            if (a.length < 5) {
+                                z = z + 1
+                            }
+                            if (z == 6) {
+                                a = 'none';
+                            } else {
+                                a = '';
+                            }
+                            FilingsUrl = document.getElementsByClassName('Filings');
+                            //
+                            for(let i = 0; i <= FilingsUrl.length; i++) { 
+
+                                try {
+                                    FilingsUrl[i].style.display = a;
+                                } catch {}
+
+                            }
+
+                        }
+                    </script>
+                    <tr id="FilingsRow" class="Filings">
+                        <td colspan="5"></td>
+                        <td colspan='2' style="text-align:center"><a target="_blank" id="Filings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan='2' style="text-align:center"><a target="_blank" id="Filings2" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan='2' style="text-align:center"><a target="_blank" id="Filings3" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan='2' style="text-align:center"><a target="_blank" id="Filings4" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan='2' style="text-align:center"><a target="_blank" id="Filings5" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan='2' style="text-align:center"><a target="_blank" id="Filings6" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -5877,6 +5925,19 @@
                         <td colspan="2"><input id="Reviewed5" onfocusout="Compile()"></input></td>
                         <td colspan="2"><input id="Reviewed6" onfocusout="Compile()"></input></td>
                     </tr>
+                    <tr id="urlRow" class="Context"></tr>
+                        <td colspan="4"><h6>urls</h6></td>
+                        <td>
+                            <input type="checkbox" id="urlCheckbox"></input>
+                            <input type="checkbox" id="urlCheckbox2"></input>
+                        </td>
+                        <td colspan="2"><input id="url1" value="{{ TrialBalance_lastyear.Link }}" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input id="url2" value="{{ TrialBalance_secondlastyear.Link }}" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input id="url3" value="{{ TrialBalance_thirdlastyear.Link }}" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input id="url4" value="{{ TrialBalance_fourthlastyear.Link }}" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input id="url5" value="{{ TrialBalance_fifthlastyear.Link }}" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input id="url6" value="{{ TrialBalance_sixthlastyear.Link }}" onfocusout="Compile()"></input></td>
+                    </tr>
                     <script>
                         //
                         // Context
@@ -5953,14 +6014,24 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr>
-                        <td colspan="4"></td>
-                        <td colspan='2' style="text-align:center"><a href="{{ TrialBalance_lastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan='2' style="text-align:center"><a href="{{ TrialBalance_secondlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan='2' style="text-align:center"><a href="{{ TrialBalance_thirdlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan='2' style="text-align:center"><a href="{{ TrialBalance_fourthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan='2' style="text-align:center"><a href="{{ TrialBalance_fifthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan='2' style="text-align:center"><a href="{{ TrialBalance_sixthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
+                    <tr id="TrialBalancesFilingsRow" class="Filings">
+                        <td colspan='4'></td>
+                        <script>
+                            function FilingsHrefTrialBalances() {
+                                document.getElementById('TrialBalancesFilings1').href = document.getElementById('Filings1').href
+                                document.getElementById('TrialBalancesFilings2').href = document.getElementById('Filings2').href
+                                document.getElementById('TrialBalancesFilings3').href = document.getElementById('Filings3').href
+                                document.getElementById('TrialBalancesFilings4').href = document.getElementById('Filings4').href
+                                document.getElementById('TrialBalancesFilings5').href = document.getElementById('Filings5').href
+                                document.getElementById('TrialBalancesFilings6').href = document.getElementById('Filings6').href
+                            }
+                        </script>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="TrialBalancesFilings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="TrialBalancesFilings2" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="TrialBalancesFilings3" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="TrialBalancesFilings4" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="TrialBalancesFilings5" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="TrialBalancesFilings6" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -7818,14 +7889,24 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr>
+                    <tr id="BalanceSheetsFilingsRow" class="Filings">
                         <td colspan='5'></td>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_lastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_secondlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_thirdlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fourthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fifthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_sixthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
+                        <script>
+                            function FilingsHrefBalanceSheets() {
+                                document.getElementById('BalanceSheetsFilings1').href = document.getElementById('Filings1').href
+                                document.getElementById('BalanceSheetsFilings2').href = document.getElementById('Filings2').href
+                                document.getElementById('BalanceSheetsFilings3').href = document.getElementById('Filings3').href
+                                document.getElementById('BalanceSheetsFilings4').href = document.getElementById('Filings4').href
+                                document.getElementById('BalanceSheetsFilings5').href = document.getElementById('Filings5').href
+                                document.getElementById('BalanceSheetsFilings6').href = document.getElementById('Filings6').href
+                            }
+                        </script>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="BalanceSheetsFilings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="BalanceSheetsFilings2" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="BalanceSheetsFilings3" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="BalanceSheetsFilings4" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="BalanceSheetsFilings5" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="BalanceSheetsFilings6" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -12181,14 +12262,24 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr>
+                    <tr id="IncomeStatementsFilingsRow" class="Filings">
                         <td colspan='5'></td>
-                        <td colspan='2' style="text-align:center"><a href="{{ TrialBalance_lastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan='2' style="text-align:center"><a href="{{ TrialBalance_secondlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan='2' style="text-align:center"><a href="{{ TrialBalance_thirdlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan='2' style="text-align:center"><a href="{{ TrialBalance_fourthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan='2' style="text-align:center"><a href="{{ TrialBalance_fifthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan='2' style="text-align:center"><a href="{{ TrialBalance_sixthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
+                        <script>
+                            function FilingsHrefIncomeStatements() {
+                                document.getElementById('IncomeStatementsFilings1').href = document.getElementById('Filings1').href
+                                document.getElementById('IncomeStatementsFilings2').href = document.getElementById('Filings2').href
+                                document.getElementById('IncomeStatementsFilings3').href = document.getElementById('Filings3').href
+                                document.getElementById('IncomeStatementsFilings4').href = document.getElementById('Filings4').href
+                                document.getElementById('IncomeStatementsFilings5').href = document.getElementById('Filings5').href
+                                document.getElementById('IncomeStatementsFilings6').href = document.getElementById('Filings6').href
+                            }
+                        </script>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="IncomeStatementsFilings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="IncomeStatementsFilings2" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="IncomeStatementsFilings3" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="IncomeStatementsFilings4" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="IncomeStatementsFilings5" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="IncomeStatementsFilings6" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>     
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -13063,14 +13154,24 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr>
+                    <tr id="StatementsOfComprehensiveIncomeFilingsRow" class="Filings">
                         <td colspan='5'></td>
-                        <td colspan='2' style="text-align:center"><a href="{{ TrialBalance_lastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan='2' style="text-align:center"><a href="{{ TrialBalance_secondlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan='2' style="text-align:center"><a href="{{ TrialBalance_thirdlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan='2' style="text-align:center"><a href="{{ TrialBalance_fourthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan='2' style="text-align:center"><a href="{{ TrialBalance_fifthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan='2' style="text-align:center"><a href="{{ TrialBalance_sixthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
+                        <script>
+                            function FilingsHrefStatementsOfComprehensiveIncome() {
+                                document.getElementById('StatementsOfComprehensiveIncomeFilings1').href = document.getElementById('Filings1').href
+                                document.getElementById('StatementsOfComprehensiveIncomeFilings2').href = document.getElementById('Filings2').href
+                                document.getElementById('StatementsOfComprehensiveIncomeFilings3').href = document.getElementById('Filings3').href
+                                document.getElementById('StatementsOfComprehensiveIncomeFilings4').href = document.getElementById('Filings4').href
+                                document.getElementById('StatementsOfComprehensiveIncomeFilings5').href = document.getElementById('Filings5').href
+                                document.getElementById('StatementsOfComprehensiveIncomeFilings6').href = document.getElementById('Filings6').href
+                            }
+                        </script>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="StatementsOfComprehensiveIncomeFilings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="StatementsOfComprehensiveIncomeFilings2" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="StatementsOfComprehensiveIncomeFilings3" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="StatementsOfComprehensiveIncomeFilings4" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="StatementsOfComprehensiveIncomeFilings5" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="StatementsOfComprehensiveIncomeFilings6" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>     
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -13594,14 +13695,24 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr>
+                    <tr id="StatementsOfShareholdersFilingsRow" class="Filings">
                         <td colspan='5'></td>
-                        <td colspan='2' style="text-align:center"><a href="{{ TrialBalance_lastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan='2' style="text-align:center"><a href="{{ TrialBalance_secondlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan='2' style="text-align:center"><a href="{{ TrialBalance_thirdlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan='2' style="text-align:center"><a href="{{ TrialBalance_fourthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan='2' style="text-align:center"><a href="{{ TrialBalance_fifthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan='2' style="text-align:center"><a href="{{ TrialBalance_sixthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
+                        <script>
+                            function FilingsHrefStatementsOfShareholders() {
+                                document.getElementById('StatementsOfShareholdersFilings1').href = document.getElementById('Filings1').href
+                                document.getElementById('StatementsOfShareholdersFilings2').href = document.getElementById('Filings2').href
+                                document.getElementById('StatementsOfShareholdersFilings3').href = document.getElementById('Filings3').href
+                                document.getElementById('StatementsOfShareholdersFilings4').href = document.getElementById('Filings4').href
+                                document.getElementById('StatementsOfShareholdersFilings5').href = document.getElementById('Filings5').href
+                                document.getElementById('StatementsOfShareholdersFilings6').href = document.getElementById('Filings6').href
+                            }
+                        </script>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="StatementsOfShareholdersFilings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="StatementsOfShareholdersFilings2" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="StatementsOfShareholdersFilings3" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="StatementsOfShareholdersFilings4" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="StatementsOfShareholdersFilings5" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="StatementsOfShareholdersFilings6" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>     
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -15229,14 +15340,24 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr>
+                    <tr id="StatementsOfCashFlowFilingsRow" class="Filings">
                         <td colspan='5'></td>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_lastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_secondlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_thirdlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fourthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fifthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_sixthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
+                        <script>
+                            function FilingsHrefStatementsOfCashFlow() {
+                                document.getElementById('StatementsOfCashFlowFilings1').href = document.getElementById('Filings1').href
+                                document.getElementById('StatementsOfCashFlowFilings2').href = document.getElementById('Filings2').href
+                                document.getElementById('StatementsOfCashFlowFilings3').href = document.getElementById('Filings3').href
+                                document.getElementById('StatementsOfCashFlowFilings4').href = document.getElementById('Filings4').href
+                                document.getElementById('StatementsOfCashFlowFilings5').href = document.getElementById('Filings5').href
+                                document.getElementById('StatementsOfCashFlowFilings6').href = document.getElementById('Filings6').href
+                            }
+                        </script>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="StatementsOfCashFlowFilings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="StatementsOfCashFlowFilings2" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="StatementsOfCashFlowFilings3" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="StatementsOfCashFlowFilings4" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="StatementsOfCashFlowFilings5" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="StatementsOfCashFlowFilings6" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>     
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -18695,14 +18816,24 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr>
-                        <td colspan="5"></td>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_lastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_secondlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_thirdlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fourthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fifthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
-                            <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fifthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
+                    <tr id="RatiosFilingsRow" class="Filings">
+                        <td colspan='5'></td>
+                        <script>
+                            function FilingsHrefRatios() {
+                                document.getElementById('RatiosFilings1').href = document.getElementById('Filings1').href
+                                document.getElementById('RatiosFilings2').href = document.getElementById('Filings2').href
+                                document.getElementById('RatiosFilings3').href = document.getElementById('Filings3').href
+                                document.getElementById('RatiosFilings4').href = document.getElementById('Filings4').href
+                                document.getElementById('RatiosFilings5').href = document.getElementById('Filings5').href
+                                document.getElementById('RatiosFilings6').href = document.getElementById('Filings6').href
+                            }
+                        </script>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="RatiosFilings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="RatiosFilings2" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="RatiosFilings3" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="RatiosFilings4" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="RatiosFilings5" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="RatiosFilings6" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>     
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -19952,14 +20083,24 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr>
+                    <tr id="AdditionalInformationFilingsRow" class="Filings">
                         <td colspan='5'></td>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_lastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_secondlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_thirdlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fourthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fifthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_sixthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
+                        <script>
+                            function FilingsHrefAdditionalInformation() {
+                                document.getElementById('AdditionalInformationFilings1').href = document.getElementById('Filings1').href
+                                document.getElementById('AdditionalInformationFilings2').href = document.getElementById('Filings2').href
+                                document.getElementById('AdditionalInformationFilings3').href = document.getElementById('Filings3').href
+                                document.getElementById('AdditionalInformationFilings4').href = document.getElementById('Filings4').href
+                                document.getElementById('AdditionalInformationFilings5').href = document.getElementById('Filings5').href
+                                document.getElementById('AdditionalInformationFilings6').href = document.getElementById('Filings6').href
+                            }
+                        </script>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="AdditionalInformationFilings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="AdditionalInformationFilings2" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="AdditionalInformationFilings3" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="AdditionalInformationFilings4" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="AdditionalInformationFilings5" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="AdditionalInformationFilings6" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>     
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -20181,14 +20322,24 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr>
-                        <td colspan="5"></td>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_lastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_secondlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_thirdlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fourthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="display:none;"><a href="{{ TrialBalance_fifthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="display:none;"><a href="{{ TrialBalance_sixthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                    <tr id="CapitalizationRateFilingsRow" class="Filings">
+                        <td colspan='5'></td>
+                        <script>
+                            function FilingsHrefCapitalizationRate() {
+                                document.getElementById('CapitalizationRateFilings1').href = document.getElementById('Filings1').href
+                                document.getElementById('CapitalizationRateFilings2').href = document.getElementById('Filings2').href
+                                document.getElementById('CapitalizationRateFilings3').href = document.getElementById('Filings3').href
+                                document.getElementById('CapitalizationRateFilings4').href = document.getElementById('Filings4').href
+                                document.getElementById('CapitalizationRateFilings5').href = document.getElementById('Filings5').href
+                                document.getElementById('CapitalizationRateFilings6').href = document.getElementById('Filings6').href
+                            }
+                        </script>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="CapitalizationRateFilings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="CapitalizationRateFilings2" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="CapitalizationRateFilings3" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="CapitalizationRateFilings4" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center; display:none;"><a target="_blank" id="CapitalizationRateFilings5" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center; display:none;"><a target="_blank" id="CapitalizationRateFilings6" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>  
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -20777,14 +20928,24 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr>
-                        <td colspan="5"></td>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_lastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_secondlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_thirdlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fourthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fifthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_sixthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
+                    <tr id="CapitalizedCashFlowFilingsRow" class="Filings">
+                        <td colspan='5'></td>
+                        <script>
+                            function FilingsHrefCapitalizedCashFlow() {
+                                document.getElementById('CapitalizedCashFlowFilings1').href = document.getElementById('Filings1').href
+                                document.getElementById('CapitalizedCashFlowFilings2').href = document.getElementById('Filings2').href
+                                document.getElementById('CapitalizedCashFlowFilings3').href = document.getElementById('Filings3').href
+                                document.getElementById('CapitalizedCashFlowFilings4').href = document.getElementById('Filings4').href
+                                document.getElementById('CapitalizedCashFlowFilings5').href = document.getElementById('Filings5').href
+                                document.getElementById('CapitalizedCashFlowFilings6').href = document.getElementById('Filings6').href
+                            }
+                        </script>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="CapitalizedCashFlowFilings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="CapitalizedCashFlowFilings2" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="CapitalizedCashFlowFilings3" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="CapitalizedCashFlowFilings4" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="CapitalizedCashFlowFilings5" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="CapitalizedCashFlowFilings6" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>     
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -22132,14 +22293,24 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr>
-                        <td colspan="5"></td>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_lastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_secondlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_thirdlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fourthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fifthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_sixthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
+                    <tr id="CapitalizedIncomeFilingsRow" class="Filings">
+                        <td colspan='5'></td>
+                        <script>
+                            function FilingsHrefCapitalizedIncome() {
+                                document.getElementById('CapitalizedIncomeFilings1').href = document.getElementById('Filings1').href
+                                document.getElementById('CapitalizedIncomeFilings2').href = document.getElementById('Filings2').href
+                                document.getElementById('CapitalizedIncomeFilings3').href = document.getElementById('Filings3').href
+                                document.getElementById('CapitalizedIncomeFilings4').href = document.getElementById('Filings4').href
+                                document.getElementById('CapitalizedIncomeFilings5').href = document.getElementById('Filings5').href
+                                document.getElementById('CapitalizedIncomeFilings6').href = document.getElementById('Filings6').href
+                            }
+                        </script>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="CapitalizedIncomeFilings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="CapitalizedIncomeFilings2" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="CapitalizedIncomeFilings3" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="CapitalizedIncomeFilings4" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="CapitalizedIncomeFilings5" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="CapitalizedIncomeFilings6" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>     
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -23300,14 +23471,24 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr>
-                        <td colspan="5"></td>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_lastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_secondlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_thirdlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fourthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="display:none;"><a href="{{ TrialBalance_fifthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="display:none;"><a href="{{ TrialBalance_sixthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                    <tr id="IntrinsicValuesFilingsRow" class="Filings">
+                        <td colspan='5'></td>
+                        <script>
+                            function FilingsHrefIntrinsicValues() {
+                                document.getElementById('IntrinsicValuesFilings1').href = document.getElementById('Filings1').href
+                                document.getElementById('IntrinsicValuesFilings2').href = document.getElementById('Filings2').href
+                                document.getElementById('IntrinsicValuesFilings3').href = document.getElementById('Filings3').href
+                                document.getElementById('IntrinsicValuesFilings4').href = document.getElementById('Filings4').href
+                                document.getElementById('IntrinsicValuesFilings5').href = document.getElementById('Filings5').href
+                                document.getElementById('IntrinsicValuesFilings6').href = document.getElementById('Filings6').href
+                            }
+                        </script>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="IntrinsicValuesFilings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="IntrinsicValuesFilings2" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="IntrinsicValuesFilings3" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="IntrinsicValuesFilings4" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center; display:none;"><a target="_blank" id="IntrinsicValuesFilings5" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center; display:none;"><a target="_blank" id="IntrinsicValuesFilings6" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -23574,14 +23755,24 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr>
-                        <td colspan="5"></td>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_lastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_secondlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_thirdlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fourthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="display:none;"><a href="{{ TrialBalance_fifthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2"  style="display:none;"><a href="{{ TrialBalance_sixthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
+                    <tr id="SummaryFilingsRow" class="Filings">
+                        <td colspan='5'></td>
+                        <script>
+                            function FilingsHrefSummary() {
+                                document.getElementById('SummaryFilings1').href = document.getElementById('Filings1').href
+                                document.getElementById('SummaryFilings2').href = document.getElementById('Filings2').href
+                                document.getElementById('SummaryFilings3').href = document.getElementById('Filings3').href
+                                document.getElementById('SummaryFilings4').href = document.getElementById('Filings4').href
+                                document.getElementById('SummaryFilings5').href = document.getElementById('Filings5').href
+                                document.getElementById('SummaryFilings6').href = document.getElementById('Filings6').href
+                            }
+                        </script>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="SummaryFilings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="SummaryFilings2" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="SummaryFilings3" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="SummaryFilings4" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center; display: none;"><a target="_blank" id="SummaryFilings5" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center; display: none;"><a target="_blank" id="SummaryFilings6" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>     
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -24649,14 +24840,24 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr>
-                        <td colspan="5"></td>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_lastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_secondlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_thirdlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fourthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fifthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_sixthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
+                    <tr id="ProcedureAnnualBalanceSheetsFilingsRow" class="Filings">
+                        <td colspan='5'></td>
+                        <script>
+                            function FilingsHrefProcedureAnnualBalanceSheets() {
+                                document.getElementById('ProcedureAnnualBalanceSheetsFilings1').href = document.getElementById('Filings1').href
+                                document.getElementById('ProcedureAnnualBalanceSheetsFilings2').href = document.getElementById('Filings2').href
+                                document.getElementById('ProcedureAnnualBalanceSheetsFilings3').href = document.getElementById('Filings3').href
+                                document.getElementById('ProcedureAnnualBalanceSheetsFilings4').href = document.getElementById('Filings4').href
+                                document.getElementById('ProcedureAnnualBalanceSheetsFilings5').href = document.getElementById('Filings5').href
+                                document.getElementById('ProcedureAnnualBalanceSheetsFilings6').href = document.getElementById('Filings6').href
+                            }
+                        </script>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualBalanceSheetsFilings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualBalanceSheetsFilings2" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualBalanceSheetsFilings3" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualBalanceSheetsFilings4" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualBalanceSheetsFilings5" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualBalanceSheetsFilings6" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>     
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -24856,14 +25057,24 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr>
-                        <td colspan="5"></td>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_lastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_secondlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_thirdlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fourthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fifthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_sixthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
+                    <tr id="ProcedureAnnualBalanceSheetsiiFilingsRow" class="Filings">
+                        <td colspan='5'></td>
+                        <script>
+                            function FilingsHrefProcedureAnnualBalanceSheetsii() {
+                                document.getElementById('ProcedureAnnualBalanceSheetsiiFilings1').href = document.getElementById('Filings1').href
+                                document.getElementById('ProcedureAnnualBalanceSheetsiiFilings2').href = document.getElementById('Filings2').href
+                                document.getElementById('ProcedureAnnualBalanceSheetsiiFilings3').href = document.getElementById('Filings3').href
+                                document.getElementById('ProcedureAnnualBalanceSheetsiiFilings4').href = document.getElementById('Filings4').href
+                                document.getElementById('ProcedureAnnualBalanceSheetsiiFilings5').href = document.getElementById('Filings5').href
+                                document.getElementById('ProcedureAnnualBalanceSheetsiiFilings6').href = document.getElementById('Filings6').href
+                            }
+                        </script>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualBalanceSheetsiiFilings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualBalanceSheetsiiFilings2" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualBalanceSheetsiiFilings3" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualBalanceSheetsiiFilings4" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualBalanceSheetsiiFilings5" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualBalanceSheetsiiFilings6" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>     
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -25757,14 +25968,24 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr>
-                        <td colspan="5"></td>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_lastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_secondlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_thirdlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fourthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fifthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_sixthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
+                    <tr id="ProcedureAnnualBalanceSheetsiiiFilingsRow" class="Filings">
+                        <td colspan='5'></td>
+                        <script>
+                            function FilingsHrefProcedureAnnualBalanceSheetsiii() {
+                                document.getElementById('ProcedureAnnualBalanceSheetsiiiFilings1').href = document.getElementById('Filings1').href
+                                document.getElementById('ProcedureAnnualBalanceSheetsiiiFilings2').href = document.getElementById('Filings2').href
+                                document.getElementById('ProcedureAnnualBalanceSheetsiiiFilings3').href = document.getElementById('Filings3').href
+                                document.getElementById('ProcedureAnnualBalanceSheetsiiiFilings4').href = document.getElementById('Filings4').href
+                                document.getElementById('ProcedureAnnualBalanceSheetsiiiFilings5').href = document.getElementById('Filings5').href
+                                document.getElementById('ProcedureAnnualBalanceSheetsiiiFilings6').href = document.getElementById('Filings6').href
+                            }
+                        </script>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualBalanceSheetsiiiFilings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualBalanceSheetsiiiFilings2" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualBalanceSheetsiiiFilings3" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualBalanceSheetsiiiFilings4" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualBalanceSheetsiiiFilings5" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualBalanceSheetsiiiFilings6" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>     
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -26132,14 +26353,24 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr>
-                        <td colspan="5"></td>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_lastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_secondlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_thirdlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fourthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fifthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_sixthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
+                    <tr id="ProcedureAnnualIncomeStatementsFilingsRow" class="Filings">
+                        <td colspan='5'></td>
+                        <script>
+                            function FilingsHrefProcedureAnnualIncomeStatements() {
+                                document.getElementById('ProcedureAnnualIncomeStatementsFilings1').href = document.getElementById('Filings1').href
+                                document.getElementById('ProcedureAnnualIncomeStatementsFilings2').href = document.getElementById('Filings2').href
+                                document.getElementById('ProcedureAnnualIncomeStatementsFilings3').href = document.getElementById('Filings3').href
+                                document.getElementById('ProcedureAnnualIncomeStatementsFilings4').href = document.getElementById('Filings4').href
+                                document.getElementById('ProcedureAnnualIncomeStatementsFilings5').href = document.getElementById('Filings5').href
+                                document.getElementById('ProcedureAnnualIncomeStatementsFilings6').href = document.getElementById('Filings6').href
+                            }
+                        </script>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualIncomeStatementsFilings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualIncomeStatementsFilings2" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualIncomeStatementsFilings3" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualIncomeStatementsFilings4" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualIncomeStatementsFilings5" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualIncomeStatementsFilings6" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>     
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -26670,14 +26901,24 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr>
-                        <td colspan="5"></td>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_lastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_secondlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_thirdlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fourthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fifthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_sixthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
+                    <tr id="ProcedureAnnualIncomeStatementsiFilingsRow" class="Filings">
+                        <td colspan='5'></td>
+                        <script>
+                            function FilingsHrefProcedureAnnualIncomeStatementsi() {
+                                document.getElementById('ProcedureAnnualIncomeStatementsiFilings1').href = document.getElementById('Filings1').href
+                                document.getElementById('ProcedureAnnualIncomeStatementsiFilings2').href = document.getElementById('Filings2').href
+                                document.getElementById('ProcedureAnnualIncomeStatementsiFilings3').href = document.getElementById('Filings3').href
+                                document.getElementById('ProcedureAnnualIncomeStatementsiFilings4').href = document.getElementById('Filings4').href
+                                document.getElementById('ProcedureAnnualIncomeStatementsiFilings5').href = document.getElementById('Filings5').href
+                                document.getElementById('ProcedureAnnualIncomeStatementsiFilings6').href = document.getElementById('Filings6').href
+                            }
+                        </script>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualIncomeStatementsiFilings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualIncomeStatementsiFilings2" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualIncomeStatementsiFilings3" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualIncomeStatementsiFilings4" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualIncomeStatementsiFilings5" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualIncomeStatementsiFilings6" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>     
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -26989,14 +27230,24 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr>
-                        <td colspan="5"></td>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_lastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_secondlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_thirdlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fourthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fifthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_sixthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
+                    <tr id="ProcedureAnnualComprehensiveIncomeFilings" class="Filings">
+                        <td colspan='5'></td>
+                        <script>
+                            function FilingsHrefProcedureAnnualComprehensiveIncome() {
+                                document.getElementById('ProcedureAnnualComprehensiveIncomeFilings1').href = document.getElementById('Filings1').href
+                                document.getElementById('ProcedureAnnualComprehensiveIncomeFilings2').href = document.getElementById('Filings2').href
+                                document.getElementById('ProcedureAnnualComprehensiveIncomeFilings3').href = document.getElementById('Filings3').href
+                                document.getElementById('ProcedureAnnualComprehensiveIncomeFilings4').href = document.getElementById('Filings4').href
+                                document.getElementById('ProcedureAnnualComprehensiveIncomeFilings5').href = document.getElementById('Filings5').href
+                                document.getElementById('ProcedureAnnualComprehensiveIncomeFilings6').href = document.getElementById('Filings6').href
+                            }
+                        </script>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualComprehensiveIncomeFilings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualComprehensiveIncomeFilings2" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualComprehensiveIncomeFilings3" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualComprehensiveIncomeFilings4" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualComprehensiveIncomeFilings5" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualComprehensiveIncomeFilings6" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>     
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -27188,14 +27439,24 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr>
-                        <td colspan="5"></td>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_lastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_secondlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_thirdlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fourthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fifthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_sixthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
+                    <tr id="ProcedureAnnualComprehensiveIncomeStatementsFilingsRow" class="Filings">
+                        <td colspan='5'></td>
+                        <script>
+                            function FilingsHrefProcedureAnnualComprehensiveIncomeStatements() {
+                                document.getElementById('ProcedureAnnualComprehensiveIncomeStatementsFilings1').href = document.getElementById('Filings1').href
+                                document.getElementById('ProcedureAnnualComprehensiveIncomeStatementsFilings2').href = document.getElementById('Filings2').href
+                                document.getElementById('ProcedureAnnualComprehensiveIncomeStatementsFilings3').href = document.getElementById('Filings3').href
+                                document.getElementById('ProcedureAnnualComprehensiveIncomeStatementsFilings4').href = document.getElementById('Filings4').href
+                                document.getElementById('ProcedureAnnualComprehensiveIncomeStatementsFilings5').href = document.getElementById('Filings5').href
+                                document.getElementById('ProcedureAnnualComprehensiveIncomeStatementsFilings6').href = document.getElementById('Filings6').href
+                            }
+                        </script>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualComprehensiveIncomeStatementsFilings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualComprehensiveIncomeStatementsFilings2" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualComprehensiveIncomeStatementsFilings3" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualComprehensiveIncomeStatementsFilings4" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualComprehensiveIncomeStatementsFilings5" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualComprehensiveIncomeStatementsFilings6" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>     
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -27348,14 +27609,24 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr>
-                        <td colspan="5"></td>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_lastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_secondlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_thirdlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fourthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fifthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_sixthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
+                    <tr id="ProcedureAnnualShareholdersEquityiiiFilingsRow" class="Filings">
+                        <td colspan='5'></td>
+                        <script>
+                            function FilingsHrefProcedureAnnualShareholdersEquityiii() {
+                                document.getElementById('ProcedureAnnualShareholdersEquityiiiFilings1').href = document.getElementById('Filings1').href
+                                document.getElementById('ProcedureAnnualShareholdersEquityiiiFilings2').href = document.getElementById('Filings2').href
+                                document.getElementById('ProcedureAnnualShareholdersEquityiiiFilings3').href = document.getElementById('Filings3').href
+                                document.getElementById('ProcedureAnnualShareholdersEquityiiiFilings4').href = document.getElementById('Filings4').href
+                                document.getElementById('ProcedureAnnualShareholdersEquityiiiFilings5').href = document.getElementById('Filings5').href
+                                document.getElementById('ProcedureAnnualShareholdersEquityiiiFilings6').href = document.getElementById('Filings6').href
+                            }
+                        </script>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualShareholdersEquityiiiFilings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualShareholdersEquityiiiFilings2" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualShareholdersEquityiiiFilings3" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualShareholdersEquityiiiFilings4" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualShareholdersEquityiiiFilings5" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualShareholdersEquityiiiFilings6" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>     
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -27550,14 +27821,24 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr>
-                        <td colspan="5"></td>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_lastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_secondlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_thirdlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fourthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fifthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_sixthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
+                    <tr id="ProcedureAnnualShareholdersEquityFilingsRow" class="Filings">
+                        <td colspan='5'></td>
+                        <script>
+                            function FilingsHrefProcedureAnnualShareholdersEquity() {
+                                document.getElementById('ProcedureAnnualShareholdersEquityFilings1').href = document.getElementById('Filings1').href
+                                document.getElementById('ProcedureAnnualShareholdersEquityFilings2').href = document.getElementById('Filings2').href
+                                document.getElementById('ProcedureAnnualShareholdersEquityFilings3').href = document.getElementById('Filings3').href
+                                document.getElementById('ProcedureAnnualShareholdersEquityFilings4').href = document.getElementById('Filings4').href
+                                document.getElementById('ProcedureAnnualShareholdersEquityFilings5').href = document.getElementById('Filings5').href
+                                document.getElementById('ProcedureAnnualShareholdersEquityFilings6').href = document.getElementById('Filings6').href
+                            }
+                        </script>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualShareholdersEquityFilings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualShareholdersEquityFilings2" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualShareholdersEquityFilings3" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualShareholdersEquityFilings4" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualShareholdersEquityFilings5" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualShareholdersEquityFilings6" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>     
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -27806,14 +28087,24 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr>
-                        <td colspan="5"></td>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_lastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_secondlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_thirdlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fourthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fifthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_sixthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
+                    <tr id="ProcedureAnnualShareholdersEquityiFilingsRow" class="Filings">
+                        <td colspan='5'></td>
+                        <script>
+                            function FilingsHrefProcedureAnnualShareholdersEquityi() {
+                                document.getElementById('ProcedureAnnualShareholdersEquityiFilings1').href = document.getElementById('Filings1').href
+                                document.getElementById('ProcedureAnnualShareholdersEquityiFilings2').href = document.getElementById('Filings2').href
+                                document.getElementById('ProcedureAnnualShareholdersEquityiFilings3').href = document.getElementById('Filings3').href
+                                document.getElementById('ProcedureAnnualShareholdersEquityiFilings4').href = document.getElementById('Filings4').href
+                                document.getElementById('ProcedureAnnualShareholdersEquityiFilings5').href = document.getElementById('Filings5').href
+                                document.getElementById('ProcedureAnnualShareholdersEquityiFilings6').href = document.getElementById('Filings6').href
+                            }
+                        </script>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualShareholdersEquityiFilings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualShareholdersEquityiFilings2" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualShareholdersEquityiFilings3" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualShareholdersEquityiFilings4" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualShareholdersEquityiFilings5" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualShareholdersEquityiFilings6" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>     
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -28026,32 +28317,42 @@
                     <tr>
                         <td colspan="5"></td>
                         <script>
-                            function DateProcedureAnnualCashFlowAmend(DateProcedureAnnualCashFlowAmend) {
-                                document.getElementById('DateProcedureAnnualCashFlowAmend1').innerHTML = document.getElementById('Amend1').value;
-                                document.getElementById('DateProcedureAnnualCashFlowAmend2').innerHTML = document.getElementById('Amend2').value;
-                                document.getElementById('DateProcedureAnnualCashFlowAmend3').innerHTML = document.getElementById('Amend3').value;
-                                document.getElementById('DateProcedureAnnualCashFlowAmend4').innerHTML = document.getElementById('Amend4').value;
-                                document.getElementById('DateProcedureAnnualCashFlowAmend5').innerHTML = document.getElementById('Amend5').value;
-                                document.getElementById('DateProcedureAnnualCashFlowAmend6').innerHTML = document.getElementById('Amend6').value;
+                            function ProcedureAnnualCashFlowAmend(ProcedureAnnualCashFlowAmend) {
+                                document.getElementById('ProcedureAnnualCashFlowAmend1').innerHTML = document.getElementById('Amend1').value;
+                                document.getElementById('ProcedureAnnualCashFlowAmend2').innerHTML = document.getElementById('Amend2').value;
+                                document.getElementById('ProcedureAnnualCashFlowAmend3').innerHTML = document.getElementById('Amend3').value;
+                                document.getElementById('ProcedureAnnualCashFlowAmend4').innerHTML = document.getElementById('Amend4').value;
+                                document.getElementById('ProcedureAnnualCashFlowAmend5').innerHTML = document.getElementById('Amend5').value;
+                                document.getElementById('ProcedureAnnualCashFlowAmend6').innerHTML = document.getElementById('Amend6').value;
                             };
                         </script>
-                        <td colspan='2'><h5 id="DateProcedureAnnualCashFlowAmend1" style="font-weight:bold; text-align:center; padding-bottom:28px"></td>
-                        <td colspan='2'><h5 id="DateProcedureAnnualCashFlowAmend2" style="font-weight:bold; text-align:center; padding-bottom:28px"></td>
-                        <td colspan='2'><h5 id="DateProcedureAnnualCashFlowAmend3" style="font-weight:bold; text-align:center; padding-bottom:28px"></td>
-                        <td colspan='2'><h5 id="DateProcedureAnnualCashFlowAmend4" style="font-weight:bold; text-align:center; padding-bottom:28px"></td>
-                        <td colspan='2'><h5 id="DateProcedureAnnualCashFlowAmend5" style="font-weight:bold; text-align:center; padding-bottom:28px"></td>
-                        <td colspan='2'><h5 id="DateProcedureAnnualCashFlowAmend6" style="font-weight:bold; text-align:center; padding-bottom:28px"></td>
+                        <td colspan='2'><h5 id="ProcedureAnnualCashFlowAmend1" style="font-weight:bold; text-align:center; padding-bottom:28px"></td>
+                        <td colspan='2'><h5 id="ProcedureAnnualCashFlowAmend2" style="font-weight:bold; text-align:center; padding-bottom:28px"></td>
+                        <td colspan='2'><h5 id="ProcedureAnnualCashFlowAmend3" style="font-weight:bold; text-align:center; padding-bottom:28px"></td>
+                        <td colspan='2'><h5 id="ProcedureAnnualCashFlowAmend4" style="font-weight:bold; text-align:center; padding-bottom:28px"></td>
+                        <td colspan='2'><h5 id="ProcedureAnnualCashFlowAmend5" style="font-weight:bold; text-align:center; padding-bottom:28px"></td>
+                        <td colspan='2'><h5 id="ProcedureAnnualCashFlowAmend6" style="font-weight:bold; text-align:center; padding-bottom:28px"></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr>
-                        <td colspan="5"></td>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_lastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_secondlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_thirdlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fourthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fifthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_sixthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
+                    <tr id="ProcedureAnnualCashFlowFilingsRow" class="Filings">
+                        <td colspan='5'></td>
+                        <script>
+                            function FilingsHrefProcedureAnnualCashFlow() {
+                                document.getElementById('ProcedureAnnualCashFlowFilings1').href = document.getElementById('Filings1').href
+                                document.getElementById('ProcedureAnnualCashFlowFilings2').href = document.getElementById('Filings2').href
+                                document.getElementById('ProcedureAnnualCashFlowFilings3').href = document.getElementById('Filings3').href
+                                document.getElementById('ProcedureAnnualCashFlowFilings4').href = document.getElementById('Filings4').href
+                                document.getElementById('ProcedureAnnualCashFlowFilings5').href = document.getElementById('Filings5').href
+                                document.getElementById('ProcedureAnnualCashFlowFilings6').href = document.getElementById('Filings6').href
+                            }
+                        </script>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualCashFlowFilings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualCashFlowFilings2" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualCashFlowFilings3" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualCashFlowFilings4" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualCashFlowFilings5" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualCashFlowFilings6" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>     
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -28273,14 +28574,24 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr>
-                        <td colspan="5"></td>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_lastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_secondlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_thirdlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fourthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fifthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_sixthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
+                    <tr id="ProcedureAnnualCashFlowClassificationFilingsRow" class="Filings">
+                        <td colspan='5'></td>
+                        <script>
+                            function FilingsHrefProcedureAnnualCashFlowClassification() {
+                                document.getElementById('ProcedureAnnualCashFlowClassificationFilings1').href = document.getElementById('Filings1').href
+                                document.getElementById('ProcedureAnnualCashFlowClassificationFilings2').href = document.getElementById('Filings2').href
+                                document.getElementById('ProcedureAnnualCashFlowClassificationFilings3').href = document.getElementById('Filings3').href
+                                document.getElementById('ProcedureAnnualCashFlowClassificationFilings4').href = document.getElementById('Filings4').href
+                                document.getElementById('ProcedureAnnualCashFlowClassificationFilings5').href = document.getElementById('Filings5').href
+                                document.getElementById('ProcedureAnnualCashFlowClassificationFilings6').href = document.getElementById('Filings6').href
+                            }
+                        </script>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualCashFlowClassificationFilings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualCashFlowClassificationFilings2" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualCashFlowClassificationFilings3" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualCashFlowClassificationFilings4" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualCashFlowClassificationFilings5" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="ProcedureAnnualCashFlowClassificationFilings6" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>     
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -28529,14 +28840,24 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr>
-                        <td colspan="5"></td>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_lastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_secondlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_thirdlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fourthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fifthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_sixthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
+                    <tr id="AnomaliesFilingsRow" class="Filings">
+                        <td colspan='5'></td>
+                        <script>
+                            function FilingsHrefAnomalies() {
+                                document.getElementById('AnomaliesFilings1').href = document.getElementById('Filings1').href
+                                document.getElementById('AnomaliesFilings2').href = document.getElementById('Filings2').href
+                                document.getElementById('AnomaliesFilings3').href = document.getElementById('Filings3').href
+                                document.getElementById('AnomaliesFilings4').href = document.getElementById('Filings4').href
+                                document.getElementById('AnomaliesFilings5').href = document.getElementById('Filings5').href
+                                document.getElementById('AnomaliesFilings6').href = document.getElementById('Filings6').href
+                            }
+                        </script>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="AnomaliesFilings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="AnomaliesFilings2" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="AnomaliesFilings3" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="AnomaliesFilings4" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="AnomaliesFilings5" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="AnomaliesFilings6" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>     
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -29361,14 +29682,24 @@
                     </tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr>
-                        <td colspan="5"></td>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_lastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_secondlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_thirdlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fourthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_fifthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
-                        <td colspan="2" style="text-align:center"><a href="{{ TrialBalance_sixthlastyear.Link }}" target="_blank" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>   
+                    <tr id="AuditSummaryFilingsRow" class="Filings">
+                        <td colspan='5'></td>
+                        <script>
+                            function FilingsHrefAuditSummary() {
+                                document.getElementById('AuditSummaryFilings1').href = document.getElementById('Filings1').href
+                                document.getElementById('AuditSummaryFilings2').href = document.getElementById('Filings2').href
+                                document.getElementById('AuditSummaryFilings3').href = document.getElementById('Filings3').href
+                                document.getElementById('AuditSummaryFilings4').href = document.getElementById('Filings4').href
+                                document.getElementById('AuditSummaryFilings5').href = document.getElementById('Filings5').href
+                                document.getElementById('AuditSummaryFilings6').href = document.getElementById('Filings6').href
+                            }
+                        </script>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="AuditSummaryFilings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="AuditSummaryFilings2" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="AuditSummaryFilings3" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="AuditSummaryFilings4" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="AuditSummaryFilings5" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>
+                        <td colspan="2" style="text-align:center"><a target="_blank" id="AuditSummaryFilings6" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom:28px;">Filings</h6></a>     
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -31264,7 +31595,7 @@
     //
     // on initial loading
     window.addEventListener('DOMContentLoaded', function InitialLoading() {
-        Compile();        
+        Compile();  
         LineChart();
     });
     //
@@ -31275,6 +31606,7 @@
             Compile();
         }
     });
+
     //
     // main function
     function Compile() {
@@ -31582,7 +31914,7 @@
         DateProcedureAnnualShareholdersEquityi();
         ProcedureAnnualShareholdersEquityiAmend();
         DateProcedureAnnualCashFlow();
-        DateProcedureAnnualCashFlowAmend();
+        ProcedureAnnualCashFlowAmend();
         CashFlowCashBeginning();
         CashBalanceSheetsAudit();
         CashFlowCashAnomaly();
@@ -31621,6 +31953,34 @@
         BalanceBridgeφ();
         Puck();
         LineChart();
+        FilingsHref();
+        FilingsHrefTrialBalances();
+        FilingsHrefBalanceSheets();
+        FilingsHrefIncomeStatements();
+        FilingsHrefStatementsOfComprehensiveIncome();
+        FilingsHrefStatementsOfShareholders();
+        FilingsHrefStatementsOfCashFlow();
+        FilingsHrefRatios();
+        FilingsHrefAdditionalInformation();
+        FilingsHrefCapitalizationRate();
+        FilingsHrefCapitalizedCashFlow();
+        FilingsHrefCapitalizedIncome();
+        FilingsHrefIntrinsicValues();
+        FilingsHrefSummary();
+        FilingsHrefProcedureAnnualBalanceSheets();
+        FilingsHrefProcedureAnnualBalanceSheetsii();
+        FilingsHrefProcedureAnnualBalanceSheetsiii();
+        FilingsHrefProcedureAnnualIncomeStatements();
+        FilingsHrefProcedureAnnualIncomeStatementsi();
+        FilingsHrefProcedureAnnualComprehensiveIncome();
+        FilingsHrefProcedureAnnualComprehensiveIncomeStatements();
+        FilingsHrefProcedureAnnualShareholdersEquityiii();
+        FilingsHrefProcedureAnnualShareholdersEquity();
+        FilingsHrefProcedureAnnualShareholdersEquityi();
+        FilingsHrefProcedureAnnualCashFlow();
+        FilingsHrefProcedureAnnualCashFlowClassification();
+        FilingsHrefAnomalies();
+        FilingsHrefAuditSummary();
     }
 
     window.addEventListener('DOMContentLoaded', function REF() {
