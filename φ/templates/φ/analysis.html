@@ -62,6 +62,7 @@
             'ClockRate',
             'Context',
             'Opinion',
+            'OpinionThree',
             'OpinionFour',
             'Price',
             'Proportion',
@@ -85,11 +86,19 @@
                 input5 = row + 5
                 input6 = row + 6
 
-                document.getElementById(input6).value = document.getElementById(input5).value
-                document.getElementById(input5).value = document.getElementById(input4).value
-                document.getElementById(input4).value = document.getElementById(input3).value
-                document.getElementById(input3).value = document.getElementById(input2).value
-                document.getElementById(input2).value = document.getElementById(input1).value
+
+                if (trclass == 'OpinionThree') {
+                } else {
+                    document.getElementById(input3).value = document.getElementById(input2).value;
+                    document.getElementById(input2).value = document.getElementById(input1).value;
+                    document.getElementById(input4).value = document.getElementById(input3).value;
+                }
+
+                if (trclass == 'OpinionFour') {
+                } else {
+                    document.getElementById(input6).value = document.getElementById(input5).value;
+                    document.getElementById(input5).value = document.getElementById(input4).value;
+                }
                 
                 var a = parseInt(document.getElementById(input1).value.replaceAll(/,/g, ''))
 
@@ -99,6 +108,12 @@
                 }
 
                 var a = document.getElementById(trid).className
+
+                if (a == 'Context') {
+
+                    document.getElementById(input1).value = '';
+
+                }
 
                 if (a == 'Date') {
 
@@ -112,10 +127,10 @@
 
     };
 
-    // download CSV
-    function Save(csv) {
+    // download db file
+    function Save() {
         //
-        var csvFileData = [  
+        var FileData = [  
             //
             // settings
             ['UnhideCheckbox', document.getElementById('UnhideCheckbox').checked, 'Checkbox'],
@@ -136,6 +151,7 @@
             'Header',
             'TrialBalance',
             'Opinion',
+            'OpinionThree',
             'OpinionFour',
             'Price',
             'Proportion',
@@ -152,7 +168,11 @@
             'OpinionFour',
         ]
 
-        csvFileDataExtension = []
+        ThreeColumns = [
+            'OpinionThree',
+        ]
+
+        FileDataExtension = []
         //
         for(let i = 0; i < rows.length; i++) {
             
@@ -171,7 +191,6 @@
                 input6 = row + 6
                 checkbox1 = row + 'Checkbox'
                 checkbox2 = row + 'Checkbox' + 2
-
                 a = document.getElementById(input1).value
                 b = document.getElementById(input2).value
                 c = document.getElementById(input3).value
@@ -180,7 +199,6 @@
                 f = document.getElementById(input6).value
                 g = document.getElementById(checkbox1).checked
                 h = document.getElementById(checkbox2).checked
-
                 if (ClockClass.includes(trclass)) {
                     a = parseInt(a.replaceAll(/,/g, ''))
                     b = parseInt(b.replaceAll(/,/g, ''))
@@ -189,65 +207,52 @@
                     e = parseInt(e.replaceAll(/,/g, ''))
                     f = parseInt(f.replaceAll(/,/g, ''))
                 }
-
+                a = [input1, a, trclass]
+                b = [input2, b, trclass]
+                c = [input3, c, trclass]
+                d = [input4, d, trclass]
+                e = [input5, e, trclass]
+                f = [input6, f, trclass]
+                g = [checkbox1, g, 'Checkbox']
+                h = [checkbox2, h, 'Checkbox']
+                FileDataExtension.push(a)
+                FileDataExtension.push(b)
+                FileDataExtension.push(c)
+                //
+                FileDataExtension.push(g)
+                FileDataExtension.push(h)
+                
                 if (FourColumns.includes(trclass)) {
-
-                    a = [input1, a, trclass]
-                    b = [input2, b, trclass]
-                    c = [input3, c, trclass]
-                    d = [input4, d, trclass]
-                    g = [checkbox1, g, 'Checkbox']
-                    h = [checkbox2, h, 'Checkbox']
-                    csvFileDataExtension.push(a)
-                    csvFileDataExtension.push(b)
-                    csvFileDataExtension.push(c)
-                    csvFileDataExtension.push(d)
-                    csvFileDataExtension.push(g)
-                    csvFileDataExtension.push(h)
-
+                    FileDataExtension.push(d)
                 } else {
-
-                    a = [input1, a, trclass]
-                    b = [input2, b, trclass]
-                    c = [input3, c, trclass]
-                    d = [input4, d, trclass]
-                    e = [input5, e, trclass]
-                    f = [input6, f, trclass]
-                    g = [checkbox1, g, 'Checkbox']
-                    h = [checkbox2, h, 'Checkbox']
-                    csvFileDataExtension.push(a)
-                    csvFileDataExtension.push(b)
-                    csvFileDataExtension.push(c)
-                    csvFileDataExtension.push(d)
-                    csvFileDataExtension.push(e)
-                    csvFileDataExtension.push(f)
-                    csvFileDataExtension.push(g)
-                    csvFileDataExtension.push(h)
-
-                }
-
-            }
-
+                    if (ThreeColumns.includes(trclass)) {
+                    } else {
+                        FileDataExtension.push(d)
+                        FileDataExtension.push(e)
+                        FileDataExtension.push(f)
+                    }
+                };
+            };
         };
 
         //
         //define the heading for each row of the data  
-        var csv = 'Reference|Value|Type\n';  
+        var db = 'Reference|Value|Type\n';  
         //
         //merge the data with CSV  
-        csvFileData.forEach(function(row) {  
-            csv += row.join('|');  
-            csv += "\n";  
+        FileData.forEach(function(row) {  
+            db += row.join('|');  
+            db += "\n";  
         });  
         //
         //merge the data with CSV  
-        csvFileDataExtension.forEach(function(row) {  
-            csv += row.join('|');  
-            csv += "\n";  
+        FileDataExtension.forEach(function(row) {  
+            db += row.join('|');  
+            db += "\n";  
         });  
         //
         var hiddenElement = document.createElement('a');  
-        hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);  
+        hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(db);  
         hiddenElement.target = '_blank';  
         //
         //provide the name for the CSV file to be downloaded
@@ -271,7 +276,7 @@
             a = ""
         }
 
-        var file_name = document.getElementById('TradingSymbol1').value + " " + formateddate + a + b + ".csv"
+        var file_name = document.getElementById('TradingSymbol1').value + " " + formateddate + a + b + ".db"
         
         hiddenElement.download = file_name;
         hiddenElement.click();
@@ -486,8 +491,7 @@
                             showPage(this.dataset.page);
                             window.scrollTo(0, 0);
                         }
-                    } catch {
-                    }
+                    } catch {}
                 }
             }
         });
@@ -727,7 +731,7 @@
                 
                 document.getElementById(a).style.display = 'block';
                 window.scrollTo(0, 0);
-                history.pushState({a}, ``, `/{{ entity.TradingSymbol }}/${a}`);
+                history.pushState({a}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${a}`);
             }
         }
     });
@@ -863,7 +867,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('Graph').style.display = 'block';
         window.scrollTo(0, 0);
-    })
+    });
 
 </script>
 
@@ -5443,7 +5447,7 @@
                             //
                             var numUSD = new Intl.NumberFormat("en-US", {
                                 format: "number"
-                            })
+                            });
                             //
                             Papa.parse(document.getElementById('uploadFile').files[0], 
                                 {
@@ -5489,6 +5493,9 @@
                                         if (c == 'Opinion') {
                                             document.getElementById(b).value = numUSD.format(a);
                                         }
+                                        if (c == 'OpinionThree') {
+                                            document.getElementById(b).value = numUSD.format(a);
+                                        }
                                         if (c == 'OpinionFour') {
                                             document.getElementById(b).value = numUSD.format(a);
                                         }
@@ -5514,7 +5521,7 @@
                     </script>
                     <tr>
                         <td>
-                            <input type='file' id="uploadFile" accept='.csv'></input>
+                            <input type='file' id="uploadFile" accept='.db'></input>
                             <button data-page='Context'><h3 onclick='Upload()' style="text-align:Center" id="Upload">Upload</h3></button>
                         </td>
                     </tr>
@@ -21391,7 +21398,7 @@
                         <td colspan="2" style="border-top-style:ridge;" ><input id="NormalizedOperatingCashFlowCCF5" onfocusout="Compile()"></input></td>
                         <td colspan="2" style="border-top-style:ridge;" ><input id="NormalizedOperatingCashFlowCCF6" onfocusout="Compile()"></input></td>
                     </tr>
-                    <tr id="WeightCCFRow" class="Proportion">
+                    <tr id="WeightCCFRow" class="OpinionThree">
                         <td colspan="2"><h6><b>Weighted Importance</b></h6></td>
                         <td style="color:#0d47a1; text-align:center; font-weight:bold;">(b)</td>
                         <td></td>
@@ -21535,7 +21542,7 @@
                         <td colspan='2'><input id="CharacteristicCashFlow5" onfocusout="Compile()"></input></td>
                         <td colspan='2'><input id="CharacteristicCashFlow6" onfocusout="Compile()"></input></td>
                     </tr>
-                    <tr id="CapitalizationRateCCFRow" class="ClockRate">
+                    <tr id="CapitalizationRateCCFRow" class="OpinionFour">
                         <td colspan="2"><h6><b>Capitalization Rate</b></h6></td>
                         <td style="text-align:center"><button data-page="CapitalizationRate" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CR</button></td>
                         <td></td>
@@ -22594,7 +22601,7 @@
                         <td colspan="2" style="border-top-style:ridge;"><input id="NormalizedIncomeBeforeInterestCI5" onfocusout="Compile()"></input></td>
                         <td colspan="2" style="border-top-style:ridge;"><input id="NormalizedIncomeBeforeInterestCI6" onfocusout="Compile()"></input></td>
                     </tr>
-                    <tr id="WeightCIRow" class="Proportion">
+                    <tr id="WeightCIRow" class="OpinionThree">
                         <td colspan="2"><h6><b>Weighted Importance</b></h6></td>
                         <td style="color:#0d47a1; text-align:center; font-weight:bold;">(b)</td>
                         <td></td>
@@ -22741,7 +22748,7 @@
                         <td colspan="2"><input id="CharacteristicIncomeBeforeInterestAfterTaxes5" onfocusout="Compile()"></input></td>
                         <td colspan="2"><input id="CharacteristicIncomeBeforeInterestAfterTaxes6" onfocusout="Compile()"></input></td>
                     </tr>
-                    <tr id="CapitalizationRateCIRow" class="ClockRate">
+                    <tr id="CapitalizationRateCIRow" class="OpinionFour">
                         <td colspan="2"><h6><b>Capitalization Rate</b></h6></td>
                         <td style="text-align:center"><button data-page="CapitalizationRate" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CR</button></td>
                         <td></td>
