@@ -445,9 +445,12 @@
                             if (url == 'Files') {
 
                                 showPage(this.dataset.page);
-                                window.scrollTo(0, 0);
+                                
+                                ReferenceVisibility();
 
-                                FilesButton();
+                                document.getElementById('FilesLabel').innerHTML = "Files";
+
+                                window.scrollTo(0, 0);
 
                             } else {
 
@@ -30926,6 +30929,26 @@
                 </tbody>
             </table>
             <script>
+                function ReferenceVisibility() {
+
+                    a = document.getElementsByClassName('Reference')
+
+                    if (a.length > 0) {
+
+                        console.log(a.length)
+
+                        document.getElementById('header').style.visibility = 'visible';
+
+                        for(let i = 0; i < a.length; i++) {
+                            
+                            console.log(a[i])
+
+                            a[i].style.visibility = 'visible';
+                        }
+
+                    }
+
+                }
                 function Files() {
 
                     try {
@@ -31008,6 +31031,8 @@
 
                     }
 
+                    ReferenceVisibility();
+
                 };
                 function File() {
 
@@ -31033,16 +31058,16 @@
         </script>
         <table style="border-bottom:solid #0D47A1; padding-bottom: 57px">
             <tbody id="FilesButtons">
-                <tr>
-                    <td colspan="3" style="text-align:center; padding-bottom:57px"><button class="header" style="text-align:center; font-weight:bold; background-color:white" onclick="Header()">Description</button></td>
-                    <td colspan="1" style="text-align:center; padding-bottom:57px"><button class="header" style="text-align:center; font-weight:bold; background-color:white" onclick="Header()">Reference</button></td>
-                    <td colspan="1" style="text-align:center; padding-bottom:57px"><button class="header" style="text-align:center; font-weight:bold; background-color:white" onclick="Header()">Source</button></td>
-                    <td colspan="1" style="text-align:center; padding-bottom:57px"><button class="header" style="text-align:center; font-weight:bold; background-color:white" onclick="Header()">Status</button></td>
-                    <td colspan="1" style="text-align:center; padding-bottom:57px"><button class="header" style="text-align:center; font-weight:bold; background-color:white" onclick="Header()">Work In Progress</button></td>
-                    <td colspan="1" style="text-align:center; padding-bottom:57px"><button class="header" style="text-align:center; font-weight:bold; background-color:white" onclick="Header()">Prepared</button></td>
-                    <td colspan="1" style="text-align:center; padding-bottom:57px"><button class="header" style="text-align:center; font-weight:bold; background-color:white" onclick="Header()">Date</button></td>
-                    <td colspan="1" style="text-align:center; padding-bottom:57px"><button class="header" style="text-align:center; font-weight:bold; background-color:white" onclick="Header()">Reviewd</button></td>
-                    <td colspan="1" style="text-align:center; padding-bottom:57px"><button class="header" style="text-align:center; font-weight:bold; background-color:white" onclick="Header()">Date</button></td>
+                <tr style="visibility:hidden" id="header">
+                    <td colspan="3" style="text-align:center; padding-bottom:57px"><button style="text-align:center; font-weight:bold; background-color:white" onclick="Header()">Description</button></td>
+                    <td colspan="1" style="text-align:center; padding-bottom:57px"><button style="text-align:center; font-weight:bold; background-color:white" onclick="Header()">Reference</button></td>
+                    <td colspan="1" style="text-align:center; padding-bottom:57px"><button style="text-align:center; font-weight:bold; background-color:white" onclick="Header()">Source</button></td>
+                    <td colspan="1" style="text-align:center; padding-bottom:57px"><button style="text-align:center; font-weight:bold; background-color:white" onclick="Header()">Status</button></td>
+                    <td colspan="1" style="text-align:center; padding-bottom:57px"><button style="text-align:center; font-weight:bold; background-color:white" onclick="Header()">Work In Progress</button></td>
+                    <td colspan="1" style="text-align:center; padding-bottom:57px"><button style="text-align:center; font-weight:bold; background-color:white" onclick="Header()">Prepared</button></td>
+                    <td colspan="1" style="text-align:center; padding-bottom:57px"><button style="text-align:center; font-weight:bold; background-color:white" onclick="Header()">Date</button></td>
+                    <td colspan="1" style="text-align:center; padding-bottom:57px"><button style="text-align:center; font-weight:bold; background-color:white" onclick="Header()">Reviewd</button></td>
+                    <td colspan="1" style="text-align:center; padding-bottom:57px"><button style="text-align:center; font-weight:bold; background-color:white" onclick="Header()">Date</button></td>
                 <tr>
             </tbody>
             <tbody id="FilesDetails"></tbody>
@@ -32182,39 +32207,41 @@
         
         referencerows = document.getElementsByClassName('Reference');
 
-        var z = 0
+        z = 0
 
         for(let i = 0; i < referencerows.length; i++) {
 
-            var c = referencerows[i]
-            c.style.display = '';
+            var row = referencerows[i].id;
 
-            row = c.id.replace('Reference', 'FileProperty')
+            console.log(row)
 
-            input = row.replace('.Row','') + '.2'
+            input = row.replace('.Row','') + '.2';
 
-            input = document.getElementById(input).value
+            console.log(input)
 
+            input = document.getElementById(input).value;
+
+            console.log('ref')
+            console.log(input)
+
+            a = 'hidden';
             if (input == key) {
+                a = 'visible';
                 z = z + 1
-            } else {
-                if (key == '') {
-                } else {
-                    document.getElementById(row).style.display = 'none'
-                }
             }
-        }
-
-        headerrow = document.getElementsByClassName('header');
-        for(let i = 0; i < headerrow.length; i++) {
-            header = headerrow[i]
-            if (z == 0) {
-                header.style.display = 'none'
-            } else {
-                header.style.display = ''
-            }
+            document.getElementById(row).style.visibility = a;
         
         }
+
+        console.log(z)
+
+        if (z > 0) {
+            a = 'visible';
+        } else {
+            a = 'hidden';
+        }
+
+        document.getElementById('header').style.visibility = a;
 
     }
 
@@ -32343,26 +32370,6 @@
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Opinion (" + document.getElementById('OpinionREF6').value + ") \\"
     }
-
-
-    // FILES BUTTONS
-
-    function FilesButton() {
-        referencerows = document.getElementsByClassName('Reference');
-        for(let i = 0; i < referencerows.length; i++) {
-            var c = referencerows[i]
-            c.style.display = '';
-        }
-        
-        document.getElementById('FilesLabel').innerHTML = "Files"
-
-        headerrow = document.getElementsByClassName('header');
-        for(let i = 0; i < headerrow.length; i++) {
-            header = headerrow[i]
-            header.style.display = ''
-        }
-    }
-
     
 
 </script>
