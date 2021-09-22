@@ -30937,13 +30937,13 @@
 
                         console.log(a.length)
 
-                        document.getElementById('header').style.visibility = 'visible';
+                        document.getElementById('header').style.display = '';
 
                         for(let i = 0; i < a.length; i++) {
                             
                             console.log(a[i])
 
-                            a[i].style.visibility = 'visible';
+                            a[i].style.display = '';
                         }
 
                     }
@@ -31058,7 +31058,7 @@
         </script>
         <table style="border-bottom:solid #0D47A1; padding-bottom: 57px">
             <tbody id="FilesButtons">
-                <tr style="visibility:hidden" id="header">
+                <tr style="display:none" id="header">
                     <td colspan="3" style="text-align:center; padding-bottom:57px"><button style="text-align:center; font-weight:bold; background-color:white" onclick="Header()">Description</button></td>
                     <td colspan="1" style="text-align:center; padding-bottom:57px"><button style="text-align:center; font-weight:bold; background-color:white" onclick="Header()">Reference</button></td>
                     <td colspan="1" style="text-align:center; padding-bottom:57px"><button style="text-align:center; font-weight:bold; background-color:white" onclick="Header()">Source</button></td>
@@ -32204,44 +32204,26 @@
     });
 
     function SupportingDocuments(key) {     
-        
         referencerows = document.getElementsByClassName('Reference');
-
         z = 0
-
         for(let i = 0; i < referencerows.length; i++) {
-
             var row = referencerows[i].id;
-
-            console.log(row)
-
             input = row.replace('.Row','') + '.2';
-
-            console.log(input)
-
             input = document.getElementById(input).value;
-
-            console.log('ref')
-            console.log(input)
-
-            a = 'hidden';
+            a = 'none';
             if (input == key) {
-                a = 'visible';
+                a = '';
                 z = z + 1
             }
-            document.getElementById(row).style.visibility = a;
-        
+            document.getElementById(row).style.display = a;
         }
-
-        console.log(z)
-
         if (z > 0) {
-            a = 'visible';
+            a = '';
         } else {
-            a = 'hidden';
+            a = 'none';
         }
 
-        document.getElementById('header').style.visibility = a;
+        document.getElementById('header').style.display = a;
 
     }
 
