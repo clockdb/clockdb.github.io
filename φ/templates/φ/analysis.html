@@ -127,7 +127,7 @@
 
     };
 
-    // download db file
+    // save
     function Save() {
         //
         var FileData = [  
@@ -136,11 +136,10 @@
             ['UnhideCheckbox', document.getElementById('UnhideCheckbox').checked, 'Checkbox'],
             ['OpenEditor', document.getElementById('OpenEditor').checked, 'Checkbox'],
             ['ClearCheckboxes', document.getElementById('ClearCheckboxes').checked, 'Checkbox'],
+            ['Directory', document.getElementById('Directory').value, 'Directory'],
             
         //
         ];  
-
-        rows = document.querySelectorAll('tr');
 
         RowClass = [
             'Checkbox',
@@ -172,6 +171,8 @@
             'OpinionThree',
         ]
 
+        rows = document.querySelectorAll('tr');
+        
         FileDataExtension = []
         //
         for(let i = 0; i < rows.length; i++) {
@@ -191,21 +192,24 @@
                 input6 = row + 6
                 checkbox1 = row + 'Checkbox'
                 checkbox2 = row + 'Checkbox' + 2
-                a = document.getElementById(input1).value
-                b = document.getElementById(input2).value
-                c = document.getElementById(input3).value
-                d = document.getElementById(input4).value
-                e = document.getElementById(input5).value
-                f = document.getElementById(input6).value
-                g = document.getElementById(checkbox1).checked
-                h = document.getElementById(checkbox2).checked
+                a = document.getElementById(input1).value;
+                b = document.getElementById(input2).value;
+                c = document.getElementById(input3).value;
+                d = document.getElementById(input4).value;
+                e = document.getElementById(input5).value;
+                f = document.getElementById(input6).value;
+                try {
+                    g = document.getElementById(checkbox1).checked;
+                    h = document.getElementById(checkbox2).checked;
+                } catch {}
+
                 if (ClockClass.includes(trclass)) {
-                    a = parseInt(a.replaceAll(/,/g, ''))
-                    b = parseInt(b.replaceAll(/,/g, ''))
-                    c = parseInt(c.replaceAll(/,/g, ''))
-                    d = parseInt(d.replaceAll(/,/g, ''))
-                    e = parseInt(e.replaceAll(/,/g, ''))
-                    f = parseInt(f.replaceAll(/,/g, ''))
+                    a = parseInt(a.replaceAll(/,/g, ''));
+                    b = parseInt(b.replaceAll(/,/g, ''));
+                    c = parseInt(c.replaceAll(/,/g, ''));
+                    d = parseInt(d.replaceAll(/,/g, ''));
+                    e = parseInt(e.replaceAll(/,/g, ''));
+                    f = parseInt(f.replaceAll(/,/g, ''));
                 }
                 a = [input1, a, trclass]
                 b = [input2, b, trclass]
@@ -213,15 +217,19 @@
                 d = [input4, d, trclass]
                 e = [input5, e, trclass]
                 f = [input6, f, trclass]
-                g = [checkbox1, g, 'Checkbox']
-                h = [checkbox2, h, 'Checkbox']
+                try {
+                    g = [checkbox1, g, 'Checkbox']
+                    h = [checkbox2, h, 'Checkbox']
+                } catch {}
                 FileDataExtension.push(a)
                 FileDataExtension.push(b)
                 FileDataExtension.push(c)
                 //
-                FileDataExtension.push(g)
-                FileDataExtension.push(h)
-                
+                try {
+                    FileDataExtension.push(g)
+                    FileDataExtension.push(h)
+                } catch {}
+
                 if (FourColumns.includes(trclass)) {
                     FileDataExtension.push(d)
                 } else {
@@ -232,21 +240,60 @@
                         FileDataExtension.push(f)
                     }
                 };
-            };
+            }
         };
+        //
+        ReferenceFileDataExtension = []
+
+        Rows = document.getElementsByClassName('Reference')
+
+            for (let i = 0; i < Rows.length; i++) {
+                try {
+                    //
+                    a = Rows[i].id.replace('.Row', '.1');
+                    b = Rows[i].id.replace('.Row', '.2');
+                    c = Rows[i].id.replace('.Row', '.3');
+                    d = Rows[i].id.replace('.Row', '.4');
+                    e = Rows[i].id.replace('.Row', '.5');
+                    f = Rows[i].id.replace('.Row', '.6');
+                    g = Rows[i].id.replace('.Row', '.7');
+                    h = Rows[i].id.replace('.Row', '.8');
+                    j = Rows[i].id.replace('.Row', '.9');
+                    //
+                    aa = document.getElementById(a).innerHTML;
+                    bb = document.getElementById(b).value;
+                    cc = document.getElementById(c).value;
+                    dd = document.getElementById(d).value;
+                    ee = document.getElementById(e).value;
+                    ff = document.getElementById(f).value;
+                    gg = document.getElementById(g).value;
+                    hh = document.getElementById(h).value;
+                    jj = document.getElementById(j).value;
+                    //
+                    a = [Rows[i].id, aa, 'Reference', bb, cc, dd, ee, ff, gg, hh, jj]
+                    //
+                    ReferenceFileDataExtension.push(a)
+                } catch {}
+            }
 
         //
         //define the heading for each row of the data  
-        var db = 'Reference|Value|Type\n';  
+        var db = 'Reference|Value|Type|FileReference|FileSource|Status|WorkInProgress|Prepared|DatePrepared|Reviewed|DateReviewed\n';  
         //
-        //merge the data with CSV  
+        //merge 
         FileData.forEach(function(row) {  
             db += row.join('|');  
             db += "\n";  
         });  
         //
-        //merge the data with CSV  
+        //merge 
         FileDataExtension.forEach(function(row) {  
+            db += row.join('|');  
+            db += "\n";  
+        });  
+        //
+        //merge 
+        ReferenceFileDataExtension.forEach(function(row) {  
             db += row.join('|');  
             db += "\n";  
         });  
@@ -5449,6 +5496,12 @@
                                 format: "number"
                             });
                             //
+                            var list = document.getElementById('FilesDetails');
+                            Rows = document.getElementsByClassName('Reference')
+                            console.log(Rows.length)
+                            RowsLeft = Rows.length
+                            RowsToCreate = 0
+                            //
                             Papa.parse(document.getElementById('uploadFile').files[0], 
                                 {
                                 //
@@ -5462,6 +5515,14 @@
                                         var a = results.data[k].Value
                                         var b = results.data[k].Reference
                                         var c = results.data[k].Type
+                                        var d = results.data[k].FileReference
+                                        var e = results.data[k].FileSource
+                                        var f = results.data[k].Status
+                                        var g = results.data[k].WorkInProgress
+                                        var h = results.data[k].Prepared
+                                        var i = results.data[k].DatePrepared
+                                        var j = results.data[k].Reviewed
+                                        var k = results.data[k].DateReviewed
 
                                         if (a == 'NaN') {
                                             a = '';
@@ -5487,6 +5548,9 @@
                                         if (c == 'Date') {
                                             document.getElementById(b).value = a;
                                         }
+                                        if (c == 'Directory') {
+                                            document.getElementById(b).value = a;
+                                        }
                                         if (c == 'Header') {
                                             document.getElementById(b).value = a;
                                         }
@@ -5507,6 +5571,97 @@
                                         }
                                         if (c == 'REF') {
                                             document.getElementById(b).value = a;
+                                        }
+                                        if (c == 'Reference') {
+                                            round = 0
+                                            if (RowsLeft > 0) {
+                                                document.getElementById(b.replace('.Row', '.1')).innerHTML = a;
+                                                document.getElementById(b.replace('.Row', '.2')).value = d;
+                                                document.getElementById(b.replace('.Row', '.3')).value = e;
+                                                document.getElementById(b.replace('.Row', '.4')).value = f;
+                                                document.getElementById(b.replace('.Row', '.5')).value = g;
+                                                document.getElementById(b.replace('.Row', '.6')).value = h;
+                                                document.getElementById(b.replace('.Row', '.7')).value = i;
+                                                document.getElementById(b.replace('.Row', '.8')).value = j;
+                                                document.getElementById(b.replace('.Row', '.9')).value = k;
+                                                RowsLeft  = RowsLeft - 1
+                                                round = 1
+                                            }
+                                            console.log(RowsLeft)
+                                            if (round == 0) {
+                                                if (RowsLeft == 0) {
+                                                    if (RowsToCreate == 0) {
+                                                        RowsToCreate = RowsLeft + 1
+                                                    }
+                                                }
+                                            }
+                                            if (round == 0) {
+
+                                                if (RowsLeft == 0) {
+
+                                                    console.log('ok')
+
+                                                    var bb = 1
+
+                                                    var tr = document.createElement('tr');
+
+                                                    tr.className = "Reference"
+
+                                                    var r = "FileProperty" + RowsToCreate
+
+                                                    RowsToCreate = RowsToCreate + 1 
+
+                                                    tr.id = r + '.Row'
+
+                                                    var td = "<td style='text-align:center'>"
+
+                                                    var name = a
+
+                                                    var button = "<button style='text-align:left; background-color:white' onclick='File()' id='" + r + '.' + bb + "'>"
+                                                    bb = bb + 1
+
+                                                    html = '<td colspan="3">' + button + name + "</button></td>" + td 
+
+                                                    const input_base = "<input style='text-align:center;' value='"
+
+                                                    var input = input_base + d + "' " + "id='" + r + '.' + bb + "'>"
+                                                    bb = bb + 1
+                                                    html = html + input + "</input></td>" + td
+
+                                                    var input = input_base + e + "' " + "id='" + r + '.' + bb + "'>"
+                                                    bb = bb + 1
+                                                    html = html + input + "</input></td>" + td
+
+                                                    var input = input_base + f + "' " + "id='" + r + '.' + bb + "'>"
+                                                    bb = bb + 1
+                                                    html = html + input + "</input></td>" + td
+
+                                                    var input = input_base + g + "' " + "id='" + r + '.' + bb + "'>"
+                                                    bb = bb + 1
+                                                    html = html + input + "</input></td>" + td
+
+                                                    var input = input_base + h + "' " + "id='" + r + '.' + bb + "'>"
+                                                    bb = bb + 1
+                                                    html = html + input + "</input></td>" + td
+
+                                                    var input = input_base + i + "' " + "id='" + r + '.' + bb + "'>"
+                                                    bb = bb + 1
+                                                    html = html + input + "</input></td>" + td
+
+                                                    var input = input_base + j + "' " + "id='" + r + '.' + bb + "'>"
+                                                    bb = bb + 1
+                                                    html = html + input + "</input></td>" + td
+
+                                                    var input = input_base + k + "' " + "id='" + r + '.' + bb + "'>"
+                                                    bb = bb + 1
+                                                    html = html + input + "</input></td></tr>"
+
+                                                    tr.innerHTML = html
+
+                                                    list.appendChild(tr)
+                                                }
+
+                                            }
                                         }
                                         if (c == 'TrialBalance') {
                                             document.getElementById(b).value = numUSD.format(a);
@@ -5590,10 +5745,8 @@
                                     try {
 
                                         row = rows[i];
-                                        console.log(row)
 
                                         row.style.display = '';
-                                        console.log(row.style.display)
 
                                     } catch {
                                     }
@@ -30742,21 +30895,34 @@
                     <tr></tr>
                     <tr></tr>
                     <tr>
-                        <td>
-                            <label id="AddFile">Add</label>
-                        </td>
-                        <td>
-                            <label id="DeleteFile">Delete</label>
-                        </td>
-                        <td>
-                            <label id="New" for="Files1">New</label>
-                        </td>
-                        <td colspan='7'><input type='file' id="Files1" style="visibility: hidden" multiple onchange="Files()"></input></td>
+                        <td><label id="AddFile">Add</label></td>
+                        <td><label id="DeleteFile">Delete</label></td>
+                        <td><label onclick="New()">New</label></td>
+                        <td><label style="visibility:hidden" id="New" for="Files1" onclick="HideNewDirectoryButton()">Confirm?</label></td>
+                        <td><input type='file' id="Files1" style="visibility: hidden" multiple onchange="Files()"></input></td>
+                        <td style="text-align:right;"><h5>Directory</h5></td>
+                        <td colspan="5"><input id="Directory"></input></td>
+                        <script>
+                            function New() {
+                                a = document.getElementById('New').style.visibility;
+                                if (a == 'visible') {
+                                    a = 'hidden';
+                                } else {
+                                    a = 'visible';
+                                }
+                                document.getElementById('New').style.visibility = a;
+                            }
+                            function HideNewDirectoryButton() {
+                                document.getElementById('New').style.visibility = 'hidden';
+                            }
+                        </script>
                     </tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
+                    <tr>
+                    </tr>
                 </tbody>
             </table>
             <script>
@@ -30769,33 +30935,13 @@
 
                     files = document.getElementById('Files1').files
 
-                    const list = document.getElementById('FilesDetails');
+                    var list = document.getElementById('FilesDetails');
 
                     var tr = document.createElement('tr');
-
-                    var td = "<td colspan='1' style='text-align:center; padding-bottom:57px'>"
-
-                    var headerbutton = "<button class='header' style='text-align:center; font-weight:bold; background-color:white' onclick='Header()'>"
                     
-                    const c = files.length
+                    var c = files.length
 
                     if (c > 0) {
-
-                        html = "<tr>" + "<td colspan='3' style='text-align:center; padding-bottom:57px'>"
-                        html = html + headerbutton + "Description</button>" + "</td>" + td
-                        html = html + headerbutton + "Reference</button>" + "</td>" + td
-                        html = html + headerbutton + "Source</button>" + "</td>" + td
-                        html = html +  headerbutton + "Status</button>" + "</td>" + td
-                        html = html +  headerbutton + "Work In Progress</button>" + "</td>" + td
-                        html = html +  headerbutton + "Prepared</button>" + "</td>" + td
-                        html = html +  headerbutton + "Date</button>" + "</td>" + td
-                        html = html +  headerbutton + "Reviewed</button>" + "</td>" + td
-                        html = html +  headerbutton + "Date</button>" + "</td>"
-                        html = html + "</tr>"
-
-                        tr.innerHTML = html
-
-                        list.appendChild(tr)
 
                         for(let i = 1; i <= c; i++) {
 
@@ -30813,17 +30959,16 @@
                             var td = "<td style='text-align:center'>"
 
                             var name = files[n].name
+                            var path = files[n].path
 
-                            localStorage.setItem(r.replace('FileProperty', ''), name)
-
-                            var button = "<button style='text-align:left; background-color:white' onclick='File()' id='" + r + '.' + b + "'>"
+                            var button = "<button href='" + document.getElementById('Directory').value + "' style='text-align:left; background-color:white' onclick='File()' id='" + r + '.' + b + "'>"
                             b = b + 1
 
                             html = '<td colspan="3">' + button + name + "</button></td>" + td 
 
                             const input_base = "<input style='text-align:center;' value='"
 
-                            var input = input_base + "' " + "onchange='PropertyChange()'" + "id='" + r + '.' + b + "'>"
+                            var input = input_base + "' " + "id='" + r + '.' + b + "'>"
                             b = b + 1
                             html = html + input + "</input></td>" + td
 
@@ -30866,8 +31011,11 @@
                 };
                 function File() {
 
-                    console.log('File Function')
-                    console.log(event.target)
+                    fileexplorer = document.getElementById('Directory').value + '\\' + event.target.innerHTML + '\\'
+
+                    console.log(fileexplorer)
+
+                    window.open(fileexplorer)
 
                 }
                 function Header() {
@@ -30884,8 +31032,20 @@
                 }
         </script>
         <table style="border-bottom:solid #0D47A1; padding-bottom: 57px">
-            <tbody id="FilesDetails">
+            <tbody id="FilesButtons">
+                <tr>
+                    <td colspan="3" style="text-align:center; padding-bottom:57px"><button class="header" style="text-align:center; font-weight:bold; background-color:white" onclick="Header()">Description</button></td>
+                    <td colspan="1" style="text-align:center; padding-bottom:57px"><button class="header" style="text-align:center; font-weight:bold; background-color:white" onclick="Header()">Reference</button></td>
+                    <td colspan="1" style="text-align:center; padding-bottom:57px"><button class="header" style="text-align:center; font-weight:bold; background-color:white" onclick="Header()">Source</button></td>
+                    <td colspan="1" style="text-align:center; padding-bottom:57px"><button class="header" style="text-align:center; font-weight:bold; background-color:white" onclick="Header()">Status</button></td>
+                    <td colspan="1" style="text-align:center; padding-bottom:57px"><button class="header" style="text-align:center; font-weight:bold; background-color:white" onclick="Header()">Work In Progress</button></td>
+                    <td colspan="1" style="text-align:center; padding-bottom:57px"><button class="header" style="text-align:center; font-weight:bold; background-color:white" onclick="Header()">Prepared</button></td>
+                    <td colspan="1" style="text-align:center; padding-bottom:57px"><button class="header" style="text-align:center; font-weight:bold; background-color:white" onclick="Header()">Date</button></td>
+                    <td colspan="1" style="text-align:center; padding-bottom:57px"><button class="header" style="text-align:center; font-weight:bold; background-color:white" onclick="Header()">Reviewd</button></td>
+                    <td colspan="1" style="text-align:center; padding-bottom:57px"><button class="header" style="text-align:center; font-weight:bold; background-color:white" onclick="Header()">Date</button></td>
+                <tr>
             </tbody>
+            <tbody id="FilesDetails"></tbody>
         </table>
     </div>
 
