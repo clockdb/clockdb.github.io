@@ -47,12 +47,12 @@
         document.getElementById('ContextDate3').value = document.getElementById('ContextDate2').value
         document.getElementById('ContextDate2').value = document.getElementById('ContextDate1').value
         document.getElementById('ContextDate1').value = d
-
+        //
         rows = document.querySelectorAll('tr');
-
-        // other class
+        //
         RowClass = [
             'Date',
+            'Clock',
             'ClockRate',
             'Context',
             'Opinion',
@@ -62,19 +62,21 @@
             'Proportion',
             'TrialBalance',
         ]
-
         //
         for(let i = 0; i < rows.length; i++) {
             trid = rows[i].id
+            console.log(trid)
             trclass = rows[i].className
             if(RowClass.includes(trclass)) {
                 row = trid.slice(0, -3);
+                //
                 input1 = row + 1
                 input2 = row + 2
                 input3 = row + 3
                 input4 = row + 4
                 input5 = row + 5
                 input6 = row + 6
+                //
                 if (trclass == 'OpinionThree') {
                 } else {
                     document.getElementById(input3).value = document.getElementById(input2).value;
@@ -86,11 +88,14 @@
                     document.getElementById(input6).value = document.getElementById(input5).value;
                     document.getElementById(input5).value = document.getElementById(input4).value;
                 }
-                var a = parseInt(document.getElementById(input1).value.replaceAll(/,/g, ''))
+                try {
+                    var a = parseInt(document.getElementById(input1).value.replaceAll(/,/g, ''))
+                } catch {}
                 if (Math.abs(a) > 1) {
                     document.getElementById(input1).value = 0
                 }
                 var a = document.getElementById(trid).className
+                //
                 if (a == 'Context') {
                     document.getElementById(input1).value = '';
                 }
