@@ -367,7 +367,6 @@
                     'OpinionFiles',
                     'ReferenceHeader',
                 ]
-                console.log('---')
                 console.log(this);
                 console.log('---')
                 //
@@ -406,7 +405,12 @@
                                     ff = document.getElementById(f).value;
                                     gg = document.getElementById(g).value;
                                     hh = document.getElementById(h).value;
-                                    a = [Rows[i].id, aa, 'Reference', bb, cc, dd, ee, ff, gg, hh]
+                                    ii = Rows[i].style.display;
+                                    //
+                                    console.log(a)
+                                    console.log(ii)
+                                    //
+                                    a = [Rows[i].id, aa, 'Reference', bb, cc, dd, ee, ff, gg, hh, ii]
                                     //
                                     References.push(a)
                                     //
@@ -460,23 +464,29 @@
                             }
                             header = header.sort()
                             //
-                            console.log(header)
                             //
                             for (let i = 0; i < Rows.length; i++) {
+                                z = 0
                                 for (let j = 0; j < Rows.length; j++) {
-                                    if (References[i][gg] == header[j]) {
-                                        References[i].push(j)
-                                    }
-                                }
-                            }
+                                    if (z == 1) {
+                                    } else {
+                                        if (References[i][gg] == header[j]) {
+                                            References[i].push(j)
+                                            header[j] = 'sorted'
+                                            z = 1
+                                        };
+                                    };
+                                };
+                            };
                             //
                             var list = document.createElement('tbody');
                             for (let i = 0; i < Rows.length; i++) {
                                 for (let j = 0; j < Rows.length; j++) {
-                                    if (References[j][10] == [i]) {
+                                    if (References[j][11] == [i]) {
                                         var name = References[j][1];
                                         var tr = document.createElement('tr');
                                         tr.className = "Reference";
+                                        tr.style.display = References[j][10];
                                         c = i + 1
                                         var r = "FileProperty" + c;
                                         tr.id = r + '.Row';
@@ -490,7 +500,7 @@
                                         var DateReviewed = References[j][9];
                                         AddFile(name, tr, b, r, list, Reference, Status, WorkInProgress, Prepared, DatePrepared, Reviewed, DateReviewed);
                                         list.appendChild(tr)
-                                        
+                                        //                                        
                                     }
                                 }
                             }
@@ -30884,10 +30894,10 @@
                 };
             }
             ReferenceVisibility();
-            a = tr.id.replace('.Row','.2')
-            a = document.getElementById(a).value;
-            a.focus()
-            a.select()
+            //
+            a = document.getElementById('FileProperty1.2')
+            a.focus();
+            a.select();
         };
         function AddLine() {
             //
@@ -30958,6 +30968,11 @@
             }
             //
             ReferenceVisibility();
+            //
+            a = tr.id.replace('.Row','.2')
+            a = document.getElementById(a);
+            a.focus()
+            a.select()
         }
         function AddFile(name, tr, b, r, list, Reference, Status, WorkInProgress, Prepared, DatePrepared, Reviewed, DateReviewed) {
             // Description
