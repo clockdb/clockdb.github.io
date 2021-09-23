@@ -30955,7 +30955,7 @@
             }
             ReferenceVisibility();
             //
-            a = document.getElementById('FileProperty1.2')
+            a = document.getElementById('FileProperty1.2');
             a.focus();
             a.select();
         };
@@ -32224,8 +32224,8 @@
         z = 0
         for(let i = 0; i < Rows.length; i++) {
             var row = Rows[i].id;
-            input = row.replace('.Row','') + '.2';
-            input = document.getElementById(input).value;
+            input = row.replace('.Row', '.2');
+            input = document.getElementById(input).value.split('-')[0];
             a = 'none';
             if (input == key) {
                 a = '';
