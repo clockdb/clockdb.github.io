@@ -365,17 +365,16 @@
                     'CashFlowProcedureFiles',
                     'AnomaliesFiles',
                     'OpinionFiles',
+                    'ReferenceHeader',
                 ]
-                
                 console.log('---')
                 console.log(this);
                 console.log('---')
-
+                //
                 const url = this.dataset.page;
-
+                //
                 if (url == null) {
                 } else {
-                
                     if (skip.includes(url)) {
                     } else {
                         try {
@@ -384,98 +383,212 @@
                         }
                     }
                     try {
-                        if (url.slice(-5) == 'Files') {
-                            if (url == 'Files') {
-                                showPage(this.dataset.page);
-                                ReferenceVisibility();
-                                document.getElementById('FilesLabel').innerHTML = "Files";
-                                window.scrollTo(0, 0);
-                            } else {
-                                if (url == 'CurrentAssetsFiles') {
-                                    SupportingDocumentsCurrentAssets();
-                                }
-                                if (url == 'NonCurrentAssetsFiles') {
-                                    SupportingDocumentsNonCurrentAssets();
-                                }
-                                if (url == 'CurrentLiabilitiesFiles') {
-                                    SupportingDocumentsCurrentLiabilities();
-                                }
-                                if (url == 'NonCurrentLiabilitiesFiles') {
-                                    SupportingDocumentsNonCurrentLiabilities();
-                                }
-                                if (url == 'ShareholdersEquityFiles') {
-                                    SupportingDocumentsShareholdersEquity();
-                                }
-                                if (url == 'GrossMarginFiles') {
-                                    SupportingDocumentsGrossMargin();
-                                }
-                                if (url == 'OperatingExpensesFiles') {
-                                    SupportingDocumentsOperatingExpenses();
-                                }
-                                if (url == 'ImpairmentAndRestructuringFiles') {
-                                    SupportingDocumentsImpairmentAndRestructuringFiles();
-                                }
-                                if (url == 'NonOperatingExpensesFiles') {
-                                    SupportingDocumentsNonOperatingExpenses();
-                                }
-                                if (url == 'EquityMethodInvesteesIncomeFiles') {
-                                    SupportingDocumentsEquityMethodInvesteesIncome();
-                                }
-                                if (url == 'DiscontinuedOperationsFiles') {
-                                    SupportingDocumentsDiscontinuedOperations();
-                                }
-                                if (url == 'IncomeTaxFiles') {
-                                    SupportingDocumentsIncomeTax();
-                                }
-                                if (url == 'OtherComprehensiveIncomeFiles') {
-                                    SupportingDocumentsOtherComprehensiveIncome();
-                                }
-                                if (url == 'OperatingActivitiesFiles') {
-                                    SupportingDocumentsOperatingActivities();
-                                }
-                                if (url == 'InvestingActivitiesFiles') {
-                                    SupportingDocumentsInvestingActivities();
-                                }
-                                if (url == 'FinancingActivitiesFiles') {
-                                    SupportingDocumentsFinancingActivities();
-                                }
-                                if (url == 'EffectOfExchangeRateOnCashFiles') {
-                                    SupportingDocumentsEffectOfExchangeRateOnCash();
-                                }
-                                if (url == 'MissionFiles') {
-                                    SupportingDocumentsMission();
-                                }
-                                if (url == 'MaterialityFiles') {
-                                    SupportingDocumentsMateriality();
-                                }
-                                if (url == 'BalanceSheetsProcedureFiles') {
-                                    SupportingDocumentsBalanceSheetsProcedure();
-                                }
-                                if (url == 'IncomeStatementsProcedureFiles') {
-                                    SupportingDocumentsIncomeStatementsProcedure();
-                                }
-                                if (url == 'ComprehensiveIncomeProcedureFiles') {
-                                    SupportingDocumentsComprehensiveIncomeProcedure();
-                                }
-                                if (url == 'ShareholdersEquityProcedureFiles') {
-                                    SupportingDocumentsShareholdersEquityProcedure();
-                                }
-                                if (url == 'CashFlowProcedureFiles') {
-                                    SupportingDocumentsCashFlowProcedure();
-                                }
-                                if (url == 'AnomaliesFiles') {
-                                    SupportingDocumentsAnomalies();
-                                }
-                                if (url == 'OpinionFiles') {
-                                    SupportingDocumentsOpinion();
-                                }
-                                showPage('Files');
-                                window.scrollTo(0, 0);
-                                history.pushState({page: url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/Files`);
+                        if (url == 'ReferenceHeader') {
+                            Rows = document.getElementsByClassName('Reference')
+                            References = []
+                            for (let i = 0; i < Rows.length; i++) {
+                                try {
+                                    //
+                                    a = Rows[i].id.replace('.Row', '.1');
+                                    b = Rows[i].id.replace('.Row', '.2');
+                                    c = Rows[i].id.replace('.Row', '.3');
+                                    d = Rows[i].id.replace('.Row', '.4');
+                                    e = Rows[i].id.replace('.Row', '.5');
+                                    f = Rows[i].id.replace('.Row', '.6');
+                                    g = Rows[i].id.replace('.Row', '.7');
+                                    h = Rows[i].id.replace('.Row', '.8');
+                                    //
+                                    aa = document.getElementById(a).value;
+                                    bb = document.getElementById(b).value;
+                                    cc = document.getElementById(c).value;
+                                    dd = document.getElementById(d).value;
+                                    ee = document.getElementById(e).value;
+                                    ff = document.getElementById(f).value;
+                                    gg = document.getElementById(g).value;
+                                    hh = document.getElementById(h).value;
+                                    a = [Rows[i].id, aa, 'Reference', bb, cc, dd, ee, ff, gg, hh]
+                                    //
+                                    References.push(a)
+                                    //
+                                    console.log(References)
+                                } catch {}
                             }
+                            header = []
+                            for (let i = 0; i < Rows.length; i++) {
+                                //
+                                if (this.innerHTML == 'Description') {
+                                    r = Rows[i].id.replace('.Row', '.1')
+                                    s = document.getElementById(r).value
+                                    gg = 1
+                                }
+                                if (this.innerHTML == 'Reference') {
+                                    r = Rows[i].id.replace('.Row', '.2')
+                                    s = document.getElementById(r).value
+                                    gg = 3
+                                }
+                                if (this.innerHTML == 'Status') {
+                                    r = Rows[i].id.replace('.Row', '.3')
+                                    s = document.getElementById(r).value
+                                    gg = 4
+                                }
+                                if (this.innerHTML == 'Work In Progress') {
+                                    r = Rows[i].id.replace('.Row', '.4')
+                                    s = document.getElementById(r).value
+                                    gg = 5
+                                }
+                                if (this.innerHTML == 'Prepared') {
+                                    r = Rows[i].id.replace('.Row', '.5')
+                                    s = document.getElementById(r).value
+                                    gg = 6
+                                }
+                                if (this.innerHTML == 'Date Prepared') {
+                                    r = Rows[i].id.replace('.Row', '.6')
+                                    s = document.getElementById(r).value
+                                    gg = 7
+                                }
+                                if (this.innerHTML == 'Reviewed') {
+                                    r = Rows[i].id.replace('.Row', '.7')
+                                    s = document.getElementById(r).value
+                                    gg = 8
+                                }
+                                if (this.innerHTML == 'Date Reviewed') {
+                                    r = Rows[i].id.replace('.Row', '.8')
+                                    s = document.getElementById(r).value
+                                    gg = 9
+                                }
+                                header.push(s)
+                            }
+                            header = header.sort()
+                            //
+                            console.log(header)
+                            //
+                            for (let i = 0; i < Rows.length; i++) {
+                                for (let j = 0; j < Rows.length; j++) {
+                                    if (References[i][gg] == header[j]) {
+                                        References[i].push(j)
+                                    }
+                                }
+                            }
+                            //
+                            var list = document.createElement('tbody');
+                            for (let i = 0; i < Rows.length; i++) {
+                                for (let j = 0; j < Rows.length; j++) {
+                                    if (References[j][10] == [i]) {
+                                        var name = References[j][1];
+                                        var tr = document.createElement('tr');
+                                        tr.className = "Reference";
+                                        c = i + 1
+                                        var r = "FileProperty" + c;
+                                        tr.id = r + '.Row';
+                                        b = 1 
+                                        var Reference = References[j][3];
+                                        var Status = References[j][4];
+                                        var WorkInProgress = References[j][5];
+                                        var Prepared = References[j][6];
+                                        var DatePrepared = References[j][7];
+                                        var Reviewed = References[j][8];
+                                        var DateReviewed = References[j][9];
+                                        AddFile(name, tr, b, r, list, Reference, Status, WorkInProgress, Prepared, DatePrepared, Reviewed, DateReviewed);
+                                        list.appendChild(tr)
+                                        
+                                    }
+                                }
+                            }
+                            document.getElementById('FilesDetails').innerHTML = list.innerHTML;
                         } else {
-                            showPage(this.dataset.page);
-                            window.scrollTo(0, 0);
+                            if (url.slice(-5) == 'Files') {
+                                if (url == 'Files') {
+                                    showPage(this.dataset.page);
+                                    ReferenceVisibility();
+                                    document.getElementById('FilesLabel').innerHTML = "Files";
+                                    window.scrollTo(0, 0);
+                                } else {
+                                    if (url == 'CurrentAssetsFiles') {
+                                        SupportingDocumentsCurrentAssets();
+                                    }
+                                    if (url == 'NonCurrentAssetsFiles') {
+                                        SupportingDocumentsNonCurrentAssets();
+                                    }
+                                    if (url == 'CurrentLiabilitiesFiles') {
+                                        SupportingDocumentsCurrentLiabilities();
+                                    }
+                                    if (url == 'NonCurrentLiabilitiesFiles') {
+                                        SupportingDocumentsNonCurrentLiabilities();
+                                    }
+                                    if (url == 'ShareholdersEquityFiles') {
+                                        SupportingDocumentsShareholdersEquity();
+                                    }
+                                    if (url == 'GrossMarginFiles') {
+                                        SupportingDocumentsGrossMargin();
+                                    }
+                                    if (url == 'OperatingExpensesFiles') {
+                                        SupportingDocumentsOperatingExpenses();
+                                    }
+                                    if (url == 'ImpairmentAndRestructuringFiles') {
+                                        SupportingDocumentsImpairmentAndRestructuringFiles();
+                                    }
+                                    if (url == 'NonOperatingExpensesFiles') {
+                                        SupportingDocumentsNonOperatingExpenses();
+                                    }
+                                    if (url == 'EquityMethodInvesteesIncomeFiles') {
+                                        SupportingDocumentsEquityMethodInvesteesIncome();
+                                    }
+                                    if (url == 'DiscontinuedOperationsFiles') {
+                                        SupportingDocumentsDiscontinuedOperations();
+                                    }
+                                    if (url == 'IncomeTaxFiles') {
+                                        SupportingDocumentsIncomeTax();
+                                    }
+                                    if (url == 'OtherComprehensiveIncomeFiles') {
+                                        SupportingDocumentsOtherComprehensiveIncome();
+                                    }
+                                    if (url == 'OperatingActivitiesFiles') {
+                                        SupportingDocumentsOperatingActivities();
+                                    }
+                                    if (url == 'InvestingActivitiesFiles') {
+                                        SupportingDocumentsInvestingActivities();
+                                    }
+                                    if (url == 'FinancingActivitiesFiles') {
+                                        SupportingDocumentsFinancingActivities();
+                                    }
+                                    if (url == 'EffectOfExchangeRateOnCashFiles') {
+                                        SupportingDocumentsEffectOfExchangeRateOnCash();
+                                    }
+                                    if (url == 'MissionFiles') {
+                                        SupportingDocumentsMission();
+                                    }
+                                    if (url == 'MaterialityFiles') {
+                                        SupportingDocumentsMateriality();
+                                    }
+                                    if (url == 'BalanceSheetsProcedureFiles') {
+                                        SupportingDocumentsBalanceSheetsProcedure();
+                                    }
+                                    if (url == 'IncomeStatementsProcedureFiles') {
+                                        SupportingDocumentsIncomeStatementsProcedure();
+                                    }
+                                    if (url == 'ComprehensiveIncomeProcedureFiles') {
+                                        SupportingDocumentsComprehensiveIncomeProcedure();
+                                    }
+                                    if (url == 'ShareholdersEquityProcedureFiles') {
+                                        SupportingDocumentsShareholdersEquityProcedure();
+                                    }
+                                    if (url == 'CashFlowProcedureFiles') {
+                                        SupportingDocumentsCashFlowProcedure();
+                                    }
+                                    if (url == 'AnomaliesFiles') {
+                                        SupportingDocumentsAnomalies();
+                                    }
+                                    if (url == 'OpinionFiles') {
+                                        SupportingDocumentsOpinion();
+                                    }
+                                    showPage('Files');
+                                    window.scrollTo(0, 0);
+                                    history.pushState({page: url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/Files`);
+                                }
+                            } else {
+                                showPage(this.dataset.page);
+                                window.scrollTo(0, 0);
+                            }
                         }
                     } catch {}
                 }
@@ -882,7 +995,7 @@
                         </button>
                     </td>
                     <td>
-                        <a href="{% url 'φ:index' %}">
+                        <a href="{% url 'φ:index' %}" style="outline:none">
                             <button data-page="Graph">
                                 <h2>φ</h2>
                             </button>
@@ -5423,6 +5536,7 @@
                             var list = document.getElementById('FilesDetails');
                             list.innerHTML = '';
                             Rows = document.getElementsByClassName('Reference');
+                            Row = 1
                             //
                             Papa.parse(document.getElementById('uploadFile').files[0], 
                                 {
@@ -5495,13 +5609,14 @@
                                         if (c == 'Reference') {
                                             var tr = document.createElement('tr');
                                             tr.className = "Reference"
-                                            var r = "FileProperty" + 1
+                                            var r = "FileProperty" + Row;
                                             tr.id = r + '.Row'
                                             var name = a;
                                             var b = 1
                                             AddFile(name, tr, b, r, list, Reference, Status, WorkInProgress, Prepared, DatePrepared, Reviewed, DateReviewed);
                                             tr.innerHTML = html
                                             list.appendChild(tr) 
+                                            Row = Row + 1
                                         }
                                         if (c == 'TrialBalance') {
                                             document.getElementById(b).value = numUSD.format(a);
@@ -30727,14 +30842,14 @@
             <table style="border-bottom:solid #0D47A1; padding-bottom: 30px" id="FilesSection">
                 <tbody id="FilesButtons">
                     <tr style="display:none" id="header">
-                        <td colspan="3" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" class="General" onclick="Header()">Description</button></td>
-                        <td colspan="1" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" class="General" onclick="Header()">Reference</button></td>
-                        <td colspan="1" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" class="General" onclick="Header()">Status</button></td>
-                        <td colspan="1" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" class="General" onclick="Header()">Work In Progress</button></td>
-                        <td colspan="1" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" class="General" onclick="Header()">Prepared</button></td>
-                        <td colspan="1" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" class="General" onclick="Header()">Date</button></td>
-                        <td colspan="1" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" class="General" onclick="Header()">Reviewed</button></td>
-                        <td colspan="1" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" class="General" onclick="Header()">Date</button></td>
+                        <td colspan="3" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" data-page="ReferenceHeader">Description</button></td>
+                        <td colspan="1" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" data-page="ReferenceHeader">Reference</button></td>
+                        <td colspan="1" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" data-page="ReferenceHeader">Status</button></td>
+                        <td colspan="1" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" data-page="ReferenceHeader">Work In Progress</button></td>
+                        <td colspan="1" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" data-page="ReferenceHeader">Prepared</button></td>
+                        <td colspan="1" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" data-page="ReferenceHeader">Date Prepared</button></td>
+                        <td colspan="1" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" data-page="ReferenceHeader">Reviewed</button></td>
+                        <td colspan="1" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" data-page="ReferenceHeader">Date Reviewed</button></td>
                     <tr>
                 </tbody>
                 <tbody id="FilesDetails"></tbody>
@@ -30769,8 +30884,14 @@
                 };
             }
             ReferenceVisibility();
+            a = tr.id.replace('.Row','.2')
+            a = document.getElementById(a).value;
+            a.focus()
+            a.select()
         };
         function AddLine() {
+            //
+            document.getElementById('FilesLabel').innerHTML = "Files"
             //
             var trLength = document.getElementById('FilesDetails').getElementsByTagName("tr").length
             //
@@ -30795,8 +30916,6 @@
                 h = document.getElementById(h).value;
                 ref[i] = [a, b, c, d, e, f, g, h]
             }
-            console.log(ref)
-            //
             file = document.getElementById('AddLineInputFile').files[0];
             //
             var c = document.getElementsByClassName('Reference').length;
@@ -30880,13 +30999,7 @@
         function File() {
             Console.log(event.target.id + ' menu')
         }
-        function Header() {
-
-            document.getElementById('')
-
-
-
-        }
+        //
         function New() {
             a = document.getElementById('New').style.visibility;
             if (a == 'visible') {
@@ -30896,9 +31009,11 @@
             }
             document.getElementById('New').style.visibility = a;
         }
+        //
         function HideNewDirectoryButton() {
             document.getElementById('New').style.visibility = 'hidden';
         }
+        //
         function ReferenceVisibility() {
             a = document.getElementsByClassName('Reference')
             if (a.length > 0) {
@@ -31464,7 +31579,7 @@
             <tr>
                 <td>
                     <h6 style="text-align: center">
-                        <a href="{% url 'φ:disclaimer' %}" target="_blank">© clockdb.com</a> | beta 16.8.9.12
+                        <a href="{% url 'φ:disclaimer' %}" target="_blank" style="outline:none">© clockdb.com</a> | beta 16.8.9.12
                     </h6>
                 </td>
             </tr>
@@ -32025,11 +32140,11 @@
         OpinionREF();
     });
     //
-    function SupportingDocuments(key) {     
-        referencerows = document.getElementsByClassName('Reference');
+    function SupportingDocuments(key) {    
+        Rows = document.getElementsByClassName('Reference');
         z = 0
-        for(let i = 0; i < referencerows.length; i++) {
-            var row = referencerows[i].id;
+        for(let i = 0; i < Rows.length; i++) {
+            var row = Rows[i].id;
             input = row.replace('.Row','') + '.2';
             input = document.getElementById(input).value;
             a = 'none';
