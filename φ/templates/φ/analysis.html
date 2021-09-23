@@ -61,6 +61,7 @@
             'Price',
             'Proportion',
             'TrialBalance',
+            'ShareholdersEquityBeginningBalance',
         ]
         //
         for(let i = 0; i < rows.length; i++) {
@@ -102,6 +103,10 @@
                 if (a == 'Date') {
                     document.getElementById(input1).value = '';
                 }
+                if (a == 'ShareholdersEquityBeginningBalance') {
+                    b = input1.replace('TrialBalance','')
+                    document.getElementById(input1).value = document.getElementById(b).value
+                }
             }
         };
     };
@@ -123,18 +128,20 @@
             'ContextDate',
             'Date',
             'Header',
-            'TrialBalance',
             'Opinion',
             'OpinionThree',
             'OpinionFour',
             'Price',
             'Proportion',
             'REF',
+            'ShareholdersEquityBeginningBalance',
+            'TrialBalance',
         ]
         ClockClass = [
-            'TrialBalance',
             'Opinion',
             'OpinionFour',
+            'ShareholdersEquityBeginningBalance',
+            'TrialBalance',
         ]
         FourColumns = [
             'OpinionFour',
@@ -6883,7 +6890,7 @@
                         <td colspan='2'><input value = "{{ TrialBalance_fifthlastyear.DiscontinuedOperationsLiabilitiesNonCurrent }}" class='Clock' id="TrialBalanceDiscontinuedOperationsLiabilitiesNonCurrent5" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                         <td colspan='2'><input value = "{{ TrialBalance_sixthlastyear.DiscontinuedOperationsLiabilitiesNonCurrent }}" class='Clock' id="TrialBalanceDiscontinuedOperationsLiabilitiesNonCurrent6" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                     </tr>
-                    <tr id="TrialBalanceConvertibleDebtRow" class="TrialBalance">
+                    <tr id="TrialBalanceConvertibleDebtRow" class="ShareholdersEquityBeginningBalance">
                         <td colspan="2"><h6><b>Convertible Debt</b></h6></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="ShareholdersEquityFiles" class="ShareholdersEquityFiles">{</button></td>
                         <td>
@@ -6897,7 +6904,7 @@
                         <td colspan='2'><input value = "{{ TrialBalance_fifthlastyear.ConvertibleDebtBeginning }}" class='Clock' id="TrialBalanceConvertibleDebt5" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                         <td colspan='2'><input value = "{{ TrialBalance_sixthlastyear.ConvertibleDebtBeginning }}" class='Clock' id="TrialBalanceConvertibleDebt6" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                     </tr>
-                    <tr id="TrialBalanceCommonSharesRow" class="TrialBalance">
+                    <tr id="TrialBalanceCommonSharesRow" class="ShareholdersEquityBeginningBalance">
                         <td colspan="2"><h6><b>Common Shares</b></h6></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="ShareholdersEquityFiles" class="ShareholdersEquityFiles">{</button></td>
                         <td>
@@ -6953,7 +6960,7 @@
                         <td colspan='2'><input value = "{{ TrialBalance_fifthlastyear.ShareBasedCompensation }}" class='Clock' id="TrialBalanceShareBasedCompensation5" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                         <td colspan='2'><input value = "{{ TrialBalance_sixthlastyear.ShareBasedCompensation }}" class='Clock' id="TrialBalanceShareBasedCompensation6" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                     </tr>
-                    <tr id="TrialBalanceRetainedEarningsAccumulatedDeficitRow" class="TrialBalance">
+                    <tr id="TrialBalanceRetainedEarningsAccumulatedDeficitRow" class="ShareholdersEquityBeginningBalance">
                         <td colspan="2"><h6><b>Accumulated Deficit (Retained Earnings)</b></h6></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="ShareholdersEquityFiles" class="ShareholdersEquityFiles">{</button></td>
                         <td>
@@ -7023,7 +7030,7 @@
                         <td colspan='2'><input value = "{{ TrialBalance_fifthlastyear.RetainedEarningsOthers }}" class='Clock' id="TrialBalanceRetainedEarningsOthers5" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                         <td colspan='2'><input value = "{{ TrialBalance_sixthlastyear.RetainedEarningsOthers }}" class='Clock' id="TrialBalanceRetainedEarningsOthers6" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                     </tr>
-                    <tr id="TrialBalanceAccumulatedOtherComprehensiveIncomeLossRow" class="TrialBalance">
+                    <tr id="TrialBalanceAccumulatedOtherComprehensiveIncomeLossRow" class="ShareholdersEquityBeginningBalance">
                         <td colspan="2"><h6><b>Accumulated Other Comprehensive Loss (Income)</b></h6></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="ShareholdersEquityFiles" class="ShareholdersEquityFiles">{</button></td>
                         <td>
@@ -7037,7 +7044,7 @@
                         <td colspan='2'><input value = "{{ TrialBalance_fifthlastyear.AccumulatedOtherComprehensiveIncomeBeginning }}" class='Clock' id="TrialBalanceAccumulatedOtherComprehensiveIncomeLoss5" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                         <td colspan='2'><input value = "{{ TrialBalance_sixthlastyear.AccumulatedOtherComprehensiveIncomeBeginning }}" class='Clock' id="TrialBalanceAccumulatedOtherComprehensiveIncomeLoss6" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                     </tr>
-                    <tr id="TrialBalanceTreasurySharesRow" class="TrialBalance">
+                    <tr id="TrialBalanceTreasurySharesRow" class="ShareholdersEquityBeginningBalance">
                         <td colspan="2"><h6><b>Treasury Shares</b></h6></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="ShareholdersEquityFiles" class="ShareholdersEquityFiles">{</button></td>
                         <td>
@@ -7065,7 +7072,7 @@
                         <td colspan='2'><input value = "{{ TrialBalance_fifthlastyear.PurchaseAndSellOfTreasuryShares }}" class='Clock' id="TrialBalancePurchaseAndSellOfTreasuryShares5" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                         <td colspan='2'><input value = "{{ TrialBalance_sixthlastyear.PurchaseAndSellOfTreasuryShares }}" class='Clock' id="TrialBalancePurchaseAndSellOfTreasuryShares6" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                     </tr>
-                    <tr id="TrialBalanceEmployeeBenefitTrustRow" class="TrialBalance">
+                    <tr id="TrialBalanceEmployeeBenefitTrustRow" class="ShareholdersEquityBeginningBalance">
                         <td colspan="2"><h6><b>Employee Benefit Trust</b></h6></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="ShareholdersEquityFiles" class="ShareholdersEquityFiles">{</button></td>
                         <td>
@@ -7079,7 +7086,7 @@
                         <td colspan='2'><input value = "{{ TrialBalance_fifthlastyear.EmployeeBenefitTrustBeginning }}" class='Clock' id="TrialBalanceEmployeeBenefitTrust5" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                         <td colspan='2'><input value = "{{ TrialBalance_sixthlastyear.EmployeeBenefitTrustBeginning }}" class='Clock' id="TrialBalanceEmployeeBenefitTrust6" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                     </tr>
-                    <tr id="TrialBalanceNonControllingInterestsRow" class="TrialBalance">
+                    <tr id="TrialBalanceNonControllingInterestsRow" class="ShareholdersEquityBeginningBalance">
                         <td colspan="2"><h6><b>Non-Controlling Interests</b></h6></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="ShareholdersEquityFiles" class="ShareholdersEquityFiles">{</button></td>
                         <td>
@@ -31734,12 +31741,15 @@
         });
 
         if (event.target.className == 'Clock') {
+            
+            console.log('yes')
+            
             var m = parseInt(event.target.value.replaceAll(/,/g, ''));
-            document.getElementById(event.target.id).value = clock.format(m);
+            document.getElementById(event.target.id).value = Clock.format(m);
         }
         if (event.target.className == 'Proportion') {
             var m = event.target.value;
-            document.getElementById(event.target.id).value = proportion.format(m);
+            document.getElementById(event.target.id).value = Proportion.format(m);
         }
         if (event.target.className == 'ClockRate') {
             var m = event.target.value.replace('%','') / 100;
