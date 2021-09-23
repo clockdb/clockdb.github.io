@@ -378,8 +378,7 @@
                     } else {
                         try {
                             history.pushState({page: url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
-                        } catch {
-                        }
+                        } catch {}
                     }
                     try {
                         if (url == 'ReferenceHeader') {
@@ -600,6 +599,40 @@
                                 window.scrollTo(0, 0);
                             }
                         }
+                    } catch {}
+                    ShortCut = [
+                        'IntrinsicValues',
+                        'CapitalizationRate',
+                        'CapitalizedCashFlow',
+                        'CapitalizedIncome',
+                        'FinancialRatios',
+                        'AdditionalInformation',
+                        'AuditSummary',
+                        'AuditDetailed',
+                        'MaterialityThreshold',
+                        'ProcedureAnnualBalanceSheets',
+                        'ProcedureAnnualIncomeStatements',
+                        'ProcedureAnnualComprehensiveIncome',
+                        'ProcedureAnnualShareholdersEquity',
+                        'ProcedureAnnualCashFlow',
+                        'AnnualBalanceSheets',
+                        'AnnualIncomeStatements',
+                        'AnnualComprehensiveIncome',
+                        'AnnualShareholdersEquity',
+                        'AnnualCashFlow',
+                        'AnnualTrialBalances',
+                    ]
+                    if (ShortCut.includes(url)) {
+                        a = event.target.id.replace('ShortCut', '1')
+                        if (a == 'MaterialityThresholdValue1') {
+                            a = a.replace('1','6')
+                        }
+                        a = document.getElementById(a);
+                        window.scrollTo(0, 280);
+                    }
+                    try {
+                        a.focus();
+                        a.select();
                     } catch {}
                 }
             }
@@ -8148,7 +8181,7 @@
                     <tr></tr>
                     <tr id='CashRow' class="TrialBalance">
                         <td colspan="2"><h6>Cash</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceCashShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="CurrentAssetsFiles" class="CurrentAssetsFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="CashCheckbox"></input>
@@ -8218,7 +8251,7 @@
                     </tr>
                     <tr id='ShortTermInvestmentsRow' class="TrialBalance">
                         <td colspan="2"><h6>Short Term Investments</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceShortTermInvestmentsShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="CurrentAssetsFiles" class="CurrentAssetsFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="ShortTermInvestmentsCheckbox"></input>
@@ -8286,7 +8319,7 @@
                     </tr>
                     <tr id ='AccountsReceivableRow' class="TrialBalance">
                         <td colspan="2"><h6>Accounts Receivable</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceAccountsReceivableShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="CurrentAssetsFiles" class="CurrentAssetsFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="AccountsReceivableCheckbox"></input>
@@ -8354,7 +8387,7 @@
                     </tr>
                     <tr id ='WorkInProgressRow' class="TrialBalance">
                         <td colspan="2"><h6>Work In Progress</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceWorkInProgressShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="CurrentAssetsFiles" class="CurrentAssetsFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="WorkInProgressCheckbox"></input>
@@ -8422,7 +8455,7 @@
                     </tr>
                     <tr id='InventoriesRow' class="TrialBalance">
                         <td colspan="2"><h6>Inventories</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceInventoriesShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="CurrentAssetsFiles" class="CurrentAssetsFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="InventoriesCheckbox"></input>
@@ -8490,7 +8523,7 @@
                     </tr>
                     <tr id='PrepaidExpensesRow' class="TrialBalance">
                         <td colspan="2"><h6>Prepaid Expenses</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalancePrepaidExpensesShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="CurrentAssetsFiles" class="CurrentAssetsFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PrepaidExpensesCheckbox"></input>
@@ -8558,7 +8591,7 @@
                     </tr>
                     <tr id='NonTradeReceivablesRow' class="TrialBalance">
                         <td colspan="2"><h6>Non-Trade Receivables</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceNonTradeReceivablesShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="CurrentAssetsFiles" class="CurrentAssetsFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="NonTradeReceivablesCheckbox"></input>
@@ -8626,7 +8659,7 @@
                     </tr>
                     <tr id='PrepaidTaxAssetsCurrentRow' class="TrialBalance">
                         <td colspan="2"><h6>Prepaid Tax</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalancePrepaidTaxAssetsCurrentShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="CurrentAssetsFiles" class="CurrentAssetsFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PrepaidTaxAssetsCurrentCheckbox"></input>
@@ -8694,7 +8727,7 @@
                     </tr>
                     <tr id='DeferredTaxAssetsCurrentRow' class="TrialBalance">
                         <td colspan="2"><h6>Deferred Tax</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceDeferredTaxAssetsCurrentShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="CurrentAssetsFiles" class="CurrentAssetsFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="DeferredTaxAssetsCurrentCheckbox"></input>
@@ -8761,8 +8794,8 @@
                         <td colspan="2"><input class='Clock' id="DeferredTaxAssetsCurrent6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id='RightOfUseAssetsCurrentRow' class="TrialBalance">
-                        <td colspan="2"><h6>Deferred Tax Assets</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td colspan="2"><h6>Right Of Use Assets</h6></td>
+                        <td style="text-align:center"><button id="TrialBalanceRightOfUseAssetsCurrentShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="CurrentAssetsFiles" class="CurrentAssetsFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="RightOfUseAssetsCurrentCheckbox"></input>
@@ -8830,7 +8863,7 @@
                     </tr>
                     <tr id='OtherCurrentAssetsRow' class="TrialBalance">
                         <td colspan="2"><h6>Others</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceOtherCurrentAssetsShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="CurrentAssetsFiles" class="CurrentAssetsFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="OtherCurrentAssetsCheckbox"></input>
@@ -8898,7 +8931,7 @@
                     </tr>
                     <tr id='DiscontinuedOperationsCurrentRow' class="TrialBalance">
                         <td colspan="2"><h6>Discontinued Operation</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceDiscontinuedOperationsShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="CurrentAssetsFiles" class="CurrentAssetsFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="DiscontinuedOperationsCurrentCheckbox"></input>
@@ -9085,7 +9118,7 @@
                     <tr></tr>
                     <tr id='LongTermReceivablesRow' class="TrialBalance">
                         <td colspan="2"><h6>Long-Term Receivables</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceLongTermReceivablesShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="NonCurrentAssetsFiles" class="NonCurrentAssetsFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="LongTermReceivablesCheckbox"></input>
@@ -9153,7 +9186,7 @@
                     </tr>
                     <tr id='DeferredChargesRow' class="TrialBalance">
                         <td colspan="2"><h6>Deferred Charges</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceDeferredChargesShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="NonCurrentAssetsFiles" class="NonCurrentAssetsFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="DeferredChargesCheckbox"></input>
@@ -9221,7 +9254,7 @@
                     </tr>
                     <tr id='InvestmentsRow' class="TrialBalance">
                         <td colspan="2"><h6>Investments</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceInvestmentsShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="NonCurrentAssetsFiles" class="NonCurrentAssetsFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="InvestmentsCheckbox"></input>
@@ -9289,7 +9322,7 @@
                     </tr>
                     <tr id='PropertyPlantAndEquipmentRow' class="TrialBalance">
                         <td colspan="2"><h6>Property, Plant And Equipment</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalancePropertyPlantAndEquipmentShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="NonCurrentAssetsFiles" class="NonCurrentAssetsFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PropertyPlantAndEquipmentCheckbox"></input>
@@ -9357,7 +9390,7 @@
                     </tr>
                     <tr id='OperatingLeaseRightOfUseAssetsRow' class="TrialBalance">
                         <td colspan="2"><h6>Operating Lease, Right Of Use Assets</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceOperatingLeaseRightOfUseAssetsShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="NonCurrentAssetsFiles" class="NonCurrentAssetsFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="OperatingLeaseRightOfUseAssetsCheckbox"></input>
@@ -9425,7 +9458,7 @@
                     </tr>
                     <tr id='FinanceLeaseRightOfUseAssetsRow' class="TrialBalance">
                         <td colspan="2"><h6>Finance Lease Right Of Use Assets</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceFinanceLeaseRightOfUseAssetsShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="NonCurrentAssetsFiles" class="NonCurrentAssetsFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="FinanceLeaseRightOfUseAssetsCheckbox"></input>
@@ -9493,7 +9526,7 @@
                     </tr>
                     <tr id='IntangibleAssetsRow' class="TrialBalance">
                         <td colspan="2"><h6>Intangible Assets</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceIntangibleAssetsShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="NonCurrentAssetsFiles" class="NonCurrentAssetsFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="IntangibleAssetsCheckbox"></input>
@@ -9561,7 +9594,7 @@
                     </tr>
                     <tr id='GoodwillRow' class="TrialBalance">
                         <td colspan="2"><h6>Goodwill</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceGoodwillShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="NonCurrentAssetsFiles" class="NonCurrentAssetsFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="GoodwillCheckbox"></input>
@@ -9628,8 +9661,8 @@
                         <td colspan="2"><input class='Clock' id="Goodwill6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id='RefundableTaxAssetsNonCurrentRow' class="TrialBalance">
-                        <td colspan="2"><h6>RefundableTaxAssetsNonCurrent</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td colspan="2"><h6>Refundable Tax Assets</h6></td>
+                        <td style="text-align:center"><button id="TrialBalanceRefundableTaxAssetsNonCurrentShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="NonCurrentAssetsFiles" class="NonCurrentAssetsFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="RefundableTaxAssetsNonCurrentCheckbox"></input>
@@ -9697,7 +9730,7 @@
                     </tr>
                     <tr id='DeferredTaxAssetsNonCurrentRow' class="TrialBalance">
                         <td colspan="2"><h6>Deferred Tax Assets</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceDeferredTaxAssetsNonCurrentShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="NonCurrentAssetsFiles" class="NonCurrentAssetsFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="DeferredTaxAssetsNonCurrentCheckbox"></input>
@@ -9765,7 +9798,7 @@
                     </tr>
                     <tr id='DefinedBenefitPensionAndOtherSimilarPlansRow' class="TrialBalance">
                         <td colspan="2"><h6>Defined Benefit Pension And Other Similar Plans</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceDefinedBenefitPensionAndOtherSimilarPlansShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="NonCurrentAssetsFiles" class="NonCurrentAssetsFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="DefinedBenefitPensionAndOtherSimilarPlansCheckbox"></input>
@@ -9833,7 +9866,7 @@
                     </tr>
                     <tr id='OtherNonCurrentAssetsRow' class="TrialBalance">
                         <td colspan="2"><h6>Others</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceOtherNonCurrentAssetsShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="NonCurrentAssetsFiles" class="NonCurrentAssetsFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="OtherNonCurrentAssetsCheckbox"></input>
@@ -9901,7 +9934,7 @@
                     </tr>
                     <tr id='DiscontinuedOperationsRow' class="TrialBalance">
                         <td colspan="2"><h6>Discontinued Operations</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceDiscontinuedOperationsShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="NonCurrentAssetsFiles" class="NonCurrentAssetsFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="DiscontinuedOperationsCheckbox"></input>
@@ -10123,7 +10156,7 @@
                     <tr></tr>
                     <tr id='AccountsPayableAndAccruedLiabilitiesRow' class="TrialBalance">
                         <td colspan="2"><h6>Accounts Payable And Accrued Liabilities</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceAccountsPayableAndAccruedLiabilitiesShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="CurrentLiabilitiesFiles" class="CurrentLiabilitiesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="AccountsPayableAndAccruedLiabilitiesCheckbox"></input>
@@ -10191,7 +10224,7 @@
                     </tr>
                     <tr id='EmployeeCompensationCurrentRow' class="TrialBalance">
                         <td colspan="2"><h6>Employee Compensation</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceEmployeeCompensationCurrentShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="CurrentLiabilitiesFiles" class="CurrentLiabilitiesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="EmployeeCompensationCurrentCheckbox"></input>
@@ -10259,7 +10292,7 @@
                     </tr>
                     <tr id='OperatingLeasesCurrentRow' class="TrialBalance">
                         <td colspan="2"><h6>Operating Lease Obligations</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceOperatingLeasesCurrentShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="CurrentLiabilitiesFiles" class="CurrentLiabilitiesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="OperatingLeasesCurrentCheckbox"></input>
@@ -10327,7 +10360,7 @@
                     </tr>
                     <tr id='FinanceLeasesCurrentRow' class="TrialBalance">
                         <td colspan="2"><h6>Finance Lease Obligations</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceFinanceLeasesCurrentShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="CurrentLiabilitiesFiles" class="CurrentLiabilitiesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="FinanceLeasesCurrentCheckbox"></input>
@@ -10395,7 +10428,7 @@
                     </tr>
                     <tr id='DeferredRevenueAndDepositsCurrentRow' class="TrialBalance">
                         <td colspan="2"><h6>Deferred Revenue And Deposits</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceDeferredRevenueAndDepositsCurrentShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="CurrentLiabilitiesFiles" class="CurrentLiabilitiesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="DeferredRevenueAndDepositsCurrentCheckbox"></input>
@@ -10463,7 +10496,7 @@
                     </tr>
                     <tr id='AccruedTaxLiabilitiesRow' class="TrialBalance">
                         <td colspan="2"><h6>Accrued Tax Liabilities</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceAccruedTaxLiabilitiesShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="CurrentLiabilitiesFiles" class="CurrentLiabilitiesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="AccruedTaxLiabilitiesCheckbox"></input>
@@ -10531,7 +10564,7 @@
                     </tr>
                     <tr id='DeferredTaxLiabilitiesCurrentRow' class="TrialBalance">
                         <td colspan="2"><h6>Deferred Tax Liabilities</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceDeferredTaxLiabilitiesCurrentShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="CurrentLiabilitiesFiles" class="CurrentLiabilitiesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="DeferredTaxLiabilitiesCurrentCheckbox"></input>
@@ -10599,7 +10632,7 @@
                     </tr>
                     <tr id='CommercialPapersRow' class="TrialBalance">
                         <td colspan="2"><h6>Commercial Papers</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceCommercialPapersShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="CurrentLiabilitiesFiles" class="CurrentLiabilitiesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="CommercialPapersCheckbox"></input>
@@ -10667,7 +10700,7 @@
                     </tr>
                     <tr id='ShortTermBorrowingsRow' class="TrialBalance">
                         <td colspan="2"><h6>Short Term Borrowings</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceShortTermBorrowingsShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="CurrentLiabilitiesFiles" class="CurrentLiabilitiesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="ShortTermBorrowingsCheckbox"></input>
@@ -10735,7 +10768,7 @@
                     </tr>
                     <tr id='OtherCurrentLiabilitiesRow' class="TrialBalance">
                         <td colspan="2"><h6>Others</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceOtherCurrentLiabilitiesShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="CurrentLiabilitiesFiles" class="CurrentLiabilitiesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="OtherCurrentLiabilitiesCheckbox"></input>
@@ -10803,7 +10836,7 @@
                     </tr>
                     <tr id='DiscontinuedOperationsLiabilitiesCurrentRow' class="TrialBalance">
                         <td colspan="2"><h6>Discontinued Operations</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceDiscontinuedOperationsLiabilitiesCurrentShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="CurrentLiabilitiesFiles" class="CurrentLiabilitiesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="DiscontinuedOperationsLiabilitiesCurrentCheckbox"></input>
@@ -10871,7 +10904,7 @@
                     </tr>
                     <tr id='DividendsPayableRow' class="TrialBalance">
                         <td colspan="2"><h6>Dividends Payable</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceDividendsPayableShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="CurrentLiabilitiesFiles" class="CurrentLiabilitiesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="DividendsPayableCheckbox"></input>
@@ -10939,7 +10972,7 @@
                     </tr>
                     <tr id='ShortTermPortionOfLongTermDebtRow' class="TrialBalance">
                         <td colspan="2"><h6>Short Term Portion Of Long Term Debt</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceShortTermPortionOfLongTermDebtShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="CurrentLiabilitiesFiles" class="CurrentLiabilitiesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="ShortTermPortionOfLongTermDebtCheckbox"></input>
@@ -11132,7 +11165,7 @@
                     <tr></tr>
                     <tr id='LongTermDebtRow' class="TrialBalance">
                         <td colspan="2"><h6>Long Term Debt</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceLongTermDebtShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="NonCurrentLiabilitiesFiles" class="NonCurrentLiabilitiesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="LongTermDebtCheckbox"></input>
@@ -11200,7 +11233,7 @@
                     </tr>
                     <tr id='PreferredSharesLiabilityRow' class="TrialBalance">
                         <td colspan="2"><h6>Preferred Share</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalancePreferredSharesLiabilityShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="NonCurrentLiabilitiesFiles" class="NonCurrentLiabilitiesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PreferredSharesLiabilityCheckbox"></input>
@@ -11268,7 +11301,7 @@
                     </tr>
                     <tr id='RetirementBenefitsRow' class="TrialBalance">
                         <td colspan="2"><h6>Retirement Benefits</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceRetirementBenefitsShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="NonCurrentLiabilitiesFiles" class="NonCurrentLiabilitiesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="RetirementBenefitsCheckbox"></input>
@@ -11336,7 +11369,7 @@
                     </tr>
                     <tr id='OperatingLeasesNonCurrentRow' class="TrialBalance">
                         <td colspan="2"><h6>Operating Lease Obligations</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceOperatingLeasesNonCurrentShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="NonCurrentLiabilitiesFiles" class="NonCurrentLiabilitiesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="OperatingLeasesNonCurrentCheckbox"></input>
@@ -11404,7 +11437,7 @@
                     </tr>
                     <tr id='FinanceLeasesNonCurrentRow' class="TrialBalance">
                         <td colspan="2"><h6>Finance Lease Obligations</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceFinanceLeasesNonCurrentShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="NonCurrentLiabilitiesFiles" class="NonCurrentLiabilitiesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="FinanceLeasesNonCurrentCheckbox"></input>
@@ -11472,7 +11505,7 @@
                     </tr>
                     <tr id='LeaseIncentiveObligationRow' class="TrialBalance">
                         <td colspan="2"><h6>Lease Incentive Obligation</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceLeaseIncentiveObligationShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="NonCurrentLiabilitiesFiles" class="NonCurrentLiabilitiesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="LeaseIncentiveObligationCheckbox"></input>
@@ -11540,7 +11573,7 @@
                     </tr>
                     <tr id='ContingentConsiderationRow' class="TrialBalance">
                         <td colspan="2"><h6>Contingent Consideration</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceContingentConsiderationShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="NonCurrentLiabilitiesFiles" class="NonCurrentLiabilitiesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="ContingentConsiderationCheckbox"></input>
@@ -11608,7 +11641,7 @@
                     </tr>
                     <tr id='AccruedTaxLiabilitiesNonCurrentRow' class="TrialBalance">
                         <td colspan="2"><h6>Accrued Tax Liabilities</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceAccruedTaxLiabilitiesNonCurrentShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="NonCurrentLiabilitiesFiles" class="NonCurrentLiabilitiesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="AccruedTaxLiabilitiesNonCurrentCheckbox"></input>
@@ -11676,7 +11709,7 @@
                     </tr>
                     <tr id='DeferredTaxLiabilitiesNonCurrentRow' class="TrialBalance">
                         <td colspan="2"><h6>Deferred Tax Liabilities</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceDeferredTaxLiabilitiesNonCurrentShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="NonCurrentLiabilitiesFiles" class="NonCurrentLiabilitiesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="DeferredTaxLiabilitiesNonCurrentCheckbox"></input>
@@ -11744,7 +11777,7 @@
                     </tr>
                     <tr id='DeferredRevenueAndDepositsNonCurrentRow' class="TrialBalance">
                         <td colspan="2"><h6>Deferred Revenue And Deposits</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceDeferredRevenueAndDepositsNonCurrentShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="NonCurrentLiabilitiesFiles" class="NonCurrentLiabilitiesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="DeferredRevenueAndDepositsNonCurrentCheckbox"></input>
@@ -11812,7 +11845,7 @@
                     </tr>
                     <tr id='OtherNonCurrentLiabilitiesRow' class="TrialBalance">
                         <td colspan="2"><h6>Others</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceOtherNonCurrentLiabilitiesShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="NonCurrentLiabilitiesFiles" class="NonCurrentLiabilitiesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="OtherNonCurrentLiabilitiesCheckbox"></input>
@@ -11880,7 +11913,7 @@
                     </tr>
                     <tr id='RedeemableNonControllingInterestsRow' class="TrialBalance">
                         <td colspan="2"><h6>Redeemable Non Controlling Interests</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceRedeemableNonControllingInterestsShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="NonCurrentLiabilitiesFiles" class="NonCurrentLiabilitiesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="RedeemableNonControllingInterestsCheckbox"></input>
@@ -11948,7 +11981,7 @@
                     </tr>
                     <tr id='DiscontinuedOperationsLiabilitiesNonCurrentRow' class="TrialBalance">
                         <td colspan="2"><h6>Discontinued Operations</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceDiscontinuedOperationsLiabilitiesNonCurrentShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="NonCurrentLiabilitiesFiles" class="NonCurrentLiabilitiesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="DiscontinuedOperationsLiabilitiesNonCurrentCheckbox"></input>
@@ -12170,7 +12203,7 @@
                     <tr></tr>
                     <tr id='ConvertibleDebtRow' class="TrialBalance">
                         <td colspan="2"><h6>Convertible Debt</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">SE</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceConvertibleDebtShortCut" data-page="AnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">SE</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="ShareholdersEquityFiles" class="ShareholdersEquityFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="ConvertibleDebtCheckbox"></input>
@@ -12185,7 +12218,7 @@
                     </tr>
                     <tr id='CommonSharesRow' class="TrialBalance">
                         <td colspan="2"><h6>Common Shares</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">SE</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceCommonSharesShortCut" data-page="AnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">SE</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="ShareholdersEquityFiles" class="ShareholdersEquityFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="CommonSharesCheckbox"></input>
@@ -12200,7 +12233,7 @@
                     </tr>
                     <tr id='RetainedEarningsAccumulatedDeficitRow' class="TrialBalance">
                         <td colspan="2"><h6>Retained Earnings (Accumulated Deficit)</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">SE</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceRetainedEarningsAccumulatedDeficitShortCut" data-page="AnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">SE</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="ShareholdersEquityFiles" class="ShareholdersEquityFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="RetainedEarningsAccumulatedDeficitCheckbox"></input>
@@ -12215,7 +12248,7 @@
                     </tr>
                     <tr id='AccumulatedOtherComprehensiveIncomeLossRow' class="TrialBalance">
                         <td colspan="2"><h6>Accumulated Other Comprehensive Income (Loss)</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">SE</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceAccumulatedOtherComprehensiveIncomeLossShortCut" data-page="AnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">SE</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="ShareholdersEquityFiles" class="ShareholdersEquityFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="AccumulatedOtherComprehensiveIncomeLossCheckbox"></input>
@@ -12230,7 +12263,7 @@
                     </tr>
                     <tr id='TreasurySharesRow' class="TrialBalance">
                         <td colspan="2"><h6>Treasury Shares</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">SE</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceTreasurySharesShortCut" data-page="AnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">SE</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="ShareholdersEquityFiles" class="ShareholdersEquityFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="TreasurySharesCheckbox"></input>
@@ -12245,7 +12278,7 @@
                     </tr>
                     <tr id='EmployeeBenefitTrustRow' class="TrialBalance">
                         <td colspan="2"><h6>Employee Benefit Trust</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">SE</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceEmployeeBenefitTrustShortCut" data-page="AnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">SE</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="ShareholdersEquityFiles" class="ShareholdersEquityFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="EmployeeBenefitTrustCheckbox"></input>
@@ -12260,7 +12293,7 @@
                     </tr>
                     <tr id='NonControllingInterestsRow' class="TrialBalance">
                         <td colspan="2"><h6>Non Controlling Interests</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">SE</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceNonControllingInterestsShortCut" data-page="AnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">SE</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="ShareholdersEquityFiles" class="ShareholdersEquityFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="NonControllingInterestsCheckbox"></input>
@@ -12383,7 +12416,7 @@
                     <tr></tr>
                     <tr id="SalesRow" class="TrialBalance">
                         <td colspan="2"><h6><b>Sales</b></h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceSalesShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="GrossMarginFiles" class="GrossMarginFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="SalesCheckbox"></input>
@@ -12444,7 +12477,9 @@
                         <td colspan="2"><input class='Clock' id="Sales6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="CostOfSalesRow" class="TrialBalance">
-                        <td colspan="4"><h6><b>Cost Of Sales</b></h6></td>
+                        <td colspan="2"><h6><b>Cost Of Sales</b></h6></td>
+                        <td style="text-align:center"><button id="TrialBalanceCostOfSalesShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td></td>
                         <td>
                             <input type="checkbox" id="CostOfSalesCheckbox"></input>
                             <input type="checkbox" id="CostOfSalesCheckbox2"></input>
@@ -12559,7 +12594,7 @@
                     </tr>
                     <tr id='ResearchAndDevelopmentRow' class="TrialBalance">
                         <td colspan="2"><h6>Research And Development</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceResearchAndDevelopmentShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="OperatingExpensesFiles" class="OperatingExpensesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="ResearchAndDevelopmentCheckbox"></input>
@@ -12627,7 +12662,8 @@
                     </tr>
                     <tr id="SellingGeneralAdministrativeAndMarketingRow" class="TrialBalance">
                         <td colspan="2"><h6>Selling, Administrative And Marketing</h6></td>
-                        <td colspan="2"></td>
+                        <td style="text-align:center"><button id="TrialBalanceSellingGeneralAdministrativeAndMarketingShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td></td>
                         <td>
                             <input type="checkbox" id="SellingGeneralAdministrativeAndMarketingCheckbox"></input>
                             <input type="checkbox" id="SellingGeneralAdministrativeAndMarketingCheckbox2"></input>
@@ -12738,8 +12774,8 @@
                         <td colspan="2"><input class='Clock' id="OperatingIncome6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id='ImpairmentRestructuringAndOtherSpecialChargesRow' class="TrialBalance">
-                        <td colspan="2"><h6>Impairment, Restructuring And Other Special</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td colspan="2"><h6>Impairment And Restructuring</h6></td>
+                        <td style="text-align:center"><button id="TrialBalanceImpairmentRestructuringAndOtherSpecialChargesShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="ImpairmentAndRestructuringFiles" class="ImpairmentAndRestructuringFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="ImpairmentRestructuringAndOtherSpecialChargesCheckbox"></input>
@@ -12807,7 +12843,7 @@
                     </tr>
                     <tr id="NonOperatingIncomeExpenseRow" class="TrialBalance">
                         <td colspan="2"><h6>Non-Operating Income (Expense)</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceNonOperatingIncomeExpenseShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="NonOperatingExpensesFiles" class="NonOperatingExpensesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="NonOperatingIncomeExpenseCheckbox"></input>
@@ -12920,7 +12956,7 @@
                     </tr>
                     <tr id="IncomeTaxExpenseBenefitRow" class="TrialBalance">
                         <td colspan="2"><h6>Income Taxes</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceIncomeTaxExpenseBenefitShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="IncomeTaxFiles" class="IncomeTaxFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="IncomeTaxExpenseBenefitCheckbox"></input>
@@ -12981,7 +13017,7 @@
                     </tr>
                     <tr id='EquityMethodInvesteesIncomeRow' class="TrialBalance">
                         <td colspan="2"><h6>Equity Method Investee Income</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceEquityMethodInvesteesIncomeShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="EquityMethodInvesteesIncomeFiles" class="EquityMethodInvesteesIncomeFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="EquityMethodInvesteesIncomeCheckbox"></input>
@@ -13049,7 +13085,7 @@
                     </tr>
                     <tr id='NetIncomeFromDiscontinuedOperationsRow' class="TrialBalance">
                         <td colspan="2"><h6>Net Income From Discontinued Operations</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceNetIncomeFromDiscontinuedOperationsShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="DiscontinuedOperationsFiles" class="DiscontinuedOperationsFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="NetIncomeFromDiscontinuedOperationsCheckbox"></input>
@@ -13275,7 +13311,7 @@
                     <tr></tr>
                     <tr id="NetIncomeLossComprehensiveIncomeRow" class="TrialBalance">
                         <td colspan="2"><h6><b>Net Income (Loss)</b></h6></td>
-                        <td style="text-align:center"><button data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
+                        <td style="text-align:center"><button id="NetIncomeShortCut" data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
                         <td></td>
                         <td>
                             <input type="checkbox" id="NetIncomeLossComprehensiveIncomeCheckbox"></input>
@@ -13304,7 +13340,7 @@
                     </tr>
                     <tr id='ChangeInForeignCurrencyTranslationAdjustmentRow' class="TrialBalance">
                         <td colspan="2"><h6>Change In Foreign Currency Translation</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceChangeInForeignCurrencyTranslationAdjustmentShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="OtherComprehensiveIncomeFiles" class="OtherComprehensiveIncomeFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="ChangeInForeignCurrencyTranslationAdjustmentCheckbox"></input>
@@ -13372,7 +13408,7 @@
                     </tr>
                     <tr id='ChangeInUnrealizedGainsLossesOnDerivativeInstrumentsRow' class="TrialBalance">
                         <td colspan="2"><h6>Change In Unrealized Gains (Losses) On Derivative Instruments</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceChangeInUnrealizedGainsLossesOnDerivativeInstrumentsShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="OtherComprehensiveIncomeFiles" class="OtherComprehensiveIncomeFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="ChangeInUnrealizedGainsLossesOnDerivativeInstrumentsCheckbox"></input>
@@ -13440,7 +13476,7 @@
                     </tr>
                     <tr id='ChangeInUnrealizedGainsLossesOnInvestmentsRow' class="TrialBalance">
                         <td colspan="2"><h6>Change In Unrealized Gains (Losses) On Investments</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceChangeInUnrealizedGainsLossesOnInvestmentsShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="OtherComprehensiveIncomeFiles" class="OtherComprehensiveIncomeFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="ChangeInUnrealizedGainsLossesOnInvestmentsCheckbox"></input>
@@ -13508,7 +13544,7 @@
                     </tr>
                     <tr id='ChangeInDefinedBenefitPensionAndOtherSimilarPlansRow' class="TrialBalance">
                         <td colspan="2"><h6>Change In Defined Benefit Pension And Other Similar Plans</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceChangeInDefinedBenefitPensionAndOtherSimilarPlansShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="OtherComprehensiveIncomeFiles" class="OtherComprehensiveIncomeFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="ChangeInDefinedBenefitPensionAndOtherSimilarPlansCheckbox"></input>
@@ -13576,7 +13612,7 @@
                     </tr>
                     <tr id='IncomeTaxOnOtherComprehensiveIncomeRow' class="TrialBalance">
                         <td colspan="2"><h6>Income Taxes</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceIncomeTaxOnOtherComprehensiveIncomeShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="OtherComprehensiveIncomeFiles" class="OtherComprehensiveIncomeFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="IncomeTaxOnOtherComprehensiveIncomeCheckbox"></input>
@@ -13892,7 +13928,7 @@
                     </tr>
                     <tr id='CommonSharesIssuedRow' class="TrialBalance">
                         <td colspan="2"><h6>Common Shares Issued</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceCommonSharesIssuedShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="ShareholdersEquityFiles" class="ShareholdersEquityFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="CommonSharesIssuedCheckbox"></input>
@@ -13960,7 +13996,7 @@
                     </tr>
                     <tr id='ShareBasedCompensationRow' class="TrialBalance">
                         <td colspan="2"><h6>Share Based Compensation</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceShareBasedCompensationShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="ShareholdersEquityFiles" class="ShareholdersEquityFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="ShareBasedCompensationCheckbox"></input>
@@ -14028,7 +14064,7 @@
                     </tr>
                     <tr id='ShareBasedCompensationRetainedEarningsRow' class="TrialBalance">
                         <td colspan="2"><h6>Share Based Compensation - Retained Earnings Component</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceShareBasedCompensationRetainedEarningsShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="ShareholdersEquityFiles" class="ShareholdersEquityFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="ShareBasedCompensationRetainedEarningsCheckbox"></input>
@@ -14096,7 +14132,7 @@
                     </tr>
                     <tr id='DividendsAndDividendEquivalentsDeclaredRow' class="TrialBalance">
                         <td colspan="2"><h6>Dividends And Dividend Equivalents Declared</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceDividendsAndDividendEquivalentsDeclaredShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="ShareholdersEquityFiles" class="ShareholdersEquityFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="DividendsAndDividendEquivalentsDeclaredCheckbox"></input>
@@ -14164,7 +14200,7 @@
                     </tr>
                     <tr id='CommonSharesRepurchasedAndRetiredRow' class="TrialBalance">
                         <td colspan="2"><h6>Common Share Repurchased And Retired</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceCommonSharesRepurchasedAndRetiredShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="ShareholdersEquityFiles" class="ShareholdersEquityFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="CommonSharesRepurchasedAndRetiredCheckbox"></input>
@@ -14232,7 +14268,7 @@
                     </tr>
                     <tr id='EffectOfAdoptionOfNewAccountingPronouncementOrTaxCutsRow' class="TrialBalance">
                         <td colspan="2"><h6>Effect Of Adoption New Accounting Pronouncement Or Tax Cuts</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceEffectOfAdoptionOfNewAccountingPronouncementOrTaxCutsShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="ShareholdersEquityFiles" class="ShareholdersEquityFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="EffectOfAdoptionOfNewAccountingPronouncementOrTaxCutsCheckbox"></input>
@@ -14300,7 +14336,7 @@
                     </tr>
                     <tr id='RetainedEarningsOthersRow' class="TrialBalance">
                         <td colspan="2"><h6>Other Transactions Affecting Retained Earnings</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceRetainedEarningsOthersShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="ShareholdersEquityFiles" class="ShareholdersEquityFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="RetainedEarningsOthersCheckbox"></input>
@@ -14368,7 +14404,7 @@
                     </tr>
                     <tr id='PurchaseAndSellOfTreasurySharesRow' class="TrialBalance">
                         <td colspan="2"><h6>Purchase And Sell Of Treasury Shares</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalancePurchaseAndSellOfTreasurySharesShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="ShareholdersEquityFiles" class="ShareholdersEquityFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PurchaseAndSellOfTreasurySharesCheckbox"></input>
@@ -14436,7 +14472,7 @@
                     </tr>
                     <tr id='DividendsDeclaredToNonControllingInterestsRow' class="TrialBalance">
                         <td colspan="2"><h6>Dividends Declared To Non Controlling Interests</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceDividendsDeclaredToNonControllingInterestsShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="ShareholdersEquityFiles" class="ShareholdersEquityFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="DividendsDeclaredToNonControllingInterestsCheckbox"></input>
@@ -14504,7 +14540,7 @@
                     </tr>
                     <tr id='AcquisitionOfNonControllingInterestsRow' class="TrialBalance">
                         <td colspan="2"><h6>Acquisition And Other Distributions To Non Controlling Interests</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceAcquisitionOfNonControllingInterestsShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="ShareholdersEquityFiles" class="ShareholdersEquityFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="AcquisitionOfNonControllingInterestsCheckbox"></input>
@@ -14572,7 +14608,7 @@
                     </tr>
                     <tr id='NonControllingInterestsOthersRow' class="TrialBalance">
                         <td colspan="2"><h6>Other Transactions Affecting Non Controlling Interests</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceNonControllingInterestsOthersShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="ShareholdersEquityFiles" class="ShareholdersEquityFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="NonControllingInterestsOthersCheckbox"></input>
@@ -14640,7 +14676,7 @@
                     </tr>
                     <tr id="ComprehensiveIncomeShareholdersEquityRow" class="TrialBalance">
                         <td colspan="2"><h6>Other Comprehensive Income (Loss)</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualComprehensiveIncome" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CI</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceComprehensiveIncomeShareholdersEquityShortCut" data-page="AnnualComprehensiveIncome" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CI</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="OtherComprehensiveIncomeFiles" class="OtherComprehensiveIncomeFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="ComprehensiveIncomeShareholdersEquityCheckbox"></input>
@@ -14704,7 +14740,7 @@
                     </tr>
                     <tr id="NetIncomeLossShareholdersEquityRow" class="TrialBalance">
                         <td colspan="2"><h6>Net Income (Loss)</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
+                        <td style="text-align:center"><button id="NetIncomeShortCut" data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
                         <td></td>
                         <td>
                             <input type="checkbox" id="NetIncomeLossShareholdersEquityCheckbox"></input>
@@ -15579,7 +15615,7 @@
                     </tr>
                     <tr id="CashEndingBalanceRow" class="TrialBalance">
                         <td colspan="2"><h6><b>Cash And Cash Equivalents</b></h6></td>
-                        <td style="text-align:center"><button data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">BS</button></td>
+                        <td style="text-align:center"><button id="CashShortCut" data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">BS</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="CurrentAssetsFiles" class="CurrentAssetsFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="CashEndingBalanceCheckbox"></input>
@@ -15602,7 +15638,7 @@
                     <tr></tr>
                     <tr id="NetIncomeCashFlowRow" class="TrialBalance">
                         <td colspan="2"><h6>Net Income (Loss)</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
+                        <td style="text-align:center"><button id="NetIncomeShortCut" data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
                         <td></td>
                         <td>
                             <input type="checkbox" id="NetIncomeCashFlowCheckbox"></input>
@@ -20821,7 +20857,7 @@
                     <tr id="GrowthRelatedRiskProvisionRow" class="ClockRate">
                         <td colspan="2"><h6>Growth Related Risk Provision</h6></td>
                         <td style="color:#0d47a1; text-align:center; font-weight:bold;">(f)</td>
-                        <td><button data-page="AdditionalInformation" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">AI</button></td>
+                        <td><button id="CapitalizationRateFloorShortCut" data-page="AdditionalInformation" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">AI</button></td>
                         <td>
                             <input type="checkbox" id="GrowthRelatedRiskProvisionCheckbox"></input>
                             <input type="checkbox" id="GrowthRelatedRiskProvisionCheckbox2"></input>
@@ -21051,7 +21087,7 @@
                     <tr></tr>
                     <tr id="OperatingIncomeCCFRow" class="Opinion">
                         <td colspan="2"><h6><b>Operating Income (Loss)</b></h6></td>
-                        <td style="text-align:center"><button data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
+                        <td style="text-align:center"><button id="OperatingIncomeShortCut" data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="OpinionFiles" class="OpinionFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="OperatingIncomeCCFCheckbox"></input>
@@ -21093,7 +21129,7 @@
                     </tr>
                     <tr id="DepreciationDepletionAndAmortizationCCFRow" class="Opinion">
                         <td colspan="2"><h6>Depreciation, Depletion And Amortization</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualCashFlow" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CF</button></td>
+                        <td style="text-align:center"><button id="DepreciationDepletionAndAmortizationShortCut" data-page="AnnualCashFlow" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CF</button></td>
                         <td></td>
                         <td>
                             <input type="checkbox" id="DepreciationDepletionAndAmortizationCCFCheckbox"></input>
@@ -21166,7 +21202,7 @@
                     </tr>
                     <tr id="AnnualReinvestmentOfMaintenanceCCFRow" class="Opinion">
                         <td colspan="2"><h6>Reinvestment Of Maintenance</h6></td>
-                        <td style="text-align:center"><button data-page="AdditionalInformation" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">AI</button></td>
+                        <td style="text-align:center"><button id="ReinvestmentOfMaintenanceShortCut" data-page="AdditionalInformation" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">AI</button></td>
                         <td></td>
                         <td>
                             <input type="checkbox" id="AnnualReinvestmentOfMaintenanceCCFCheckbox"></input>
@@ -21254,7 +21290,7 @@
                     </tr>
                     <tr id="TaxesPaidAdjustmentsCCFRow" class="Opinion">
                         <td colspan="2"><h6>Taxes</h6></td>
-                        <td style="text-align:center"><button data-page="AdditionalInformation" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">AI</button></td>
+                        <td style="text-align:center"><button id="TheoricalTaxRateShortCut" data-page="AdditionalInformation" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">AI</button></td>
                         <td></td>
                         <td>
                             <input type="checkbox" id="TaxesPaidAdjustmentsCCFCheckbox"></input>
@@ -21345,7 +21381,7 @@
                     </tr>
                     <tr id="EquityMethodInvesteesIncomeCCFRow" class="Opinion">
                         <td colspan="2"><h6>Equity Method Investee's Income</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
+                        <td style="text-align:center"><button  id="EquityMethodInvesteesIncomeShortCut" data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
                         <td></td>
                         <td>
                             <input type="checkbox" id="EquityMethodInvesteesIncomeCCFCheckbox"></input>
@@ -21635,7 +21671,7 @@
                     </tr>
                     <tr id="CapitalizationRateCCFRow" class="OpinionFour">
                         <td colspan="2"><h6><b>Capitalization Rate</b></h6></td>
-                        <td style="text-align:center"><button data-page="CapitalizationRate" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CR</button></td>
+                        <td style="text-align:center"><button id="CapitalizationRateShortCut" data-page="CapitalizationRate" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CR</button></td>
                         <td></td>
                         <td>
                             <input type="checkbox" id="CapitalizationRateCCFCheckbox"></input>
@@ -22416,7 +22452,7 @@
                     <tr></tr>
                     <tr id="OperatingIncomeCIRow" class="Opinion">
                         <td colspan="2"><h6><b>Operating Income (Loss)</b></h6></td>
-                        <td style="text-align:center"><button data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
+                        <td style="text-align:center"><button id="OperatingIncomeShortCut" data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="OpinionFiles" class="OpinionFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="OperatingIncomeCICheckbox"></input>
@@ -22473,7 +22509,7 @@
                     </tr>
                     <tr id="TaxesAdjustmentCIRow" class="Opinion">
                         <td colspan="2"><h6>Taxes</h6></td>
-                        <td style="text-align:center"><button data-page="AdditionalInformation" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">AI</button></td>
+                        <td style="text-align:center"><button id="TheoricalTaxRateShortCut" data-page="AdditionalInformation" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">AI</button></td>
                         <td></td>
                         <td>
                             <input type="checkbox" id="TaxesAdjustmentCICheckbox"></input>
@@ -22558,7 +22594,7 @@
                     </tr>
                     <tr id="EquityMethodInvesteesIncomeCIRow" class="Opinion">
                         <td colspan="2"><h6>Equity Method Investee's Income</h6></td>
-                        <td style="text-align:center"><button data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
+                        <td style="text-align:center"><button id="EquityMethodInvesteesIncomeShortCut" data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
                         <td></td>
                         <td>
                             <input type="checkbox" id="EquityMethodInvesteesIncomeCICheckbox"></input>
@@ -22841,7 +22877,7 @@
                     </tr>
                     <tr id="CapitalizationRateCIRow" class="OpinionFour">
                         <td colspan="2"><h6><b>Capitalization Rate</b></h6></td>
-                        <td style="text-align:center"><button data-page="CapitalizationRate" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CR</button></td>
+                        <td style="text-align:center"><button id="CapitalizationRateShortCut" data-page="CapitalizationRate" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CR</button></td>
                         <td></td>
                         <td>
                             <input type="checkbox" id="CapitalizationRateCICheckbox"></input>
@@ -22915,7 +22951,7 @@
                     </tr>
                     <tr id="ExcessWorkingCapitalCIRow" class="OpinionFour">
                         <td colspan="2"><h6>Excess (Insufficiancy) Working Capital</h6></td>
-                        <td style="text-align:center"><button data-page="CapitalizedCashFlow" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CCF</button></td>
+                        <td style="text-align:center"><button id="ExcessWorkingCapitalCCFShortCut" data-page="CapitalizedCashFlow" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CCF</button></td>
                         <td></td>
                         <td>
                             <input type="checkbox" id="ExcessWorkingCapitalCICheckbox"></input>
@@ -22972,7 +23008,7 @@
                     </tr>
                     <tr id="ExcessAssetsCIRow" class="OpinionFour">
                         <td colspan="2"><h6>Excess Assets</h6></td>
-                        <td style="text-align:center"><button data-page="CapitalizedCashFlow" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CCF</button></td>
+                        <td style="text-align:center"><button id="ExcessAssetsCCFShortCut" data-page="CapitalizedCashFlow" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CCF</button></td>
                         <td></td>
                         <td>
                             <input type="checkbox" id="ExcessAssetsCICheckbox"></input>
@@ -23029,7 +23065,7 @@
                     </tr>
                     <tr id="UnrealizedCapitalGainOnRealEstateNetOfTaxesCIRow" class="OpinionFour">
                         <td colspan="2"><h6>Unrealized Capital Gain On Real Estate, Net Of Taxes</h6></td>
-                        <td style="text-align:center"><button data-page="CapitalizedCashFlow" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CCF</button></td>
+                        <td style="text-align:center"><button id="UnrealizedCapitalGainOnRealEstateNetOfTaxesCCFShortCut" data-page="CapitalizedCashFlow" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CCF</button></td>
                         <td></td>
                         <td>
                             <input type="checkbox" id="UnrealizedCapitalGainOnRealEstateNetOfTaxesCICheckbox"></input>
@@ -23086,7 +23122,7 @@
                     </tr>
                     <tr id="PresentValueOfTaxProtectionCIRow" class="OpinionFour">
                         <td colspan="2"><h6>Present Value Of Tax Protection</h6></td>                        
-                        <td style="text-align:center"><button data-page="CapitalizedCashFlow" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CCF</button></td>
+                        <td style="text-align:center"><button id="PresentValueOfTaxProtectionCCFShortCut" data-page="CapitalizedCashFlow" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CCF</button></td>
                         <td></td>
                         <td>
                             <input type="checkbox" id="PresentValueOfTaxProtectionCICheckbox"></input>
@@ -23594,7 +23630,7 @@
                     <tr></tr>
                     <tr id="IntrinsicValuesCCFRow" class="OpinionFour">
                         <td colspan="2"><h5 style="margin-left:0px;">Capitalized Cash Flow</h5></td>
-                        <td style="text-align:center"><button data-page="CapitalizedCashFlow" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white; margin-left:0px;">CCF</button></td>
+                        <td style="text-align:center"><button id="CommonSharesValueCCFShortCut" data-page="CapitalizedCashFlow" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white; margin-left:0px;">CCF</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="OpinionFiles" class="OpinionFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="IntrinsicValuesCCFCheckbox"></input>
@@ -23628,7 +23664,7 @@
                     </tr>
                     <tr id="GoodwillFairValueCCFIVRow" class="OpinionFour">
                         <td colspan="2" style='text-align: left;'>Goodwill Fair Value</td>
-                        <td style="text-align:center"><button data-page="CapitalizedCashFlow" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CCF</button></td>
+                        <td style="text-align:center"><button id="GoodwillFairValueCCFShortCut" data-page="CapitalizedCashFlow" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CCF</button></td>
                         <td></td>
                         <td>
                             <input type="checkbox" id="GoodwillFairValueCCFIVCheckbox"></input>
@@ -23679,7 +23715,7 @@
                     <tr></tr>
                     <tr id="IntrinsicValuesCIRow" class="OpinionFour">
                         <td colspan="2"><h5 style="margin-left:0px;">Capitalized Income</h5></td>
-                        <td style="text-align:center"><button data-page="CapitalizedIncome" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white; margin-left:0px;">CI</button></td>
+                        <td style="text-align:center"><button id="CommonSharesValueCIShortCut" data-page="CapitalizedIncome" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white; margin-left:0px;">CI</button></td>
                         <td></td>
                         <td>
                             <input type="checkbox" id="IntrinsicValuesCICheckbox"></input>
@@ -23713,7 +23749,7 @@
                     </tr>
                     <tr id="GoodwillFairValueCIIVRow" class="OpinionFour">
                         <td colspan="2" style='text-align: left;'>Goodwill Fair Value</td>
-                        <td style="text-align:center"><button data-page="CapitalizedIncome" style="text-align:center; font-weight:bold; width: 75%; box-shadow: none; background-color: white;">CI</button></td>
+                        <td style="text-align:center"><button id="GoodwillFairValueCIShortCut" data-page="CapitalizedIncome" style="text-align:center; font-weight:bold; width: 75%; box-shadow: none; background-color: white;">CI</button></td>
                         <td></td>
                         <td>
                             <input type="checkbox" id="GoodwillFairValueCIIVCheckbox"></input>
@@ -23923,7 +23959,7 @@
                     <tr></tr>
                     <tr id="BridgeφRow" class="Context">
                         <td colspan="2"><h5 style="margin-left:0px;">AUDIT</h5></td>
-                        <td style="text-align:center"><button data-page="AuditSummary" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white; box-shadow: none; background-color: white;">AS</button></td>
+                        <td style="text-align:center"><button id="AnomaliesWorstCaseScenarioShortCut" data-page="AuditSummary" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white; box-shadow: none; background-color: white;">AS</button></td>
                         <td></td>
                         <td>
                             <input type="checkbox" id="BridgeφCheckbox"></input>
@@ -23955,7 +23991,7 @@
                     <tr></tr>
                     <tr id="IntrinsicValuesRow" class="OpinionFour">
                         <td colspan="2"><h6>Common Shares' Intrinsic Value</h6></td>
-                        <td style="text-align:center"><button data-page="IntrinsicValues" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white; box-shadow: none; background-color: white">IV</button></td>
+                        <td style="text-align:center"><button id="WeightedIVShortCut" data-page="IntrinsicValues" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white; box-shadow: none; background-color: white">IV</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="OpinionFiles" class="OpinionFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="IntrinsicValuesCheckbox"></input>
@@ -24959,7 +24995,7 @@
                     <tr></tr>
                     <tr id="PRO-1.1.1Row" class="TrialBalance">
                         <td colspan="2"><h6><b>ASSETS</b></h6></td>
-                        <td style="text-align:center"><button data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white; box-shadow: none; background-color: white">BS</button></td>
+                        <td style="text-align:center"><button id="TotalAssetsShortCut" data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white; box-shadow: none; background-color: white">BS</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="BalanceSheetsProcedureFiles" class="BalanceSheetsProcedureFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PRO-1.1.1Checkbox"></input>
@@ -25179,7 +25215,7 @@
                     </tr>
                     <tr id="PRO-1.2.1Row" class="TrialBalance">
                         <td colspan="2" style="text-align:left;">Components DT/(CT) </td>
-                        <td style="text-align:center"><button data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">BS</button></td>
+                        <td style="text-align:center"><button id="CurrentAssetsNoteShortCut" data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">BS</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="BalanceSheetsProcedureFiles" class="BalanceSheetsProcedureFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PRO-1.2.1Checkbox"></input>
@@ -25347,7 +25383,7 @@
                     </tr>
                     <tr id="PRO-1.2.4Row" class="TrialBalance">
                         <td colspan="2" style="text-align:left;">Components DT/(CT) </td>
-                        <td style="text-align:center"><button data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">BS</button></td>
+                        <td style="text-align:center"><button id="NonCurrentAssetsNoteShortCut" data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">BS</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="BalanceSheetsProcedureFiles" class="BalanceSheetsProcedureFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PRO-1.2.4Checkbox"></input>
@@ -25521,7 +25557,7 @@
                     </tr>
                     <tr id="PRO-1.2.7Row" class="TrialBalance">
                         <td colspan="2" style="text-align:left;">Components DT/(CT) </td>
-                        <td style="text-align:center"><button data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">BS</button></td>
+                        <td style="text-align:center"><button id="CurrentLiabilitiesNoteShortCut" data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">BS</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="BalanceSheetsProcedureFiles" class="BalanceSheetsProcedureFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PRO-1.2.7Checkbox"></input>
@@ -25695,7 +25731,7 @@
                     </tr>
                     <tr id="PRO-1.2.10Row" class="TrialBalance">
                         <td colspan="2" style="text-align:left;">Components DT/(CT) </td>
-                        <td style="text-align:center"><button data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">BS</button></td>
+                        <td style="text-align:center"><button id="NonCurrentLiabilitiesNoteShortCut" data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">BS</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="BalanceSheetsProcedureFiles" class="BalanceSheetsProcedureFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PRO-1.2.10Checkbox"></input>
@@ -25869,7 +25905,7 @@
                     </tr>
                     <tr id="PRO-1.2.13Row" class="TrialBalance">
                         <td colspan="2" style="text-align:left;">Components DT/(CT) </td>
-                        <td style="text-align:center"><button data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">BS</button></td>
+                        <td style="text-align:center"><button id="ShareholdersEquityNoteShortCut" data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">BS</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="BalanceSheetsProcedureFiles" class="BalanceSheetsProcedureFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PRO-1.2.13Checkbox"></input>
@@ -26087,7 +26123,7 @@
                     <tr></tr>
                     <tr id="PRO-1.3.1Row" class="TrialBalance">
                         <td colspan="2" style="text-align:left;">Current Assets</td>
-                        <td style="text-align:center"><button data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">BS</button></td>
+                        <td style="text-align:center"><button id="CurrentAssetsNoteShortCut" data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">BS</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="BalanceSheetsProcedureFiles" class="BalanceSheetsProcedureFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PRO-1.3.1Checkbox"></input>
@@ -26143,7 +26179,7 @@
                     <tr></tr>
                     <tr id="PRO-1.3.2Row" class="TrialBalance">
                         <td colspan="2" style="text-align:left;">Non-Current Assets</td>
-                        <td style="text-align:center"><button data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">BS</button></td>
+                        <td style="text-align:center"><button id="NonCurrentAssetsNoteShortCut" data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">BS</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="BalanceSheetsProcedureFiles" class="BalanceSheetsProcedureFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PRO-1.3.2Checkbox"></input>
@@ -26199,7 +26235,7 @@
                     <tr></tr>
                     <tr id="PRO-1.3.3Row" class="TrialBalance">
                         <td colspan="2" style="text-align:left;">Current Liabilities</td>
-                        <td style="text-align:center"><button data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">BS</button></td>
+                        <td style="text-align:center"><button id="CurrentLiabilitiesNoteShortCut" data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">BS</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="BalanceSheetsProcedureFiles" class="BalanceSheetsProcedureFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PRO-1.3.3Checkbox"></input>
@@ -26255,7 +26291,7 @@
                     <tr></tr>
                     <tr id="PRO-1.3.4Row" class="TrialBalance">
                         <td colspan="2" style="text-align:left;">Non-Current Liabilities</td>
-                        <td style="text-align:center"><button data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">BS</button></td>
+                        <td style="text-align:center"><button id="NonCurrentLiabilitiesNoteShortCut" data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">BS</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="BalanceSheetsProcedureFiles" class="BalanceSheetsProcedureFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PRO-1.3.4Checkbox"></input>
@@ -26311,7 +26347,7 @@
                     <tr></tr>
                     <tr id="PRO-1.3.5Row" class="TrialBalance">
                         <td colspan="2" style="text-align:left;">Shareholders' Equity</td>
-                        <td style="text-align:center"><button data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">BS</button></td>
+                        <td style="text-align:center"><button id="ShareholdersEquityNoteShortCut" data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">BS</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="BalanceSheetsProcedureFiles" class="BalanceSheetsProcedureFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PRO-1.3.5Checkbox"></input>
@@ -26475,7 +26511,7 @@
                     </tr>
                     <tr id="PRO-2.1.1Row" class="TrialBalance">
                         <td colspan="2" style="text-align:left;">Components CT/(DT) </td>
-                        <td style="text-align:center"><button data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
+                        <td style="text-align:center"><button id="GrossMarginShortCut" data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="IncomeStatementsProcedureFiles" class="IncomeStatementsProcedureFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PRO-2.1.1Checkbox"></input>
@@ -26585,7 +26621,7 @@
                     </tr>
                     <tr id="PRO-2.1.4Row" class="TrialBalance">
                         <td colspan="2" style="text-align:left;">Components CT/(DT) </td>
-                        <td style="text-align:center"><button data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
+                        <td style="text-align:center"><button id="OperatingIncomeShortCut" data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="IncomeStatementsProcedureFiles" class="IncomeStatementsProcedureFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PRO-2.1.4Checkbox"></input>
@@ -26701,7 +26737,7 @@
                     </tr>
                     <tr id="PRO-2.1.7Row" class="TrialBalance">
                         <td colspan="2" style="text-align:left;">Components CT/(DT) </td>
-                        <td style="text-align:center"><button data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
+                        <td style="text-align:center"><button id="IncomeBeforeTaxesShortCut" data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="IncomeStatementsProcedureFiles" class="IncomeStatementsProcedureFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PRO-2.1.7Checkbox"></input>
@@ -26817,7 +26853,7 @@
                     </tr>
                     <tr id="PRO-2.1.10Row" class="TrialBalance">
                         <td colspan="2" style="text-align:left;">Components CT/(DT) </td>
-                        <td style="text-align:center"><button data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
+                        <td style="text-align:center"><button id="NetIncomeShortCut" data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="IncomeStatementsProcedureFiles" class="IncomeStatementsProcedureFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PRO-2.1.10Checkbox"></input>
@@ -27020,7 +27056,7 @@
                     <tr></tr>
                     <tr id="PRO-2.2.1Row" class="TrialBalance">
                         <td colspan="2" style="text-align:left;">Gross Margin</td>
-                        <td style="text-align:center"><button data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
+                        <td style="text-align:center"><button id="GrossMarginShortCut" data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="IncomeStatementsProcedureFiles" class="IncomeStatementsProcedureFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PRO-2.2.1Checkbox"></input>
@@ -27076,7 +27112,7 @@
                     <tr></tr>
                     <tr id="PRO-2.2.2Row" class="TrialBalance">
                         <td colspan="2" style="text-align:left;">Operating Income (Loss)</td>
-                        <td style="text-align:center"><button data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
+                        <td style="text-align:center"><button id="OperatingIncomeShortCut" data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="IncomeStatementsProcedureFiles" class="IncomeStatementsProcedureFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PRO-2.2.2Checkbox"></input>
@@ -27132,7 +27168,7 @@
                     <tr></tr>
                     <tr id="PRO-2.2.3Row" class="TrialBalance">
                         <td colspan="2" style="text-align:left;">Income (Loss) Before Taxes</td>
-                        <td style="text-align:center"><button data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
+                        <td style="text-align:center"><button id="IncomeBeforeTaxesShortCut" data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="IncomeStatementsProcedureFiles" class="IncomeStatementsProcedureFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PRO-2.2.3Checkbox"></input>
@@ -27188,7 +27224,7 @@
                     <tr></tr>
                     <tr id="PRO-2.2.4Row" class="TrialBalance">
                         <td colspan="2" style="text-align:left;">Net Income</td>
-                        <td style="text-align:center"><button data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
+                        <td style="text-align:center"><button id="NetIncomeShortCut" data-page="AnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">IS</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="IncomeStatementsProcedureFiles" class="IncomeStatementsProcedureFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PRO-2.2.4Checkbox"></input>
@@ -27349,7 +27385,7 @@
                     <tr></tr>
                     <tr id="PRO-3.1.1Row" class="TrialBalance">
                         <td colspan="2" style="text-align:left;">Components CT/(DT) </td>
-                        <td style="text-align:center"><button data-page="AnnualComprehensiveIncome" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CI</button></td>
+                        <td style="text-align:center"><button id="" data-page="AnnualComprehensiveIncome" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CI</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="ComprehensiveIncomeProcedureFiles" class="ComprehensiveIncomeProcedureFiles">{</button></td>
                         <td> 
                             <input type="checkbox" id="PRO-3.1.1Checkbox"></input>
@@ -27728,7 +27764,7 @@
                     <tr></tr>
                     <tr id="PRO-4.0.1Row" class="TrialBalance">
                         <td colspan="2" style="text-align:left;">Beginning Balance</td>
-                        <td style="text-align:center"><button data-page="AnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">SE</button></td>
+                        <td style="text-align:center"><button id="ShareholdersEquityBeginningShortCut" data-page="AnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">SE</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="ShareholdersEquityProcedureFiles" class="ShareholdersEquityProcedureFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PRO-4.0.1Checkbox"></input>
@@ -27940,7 +27976,7 @@
                     <tr></tr>
                     <tr id="PRO-4.1.1Row" class="TrialBalance">
                         <td colspan="2" style="text-align:left;">Components DT/(CT) </td>
-                        <td style="text-align:center"><button data-page="AnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">SE</button></td>
+                        <td style="text-align:center"><button id="ShareholdersEquityShortCut" data-page="AnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">SE</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="ShareholdersEquityProcedureFiles" class="ShareholdersEquityProcedureFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PRO-4.1.1Checkbox"></input>
@@ -28458,7 +28494,7 @@
                     <tr></tr>
                     <tr id="PRO-5.1.1Row" class="TrialBalance">
                         <td colspan="2" style="text-align:left;">Cash Flow Statement</td>
-                        <td style="text-align:center"><button data-page="AnnualCashFlow" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CF</button></td>
+                        <td style="text-align:center"><button id="CashEndingBalanceShortCut" data-page="AnnualCashFlow" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CF</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="CashFlowProcedureFiles" class="CashFlowProcedureFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PRO-5.1.1Checkbox"></input>
@@ -28498,7 +28534,7 @@
                     </tr>
                     <tr id="PRO-5.1.2Row" class="TrialBalance">
                         <td colspan="2" style="text-align:left;">Balance Sheet</td>
-                        <td style="text-align:center"><button data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">BS</button></td>
+                        <td style="text-align:center"><button id="CashShortCut" data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">BS</button></td>
                         <td></td>
                         <td>
                             <input type="checkbox" id="PRO-5.1.2Checkbox"></input>
@@ -28693,7 +28729,7 @@
                     <tr></tr>
                     <tr id="PRO-5.2.1Row" class="TrialBalance">
                         <td colspan="2" style="text-align:left;">Operating Activities</td>
-                        <td style="text-align:center"><button data-page="AnnualCashFlow" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CF</button></td>
+                        <td style="text-align:center"><button id="OperatingActivitiesNoteShortCut" data-page="AnnualCashFlow" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CF</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="CashFlowProcedureFiles" class="CashFlowProcedureFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PRO-5.2.1Checkbox"></input>
@@ -28749,7 +28785,7 @@
                     <tr></tr>
                     <tr id="PRO-5.2.2Row" class="TrialBalance">
                         <td colspan="2" style="text-align:left;">Investing Activities</td>
-                        <td style="text-align:center"><button data-page="AnnualCashFlow" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CF</button></td>
+                        <td style="text-align:center"><button id="InvestingActivitiesNoteShortCut" data-page="AnnualCashFlow" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CF</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="CashFlowProcedureFiles" class="CashFlowProcedureFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PRO-5.2.2Checkbox"></input>
@@ -28805,7 +28841,7 @@
                     <tr></tr>
                     <tr id="PRO-5.2.3Row" class="TrialBalance">
                         <td colspan="2" style="text-align:left;">Financing Activities</td>
-                        <td style="text-align:center"><button data-page="AnnualCashFlow" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CF</button></td>
+                        <td style="text-align:center"><button id="FinancingActivitiesNoteShortCut" data-page="AnnualCashFlow" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CF</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="CashFlowProcedureFiles" class="CashFlowProcedureFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PRO-5.2.3Checkbox"></input>
@@ -28964,7 +29000,7 @@
                     </tr>
                     <tr id="AnomaliesCurrentAssetsRow" class="TrialBalance">
                         <td colspan="2" style="text-align: left;">Current Assets</p></td>
-                        <td style="text-align:center"><button data-page="ProcedureAnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">P</button></td>
+                        <td style="text-align:center"><button id="PRO-1.2.3ShortCut" data-page="ProcedureAnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">P</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="AnomaliesFiles" class="AnomaliesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="AnomaliesCurrentAssetsCheckbox"></input>
@@ -29010,7 +29046,9 @@
                         <td colspan="2"><input class='Clock' id="AnomaliesCurrentAssets6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="AnomaliesNonCurrentAssetsRow" class="TrialBalance">
-                        <td colspan="4" style="text-align: left;">Non-Current Assets</td>
+                        <td colspan="2" style="text-align: left;">Non-Current Assets</td>
+                        <td style="text-align:center"><button id="PRO-1.2.6ShortCut" data-page="ProcedureAnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">P</button></td>
+                        <td></td>
                         <td>
                             <input type="checkbox" id="AnomaliesNonCurrentAssetsCheckbox"></input>
                             <input type="checkbox" id="AnomaliesNonCurrentAssetsCheckbox2"></input>
@@ -29054,7 +29092,9 @@
                         <td colspan="2"><input class='Clock' id="AnomaliesNonCurrentAssets6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="AnomaliesCurrentLiabilitiesRow" class="TrialBalance">
-                        <td colspan="4" style="text-align: left;">Current Liabilities</td>
+                        <td colspan="2" style="text-align: left;">Current Liabilities</td>
+                        <td style="text-align:center"><button id="PRO-1.2.9ShortCut" data-page="ProcedureAnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">P</button></td>
+                        <td></td>
                         <td>
                             <input type="checkbox" id="AnomaliesCurrentLiabilitiesCheckbox"></input>
                             <input type="checkbox" id="AnomaliesCurrentLiabilitiesCheckbox2"></input>
@@ -29098,7 +29138,9 @@
                         <td colspan="2"><input class='Clock' id="AnomaliesCurrentLiabilities6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="AnomaliesNonCurrentLiabilitiesRow" class="TrialBalance">
-                        <td colspan="4" style="text-align: left;">Non-Current Liabilities</td>
+                        <td colspan="2" style="text-align: left;">Non-Current Liabilities</td>
+                        <td style="text-align:center"><button id="PRO-1.2.12ShortCut" data-page="ProcedureAnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">P</button></td>
+                        <td></td>
                         <td>
                             <input type="checkbox" id="AnomaliesNonCurrentLiabilitiesCheckbox"></input>
                             <input type="checkbox" id="AnomaliesNonCurrentLiabilitiesCheckbox2"></input>
@@ -29142,7 +29184,9 @@
                         <td colspan="2"><input class='Clock' id="AnomaliesNonCurrentLiabilities6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="AnomaliesShareholdersEquityiRow" class="TrialBalance">
-                        <td colspan="4" style="text-align: left;">Shareholders' Equity</td>
+                        <td colspan="2" style="text-align: left;">Shareholders' Equity</td>
+                        <td style="text-align:center"><button id="PRO-1.2.15ShortCut" data-page="ProcedureAnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">P</button></td>
+                        <td></td>
                         <td>
                             <input type="checkbox" id="AnomaliesShareholdersEquityiCheckbox"></input>
                             <input type="checkbox" id="AnomaliesShareholdersEquityiCheckbox2"></input>
@@ -29258,7 +29302,7 @@
                     </tr>
                     <tr id="AnomaliesGrossMarginRow" class="TrialBalance">
                         <td colspan="2" style="text-align: left;">Gross Margin</p></td>
-                        <td style="text-align:center"><button data-page="ProcedureAnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">P</button></td>
+                        <td style="text-align:center"><button id="PRO-2.1.3ShortCut" data-page="ProcedureAnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">P</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="AnomaliesFiles" class="AnomaliesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="AnomaliesGrossMarginCheckbox"></input>
@@ -29304,7 +29348,9 @@
                         <td colspan="2"><input class='Clock' id="AnomaliesGrossMargin6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="AnomaliesOperatingIncomeRow" class="TrialBalance">
-                        <td colspan="4" style="text-align: left;">Operating Income (Loss)</td>
+                        <td colspan="2" style="text-align: left;">Operating Income (Loss)</td>
+                        <td style="text-align:center"><button id="PRO-2.1.6ShortCut" data-page="ProcedureAnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">P</button></td>
+                        <td></td>
                         <td>
                             <input type="checkbox" id="AnomaliesOperatingIncomeCheckbox"></input>
                             <input type="checkbox" id="AnomaliesOperatingIncomeCheckbox2"></input>
@@ -29348,7 +29394,9 @@
                         <td colspan="2"><input class='Clock' id="AnomaliesOperatingIncome6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="AnomaliesIncomeLossBeforeTaxesRow" class="TrialBalance">
-                        <td colspan="4" style="text-align: left;">Income (Loss) Before Taxes</td>
+                        <td colspan="2" style="text-align: left;">Income (Loss) Before Taxes</td>
+                        <td style="text-align:center"><button id="PRO-2.1.9ShortCut" data-page="ProcedureAnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">P</button></td>
+                        <td></td>
                         <td>
                             <input type="checkbox" id="AnomaliesIncomeLossBeforeTaxesCheckbox"></input>
                             <input type="checkbox" id="AnomaliesIncomeLossBeforeTaxesCheckbox2"></input>
@@ -29392,7 +29440,9 @@
                         <td colspan="2"><input class='Clock' id="AnomaliesIncomeLossBeforeTaxes6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="AnomaliesNetIncomeRow" class="TrialBalance">
-                        <td colspan="4" style="text-align: left;">Net Income (Loss)</td>
+                        <td colspan="2" style="text-align: left;">Net Income (Loss)</td>
+                        <td style="text-align:center"><button id="PRO-2.1.12ShortCut" data-page="ProcedureAnnualIncomeStatements" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">P</button></td>
+                        <td></td>
                         <td>
                             <input type="checkbox" id="AnomaliesNetIncomeCheckbox"></input>
                             <input type="checkbox" id="AnomaliesNetIncomeCheckbox2"></input>
@@ -29500,7 +29550,7 @@
                     <tr></tr>
                     <tr id="AnomaliesComprehensiveIncomeRow" class="TrialBalance">
                         <td colspan="2"><h6><b>Comprehensive Income</b></h6></td>
-                        <td style="text-align:center"><button data-page="ProcedureAnnualComprehensiveIncome" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">P</button></td>
+                        <td style="text-align:center"><button id="PRO-3.1.3ShortCut" data-page="ProcedureAnnualComprehensiveIncome" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">P</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="AnomaliesFiles" class="AnomaliesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="AnomaliesComprehensiveIncomeCheckbox"></input>
@@ -29550,7 +29600,7 @@
                     <tr></tr>
                     <tr id="AnomaliesShareholdersEquityRow" class="TrialBalance">
                         <td colspan="2"><h6><b>Shareholders' Equity</b></h6></td>
-                        <td style="text-align:center"><button data-page="ProcedureAnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">P</button></td>
+                        <td style="text-align:center"><button id="PRO-4.0.3ShortCut" data-page="ProcedureAnnualShareholdersEquity" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">P</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="AnomaliesFiles" class="AnomaliesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="AnomaliesShareholdersEquityCheckbox"></input>
@@ -29645,7 +29695,7 @@
                     </tr>
                     <tr id="TotalAnomaliesCashFlowRow" class="TrialBalance">
                         <td colspan="2" style="text-align: left;">Cash Reconciliation</p></td>
-                        <td style="text-align:center"><button data-page="ProcedureAnnualCashFlow" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">P</button></td>
+                        <td style="text-align:center"><button id="PRO-5.1.4ShortCut" data-page="ProcedureAnnualCashFlow" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">P</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="AnomaliesFiles" class="AnomaliesFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="TotalAnomaliesCashFlowCheckbox"></input>
@@ -29803,7 +29853,7 @@
                     <tr></tr>
                     <tr id="TrialBalanceAnomalySummaryRow" class="TrialBalance">
                         <td colspan="2"><h6><b>Trial Balances</b></h6></td>
-                        <td style="text-align:center"><button data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
+                        <td style="text-align:center"><button id="TrialBalanceShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td></td>
                         <td>
                             <input type="checkbox" id="TrialBalanceAnomalySummaryCheckbox"></input>
@@ -29842,7 +29892,9 @@
                         <td colspan="2" style="border-bottom-style:ridge;"><input class='Clock' id="TrialBalanceAnomalySummary6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="AccountingEquationAnomalySummaryRow" class="TrialBalance">
-                        <td colspan="4"><h6><b>Accounting Equation</b></h6></td>
+                        <td colspan="2"><h6><b>Accounting Equation</b></h6></td>
+                        <td style="text-align:center"><button id="PRO-1.1.3ShortCut" data-page="ProcedureAnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">AD</button></td>
+                        <td></td>
                         <td>
                             <input type="checkbox" id="AccountingEquationAnomalySummaryCheckbox"></input>
                             <input type="checkbox" id="AccountingEquationAnomalySummaryCheckbox2"></input>
@@ -29881,7 +29933,7 @@
                     </tr>
                     <tr id="BalanceSheetsAnomalySummaryRow" class="TrialBalance">
                         <td colspan="2"><h6><b>Balance Sheets</b></h6></td>
-                        <td style="text-align:center"><button data-page="AuditDetailed" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">AD</button></td>
+                        <td style="text-align:center"><button id="TotalAnomaliesBalanceSheetsShortCut" data-page="AuditDetailed" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">AD</button></td>
                         <td></td>
                         <td>
                             <input type="checkbox" id="BalanceSheetsAnomalySummaryCheckbox"></input>
@@ -29920,7 +29972,9 @@
                         <td colspan="2" style="border-bottom-style:ridge;"><input class='Clock' id="BalanceSheetsAnomalySummary6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="IncomeAnomalySummaryRow" class="TrialBalance">
-                        <td colspan="4"><h6><b>Income</b></h6></td>
+                        <td colspan="2"><h6><b>Income</b></h6></td>
+                        <td style="text-align:center"><button id="TotalAnomaliesIncomeStatementShortCut" data-page="AuditDetailed" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">AD</button></td>
+                        <td></td>
                         <td>
                             <input type="checkbox" id="IncomeAnomalySummaryCheckbox"></input>
                             <input type="checkbox" id="IncomeAnomalySummaryCheckbox2"></input>
@@ -29958,7 +30012,9 @@
                         <td colspan="2" style="border-bottom-style:ridge;"><input class='Clock' id="IncomeAnomalySummary6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="ComprehensiveIncomeAnomalySummaryRow" class="TrialBalance">
-                        <td colspan="4"><h6><b>Comprehensive Income</b></h6></td>
+                        <td colspan="2"><h6><b>Comprehensive Income</b></h6></td>
+                        <td style="text-align:center"><button id="AnomaliesComprehensiveIncomeShortCut" data-page="AuditDetailed" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">AD</button></td>
+                        <td></td>
                         <td>
                             <input type="checkbox" id="ComprehensiveIncomeAnomalySummaryCheckbox"></input>
                             <input type="checkbox" id="ComprehensiveIncomeAnomalySummaryCheckbox2"></input>
@@ -29996,7 +30052,9 @@
                         <td colspan="2" style="border-bottom-style:ridge;"><input class='Clock' id="ComprehensiveIncomeAnomalySummary6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="ShareholdersEquityAnomalySummaryRow" class="TrialBalance">
-                        <td colspan="4"><h6><b>Shareholders' Equity</b></h6></td>
+                        <td colspan="2"><h6><b>Shareholders' Equity</b></h6></td>
+                        <td style="text-align:center"><button id="AnomaliesShareholdersEquityShortCut" data-page="AuditDetailed" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">AD</button></td>
+                        <td></td>
                         <td>
                             <input type="checkbox" id="ShareholdersEquityAnomalySummaryCheckbox"></input>
                             <input type="checkbox" id="ShareholdersEquityAnomalySummaryCheckbox2"></input>
@@ -30034,7 +30092,9 @@
                         <td colspan="2" style="border-bottom-style:ridge;"><input class='Clock' id="ShareholdersEquityAnomalySummary6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="CashFlowAnomalySummaryRow" class="TrialBalance">
-                        <td colspan="4"><h6><b>Cash Flow</b></h6></td>
+                        <td colspan="2"><h6><b>Cash Flow</b></h6></td>
+                        <td style="text-align:center"><button id="TotalAnomaliesCashFlowShortCut" data-page="AuditDetailed" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">AD</button></td>
+                        <td></td>
                         <td>
                             <input type="checkbox" id="CashFlowAnomalySummaryCheckbox"></input>
                             <input type="checkbox" id="CashFlowAnomalySummaryCheckbox2"></input>
@@ -30206,7 +30266,7 @@
                     <tr></tr>
                     <tr id="AnomaliesMaterialityThresholdRow" class="TrialBalance">
                         <td colspan="2"><h6><b>Materiality Threshold</b></h6></td>
-                        <td style="text-align:center"><button data-page="MaterialityThreshold" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">MT</button></td>
+                        <td style="text-align:center"><button id="MaterialityThresholdValueShortCut" data-page="MaterialityThreshold" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">MT</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; background-color: white" data-page="MaterialityFiles" class="MaterialityFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="AnomaliesMaterialityThresholdCheckbox"></input>
@@ -30835,7 +30895,7 @@
                         <td><label onclick="New()">New</label></td>
                         <td><label style="visibility:hidden" id="New" for="Files1" onclick="HideNewDirectoryButton()">Confirm?</label></td>
                         <td><input type='file' id="Files1" style="visibility: hidden" multiple onchange="Files()"></input></td>
-                        <td><input type='file' id="AddLineInputFile" style="visibility: hidden" onchange="AddLine()"></input></td>
+                        <td><input type='file' id="AddLineInputFile" style="visibility: hidden" multiple onchange="AddLine()"></input></td>
                         <td style="text-align:right;"><h5>Directory</h5></td>
                         <td colspan="5"><input id="Directory"></input></td>
                         <script>
@@ -30925,27 +30985,31 @@
                 h = 'FileProperty' + i + '.8';
                 h = document.getElementById(h).value;
                 ref[i] = [a, b, c, d, e, f, g, h]
+                focus = i + 1;
             }
-            file = document.getElementById('AddLineInputFile').files[0];
+            files = document.getElementById('AddLineInputFile').files;
             //
-            var c = document.getElementsByClassName('Reference').length;
-            c = c + 1
-            var list = document.getElementById('FilesDetails');
-            var name = file.name;
-            var tr = document.createElement('tr');
-            tr.className = "Reference";
-            var r = "FileProperty" + c;
-            tr.id = r + '.Row';
-            b = 1 
-            var Reference = '';
-            var Status = '';
-            var WorkInProgress = '';
-            var Prepared = '';
-            var DatePrepared = '';
-            var Reviewed = '';
-            var DateReviewed = '';
-            AddFile(name, tr, b, r, list, Reference, Status, WorkInProgress, Prepared, DatePrepared, Reviewed, DateReviewed);
-            list.appendChild(tr)
+            for(let gg = 0; gg < files.length; gg++) {
+                //
+                var c = document.getElementsByClassName('Reference').length;
+                c = c + 1
+                var list = document.getElementById('FilesDetails');
+                var name = files[gg].name;
+                var tr = document.createElement('tr');
+                tr.className = "Reference";
+                var r = "FileProperty" + c;
+                tr.id = r + '.Row';
+                b = 1 
+                var Reference = '';
+                var Status = '';
+                var WorkInProgress = '';
+                var Prepared = '';
+                var DatePrepared = '';
+                var Reviewed = '';
+                var DateReviewed = '';
+                AddFile(name, tr, b, r, list, Reference, Status, WorkInProgress, Prepared, DatePrepared, Reviewed, DateReviewed);
+                list.appendChild(tr)
+            }
             document.getElementById('FilesDetails').innerHTML = list.innerHTML;
             //
             for(let i = 1; i <= trLength; i++) {
@@ -30969,7 +31033,7 @@
             //
             ReferenceVisibility();
             //
-            a = tr.id.replace('.Row','.2')
+            a = 'FileProperty' + focus + '.2'
             a = document.getElementById(a);
             a.focus()
             a.select()
