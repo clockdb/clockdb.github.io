@@ -20550,7 +20550,7 @@
                         <td colspan="2" style="display:none;"><input id="TotalAssetsExpectedReturn6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="WeightedAverageCostOfTotalAssetsRow" class="ClockRate">
-                        <td colspan="2"><h6>Weighted Average Cost Of Total Assets</h6></td>
+                        <td colspan="2"><h6>Weighted Cost Of Total Assets</h6></td>
                         <td style="text-align:center"><button id="WeightedAverageCostOfTotalAssetsNoteShortCut" data-page="CapitalizationRate" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">note 1</button></td>
                         <td></td>
                         <td>
@@ -20565,7 +20565,7 @@
                         <td colspan="2" style="display:none;"><input id="WeightedAverageCostOfTotalAssets6"></td>
                     </tr>
                     <tr id="RiskRelatedToVolatilityOfReturnOnTotalAssetsRow" class="ClockRate">
-                        <td colspan="2"><h6>Volatility Of Total Assets Risk Provision</h6></td>
+                        <td colspan="2"><h6>Volatility Of Total Assets</h6></td>
                         <td style="text-align:center"><button id="RiskRelatedToVolatilityOfReturnOnTotalAssetsNoteShortCut" data-page="CapitalizationRate" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">note 2</button></td>
                         <td></td>
                         <td>
@@ -20799,7 +20799,7 @@
                     <tr></tr>
                     <tr></tr>
                     <tr>
-                        <td colspan="6" style="padding-top: 50px; padding-bottom: 15px"><h6><b>NOTE 1: WEIGHTED AVERAGE COST OF TOTAL ASSETS</b></h6></td>
+                        <td colspan="6" style="padding-top: 50px; padding-bottom: 15px"><h6><b>NOTE 1: WEIGHTED COST OF TOTAL ASSETS</b></h6></td>
                     </tr>
                     <tr></tr>
                     <tr id='DividendPaidWeightedAverageCostOfTotalAssetsRow' class="TrialBalance">
@@ -21122,7 +21122,7 @@
                         <td colspan="2" style="display:none;"><input class='ClockRate' id="CostOfLiabilitiesWeightedAverageCostOfTotalAssets6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id='WeightedAverageCostOfTotalAssetsNoteRow' class="ClockRate">
-                        <td colspan="4"><h6>Cost Of Total Assets</h6></td>
+                        <td colspan="4"><h6>Weigthed Cost Of Total Assets</h6></td>
                         <td>
                             <input type="checkbox" id="WeightedAverageCostOfTotalAssetsNoteCheckbox"></input>
                             <input type="checkbox" id="WeightedAverageCostOfTotalAssetsNoteCheckbox2"></input>
@@ -21988,6 +21988,7 @@
                                 }
                                 a = a * parseFloat(document.getElementById('CostOfAssetCostOfTotalAssetAccruingToCommonShareholders1').value);
                                 document.getElementById('CostOfTotalAssetsAccruingToCommonShareholdersNote1').value = numUSD.format(a / 100);
+                                document.getElementById('CostOfTotalAssetsAccruingToCommonShareholders1').value = numUSD.format(-a / 100);
                                 // second last year
                                 a = Math.round(parseInt(document.getElementById('DividendPaidCostOfTotalAssetsAccruingToCommonShareholders2').value.replaceAll(/,/g, '')));
                                 b = a - Math.round(parseInt(document.getElementById('DividendPaidToMinorityInterestCostOfTotalAssetsAccruingToCommonShareholders2').value.replaceAll(/,/g, '')));
@@ -21998,6 +21999,7 @@
                                 }
                                 a = a * parseFloat(document.getElementById('CostOfAssetCostOfTotalAssetAccruingToCommonShareholders2').value);
                                 document.getElementById('CostOfTotalAssetsAccruingToCommonShareholdersNote2').value = numUSD.format(a / 100);
+                                document.getElementById('CostOfTotalAssetsAccruingToCommonShareholders2').value = numUSD.format(-a / 100);
                                 // third last year
                                 a = Math.round(parseInt(document.getElementById('DividendPaidCostOfTotalAssetsAccruingToCommonShareholders3').value.replaceAll(/,/g, '')));
                                 b = a - Math.round(parseInt(document.getElementById('DividendPaidToMinorityInterestCostOfTotalAssetsAccruingToCommonShareholders3').value.replaceAll(/,/g, '')));
@@ -22008,6 +22010,7 @@
                                 }
                                 a = a * parseFloat(document.getElementById('CostOfAssetCostOfTotalAssetAccruingToCommonShareholders3').value);
                                 document.getElementById('CostOfTotalAssetsAccruingToCommonShareholdersNote3').value = numUSD.format(a / 100);
+                                document.getElementById('CostOfTotalAssetsAccruingToCommonShareholders3').value = numUSD.format(-a / 100);
                                 // fourth last year
                                 a = Math.round(parseInt(document.getElementById('DividendPaidCostOfTotalAssetsAccruingToCommonShareholders4').value.replaceAll(/,/g, '')));
                                 b = a - Math.round(parseInt(document.getElementById('DividendPaidToMinorityInterestCostOfTotalAssetsAccruingToCommonShareholders4').value.replaceAll(/,/g, '')));
@@ -22018,6 +22021,7 @@
                                 }
                                 a = a * parseFloat(document.getElementById('CostOfAssetCostOfTotalAssetAccruingToCommonShareholders4').value);
                                 document.getElementById('CostOfTotalAssetsAccruingToCommonShareholdersNote4').value = numUSD.format(a / 100);
+                                document.getElementById('CostOfTotalAssetsAccruingToCommonShareholders4').value = numUSD.format(-a / 100);
                             };
                         </script>
                         <td colspan="2" style="border-bottom:double black;"><input class='Clock' id="CostOfTotalAssetsAccruingToCommonShareholdersNote1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
@@ -22158,7 +22162,7 @@
                     </tr>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">(b)</td>
-                        <td style="text-align:justify;" colspan="20" ><b>Weighted Average Cost Of Total Assets: </b>The average rate the company
+                        <td style="text-align:justify;" colspan="20" ><b>Weighted Cost Of Total Assets: </b>The average rate the company
                             pays to all security holders to finance the total assets.</td>
                     </tr>
                     <tr>
