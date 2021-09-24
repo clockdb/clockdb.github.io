@@ -26,8 +26,14 @@
 
     //
     function Rollover() {
+        var numUSD = new Intl.NumberFormat("en-US", {
+            format: "number"
+        });
+        //
         Save();
+        //
         UnhideCheckbox();
+        //
         var a = document.getElementById('ClearCheckboxes').checked
         if (a == true) {
             ClearCheckboxes();
@@ -106,7 +112,7 @@
                 if (a == 'ShareholdersEquityBeginningBalance') {
                     b = input1.replace('TrialBalance','')
                     b = document.getElementById(b).value.replaceAll(/,/g, '');
-                    document.getElementById(input1).value = -b;
+                    document.getElementById(input1).value = numUSD.format(-b);
                 }
             }
         };
