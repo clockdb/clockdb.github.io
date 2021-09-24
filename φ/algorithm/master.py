@@ -11988,16 +11988,8 @@ try:
                                 #
                                 # Theorical Annual Interest Charge
                                 try:
-                                    z = tb.ShortTermBorrowings
-                                    z = z + tb.CommercialPapers
-                                    z = z + tb.FinanceLeasesCurrent
-                                    z = z + tb.ShortTermPortionOfLongTermDebt
-                                    z = z + tb.LongTermDebt
-                                    z = z + tb.OperatingLeasesNonCurrent
-                                    z = z + tb.FinanceLeasesNonCurrent
-                                    z = z + tb.LeaseIncentiveObligation
-                                    z = z * -0.035
-                                    a.NormalizedTheoricalInterestCharge = z
+                                    z = 0.035
+                                    a.TheoricalInterestRate = z
                                 except:
                                     pass
                                 #

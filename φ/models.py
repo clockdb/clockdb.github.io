@@ -416,10 +416,9 @@ class AuditData(models.Model):
     #
     TargetWorkingCapital = models.FloatField(default=1.2)
     ReinvestmentOfMaintenance = models.IntegerField(default=0)
-    NormalizedTheoricalInterestCharge = models.IntegerField(default=0)
     NormalizedDividendPaymentToNonControllingInterests = models.IntegerField(default=0)
     NormalizedDividendPaymentToPreferredShareholders = models.IntegerField(default=0)
-    NormalizedTheoricalInterestCharge = models.IntegerField(default=0)
+    TheoricalInterestRate = models.IntegerField(default=0.035)
     TheoricalTaxRate = models.FloatField(default=0.25)
     CapitalizationRateFloor = models.FloatField(default=0.021)
     #
