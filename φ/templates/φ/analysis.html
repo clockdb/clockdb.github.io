@@ -78,19 +78,19 @@
                 input5 = row + 5
                 input6 = row + 6
                 //
-                if (trclass == 'OpinionThree') {
-                } else {
-                    document.getElementById(input3).value = document.getElementById(input2).value;
-                    document.getElementById(input2).value = document.getElementById(input1).value;
-                    document.getElementById(input4).value = document.getElementById(input3).value;
-                }
                 if (trclass == 'OpinionFour') {
                 } else {
                     document.getElementById(input6).value = document.getElementById(input5).value;
                     document.getElementById(input5).value = document.getElementById(input4).value;
                 }
+                if (trclass == 'OpinionThree') {
+                } else {
+                    document.getElementById(input4).value = document.getElementById(input3).value;
+                    document.getElementById(input3).value = document.getElementById(input2).value;
+                    document.getElementById(input2).value = document.getElementById(input1).value;
+                }
                 try {
-                    var a = parseInt(document.getElementById(input1).value.replaceAll(/,/g, ''))
+                    var a = parseInt(document.getElementById(input1).value.replaceAll(/,/g, ''));
                 } catch {}
                 if (Math.abs(a) > 1) {
                     document.getElementById(input1).value = 0
@@ -105,7 +105,8 @@
                 }
                 if (a == 'ShareholdersEquityBeginningBalance') {
                     b = input1.replace('TrialBalance','')
-                    document.getElementById(input1).value = document.getElementById(b).value
+                    b = document.getElementById(b).value.replaceAll(/,/g, '');
+                    document.getElementById(input1).value = -b;
                 }
             }
         };
