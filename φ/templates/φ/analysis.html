@@ -322,6 +322,266 @@
         })
         document.querySelector(`#${page}`).style.display = 'block';
     }
+    //
+    // keys
+    document.addEventListener('keydown', (event) => {
+        i = 110
+        ii = 107
+        iii = 13
+        keys = [i, ii, iii]
+        if (keys.includes(event.keyCode) && (event.ctrlKey || event.metaKey)) {
+            event.preventDefault();
+            if (event.keyCode == i) {
+                page = 'Context'
+                showPage(page)
+                history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
+                window.scrollTo(0, 280)
+            }
+            if (event.keyCode == ii) {
+                page = 'Graph'
+                showPage(page)
+                history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
+                window.scrollTo(0, 280)
+            }
+            if (event.keyCode == iii) {
+                page = 'Opinion'
+                showPage(page)
+                history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
+                window.scrollTo(0, 280)
+            }
+        }
+    });
+    //
+    // valuations
+    document.addEventListener('keydown', (event) => {
+        i = ['MetaLeft']
+        ii = ['ControlLeft']
+        keys = [i, ii]
+        if (keys.includes(event.code)) {
+        } else {
+            //
+            i = 'Numpad0'
+            ii = 'Numpad1'
+            iii = 'Numpad2'
+            iv = 'Numpad3'
+            v = 'Numpad4'
+            vi = 'Numpad5'
+            vii = 'Numpad6'
+            viii = 'Numpad7'
+            ix = 'Numpad8'
+            x = 'Numpad9'
+            //
+            keys = [i, ii, iii, iv, v, vi, vii, viii, ix, x]
+            //
+            if (keys.includes(event.code) && (event.altKey || event.metaKey)) {
+                //
+                event.preventDefault();
+                //
+                // trial balances
+                if (event.code == i) {
+                    page = 'IntrinsicValues'
+                }
+                // cash flows
+                if (event.code == ii) {
+                    page = 'CapitalizedCashFlow'
+                }
+                // balance sheets
+                if (event.code == iii) {
+                    page = 'CapitalizationRate'
+                }
+                // income statements
+                if (event.code == iv) {
+                    page = 'CapitalizedIncome'
+                }
+                // comprehensive income
+                if (event.code == v) {
+                    page = 'AdditionalInformation'
+                }
+                // shareholders equity
+                if (event.code == vi) {
+                    page = 'AnnualFinancialRatios'
+                }
+                showPage(page)
+                history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
+                window.scrollTo(0, 280);
+            }
+        }
+    });
+    //
+    // financials
+    document.addEventListener('keydown', (event) => {
+        i = ['MetaLeft']
+        ii = ['AltLeft']
+        keys = [i, ii]
+        if (keys.includes(event.code)) {
+        } else {
+            i = 'Numpad0'
+            ii = 'Numpad1'
+            iii = 'Numpad2'
+            iv = 'Numpad3'
+            v = 'Numpad4'
+            vi = 'Numpad5'
+            //
+            keys = [i, ii, iii, iv, v, vi]
+            //
+            if (keys.includes(event.code) && (event.ctrlKey || event.metaKey)) {
+                //
+                event.preventDefault();
+                //
+                // trial balances
+                if (event.code == i) {
+                    page = 'AnnualTrialBalances'
+                }
+                // cash flows
+                if (event.code == ii) {
+                    page = 'AnnualCashFlow'
+                }
+                // balance sheets
+                if (event.code == iii) {
+                    page = 'AnnualBalanceSheets'
+                }
+                // income statements
+                if (event.code == iv) {
+                    page = 'AnnualIncomeStatements'
+                }
+                // comprehensive income
+                if (event.code == v) {
+                    page = 'AnnualComprehensiveIncome'
+                }
+                // shareholders equity
+                if (event.code == vi) {
+                    page = 'AnnualShareholdersEquity'
+                }
+                showPage(page)
+                history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
+                window.scrollTo(0, 280);
+            }
+        }
+    });
+
+    // audit
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'Numpad0' && (event.winKey || event.metaKey)) {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('AuditSummary').style.display = 'block';
+            const url = 'AuditSummary'
+            //
+            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
+            window.scrollTo(0, 280);
+        }
+    });
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'Numpad6' && (event.winKey || event.metaKey)) {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('AuditDetailed').style.display = 'block';
+            const url = 'AuditDetailed'
+            //
+            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
+            window.scrollTo(0, 280);
+        }
+    });
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'Numpad7' && (event.winKey || event.metaKey)) {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('MaterialityThreshold').style.display = 'block';
+            const url = 'MaterialityThreshold'
+            //
+            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
+            window.scrollTo(0, 280);
+        }
+    });    
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'Numpad8' && (event.winKey || event.metaKey)) {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('Mission').style.display = 'block';
+            const url = 'Mission'
+            //
+            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
+            window.scrollTo(0, 280);
+        }
+    });
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'Numpad2' && (event.winKey || event.metaKey)) {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('ProcedureAnnualBalanceSheets').style.display = 'block';
+            const url = 'ProcedureAnnualBalanceSheets'
+            //
+            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
+            window.scrollTo(0, 280);
+        }
+    });
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'Numpad3' && (event.winKey || event.metaKey)) {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('ProcedureAnnualIncomeStatements').style.display = 'block';
+            const url = 'ProcedureAnnualIncomeStatements'
+            //
+            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
+            window.scrollTo(0, 280);
+        }
+    });
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'Numpad4' && (event.winKey || event.metaKey)) {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('ProcedureAnnualComprehensiveIncome').style.display = 'block';
+            const url = 'ProcedureAnnualComprehensiveIncome'
+            //
+            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
+            window.scrollTo(0, 280);
+        }
+    });
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'Numpad5' && (event.winKey || event.metaKey)) {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('ProcedureAnnualShareholdersEquity').style.display = 'block';
+            const url = 'ProcedureAnnualShareholdersEquity'
+            //
+            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
+            window.scrollTo(0, 280);
+        }
+    });
+    document.addEventListener('keydown', function(event) {
+        if (event.code == 'Numpad1' && (event.winKey || event.metaKey)) {
+            event.preventDefault();
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            document.getElementById('ProcedureAnnualCashFlow').style.display = 'block';
+            const url = 'ProcedureAnnualCashFlow'
+            //
+            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
+            window.scrollTo(0, 280);
+        }
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('Graph').style.display = 'block';
+        window.scrollTo(0, 0);
+    });
+    // mouseover button
     document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('button').forEach(button => {
             button.onmouseover = function() {
@@ -341,6 +601,7 @@
             };
         });
     });
+    // button click
     document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('button').forEach(button => {
             button.onclick = function() {
@@ -682,19 +943,14 @@
         if (keys.includes(event.keyCode)) {
             //
             try {
-                //
                 cells = document.querySelectorAll('input');
-                //
                 cell = event.target;
-                //
                 column = cell.id.slice(-1);
-                //
                 for(let i = 0; i < cells.length; i++) {
                     if (cell === cells[i]) {
                         cellrank = i;
                     }
                 }
-                //
                 g = 1;
                 if (up.includes(event.keyCode)) {
                     g = -1;
@@ -704,9 +960,7 @@
                 } else {
                     o = 8 * g;
                 }
-                //
                 p = cellrank + o
-                //
                 visiblerow = 0
                 while (visiblerow === 0) {
                     nextcell = cells[p].id
@@ -718,7 +972,6 @@
                     } else {
                         visiblerow = 1;
                     }
-                    //
                 }
                 cells[p].focus()
                 cells[p].select()
@@ -749,270 +1002,6 @@
             }
         }
     });
-    //
-    // keys
-    document.addEventListener('keydown', (event) => {
-        i = 110
-        ii = 107
-        iii = 13
-        keys = [i, ii, iii]
-        if (keys.includes(event.keyCode) && (event.ctrlKey || event.metaKey)) {
-            event.preventDefault();
-            if (event.keyCode == i) {
-                a = 'Context'
-            }
-            if (event.keyCode == ii) {
-                a = 'Graph'
-            }
-            if (event.keyCode == iii) {
-                a = 'Opinion'
-            }
-            document.querySelectorAll('div').forEach(div => {
-                div.style.display = 'none';
-            })
-            
-            document.getElementById(a).style.display = 'block';
-            window.scrollTo(0, 280)
-        }
-    });
-    //
-    // valuations
-    document.addEventListener('keydown', (event) => {
-        i = ['MetaLeft']
-        ii = ['ControlLeft']
-        keys = [i, ii]
-        if (keys.includes(event.code)) {
-        } else {
-            //
-            i = 'Numpad0'
-            ii = 'Numpad1'
-            iii = 'Numpad2'
-            iv = 'Numpad3'
-            v = 'Numpad4'
-            vi = 'Numpad5'
-            vii = 'Numpad6'
-            viii = 'Numpad7'
-            ix = 'Numpad8'
-            x = 'Numpad9'
-            //
-            keys = [i, ii, iii, iv, v, vi, vii, viii, ix, x]
-            //
-            if (keys.includes(event.code) && (event.altKey || event.metaKey)) {
-                //
-                event.preventDefault();
-                //
-                // trial balances
-                if (event.code == i) {
-                    a = 'IntrinsicValues'
-                }
-                // cash flows
-                if (event.code == ii) {
-                    a = 'CapitalizedCashFlow'
-                }
-                // balance sheets
-                if (event.code == iii) {
-                    a = 'CapitalizationRate'
-                }
-                // income statements
-                if (event.code == iv) {
-                    a = 'CapitalizedIncome'
-                }
-                // comprehensive income
-                if (event.code == v) {
-                    a = 'AdditionalInformation'
-                }
-                // shareholders equity
-                if (event.code == vi) {
-                    a = 'AnnualFinancialRatios'
-                }
-                document.querySelectorAll('div').forEach(div => {
-                    div.style.display = 'none';
-                })
-                document.getElementById(a).style.display = 'block';
-                window.scrollTo(0, 280);
-                history.pushState({a}, ``, `/{{ entity.TradingSymbol }}/${a}`);
-            }
-        }
-    });
-    //
-    // financials
-    document.addEventListener('keydown', (event) => {
-        i = ['MetaLeft']
-        ii = ['AltLeft']
-        keys = [i, ii]
-        if (keys.includes(event.code)) {
-        } else {
-            i = 'Numpad0'
-            ii = 'Numpad1'
-            iii = 'Numpad2'
-            iv = 'Numpad3'
-            v = 'Numpad4'
-            vi = 'Numpad5'
-            //
-            keys = [i, ii, iii, iv, v, vi]
-            //
-            if (keys.includes(event.code) && (event.ctrlKey || event.metaKey)) {
-                //
-                event.preventDefault();
-                //
-                // trial balances
-                if (event.code == i) {
-                    a = 'AnnualTrialBalances'
-                }
-                // cash flows
-                if (event.code == ii) {
-                    a = 'AnnualCashFlow'
-                }
-                // balance sheets
-                if (event.code == iii) {
-                    a = 'AnnualBalanceSheets'
-                }
-                // income statements
-                if (event.code == iv) {
-                    a = 'AnnualIncomeStatements'
-                }
-                // comprehensive income
-                if (event.code == v) {
-                    a = 'AnnualComprehensiveIncome'
-                }
-                // shareholders equity
-                if (event.code == vi) {
-                    a = 'AnnualShareholdersEquity'
-                }
-                document.querySelectorAll('div').forEach(div => {
-                    div.style.display = 'none';
-                });
-                document.getElementById(a).style.display = 'block';
-                window.scrollTo(0, 280);
-                history.pushState({a}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${a}`);
-            }
-        }
-    });
-
-    // audit
-    document.addEventListener('keydown', function(event) {
-        if (event.code == 'Numpad0' && (event.winKey || event.metaKey)) {
-            event.preventDefault();
-            document.querySelectorAll('div').forEach(div => {
-                div.style.display = 'none';
-            })
-            document.getElementById('AuditSummary').style.display = 'block';
-            const url = 'AuditSummary'
-            //
-            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
-            window.scrollTo(0, 280);
-        }
-    });
-    document.addEventListener('keydown', function(event) {
-        if (event.code == 'Numpad6' && (event.winKey || event.metaKey)) {
-            event.preventDefault();
-            document.querySelectorAll('div').forEach(div => {
-                div.style.display = 'none';
-            })
-            document.getElementById('AuditDetailed').style.display = 'block';
-            const url = 'AuditDetailed'
-            //
-            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
-            window.scrollTo(0, 280);
-        }
-    });
-    document.addEventListener('keydown', function(event) {
-        if (event.code == 'Numpad7' && (event.winKey || event.metaKey)) {
-            event.preventDefault();
-            document.querySelectorAll('div').forEach(div => {
-                div.style.display = 'none';
-            })
-            document.getElementById('MaterialityThreshold').style.display = 'block';
-            const url = 'MaterialityThreshold'
-            //
-            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
-            window.scrollTo(0, 280);
-        }
-    });    
-    document.addEventListener('keydown', function(event) {
-        if (event.code == 'Numpad8' && (event.winKey || event.metaKey)) {
-            event.preventDefault();
-            document.querySelectorAll('div').forEach(div => {
-                div.style.display = 'none';
-            })
-            document.getElementById('Mission').style.display = 'block';
-            const url = 'Mission'
-            //
-            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
-            window.scrollTo(0, 280);
-        }
-    });
-    document.addEventListener('keydown', function(event) {
-        if (event.code == 'Numpad2' && (event.winKey || event.metaKey)) {
-            event.preventDefault();
-            document.querySelectorAll('div').forEach(div => {
-                div.style.display = 'none';
-            })
-            document.getElementById('ProcedureAnnualBalanceSheets').style.display = 'block';
-            const url = 'ProcedureAnnualBalanceSheets'
-            //
-            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
-            window.scrollTo(0, 280);
-        }
-    });
-    document.addEventListener('keydown', function(event) {
-        if (event.code == 'Numpad3' && (event.winKey || event.metaKey)) {
-            event.preventDefault();
-            document.querySelectorAll('div').forEach(div => {
-                div.style.display = 'none';
-            })
-            document.getElementById('ProcedureAnnualIncomeStatements').style.display = 'block';
-            const url = 'ProcedureAnnualIncomeStatements'
-            //
-            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
-            window.scrollTo(0, 280);
-        }
-    });
-    document.addEventListener('keydown', function(event) {
-        if (event.code == 'Numpad4' && (event.winKey || event.metaKey)) {
-            event.preventDefault();
-            document.querySelectorAll('div').forEach(div => {
-                div.style.display = 'none';
-            })
-            document.getElementById('ProcedureAnnualComprehensiveIncome').style.display = 'block';
-            const url = 'ProcedureAnnualComprehensiveIncome'
-            //
-            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
-            window.scrollTo(0, 280);
-        }
-    });
-    document.addEventListener('keydown', function(event) {
-        if (event.code == 'Numpad5' && (event.winKey || event.metaKey)) {
-            event.preventDefault();
-            document.querySelectorAll('div').forEach(div => {
-                div.style.display = 'none';
-            })
-            document.getElementById('ProcedureAnnualShareholdersEquity').style.display = 'block';
-            const url = 'ProcedureAnnualShareholdersEquity'
-            //
-            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
-            window.scrollTo(0, 280);
-        }
-    });
-    document.addEventListener('keydown', function(event) {
-        if (event.code == 'Numpad1' && (event.winKey || event.metaKey)) {
-            event.preventDefault();
-            document.querySelectorAll('div').forEach(div => {
-                div.style.display = 'none';
-            })
-            document.getElementById('ProcedureAnnualCashFlow').style.display = 'block';
-            const url = 'ProcedureAnnualCashFlow'
-            //
-            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
-            window.scrollTo(0, 280);
-        }
-    });
-    
-    document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('Graph').style.display = 'block';
-        window.scrollTo(0, 0);
-    });
-
 </script>
 
 <Section id="φ">
@@ -20495,7 +20484,7 @@
                         <td colspan="2"><input id="TheoricalTaxRate6" class="ClockRate" value = "{{ AuditData_sixthlastyear.TheoricalTaxRate }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                     </tr>
                     <tr id="NormalizedDividendPaymentToNonControllingInterestsRow" class="Opinion">
-                        <td colspan="2"><h6>Normalized Dividend Payment To Non Controlling Interests</h6></td>
+                        <td colspan="2"><h6>Dividend Payment To Non Controlling Interests</h6></td>
                         <td style="color:#0d47a1; text-align:center; font-weight:bold;">(e)</td>
                         <td></td>
                         <td>
@@ -20510,7 +20499,7 @@
                         <td colspan="2"><input id="NormalizedDividendPaymentToNonControllingInterests6" class='Clock' value = "{{ AuditData_sixthlastyear.NormalizedDividendPaymentToNonControllingInterests }}" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                     </tr>
                     <tr id="NormalizedDividendPaymentToPreferredShareholdersRow" class="Opinion">
-                        <td colspan="2"><h6>Normalized Dividend Payment To Preferred Shareholders'</h6></td>
+                        <td colspan="2"><h6>Dividend Payment To Preferred Shareholders'</h6></td>
                         <td style="color:#0d47a1; text-align:center; font-weight:bold;">(f)</td>
                         <td></td>
                         <td>
@@ -20592,13 +20581,13 @@
                     </tr>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">(e)</td>
-                        <td style="text-align:justify;" colspan="20" ><b>Normalized Dividend Payment To Non Controlling Interests:</b>
-                            For the purpose of computing the Weighted Average Cost Of Total Assets (Capitalization Rate Computation).
+                        <td style="text-align:justify;" colspan="20" ><b>Dividend Payment To Non Controlling Interests:</b>
+                            Dividend payment to other than common shareholders are to be added back in the calculation of your cost of total assets for the purpose of finding your capitalization rate.
                         </td>
                     </tr>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">(f)</td>
-                        <td style="text-align:justify;" colspan="20" ><b>Normalized Dividend Payment To Preferred Shareholders':</b>
+                        <td style="text-align:justify;" colspan="20" ><b>Dividend Payment To Preferred Shareholders':</b>
                             Id.
                         </td>
                     </tr>
@@ -21906,8 +21895,8 @@
                             function GrossMarginGrowth(GrossMarginGrowth) {
                                 var numUSD = new Intl.NumberFormat("en-US", {
                                     style: "percent",
-                                    minimumFractionDigits: 2,
-                                    maximumFractionDigits: 2,
+                                    minimumFractionDigits: 1,
+                                    maximumFractionDigits: 1,
                                 })
                                 // Column 1
                                 a = parseInt(document.getElementById('GrossMarginExpectedGrowthOnReturnOnAssets1').value.replaceAll(/,/g, ''));
@@ -21950,8 +21939,8 @@
                             function GrossMarginGrowthPriorYear(GrossMarginGrowthPriorYear) {
                                 var numUSD = new Intl.NumberFormat("en-US", {
                                     style: "percent",
-                                    minimumFractionDigits: 2,
-                                    maximumFractionDigits: 2,
+                                    minimumFractionDigits: 1,
+                                    maximumFractionDigits: 1,
                                 })
                                 // Column 1
                                 a = parseInt(document.getElementById('GrossMarginExpectedGrowthOnReturnOnAssetsPriorYear1').value.replaceAll(/,/g, ''));
@@ -21994,8 +21983,8 @@
                             function ExpectedGrowthNote(ExpectedGrowthNote) {
                                 var numUSD = new Intl.NumberFormat("en-US", {
                                     style: "percent",
-                                    minimumFractionDigits: 2,
-                                    maximumFractionDigits: 2,
+                                    minimumFractionDigits: 1,
+                                    maximumFractionDigits: 1,
                                 })
                                 // Column 1
                                 a = parseFloat(document.getElementById('GrossMarginGrowth1').value);
