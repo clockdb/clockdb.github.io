@@ -20817,22 +20817,22 @@
                                     format: "number"
                                 })
                                 // last year
-                                a = Math.round(parseInt(document.getElementById('PaymentsOfDividends1').value.replaceAll(/,/g, '')))
+                                a = -Math.round(parseInt(document.getElementById('PaymentsOfDividends1').value.replaceAll(/,/g, '')))
                                 document.getElementById('DividendPaidWeightedAverageCostOfTotalAssets1').value = numUSD.format(a);
                                 // second last year
-                                a = Math.round(parseInt(document.getElementById('PaymentsOfDividends2').value.replaceAll(/,/g, '')))
+                                a = -Math.round(parseInt(document.getElementById('PaymentsOfDividends2').value.replaceAll(/,/g, '')))
                                 document.getElementById('DividendPaidWeightedAverageCostOfTotalAssets2').value = numUSD.format(a);
                                 // third last year
-                                a = Math.round(parseInt(document.getElementById('PaymentsOfDividends3').value.replaceAll(/,/g, '')))
+                                a = -Math.round(parseInt(document.getElementById('PaymentsOfDividends3').value.replaceAll(/,/g, '')))
                                 document.getElementById('DividendPaidWeightedAverageCostOfTotalAssets3').value = numUSD.format(a);
                                 // fourth last year
-                                a = Math.round(parseInt(document.getElementById('PaymentsOfDividends4').value.replaceAll(/,/g, '')))
+                                a = -Math.round(parseInt(document.getElementById('PaymentsOfDividends4').value.replaceAll(/,/g, '')))
                                 document.getElementById('DividendPaidWeightedAverageCostOfTotalAssets4').value = numUSD.format(a);
                                 // fifth last year
-                                a = Math.round(parseInt(document.getElementById('PaymentsOfDividends5').value.replaceAll(/,/g, '')))
+                                a = -Math.round(parseInt(document.getElementById('PaymentsOfDividends5').value.replaceAll(/,/g, '')))
                                 document.getElementById('DividendPaidWeightedAverageCostOfTotalAssets5').value = numUSD.format(a);
                                 // sixth last year
-                                a = Math.round(parseInt(document.getElementById('PaymentsOfDividends6').value.replaceAll(/,/g, '')))
+                                a = -Math.round(parseInt(document.getElementById('PaymentsOfDividends6').value.replaceAll(/,/g, '')))
                                 document.getElementById('DividendPaidWeightedAverageCostOfTotalAssets6').value = numUSD.format(a);
                             };
                         </script>
@@ -20900,27 +20900,33 @@
                                 });
                                 z = 0
                                 // last year
-                                a = Math.round(parseInt(document.getElementById('DividendPaidWeightedAverageCostOfTotalAssets1').value.replaceAll(/,/g, '')))
+                                a = Math.round(parseInt(document.getElementById('DividendPaidWeightedAverageCostOfTotalAssets1').value.replaceAll(/,/g, '')));
+                                a = a / Math.round(parseInt(document.getElementById('AssetsWeightedAverageCostOfTotalAssets1').value.replaceAll(/,/g, '')));
                                 document.getElementById('CostOfAssetsWeightedAverageCostOfTotalAssets1').value = numUSD.format(a);
                                 document.getElementById('CostOfAssetCostOfTotalAssetAccruingToCommonShareholders1').value = numUSD.format(a);
                                 // second last year
-                                a = Math.round(parseInt(document.getElementById('DividendPaidWeightedAverageCostOfTotalAssets2').value.replaceAll(/,/g, '')))
+                                a = Math.round(parseInt(document.getElementById('DividendPaidWeightedAverageCostOfTotalAssets2').value.replaceAll(/,/g, '')));
+                                a = a / Math.round(parseInt(document.getElementById('AssetsWeightedAverageCostOfTotalAssets2').value.replaceAll(/,/g, '')));
                                 document.getElementById('CostOfAssetsWeightedAverageCostOfTotalAssets2').value = numUSD.format(a);
                                 document.getElementById('CostOfAssetCostOfTotalAssetAccruingToCommonShareholders2').value = numUSD.format(a);
                                 // third last year
-                                a = Math.round(parseInt(document.getElementById('DividendPaidWeightedAverageCostOfTotalAssets3').value.replaceAll(/,/g, '')))
+                                a = Math.round(parseInt(document.getElementById('DividendPaidWeightedAverageCostOfTotalAssets3').value.replaceAll(/,/g, '')));
+                                a = a / Math.round(parseInt(document.getElementById('AssetsWeightedAverageCostOfTotalAssets3').value.replaceAll(/,/g, '')));
                                 document.getElementById('CostOfAssetsWeightedAverageCostOfTotalAssets3').value = numUSD.format(a);
                                 document.getElementById('CostOfAssetCostOfTotalAssetAccruingToCommonShareholders3').value = numUSD.format(a);
                                 // fourth last year
-                                a = Math.round(parseInt(document.getElementById('DividendPaidWeightedAverageCostOfTotalAssets4').value.replaceAll(/,/g, '')))
+                                a = Math.round(parseInt(document.getElementById('DividendPaidWeightedAverageCostOfTotalAssets4').value.replaceAll(/,/g, '')));
+                                a = a / Math.round(parseInt(document.getElementById('AssetsWeightedAverageCostOfTotalAssets4').value.replaceAll(/,/g, '')));
                                 document.getElementById('CostOfAssetsWeightedAverageCostOfTotalAssets4').value = numUSD.format(a);
                                 document.getElementById('CostOfAssetCostOfTotalAssetAccruingToCommonShareholders4').value = numUSD.format(a);
                                 // fifth last year
-                                a = Math.round(parseInt(document.getElementById('DividendPaidWeightedAverageCostOfTotalAssets5').value.replaceAll(/,/g, '')))
+                                a = Math.round(parseInt(document.getElementById('DividendPaidWeightedAverageCostOfTotalAssets5').value.replaceAll(/,/g, '')));
+                                a = a / Math.round(parseInt(document.getElementById('AssetsWeightedAverageCostOfTotalAssets5').value.replaceAll(/,/g, '')));
                                 document.getElementById('CostOfAssetsWeightedAverageCostOfTotalAssets5').value = numUSD.format(a);
                                 document.getElementById('CostOfAssetCostOfTotalAssetAccruingToCommonShareholders5').value = numUSD.format(a);
                                 // sixth last year
-                                a = Math.round(parseInt(document.getElementById('DividendPaidWeightedAverageCostOfTotalAssets6').value.replaceAll(/,/g, '')))
+                                a = Math.round(parseInt(document.getElementById('DividendPaidWeightedAverageCostOfTotalAssets6').value.replaceAll(/,/g, '')));
+                                a = a / Math.round(parseInt(document.getElementById('AssetsWeightedAverageCostOfTotalAssets6').value.replaceAll(/,/g, '')));
                                 document.getElementById('CostOfAssetsWeightedAverageCostOfTotalAssets6').value = numUSD.format(a);
                                 document.getElementById('CostOfAssetCostOfTotalAssetAccruingToCommonShareholders6').value = numUSD.format(a);
                             };
@@ -21704,23 +21710,23 @@
                                 // Column 1
                                 a = parseInt(document.getElementById('GrossMarginExpectedGrowthOnReturnOnAssets1').value.replaceAll(/,/g, ''));
                                 b = a - parseInt(document.getElementById('GrossMarginExpectedGrowthOnReturnOnAssetsPriorYear1').value.replaceAll(/,/g, ''));
-                                a = a / b
-                                document.getElementById('GrossMarginGrowth1').value = numUSD.format(a / 100);
+                                a = b / a
+                                document.getElementById('GrossMarginGrowth1').value = numUSD.format(a);
                                 // Column 2
                                 a = parseInt(document.getElementById('GrossMarginExpectedGrowthOnReturnOnAssets2').value.replaceAll(/,/g, ''));
                                 b = a - parseInt(document.getElementById('GrossMarginExpectedGrowthOnReturnOnAssetsPriorYear2').value.replaceAll(/,/g, ''));
-                                a = a / b
-                                document.getElementById('GrossMarginGrowth2').value = numUSD.format(a / 100);
+                                a = b / a
+                                document.getElementById('GrossMarginGrowth2').value = numUSD.format(a);
                                 // Column 3
                                 a = parseInt(document.getElementById('GrossMarginExpectedGrowthOnReturnOnAssets3').value.replaceAll(/,/g, ''));
                                 b = a - parseInt(document.getElementById('GrossMarginExpectedGrowthOnReturnOnAssetsPriorYear3').value.replaceAll(/,/g, ''));
-                                a = a / b
-                                document.getElementById('GrossMarginGrowth3').value = numUSD.format(a / 100);
+                                a = b / a
+                                document.getElementById('GrossMarginGrowth3').value = numUSD.format(a);
                                 // Column 4
                                 a = parseInt(document.getElementById('GrossMarginExpectedGrowthOnReturnOnAssets4').value.replaceAll(/,/g, ''));
                                 b = a - parseInt(document.getElementById('GrossMarginExpectedGrowthOnReturnOnAssetsPriorYear4').value.replaceAll(/,/g, ''));
-                                a = a / b
-                                document.getElementById('GrossMarginGrowth4').value = numUSD.format(a / 100);
+                                a = b / a
+                                document.getElementById('GrossMarginGrowth4').value = numUSD.format(a);
                             };
                         </script>
                         <td colspan="2" style="border-bottom-style:ridge;"><input class='Clock' id="GrossMarginGrowth1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
@@ -21748,23 +21754,23 @@
                                 // Column 1
                                 a = parseInt(document.getElementById('GrossMarginExpectedGrowthOnReturnOnAssetsPriorYear1').value.replaceAll(/,/g, ''));
                                 b = a - parseInt(document.getElementById('GrossMarginExpectedGrowthOnReturnOnAssetsSecondPriorYear1').value.replaceAll(/,/g, ''));
-                                a = a / b
-                                document.getElementById('GrossMarginGrowthPriorYear1').value = numUSD.format(a / 100);
+                                a = b / a
+                                document.getElementById('GrossMarginGrowthPriorYear1').value = numUSD.format(a);
                                 // Column 2
                                 a = parseInt(document.getElementById('GrossMarginExpectedGrowthOnReturnOnAssetsPriorYear2').value.replaceAll(/,/g, ''));
                                 b = a - parseInt(document.getElementById('GrossMarginExpectedGrowthOnReturnOnAssetsSecondPriorYear2').value.replaceAll(/,/g, ''));
-                                a = a / b
-                                document.getElementById('GrossMarginGrowthPriorYear2').value = numUSD.format(a / 100);
+                                a = b / a
+                                document.getElementById('GrossMarginGrowthPriorYear2').value = numUSD.format(a);
                                 // Column 3
                                 a = parseInt(document.getElementById('GrossMarginExpectedGrowthOnReturnOnAssetsPriorYear3').value.replaceAll(/,/g, ''));
                                 b = a - parseInt(document.getElementById('GrossMarginExpectedGrowthOnReturnOnAssetsSecondPriorYear3').value.replaceAll(/,/g, ''));
-                                a = a / b
-                                document.getElementById('GrossMarginGrowthPriorYear3').value = numUSD.format(a / 100);
+                                a = b / a
+                                document.getElementById('GrossMarginGrowthPriorYear3').value = numUSD.format(a);
                                 // Column 4
                                 a = parseInt(document.getElementById('GrossMarginExpectedGrowthOnReturnOnAssetsPriorYear4').value.replaceAll(/,/g, ''));
                                 b = a - parseInt(document.getElementById('GrossMarginExpectedGrowthOnReturnOnAssetsSecondPriorYear4').value.replaceAll(/,/g, ''));
-                                a = a / b
-                                document.getElementById('GrossMarginGrowthPriorYear4').value = numUSD.format(a / 100);
+                                a = b / a
+                                document.getElementById('GrossMarginGrowthPriorYear4').value = numUSD.format(a);
                             };
                         </script>
                         <td colspan="2" style="border-bottom-style:ridge;"><input class='Clock' id="GrossMarginGrowthPriorYear1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
@@ -21842,23 +21848,17 @@
                                     format: "number"
                                 })
                                 // last year
-                                a = Math.round(parseInt(document.getElementById('PaymentsOfDividends1').value.replaceAll(/,/g, '')))
+                                a = -Math.round(parseInt(document.getElementById('PaymentsOfDividends1').value.replaceAll(/,/g, '')))
                                 document.getElementById('DividendPaidCostOfTotalAssetsAccruingToCommonShareholders1').value = numUSD.format(a);
                                 // second last year
-                                a = Math.round(parseInt(document.getElementById('PaymentsOfDividends2').value.replaceAll(/,/g, '')))
+                                a = -Math.round(parseInt(document.getElementById('PaymentsOfDividends2').value.replaceAll(/,/g, '')))
                                 document.getElementById('DividendPaidCostOfTotalAssetsAccruingToCommonShareholders2').value = numUSD.format(a);
                                 // third last year
-                                a = Math.round(parseInt(document.getElementById('PaymentsOfDividends3').value.replaceAll(/,/g, '')))
+                                a = -Math.round(parseInt(document.getElementById('PaymentsOfDividends3').value.replaceAll(/,/g, '')))
                                 document.getElementById('DividendPaidCostOfTotalAssetsAccruingToCommonShareholders3').value = numUSD.format(a);
                                 // fourth last year
-                                a = Math.round(parseInt(document.getElementById('PaymentsOfDividends4').value.replaceAll(/,/g, '')))
+                                a = -Math.round(parseInt(document.getElementById('PaymentsOfDividends4').value.replaceAll(/,/g, '')))
                                 document.getElementById('DividendPaidCostOfTotalAssetsAccruingToCommonShareholders4').value = numUSD.format(a);
-                                // fifth last year
-                                a = Math.round(parseInt(document.getElementById('PaymentsOfDividends5').value.replaceAll(/,/g, '')))
-                                document.getElementById('DividendPaidCostOfTotalAssetsAccruingToCommonShareholders5').value = numUSD.format(a);
-                                // sixth last year
-                                a = Math.round(parseInt(document.getElementById('PaymentsOfDividends6').value.replaceAll(/,/g, '')))
-                                document.getElementById('DividendPaidCostOfTotalAssetsAccruingToCommonShareholders6').value = numUSD.format(a);
                             };
                         </script>
                         <td colspan="2"><input class='Clock' id="DividendPaidCostOfTotalAssetsAccruingToCommonShareholders1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
