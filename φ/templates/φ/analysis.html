@@ -5713,14 +5713,14 @@
 
         <!--- GRAPH --->
         <div id="Graph">
-            <table style="border-bottom:solid #0D47A1">
+            <table>
                 <tbody>
                     <tr>
                         <td><h3 style="font-weight:bold; margin-left:0px;"></h3></td>
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-bottom: 28px">
+            <table style="padding-bottom: 157px">
                 <tbody>
                     <tr></tr>
                     <tr></tr>
@@ -5860,7 +5860,7 @@
                                     //
                                     const chart = document.getElementById('LineChart');
                                     chart.width = window.innerWidth*0.8;
-                                    chart.height = window.innerHeight/2.8;
+                                    chart.height = window.innerHeight/2.2;
                                     //
                                     let lineChart = new Chart(chart, {
                                         type: 'line',
@@ -5927,19 +5927,6 @@
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
-                </tbody>
-            </table>
-            <table style="padding-top: 28px; padding-bottom: 28px">
-                <tbody>
-                    <tr></tr>
-                    <tr></tr>
-                    <tr></tr>
-                    <tr></tr>
-                    <tr></tr>
-                    <tr>
-                        <td style="color:#0d47a1; text-align:left; font-weight:bold; vertical-align:top;">N.B.:</td>
-                        <td style="text-align:left;" colspan="20">Market Capitalization values are smoothed between report dates. The value for the most recent period end date is at time of data gathering.</td>
-                    </tr>
                 </tbody>
             </table>
         </div>
@@ -10988,8 +10975,8 @@
                             function ExpectedGrowthNote(ExpectedGrowthNote) {
                                 var numUSD = new Intl.NumberFormat("en-US", {
                                     style: "percent",
-                                    minimumFractionDigits: 1,
-                                    maximumFractionDigits: 1,
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2,
                                 })
                                 // Column 1
                                 a = parseFloat(document.getElementById('GrossMarginGrowth1').value);
