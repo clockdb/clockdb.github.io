@@ -341,7 +341,7 @@
                 page = 'Graph'
                 showPage(page)
                 history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
-                window.scrollTo(0, 280)
+                window.scrollTo(0, 0)
             }
             if (event.keyCode == iii) {
                 page = 'Opinion'
@@ -463,117 +463,81 @@
     document.addEventListener('keydown', function(event) {
         if (event.code == 'Numpad0' && (event.winKey || event.metaKey)) {
             event.preventDefault();
-            document.querySelectorAll('div').forEach(div => {
-                div.style.display = 'none';
-            })
-            document.getElementById('AuditSummary').style.display = 'block';
-            const url = 'AuditSummary'
-            //
-            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
+            const page = 'AuditSummary'
+            showPage(page)
+            history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
             window.scrollTo(0, 280);
         }
     });
     document.addEventListener('keydown', function(event) {
         if (event.code == 'Numpad6' && (event.winKey || event.metaKey)) {
             event.preventDefault();
-            document.querySelectorAll('div').forEach(div => {
-                div.style.display = 'none';
-            })
-            document.getElementById('AuditDetailed').style.display = 'block';
-            const url = 'AuditDetailed'
-            //
-            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
+            const page = 'AuditDetailed'
+            showPage(page)
+            history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
             window.scrollTo(0, 280);
         }
     });
     document.addEventListener('keydown', function(event) {
         if (event.code == 'Numpad7' && (event.winKey || event.metaKey)) {
             event.preventDefault();
-            document.querySelectorAll('div').forEach(div => {
-                div.style.display = 'none';
-            })
-            document.getElementById('MaterialityThreshold').style.display = 'block';
-            const url = 'MaterialityThreshold'
-            //
-            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
+            const page = 'MaterialityThreshold'
+            showPage(page)
+            history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
             window.scrollTo(0, 280);
         }
     });    
     document.addEventListener('keydown', function(event) {
         if (event.code == 'Numpad8' && (event.winKey || event.metaKey)) {
             event.preventDefault();
-            document.querySelectorAll('div').forEach(div => {
-                div.style.display = 'none';
-            })
-            document.getElementById('Mission').style.display = 'block';
-            const url = 'Mission'
-            //
-            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
+            const page = 'Mission'
+            showPage(page)
+            history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
             window.scrollTo(0, 280);
         }
     });
     document.addEventListener('keydown', function(event) {
         if (event.code == 'Numpad2' && (event.winKey || event.metaKey)) {
             event.preventDefault();
-            document.querySelectorAll('div').forEach(div => {
-                div.style.display = 'none';
-            })
-            document.getElementById('ProcedureAnnualBalanceSheets').style.display = 'block';
-            const url = 'ProcedureAnnualBalanceSheets'
-            //
-            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
+            const page = 'ProcedureAnnualBalanceSheets'
+            showPage(page)
+            history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
             window.scrollTo(0, 280);
         }
     });
     document.addEventListener('keydown', function(event) {
         if (event.code == 'Numpad3' && (event.winKey || event.metaKey)) {
             event.preventDefault();
-            document.querySelectorAll('div').forEach(div => {
-                div.style.display = 'none';
-            })
-            document.getElementById('ProcedureAnnualIncomeStatements').style.display = 'block';
-            const url = 'ProcedureAnnualIncomeStatements'
-            //
-            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
+            const page = 'ProcedureAnnualIncomeStatements'
+            showPage(page)
+            history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
             window.scrollTo(0, 280);
         }
     });
     document.addEventListener('keydown', function(event) {
         if (event.code == 'Numpad4' && (event.winKey || event.metaKey)) {
             event.preventDefault();
-            document.querySelectorAll('div').forEach(div => {
-                div.style.display = 'none';
-            })
-            document.getElementById('ProcedureAnnualComprehensiveIncome').style.display = 'block';
-            const url = 'ProcedureAnnualComprehensiveIncome'
-            //
-            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
+            const page = 'ProcedureAnnualComprehensiveIncome'
+            showPage(page)
+            history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
             window.scrollTo(0, 280);
         }
     });
     document.addEventListener('keydown', function(event) {
         if (event.code == 'Numpad5' && (event.winKey || event.metaKey)) {
             event.preventDefault();
-            document.querySelectorAll('div').forEach(div => {
-                div.style.display = 'none';
-            })
-            document.getElementById('ProcedureAnnualShareholdersEquity').style.display = 'block';
-            const url = 'ProcedureAnnualShareholdersEquity'
-            //
-            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
+            const page = 'ProcedureAnnualShareholdersEquity'
+            showPage(page)
+            history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
             window.scrollTo(0, 280);
         }
     });
     document.addEventListener('keydown', function(event) {
         if (event.code == 'Numpad1' && (event.winKey || event.metaKey)) {
             event.preventDefault();
-            document.querySelectorAll('div').forEach(div => {
-                div.style.display = 'none';
-            })
-            document.getElementById('ProcedureAnnualCashFlow').style.display = 'block';
-            const url = 'ProcedureAnnualCashFlow'
-            //
-            history.pushState({url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
+            const page = 'ProcedureAnnualCashFlow'
+            showPage(page)
+            history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
             window.scrollTo(0, 280);
         }
     });
@@ -14060,7 +14024,7 @@
                         <td colspan="2"><input class='Clock' id="ShareBasedCompensation6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id='ShareBasedCompensationRetainedEarningsRow' class="TrialBalance">
-                        <td colspan="2"><h6>Share Based Compensation - Retained Earnings Component</h6></td>
+                        <td colspan="2"><h6>Share Based Compensation - Retained Earnings</h6></td>
                         <td style="text-align:center"><button id="TrialBalanceShareBasedCompensationRetainedEarningsShortCut" data-page="AnnualTrialBalances" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">TB</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; color:#0D47A1; background-color: white" data-page="ShareholdersEquityFiles" class="ShareholdersEquityFiles">{</button></td>
                         <td>
@@ -22478,26 +22442,49 @@
                             function OperatingIncomeCCF(OperatingIncomeCCF) {
                                 var numUSD = new Intl.NumberFormat("en-US", {
                                     format: "number"
-                                });         
-                                if (document.getElementById('OpenEditor').checked == false) {
-                                    // Last Year
+                                });
+                                d = document.getElementById('OpenEditor').checked;
+                                // Last Year
+                                if (d == false) {
                                     a = parseInt(document.getElementById('OperatingIncome1').value.replaceAll(/,/g, ''));
                                     document.getElementById('OperatingIncomeCCF1').value = numUSD.format(a);
-                                    // Second Last Year
+                                } else {
+                                    document.getElementById('OperatingIncomeCCF1').value = numUSD.format(document.getElementById('OperatingIncomeCCF1').value.replaceAll(/,/g, ''));
+                                }
+                                // Second Last Year
+                                if (d == false) {
                                     a = parseInt(document.getElementById('OperatingIncome2').value.replaceAll(/,/g, ''));
                                     document.getElementById('OperatingIncomeCCF2').value = numUSD.format(a);
-                                    // Third Last Year
+                                } else {
+                                    document.getElementById('OperatingIncomeCCF2').value = numUSD.format(document.getElementById('OperatingIncomeCCF2').value.replaceAll(/,/g, ''));
+                                }
+                                // Third Last Year
+                                if (d == false) {
                                     a = parseInt(document.getElementById('OperatingIncome3').value.replaceAll(/,/g, ''));
                                     document.getElementById('OperatingIncomeCCF3').value = numUSD.format(a);
-                                    // Fourth Last Year
+                                } else {
+                                    document.getElementById('OperatingIncomeCCF3').value = numUSD.format(document.getElementById('OperatingIncomeCCF3').value.replaceAll(/,/g, ''));
+                                }
+                                // Fourth Last Year
+                                if (d == false) {
                                     a = parseInt(document.getElementById('OperatingIncome4').value.replaceAll(/,/g, ''));
-                                    document.getElementById('OperatingIncomeCCF4').value = numUSD.format(a);
-                                    // Fifth Last Year
+                                    document.getElementById('OperatingIncomeCCF4').value = numUSD.format(a);  
+                                } else {
+                                    document.getElementById('OperatingIncomeCCF4').value = numUSD.format(document.getElementById('OperatingIncomeCCF4').value.replaceAll(/,/g, ''));
+                                }
+                                // Fifth Last Year
+                                if (d == false) {
                                     a = parseInt(document.getElementById('OperatingIncome5').value.replaceAll(/,/g, ''));
                                     document.getElementById('OperatingIncomeCCF5').value = numUSD.format(a);
-                                    // Fifth Last Year
+                                } else {
+                                    document.getElementById('OperatingIncomeCCF5').value = numUSD.format(document.getElementById('OperatingIncomeCCF5').value.replaceAll(/,/g, ''));
+                                }
+                                // Fifth Last Year
+                                if (d == false) {
                                     a = parseInt(document.getElementById('OperatingIncome6').value.replaceAll(/,/g, ''));
                                     document.getElementById('OperatingIncomeCCF6').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('OperatingIncomeCCF6').value = numUSD.format(document.getElementById('OperatingIncomeCCF6').value.replaceAll(/,/g, ''));
                                 }
                             };
                         </script>
@@ -22521,50 +22508,75 @@
                                 var numUSD = new Intl.NumberFormat("en-US", {
                                     format: "number"
                                 });
-                                if (document.getElementById('OpenEditor').checked == false) {
-                                    z = 0
-                                    // Last Year
+                                z = 0 
+                                d = document.getElementById('OpenEditor').checked;
+                                // Last Year
+                                if (d == false) {
                                     a = parseInt(document.getElementById('DepreciationDepletionAndAmortization1').value.replaceAll(/,/g, ''));
                                     document.getElementById('DepreciationDepletionAndAmortizationCCF1').value = numUSD.format(a);
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Second Last Year
+                                } else {
+                                    document.getElementById('DepreciationDepletionAndAmortizationCCF1').value = numUSD.format(document.getElementById('DepreciationDepletionAndAmortizationCCF1').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Second Last Year
+                                if (d == false) {
                                     a = parseInt(document.getElementById('DepreciationDepletionAndAmortization2').value.replaceAll(/,/g, ''));
                                     document.getElementById('DepreciationDepletionAndAmortizationCCF2').value = numUSD.format(a);
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Third Last Year
+                                } else {
+                                    document.getElementById('DepreciationDepletionAndAmortizationCCF2').value = numUSD.format(document.getElementById('DepreciationDepletionAndAmortizationCCF2').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Third Last Year
+                                if (d == false) {
                                     a = parseInt(document.getElementById('DepreciationDepletionAndAmortization3').value.replaceAll(/,/g, ''));
                                     document.getElementById('DepreciationDepletionAndAmortizationCCF3').value = numUSD.format(a);
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Fourth Last Year
+                                } else {
+                                    document.getElementById('DepreciationDepletionAndAmortizationCCF3').value = numUSD.format(document.getElementById('DepreciationDepletionAndAmortizationCCF3').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Fourth Last Year
+                                if (d == false) {
                                     a = parseInt(document.getElementById('DepreciationDepletionAndAmortization4').value.replaceAll(/,/g, ''));
                                     document.getElementById('DepreciationDepletionAndAmortizationCCF4').value = numUSD.format(a);
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Fifth Last Year
+                                } else {
+                                    document.getElementById('DepreciationDepletionAndAmortizationCCF4').value = numUSD.format(document.getElementById('DepreciationDepletionAndAmortizationCCF4').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Fifth Last Year
+                                if (d == false) {
                                     a = parseInt(document.getElementById('DepreciationDepletionAndAmortization5').value.replaceAll(/,/g, ''));
                                     document.getElementById('DepreciationDepletionAndAmortizationCCF5').value = numUSD.format(a);
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Sixth Last Year
+                                } else {
+                                    document.getElementById('DepreciationDepletionAndAmortizationCCF5').value = numUSD.format(document.getElementById('DepreciationDepletionAndAmortizationCCF5').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Sixth Last Year
+                                if (d == false) {
                                     a = parseInt(document.getElementById('DepreciationDepletionAndAmortization6').value.replaceAll(/,/g, ''));
                                     document.getElementById('DepreciationDepletionAndAmortizationCCF6').value = numUSD.format(a);
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    if (z == 6) {
-                                        if (document.getElementById('UnhideCheckbox').checked == false) {
-                                            a = 'none';
-                                        } else {
-                                            a = '';
-                                        }
+                                } else {
+                                    document.getElementById('DepreciationDepletionAndAmortizationCCF6').value = numUSD.format(document.getElementById('DepreciationDepletionAndAmortizationCCF6').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                document.getElementById('DepreciationDepletionAndAmortizationCCF6').value = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                if (z == 6) {
+                                    if (document.getElementById('UnhideCheckbox').checked == false) {
+                                        a = 'none';
                                     } else {
                                         a = '';
                                     }
@@ -22594,50 +22606,46 @@
                                 var numUSD = new Intl.NumberFormat("en-US", {
                                     format: "number"
                                 });
-                                if (document.getElementById('OpenEditor').checked == false) {
-                                    z = 0
-                                    // Last Year
-                                    a = -parseInt(document.getElementById('ReinvestmentOfMaintenance1').value.replaceAll(/,/g, ''));
-                                    document.getElementById('AnnualReinvestmentOfMaintenanceCCF1').value = numUSD.format(a);
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Second Last Year
-                                    a = -parseInt(document.getElementById('ReinvestmentOfMaintenance2').value.replaceAll(/,/g, ''));
-                                    document.getElementById('AnnualReinvestmentOfMaintenanceCCF2').value = numUSD.format(a);
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Third Last Year
-                                    a = -parseInt(document.getElementById('ReinvestmentOfMaintenance3').value.replaceAll(/,/g, ''));
-                                    document.getElementById('AnnualReinvestmentOfMaintenanceCCF3').value = numUSD.format(a);
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Fourth Last Year
-                                    a = -parseInt(document.getElementById('ReinvestmentOfMaintenance4').value.replaceAll(/,/g, ''));
-                                    document.getElementById('AnnualReinvestmentOfMaintenanceCCF4').value = numUSD.format(a);
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Fifth Last Year
-                                    a = -parseInt(document.getElementById('ReinvestmentOfMaintenance5').value.replaceAll(/,/g, ''));
-                                    document.getElementById('AnnualReinvestmentOfMaintenanceCCF5').value = numUSD.format(a);
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Sixth Last Year
-                                    a = -parseInt(document.getElementById('ReinvestmentOfMaintenance6').value.replaceAll(/,/g, ''));
-                                    document.getElementById('AnnualReinvestmentOfMaintenanceCCF6').value = numUSD.format(a);
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    if (z == 6) {
-                                        if (document.getElementById('UnhideCheckbox').checked == false) {
-                                            a = 'none';
-                                        } else {
-                                            a = '';
-                                        }
+                                z = 0
+                                // Last Year
+                                a = -parseInt(document.getElementById('ReinvestmentOfMaintenance1').value.replaceAll(/,/g, ''));
+                                document.getElementById('AnnualReinvestmentOfMaintenanceCCF1').value = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Second Last Year
+                                a = -parseInt(document.getElementById('ReinvestmentOfMaintenance2').value.replaceAll(/,/g, ''));
+                                document.getElementById('AnnualReinvestmentOfMaintenanceCCF2').value = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Third Last Year
+                                a = -parseInt(document.getElementById('ReinvestmentOfMaintenance3').value.replaceAll(/,/g, ''));
+                                document.getElementById('AnnualReinvestmentOfMaintenanceCCF3').value = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Fourth Last Year
+                                a = -parseInt(document.getElementById('ReinvestmentOfMaintenance4').value.replaceAll(/,/g, ''));
+                                document.getElementById('AnnualReinvestmentOfMaintenanceCCF4').value = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Fifth Last Year
+                                a = -parseInt(document.getElementById('ReinvestmentOfMaintenance5').value.replaceAll(/,/g, ''));
+                                document.getElementById('AnnualReinvestmentOfMaintenanceCCF5').value = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Sixth Last Year
+                                a = -parseInt(document.getElementById('ReinvestmentOfMaintenance6').value.replaceAll(/,/g, ''));
+                                document.getElementById('AnnualReinvestmentOfMaintenanceCCF6').value = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                if (z == 6) {
+                                    if (document.getElementById('UnhideCheckbox').checked == false) {
+                                        a = 'none';
                                     } else {
                                         a = '';
                                     }
@@ -22682,68 +22690,64 @@
                                 var numUSD = new Intl.NumberFormat("en-US", {
                                     format: "number"
                                 });
-                                if (document.getElementById('OpenEditor').checked == false) {
-                                    z = 0
-                                    // Last Year
-                                    a = -parseFloat(document.getElementById('TheoricalTaxRate1').value.replaceAll(/,/g, ''));
-                                    b = parseInt(document.getElementById('OperatingIncomeCCF1').value.replaceAll(/,/g, ''));
-                                    b = b + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCF1').value.replaceAll(/,/g, ''));
-                                    b = b + parseInt(document.getElementById('OthersCCF1').value.replaceAll(/,/g, ''));
-                                    document.getElementById('TaxesPaidAdjustmentsCCF1').value = numUSD.format(Math.round(a/100 * b));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Second Last Year
-                                    a = -parseFloat(document.getElementById('TheoricalTaxRate2').value.replaceAll(/,/g, ''));
-                                    b = parseInt(document.getElementById('OperatingIncomeCCF2').value.replaceAll(/,/g, ''));
-                                    b = b + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCF2').value.replaceAll(/,/g, ''));
-                                    b = b + parseInt(document.getElementById('OthersCCF2').value.replaceAll(/,/g, ''));
-                                    document.getElementById('TaxesPaidAdjustmentsCCF2').value = numUSD.format(Math.round(a/100 * b));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Third Last Year
-                                    a = -parseFloat(document.getElementById('TheoricalTaxRate3').value.replaceAll(/,/g, ''));
-                                    b = parseInt(document.getElementById('OperatingIncomeCCF3').value.replaceAll(/,/g, ''));
-                                    b = b + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCF3').value.replaceAll(/,/g, ''));
-                                    b = b + parseInt(document.getElementById('OthersCCF3').value.replaceAll(/,/g, ''));
-                                    document.getElementById('TaxesPaidAdjustmentsCCF3').value = numUSD.format(Math.round(a/100 * b));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Fourth Last Year
-                                    a = -parseFloat(document.getElementById('TheoricalTaxRate4').value.replaceAll(/,/g, ''));
-                                    b = parseInt(document.getElementById('OperatingIncomeCCF4').value.replaceAll(/,/g, ''));
-                                    b = b + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCF4').value.replaceAll(/,/g, ''));
-                                    b = b + parseInt(document.getElementById('OthersCCF4').value.replaceAll(/,/g, ''));
-                                    document.getElementById('TaxesPaidAdjustmentsCCF4').value = numUSD.format(Math.round(a/100 * b));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Fifth Last Year
-                                    a = -parseFloat(document.getElementById('TheoricalTaxRate5').value.replaceAll(/,/g, ''));
-                                    b = parseInt(document.getElementById('OperatingIncomeCCF5').value.replaceAll(/,/g, ''));
-                                    b = b + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCF5').value.replaceAll(/,/g, ''));
-                                    b = b + parseInt(document.getElementById('OthersCCF5').value.replaceAll(/,/g, ''));
-                                    document.getElementById('TaxesPaidAdjustmentsCCF5').value = numUSD.format(Math.round(a/100 * b));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Sixth Last Year
-                                    a = -parseFloat(document.getElementById('TheoricalTaxRate6').value.replaceAll(/,/g, ''));
-                                    b = parseInt(document.getElementById('OperatingIncomeCCF6').value.replaceAll(/,/g, ''));
-                                    b = b + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCF6').value.replaceAll(/,/g, ''));
-                                    b = b + parseInt(document.getElementById('OthersCCF6').value.replaceAll(/,/g, ''));
-                                    document.getElementById('TaxesPaidAdjustmentsCCF6').value = numUSD.format(Math.round(a/100 * b));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    if (z == 6) {
-                                        if (document.getElementById('UnhideCheckbox').checked == false) {
-                                            a = 'none';
-                                        } else {
-                                            a = '';
-                                        }
+                                z = 0
+                                // Last Year
+                                a = -parseFloat(document.getElementById('TheoricalTaxRate1').value.replaceAll(/,/g, ''));
+                                b = parseInt(document.getElementById('OperatingIncomeCCF1').value.replaceAll(/,/g, ''));
+                                b = b + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCF1').value.replaceAll(/,/g, ''));
+                                b = b + parseInt(document.getElementById('OthersCCF1').value.replaceAll(/,/g, ''));
+                                document.getElementById('TaxesPaidAdjustmentsCCF1').value = numUSD.format(Math.round(a/100 * b));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Second Last Year
+                                a = -parseFloat(document.getElementById('TheoricalTaxRate2').value.replaceAll(/,/g, ''));
+                                b = parseInt(document.getElementById('OperatingIncomeCCF2').value.replaceAll(/,/g, ''));
+                                b = b + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCF2').value.replaceAll(/,/g, ''));
+                                b = b + parseInt(document.getElementById('OthersCCF2').value.replaceAll(/,/g, ''));
+                                document.getElementById('TaxesPaidAdjustmentsCCF2').value = numUSD.format(Math.round(a/100 * b));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Third Last Year
+                                a = -parseFloat(document.getElementById('TheoricalTaxRate3').value.replaceAll(/,/g, ''));
+                                b = parseInt(document.getElementById('OperatingIncomeCCF3').value.replaceAll(/,/g, ''));
+                                b = b + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCF3').value.replaceAll(/,/g, ''));
+                                b = b + parseInt(document.getElementById('OthersCCF3').value.replaceAll(/,/g, ''));
+                                document.getElementById('TaxesPaidAdjustmentsCCF3').value = numUSD.format(Math.round(a/100 * b));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Fourth Last Year
+                                a = -parseFloat(document.getElementById('TheoricalTaxRate4').value.replaceAll(/,/g, ''));
+                                b = parseInt(document.getElementById('OperatingIncomeCCF4').value.replaceAll(/,/g, ''));
+                                b = b + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCF4').value.replaceAll(/,/g, ''));
+                                b = b + parseInt(document.getElementById('OthersCCF4').value.replaceAll(/,/g, ''));
+                                document.getElementById('TaxesPaidAdjustmentsCCF4').value = numUSD.format(Math.round(a/100 * b));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Fifth Last Year
+                                a = -parseFloat(document.getElementById('TheoricalTaxRate5').value.replaceAll(/,/g, ''));
+                                b = parseInt(document.getElementById('OperatingIncomeCCF5').value.replaceAll(/,/g, ''));
+                                b = b + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCF5').value.replaceAll(/,/g, ''));
+                                b = b + parseInt(document.getElementById('OthersCCF5').value.replaceAll(/,/g, ''));
+                                document.getElementById('TaxesPaidAdjustmentsCCF5').value = numUSD.format(Math.round(a/100 * b));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Sixth Last Year
+                                a = -parseFloat(document.getElementById('TheoricalTaxRate6').value.replaceAll(/,/g, ''));
+                                b = parseInt(document.getElementById('OperatingIncomeCCF6').value.replaceAll(/,/g, ''));
+                                b = b + parseInt(document.getElementById('DepreciationDepletionAndAmortizationCCF6').value.replaceAll(/,/g, ''));
+                                b = b + parseInt(document.getElementById('OthersCCF6').value.replaceAll(/,/g, ''));
+                                document.getElementById('TaxesPaidAdjustmentsCCF6').value = numUSD.format(Math.round(a/100 * b));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                if (z == 6) {
+                                    if (document.getElementById('UnhideCheckbox').checked == false) {
+                                        a = 'none';
                                     } else {
                                         a = '';
                                     }
@@ -22773,50 +22777,71 @@
                                 var numUSD = new Intl.NumberFormat("en-US", {
                                     format: "number"
                                 });
-                                if (document.getElementById('OpenEditor').checked == false) {
-                                    z = 0
-                                    // Last Year
-                                    a = parseInt(document.getElementById('EquityMethodInvesteesIncome1').value.replaceAll(/,/g, ''));
-                                    document.getElementById('EquityMethodInvesteesIncomeCCF1').value = numUSD.format(Math.round(a));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Second Last Year
-                                    a = parseInt(document.getElementById('EquityMethodInvesteesIncome2').value.replaceAll(/,/g, ''));
-                                    document.getElementById('EquityMethodInvesteesIncomeCCF2').value = numUSD.format(Math.round(a));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Third Last Year
-                                    a = parseInt(document.getElementById('EquityMethodInvesteesIncome3').value.replaceAll(/,/g, ''));
-                                    document.getElementById('EquityMethodInvesteesIncomeCCF3').value = numUSD.format(Math.round(a));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Fourth Last Year
-                                    a = parseInt(document.getElementById('EquityMethodInvesteesIncome4').value.replaceAll(/,/g, ''));
-                                    document.getElementById('EquityMethodInvesteesIncomeCCF4').value = numUSD.format(Math.round(a));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Fifth Last Year
-                                    a = parseInt(document.getElementById('EquityMethodInvesteesIncome5').value.replaceAll(/,/g, ''));
-                                    document.getElementById('EquityMethodInvesteesIncomeCCF5').value = numUSD.format(Math.round(a));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Sixth Last Year
-                                    a = parseInt(document.getElementById('EquityMethodInvesteesIncome6').value.replaceAll(/,/g, ''));
-                                    document.getElementById('EquityMethodInvesteesIncomeCCF6').value = numUSD.format(Math.round(a));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    if (z == 6) {
-                                        if (document.getElementById('UnhideCheckbox').checked == false) {
-                                            a = 'none';
-                                        } else {
-                                            a = '';
-                                        }
+                                z = 0
+                                d = document.getElementById('OpenEditor').checked;
+                                // Last Year
+                                if (d == false) {
+                                    a = -parseInt(document.getElementById('EquityMethodInvesteesIncome1').value.replaceAll(/,/g, ''));
+                                    document.getElementById('EquityMethodInvesteesIncomeCCF1').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('EquityMethodInvesteesIncomeCCF1').value = numUSD.format(document.getElementById('EquityMethodInvesteesIncomeCCF1').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Second Last Year
+                                if (d == false) {
+                                    a = -parseInt(document.getElementById('EquityMethodInvesteesIncome2').value.replaceAll(/,/g, ''));
+                                    document.getElementById('EquityMethodInvesteesIncomeCCF2').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('EquityMethodInvesteesIncomeCCF2').value = numUSD.format(document.getElementById('EquityMethodInvesteesIncomeCCF2').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Third Last Year
+                                if (d == false) {
+                                    a = -parseInt(document.getElementById('EquityMethodInvesteesIncome3').value.replaceAll(/,/g, ''));
+                                    document.getElementById('EquityMethodInvesteesIncomeCCF3').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('EquityMethodInvesteesIncomeCCF3').value = numUSD.format(document.getElementById('EquityMethodInvesteesIncomeCCF3').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Fourth Last Year
+                                if (d == false) {
+                                    a = -parseInt(document.getElementById('EquityMethodInvesteesIncome4').value.replaceAll(/,/g, ''));
+                                    document.getElementById('EquityMethodInvesteesIncomeCCF4').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('EquityMethodInvesteesIncomeCCF4').value = numUSD.format(document.getElementById('EquityMethodInvesteesIncomeCCF4').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Fifth Last Year
+                                if (d == false) {
+                                    a = -parseInt(document.getElementById('EquityMethodInvesteesIncome5').value.replaceAll(/,/g, ''));
+                                    document.getElementById('EquityMethodInvesteesIncomeCCF5').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('EquityMethodInvesteesIncomeCCF5').value = numUSD.format(document.getElementById('EquityMethodInvesteesIncomeCCF5').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Sixth Last Year
+                                if (d == false) {
+                                    a = -parseInt(document.getElementById('EquityMethodInvesteesIncome6').value.replaceAll(/,/g, ''));
+                                    document.getElementById('EquityMethodInvesteesIncomeCCF6').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('EquityMethodInvesteesIncomeCCF6').value = numUSD.format(document.getElementById('EquityMethodInvesteesIncomeCCF6').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                if (z == 6) {
+                                    if (document.getElementById('UnhideCheckbox').checked == false) {
+                                        a = 'none';
                                     } else {
                                         a = '';
                                     }
@@ -23137,45 +23162,41 @@
                                 var numUSD = new Intl.NumberFormat("en-US", {
                                     format: "number"
                                 });
-                                if (document.getElementById('OpenEditor').checked == false) {
-                                    // Column 1
-                                    twk = parseInt(document.getElementById('TargetWorkingCapital1').value.replaceAll(/,/g, ''));
-                                    a = parseInt(document.getElementById('CurrentAssets1').value.replaceAll(/,/g, ''));
-                                    b = parseInt(document.getElementById('CurrentLiabilities1').value.replaceAll(/,/g, '')) * twk;
-                                    document.getElementById('ExcessWorkingCapitalCCF1').value = numUSD.format(Math.round(a - b));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Column 2
-                                    twk = parseInt(document.getElementById('TargetWorkingCapital2').value.replaceAll(/,/g, ''));
-                                    a = parseInt(document.getElementById('CurrentAssets2').value.replaceAll(/,/g, ''));
-                                    b = parseInt(document.getElementById('CurrentLiabilities2').value.replaceAll(/,/g, '')) * twk;
-                                    document.getElementById('ExcessWorkingCapitalCCF2').value = numUSD.format(Math.round(a - b));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Column 3
-                                    twk = parseInt(document.getElementById('TargetWorkingCapital3').value.replaceAll(/,/g, ''));
-                                    a = parseInt(document.getElementById('CurrentAssets3').value.replaceAll(/,/g, ''));
-                                    b = parseInt(document.getElementById('CurrentLiabilities3').value.replaceAll(/,/g, '')) * twk;
-                                    document.getElementById('ExcessWorkingCapitalCCF3').value = numUSD.format(Math.round(a - b));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Column 4
-                                    twk = parseInt(document.getElementById('TargetWorkingCapital4').value.replaceAll(/,/g, ''));
-                                    a = parseInt(document.getElementById('CurrentAssets4').value.replaceAll(/,/g, ''));
-                                    b = parseInt(document.getElementById('CurrentLiabilities4').value.replaceAll(/,/g, '')) * twk;
-                                    document.getElementById('ExcessWorkingCapitalCCF4').value = numUSD.format(Math.round(a - b));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    if (z == 4) {
-                                        if (document.getElementById('UnhideCheckbox').checked == false) {
-                                            a = 'none';
-                                        } else {
-                                            a = '';
-                                        }
+                                // Column 1
+                                twk = parseInt(document.getElementById('TargetWorkingCapital1').value.replaceAll(/,/g, ''));
+                                a = parseInt(document.getElementById('CurrentAssets1').value.replaceAll(/,/g, ''));
+                                b = parseInt(document.getElementById('CurrentLiabilities1').value.replaceAll(/,/g, '')) * twk;
+                                document.getElementById('ExcessWorkingCapitalCCF1').value = numUSD.format(Math.round(a - b));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Column 2
+                                twk = parseInt(document.getElementById('TargetWorkingCapital2').value.replaceAll(/,/g, ''));
+                                a = parseInt(document.getElementById('CurrentAssets2').value.replaceAll(/,/g, ''));
+                                b = parseInt(document.getElementById('CurrentLiabilities2').value.replaceAll(/,/g, '')) * twk;
+                                document.getElementById('ExcessWorkingCapitalCCF2').value = numUSD.format(Math.round(a - b));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Column 3
+                                twk = parseInt(document.getElementById('TargetWorkingCapital3').value.replaceAll(/,/g, ''));
+                                a = parseInt(document.getElementById('CurrentAssets3').value.replaceAll(/,/g, ''));
+                                b = parseInt(document.getElementById('CurrentLiabilities3').value.replaceAll(/,/g, '')) * twk;
+                                document.getElementById('ExcessWorkingCapitalCCF3').value = numUSD.format(Math.round(a - b));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Column 4
+                                twk = parseInt(document.getElementById('TargetWorkingCapital4').value.replaceAll(/,/g, ''));
+                                a = parseInt(document.getElementById('CurrentAssets4').value.replaceAll(/,/g, ''));
+                                b = parseInt(document.getElementById('CurrentLiabilities4').value.replaceAll(/,/g, '')) * twk;
+                                document.getElementById('ExcessWorkingCapitalCCF4').value = numUSD.format(Math.round(a - b));
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                if (z == 4) {
+                                    if (document.getElementById('UnhideCheckbox').checked == false) {
+                                        a = 'none';
                                     } else {
                                         a = '';
                                     }
@@ -23205,38 +23226,51 @@
                                 var numUSD = new Intl.NumberFormat("en-US", {
                                     format: "number"
                                 });
-                                if (document.getElementById('OpenEditor').checked == false) {
-                                    z = 0
-                                    // Column 1
+                                z = 0
+                                d = document.getElementById('OpenEditor').checked;
+                                // Column 1
+                                if (d == false) {
                                     a = parseInt(document.getElementById('Investments1').value.replaceAll(/,/g, ''));
-                                    document.getElementById('InvestmentsExcessAssetsCCF1').value = numUSD.format(Math.round(a));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Column 2
+                                    document.getElementById('InvestmentsExcessAssetsCCF1').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('InvestmentsExcessAssetsCCF1').value = numUSD.format(document.getElementById('InvestmentsExcessAssetsCCF1').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Column 2
+                                if (d == false) {
                                     a = parseInt(document.getElementById('Investments2').value.replaceAll(/,/g, ''));
-                                    document.getElementById('InvestmentsExcessAssetsCCF2').value = numUSD.format(Math.round(a));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Column 3
+                                    document.getElementById('InvestmentsExcessAssetsCCF2').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('InvestmentsExcessAssetsCCF2').value = numUSD.format(document.getElementById('InvestmentsExcessAssetsCCF2').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Column 3
+                                if (d == false) {
                                     a = parseInt(document.getElementById('Investments3').value.replaceAll(/,/g, ''));
-                                    document.getElementById('InvestmentsExcessAssetsCCF3').value = numUSD.format(Math.round(a));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Column 4
+                                    document.getElementById('InvestmentsExcessAssetsCCF3').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('InvestmentsExcessAssetsCCF3').value = numUSD.format(document.getElementById('InvestmentsExcessAssetsCCF3').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Column 4
+                                if (d == false) {
                                     a = parseInt(document.getElementById('Investments4').value.replaceAll(/,/g, ''));
-                                    document.getElementById('InvestmentsExcessAssetsCCF4').value = numUSD.format(Math.round(a));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    if (z == 4) {
-                                        if (document.getElementById('UnhideCheckbox').checked == false) {
-                                            a = 'none';
-                                        } else {
-                                            a = '';
-                                        }
+                                    document.getElementById('InvestmentsExcessAssetsCCF4').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('InvestmentsExcessAssetsCCF4').value = numUSD.format(document.getElementById('InvestmentsExcessAssetsCCF4').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                if (z == 4) {
+                                    if (document.getElementById('UnhideCheckbox').checked == false) {
+                                        a = 'none';
                                     } else {
                                         a = '';
                                     }
@@ -23266,38 +23300,51 @@
                                 var numUSD = new Intl.NumberFormat("en-US", {
                                     format: "number"
                                 });
-                                if (document.getElementById('OpenEditor').checked == false) {
-                                    z = 0
-                                    // Column 1
+                                z = 0
+                                d = document.getElementById('OpenEditor').checked;
+                                // Column 1
+                                if (d == false) {
                                     a = parseInt(document.getElementById('DiscontinuedOperations1').value.replaceAll(/,/g, ''));
-                                    document.getElementById('DiscontinuedOperationsExcessAssetsCCF1').value = numUSD.format(Math.round(a));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Column 2
+                                    document.getElementById('DiscontinuedOperationsExcessAssetsCCF1').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('DiscontinuedOperationsExcessAssetsCCF1').value = numUSD.format(document.getElementById('DiscontinuedOperationsExcessAssetsCCF1').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Column 2
+                                if (d == false) {
                                     a = parseInt(document.getElementById('DiscontinuedOperations2').value.replaceAll(/,/g, ''));
-                                    document.getElementById('DiscontinuedOperationsExcessAssetsCCF2').value = numUSD.format(Math.round(a));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Column 3
+                                    document.getElementById('DiscontinuedOperationsExcessAssetsCCF2').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('DiscontinuedOperationsExcessAssetsCCF2').value = numUSD.format(document.getElementById('DiscontinuedOperationsExcessAssetsCCF2').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Column 3
+                                if (d == false) {
                                     a = parseInt(document.getElementById('DiscontinuedOperations3').value.replaceAll(/,/g, ''));
-                                    document.getElementById('DiscontinuedOperationsExcessAssetsCCF3').value = numUSD.format(Math.round(a));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Column 4
+                                    document.getElementById('DiscontinuedOperationsExcessAssetsCCF3').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('DiscontinuedOperationsExcessAssetsCCF3').value = numUSD.format(document.getElementById('DiscontinuedOperationsExcessAssetsCCF3').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Column 4
+                                if (d == false) {
                                     a = parseInt(document.getElementById('DiscontinuedOperations4').value.replaceAll(/,/g, ''));
-                                    document.getElementById('DiscontinuedOperationsExcessAssetsCCF4').value = numUSD.format(Math.round(a));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    if (z == 4) {
-                                        if (document.getElementById('UnhideCheckbox').checked == false) {
-                                            a = 'none';
-                                        } else {
-                                            a = '';
-                                        }
+                                    document.getElementById('DiscontinuedOperationsExcessAssetsCCF4').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('DiscontinuedOperationsExcessAssetsCCF4').value = numUSD.format(document.getElementById('DiscontinuedOperationsExcessAssetsCCF4').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                if (z == 4) {
+                                    if (document.getElementById('UnhideCheckbox').checked == false) {
+                                        a = 'none';
                                     } else {
                                         a = '';
                                     }
@@ -23342,57 +23389,70 @@
                                 var numUSD = new Intl.NumberFormat("en-US", {
                                     format: "number"
                                 });
-                                if (document.getElementById('OpenEditor').checked == false) {
-                                    z = 0
-                                    // Column 1
+                                z = 0
+                                d = document.getElementById('OpenEditor').checked;
+                                // Column 1
+                                if (d == false) {
                                     a = parseInt(document.getElementById('RefundableTaxAssetsNonCurrent1').value.replaceAll(/,/g, ''));
                                     a = a - parseInt(document.getElementById('AccruedTaxLiabilities1').value.replaceAll(/,/g, ''));
                                     a = a + parseInt(document.getElementById('DeferredTaxAssetsNonCurrent1').value.replaceAll(/,/g, ''));
                                     a = a - parseInt(document.getElementById('DeferredTaxLiabilitiesNonCurrent1').value.replaceAll(/,/g, ''));
-                                    document.getElementById('PresentValueOfTaxProtectionCCF1').value = numUSD.format(Math.round(a));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Column 2
+                                    document.getElementById('PresentValueOfTaxProtectionCCF1').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('PresentValueOfTaxProtectionCCF1').value = numUSD.format(document.getElementById('PresentValueOfTaxProtectionCCF1').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Column 2
+                                if (d == false) {
                                     a = parseInt(document.getElementById('RefundableTaxAssetsNonCurrent2').value.replaceAll(/,/g, ''));
                                     a = a - parseInt(document.getElementById('AccruedTaxLiabilities2').value.replaceAll(/,/g, ''));
                                     a = a + parseInt(document.getElementById('DeferredTaxAssetsNonCurrent2').value.replaceAll(/,/g, ''));
                                     a = a - parseInt(document.getElementById('DeferredTaxLiabilitiesNonCurrent2').value.replaceAll(/,/g, ''));
-                                    document.getElementById('PresentValueOfTaxProtectionCCF2').value = numUSD.format(Math.round(a));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Column 3
+                                    document.getElementById('PresentValueOfTaxProtectionCCF2').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('PresentValueOfTaxProtectionCCF2').value = numUSD.format(document.getElementById('PresentValueOfTaxProtectionCCF2').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Column 3
+                                if (d == false) {
                                     a = parseInt(document.getElementById('RefundableTaxAssetsNonCurrent3').value.replaceAll(/,/g, ''));
                                     a = a - parseInt(document.getElementById('AccruedTaxLiabilities3').value.replaceAll(/,/g, ''));
                                     a = a + parseInt(document.getElementById('DeferredTaxAssetsNonCurrent3').value.replaceAll(/,/g, ''));
                                     a = a - parseInt(document.getElementById('DeferredTaxLiabilitiesNonCurrent3').value.replaceAll(/,/g, ''));
-                                    document.getElementById('PresentValueOfTaxProtectionCCF3').value = numUSD.format(Math.round(a));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Column 4
+                                    document.getElementById('PresentValueOfTaxProtectionCCF3').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('PresentValueOfTaxProtectionCCF3').value = numUSD.format(document.getElementById('PresentValueOfTaxProtectionCCF3').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Column 4
+                                if (d == false) {
                                     a = parseInt(document.getElementById('RefundableTaxAssetsNonCurrent4').value.replaceAll(/,/g, ''));
                                     a = a - parseInt(document.getElementById('AccruedTaxLiabilities4').value.replaceAll(/,/g, ''));
                                     a = a + parseInt(document.getElementById('DeferredTaxAssetsNonCurrent4').value.replaceAll(/,/g, ''));
                                     a = a - parseInt(document.getElementById('DeferredTaxLiabilitiesNonCurrent4').value.replaceAll(/,/g, ''));
-                                    document.getElementById('PresentValueOfTaxProtectionCCF4').value = numUSD.format(Math.round(a));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    if (z == 4) {
-                                        if (document.getElementById('UnhideCheckbox').checked == false) {
-                                            a = 'none';
-                                        } else {
-                                            a = '';
-                                        }
+                                    document.getElementById('PresentValueOfTaxProtectionCCF4').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('PresentValueOfTaxProtectionCCF4').value = numUSD.format(document.getElementById('PresentValueOfTaxProtectionCCF4').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                if (z == 4) {
+                                    if (document.getElementById('UnhideCheckbox').checked == false) {
+                                        a = 'none';
                                     } else {
                                         a = '';
                                     }
                                 } else {
                                     a = '';
                                 }
-                                document.getElementById('PresentValueOfTaxProtectionCCFRow').style.display = a
+                                document.getElementById('PresentValueOfTaxProtectionCCFRow').style.display = a;
                             };
                         </script>
                         <td colspan='2'><input class='Clock' id="PresentValueOfTaxProtectionCCF1" style="font-weight:bold;" onfocusout="Compile();" onchange="FormatCell();"></input></td>
@@ -23486,32 +23546,70 @@
                                 var numUSD = new Intl.NumberFormat("en-US", {
                                     format: "number"
                                 });
-                                if (document.getElementById('OpenEditor').checked == false) {
-                                    // Column 1
+                                z = 0
+                                d = document.getElementById('OpenEditor').checked;
+                                // Column 1
+                                if (d == false) {
                                     a = parseInt(document.getElementById('NonCurrentLiabilitiesNote1').value.replaceAll(/,/g, ''));
                                     a = a - parseInt(document.getElementById('DeferredRevenueAndDepositsNonCurrent1').value.replaceAll(/,/g, ''));
                                     a = a - parseInt(document.getElementById('AccruedTaxLiabilitiesNonCurrent1').value.replaceAll(/,/g, ''));
                                     a = a - parseInt(document.getElementById('DeferredTaxLiabilitiesNonCurrent1').value.replaceAll(/,/g, ''));
-                                    document.getElementById('TotalDebtAndLeaseObligationCCF1').value = numUSD.format(Math.round(-a));
-                                    // Column 2
+                                    document.getElementById('TotalDebtAndLeaseObligationCCF1').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('TotalDebtAndLeaseObligationCCF1').value = numUSD.format(document.getElementById('TotalDebtAndLeaseObligationCCF1').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Column 2
+                                if (d == false) {
                                     a = parseInt(document.getElementById('NonCurrentLiabilitiesNote2').value.replaceAll(/,/g, ''));
                                     a = a - parseInt(document.getElementById('DeferredRevenueAndDepositsNonCurrent2').value.replaceAll(/,/g, ''));
                                     a = a - parseInt(document.getElementById('AccruedTaxLiabilitiesNonCurrent2').value.replaceAll(/,/g, ''));
                                     a = a - parseInt(document.getElementById('DeferredTaxLiabilitiesNonCurrent2').value.replaceAll(/,/g, ''));
-                                    document.getElementById('TotalDebtAndLeaseObligationCCF2').value = numUSD.format(Math.round(-a));
-                                    // Column 3
+                                    document.getElementById('TotalDebtAndLeaseObligationCCF2').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('TotalDebtAndLeaseObligationCCF2').value = numUSD.format(document.getElementById('TotalDebtAndLeaseObligationCCF2').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Column 3
+                                if (d == false) {
                                     a = parseInt(document.getElementById('NonCurrentLiabilitiesNote3').value.replaceAll(/,/g, ''));
                                     a = a - parseInt(document.getElementById('DeferredRevenueAndDepositsNonCurrent3').value.replaceAll(/,/g, ''));
                                     a = a - parseInt(document.getElementById('AccruedTaxLiabilitiesNonCurrent3').value.replaceAll(/,/g, ''));
                                     a = a - parseInt(document.getElementById('DeferredTaxLiabilitiesNonCurrent3').value.replaceAll(/,/g, ''));
-                                    document.getElementById('TotalDebtAndLeaseObligationCCF3').value = numUSD.format(Math.round(-a));
-                                    // Column 4
+                                    document.getElementById('TotalDebtAndLeaseObligationCCF3').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('TotalDebtAndLeaseObligationCCF3').value = numUSD.format(document.getElementById('TotalDebtAndLeaseObligationCCF3').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Column 4
+                                if (d == false) {
                                     a = parseInt(document.getElementById('NonCurrentLiabilitiesNote4').value.replaceAll(/,/g, ''));
                                     a = a - parseInt(document.getElementById('DeferredRevenueAndDepositsNonCurrent4').value.replaceAll(/,/g, ''));
                                     a = a - parseInt(document.getElementById('AccruedTaxLiabilitiesNonCurrent4').value.replaceAll(/,/g, ''));
                                     a = a - parseInt(document.getElementById('DeferredTaxLiabilitiesNonCurrent4').value.replaceAll(/,/g, ''));
-                                    document.getElementById('TotalDebtAndLeaseObligationCCF4').value = numUSD.format(Math.round(-a));
+                                    document.getElementById('TotalDebtAndLeaseObligationCCF4').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('TotalDebtAndLeaseObligationCCF4').value = numUSD.format(document.getElementById('TotalDebtAndLeaseObligationCCF4').value.replaceAll(/,/g, ''));
                                 }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                if (z == 4) {
+                                    if (document.getElementById('UnhideCheckbox').checked == false) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                } else {
+                                    a = '';
+                                }
+                                document.getElementById('TotalDebtAndLeaseObligationCCFRow').style.display = a;
                             };
                         </script>
                         <td colspan='2' style="border-bottom-style:ridge"><input style="font-weight:bold;" class='Clock' id="TotalDebtAndLeaseObligationCCF1" onfocusout="Compile();" onchange="FormatCell();"></input></td>
@@ -23629,20 +23727,45 @@
                                 var numUSD = new Intl.NumberFormat("en-US", {
                                     format: "number"
                                 });
-                                if (document.getElementById('OpenEditor').checked == false) {
-                                    // Column 1
-                                    a = Math.round(parseInt(document.getElementById('ShareholdersEquity1').value.replaceAll(/,/g, '')));
-                                    document.getElementById('FairValueOfIdentifiableAssetsCCF1').value = numUSD.format(a)
-                                    // Column 2
-                                    a = Math.round(parseInt(document.getElementById('ShareholdersEquity2').value.replaceAll(/,/g, '')));
-                                    document.getElementById('FairValueOfIdentifiableAssetsCCF2').value = numUSD.format(a)
-                                    // Column 3
-                                    a = Math.round(parseInt(document.getElementById('ShareholdersEquity3').value.replaceAll(/,/g, '')));
-                                    document.getElementById('FairValueOfIdentifiableAssetsCCF3').value = numUSD.format(a)
-                                    // Column 4
-                                    a = Math.round(parseInt(document.getElementById('ShareholdersEquity4').value.replaceAll(/,/g, '')));
-                                    document.getElementById('FairValueOfIdentifiableAssetsCCF4').value = numUSD.format(a)
-                                };
+                                d = document.getElementById('OpenEditor').checked;
+                                // Column 1
+                                if (d == false) {
+                                    a = parseInt(document.getElementById('ShareholdersEquity1').value.replaceAll(/,/g, ''));
+                                    document.getElementById('FairValueOfIdentifiableAssetsCCF1').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('FairValueOfIdentifiableAssetsCCF1').value = numUSD.format(document.getElementById('FairValueOfIdentifiableAssetsCCF1').value.replaceAll(/,/g, ''));
+                                }
+                                // Column 2
+                                if (d == false) {
+                                    a = parseInt(document.getElementById('ShareholdersEquity2').value.replaceAll(/,/g, ''));
+                                    document.getElementById('FairValueOfIdentifiableAssetsCCF2').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('FairValueOfIdentifiableAssetsCCF2').value = numUSD.format(document.getElementById('FairValueOfIdentifiableAssetsCCF2').value.replaceAll(/,/g, ''));
+                                }
+                                // Column 3
+                                if (d == false) {
+                                    a = parseInt(document.getElementById('ShareholdersEquity3').value.replaceAll(/,/g, ''));
+                                    document.getElementById('FairValueOfIdentifiableAssetsCCF3').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('FairValueOfIdentifiableAssetsCCF3').value = numUSD.format(document.getElementById('FairValueOfIdentifiableAssetsCCF3').value.replaceAll(/,/g, ''));
+                                }
+                                // Column 4
+                                if (d == false) {
+                                    a = parseInt(document.getElementById('ShareholdersEquity4').value.replaceAll(/,/g, ''));
+                                    document.getElementById('FairValueOfIdentifiableAssetsCCF4').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('FairValueOfIdentifiableAssetsCCF4').value = numUSD.format(document.getElementById('FairValueOfIdentifiableAssetsCCF4').value.replaceAll(/,/g, ''));
+                                }
+                                if (z == 4) {
+                                    if (document.getElementById('UnhideCheckbox').checked == false) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                } else {
+                                    a = '';
+                                }
+                                document.getElementById('TotalDebtAndLeaseObligationCCFRow').style.display = a;
                             };
                         </script>
                         <td colspan='2' style="border-bottom-style:ridge"><input class='Clock' id="FairValueOfIdentifiableAssetsCCF1" style="font-weight:bold;" onfocusout="Compile();" onchange="FormatCell();"></input></td>
@@ -24027,50 +24150,71 @@
                                 var numUSD = new Intl.NumberFormat("en-US", {
                                     format: "number"
                                 });
-                                if (document.getElementById('OpenEditor').checked == false) {
-                                    z = 0
-                                    // Last Year
+                                z = 0
+                                d = document.getElementById('OpenEditor').checked;
+                                // Last Year
+                                if (d == false) {
                                     a = parseInt(document.getElementById('EquityMethodInvesteesIncome1').value.replaceAll(/,/g, ''));
-                                    document.getElementById('EquityMethodInvesteesIncomeCI1').value = numUSD.format(Math.round(a));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Second Last Year
+                                    document.getElementById('EquityMethodInvesteesIncomeCI1').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('EquityMethodInvesteesIncomeCI1').value = numUSD.format(document.getElementById('EquityMethodInvesteesIncomeCI1').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Second Last Year
+                                if (d == false) {
                                     a = parseInt(document.getElementById('EquityMethodInvesteesIncome2').value.replaceAll(/,/g, ''));
-                                    document.getElementById('EquityMethodInvesteesIncomeCI2').value = numUSD.format(Math.round(a));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Third Last Year
+                                    document.getElementById('EquityMethodInvesteesIncomeCI2').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('EquityMethodInvesteesIncomeCI2').value = numUSD.format(document.getElementById('EquityMethodInvesteesIncomeCI2').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Third Last Year
+                                if (d == false) {
                                     a = parseInt(document.getElementById('EquityMethodInvesteesIncome3').value.replaceAll(/,/g, ''));
-                                    document.getElementById('EquityMethodInvesteesIncomeCI3').value = numUSD.format(Math.round(a));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Fourth Last Year
+                                    document.getElementById('EquityMethodInvesteesIncomeCI3').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('EquityMethodInvesteesIncomeCI3').value = numUSD.format(document.getElementById('EquityMethodInvesteesIncomeCI3').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Fourth Last Year
+                                if (d == false) {
                                     a = parseInt(document.getElementById('EquityMethodInvesteesIncome4').value.replaceAll(/,/g, ''));
-                                    document.getElementById('EquityMethodInvesteesIncomeCI4').value = numUSD.format(Math.round(a));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Fifth Last Year
+                                    document.getElementById('EquityMethodInvesteesIncomeCI4').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('EquityMethodInvesteesIncomeCI4').value = numUSD.format(document.getElementById('EquityMethodInvesteesIncomeCI4').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Fifth Last Year
+                                if (d == false) {
                                     a = parseInt(document.getElementById('EquityMethodInvesteesIncome5').value.replaceAll(/,/g, ''));
-                                    document.getElementById('EquityMethodInvesteesIncomeCI5').value = numUSD.format(Math.round(a));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    // Sixth Last Year
+                                    document.getElementById('EquityMethodInvesteesIncomeCI5').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('EquityMethodInvesteesIncomeCI5').value = numUSD.format(document.getElementById('EquityMethodInvesteesIncomeCI5').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Sixth Last Year
+                                if (d == false) {
                                     a = parseInt(document.getElementById('EquityMethodInvesteesIncome6').value.replaceAll(/,/g, ''));
-                                    document.getElementById('EquityMethodInvesteesIncomeCI6').value = numUSD.format(Math.round(a));
-                                    if (a == 0) {
-                                        z = z + 1
-                                    }
-                                    if (z == 6) {
-                                        if (document.getElementById('UnhideCheckbox').checked == false) {
-                                            a = 'none';
-                                        } else {
-                                            a = '';
-                                        }
+                                    document.getElementById('EquityMethodInvesteesIncomeCI6').value = numUSD.format(a);
+                                } else {
+                                    document.getElementById('EquityMethodInvesteesIncomeCI6').value = numUSD.format(document.getElementById('EquityMethodInvesteesIncomeCI6').value.replaceAll(/,/g, ''));
+                                }
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                if (z == 6) {
+                                    if (document.getElementById('UnhideCheckbox').checked == false) {
+                                        a = 'none';
                                     } else {
                                         a = '';
                                     }
@@ -24730,7 +24874,7 @@
                     </tr>
                     <tr id="TotalDebtAndLeaseObligationCIRow" class="OpinionFour">
                         <td colspan="2"><h6><b>Long-Term Debt And Obligations</b></h6></td>
-                        <td style="text-align:center"><button id="NonCurrentLiabilitiesNoteShortCut" data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">BS</button></td>
+                        <td style="text-align:center"><button id="TotalDebtAndLeaseObligationCCFShortCut" data-page="CapitalizedCashFlow" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CCF</button></td>
                         <td style="color:#0d47a1; text-align:center; font-weight:bold;">(k)</td>
                         <td>
                             <input type="checkbox" id="TotalDebtAndLeaseObligationCICheckbox"></input>
@@ -24741,20 +24885,41 @@
                                 var numUSD = new Intl.NumberFormat("en-US", {
                                     format: "number"
                                 });
-                                if (document.getElementById('OpenEditor').checked == false) {
-                                    // Column 1
-                                    a = parseInt(document.getElementById('TotalDebtAndLeaseObligationCCF1').value.replaceAll(/,/g, ''));
-                                    document.getElementById('TotalDebtAndLeaseObligationCI1').value = numUSD.format(a);
-                                    // Column 2
-                                    a = parseInt(document.getElementById('TotalDebtAndLeaseObligationCCF2').value.replaceAll(/,/g, ''));
-                                    document.getElementById('TotalDebtAndLeaseObligationCI2').value = numUSD.format(a);
-                                    // Column 3
-                                    a = parseInt(document.getElementById('TotalDebtAndLeaseObligationCCF3').value.replaceAll(/,/g, ''));
-                                    document.getElementById('TotalDebtAndLeaseObligationCI3').value = numUSD.format(a);
-                                    // Column 4
-                                    a = parseInt(document.getElementById('TotalDebtAndLeaseObligationCCF4').value.replaceAll(/,/g, ''));
-                                    document.getElementById('TotalDebtAndLeaseObligationCI4').value = numUSD.format(a);
-                                };
+                                z = 0
+                                // Column 1
+                                a = parseInt(document.getElementById('TotalDebtAndLeaseObligationCCF1').value.replaceAll(/,/g, ''));
+                                document.getElementById('TotalDebtAndLeaseObligationCI1').value = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Column 2
+                                a = parseInt(document.getElementById('TotalDebtAndLeaseObligationCCF2').value.replaceAll(/,/g, ''));
+                                document.getElementById('TotalDebtAndLeaseObligationCI2').value = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Column 3
+                                a = parseInt(document.getElementById('TotalDebtAndLeaseObligationCCF3').value.replaceAll(/,/g, ''));
+                                document.getElementById('TotalDebtAndLeaseObligationCI3').value = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                // Column 4
+                                a = parseInt(document.getElementById('TotalDebtAndLeaseObligationCCF4').value.replaceAll(/,/g, ''));
+                                document.getElementById('TotalDebtAndLeaseObligationCI4').value = numUSD.format(a);
+                                if (a == 0) {
+                                    z = z + 1
+                                }
+                                if (z == 4) {
+                                    if (document.getElementById('UnhideCheckbox').checked == false) {
+                                        a = 'none';
+                                    } else {
+                                        a = '';
+                                    }
+                                } else {
+                                    a = '';
+                                }
+                                document.getElementById('TotalDebtAndLeaseObligationCIRow').style.display = a;
                             };
                         </script>
                         <td colspan="2" style="border-bottom-style:ridge"><input style="font-weight:bold;" class='Clock' id="TotalDebtAndLeaseObligationCI1" onfocusout="Compile();" onchange="FormatCell();"></input></td>
@@ -24804,12 +24969,31 @@
                     </tr>
                     <tr id="ValueAccruingToPreferredShareholdersCIRow" class="OpinionFour">
                         <td colspan="2"><h6>Value Accruing To Preferred Shareholders</h6></td>
+                        <td style="text-align:center"><button id="ValueAccruingToPreferredShareholdersCCFShortCut" data-page="CapitalizedCashFlow" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white">CCF</button></td>
                         <td style="color:#0d47a1; text-align:center; font-weight:bold;">(m)</td>
-                        <td></td>
                         <td>
                             <input type="checkbox" id="ValueAccruingToPreferredShareholdersCICheckbox"></input>
                             <input type="checkbox" id="ValueAccruingToPreferredShareholdersCICheckbox2"></input>
                         </td>
+                        <script>
+                            function BalanceShareholdersEquityCI(BalanceShareholdersEquityCI) {
+                                var numUSD = new Intl.NumberFormat("en-US", {
+                                    format: "number"
+                                })
+                                // Column 1
+                                a = parseInt(document.getElementById('ValueAccruingToPreferredShareholdersCCF1').value.replaceAll(/,/g, ''));
+                                document.getElementById('ValueAccruingToPreferredShareholdersCI1').value = numUSD.format(Math.round(a));
+                                // Column 2
+                                a = parseInt(document.getElementById('ValueAccruingToPreferredShareholdersCCF2').value.replaceAll(/,/g, ''));
+                                document.getElementById('ValueAccruingToPreferredShareholdersCI2').value = numUSD.format(Math.round(a));
+                                // Column 3
+                                a = parseInt(document.getElementById('ValueAccruingToPreferredShareholdersCCF3').value.replaceAll(/,/g, ''));
+                                document.getElementById('ValueAccruingToPreferredShareholdersCI3').value = numUSD.format(Math.round(a));
+                                // Column 4
+                                a = parseInt(document.getElementById('ValueAccruingToPreferredShareholdersCCF4').value.replaceAll(/,/g, ''));
+                                document.getElementById('ValueAccruingToPreferredShareholdersCI4').value = numUSD.format(Math.round(a));
+                            };
+                        </script>
                         <td colspan="2" style="border-bottom-style:ridge"><input class='Clock' id="ValueAccruingToPreferredShareholdersCI1" style="font-weight:bold;" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                         <td colspan="2" style="border-bottom-style:ridge"><input class='Clock' id="ValueAccruingToPreferredShareholdersCI2" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                         <td colspan="2" style="border-bottom-style:ridge"><input class='Clock' id="ValueAccruingToPreferredShareholdersCI3" onfocusout="Compile()" onchange='FormatCell()'></input></td>
@@ -32603,7 +32787,7 @@
                 <tr></tr>
                 <tr></tr>
                 <tr id="CurrentAssetsREFRow" class="REF">
-                    <td colspan="5" style="text-align: left">Current Assets</td>
+                    <td colspan="5" style="text-align: left"><h3>Current Assets</h3></td>
                     <td></td>
                     <td><input id="CurrentAssetsREF1" style="display:none" onfocusout="Compile()"></input></td>
                     <td><input id="CurrentAssetsREF2" style="display:none" onfocusout="Compile()"></input></td>
@@ -32615,10 +32799,10 @@
                         <input type="checkbox" id="CurrentAssetsREFCheckbox"></input>
                         <input type="checkbox" id="CurrentAssetsREFCheckbox2"></input>
                     </td>
-                    <td colspan='5'><input id="CurrentAssetsREF6" onfocusout="Compile()" onchange="CurrentAssetsREF()" value="A"></input></td>
+                    <td colspan='5'><input style="font-size: 13px;" id="CurrentAssetsREF6" onfocusout="Compile()" onchange="CurrentAssetsREF()" value="A"></input></td>
                 </tr>
                 <tr id="NonCurrentAssetsREFRow" class="REF">
-                    <td colspan="5" style="text-align: left">Non Current Assets</td>
+                    <td colspan="5" style="text-align: left"><h3>Non-Current Assets</td>
                     <td></td>
                     <td><input id="NonCurrentAssetsREF1" style="display:none" onfocusout="Compile()"></input></td>
                     <td><input id="NonCurrentAssetsREF2" style="display:none" onfocusout="Compile()"></input></td>
@@ -32630,10 +32814,10 @@
                         <input type="checkbox" id="NonCurrentAssetsREFCheckbox"></input>
                         <input type="checkbox" id="NonCurrentAssetsREFCheckbox2"></input>
                     </td>
-                    <td colspan='5'><input id="NonCurrentAssetsREF6" onfocusout="Compile()" onchange="NonCurrentAssetsREF()" value="G"></input></td>
+                    <td colspan='5'><input style="font-size: 13px;" id="NonCurrentAssetsREF6" onfocusout="Compile()" onchange="NonCurrentAssetsREF()" value="G"></input></td>
                 </tr>
                 <tr id="CurrentLiabilitiesREFRow" class="REF">
-                    <td colspan="5" style="text-align: left">Current Liabilities</td>
+                    <td colspan="5" style="text-align: left"><h3>Current Liabilities</td>
                     <td></td>
                     <td><input id="CurrentLiabilitiesREF1" style="display:none" onfocusout="Compile()"></input></td>
                     <td><input id="CurrentLiabilitiesREF2" style="display:none" onfocusout="Compile()"></input></td>
@@ -32645,10 +32829,10 @@
                         <input type="checkbox" id="CurrentLiabilitiesREFCheckbox"></input>
                         <input type="checkbox" id="CurrentLiabilitiesREFCheckbox2"></input>
                     </td>
-                    <td colspan='5'><input id="CurrentLiabilitiesREF6" onfocusout="Compile()" onchange="CurrentLiabilitiesREF()" value="AA"></input></td>
+                    <td colspan='5'><input style="font-size: 13px;" id="CurrentLiabilitiesREF6" onfocusout="Compile()" onchange="CurrentLiabilitiesREF()" value="AA"></input></td>
                 </tr>
                 <tr id="NonCurrentLiabilitiesREFRow" class="REF">
-                    <td colspan="5" style="text-align: left"> Non-Current Liabilities </td>
+                    <td colspan="5" style="text-align: left"><h3>Non-Current Liabilities </td>
                     <td></td>
                     <td><input id="NonCurrentLiabilitiesREF1" style="display:none" onfocusout="Compile()"></input></td>
                     <td><input id="NonCurrentLiabilitiesREF2" style="display:none" onfocusout="Compile()"></input></td>
@@ -32660,10 +32844,10 @@
                         <input type="checkbox" id="NonCurrentLiabilitiesREFCheckbox"></input>
                         <input type="checkbox" id="NonCurrentLiabilitiesREFCheckbox2"></input>
                     </td>
-                    <td colspan='5'><input id="NonCurrentLiabilitiesREF6" onfocusout="Compile()" onchange="NonCurrentLiabilitiesREF()" value="DD"></input></td>
+                    <td colspan='5'><input style="font-size: 13px;" id="NonCurrentLiabilitiesREF6" onfocusout="Compile()" onchange="NonCurrentLiabilitiesREF()" value="DD"></input></td>
                 </tr>
                 <tr id="ShareholdersEquityREFRow" class="REF">
-                    <td colspan="5" style="text-align: left"> Shareholder's Equity </td>
+                    <td colspan="5" style="text-align: left"><h3>Shareholder's Equity </td>
                     <td></td>
                     <td><input id="ShareholdersEquityREF1" style="display:none" onfocusout="Compile()"></input></td>
                     <td><input id="ShareholdersEquityREF2" style="display:none" onfocusout="Compile()"></input></td>
@@ -32675,10 +32859,10 @@
                         <input type="checkbox" id="ShareholdersEquityREFCheckbox"></input>
                         <input type="checkbox" id="ShareholdersEquityREFCheckbox2"></input>
                     </td>
-                    <td colspan='5'><input id="ShareholdersEquityREF6" onfocusout="Compile()" onchange="ShareholdersEquityREF()" value="EE"></input></td>
+                    <td colspan='5'><input style="font-size: 13px;" id="ShareholdersEquityREF6" onfocusout="Compile()" onchange="ShareholdersEquityREF()" value="EE"></input></td>
                 </tr>
                 <tr id="GrossMarginREFRow" class="REF">
-                    <td colspan="5" style="text-align: left"> Gross Margin </td>
+                    <td colspan="5" style="text-align: left"><h3>Gross Margin </td>
                     <td></td>
                     <td><input id="GrossMarginREF1" style="display:none" onfocusout="Compile()"></input></td>
                     <td><input id="GrossMarginREF2" style="display:none" onfocusout="Compile()"></input></td>
@@ -32690,10 +32874,10 @@
                         <input type="checkbox" id="GrossMarginREFCheckbox"></input>
                         <input type="checkbox" id="GrossMarginREFCheckbox2"></input>
                     </td>
-                    <td colspan='5'><input id="GrossMarginREF6" onfocusout="Compile()" onchange="GrossMarginREF()" value="20"></input></td>
+                    <td colspan='5'><input style="font-size: 13px;" id="GrossMarginREF6" onfocusout="Compile()" onchange="GrossMarginREF()" value="20"></input></td>
                 </tr>
                 <tr id="OperatingExpensesREFRow" class="REF">
-                    <td colspan="5" style="text-align: left"> Operating Expenses </td>
+                    <td colspan="5" style="text-align: left"><h3>Operating Expenses </h3></td>
                     <td></td>
                     <td><input id="OperatingExpensesREF1" style="display:none" onfocusout="Compile()"></input></td>
                     <td><input id="OperatingExpensesREF2" style="display:none" onfocusout="Compile()"></input></td>
@@ -32705,10 +32889,10 @@
                         <input type="checkbox" id="OperatingExpensesREFCheckbox"></input>
                         <input type="checkbox" id="OperatingExpensesREFCheckbox2"></input>
                     </td>
-                    <td colspan='5'><input id="OperatingExpensesREF6" onfocusout="Compile()" onchange="OperatingExpensesREF()" value="30"></input></td>
+                    <td colspan='5'><input style="font-size: 13px;" id="OperatingExpensesREF6" onfocusout="Compile()" onchange="OperatingExpensesREF()" value="30"></input></td>
                 </tr>
                 <tr id="ImpairmentAndRestructuringREFRow" class="REF">
-                    <td colspan="5" style="text-align: left"> Impairment And Restructuring </td>
+                    <td colspan="5" style="text-align: left"> <h3>Impairment And Restructuring </td>
                     <td></td>
                     <td><input id="ImpairmentAndRestructuringREF1" style="display:none" onfocusout="Compile()"></input></td>
                     <td><input id="ImpairmentAndRestructuringREF2" style="display:none" onfocusout="Compile()"></input></td>
@@ -32720,10 +32904,10 @@
                         <input type="checkbox" id="ImpairmentAndRestructuringREFCheckbox"></input>
                         <input type="checkbox" id="ImpairmentAndRestructuringREFCheckbox2"></input>
                     </td>
-                    <td colspan='5'><input id="ImpairmentAndRestructuringREF6" onfocusout="Compile()" onchange="ImpairmentAndRestructuringREF()" value="40"></input></td>
+                    <td colspan='5'><input style="font-size: 13px;" id="ImpairmentAndRestructuringREF6" onfocusout="Compile()" onchange="ImpairmentAndRestructuringREF()" value="40"></input></td>
                 </tr>
                 <tr id="NonOperatingExpensesREFRow" class="REF">
-                    <td colspan="5" style="text-align: left"> Non-Operating Expenses </td>
+                    <td colspan="5" style="text-align: left"> <h3>Non-Operating Expenses </td>
                     <td></td>
                     <td><input id="NonOperatingExpensesREF1" style="display:none" onfocusout="Compile()"></input></td>
                     <td><input id="NonOperatingExpensesREF2" style="display:none" onfocusout="Compile()"></input></td>
@@ -32735,10 +32919,10 @@
                         <input type="checkbox" id="NonOperatingExpensesREFCheckbox"></input>
                         <input type="checkbox" id="NonOperatingExpensesREFCheckbox2"></input>
                     </td>
-                    <td colspan='5'><input id="NonOperatingExpensesREF6" onfocusout="Compile()" onchange="NonOperatingExpensesREF()" value="50"></input></td>
+                    <td colspan='5'><input style="font-size: 13px;" id="NonOperatingExpensesREF6" onfocusout="Compile()" onchange="NonOperatingExpensesREF()" value="50"></input></td>
                 </tr>
                 <tr id="EquityMethodInvesteesIncomeREFRow" class="REF">
-                    <td colspan="5" style="text-align: left"> Equity Method Investees Income </td>
+                    <td colspan="5" style="text-align: left"> <h3>Equity Method Investees Income </td>
                     <td></td>
                     <td><input id="EquityMethodInvesteesIncomeREF1" style="display:none" onfocusout="Compile()"></input></td>
                     <td><input id="EquityMethodInvesteesIncomeREF2" style="display:none" onfocusout="Compile()"></input></td>
@@ -32750,10 +32934,10 @@
                         <input type="checkbox" id="EquityMethodInvesteesIncomeREFCheckbox"></input>
                         <input type="checkbox" id="EquityMethodInvesteesIncomeREFCheckbox2"></input>
                     </td>
-                    <td colspan='5'><input id="EquityMethodInvesteesIncomeREF6" onfocusout="Compile()" onchange="EquityMethodInvesteesIncomeREF()" value="60"></input></td>
+                    <td colspan='5'><input style="font-size: 13px;" id="EquityMethodInvesteesIncomeREF6" onfocusout="Compile()" onchange="EquityMethodInvesteesIncomeREF()" value="60"></input></td>
                 </tr>
                 <tr id="DiscontinuedOperationsREFRow" class="REF">
-                    <td colspan="5" style="text-align: left"> Discontinued Operations </td>
+                    <td colspan="5" style="text-align: left"> <h3>Discontinued Operations </td>
                     <td></td>
                     <td><input id="DiscontinuedOperationsREF1" style="display:none" onfocusout="Compile()"></input></td>
                     <td><input id="DiscontinuedOperationsREF2" style="display:none" onfocusout="Compile()"></input></td>
@@ -32765,10 +32949,10 @@
                         <input type="checkbox" id="DiscontinuedOperationsREFCheckbox"></input>
                         <input type="checkbox" id="DiscontinuedOperationsREFCheckbox2"></input>
                     </td>
-                    <td colspan='5'><input id="DiscontinuedOperationsREF6" onfocusout="Compile()" onchange="DiscontinuedOperationsREF()" value="70"></input></td>
+                    <td colspan='5'><input style="font-size: 13px;" id="DiscontinuedOperationsREF6" onfocusout="Compile()" onchange="DiscontinuedOperationsREF()" value="70"></input></td>
                 </tr>
                 <tr id="IncomeTaxesREFRow" class="REF">
-                    <td colspan="5" style="text-align: left"> Income Taxes </td>
+                    <td colspan="5" style="text-align: left"> <h3>Income Taxes </td>
                     <td></td>
                     <td><input id="IncomeTaxesREF1" style="display:none" onfocusout="Compile()"></input></td>
                     <td><input id="IncomeTaxesREF2" style="display:none" onfocusout="Compile()"></input></td>
@@ -32780,10 +32964,10 @@
                         <input type="checkbox" id="IncomeTaxesREFCheckbox"></input>
                         <input type="checkbox" id="IncomeTaxesREFCheckbox2"></input>
                     </td>
-                    <td colspan='5'><input id="IncomeTaxesREF6" onfocusout="Compile()" onchange="IncomeTaxesREF()" value="80"></input></td>
+                    <td colspan='5'><input style="font-size: 13px;" id="IncomeTaxesREF6" onfocusout="Compile()" onchange="IncomeTaxesREF()" value="80"></input></td>
                 </tr>
                 <tr id="OtherComprehensiveIncomeREFRow" class="REF">
-                    <td colspan="5" style="text-align: left"> Other Comprehensive Income </td>
+                    <td colspan="5" style="text-align: left"> <h3>Other Comprehensive Income </td>
                     <td></td>
                     <td><input id="OtherComprehensiveIncomeREF1" style="display:none" onfocusout="Compile()"></input></td>
                     <td><input id="OtherComprehensiveIncomeREF2" style="display:none" onfocusout="Compile()"></input></td>
@@ -32795,10 +32979,10 @@
                         <input type="checkbox" id="OtherComprehensiveIncomeREFCheckbox"></input>
                         <input type="checkbox" id="OtherComprehensiveIncomeREFCheckbox2"></input>
                     </td>
-                    <td colspan='5'><input id="OtherComprehensiveIncomeREF6" onfocusout="Compile()" onchange="OtherComprehensiveIncomeREF()" value="90"></input></td>
+                    <td colspan='5'><input style="font-size: 13px;" id="OtherComprehensiveIncomeREF6" onfocusout="Compile()" onchange="OtherComprehensiveIncomeREF()" value="90"></input></td>
                 </tr>
                 <tr id="OperatingActivitiesREFRow" class="REF">
-                    <td colspan="5" style="text-align: left"> Operating Activities </td>
+                    <td colspan="5" style="text-align: left"> <h3>Operating Activities </td>
                     <td></td>
                     <td><input id="OperatingActivitiesREF1" style="display:none" onfocusout="Compile()"></input></td>
                     <td><input id="OperatingActivitiesREF2" style="display:none" onfocusout="Compile()"></input></td>
@@ -32810,10 +32994,10 @@
                         <input type="checkbox" id="OperatingActivitiesREFCheckbox"></input>
                         <input type="checkbox" id="OperatingActivitiesREFCheckbox2"></input>
                     </td>
-                    <td colspan='5'><input id="OperatingActivitiesREF6" onfocusout="Compile()" onchange="OperatingActivitiesREF()" value="600"></input></td>
+                    <td colspan='5'><input style="font-size: 13px;" id="OperatingActivitiesREF6" onfocusout="Compile()" onchange="OperatingActivitiesREF()" value="600"></input></td>
                 </tr>
                 <tr id="InvestingActivitiesREFRow" class="REF">
-                    <td colspan="5" style="text-align: left"> Investing Activities </td>
+                    <td colspan="5" style="text-align: left"> <h3>Investing Activities </td>
                     <td></td>
                     <td><input id="InvestingActivitiesREF1" style="display:none" onfocusout="Compile()"></input></td>
                     <td><input id="InvestingActivitiesREF2" style="display:none" onfocusout="Compile()"></input></td>
@@ -32825,10 +33009,10 @@
                         <input type="checkbox" id="InvestingActivitiesREFCheckbox"></input>
                         <input type="checkbox" id="InvestingActivitiesREFCheckbox2"></input>
                     </td>
-                    <td colspan='5'><input id="InvestingActivitiesREF6" onfocusout="Compile()" onchange="InvestingActivitiesREF()" value="700"></input></td>
+                    <td colspan='5'><input style="font-size: 13px;" id="InvestingActivitiesREF6" onfocusout="Compile()" onchange="InvestingActivitiesREF()" value="700"></input></td>
                 </tr>
                 <tr id="FinancingActivitiesREFRow" class="REF">
-                    <td colspan="5" style="text-align: left"> Financing Activities </td>
+                    <td colspan="5" style="text-align: left"> <h3>Financing Activities </td>
                     <td></td>
                     <td><input id="FinancingActivitiesREF1" style="display:none" onfocusout="Compile()"></input></td>
                     <td><input id="FinancingActivitiesREF2" style="display:none" onfocusout="Compile()"></input></td>
@@ -32840,10 +33024,10 @@
                         <input type="checkbox" id="FinancingActivitiesREFCheckbox"></input>
                         <input type="checkbox" id="FinancingActivitiesREFCheckbox2"></input>
                     </td>
-                    <td colspan='5'><input id="FinancingActivitiesREF6" onfocusout="Compile()" onchange="FinancingActivitiesREF()" value="800"></input></td>
+                    <td colspan='5'><input style="font-size: 13px;" id="FinancingActivitiesREF6" onfocusout="Compile()" onchange="FinancingActivitiesREF()" value="800"></input></td>
                 </tr>
                 <tr id="EffectOfExchangeRateOnCashREFRow" class="REF">
-                    <td colspan="5" style="text-align: left"> Effect Of Exchange Rate On Cash </td>
+                    <td colspan="5" style="text-align: left"> <h3>Effect Of Exchange Rate On Cash </td>
                     <td></td>
                     <td><input id="EffectOfExchangeRateOnCashREF1" style="display:none" onfocusout="Compile()"></input></td>
                     <td><input id="EffectOfExchangeRateOnCashREF2" style="display:none" onfocusout="Compile()"></input></td>
@@ -32855,10 +33039,10 @@
                         <input type="checkbox" id="EffectOfExchangeRateOnCashREFCheckbox"></input>
                         <input type="checkbox" id="EffectOfExchangeRateOnCashREFCheckbox2"></input>
                     </td>
-                    <td colspan='5'><input id="EffectOfExchangeRateOnCashREF6" onfocusout="Compile()" onchange="EffectOfExchangeRateOnCashREF()" value="900"></input></td>
+                    <td colspan='5'><input style="font-size: 13px;" id="EffectOfExchangeRateOnCashREF6" onfocusout="Compile()" onchange="EffectOfExchangeRateOnCashREF()" value="900"></input></td>
                 </tr>
                 <tr id="MissionREFRow" class="REF">
-                    <td colspan="5" style="text-align: left"> Mission </td>
+                    <td colspan="5" style="text-align: left"> <h3>Mission </td>
                     <td></td>
                     <td><input id="MissionREF1" style="display:none" onfocusout="Compile()"></input></td>
                     <td><input id="MissionREF2" style="display:none" onfocusout="Compile()"></input></td>
@@ -32870,10 +33054,10 @@
                         <input type="checkbox" id="MissionREFCheckbox"></input>
                         <input type="checkbox" id="MissionREFCheckbox2"></input>
                     </td>
-                    <td colspan='5'><input id="MissionREF6" onfocusout="Compile()" onchange="MissionREF()" value="1000"></input></td>
+                    <td colspan='5'><input style="font-size: 13px;" id="MissionREF6" onfocusout="Compile()" onchange="MissionREF()" value="1000"></input></td>
                 </tr>
                 <tr id="MaterialityREFRow" class="REF">
-                    <td colspan="5" style="text-align: left"> Materiality </td>
+                    <td colspan="5" style="text-align: left"> <h3>Materiality </td>
                     <td></td>
                     <td><input id="MaterialityREF1" style="display:none" onfocusout="Compile()"></input></td>
                     <td><input id="MaterialityREF2" style="display:none" onfocusout="Compile()"></input></td>
@@ -32885,10 +33069,10 @@
                         <input type="checkbox" id="MaterialityREFCheckbox"></input>
                         <input type="checkbox" id="MaterialityREFCheckbox2"></input>
                     </td>
-                    <td colspan='5'><input id="MaterialityREF6" onfocusout="Compile()"onchange="MaterialityREF()"  value="1100"></input></td>
+                    <td colspan='5'><input style="font-size: 13px;" id="MaterialityREF6" onfocusout="Compile()"onchange="MaterialityREF()"  value="1100"></input></td>
                 </tr>
                 <tr id="BalanceSheetsProcedureREFRow" class="REF">
-                    <td colspan="5" style="text-align: left"> Balance Sheets - Procedure </td>
+                    <td colspan="5" style="text-align: left"> <h3>Balance Sheets - Procedure </td>
                     <td></td>
                     <td><input id="BalanceSheetsProcedureREF1" style="display:none" onfocusout="Compile()"></input></td>
                     <td><input id="BalanceSheetsProcedureREF2" style="display:none" onfocusout="Compile()"></input></td>
@@ -32900,10 +33084,10 @@
                         <input type="checkbox" id="BalanceSheetsProcedureREFCheckbox"></input>
                         <input type="checkbox" id="BalanceSheetsProcedureREFCheckbox2"></input>
                     </td>
-                    <td colspan='5'><input id="BalanceSheetsProcedureREF6" onfocusout="Compile()" onchange="BalanceSheetsProcedureREF()" value="2000"></input></td>
+                    <td colspan='5'><input style="font-size: 13px;" id="BalanceSheetsProcedureREF6" onfocusout="Compile()" onchange="BalanceSheetsProcedureREF()" value="2000"></input></td>
                 </tr>
                 <tr id="IncomeStatementsProcedureREFRow" class="REF">
-                    <td colspan="5" style="text-align: left"> Income Statements - Procedure </td>
+                    <td colspan="5" style="text-align: left"> <h3>Income Statements - Procedure </td>
                     <td></td>
                     <td><input id="IncomeStatementsProcedureREF1" style="display:none" onfocusout="Compile()"></input></td>
                     <td><input id="IncomeStatementsProcedureREF2" style="display:none" onfocusout="Compile()"></input></td>
@@ -32915,10 +33099,10 @@
                         <input type="checkbox" id="IncomeStatementsProcedureREFCheckbox"></input>
                         <input type="checkbox" id="IncomeStatementsProcedureREFCheckbox2"></input>
                     </td>
-                    <td colspan='5'><input id="IncomeStatementsProcedureREF6" onfocusout="Compile()" onchange="IncomeStatementsProcedureREF()" value="3000"></input></td>
+                    <td colspan='5'><input style="font-size: 13px;" id="IncomeStatementsProcedureREF6" onfocusout="Compile()" onchange="IncomeStatementsProcedureREF()" value="3000"></input></td>
                 </tr>
                 <tr id="ComprehensiveIncomeProcedureREFRow" class="REF">
-                    <td colspan="5" style="text-align: left"> Comprehensive Income - Procedure </td>
+                    <td colspan="5" style="text-align: left"> <h3>Comprehensive Income - Procedure </td>
                     <td></td>
                     <td><input id="ComprehensiveIncomeProcedureREF1" style="display:none" onfocusout="Compile()"></input></td>
                     <td><input id="ComprehensiveIncomeProcedureREF2" style="display:none" onfocusout="Compile()"></input></td>
@@ -32930,10 +33114,10 @@
                         <input type="checkbox" id="ComprehensiveIncomeProcedureREFCheckbox"></input>
                         <input type="checkbox" id="ComprehensiveIncomeProcedureREFCheckbox2"></input>
                     </td>
-                    <td colspan='5'><input id="ComprehensiveIncomeProcedureREF6" onfocusout="Compile()" onchange="ComprehensiveIncomeProcedureREF()" value="4000"></input></td>
+                    <td colspan='5'><input style="font-size: 13px;" id="ComprehensiveIncomeProcedureREF6" onfocusout="Compile()" onchange="ComprehensiveIncomeProcedureREF()" value="4000"></input></td>
                 </tr>
                 <tr id="ShareholdersEquityProcedureREFRow" class="REF">
-                    <td colspan="5" style="text-align: left"> Shareholders' Equity - Procedure </td>
+                    <td colspan="5" style="text-align: left"> <h3>Shareholders' Equity - Procedure </td>
                     <td></td>
                     <td><input id="ShareholdersEquityProcedureREF1" style="display:none" onfocusout="Compile()"></input></td>
                     <td><input id="ShareholdersEquityProcedureREF2" style="display:none" onfocusout="Compile()"></input></td>
@@ -32945,10 +33129,10 @@
                         <input type="checkbox" id="ShareholdersEquityProcedureREFCheckbox"></input>
                         <input type="checkbox" id="ShareholdersEquityProcedureREFCheckbox2"></input>
                     </td>
-                    <td colspan='5'><input id="ShareholdersEquityProcedureREF6" onfocusout="Compile()" onchange="ShareholdersEquityProcedureREF()" value="5000"></input></td>
+                    <td colspan='5'><input style="font-size: 13px;" id="ShareholdersEquityProcedureREF6" onfocusout="Compile()" onchange="ShareholdersEquityProcedureREF()" value="5000"></input></td>
                 </tr>
                 <tr id="CashFlowProcedureREFRow" class="REF">
-                    <td colspan="5" style="text-align: left"> Cash Flow - Procedure </td>
+                    <td colspan="5" style="text-align: left"> <h3>Cash Flow - Procedure </td>
                     <td></td>
                     <td><input id="CashFlowProcedureREF1" style="display:none" onfocusout="Compile()"></input></td>
                     <td><input id="CashFlowProcedureREF2" style="display:none" onfocusout="Compile()"></input></td>
@@ -32960,10 +33144,10 @@
                         <input type="checkbox" id="CashFlowProcedureREFCheckbox"></input>
                         <input type="checkbox" id="CashFlowProcedureREFCheckbox2"></input>
                     </td>
-                    <td colspan='5'><input id="CashFlowProcedureREF6" onfocusout="Compile()" onchange="CashFlowProcedureREF()" value="6000"></input></td>
+                    <td colspan='5'><input style="font-size: 13px;" id="CashFlowProcedureREF6" onfocusout="Compile()" onchange="CashFlowProcedureREF()" value="6000"></input></td>
                 </tr>
                 <tr id="AnomaliesREFRow" class="REF">
-                    <td colspan="5" style="text-align: left"> Anomalies </td>
+                    <td colspan="5" style="text-align: left"> <h3>Anomalies </td>
                     <td></td>
                     <td><input id="AnomaliesREF1" style="display:none" onfocusout="Compile()"></input></td>
                     <td><input id="AnomaliesREF2" style="display:none" onfocusout="Compile()"></input></td>
@@ -32975,10 +33159,10 @@
                         <input type="checkbox" id="AnomaliesREFCheckbox"></input>
                         <input type="checkbox" id="AnomaliesREFCheckbox2"></input>
                     </td>
-                    <td colspan='5'><input id="AnomaliesREF6" onfocusout="Compile()" onchange="AnomaliesREF()" value="9999"></input></td>
+                    <td colspan='5'><input style="font-size: 13px;" id="AnomaliesREF6" onfocusout="Compile()" onchange="AnomaliesREF()" value="9999"></input></td>
                 </tr>
                 <tr id="OpinionREFRow" class="REF">
-                    <td colspan="5" style="text-align: left"> Opinion </td>
+                    <td colspan="5" style="text-align: left"> <h3>Opinion </td>
                     <td></td>
                     <td><input id="OpinionREF1" style="display:none" onfocusout="Compile()"></input></td>
                     <td><input id="OpinionREF2" style="display:none" onfocusout="Compile()"></input></td>
@@ -32990,7 +33174,7 @@
                         <input type="checkbox" id="OpinionREFCheckbox"></input>
                         <input type="checkbox" id="OpinionREFCheckbox2"></input>
                     </td>
-                    <td colspan='5'><input id="OpinionREF6" onfocusout="Compile()" onchange="OpinionREF()" value="db"></input></td>
+                    <td colspan='5'><input style="font-size: 13px;" id="OpinionREF6" onfocusout="Compile()" onchange="OpinionREF()" value="db"></input></td>
                 </tr>
                 <tr></tr>
                 <tr></tr>
@@ -33239,6 +33423,10 @@
     // FORMATING
     
     document.addEventListener('DOMContentLoaded', function() {
+        Display();
+    });
+    
+    function Display() {
         for (let i = 0; i < document.querySelectorAll('.Clock').length; i++) {
             var numUSD = new Intl.NumberFormat("en-US", {
                 format: "number",
@@ -33251,7 +33439,7 @@
                 format: "number",
                 minimumFractionDigits: 1,
                 maximumFractionDigits: 1
-            })
+            });
             var m = document.getElementsByClassName("Proportion")[i].value;
             document.getElementsByClassName('Proportion')[i].value = numUSD.format(m);
        };
@@ -33282,7 +33470,7 @@
             var m = document.getElementsByClassName("Price")[i].value;
             document.getElementsByClassName('Price')[i].value = numUSD.format(m);
        };
-    });
+    };
     // Compile
     //
     // on initial loading
@@ -33559,6 +33747,7 @@
         BalanceLongTermDebtAndLeaseObligationCI();
         BalanceValueOfAllCategoryOfSharesCI();
         BalanceCommonSharesValueCI();
+        BalanceShareholdersEquityCI();
         BalanceNetAssetsCI();
         BalanceGoodwillFairValueCI();
         DateIntrinsicValues();
@@ -33754,126 +33943,151 @@
         const key = document.getElementById('CurrentAssetsREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Current Assets (" + document.getElementById('CurrentAssetsREF6').value + ") \\"
+        window.scrollTo(0, 280)
     }
     function SupportingDocumentsNonCurrentAssets() {
         const key = document.getElementById('NonCurrentAssetsREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Non-Current Assets (" + document.getElementById('NonCurrentAssetsREF6').value + ") \\"
+        window.scrollTo(0, 280)
     }
     function SupportingDocumentsCurrentLiabilities() {
         const key = document.getElementById('CurrentLiabilitiesREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Current Liabilities (" + document.getElementById('CurrentLiabilitiesREF6').value + ") \\"
+        window.scrollTo(0, 280)
     }
     function SupportingDocumentsNonCurrentLiabilities() {
         const key = document.getElementById('NonCurrentLiabilitiesREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Non-Current Liabilities (" + document.getElementById('NonCurrentLiabilitiesREF6').value + ") \\"
+        window.scrollTo(0, 280)
     }
     function SupportingDocumentsShareholdersEquity() {
         const key = document.getElementById('ShareholdersEquityREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Shareholders' Equity (" + document.getElementById('ShareholdersEquityREF6').value + ") \\"
+        window.scrollTo(0, 280)
     }
     function SupportingDocumentsGrossMargin() {
         const key = document.getElementById('GrossMarginREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Gross Margin (" + document.getElementById('GrossMarginREF6').value + ") \\"
+        window.scrollTo(0, 280)
     }
     function SupportingDocumentsOperatingExpenses() {
         const key = document.getElementById('OperatingExpensesREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Operating Expenses (" + document.getElementById('OperatingExpensesREF6').value + ") \\"
+        window.scrollTo(0, 280)
     }
     function SupportingDocumentsImpairmentAndRestructuring() {
         const key = document.getElementById('ImpairmentAndRestructuringREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Impairment And Restructuring (" + document.getElementById('ImpairmentAndRestructuringREF6').value + ") \\"
+        window.scrollTo(0, 280)
     }
     function SupportingDocumentsNonOperatingExpenses() {
         const key = document.getElementById('NonOperatingExpensesREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Non-Operating Expenses (" + document.getElementById('NonOperatingExpensesREF6').value + ") \\"
+        window.scrollTo(0, 280)
     }
     function SupportingDocumentsEquityMethodInvesteesIncome() {
         const key = document.getElementById('EquityMethodInvesteesIncomeREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Equity Method Investees Income (" + document.getElementById('EquityMethodInvesteesIncomeREF6').value + ") \\"
+        window.scrollTo(0, 280)
     }
     function SupportingDocumentsDiscontinuedOperations() {
         const key = document.getElementById('DiscontinuedOperationsREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Discontinued Operations (" + document.getElementById('DiscontinuedOperationsREF6').value + ") \\"
+        window.scrollTo(0, 280)
     }
     function SupportingDocumentsIncomeTax() {
         const key = document.getElementById('IncomeTaxesREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Income Taxes (" + document.getElementById('IncomeTaxesREF6').value + ") \\"
+        window.scrollTo(0, 280)
     }
     function SupportingDocumentsOtherComprehensiveIncome() {
         const key = document.getElementById('OtherComprehensiveIncomeREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Comprehensive Income (" + document.getElementById('OtherComprehensiveIncomeREF6').value + ") \\"
+        window.scrollTo(0, 280)
     }
     function SupportingDocumentsOperatingActivities() {
         const key = document.getElementById('OperatingActivitiesREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Operating Activities (" + document.getElementById('OperatingActivitiesREF6').value + ") \\"
+        window.scrollTo(0, 280)
     }
     function SupportingDocumentsInvestingActivities() {
         const key = document.getElementById('InvestingActivitiesREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Investing Activities (" + document.getElementById('InvestingActivitiesREF6').value + ") \\"
+        window.scrollTo(0, 280)
     }
     function SupportingDocumentsFinancingActivities() {
         const key = document.getElementById('FinancingActivitiesREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Financing Activities (" + document.getElementById('FinancingActivitiesREF6').value + ") \\"
+        window.scrollTo(0, 280)
     }
     function SupportingDocumentsMission() {
         const key = document.getElementById('MissionREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Mission (" + document.getElementById('MissionREF6').value + ") \\"
+        window.scrollTo(0, 280)
     }
     function SupportingDocumentsMateriality() {
         const key = document.getElementById('MaterialityREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Materiality Threshold (" + document.getElementById('MaterialityREF6').value + ") \\"
+        window.scrollTo(0, 280)
     }
     function SupportingDocumentsBalanceSheetsProcedure() {
         const key = document.getElementById('BalanceSheetsProcedureREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Balance Sheets Procedures (" + document.getElementById('BalanceSheetsProcedureREF6').value + ") \\"
+        window.scrollTo(0, 280)
     }
     function SupportingDocumentsIncomeStatementsProcedure() {
         const key = document.getElementById('IncomeStatementsProcedureREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Income Statements Procedures (" + document.getElementById('IncomeStatementsProcedureREF6').value + ") \\"
+        window.scrollTo(0, 280)
     }
     function SupportingDocumentsComprehensiveIncomeProcedure() {
         const key = document.getElementById('ComprehensiveIncomeProcedureREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Comprehensive Income Procedures (" + document.getElementById('ComprehensiveIncomeProcedureREF6').value + ") \\"
+        window.scrollTo(0, 280)
     }
     function SupportingDocumentsShareholdersEquityProcedure() {
         const key = document.getElementById('ShareholdersEquityProcedureREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Shareholders' Equity Procedures (" + document.getElementById('ShareholdersEquityProcedureREF6').value + ") \\"
+        window.scrollTo(0, 280)
     }
     function SupportingDocumentsCashFlowProcedure() {
         const key = document.getElementById('CashFlowProcedureREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Cash Flow Procedures (" + document.getElementById('CashFlowProcedureREF6').value + ") \\"
+        window.scrollTo(0, 280)
     }
     function SupportingDocumentsAnomalies() {
         const key = document.getElementById('AnomaliesREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Anomalies (" + document.getElementById('AnomaliesREF6').value + ") \\"
+        window.scrollTo(0, 280)
     }
     function SupportingDocumentsOpinion() {
         const key = document.getElementById('OpinionREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Opinion (" + document.getElementById('OpinionREF6').value + ") \\"
+        window.scrollTo(0, 280)
     }
 
 </script>
