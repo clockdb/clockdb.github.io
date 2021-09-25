@@ -317,9 +317,7 @@
     //    
     // URL on load
     document.addEventListener('DOMContentLoaded', function() {
-        page = 'Graph';
-        showPage(page);
-        history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
+        Graph();
     })
     // pages
     window.onpopstate = function(event) {
@@ -363,25 +361,31 @@
         if (keys.includes(event.keyCode) && (event.ctrlKey || event.metaKey)) {
             event.preventDefault();
             if (event.keyCode == i) {
-                page = 'Context'
-                showPage(page)
+                page = 'Context';
+                showPage(page);
                 history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
-                window.scrollTo(0, 280)
+                window.scrollTo(0, 280);
             }
             if (event.keyCode == ii) {
-                page = 'Graph'
-                showPage(page)
-                history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
-                window.scrollTo(0, 0)
+                Graph();
             }
             if (event.keyCode == iii) {
-                page = 'Opinion'
-                showPage(page)
-                history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
-                window.scrollTo(0, 280)
+                Opinion();
             }
         }
     });
+    function Opinion() {
+        page = 'Opinion';
+        showPage(page);
+        history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
+        window.scrollTo(0, 310);
+    }
+    function Graph() {
+        page = 'Graph';
+        showPage(page);
+        history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
+        window.scrollTo(0, 0);
+    }
     //
     // valuations
     document.addEventListener('keydown', (event) => {
@@ -489,7 +493,6 @@
             }
         }
     });
-
     // audit
     document.addEventListener('keydown', function(event) {
         if (event.code == 'Numpad0' && (event.winKey || event.metaKey)) {
@@ -654,9 +657,7 @@
                     try {
                         if (url == 'Opinion') { 
                             page = url
-                            showPage(page)
-                            history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
-                            window.scrollTo(0, 280);
+                            Opinion();
                         }
                         if (url == 'ReferenceHeader') {
                             Rows = document.getElementsByClassName('Reference')
@@ -870,6 +871,7 @@
                         }
                     } catch {}
                     ShortCut = [
+                        'Context',
                         'IntrinsicValues',
                         'CapitalizationRate',
                         'CapitalizedCashFlow',
@@ -6058,7 +6060,7 @@
                     <tr></tr>
                     <tr id="BridgeφRow" class="Context">
                         <td colspan="2"><h5 style="margin-left:0px;">AUDIT</h5></td>
-                        <td style="text-align:center"><button id="AnomaliesWorstCaseScenarioShortCut" data-page="AuditSummary" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white; box-shadow: none; background-color: white;">AS</button></td>
+                        <td style="text-align:center"><button id="AnomaliesWorstCaseScenarioShortCut" data-page="AuditSummary" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white; box-shadow: none; ;">AS</button></td>
                         <td></td>
                         <td>
                             <input type="checkbox" id="BridgeφCheckbox"></input>
@@ -6090,7 +6092,7 @@
                     <tr></tr>
                     <tr id="IntrinsicValuesRow" class="OpinionFour">
                         <td colspan="2"><h6>Common Shares' Intrinsic Value</h6></td>
-                        <td style="text-align:center"><button id="WeightedIVShortCut" data-page="IntrinsicValues" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white; box-shadow: none; background-color: white">IV</button></td>
+                        <td style="text-align:center"><button id="WeightedIVShortCut" data-page="IntrinsicValues" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white; box-shadow: none; ">IV</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; color:#0D47A1; background-color: white" data-page="OpinionFiles" class="OpinionFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="IntrinsicValuesCheckbox"></input>
@@ -6404,13 +6406,19 @@
                 <tbody>
                     <tr>
                         <td colspan="9"></td>
-                        <td colspan="4" style="border-top-style:ridge;">
+                        <td colspan="1">
                             <script>
                                 function Signatory() {
-                                    document.getElementById('Signatory').innerHTML = document.getElementById('Signatory1').value;
+                                    document.getElementById('SignatoryShortCut').innerHTML = document.getElementById('Signatory1').value;
+                                }
+                                function ContextSign() {
+                                    document.getElemenyByID('SignatoryShortCut').addEventListener('click', function() {
+                                        
+                                    })
                                 }
                             </script>
-                            <h3 style="text-align:right; font-style: italic;" id="Signatory"></h3>
+                        <td colspan="3" style="border-top-style:ridge; text-align:right">
+                            <button id="SignatoryShortCut" data-page="Context" style="background-color: white; box-shadow: none; font-style: italic;" id="Signatory">Ai generated</button>
                         </td>
                         <td colspan="4" style="display:none;"></td>
                 </tbody>
@@ -28284,7 +28292,7 @@
                     <tr></tr>
                     <tr id="PRO-1.1.1Row" class="TrialBalance">
                         <td colspan="2"><h6><b>ASSETS</b></h6></td>
-                        <td style="text-align:center"><button id="TotalAssetsShortCut" data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white; box-shadow: none; background-color: white">BS</button></td>
+                        <td style="text-align:center"><button id="TotalAssetsShortCut" data-page="AnnualBalanceSheets" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white; box-shadow: none; ">BS</button></td>
                         <td><button style="font-weight:bold; text-align:center;  box-shadow: none; color:#0D47A1; background-color: white" data-page="BalanceSheetsProcedureFiles" class="BalanceSheetsProcedureFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="PRO-1.1.1Checkbox"></input>
