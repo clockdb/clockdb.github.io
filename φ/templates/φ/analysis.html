@@ -308,7 +308,7 @@
             }
         });
         window.print();
-        document.getElementById('Main').style.display = 'block';
+        document.getElementById('Main').style.display = '';
         page = 'Graph';
         //
         showPage(page)
@@ -916,12 +916,10 @@
             event.preventDefault();
             if (event.keyCode == i) {
                 escape();
-                document.getElementById('Main').style.display = 'block';
             }
         }
     });
     function escape() {
-        document.getElementById('Main').style.display = 'none';
         document.getElementById('Arch').style.display = 'none';
         document.getElementById('Bridge').style.display = 'none';
         document.getElementById('Clock').style.display = 'none';
