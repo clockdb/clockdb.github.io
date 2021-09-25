@@ -300,6 +300,7 @@
             'Save',
         ]
         escape();
+        document.getElementById('Main').style.display = 'none';
         document.querySelectorAll('div').forEach(div => {
             if (skip.includes(div.id)) {
             } else {
@@ -307,6 +308,7 @@
             }
         });
         window.print();
+        document.getElementById('Main').style.display = 'block';
         page = 'Graph';
         //
         showPage(page)
@@ -650,7 +652,10 @@
                         } catch {}
                     }
                     try {
-                        if (url == 'Opinion') {
+                        if (url == 'Opinion') { 
+                            page = url
+                            showPage(page)
+                            history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
                             window.scrollTo(0, 280);
                         }
                         if (url == 'ReferenceHeader') {
@@ -915,6 +920,7 @@
         }
     });
     function escape() {
+        document.getElementById('Main').style.display = 'none';
         document.getElementById('Arch').style.display = 'none';
         document.getElementById('Bridge').style.display = 'none';
         document.getElementById('Clock').style.display = 'none';
@@ -1042,7 +1048,7 @@
                     <td colspan='9'>
                         <input 
                             id="search"
-                            autofocus placeholder="Type here to search" 
+                            autofocus placeholder="clockdb.com" 
                             type="text" 
                             autocomplete="off"  
                             style="outline: 0ch;">
@@ -5948,7 +5954,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-bottom: 28px">
+            <table style="padding-bottom: 28px">
                 <tbody>
                     <tr></tr>
                     <tr></tr>
@@ -6408,6 +6414,19 @@
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
+            <table style="border-bottom:solid #0D47A1; padding-top: 28px; padding-bottom:28px">
+                <tbody>
+                    <tr>
+                        <td colspan="9"></td>
+                        <td colspan="4" style="border-top-style:ridge;">
+                            <script>
+                                function Signatory() {
+                                    document.getElementById('Signatory').innerHTML = document.getElementById('Signatory1').value;
+                                }
+                            </script>
+                            <h3 style="text-align:right; font-style: italic;" id="Signatory"></h3>
+                        </td>
+                        <td colspan="4" style="display:none;"></td>
                 </tbody>
             </table>
             <table style="border-bottom:solid #0D47A1; padding-top: 28px; padding-bottom:28px">
@@ -32462,6 +32481,19 @@
                         <td colspan="2"><input id="Reviewed5" onfocusout="Compile()"></input></td>
                         <td colspan="2"><input id="Reviewed6" onfocusout="Compile()"></input></td>
                     </tr>
+                    <tr id="SignatoryRow" class="Context"></tr>
+                        <td colspan="4"><h6>Signatory</h6></td>
+                        <td>
+                            <input type="checkbox" id="SignatoryCheckbox"></input>
+                            <input type="checkbox" id="SignatoryCheckbox2"></input>
+                        </td>
+                        <td colspan="2"><input id="Signatory1" style="font-weight:bold;" onfocusout="Compile()" value="AI generated"></input></td>
+                        <td colspan="2"><input id="Signatory2" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input id="Signatory3" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input id="Signatory4" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input id="Signatory5" onfocusout="Compile()"></input></td>
+                        <td colspan="2"><input id="Signatory6" onfocusout="Compile()"></input></td>
+                    </tr>
                     <tr id="urlRow" class="Context"></tr>
                         <td colspan="4"><h6>urls</h6></td>
                         <td>
@@ -33520,6 +33552,7 @@
     // main function
     function Compile() {
         Context();
+        Signatory();
         DateTrialBalances();
         TrialBalancesAmend();
         Balance();
