@@ -16,10 +16,16 @@ urlpatterns = [
     #
     path("", views.index, name="index"),
     #
-    path("phases/", views.phases, name="phases"),
-    path("phases/<str:db>/", views.phase, name="phase"),
+    path(
+        "<str:industry_db>/<str:industry_SEC_db>/<str:periodenddate_db>/<str:db>/<str:region_db>/<str:order_db>/<str:sort_db>/",
+        views.posts,
+        name="posts"
+        ),
     #
     path("master/", views.master, name="master"),
+    #
+    path("phases/", views.phases, name="phases"),
+    path("phases/<str:db>/", views.phase, name="phase"),
     #
     path(
         "<str:industry_db>/<str:industry_SEC_db>/<str:periodenddate_db>/<str:db>/<str:region_db>/<str:order_db>/<str:sort_db>/",

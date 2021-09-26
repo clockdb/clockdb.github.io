@@ -6017,7 +6017,7 @@
                         <td colspan="5"></td>
                         <script>
                             function SharePriceUpdate(SharePriceUpdate) {
-                                document.getElementById('SharePriceUpdate').innerHTML = 'Share Price as of ' + document.getElementById('SharePriceAsOf1').value;
+                                document.getElementById('SharePriceUpdate').innerHTML = 'Shares Price as of ' + document.getElementById('SharePriceAsOf1').value;
                             };
                         </script>
                         <td colspan="2"><h6 style="text-align: center;" id='SharePriceUpdate'></h6></td>
@@ -6346,8 +6346,8 @@
 
                                 var a = document.getElementById('TradingSymbol1').value
 
-                                document.getElementById('CommonShareIntrinsicValuePerUnit').innerHTML = a + ' Common Share Intrinsic Value Per Unit'
-                                document.getElementById('CommonSharePricePerUnit').innerHTML = a + ' Common Share Price Per Unit'
+                                document.getElementById('CommonShareIntrinsicValuePerUnit').innerHTML = a + ' Common Shares Intrinsic Value Per Unit'
+                                document.getElementById('CommonSharePricePerUnit').innerHTML = a + ' Common Shares Price Per Unit'
 
                             }
                         </script>
@@ -6374,10 +6374,10 @@
                             <input type="checkbox" id="SharePriceCheckbox"></input>
                             <input type="checkbox" id="SharePriceCheckbox2"></input>
                         </td>
-                        <td colspan="2"><input value = "{{ entity.CommonSharePriceLastYear }}" class="PriceInput" id="SharePrice1" style="font-weight:bold;" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2"><input value = "{{ AuditData_secondlastyear.CommonSharePrice }}" class="PriceInput" id="SharePrice2" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2"><input value = "{{ AuditData_thirdlastyear.CommonSharePrice }}" class="PriceInput" id="SharePrice3" onfocusout="Compile()" onchange='FormatCell()'></input></td>
-                        <td colspan="2"><input value = "{{ AuditData_fourthlastyear.CommonSharePrice }}" class="PriceInput" id="SharePrice4" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input value = "{{ entity.CommonSharePriceLastYear }}" class="Price" id="SharePrice1" style="font-weight:bold;" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input value = "{{ AuditData_secondlastyear.CommonSharePrice }}" class="Price" id="SharePrice2" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input value = "{{ AuditData_thirdlastyear.CommonSharePrice }}" class="Price" id="SharePrice3" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan="2"><input value = "{{ AuditData_fourthlastyear.CommonSharePrice }}" class="Price" id="SharePrice4" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                         <td colspan="2" style="display:none;"><input id="SharePrice5" onfocusout="Compile()"></input></td>
                         <td colspan="2" style="display:none;"><input id="SharePrice6" onfocusout="Compile()"></input></td>
                     </tr>
@@ -6402,6 +6402,8 @@
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
+                </tbody>
+            </table>
             <table style="border-bottom:solid #0D47A1; padding-top: 28px; padding-bottom:28px">
                 <tbody>
                     <tr>
@@ -11471,7 +11473,7 @@
                         <td colspan="5"></td>
                         <script>
                             function SharePriceUpdateRatio(SharePriceUpdateRatio) {
-                                document.getElementById('SharePriceUpdateRatio').innerHTML = 'Share Price as of ' + document.getElementById('SharePriceAsOf1').value;
+                                document.getElementById('SharePriceUpdateRatio').innerHTML = 'Shares Price as of ' + document.getElementById('SharePriceAsOf1').value;
                             };
                         </script>
                         <td colspan="2"><h6 style="text-align: center;" id='SharePriceUpdateRatio'></h6></td>
@@ -32437,7 +32439,7 @@
                         <td colspan="2"><input type="text" id="WIP6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="SharePriceAsOfRow" class="Date">
-                        <td colspan="4"><h6>Share Price As Of</h6></td>
+                        <td colspan="4"><h6>Shares Price As Of</h6></td>
                         <td>
                             <input type="checkbox" id="SharePriceAsOfCheckbox"></input>
                             <input type="checkbox" id="SharePriceAsOfCheckbox2"></input>
@@ -33442,11 +33444,6 @@
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
         });
-        var PriceInput = new Intl.NumberFormat("en-US", {
-            format: 'number',
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
-        });
         var Price = new Intl.NumberFormat("en-US", {
             format: "currency",
             minimumFractionDigits: 2,
@@ -33464,10 +33461,6 @@
         if (event.target.className == 'ClockRate') {
             var m = event.target.value.replace('%','') / 100;
             document.getElementById(event.target.id).value = ClockRate.format(m);
-        }
-        if (event.target.className == 'PriceInput') {
-            var m = event.target.value;
-            document.getElementById(event.target.id).value = PriceInput.format(m);
         }
         if (event.target.className == 'Price') {
             var m = event.target.value;
@@ -33507,15 +33500,6 @@
             });
             var m = document.getElementsByClassName("ClockRate")[i].value;
             document.getElementsByClassName('ClockRate')[i].value = numUSD.format(m);
-       };
-       for (let i = 0; i < document.querySelectorAll('.PriceInput').length; i++) {
-            var numUSD = new Intl.NumberFormat("en-US", {
-                format: 'number',
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            });
-            var m = document.getElementsByClassName("PriceInput")[i].value;
-            document.getElementsByClassName('PriceInput')[i].value = numUSD.format(m);
        };
        for (let i = 0; i < document.querySelectorAll('.Price').length; i++) {
             var numUSD = new Intl.NumberFormat("en-US", {
