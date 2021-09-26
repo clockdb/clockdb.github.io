@@ -129,6 +129,8 @@ def posts(
     region_db,
     order_db,
     sort_db,
+    start,
+    end,
     ):
     #
     e = Entity.objects.all()
@@ -169,13 +171,19 @@ def posts(
     #
     e = e.exclude(ClockφLastYear=0)
     #
-    # Get start and end points
-    start = int(request.GET.get("start") or 0)
-    end = int(request.GET.get("end") or (start + 9))
+    try:
+        start = int(start) + 20
+    except:
+        start = 0
+    #
+    try:
+        end = int(end) + 20
+    except:
+        end = 19
     #
     # Generate list of entities
     data = []
-    for i in range(start, end + 1):
+    for i in range(start, end - 1):
         json = {
             "entity": e[i].EntityRegistrantName,
             "tradingSymbol": e[i].TradingSymbol,
@@ -248,85 +256,3 @@ def posts(
     return JsonResponse({
         "posts": data
     })
-
-def results(
-    request, 
-    industry_db, 
-    industry_SEC_db, 
-    periodenddate_db,
-    db, 
-    region_db,
-    order_db,
-    sort_db,
-    start,
-    end,
-    ):
-    #
-    e = Entity.objects.all()
-    #
-    a = '-db'
-    b = '-NumberOfYearsAudited'
-    c = 'AnomaliesRatio1'
-    d = 'AnomaliesRatio2'
-    ee = 'AnomaliesRatio3'
-    f = 'AnomaliesRatio4'
-    g = 'AnomaliesRatio5'
-    h = 'AnomaliesRatio6'
-    #
-    if sort_db == 'any':
-        e = e.order_by(a, b, c, d, ee, f, g, h)
-        #
-    else:
-        sort = sort_db
-        if order_db != 'any':
-            if order_db != '+':
-                sort = order_db + sort
-        e = e.order_by(sort, a, b, c, d, ee, f, g, h)
-    #
-    if industry_db != 'any':
-        e = e.filter(Industry_db=industry_db)
-    #
-    if industry_SEC_db != 'any':
-        e = e.filter(Industry_SEC_db=industry_SEC_db)
-    #
-    if periodenddate_db != 'any':
-        e = e.filter(PeriodEndDate_db=periodenddate_db)
-    #
-    if db != 'any':
-        e = e.filter(db=db)
-    #
-    if region_db != 'any':
-        e = e.filter(Region_db=region_db)
-    #
-    e = e.exclude(ClockφLastYear=0)
-    #
-    g = len(e)
-    #
-    entities = []
-    for i in range(start, end):
-        ee = e[i]
-        entities.append(ee)
-    #
-    h = 'result'
-    if g > 1:
-        h = h + 's'
-    if g == 0:
-        g = ''
-        h = 'Nothing in sight, try different criteria.'
-    #
-    return render(request, "./φ/results.html", {
-        "entities": entities,
-        "len_entities": g,
-        "results": h,
-        "industry_db": industry_db,
-        "industry_SEC_db": industry_SEC_db,
-        "periodenddate_db": periodenddate_db,
-        "db": db,
-        "region_db": region_db,
-        "order_db": order_db,
-        "sort_db": sort_db,
-        "start": start,
-        "end": end,
-    })
-
-

@@ -17,7 +17,7 @@ urlpatterns = [
     path("", views.index, name="index"),
     #
     path(
-        "<str:industry_db>/<str:industry_SEC_db>/<str:periodenddate_db>/<str:db>/<str:region_db>/<str:order_db>/<str:sort_db>/",
+        "<str:industry_db>/<str:industry_SEC_db>/<str:periodenddate_db>/<str:db>/<str:region_db>/<str:order_db>/<str:sort_db>/<str:start>/<str:end>/",
         views.posts,
         name="posts"
         ),
@@ -26,12 +26,6 @@ urlpatterns = [
     #
     path("phases/", views.phases, name="phases"),
     path("phases/<str:db>/", views.phase, name="phase"),
-    #
-    path(
-        "<str:industry_db>/<str:industry_SEC_db>/<str:periodenddate_db>/<str:db>/<str:region_db>/<str:order_db>/<str:sort_db>/",
-        views.results,
-        name="results"
-        ),
     #
     path("<str:entity_TradingSymbol>/", views.analysis, name="analysis"),
     path("<str:entity_TradingSymbol>/Community", views.analysis, name="analysis"),
