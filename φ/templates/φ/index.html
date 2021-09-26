@@ -97,66 +97,6 @@
             }
         });
     });
-    //
-    // parametres on load
-    document.addEventListener('DOMContentLoaded', (event) => {
-        //
-        a = "{{ industry_db }}"
-        if (a == "") {
-            a = 'any'
-        }
-        document.getElementById('Industry').value = a;
-        //
-        b = "{{ industry_SEC_db }}"
-        if (b == "") {
-            b = 'any'
-        }
-        if (a != 'any') {
-            c = a + 'row'
-            document.getElementById(c).style.display = 'table-row';
-            document.getElementById(a).value = b;
-        }
-        //
-        a = "{{ periodenddate_db }}"
-        if (a == "") {
-            a = 'any'
-        }
-        document.getElementById('PeriodEndDate').value = a;
-        //
-        a = "{{ db }}"
-        if (a == "") {
-            a = 'http://127.0.0.1:8000/'
-            z = new URL('/', location.href).href;
-            if (a != z) {
-                a = 21
-            } else {
-                a = 'any'
-            }
-        }
-        document.getElementById('Phase').value = a;
-        //
-        a = "{{ region_db }}"
-        if (a == "") {
-            a = 'any'
-        }
-        document.getElementById('Region').value = a;
-        //
-        b = "{{ order_db }}"
-        if (b == "") {
-            b = '-'
-        }
-        //
-        a = "{{ sort_db }}"
-        if (a == "") {
-            a = 'ClockφLastYear'
-            b = '-';
-        }
-        if (a == 'any') {
-            b = a
-        }
-        document.getElementById('Sort').value = a;
-        document.getElementById('Order').value = b;
-    })
 
     // on click industry
     function industry(industry) {
@@ -4386,7 +4326,7 @@
             </tbody>
         </table>
         <!--- GENERAL --->
-        <div id="General" style="margin-left:1% ;width:24%; position: absolute;">
+        <div id="General" style="margin-left:1%; width:24%; position: absolute;">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -5801,8 +5741,8 @@
                                 font-size: 12px;
                                 letter-spacing: 2px;
                                 ">
-                                    <option value=21 selected></option>
-                                    <option value=any>Include</option>
+                                    <option value=21></option>
+                                    <option value=any selected>Include</option>
                                 </select>
                             </form>
                         </td>
@@ -5884,6 +5824,8 @@
                 data.posts.forEach(add_post);
                 LineChart();
                 loading.style.visibility = 'hidden';
+                const loadingsection = document.getElementById('loadingsection');
+                loadingsection.style.paddingTop = '45%';
             })
         };
         function date(date) {
@@ -6513,7 +6455,7 @@
     <section id="posts"></section>
 
     <!--- Loading --->
-    <section style="padding-top:17%; padding-bottom:17%; padding-right: 8%; visibility:visible; text-align: center">
+    <section style="padding-top:25%; padding-bottom:45%; padding-right: 8%; visibility:hidden; text-align: center" id="loadingsection">
         <span class="loader" id="loading">
             <span class="loader-inner">
               <span class="loader-line-wrap">
