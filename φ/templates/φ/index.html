@@ -5825,15 +5825,19 @@
             //
             console.log(url)
             //
-            fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                data.posts.forEach(add_post);
-                LineChart();
-                loading.style.visibility = 'hidden';
-                const loadingsection = document.getElementById('loadingsection');
-                loadingsection.style.paddingTop = '30%';
-            })
+            try {
+                fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    data.posts.forEach(add_post);
+                    LineChart();
+                    loading.style.visibility = 'hidden';
+                    const loadingsection = document.getElementById('loadingsection');
+                    loadingsection.style.paddingTop = '30%';
+                })
+            } catch {
+                alert('failed refresh')
+            }
         };
         function date(date) {
             d = new Date(date)
