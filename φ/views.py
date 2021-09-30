@@ -243,7 +243,7 @@ def posts(
             "CommonSharesOutstandingThirdLastYear": e[i].CommonSharesOutstandingThirdLastYear,
             "CommonSharesOutstandingFourthLastYear": e[i].CommonSharesOutstandingFourthLastYear,
             #
-            "ResultsLength": len(e),
+            "resultsLength": len(e),
         }
         data.append(json)
 

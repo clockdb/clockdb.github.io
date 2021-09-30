@@ -5877,6 +5877,8 @@
                     //  
                     criterias.innerHTML = cc;
                     //
+                    resultsLength = data.posts[0].resultsLength;
+                    results.innerHTML = resultsLength + ' Trading Symbols';
                 });
             //
         };
@@ -6043,6 +6045,7 @@
                                 <td><button class="hide">X</button></td>
                                 <td colspan="3"><button onClick="LineChartButton()" data-page="LineChart${contents.tradingSymbol}" id="LineChartButton${contents.tradingSymbol}" style="letter-spacing: 2px;">Line Chart</button></td>
                                 <td colspan="3"><button onClick="OpinionButton()" data-page="Opinion${contents.tradingSymbol}" id="OpinionButton${contents.tradingSymbol}" style="letter-spacing: 2px;">Opinion</button></td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>
@@ -6544,15 +6547,15 @@
         })
     </script>
 
-    <container id="criteriasContainer" style="display: hidden;">
+    <container>
         <span>
             <h6 id="criterias" style="padding-left: 2%; font-weight: normal; letter-spacing: 2px; font-style:italic; padding-top: 28px"></h6>
         </span>
     </container>
 
-    <container id="resultsLen" style="display: hidden;">
+    <container>
         <span>
-            <h6 id="results" style="padding-left: 2%; font-weight: normal; letter-spacing: 2px; font-style:italic; padding-top: 28px"></h6>
+            <h6 id="results" style="padding-left: 2%; font-weight: normal; letter-spacing: 2px; font-style:italic; padding-bottom: 28px"></h6>
         </span>
     </container>
 
