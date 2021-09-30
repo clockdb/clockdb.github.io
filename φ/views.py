@@ -171,15 +171,9 @@ def posts(
     #
     e = e.exclude(ClockφLastYear=0)
     #
-    try:
-        start = int(start) + 20
-    except:
-        start = 0
+    start = int(start)
     #
-    try:
-        end = int(end) + 20
-    except:
-        end = 19
+    end = int(end)
     #
     # Generate list of entities
     data = []
@@ -246,6 +240,8 @@ def posts(
             "CommonSharesOutstandingSecondLastYear": e[i].CommonSharesOutstandingSecondLastYear,
             "CommonSharesOutstandingThirdLastYear": e[i].CommonSharesOutstandingThirdLastYear,
             "CommonSharesOutstandingFourthLastYear": e[i].CommonSharesOutstandingFourthLastYear,
+            #
+            "ResultsLength": len(e),
         }
         data.append(json)
 

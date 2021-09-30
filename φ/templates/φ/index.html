@@ -117,22 +117,12 @@
         document.getElementById(a).style.display = 'table-row';
     }
 
+    // search button
     document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('SearchButton').addEventListener('click', function() {
             EnterSearch();
         })
     })
-
-    function EnterSearch(EnterSearch) {
-        escape();
-        c = document.getElementsByClassName('post');
-        l = c.length;
-        for (let i = 0; i < l; i++) {
-            c[i].innerHTML = '';
-        }
-        load();
-        ;
-    }
 
     // search
     document.addEventListener('keydown', (event) => {
@@ -141,6 +131,19 @@
             EnterSearch();
         }
     })
+
+    function EnterSearch(EnterSearch) {
+        escape();
+        c = document.getElementsByClassName('post');
+        l = c.length;
+        for (let i = 0; i < l; i++) {
+            c[i].style.display = 'none';
+        }
+        localStorage.setItem('counter', 1)
+        localStorage.setItem('quantity', 10)
+        load();
+    }
+
     </script>
     <Section id="φ">
         <!--- buttons --->
@@ -194,7 +197,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="margin-left:57%; position:absolute; width:32.5%; background-color:white">
+                    <td style="margin-left:57%; position:absolute; width:32.5%; background-color:white; z-index: 1">
                         <!-- Search results -->
                         <ul id="SearchResults" style="
                             border: 2px solid #E5E4E2;
@@ -202,7 +205,6 @@
                             border-radius: 7px; display:none">
                         </ul>
 
-                        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.3/Chart.min.js"></script>
 
                         <script>
                             
@@ -4327,7 +4329,7 @@
             </tbody>
         </table>
         <!--- GENERAL --->
-        <div id="General" style="margin-left:1%; width:24%; position: absolute;">
+        <div id="General" style="margin-left:1%; width:24%; position: absolute; z-index: 1">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -4366,7 +4368,7 @@
             </table>
         </div>
         <!--- OPTIONS --->
-        <div id="Options" style="margin-left:4%; width:24%; position: absolute;">
+        <div id="Options" style="margin-left:4%; width:24%; position: absolute; z-index: 1">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -4381,14 +4383,14 @@
                                     font-size: 12px;
                                     letter-spacing: 2px;
                                     ">
-                                    <option value=any selected></option>
-                                    <option value=ClockφLastYear>Clockdb Ratio</option>
-                                    <option value=lastyear>Period End Date</option>
-                                    <option value=CommonSharesIntrinsicValueLastYear>Intrinsic Value</option>
-                                    <option value=MarketCapitalizationLastYear>Market Capitalization</option>
-                                    <option value=Industry>Industries</option>
-                                    <option value=Region>Regions</option>
-                                    <option value=EntityRegistrantName>Alphabetical</option>
+                                    <option value=any name=any selected></option>
+                                    <option value=ClockφLastYear name=ClockφLastYear>Clockdb Ratio</option>
+                                    <option value=lastyear name=lastyear>Period End Date</option>
+                                    <option value=CommonSharesIntrinsicValueLastYear name=CommonSharesIntrinsicValueLastYear>Intrinsic Value</option>
+                                    <option value=MarketCapitalizationLastYear name=MarketCapitalizationLastYear>Market Capitalization</option>
+                                    <option value=Industry name=Industry>Industries</option>
+                                    <option value=Region name=Region>Regions</option>
+                                    <option value=EntityRegistrantName name=EntityRegistrantName>Alphabetical</option>
                                 </select>
                             </form>
                         </td>
@@ -4401,9 +4403,9 @@
                                 font-size: 12px;
                                 letter-spacing: 2px;
                                 ">
-                                    <option value=any selected></option>
-                                    <option value=+>Ascending</option>
-                                    <option value=->Descending</option>
+                                    <option value=any value=any selected></option>
+                                    <option value=+ name=Ascending>Ascending</option>
+                                    <option value=- name=Descending>Descending</option>
                                 </select>
                             </form>
                         </td>
@@ -4412,7 +4414,7 @@
             </table>
         </div>
         <!--- INDUSTRY --->
-        <div id="IndustryButton" style="margin-left:8%; width:24%; position: absolute;">
+        <div id="IndustryButton" style="margin-left:8%; width:24%; position: absolute; z-index: 1">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -5360,7 +5362,7 @@
             </table>
         </div>
         <!--- REGION --->
-        <div id="RegionButton" style="margin-left:19.7%; width:24%; position: absolute;">
+        <div id="RegionButton" style="margin-left:19.7%; width:24%; position: absolute; z-index: 1">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -5691,7 +5693,7 @@
                 </tbody>
             </table>
         </div>        <!--- PERIOD --->
-        <div id="PeriodEndDateButton" style="margin-left:31.5%; width:24%; position: absolute;">
+        <div id="PeriodEndDateButton" style="margin-left:31.5%; width:24%; position: absolute; z-index: 1">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -5727,7 +5729,7 @@
             </table>
         </div>
         <!--- PHASE --->
-        <div id="PhaseButton" style="margin-left:43%; width:24%; position: absolute;">
+        <div id="PhaseButton" style="margin-left:43%; width:24%; position: absolute; z-index: 1">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -5754,30 +5756,45 @@
 
     </section>
     <script>
-        let counter = 1;
-        const quantity = 20;
-        document.addEventListener('DOMContentLoaded', load);
+        document.addEventListener('DOMContentLoaded', function() {
+            localStorage.setItem('counter', 1)
+            localStorage.setItem('quantity', 10)
+            load();
+        })
         window.onscroll = () => {
             if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-                load();
+                a = document.getElementById('loading').style.visibility
+                if (a == 'hidden') {
+                    counter = parseInt(localStorage.counter) + 10
+                    localStorage.setItem('counter', counter)
+                    localStorage.setItem('quantity', 10)
+                    load();
+                }
             }
         };
         function load() {
             const loading = document.getElementById('loading');
+            const results = document.getElementById('results');
+            const criterias = document.getElementById('criterias');
             loading.style.visibility = 'visible';
+            //
+            counter = parseInt(localStorage.counter)
+            quantity = parseInt(localStorage.quantity)
+            //
             const start = counter;
             const end = start + quantity - 1;
-            counter = end + 1;
             //
-            console.log(counter)
-            //    
             p = 0
             //
             url = '/'
+            cc = '/'
             //
             a = document.getElementById('Industry')
-            a = a.options[a.selectedIndex].value;
-            url = url + a + '/'
+            a = a.options[a.selectedIndex];
+            url = url + a.value + '/'
+            if (a.value != 'any') {
+                cc = a.innerHTML + '/'
+            }
             //
             f = 0
             l = 59
@@ -5788,6 +5805,7 @@
                     if (g == 'table-row') {
                         h = document.getElementById(i)
                         aa = h.options[h.selectedIndex].value;
+                        ccc = h.options[h.selectedIndex].innerHTML;
                         f = 1
                     }
                 } catch {}
@@ -5799,27 +5817,50 @@
                     aa = 'any'
                 }
             }
+            if (aa != 'any') {
+                cc = cc + ccc + '/';
+            }
+            //
             url = url + aa + '/'
             //
             a = document.getElementById('PeriodEndDate')
-            a = a.options[a.selectedIndex].value;
-            url = url + a + '/'
+            a = a.options[a.selectedIndex];
+            url = url + a.value + '/'
+            if (a.value != 'any') {
+                cc = cc + a.innerHTML + '/'
+            }
             //
             a = document.getElementById('Phase')
-            a = a.options[a.selectedIndex].value;
-            url = url + a + '/'
+            a = a.options[a.selectedIndex];
+            url = url + a.value + '/'
+            if (a.value != 'any') {
+                cc = cc + a.innerHTML + '/'
+            }
             //
             a = document.getElementById('Region')
-            a = a.options[a.selectedIndex].value;
-            url = url + a + '/'
+            a = a.options[a.selectedIndex];
+            url = url + a.value + '/'
+            if (a.value != 'any') {
+                cc = cc + a.innerHTML + '/'
+            }
             //
             a = document.getElementById('Order')
-            a = a.options[a.selectedIndex].value;
-            url = url + a + '/'
+            a = a.options[a.selectedIndex];
+            url = url + a.value + '/'
+            if (a.value != 'any') {
+                cc = cc + a.innerHTML + '/'
+            }
             //
             a = document.getElementById('Sort')
-            a = a.options[a.selectedIndex].value;
-            url = url + a + '/'
+            a = a.options[a.selectedIndex];
+            url = url + a.value + '/'
+            if (a.value != 'any') {
+                cc = cc + a.innerHTML + '/'
+            }
+            //
+            if (cc == '/') {
+                cc = ''
+            }
             //
             url = url + start + '/' + end
             //
@@ -5832,8 +5873,8 @@
                     data.posts.forEach(add_post);
                     LineChart();
                     loading.style.visibility = 'hidden';
-                    const loadingsection = document.getElementById('loadingsection');
-                    loadingsection.style.paddingTop = '30%';
+                    results.innerHTML = data.posts[0].ResultsLength + ' Trading Symbols'
+                    criterias.innerHTML = cc
                 })
             } catch {
                 alert('failed refresh')
@@ -5967,6 +6008,7 @@
             shares3 = numUSD.format(contents.CommonSharesOutstandingThirdLastYear);
             shares4 = numUSD.format(contents.CommonSharesOutstandingFourthLastYear);
             //
+            post.id = contents.tradingSymbol;
             post.innerHTML = `
                 <!--- HEADER --->
                     <!--- ENTITIES, INDUSTRY AND REGION --->
@@ -5995,7 +6037,17 @@
                             </tr>
                         </tbody>
                     </table>
-                    <!--- GRAPH --->
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><button class="hide">X</button></td>
+                                <td colspan="3"><button onClick="LineChartButton()" data-page="LineChart${contents.tradingSymbol}" id="LineChartButton${contents.tradingSymbol}" style="letter-spacing: 2px;">Line Chart</button></td>
+                                <td colspan="3"><button onClick="OpinionButton()" data-page="Opinion${contents.tradingSymbol}" id="OpinionButton${contents.tradingSymbol}" style="letter-spacing: 2px;">Opinion</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+            <a href="/${contents.tradingSymbol}" target="_blank">
+                <span style="display: block; padding-top: 57px" id="LineChart${contents.tradingSymbol}">
                     <table>
                         <tbody>
                             <tr>
@@ -6022,6 +6074,9 @@
                             <tr></tr>
                         </tbody>
                     </table>
+                </span>
+            </a>
+                <span style="display: none" id="Opinion${contents.tradingSymbol}">
                     <table style="padding-bottom: 28px">
                         <tbody>
                             <tr></tr>
@@ -6094,7 +6149,7 @@
                             <tr></tr>
                             <tr id="BridgeφRow" class="Context">
                                 <td colspan="2"><h5 style="margin-left:0px;">AUDIT</h5></td>
-                                <td style="text-align:center"><button id="AnomaliesWorstCaseScenarioShortCut" data-page="AuditSummary" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white; box-shadow: none; ;">AS</button></td>
+                                <td style="text-align:center"><button id="AnomaliesWorstCaseScenarioShortCut" data-page="AuditSummary" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white; box-shadow: none; font-size: 9px;">AS</button></td>
                                 <td></td>
                                 <td>
                                     <input type="checkbox" id="BridgeφCheckbox"></input>
@@ -6121,13 +6176,10 @@
                             <tr></tr>
                             <tr></tr>
                             <tr></tr>
-                            <tr></tr>
-                            <tr></tr>
-                            <tr></tr>
                             <tr id="IntrinsicValuesRow" class="OpinionFour">
                                 <td colspan="2"><h6>Common Shares' Intrinsic Value</h6></td>
-                                <td style="text-align:center"><button id="WeightedIVShortCut" data-page="IntrinsicValues" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white; box-shadow: none; ">IV</button></td>
-                                <td><button style="font-weight:bold; text-align:center;  box-shadow: none; color:#0D47A1; background-color: white" data-page="OpinionFiles" class="OpinionFiles">db</button></td>
+                                <td style="text-align:center"><button id="WeightedIVShortCut" data-page="IntrinsicValues" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white; box-shadow: none; font-size: 9px;">IV</button></td>
+                                <td><button style="font-weight:bold; text-align:center;  box-shadow: none; color:#0D47A1; background-color: white; font-size: 9px;" data-page="OpinionFiles" class="OpinionFiles">db</button></td>
                                 <td>
                                     <input type="checkbox" id="IntrinsicValuesCheckbox"></input>
                                     <input type="checkbox" id="IntrinsicValuesCheckbox2"></input>
@@ -6206,23 +6258,53 @@
                             <tr></tr>
                             <tr></tr>
                             <tr></tr>
-                            <tr></tr>
                         </tbody>
                     </table>
-                    <table style="border-bottom:solid #0D47A1; padding-top: 28px; padding-bottom:28px">
+                    <table style="padding-top: 28px;">
                         <tbody>
                             <tr>
                                 <td colspan="9"></td>
                                 <td colspan="1">
                                 <td colspan="3" style="border-top-style:ridge; text-align:right">
-                                    <button id="SignatoryShortCut" data-page="Context" style="background-color: white; box-shadow: none; font-style: italic;" id="Signatory">Ai generated</button>
+                                    <button id="SignatoryShortCut" data-page="Context" style="background-color: white; box-shadow: none; font-style: italic; font-size: 9px; font-weight:normal;" id="Signatory">Ai generated</button>
                                 </td>
                                 <td colspan="4" style="display:none;"></td>
                         </tbody>
                     </table>
+                </span>
                 `;
-            document.querySelector('#posts').append(post);
-        };
+                document.querySelector('#posts').append(post);
+        }   ;
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.3/Chart.min.js"></script>
+        <script>
+        //
+        // If hide button is clicked, delete the post
+        document.addEventListener('click', event => {
+            const element = event.target;
+            console.log(element)
+            if (element.className === 'hide') {
+                c = element.parentElement.parentElement.parentElement.parentElement.parentElement;
+                c.style.animationPlayState = 'running';
+                c.addEventListener('animationend', () =>  {
+                    c.remove();
+                });
+            }
+        });
+        function LineChartButton() {
+            a = event.target.id
+            a = a.replace('Button','')
+            document.getElementById(a).style.display = 'block';
+            a = a.replace('LineChart','Opinion')
+            document.getElementById(a).style.display = 'none';
+        }
+        function OpinionButton() {
+            a = event.target.id
+            a = a.replace('Button','')
+            document.getElementById(a).style.display = 'block';
+            a = a.replace('Opinion','LineChart')
+            document.getElementById(a).style.display = 'none';
+        }
         //
         // line chart
         function LineChart() {
@@ -6358,7 +6440,7 @@
                 let fourthlastyearMarketCap = Math.round(a * 1000)/1000
                 //
                 const charty = document.getElementsByClassName('LineChart')[q];
-                charty.width = window.innerWidth*0.8;
+                charty.width = window.innerWidth*0.8;   
                 charty.height = window.innerHeight/2.2;
                 //
                 let lineChart = new Chart(charty, {
@@ -6463,10 +6545,22 @@
         })
     </script>
 
-    <section id="posts"></section>
+    <container id="criteriasContainer" style="display: hidden; padding-top: 28px">
+        <span>
+            <h6 id="criterias" style="padding-left: 2%; font-weight: normal; letter-spacing: 2px; font-style:italic"></h6>
+        </span>
+    </container>
+
+    <container id="resultsLen" style="display: hidden;">
+        <span>
+            <h6 id="results" style="padding-left: 2%; font-weight: normal; letter-spacing: 2px; font-style:italic"></h6>
+        </span>
+    </container>
+
+    <container id="posts"></container>
 
     <!--- Loading --->
-    <section style="padding-top:17%; padding-bottom:28%; padding-right: 8%; visibility:hidden; text-align: center" id="loadingsection">
+    <section style="padding-top:18%; padding-bottom:29%; padding-right: 8%; visibility:hidden; text-align: center; font-style:italic" id="loadingsection">
         <span class="loader" id="loading">
             <span class="loader-inner">
               <span class="loader-line-wrap">
