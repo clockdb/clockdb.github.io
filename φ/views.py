@@ -179,7 +179,7 @@ def posts(
     #
     # Generate list of entities
     data = []
-    for i in range(start - 1, end - 1):
+    for i in range(start - 1, end):
         json = {
             "entity": e[i].EntityRegistrantName,
             "tradingSymbol": e[i].TradingSymbol,
