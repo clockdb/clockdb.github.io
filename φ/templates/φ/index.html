@@ -5784,8 +5784,6 @@
             //
             const start = counter;
             var end = start + quantity - 1;
-            end = Math.min(end, parseInt(localStorage.resultsLength))
-            console.log(end)
             //
             p = 0
             //
@@ -6284,7 +6282,6 @@
         // If hide button is clicked, delete the post
         document.addEventListener('click', event => {
             const element = event.target;
-            console.log(element)
             if (element.className === 'hide') {
                 c = element.parentElement.parentElement.parentElement.parentElement.parentElement;
                 c.style.animationPlayState = 'running';
@@ -6547,15 +6544,15 @@
         })
     </script>
 
-    <container id="criteriasContainer" style="display: hidden; padding-top: 28px">
+    <container id="criteriasContainer" style="display: hidden;">
         <span>
-            <h6 id="criterias" style="padding-left: 2%; font-weight: normal; letter-spacing: 2px; font-style:italic"></h6>
+            <h6 id="criterias" style="padding-left: 2%; font-weight: normal; letter-spacing: 2px; font-style:italic; padding-top: 28px"></h6>
         </span>
     </container>
 
     <container id="resultsLen" style="display: hidden;">
         <span>
-            <h6 id="results" style="padding-left: 2%; font-weight: normal; letter-spacing: 2px; font-style:italic"></h6>
+            <h6 id="results" style="padding-left: 2%; font-weight: normal; letter-spacing: 2px; font-style:italic; padding-top: 28px"></h6>
         </span>
     </container>
 
