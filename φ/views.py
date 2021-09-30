@@ -174,10 +174,12 @@ def posts(
     start = int(start)
     #
     end = int(end)
+    if end > len(e):
+        end = len(e)
     #
     # Generate list of entities
     data = []
-    for i in range(start, end - 1):
+    for i in range(start - 1, end - 1):
         json = {
             "entity": e[i].EntityRegistrantName,
             "tradingSymbol": e[i].TradingSymbol,

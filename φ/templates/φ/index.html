@@ -5773,6 +5773,7 @@
             }
         };
         function load() {
+            //
             const loading = document.getElementById('loading');
             const results = document.getElementById('results');
             const criterias = document.getElementById('criterias');
@@ -5782,7 +5783,9 @@
             quantity = parseInt(localStorage.quantity)
             //
             const start = counter;
-            const end = start + quantity - 1;
+            var end = start + quantity - 1;
+            end = Math.min(end, parseInt(localStorage.resultsLength))
+            console.log(end)
             //
             p = 0
             //
@@ -5866,19 +5869,18 @@
             //
             console.log(url)
             //
-            try {
-                fetch(url)
+            fetch(url)
                 .then(response => response.json())
                 .then(data => {
                     data.posts.forEach(add_post);
                     LineChart();
+                    //
                     loading.style.visibility = 'hidden';
-                    results.innerHTML = data.posts[0].ResultsLength + ' Trading Symbols'
-                    criterias.innerHTML = cc
-                })
-            } catch {
-                alert('failed refresh')
-            }
+                    //  
+                    criterias.innerHTML = cc;
+                    //
+                });
+            //
         };
         function date(date) {
             d = new Date(date)
@@ -5888,7 +5890,7 @@
             d = new Date(year, month, day).toDateString()
             d = d.split(' ')
             d = d[1] + '. ' + d[2] + ', ' + d[3]
-        }
+        };
         function datetime(datetime) {
             //
             date(datetime);
