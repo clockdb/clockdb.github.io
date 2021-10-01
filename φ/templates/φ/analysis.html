@@ -364,7 +364,7 @@
                 page = 'Context';
                 showPage(page);
                 history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
-                window.scrollTo(0, 280);
+                window.scrollTo(0, 270);
             }
             if (event.keyCode == ii) {
                 Graph();
@@ -438,7 +438,7 @@
                 }
                 showPage(page)
                 history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
-                window.scrollTo(0, 280);
+                window.scrollTo(0, 270);
             }
         }
     });
@@ -489,7 +489,7 @@
                 }
                 showPage(page)
                 history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
-                window.scrollTo(0, 280);
+                window.scrollTo(0, 270);
             }
         }
     });
@@ -500,7 +500,7 @@
             const page = 'AuditSummary'
             showPage(page)
             history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
-            window.scrollTo(0, 280);
+            window.scrollTo(0, 270);
         }
     });
     document.addEventListener('keydown', function(event) {
@@ -509,7 +509,7 @@
             const page = 'AuditDetailed'
             showPage(page)
             history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
-            window.scrollTo(0, 280);
+            window.scrollTo(0, 270);
         }
     });
     document.addEventListener('keydown', function(event) {
@@ -518,7 +518,7 @@
             const page = 'MaterialityThreshold'
             showPage(page)
             history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
-            window.scrollTo(0, 280);
+            window.scrollTo(0, 270);
         }
     });    
     document.addEventListener('keydown', function(event) {
@@ -527,7 +527,7 @@
             const page = 'Mission'
             showPage(page)
             history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
-            window.scrollTo(0, 280);
+            window.scrollTo(0, 270);
         }
     });
     document.addEventListener('keydown', function(event) {
@@ -536,7 +536,7 @@
             const page = 'ProcedureAnnualBalanceSheets'
             showPage(page)
             history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
-            window.scrollTo(0, 280);
+            window.scrollTo(0, 270);
         }
     });
     document.addEventListener('keydown', function(event) {
@@ -545,7 +545,7 @@
             const page = 'ProcedureAnnualIncomeStatements'
             showPage(page)
             history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
-            window.scrollTo(0, 280);
+            window.scrollTo(0, 270);
         }
     });
     document.addEventListener('keydown', function(event) {
@@ -554,7 +554,7 @@
             const page = 'ProcedureAnnualComprehensiveIncome'
             showPage(page)
             history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
-            window.scrollTo(0, 280);
+            window.scrollTo(0, 270);
         }
     });
     document.addEventListener('keydown', function(event) {
@@ -563,7 +563,7 @@
             const page = 'ProcedureAnnualShareholdersEquity'
             showPage(page)
             history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
-            window.scrollTo(0, 280);
+            window.scrollTo(0, 270);
         }
     });
     document.addEventListener('keydown', function(event) {
@@ -572,7 +572,7 @@
             const page = 'ProcedureAnnualCashFlow'
             showPage(page)
             history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
-            window.scrollTo(0, 280);
+            window.scrollTo(0, 270);
         }
     });
     document.addEventListener('DOMContentLoaded', function() {
@@ -899,7 +899,7 @@
                             a = a.replace('1','6')
                         }
                         a = document.getElementById(a);
-                        window.scrollTo(0, 280);
+                        window.scrollTo(0, 270);
                     }
                     try {
                         a.focus();
@@ -1011,38 +1011,38 @@
                 <tr>
                     <td>
                         <button data-page="General" name="General">
-                            <h2>≀</h2>
+                            <h2 style="font-size: 9px;">≀</h2>
                         </button>
                     </td>
                     <td>
                         <button data-page="Options" name="Options">
-                            <h2>≡</h2>
+                            <h2 style="font-size: 9px;">≡</h2>
                         </button>
                     </td>
                     <td colspan='3'>
                         <button data-page="Arch">
-                            <h2>Financials</h2>
+                            <h2 style="font-size: 9px;">Financials</h2>
                         </button>
                     </td>
                     <td colspan='3'>
                         <button data-page="Bridge" name="Bridge">
-                            <h2>Audit</h2>
+                            <h2 style="font-size: 9px;">Audit</h2>
                         </button>
                     </td>
                     <td colspan='3'>
                         <button data-page="Clock">
-                            <h2>Valuation</h2>
+                            <h2 style="font-size: 9px;">Valuation</h2>
                         </button>
                     </td>
                     <td colspan='3'>
                         <button data-page="Opinion" name="Opinion">
-                            <h2>Opinion</h2>
+                            <h2 style="font-size: 9px;">Opinion</h2>
                         </button>
                     </td>
                     <td>
                         <a href="{% url 'φ:index' %}" style="outline:none">
                             <button data-page="Graph">
-                                <h2>φ</h2>
+                                <h2 style="font-size: 9px;">φ</h2>
                             </button>
                         </a>
                     </td>
@@ -5200,42 +5200,42 @@
                     <tr>
                         <td>
                             <button data-page="AnnualCashFlow">
-                                <h3>Cash Flow</h3>
+                                <h3 style="font-size: 9px;">Cash Flow</h3>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="AnnualTrialBalances">
-                                <h3>Trial Balances</h3>
+                                <h3 style="font-size: 9px;">Trial Balances</h3>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="AnnualBalanceSheets">
-                                <h3>Balance Sheets</h3>
+                                <h3 style="font-size: 9px;">Balance Sheets</h3>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="AnnualIncomeStatements">
-                                <h3>Income Statements</h3>
+                                <h3 style="font-size: 9px;">Income Statements</h3>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="AnnualComprehensiveIncome">
-                                <h3>Comprehensive Income</h3>
+                                <h3 style="font-size: 9px;">Comprehensive Income</h3>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="AnnualShareholdersEquity">
-                                <h3>Shareholders' Equity</h3>
+                                <h3 style="font-size: 9px;">Shareholders' Equity</h3>
                             </button>
                         </td>
                     </tr>
@@ -5257,49 +5257,49 @@
                     <tr>
                         <td>
                             <button data-page="Graph">
-                                <h3>Graph</h3>
+                                <h3 style="font-size: 9px;">Graph</h3>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="IntrinsicValues">
-                                <h3>Intrinsic Values</h3>
+                                <h3 style="font-size: 9px;">Intrinsic Values</h3>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="CapitalizationRate">
-                                <h3>Capitalization Rates</h3>
+                                <h3 style="font-size: 9px;">Capitalization Rates</h3>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="CapitalizedCashFlow">
-                                <h3>Capitalized Cash Flow</h3>
+                                <h3 style="font-size: 9px;">Capitalized Cash Flow</h3>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="CapitalizedIncome">
-                                <h3>Capitalized Income</h3>
+                                <h3 style="font-size: 9px;">Capitalized Income</h3>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="AnnualFinancialRatios">
-                                <h3>Financial Ratios</h3>
+                                <h3 style="font-size: 9px;">Financial Ratios</h3>
                             </button>   
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="AdditionalInformation">
-                                <h3>Additional Information</h3>
+                                <h3 style="font-size: 9px;">Additional Information</h3>
                             </button>
                         </td>
                     </tr>
@@ -5318,35 +5318,35 @@
                     <tr>
                         <td>
                             <button data-page="Procedures">
-                                <h3>Procedures</h3>
+                                <h3 style="font-size: 9px;">Procedures</h3>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="AuditDetailed">
-                                <h3>Anomalies</h3>
+                                <h3 style="font-size: 9px;">Anomalies</h3>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="AuditSummary" name="AuditSummary">
-                                <h3>Summary</h3>
+                                <h3 style="font-size: 9px;">Summary</h3>
                             </button>   
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="MaterialityThreshold">
-                                <h3>Materiality</h3>
+                                <h3 style="font-size: 9px;">Materiality</h3>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="Mission">
-                                <h3>Mission</h3>
+                                <h3 style="font-size: 9px;">Mission</h3>
                             </button>
                         </td>
                     </tr>
@@ -5367,35 +5367,35 @@
                     <tr>
                         <td>
                             <button data-page="ProcedureAnnualBalanceSheets">
-                                <h3>Balance Sheets</h3>
+                                <h3 style="font-size: 9px;">Balance Sheets</h3>
                             </button>   
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="ProcedureAnnualIncomeStatements">
-                                <h3>Income Statements</h3>
+                                <h3 style="font-size: 9px;">Income Statements</h3>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="ProcedureAnnualComprehensiveIncome">
-                                <h3>Comprehensive Income</h3>
+                                <h3 style="font-size: 9px;">Comprehensive Income</h3>
                             </button>   
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="ProcedureAnnualShareholdersEquity">
-                                <h3>Shareholders Equity</h3>
+                                <h3 style="font-size: 9px;">Shareholders Equity</h3>
                             </button>   
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="ProcedureAnnualCashFlow">
-                                <h3>Cash Flow</h3>
+                                <h3 style="font-size: 9px;">Cash Flow</h3>
                             </button>
                         </td>
                     </tr>
@@ -5415,21 +5415,21 @@
                     <tr>
                         <td>
                             <button data-page="Transactional">
-                                <h3>Transactional</h3>
+                                <h3 style="font-size: 9px;">Transactional</h3>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="SocialPlatform">
-                                <h3>Social Platform</h3>
+                                <h3 style="font-size: 9px;">Social Platform</h3>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="Media">
-                                <h3>Media News</h3>
+                                <h3 style="font-size: 9px;">Media News</h3>
                             </button>
                         </td>
                     </tr>
@@ -5448,63 +5448,63 @@
                     <tr>
                         <td>
                             <button data-page="Context">
-                                <h3>Context</h3>
+                                <h3 style="font-size: 9px;">Context</h3>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="Files">
-                                <h3>Files</h3>
+                                <h3 style="font-size: 9px;">Files</h3>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="ReferenceMap">
-                                <h3>Reference Map</h3>
+                                <h3 style="font-size: 9px;">Reference Map</h3>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="Settings">
-                                <h3>Settings</h3>
+                                <h3 style="font-size: 9px;">Settings</h3>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="Context">
-                                <h3 onclick="Rollover()">Rollover</h3>
+                                <h3 onclick="Rollover()" style="font-size: 9px;">Rollover</h3>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="Import">
-                                <h3>Open</h3>
+                                <h3 style="font-size: 9px;">Open</h3>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="Options">
-                                <h3 onclick="Save()">Save</h3>
+                                <h3 onclick="Save()" style="font-size: 9px;">Save</h3>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="Options">
-                                <h3 onclick="Print()">Print</h3>
+                                <h3 onclick="Print()" style="font-size: 9px;">Print</h3>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="Options">
-                                <h3 onclick="newFile()">New</h3>
+                                <h3 onclick="newFile()" style="font-size: 9px;">New</h3>
                             </button>
                         </td>
                     </tr>
@@ -5523,28 +5523,28 @@
                     <tr>
                         <td>
                             <button data-page="General">
-                                <a href="/commands/" target="_blank"><h3>Commands</h3></a>
+                                <a href="/commands/" target="_blank"><h3 style="font-size: 9px;">Commands</h3></a>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="General">
-                                <a href="/documentation/" target="_blank"><h3>Documentation</h3></a>
+                                <a href="/documentation/" target="_blank"><h3 style="font-size: 9px;">Documentation</h3></a>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="General">
-                                <a href="/disclaimer/" target="_blank"><h3>Disclaimer</h3></a>
+                                <a href="/disclaimer/" target="_blank"><h3 style="font-size: 9px;">Disclaimer</h3></a>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <button data-page="General">
-                                <a href="/about/" target="_blank"><h3>About</h3></a>
+                                <a href="/about/" target="_blank"><h3 style="font-size: 9px;">About</h3></a>
                             </button>
                         </td>
                     </tr>
@@ -33994,151 +33994,151 @@
         const key = document.getElementById('CurrentAssetsREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Current Assets (" + document.getElementById('CurrentAssetsREF6').value + ") \\"
-        window.scrollTo(0, 280)
+        window.scrollTo(0, 270)
     }
     function SupportingDocumentsNonCurrentAssets() {
         const key = document.getElementById('NonCurrentAssetsREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Non-Current Assets (" + document.getElementById('NonCurrentAssetsREF6').value + ") \\"
-        window.scrollTo(0, 280)
+        window.scrollTo(0, 270)
     }
     function SupportingDocumentsCurrentLiabilities() {
         const key = document.getElementById('CurrentLiabilitiesREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Current Liabilities (" + document.getElementById('CurrentLiabilitiesREF6').value + ") \\"
-        window.scrollTo(0, 280)
+        window.scrollTo(0, 270)
     }
     function SupportingDocumentsNonCurrentLiabilities() {
         const key = document.getElementById('NonCurrentLiabilitiesREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Non-Current Liabilities (" + document.getElementById('NonCurrentLiabilitiesREF6').value + ") \\"
-        window.scrollTo(0, 280)
+        window.scrollTo(0, 270)
     }
     function SupportingDocumentsShareholdersEquity() {
         const key = document.getElementById('ShareholdersEquityREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Shareholders' Equity (" + document.getElementById('ShareholdersEquityREF6').value + ") \\"
-        window.scrollTo(0, 280)
+        window.scrollTo(0, 270)
     }
     function SupportingDocumentsGrossMargin() {
         const key = document.getElementById('GrossMarginREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Gross Margin (" + document.getElementById('GrossMarginREF6').value + ") \\"
-        window.scrollTo(0, 280)
+        window.scrollTo(0, 270)
     }
     function SupportingDocumentsOperatingExpenses() {
         const key = document.getElementById('OperatingExpensesREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Operating Expenses (" + document.getElementById('OperatingExpensesREF6').value + ") \\"
-        window.scrollTo(0, 280)
+        window.scrollTo(0, 270)
     }
     function SupportingDocumentsImpairmentAndRestructuring() {
         const key = document.getElementById('ImpairmentAndRestructuringREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Impairment And Restructuring (" + document.getElementById('ImpairmentAndRestructuringREF6').value + ") \\"
-        window.scrollTo(0, 280)
+        window.scrollTo(0, 270)
     }
     function SupportingDocumentsNonOperatingExpenses() {
         const key = document.getElementById('NonOperatingExpensesREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Non-Operating Expenses (" + document.getElementById('NonOperatingExpensesREF6').value + ") \\"
-        window.scrollTo(0, 280)
+        window.scrollTo(0, 270)
     }
     function SupportingDocumentsEquityMethodInvesteesIncome() {
         const key = document.getElementById('EquityMethodInvesteesIncomeREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Equity Method Investees Income (" + document.getElementById('EquityMethodInvesteesIncomeREF6').value + ") \\"
-        window.scrollTo(0, 280)
+        window.scrollTo(0, 270)
     }
     function SupportingDocumentsDiscontinuedOperations() {
         const key = document.getElementById('DiscontinuedOperationsREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Discontinued Operations (" + document.getElementById('DiscontinuedOperationsREF6').value + ") \\"
-        window.scrollTo(0, 280)
+        window.scrollTo(0, 270)
     }
     function SupportingDocumentsIncomeTax() {
         const key = document.getElementById('IncomeTaxesREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Income Taxes (" + document.getElementById('IncomeTaxesREF6').value + ") \\"
-        window.scrollTo(0, 280)
+        window.scrollTo(0, 270)
     }
     function SupportingDocumentsOtherComprehensiveIncome() {
         const key = document.getElementById('OtherComprehensiveIncomeREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Comprehensive Income (" + document.getElementById('OtherComprehensiveIncomeREF6').value + ") \\"
-        window.scrollTo(0, 280)
+        window.scrollTo(0, 270)
     }
     function SupportingDocumentsOperatingActivities() {
         const key = document.getElementById('OperatingActivitiesREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Operating Activities (" + document.getElementById('OperatingActivitiesREF6').value + ") \\"
-        window.scrollTo(0, 280)
+        window.scrollTo(0, 270)
     }
     function SupportingDocumentsInvestingActivities() {
         const key = document.getElementById('InvestingActivitiesREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Investing Activities (" + document.getElementById('InvestingActivitiesREF6').value + ") \\"
-        window.scrollTo(0, 280)
+        window.scrollTo(0, 270)
     }
     function SupportingDocumentsFinancingActivities() {
         const key = document.getElementById('FinancingActivitiesREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Financing Activities (" + document.getElementById('FinancingActivitiesREF6').value + ") \\"
-        window.scrollTo(0, 280)
+        window.scrollTo(0, 270)
     }
     function SupportingDocumentsMission() {
         const key = document.getElementById('MissionREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Mission (" + document.getElementById('MissionREF6').value + ") \\"
-        window.scrollTo(0, 280)
+        window.scrollTo(0, 270)
     }
     function SupportingDocumentsMateriality() {
         const key = document.getElementById('MaterialityREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Materiality Threshold (" + document.getElementById('MaterialityREF6').value + ") \\"
-        window.scrollTo(0, 280)
+        window.scrollTo(0, 270)
     }
     function SupportingDocumentsBalanceSheetsProcedure() {
         const key = document.getElementById('BalanceSheetsProcedureREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Balance Sheets Procedures (" + document.getElementById('BalanceSheetsProcedureREF6').value + ") \\"
-        window.scrollTo(0, 280)
+        window.scrollTo(0, 270)
     }
     function SupportingDocumentsIncomeStatementsProcedure() {
         const key = document.getElementById('IncomeStatementsProcedureREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Income Statements Procedures (" + document.getElementById('IncomeStatementsProcedureREF6').value + ") \\"
-        window.scrollTo(0, 280)
+        window.scrollTo(0, 270)
     }
     function SupportingDocumentsComprehensiveIncomeProcedure() {
         const key = document.getElementById('ComprehensiveIncomeProcedureREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Comprehensive Income Procedures (" + document.getElementById('ComprehensiveIncomeProcedureREF6').value + ") \\"
-        window.scrollTo(0, 280)
+        window.scrollTo(0, 270)
     }
     function SupportingDocumentsShareholdersEquityProcedure() {
         const key = document.getElementById('ShareholdersEquityProcedureREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Shareholders' Equity Procedures (" + document.getElementById('ShareholdersEquityProcedureREF6').value + ") \\"
-        window.scrollTo(0, 280)
+        window.scrollTo(0, 270)
     }
     function SupportingDocumentsCashFlowProcedure() {
         const key = document.getElementById('CashFlowProcedureREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Cash Flow Procedures (" + document.getElementById('CashFlowProcedureREF6').value + ") \\"
-        window.scrollTo(0, 280)
+        window.scrollTo(0, 270)
     }
     function SupportingDocumentsAnomalies() {
         const key = document.getElementById('AnomaliesREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Anomalies (" + document.getElementById('AnomaliesREF6').value + ") \\"
-        window.scrollTo(0, 280)
+        window.scrollTo(0, 270)
     }
     function SupportingDocumentsOpinion() {
         const key = document.getElementById('OpinionREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Opinion (" + document.getElementById('OpinionREF6').value + ") \\"
-        window.scrollTo(0, 280)
+        window.scrollTo(0, 270)
     }
 
 </script>
