@@ -4269,6 +4269,7 @@
                                     const link = document.createTextNode(entity.name);
                                     a.appendChild(link);
                                     a.href = myURL.pathname + (entity.url)
+                                    a.className = 'main'
                                     list.appendChild(a);
                                 }
                                 if (group.length === 0) {
@@ -6033,7 +6034,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="padding-bottom: 1%;">
+                                <td style="padding-bottom: 7%;">
                                     <h3 id="Region" style="color:rgb(73, 73, 73); font-weight:bold; text-align: right;">${contents.region}</h3>
                                 </td>
                             </tr>
