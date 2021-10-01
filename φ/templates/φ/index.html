@@ -5762,9 +5762,9 @@
             load();
         })
         window.onscroll = () => {
-            if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-                a = document.getElementById('loading').style.visibility
-                if (a == 'hidden') {
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight/1.8) {
+                const loading = document.getElementById('loading')
+                if (loading.style.visibility == 'hidden') {
                     counter = parseInt(localStorage.counter) + 10
                     localStorage.setItem('counter', counter)
                     localStorage.setItem('quantity', 10)
@@ -5774,9 +5774,10 @@
         };
         function load() {
             //
-            const loading = document.getElementById('loading');
             const results = document.getElementById('results');
             const criterias = document.getElementById('criterias');
+            const loading = document.getElementById('loading');
+            //
             loading.style.visibility = 'visible';
             //
             counter = parseInt(localStorage.counter)
@@ -5873,12 +5874,11 @@
                     data.posts.forEach(add_post);
                     LineChart();
                     //
-                    loading.style.visibility = 'hidden';
-                    //  
                     criterias.innerHTML = cc;
                     //
                     resultsLength = data.posts[0].resultsLength;
                     results.innerHTML = resultsLength + ' Trading Symbols';
+                    loading.style.visibility = 'hidden';
                 });
             //
         };
@@ -6014,26 +6014,26 @@
             post.innerHTML = `
                 <!--- HEADER --->
                     <!--- ENTITIES, INDUSTRY AND REGION --->
-                    <table style="padding-top:77px; padding-bottom:30px;">
+                    <table>
                         <tbody>
                             <tr>
-                                <td>
+                                <td style="padding-top: 11%; padding-bottom: 2%;">
                                     <h4 id='o' style="color:Black; font-weight:bold; text-shadow: 1px 1px rgb(73, 73, 73); display:inline; padding-right:27px;"></h4>
                                     <h4 id="EntityRegistrantName" class="EntityRegistrantName" style="color:Black; font-weight:bold; text-shadow: 1px 1px rgb(73, 73, 73); display:inline;">${contents.entity} (${contents.tradingSymbol})</h4>
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td style="padding-bottom: 1%;">
                                     <h3 id="Industry_SEC" style="color:rgb(73, 73, 73); font-weight:bold; text-align: right;">${contents.industry_sec}</h3>
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td style="padding-bottom: 1%;">
                                     <h3 id="Industry" style="color:rgb(73, 73, 73); font-weight:bold; text-align: right;">${contents.industry}</h3>
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td style="padding-bottom: 1%;">
                                     <h3 id="Region" style="color:rgb(73, 73, 73); font-weight:bold; text-align: right;">${contents.region}</h3>
                                 </td>
                             </tr>
@@ -6045,14 +6045,14 @@
                                 <td><button class="hide">X</button></td>
                                 <td colspan="3"><button onClick="LineChartButton()" data-page="LineChart${contents.tradingSymbol}" id="LineChartButton${contents.tradingSymbol}" style="letter-spacing: 2px;">Line Chart</button></td>
                                 <td colspan="3"><button onClick="OpinionButton()" data-page="Opinion${contents.tradingSymbol}" id="OpinionButton${contents.tradingSymbol}" style="letter-spacing: 2px;">Opinion</button></td>
-                                <td><a href="https://www.facebook.com/sharer/sharer.php?u=www.clockdb.com/${contents.tradingSymbol}/" target="_blank"><button><img src="./static/φ/img/facebook.png" style="max-width: 18px; border-radius: 5px"></button></a></td>
-                                <td><a href="https://twitter.com/share?url=www.clockdb.com/${contents.tradingSymbol}/" target="_blank"><button><img src="./static/φ/img/twitter.png" style="max-width: 18px; border-radius: 5px"></button></a></td>
-                                <td><a href="http://www.reddit.com/submit?url=https://stackoverflow.com/questions/24823114/www.clockdb.com/${contents.tradingSymbol}/&title=www.clockdb.com/${contents.tradingSymbol}/" target="_blank"><button><img src="./static/φ/img/reddit.png" style="max-width: 18px; border-radius: 5px"></button></a></td>
+                                <td><a href="https://www.facebook.com/sharer/sharer.php?u=www.clockdb.com/${contents.tradingSymbol}/" target="_blank"><button style="background-color:white"><img src="./static/φ/img/facebook.png" style="max-width: 18px; border-radius: 5px"></button></a></td>
+                                <td><a href="https://twitter.com/share?url=www.clockdb.com/${contents.tradingSymbol}/" target="_blank"><button style="background-color:white"><img src="./static/φ/img/twitter.png" style="max-width: 18px; border-radius: 5px"></button></a></td>
+                                <td><a href="http://www.reddit.com/submit?url=https://stackoverflow.com/questions/24823114/www.clockdb.com/${contents.tradingSymbol}/&title=www.clockdb.com/${contents.tradingSymbol}/" target="_blank"><button style="background-color:white"><img src="./static/φ/img/reddit.png" style="max-width: 18px; border-radius: 5px"></button></a></td>
                             </tr>
                         </tbody>
                     </table>
             <a href="/${contents.tradingSymbol}" target="_blank">
-                <span style="display: block; padding-top: 5%" id="LineChart${contents.tradingSymbol}">
+                <span style="display: block;" id="LineChart${contents.tradingSymbol}">
                     <table>
                         <tbody>
                             <tr>
@@ -6060,7 +6060,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <table style="padding-bottom: 57px">
+                    <table style="padding-bottom: 11%">
                         <tbody>
                             <tr></tr>
                             <tr></tr>
@@ -6082,7 +6082,7 @@
                 </span>
             </a>
                 <span style="display: none" id="Opinion${contents.tradingSymbol}">
-                    <table>
+                    <table style="padding-bottom: 11%">
                         <tbody>
                             <tr></tr>
                             <tr></tr>
@@ -6091,22 +6091,22 @@
                             <tr></tr>
                             <tr>
                                 <td colspan="5"></td>
-                                <td colspan="2" style="padding-top:30px;"><h5 id="DateSummary1" class="DateSummary1" style="text-align:center">` + lastyear + `</h4></td>
-                                <td colspan="2" style="padding-top:30px;"><h5 id="DateSummary2" class="DateSummary2" style="text-align:center">` + secondlastyear + `</h4></td>
-                                <td colspan="2" style="padding-top:30px;"><h5 id="DateSummary3" class="DateSummary3" style="text-align:center">` + thirdlastyear + `</h4></td>
-                                <td colspan="2" style="padding-top:30px;"><h5 id="DateSummary4" class="DateSummary4" style="text-align:center">` + fourthlastyear + `</h4></td>
+                                <td colspan="2" style="padding-top:2%;"><h5 id="DateSummary1" class="DateSummary1" style="text-align:center">` + lastyear + `</h4></td>
+                                <td colspan="2" style="padding-top:2%;"><h5 id="DateSummary2" class="DateSummary2" style="text-align:center">` + secondlastyear + `</h4></td>
+                                <td colspan="2" style="padding-top:2%;"><h5 id="DateSummary3" class="DateSummary3" style="text-align:center">` + thirdlastyear + `</h4></td>
+                                <td colspan="2" style="padding-top:2%;"><h5 id="DateSummary4" class="DateSummary4" style="text-align:center">` + fourthlastyear + `</h4></td>
                                 <td colspan="2" style="display:none;"><h5 id="DateSummary5" style="text-align:center"></h4></td>
                                 <td colspan="2" style="display:none;"><h5 id="DateSummary6" style="text-align:center"></h4></td>
                             </tr>
                             <tr></tr>
                             <tr>
                                 <td colspan="5"></td>
-                                <td colspan='2'><h5 id="SummaryAmend1" style="font-weight:bold; text-align:center; padding-bottom:17px">` + amendlastyear + `</td>
-                                <td colspan='2'><h5 id="SummaryAmend2" style="font-weight:bold; text-align:center; padding-bottom:17px">` + amendsecondlastyear + `</td>
-                                <td colspan='2'><h5 id="SummaryAmend3" style="font-weight:bold; text-align:center; padding-bottom:17px">` + amendthirdlastyear + `</td>
-                                <td colspan='2'><h5 id="SummaryAmend4" style="font-weight:bold; text-align:center; padding-bottom:17px">` + amendfourthlastyear + `</td>
-                                <td colspan='2'style="display:none;"><h5 id="SummaryAmend5" style="font-weight:bold; text-align:center; padding-bottom:17px"></td>
-                                <td colspan='2'style="display:none;"><h5 id="SummaryAmend6" style="font-weight:bold; text-align:center; padding-bottom:17px"></td>
+                                <td colspan='2'><h5 id="SummaryAmend1" style="font-weight:bold; text-align:center; padding-bottom:1%">` + amendlastyear + `</td>
+                                <td colspan='2'><h5 id="SummaryAmend2" style="font-weight:bold; text-align:center; padding-bottom:1%">` + amendsecondlastyear + `</td>
+                                <td colspan='2'><h5 id="SummaryAmend3" style="font-weight:bold; text-align:center; padding-bottom:1%">` + amendthirdlastyear + `</td>
+                                <td colspan='2'><h5 id="SummaryAmend4" style="font-weight:bold; text-align:center; padding-bottom:1%">` + amendfourthlastyear + `</td>
+                                <td colspan='2'style="display:none;"><h5 id="SummaryAmend5" style="font-weight:bold; text-align:center; padding-bottom:1%"></td>
+                                <td colspan='2'style="display:none;"><h5 id="SummaryAmend6" style="font-weight:bold; text-align:center; padding-bottom:1%"></td>
                             </tr>
                             <tr></tr>
                             <tr></tr>
@@ -6126,12 +6126,12 @@
                                     <input type="checkbox" id="OpinionφCheckbox"></input>
                                     <input type="checkbox" id="OpinionφCheckbox2"></input>
                                 </td>
-                                <td colspan="2" id="Opinionφ1" style="font-weight:bold; text-align: center; font-size: 12px">` + Opinion1 + `</td>
-                                <td colspan="2" id="Opinionφ2" style="font-weight:lighter; text-align:center; font-size: 12px">` + Opinion2 + `</td>
-                                <td colspan="2" id="Opinionφ3" style="font-weight:lighter; text-align:center; font-size: 12px">` + Opinion3 + `</td>
-                                <td colspan="2" id="Opinionφ4" style="font-weight:lighter; text-align:center; font-size: 12px">` + Opinion4 + `</td>
-                                <td colspan="2" style="display:none;" id="Opinionφ5" style="font-weight:lighter; text-align:center; font-size: 12px"></td>
-                                <td colspan="2" style="display:none;" id="Opinionφ6" style="font-weight:lighter; text-align:center; font-size: 12px"></td>
+                                <td colspan="2" id="Opinionφ1" style="font-weight:bold; text-align: center;">` + Opinion1 + `</td>
+                                <td colspan="2" id="Opinionφ2" style="font-weight:lighter; text-align:center;">` + Opinion2 + `</td>
+                                <td colspan="2" id="Opinionφ3" style="font-weight:lighter; text-align:center;">` + Opinion3 + `</td>
+                                <td colspan="2" id="Opinionφ4" style="font-weight:lighter; text-align:center;">` + Opinion4 + `</td>
+                                <td colspan="2" style="display:none;" id="Opinionφ5" style="font-weight:lighter; text-align:center;"></td>
+                                <td colspan="2" style="display:none;" id="Opinionφ6" style="font-weight:lighter; text-align:center;"></td>
                             </tr>
                             <tr></tr>
                             <tr></tr>
@@ -6143,12 +6143,12 @@
                                     <input type="checkbox" id="ClockφCheckbox"></input>
                                     <input type="checkbox" id="ClockφCheckbox2"></input>
                                 </td>
-                                <td colspan="2" class="ClockRate" id="Clockφ1" style="border-bottom:double black; font-weight:bold; text-align:fight; font-size: 12px">` + Clock1 + `</td>
-                                <td colspan="2" class="ClockRate" id="Clockφ2" style="border-bottom:double black; font-weight:lighter; text-align:fight; font-size: 12px">` + Clock2 + `</td>
-                                <td colspan="2" class="ClockRate" id="Clockφ3" style="border-bottom:double black; font-weight:lighter; text-align:fight; font-size: 12px">` + Clock3 + `</td>
-                                <td colspan="2" class="ClockRate" id="Clockφ4" style="border-bottom:double black; font-weight:lighter; text-align:fight; font-size: 12px">` + Clock4 + `</td>
-                                <td colspan="2" style="display:none;" id="Clockφ5" style="font-weight:lighter; text-align:fight; font-size: 12px"></td>
-                                <td colspan="2" style="display:none;" id="Clockφ6" style="font-weight:lighter; text-align:fight; font-size: 12px"></td>
+                                <td colspan="2" class="ClockRate" id="Clockφ1" style="border-bottom:double black; font-weight:bold; text-align:fight;">` + Clock1 + `</td>
+                                <td colspan="2" class="ClockRate" id="Clockφ2" style="border-bottom:double black; font-weight:lighter; text-align:fight;">` + Clock2 + `</td>
+                                <td colspan="2" class="ClockRate" id="Clockφ3" style="border-bottom:double black; font-weight:lighter; text-align:fight;">` + Clock3 + `</td>
+                                <td colspan="2" class="ClockRate" id="Clockφ4" style="border-bottom:double black; font-weight:lighter; text-align:fight;">` + Clock4 + `</td>
+                                <td colspan="2" style="display:none;" id="Clockφ5" style="font-weight:lighter; text-align:fight;"></td>
+                                <td colspan="2" style="display:none;" id="Clockφ6" style="font-weight:lighter; text-align:fight;"></td>
                             </tr>
                             <tr></tr>
                             <tr></tr>
@@ -6265,17 +6265,6 @@
                             <tr></tr>
                         </tbody>
                     </table>
-                    <table style="padding-top: 28px;">
-                        <tbody>
-                            <tr>
-                                <td colspan="9"></td>
-                                <td colspan="1">
-                                <td colspan="3" style="border-top-style:ridge; text-align:right">
-                                    <button id="SignatoryShortCut" data-page="Context" style="background-color: white; box-shadow: none; font-style: italic; font-size: 9px; font-weight:normal;" id="Signatory">Ai generated</button>
-                                </td>
-                                <td colspan="4" style="display:none;"></td>
-                        </tbody>
-                    </table>
                 </span>
                 `;
                 document.querySelector('#posts').append(post);
@@ -6315,7 +6304,7 @@
             //
             l = document.querySelectorAll('.EntityRegistrantName').length
             //
-            for (let q = 0; q < l; q++) {
+            for (let q = parseInt(localStorage.counter) - 1; q < l; q++) {
                 //
                 a = 0
                 a = Math.max(a, parseInt(document.getElementsByClassName('IntrinsicValues1')[q].value.replaceAll(/,/g, '')));
@@ -6550,35 +6539,20 @@
     </script>
 
     <container><span>
-        <h6 id="criterias" style="padding-left: 2%; font-weight: normal; letter-spacing: 2px; font-style:italic; padding-top: 28px"></h6>
+        <h3 id="criterias" style="margin-bottom: 7%; font-size: 7px; padding-left: 2%; font-weight: normal; letter-spacing: 2px; font-style:italic;"></h3>
     </span></container>
 
     <container><span>
-        <h6 id="results" style="padding-left: 2%; font-weight: normal; letter-spacing: 2px; font-style:italic; padding-bottom: 28px"></h6>
+        <h3 id="results" style="margin-bottom: 7%; font-size: 7px; padding-left: 2%; font-weight: normal; letter-spacing: 2px; font-style:italic"></h3>
     </span></container>
 
     <container id="posts"></container>
 
     <!--- Loading --->
-    <section style="padding-top:18%; padding-bottom:29%; padding-right: 8%; visibility:hidden; text-align: center; font-style:italic" id="loadingsection">
-        <span class="loader" id="loading">
-            <span class="loader-inner">
-              <span class="loader-line-wrap">
-                <span class="loader-line"></span>
-              </span>
-              <span class="loader-line-wrap">
-                <span class="loader-line"></span>
-              </span>
-              <span class="loader-line-wrap">
-                <span class="loader-line"></span>
-              </span>
-              <span class="loader-line-wrap">
-                <span class="loader-line"></span>
-              </span>
-              <span class="loader-line-wrap">
-                <span class="loader-line"></span>
-              </span>
-            </span>
-          </span>
+    <section id="loading" style="padding-top:18%; padding-bottom:29%; padding-right: 8%; visibility: hidden; text-align: center; font-style:italic">
+        <span>
+            <h5 style="post">Loading...</h5>
+        </span>
     </section>
+
 {% endblock %}
