@@ -6999,36 +6999,46 @@
                                 z = 0
                                 // Last Year
                                 a = -parseInt(document.getElementById('ReinvestmentOfMaintenance1').value.replaceAll(/,/g, ''));
+                                a = a - parseInt(document.getElementById('ReinvestmentOfMaintenance2').value.replaceAll(/,/g, ''));
+                                a = a - parseInt(document.getElementById('ReinvestmentOfMaintenance3').value.replaceAll(/,/g, ''));
+                                a = Math.round(a / 3);
                                 document.getElementById('AnnualReinvestmentOfMaintenanceCCF1').value = numUSD.format(a);
                                 if (a == 0) {
                                     z = z + 1
                                 }
                                 // Second Last Year
                                 a = -parseInt(document.getElementById('ReinvestmentOfMaintenance2').value.replaceAll(/,/g, ''));
+                                a = a - parseInt(document.getElementById('ReinvestmentOfMaintenance3').value.replaceAll(/,/g, ''));
+                                a = a - parseInt(document.getElementById('ReinvestmentOfMaintenance4').value.replaceAll(/,/g, ''));
+                                a = Math.round(a / 3);
                                 document.getElementById('AnnualReinvestmentOfMaintenanceCCF2').value = numUSD.format(a);
                                 if (a == 0) {
                                     z = z + 1
                                 }
                                 // Third Last Year
                                 a = -parseInt(document.getElementById('ReinvestmentOfMaintenance3').value.replaceAll(/,/g, ''));
+                                a = a - parseInt(document.getElementById('ReinvestmentOfMaintenance4').value.replaceAll(/,/g, ''));
+                                a = a - parseInt(document.getElementById('ReinvestmentOfMaintenance5').value.replaceAll(/,/g, ''));
+                                a = Math.round(a / 3);
                                 document.getElementById('AnnualReinvestmentOfMaintenanceCCF3').value = numUSD.format(a);
                                 if (a == 0) {
                                     z = z + 1
                                 }
                                 // Fourth Last Year
                                 a = -parseInt(document.getElementById('ReinvestmentOfMaintenance4').value.replaceAll(/,/g, ''));
+                                a = a - parseInt(document.getElementById('ReinvestmentOfMaintenance5').value.replaceAll(/,/g, ''));
+                                a = a - parseInt(document.getElementById('ReinvestmentOfMaintenance6').value.replaceAll(/,/g, ''));
+                                a = Math.round(a / 3);
                                 document.getElementById('AnnualReinvestmentOfMaintenanceCCF4').value = numUSD.format(a);
                                 if (a == 0) {
                                     z = z + 1
                                 }
                                 // Fifth Last Year
-                                a = -parseInt(document.getElementById('ReinvestmentOfMaintenance5').value.replaceAll(/,/g, ''));
                                 document.getElementById('AnnualReinvestmentOfMaintenanceCCF5').value = numUSD.format(a);
                                 if (a == 0) {
                                     z = z + 1
                                 }
                                 // Sixth Last Year
-                                a = -parseInt(document.getElementById('ReinvestmentOfMaintenance6').value.replaceAll(/,/g, ''));
                                 document.getElementById('AnnualReinvestmentOfMaintenanceCCF6').value = numUSD.format(a);
                                 if (a == 0) {
                                     z = z + 1
@@ -7171,7 +7181,7 @@
                                 d = document.getElementById('OpenEditor').checked;
                                 // Last Year
                                 if (d == false) {
-                                    a = -parseInt(document.getElementById('EquityMethodInvesteesIncome1').value.replaceAll(/,/g, ''));
+                                    a = parseInt(document.getElementById('EquityMethodInvesteesIncome1').value.replaceAll(/,/g, ''));
                                     document.getElementById('EquityMethodInvesteesIncomeCCF1').value = numUSD.format(a);
                                 } else {
                                     document.getElementById('EquityMethodInvesteesIncomeCCF1').value = numUSD.format(document.getElementById('EquityMethodInvesteesIncomeCCF1').value.replaceAll(/,/g, ''));
@@ -7181,7 +7191,7 @@
                                 }
                                 // Second Last Year
                                 if (d == false) {
-                                    a = -parseInt(document.getElementById('EquityMethodInvesteesIncome2').value.replaceAll(/,/g, ''));
+                                    a = parseInt(document.getElementById('EquityMethodInvesteesIncome2').value.replaceAll(/,/g, ''));
                                     document.getElementById('EquityMethodInvesteesIncomeCCF2').value = numUSD.format(a);
                                 } else {
                                     document.getElementById('EquityMethodInvesteesIncomeCCF2').value = numUSD.format(document.getElementById('EquityMethodInvesteesIncomeCCF2').value.replaceAll(/,/g, ''));
@@ -7191,7 +7201,7 @@
                                 }
                                 // Third Last Year
                                 if (d == false) {
-                                    a = -parseInt(document.getElementById('EquityMethodInvesteesIncome3').value.replaceAll(/,/g, ''));
+                                    a = parseInt(document.getElementById('EquityMethodInvesteesIncome3').value.replaceAll(/,/g, ''));
                                     document.getElementById('EquityMethodInvesteesIncomeCCF3').value = numUSD.format(a);
                                 } else {
                                     document.getElementById('EquityMethodInvesteesIncomeCCF3').value = numUSD.format(document.getElementById('EquityMethodInvesteesIncomeCCF3').value.replaceAll(/,/g, ''));
@@ -7201,7 +7211,7 @@
                                 }
                                 // Fourth Last Year
                                 if (d == false) {
-                                    a = -parseInt(document.getElementById('EquityMethodInvesteesIncome4').value.replaceAll(/,/g, ''));
+                                    a = parseInt(document.getElementById('EquityMethodInvesteesIncome4').value.replaceAll(/,/g, ''));
                                     document.getElementById('EquityMethodInvesteesIncomeCCF4').value = numUSD.format(a);
                                 } else {
                                     document.getElementById('EquityMethodInvesteesIncomeCCF4').value = numUSD.format(document.getElementById('EquityMethodInvesteesIncomeCCF4').value.replaceAll(/,/g, ''));
@@ -7211,7 +7221,7 @@
                                 }
                                 // Fifth Last Year
                                 if (d == false) {
-                                    a = -parseInt(document.getElementById('EquityMethodInvesteesIncome5').value.replaceAll(/,/g, ''));
+                                    a = parseInt(document.getElementById('EquityMethodInvesteesIncome5').value.replaceAll(/,/g, ''));
                                     document.getElementById('EquityMethodInvesteesIncomeCCF5').value = numUSD.format(a);
                                 } else {
                                     document.getElementById('EquityMethodInvesteesIncomeCCF5').value = numUSD.format(document.getElementById('EquityMethodInvesteesIncomeCCF5').value.replaceAll(/,/g, ''));
@@ -7221,7 +7231,7 @@
                                 }
                                 // Sixth Last Year
                                 if (d == false) {
-                                    a = -parseInt(document.getElementById('EquityMethodInvesteesIncome6').value.replaceAll(/,/g, ''));
+                                    a = parseInt(document.getElementById('EquityMethodInvesteesIncome6').value.replaceAll(/,/g, ''));
                                     document.getElementById('EquityMethodInvesteesIncomeCCF6').value = numUSD.format(a);
                                 } else {
                                     document.getElementById('EquityMethodInvesteesIncomeCCF6').value = numUSD.format(document.getElementById('EquityMethodInvesteesIncomeCCF6').value.replaceAll(/,/g, ''));
