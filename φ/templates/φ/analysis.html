@@ -364,7 +364,7 @@
                 page = 'Context';
                 showPage(page);
                 history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
-                window.scrollTo(0, 270);
+                window.scrollTo(0, 260);
             }
             if (event.keyCode == ii) {
                 Graph();
@@ -378,7 +378,7 @@
         page = 'Opinion';
         showPage(page);
         history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
-        window.scrollTo(0, 310);
+        window.scrollTo(0, 80);
     }
     function Graph() {
         page = 'Graph';
@@ -438,7 +438,7 @@
                 }
                 showPage(page)
                 history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
-                window.scrollTo(0, 270);
+                window.scrollTo(0, 260);
             }
         }
     });
@@ -489,7 +489,7 @@
                 }
                 showPage(page)
                 history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
-                window.scrollTo(0, 270);
+                window.scrollTo(0, 260);
             }
         }
     });
@@ -500,7 +500,7 @@
             const page = 'AuditSummary'
             showPage(page)
             history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
-            window.scrollTo(0, 270);
+            window.scrollTo(0, 260);
         }
     });
     document.addEventListener('keydown', function(event) {
@@ -509,7 +509,7 @@
             const page = 'AuditDetailed'
             showPage(page)
             history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
-            window.scrollTo(0, 270);
+            window.scrollTo(0, 260);
         }
     });
     document.addEventListener('keydown', function(event) {
@@ -518,7 +518,7 @@
             const page = 'MaterialityThreshold'
             showPage(page)
             history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
-            window.scrollTo(0, 270);
+            window.scrollTo(0, 260);
         }
     });    
     document.addEventListener('keydown', function(event) {
@@ -527,7 +527,7 @@
             const page = 'Mission'
             showPage(page)
             history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
-            window.scrollTo(0, 270);
+            window.scrollTo(0, 260);
         }
     });
     document.addEventListener('keydown', function(event) {
@@ -536,7 +536,7 @@
             const page = 'ProcedureAnnualBalanceSheets'
             showPage(page)
             history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
-            window.scrollTo(0, 270);
+            window.scrollTo(0, 260);
         }
     });
     document.addEventListener('keydown', function(event) {
@@ -545,7 +545,7 @@
             const page = 'ProcedureAnnualIncomeStatements'
             showPage(page)
             history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
-            window.scrollTo(0, 270);
+            window.scrollTo(0, 260);
         }
     });
     document.addEventListener('keydown', function(event) {
@@ -554,7 +554,7 @@
             const page = 'ProcedureAnnualComprehensiveIncome'
             showPage(page)
             history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
-            window.scrollTo(0, 270);
+            window.scrollTo(0, 260);
         }
     });
     document.addEventListener('keydown', function(event) {
@@ -563,7 +563,7 @@
             const page = 'ProcedureAnnualShareholdersEquity'
             showPage(page)
             history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
-            window.scrollTo(0, 270);
+            window.scrollTo(0, 260);
         }
     });
     document.addEventListener('keydown', function(event) {
@@ -572,7 +572,7 @@
             const page = 'ProcedureAnnualCashFlow'
             showPage(page)
             history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
-            window.scrollTo(0, 270);
+            window.scrollTo(0, 260);
         }
     });
     document.addEventListener('DOMContentLoaded', function() {
@@ -899,7 +899,7 @@
                             a = a.replace('1','6')
                         }
                         a = document.getElementById(a);
-                        window.scrollTo(0, 270);
+                        window.scrollTo(0, 260);
                     }
                     try {
                         a.focus();
@@ -5688,23 +5688,23 @@
         <table style="padding-top:77px; padding-bottom:30px;">
             <tbody>
                 <tr>
-                    <td>
+                    <td style="padding-bottom: 2%;">
                         <h4 id='o' style="color:Black; font-weight:bold; text-shadow: 1px 1px rgb(73, 73, 73); display:inline; padding-right:27px;"></h4>
                         <h4 id="EntityRegistrantName" style="color:Black; font-weight:bold; text-shadow: 1px 1px rgb(73, 73, 73); display:inline;"></h4>
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td style="padding-bottom: 1%;">
                         <h3 id="Industry_SEC" style="color:rgb(73, 73, 73); font-weight:bold; text-align: right;"></h4>
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td style="padding-bottom: 1%;">
                         <h3 id="Industry" style="color:rgb(73, 73, 73); font-weight:bold; text-align: right;"></h4>
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td style="padding-bottom: 1%;">
                         <h3 id="Region" style="color:rgb(73, 73, 73); font-weight:bold; text-align: right;"></h4>
                     </td>
                 </tr>
@@ -33994,151 +33994,151 @@
         const key = document.getElementById('CurrentAssetsREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Current Assets (" + document.getElementById('CurrentAssetsREF6').value + ") \\"
-        window.scrollTo(0, 270)
+        window.scrollTo(0, 260)
     }
     function SupportingDocumentsNonCurrentAssets() {
         const key = document.getElementById('NonCurrentAssetsREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Non-Current Assets (" + document.getElementById('NonCurrentAssetsREF6').value + ") \\"
-        window.scrollTo(0, 270)
+        window.scrollTo(0, 260)
     }
     function SupportingDocumentsCurrentLiabilities() {
         const key = document.getElementById('CurrentLiabilitiesREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Current Liabilities (" + document.getElementById('CurrentLiabilitiesREF6').value + ") \\"
-        window.scrollTo(0, 270)
+        window.scrollTo(0, 260)
     }
     function SupportingDocumentsNonCurrentLiabilities() {
         const key = document.getElementById('NonCurrentLiabilitiesREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Non-Current Liabilities (" + document.getElementById('NonCurrentLiabilitiesREF6').value + ") \\"
-        window.scrollTo(0, 270)
+        window.scrollTo(0, 260)
     }
     function SupportingDocumentsShareholdersEquity() {
         const key = document.getElementById('ShareholdersEquityREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Shareholders' Equity (" + document.getElementById('ShareholdersEquityREF6').value + ") \\"
-        window.scrollTo(0, 270)
+        window.scrollTo(0, 260)
     }
     function SupportingDocumentsGrossMargin() {
         const key = document.getElementById('GrossMarginREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Gross Margin (" + document.getElementById('GrossMarginREF6').value + ") \\"
-        window.scrollTo(0, 270)
+        window.scrollTo(0, 260)
     }
     function SupportingDocumentsOperatingExpenses() {
         const key = document.getElementById('OperatingExpensesREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Operating Expenses (" + document.getElementById('OperatingExpensesREF6').value + ") \\"
-        window.scrollTo(0, 270)
+        window.scrollTo(0, 260)
     }
     function SupportingDocumentsImpairmentAndRestructuring() {
         const key = document.getElementById('ImpairmentAndRestructuringREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Impairment And Restructuring (" + document.getElementById('ImpairmentAndRestructuringREF6').value + ") \\"
-        window.scrollTo(0, 270)
+        window.scrollTo(0, 260)
     }
     function SupportingDocumentsNonOperatingExpenses() {
         const key = document.getElementById('NonOperatingExpensesREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Non-Operating Expenses (" + document.getElementById('NonOperatingExpensesREF6').value + ") \\"
-        window.scrollTo(0, 270)
+        window.scrollTo(0, 260)
     }
     function SupportingDocumentsEquityMethodInvesteesIncome() {
         const key = document.getElementById('EquityMethodInvesteesIncomeREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Equity Method Investees Income (" + document.getElementById('EquityMethodInvesteesIncomeREF6').value + ") \\"
-        window.scrollTo(0, 270)
+        window.scrollTo(0, 260)
     }
     function SupportingDocumentsDiscontinuedOperations() {
         const key = document.getElementById('DiscontinuedOperationsREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Discontinued Operations (" + document.getElementById('DiscontinuedOperationsREF6').value + ") \\"
-        window.scrollTo(0, 270)
+        window.scrollTo(0, 260)
     }
     function SupportingDocumentsIncomeTax() {
         const key = document.getElementById('IncomeTaxesREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Income Taxes (" + document.getElementById('IncomeTaxesREF6').value + ") \\"
-        window.scrollTo(0, 270)
+        window.scrollTo(0, 260)
     }
     function SupportingDocumentsOtherComprehensiveIncome() {
         const key = document.getElementById('OtherComprehensiveIncomeREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Comprehensive Income (" + document.getElementById('OtherComprehensiveIncomeREF6').value + ") \\"
-        window.scrollTo(0, 270)
+        window.scrollTo(0, 260)
     }
     function SupportingDocumentsOperatingActivities() {
         const key = document.getElementById('OperatingActivitiesREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Operating Activities (" + document.getElementById('OperatingActivitiesREF6').value + ") \\"
-        window.scrollTo(0, 270)
+        window.scrollTo(0, 260)
     }
     function SupportingDocumentsInvestingActivities() {
         const key = document.getElementById('InvestingActivitiesREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Investing Activities (" + document.getElementById('InvestingActivitiesREF6').value + ") \\"
-        window.scrollTo(0, 270)
+        window.scrollTo(0, 260)
     }
     function SupportingDocumentsFinancingActivities() {
         const key = document.getElementById('FinancingActivitiesREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Financing Activities (" + document.getElementById('FinancingActivitiesREF6').value + ") \\"
-        window.scrollTo(0, 270)
+        window.scrollTo(0, 260)
     }
     function SupportingDocumentsMission() {
         const key = document.getElementById('MissionREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Mission (" + document.getElementById('MissionREF6').value + ") \\"
-        window.scrollTo(0, 270)
+        window.scrollTo(0, 260)
     }
     function SupportingDocumentsMateriality() {
         const key = document.getElementById('MaterialityREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Materiality Threshold (" + document.getElementById('MaterialityREF6').value + ") \\"
-        window.scrollTo(0, 270)
+        window.scrollTo(0, 260)
     }
     function SupportingDocumentsBalanceSheetsProcedure() {
         const key = document.getElementById('BalanceSheetsProcedureREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Balance Sheets Procedures (" + document.getElementById('BalanceSheetsProcedureREF6').value + ") \\"
-        window.scrollTo(0, 270)
+        window.scrollTo(0, 260)
     }
     function SupportingDocumentsIncomeStatementsProcedure() {
         const key = document.getElementById('IncomeStatementsProcedureREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Income Statements Procedures (" + document.getElementById('IncomeStatementsProcedureREF6').value + ") \\"
-        window.scrollTo(0, 270)
+        window.scrollTo(0, 260)
     }
     function SupportingDocumentsComprehensiveIncomeProcedure() {
         const key = document.getElementById('ComprehensiveIncomeProcedureREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Comprehensive Income Procedures (" + document.getElementById('ComprehensiveIncomeProcedureREF6').value + ") \\"
-        window.scrollTo(0, 270)
+        window.scrollTo(0, 260)
     }
     function SupportingDocumentsShareholdersEquityProcedure() {
         const key = document.getElementById('ShareholdersEquityProcedureREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Shareholders' Equity Procedures (" + document.getElementById('ShareholdersEquityProcedureREF6').value + ") \\"
-        window.scrollTo(0, 270)
+        window.scrollTo(0, 260)
     }
     function SupportingDocumentsCashFlowProcedure() {
         const key = document.getElementById('CashFlowProcedureREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Cash Flow Procedures (" + document.getElementById('CashFlowProcedureREF6').value + ") \\"
-        window.scrollTo(0, 270)
+        window.scrollTo(0, 260)
     }
     function SupportingDocumentsAnomalies() {
         const key = document.getElementById('AnomaliesREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Anomalies (" + document.getElementById('AnomaliesREF6').value + ") \\"
-        window.scrollTo(0, 270)
+        window.scrollTo(0, 260)
     }
     function SupportingDocumentsOpinion() {
         const key = document.getElementById('OpinionREF6').value;
         SupportingDocuments(key);
         document.getElementById('FilesLabel').innerHTML = "Files \\ Opinion (" + document.getElementById('OpinionREF6').value + ") \\"
-        window.scrollTo(0, 270)
+        window.scrollTo(0, 260)
     }
 
 </script>
