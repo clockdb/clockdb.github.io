@@ -148,142 +148,144 @@
     <Section id="φ">
         <!--- buttons --->
         <!--- MAIN --->
-        <table id='Main'>
-            <tbody>
-                <tr>
-                    <td>
-                        <button data-page="General" name="General">
-                            <h2>≀</h2>
-                        </button>
-                    </td>
-                    <td>
-                        <button data-page="Options" name="Options">
-                            <h2>≡</h2>
-                        </button>
-                    </td>
-                    <td colspan='3'>
-                        <button data-page="IndustryButton" name="Industry" for="IndustryForm">
-                            <h2>Industry</h2>
-                        </button>
-                    </td>
-                    <td colspan='3'>
-                        <button data-page="RegionButton" name="Region">
-                            <h2>Region</h2>
-                        </button>
-                    </td>
-                    <td colspan='3'>
-                        <button data-page="PeriodEndDateButton" name="PeriodEndDate">
-                            <h2>Period</h2>
-                        </button>
-                    </td>
-                    <td colspan='3'>
-                        <button data-page="PhaseButton" name="Phase">
-                            <h2>WIP</h2>
-                        </button>
-                    </td>
-                    <td>
-                        <button data-page="SearchButton" id="SearchButton">
-                            <h2>φ</h2>
-                        </button>
-                    </td>
-                    <td colspan='9'>
-                        <input 
-                            id="search"
-                            autofocus placeholder="clockdb.com" 
-                            type="text" 
-                            autocomplete="off"  
-                            style="outline: 0ch;">
-                        </input>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="margin-left:58.2%; position:absolute; width:31.8%; background-color:white; z-index: 1">
-                        <!-- Search results -->
-                        <ul id="SearchResults" style="
-                            border: 2px solid #E5E4E2;
-                            box-shadow: 1px 1px 1px 1px #000009;
-                            border-radius: 7px; display:none;
-                            z-index: 1">
-                        </ul>
-                        <script>
-                            // List of entities
-                            let myURL = new URL('https://www.clockdb.com/');
-                            let url = './entities';
-                            fetch(url)
-                                .then(response => response.json())
-                                .then(data => {
-                                    entities = data.entities
-                                });
-                            const list = document.getElementById('SearchResults');  
-                            function setList(group) {
-                                document.getElementById('SearchResults').style.display = ''
-                                clearList();
-                                for (const entity of group) {
-                                    const a = document.createElement('a');
-                                    const link = document.createTextNode(entity.name);
-                                    a.appendChild(link);
-                                    a.href = myURL.pathname + (entity.url)
-                                    a.className = 'main'
-                                    list.appendChild(a);
-                                }
-                                if (group.length === 0) {
-                                    document.getElementById('SearchResults').style.display = 'none';
-                                } else {
-                                }
-                            }
-                            function clearList() {
-                                while (list.firstChild) {
-                                    list.removeChild(list.firstChild);
-                                }
-                            }
-                            function getRelevancy(value, searchTerm) {
-                                if (value === searchTerm) {
-                                    return 2;
-                                } else if (value.startsWith(searchTerm)) {
-                                    return 1;
-                                } else if (value.includes(searchTerm)) {
-                                    return 0;
-                                } else {
-                                    return -1;
-                                }
-                            }
-                            const searchInput = document.getElementById('search');
-                            searchInput.addEventListener('input', (event) => {
-                                // Back to top
-                                searchInput.addEventListener("keyup", checkKeyPress, false);
-                                    function checkKeyPress(key) {
-                                        if (key) {
-                                        }
+        <container id="Main" style="position: fixed; top: 0px; background-color: white; z-index: 1; width: 100%;">
+            <table style="table-layout: auto;">
+                <tbody>
+                    <tr>
+                        <td>
+                            <button data-page="General" name="General">
+                                <h2>≀</h2>
+                            </button>
+                        </td>
+                        <td>
+                            <button data-page="Options" name="Options">
+                                <h2>≡</h2>
+                            </button>
+                        </td>
+                        <td colspan='3'>
+                            <button data-page="IndustryButton" name="Industry" for="IndustryForm">
+                                <h2>Industry</h2>
+                            </button>
+                        </td>
+                        <td colspan='3'>
+                            <button data-page="RegionButton" name="Region">
+                                <h2>Region</h2>
+                            </button>
+                        </td>
+                        <td colspan='3'>
+                            <button data-page="PeriodEndDateButton" name="PeriodEndDate">
+                                <h2>Period</h2>
+                            </button>
+                        </td>
+                        <td colspan='3'>
+                            <button data-page="PhaseButton" name="Phase">
+                                <h2>WIP</h2>
+                            </button>
+                        </td>
+                        <td>
+                            <button data-page="SearchButton" id="SearchButton">
+                                <h2>φ</h2>
+                            </button>
+                        </td>
+                        <td colspan='9'>
+                            <input 
+                                id="search"
+                                autofocus placeholder="clockdb.com" 
+                                type="text" 
+                                autocomplete="off"  
+                                style="outline: 0ch;">
+                            </input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="margin-left:58.2%; position:absolute; width:31.8%; background-color:white; z-index: 1">
+                            <!-- Search results -->
+                            <ul id="SearchResults" style="
+                                border: 2px solid #E5E4E2;
+                                box-shadow: 1px 1px 1px 1px #000009;
+                                border-radius: 7px; display:none;
+                                z-index: 1">
+                            </ul>
+                            <script>
+                                // List of entities
+                                let myURL = new URL('https://www.clockdb.com/');
+                                let url = './entities';
+                                fetch(url)
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        entities = data.entities
+                                    });
+                                const list = document.getElementById('SearchResults');  
+                                function setList(group) {
+                                    document.getElementById('SearchResults').style.display = ''
+                                    clearList();
+                                    for (const entity of group) {
+                                        const a = document.createElement('a');
+                                        const link = document.createTextNode(entity.name);
+                                        a.appendChild(link);
+                                        a.href = myURL.pathname + (entity.url)
+                                        a.className = 'main'
+                                        list.appendChild(a);
                                     }
-                                // Search
-                                let value = event.target.value;
-                                if (value && value.trim().length > 0) {
-                                    value = value.trim().toUpperCase();
-                                    setList(entities.filter(entity => {
-                                        return entity.name.includes(value);
-                                    }).sort((entityA, entityB) => {
-                                        return getRelevancy(entityB.name, value) - getRelevancy(entityA.name, value);
-                                    }));
-                                } else {
+                                    if (group.length === 0) {
+                                        document.getElementById('SearchResults').style.display = 'none';
+                                    } else {
+                                    }
+                                }
+                                function clearList() {
+                                    while (list.firstChild) {
+                                        list.removeChild(list.firstChild);
+                                    }
+                                }
+                                function getRelevancy(value, searchTerm) {
+                                    if (value === searchTerm) {
+                                        return 2;
+                                    } else if (value.startsWith(searchTerm)) {
+                                        return 1;
+                                    } else if (value.includes(searchTerm)) {
+                                        return 0;
+                                    } else {
+                                        return -1;
+                                    }
+                                }
+                                const searchInput = document.getElementById('search');
+                                searchInput.addEventListener('input', (event) => {
+                                    // Back to top
+                                    searchInput.addEventListener("keyup", checkKeyPress, false);
+                                        function checkKeyPress(key) {
+                                            if (key) {
+                                            }
+                                        }
+                                    // Search
+                                    let value = event.target.value;
+                                    if (value && value.trim().length > 0) {
+                                        value = value.trim().toUpperCase();
+                                        setList(entities.filter(entity => {
+                                            return entity.name.includes(value);
+                                        }).sort((entityA, entityB) => {
+                                            return getRelevancy(entityB.name, value) - getRelevancy(entityA.name, value);
+                                        }));
+                                    } else {
+                                        clearList();
+                                        document.getElementById('SearchResults').style.marginBottom = '0%';
+                                        document.getElementById('SearchResults').style.display = 'none'
+                                    }
+                                });
+                                // Remove text from input
+                                document.addEventListener('click', function() {
+                                    document.getElementById('search').value = '';
                                     clearList();
                                     document.getElementById('SearchResults').style.marginBottom = '0%';
                                     document.getElementById('SearchResults').style.display = 'none'
-                                }
-                            });
-                            // Remove text from input
-                            document.addEventListener('click', function() {
-                                document.getElementById('search').value = '';
-                                clearList();
-                                document.getElementById('SearchResults').style.marginBottom = '0%';
-                                document.getElementById('SearchResults').style.display = 'none'
-                            })
-                        </script>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                                })
+                            </script>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </container>
         <!--- GENERAL --->
-        <div id="General" style="margin-left:1%; width:24%; position: absolute; z-index: 1">
+        <div id="General" style="position: fixed; top: 5%; margin-left:1%; width:24%; z-index: 1">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -322,7 +324,7 @@
             </table>
         </div>
         <!--- OPTIONS --->
-        <div id="Options" style="margin-left:4%; width:24%; position: absolute; z-index: 1">
+        <div id="Options" style="position: fixed; top: 5%; margin-left:3%; width:24%; z-index: 1">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -368,7 +370,7 @@
             </table>
         </div>
         <!--- INDUSTRY --->
-        <div id="IndustryButton" style="margin-left:8%; width:24%; position: absolute; z-index: 1">
+        <div id="IndustryButton" style="position: fixed; top: 5%; margin-left:8%; width:24%; z-index: 1">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -1647,7 +1649,7 @@
                 </tbody>
             </table>
         </div>        <!--- PERIOD --->
-        <div id="PeriodEndDateButton" style="margin-left:31.5%; width:24%; position: absolute; z-index: 1">
+        <div id="PeriodEndDateButton" style="position: fixed; top: 5%; margin-left:31.5%; width:24%; z-index: 1">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -1683,7 +1685,7 @@
             </table>
         </div>
         <!--- PHASE --->
-        <div id="PhaseButton" style="margin-left:43%; width:24%; position: absolute; z-index: 1">
+        <div id="PhaseButton" style="position: fixed; top: 5%; margin-left:43%; width:24%; z-index: 1">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
