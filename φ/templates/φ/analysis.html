@@ -1065,14 +1065,12 @@
                             border-radius: 7px; display:none">
                             </ul>
                         <script>
-                            
                             // List of entities
                             let myURL = new URL('https://www.clockdb.com/');
                             let url = '/entities';
                             fetch(url)
                                 .then(response => response.json())
                                 .then(data => {
-                                    console.log(data.entities)
                                     entities = data.entities
                                 });
                             const list = document.getElementById('SearchResults');  
