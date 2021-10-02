@@ -177,8 +177,8 @@ def posts(
     if end > len(e):
         end = len(e)
     #
-    # Generate list of entities
     data = []
+    #
     for i in range(start - 1, end):
         json = {
             "entity": e[i].EntityRegistrantName,
@@ -253,4 +253,25 @@ def posts(
     # Return list of entities
     return JsonResponse({
         "posts": data
+    })
+
+def entities(request):
+    #
+    e = Entity.objects.all()
+    #
+    data = []
+    #
+    for i in range(0, len(e)):
+        json = {
+            "name": e[i].EntityRegistrantName + ' (' + e[i].TradingSymbol + ')',
+            "url": './' + e[i].TradingSymbol,
+        }
+        data.append(json)    
+
+    # Artificially delay speed of response
+    time.sleep(1)
+
+    # Return list of entities
+    return JsonResponse({
+        "entities": data
     })

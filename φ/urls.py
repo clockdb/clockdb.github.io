@@ -13,6 +13,8 @@ urlpatterns = [
     path("disclaimer/", views.disclaimer, name="disclaimer"),
     #
     path("documentation/", views.documentation, name="documentation"),
+
+    path("entities/", views.entities, name="entities"),
     #
     path("", views.index, name="index"),
     #
