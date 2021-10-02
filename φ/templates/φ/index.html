@@ -205,10 +205,7 @@
                             border-radius: 7px; display:none;
                             z-index: 1">
                         </ul>
-
-
                         <script>
-                            
                             // List of entities
                             let myURL = new URL('https://www.clockdb.com/');
                             let url = './entities';
@@ -1973,23 +1970,23 @@
                     <table>
                         <tbody>
                             <tr>
-                                <td style="padding-top: 11%; padding-bottom: 2%;">
+                                <td style="padding-top: 11%;">
                                     <h4 id='o' class='o' style="color:Black; font-weight:bold; text-shadow: 1px 1px rgb(73, 73, 73); display:inline; padding-right:27px;"></h4>
                                     <h4 id="EntityRegistrantName" class="EntityRegistrantName" style="color:Black; font-weight:bold; text-shadow: 1px 1px rgb(73, 73, 73); display:inline;">${contents.entity} (${contents.tradingSymbol})</h4>
                                 </td>
                             </tr>
                             <tr>
-                                <td style="padding-bottom: 1%;">
+                                <td>
                                     <h3 id="Industry_SEC" style="color:rgb(73, 73, 73); font-weight:bold; text-align: right;">${contents.industry_sec}</h3>
                                 </td>
                             </tr>
                             <tr>
-                                <td style="padding-bottom: 1%;">
+                                <td>
                                     <h3 id="Industry" style="color:rgb(73, 73, 73); font-weight:bold; text-align: right;">${contents.industry}</h3>
                                 </td>
                             </tr>
                             <tr>
-                                <td style="padding-bottom: 7%;">
+                                <td style="padding-bottom: 3%">
                                     <h3 id="Region" style="color:rgb(73, 73, 73); font-weight:bold; text-align: right;">${contents.region}</h3>
                                 </td>
                             </tr>
@@ -1998,12 +1995,12 @@
                     <table>
                         <tbody>
                             <tr>
-                                <td><button class="hide">X</button></td>
                                 <td colspan="3"><button onClick="LineChartButton()" data-page="LineChart${contents.tradingSymbol}" id="LineChartButton${contents.tradingSymbol}" style="letter-spacing: 2px;">Line Chart</button></td>
                                 <td colspan="3"><button onClick="OpinionButton()" data-page="Opinion${contents.tradingSymbol}" id="OpinionButton${contents.tradingSymbol}" style="letter-spacing: 2px;">Opinion</button></td>
                                 <td><a href="https://www.facebook.com/sharer/sharer.php?u=www.clockdb.com/${contents.tradingSymbol}/" target="_blank"><button style="background-color:white"><img src="./static/φ/img/facebook.png" style="max-width: 18px; border-radius: 5px"></button></a></td>
                                 <td><a href="https://twitter.com/share?url=www.clockdb.com/${contents.tradingSymbol}/" target="_blank"><button style="background-color:white"><img src="./static/φ/img/twitter.png" style="max-width: 18px; border-radius: 5px"></button></a></td>
                                 <td><a href="http://www.reddit.com/submit?url=https://stackoverflow.com/questions/24823114/www.clockdb.com/${contents.tradingSymbol}/&title=www.clockdb.com/${contents.tradingSymbol}/" target="_blank"><button style="background-color:white"><img src="./static/φ/img/reddit.png" style="max-width: 18px; border-radius: 5px"></button></a></td>
+                                <td><button class="hide" style="letter-spacing: 2px;">Hide</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -2116,10 +2113,10 @@
                                     <input type="checkbox" id="BridgeφCheckbox"></input>
                                     <input type="checkbox" id="BridgeφCheckbox2"></input>
                                 </td>
-                                <td colspan="2" id="Bridgeφ1" class="Bridgeφ1" style="font-weight:bold; text-align:center;">` + Bridge1 + `</td>
-                                <td colspan="2" id="Bridgeφ2" class="Bridgeφ2" style="font-weight:lighter; text-align:center">` + Bridge2 + `</td>
-                                <td colspan="2" id="Bridgeφ3" class="Bridgeφ3" style="font-weight:lighter; text-align:center">` + Bridge3 + `</td>
-                                <td colspan="2" id="Bridgeφ4" class="Bridgeφ4" style="font-weight:lighter; text-align:center">` + Bridge4 + `</td>
+                                <td colspan="2" id="Bridgeφ1" class="Bridgeφ1" style="font-weight:bold; text-align:center; font-size: 7px;">` + Bridge1 + `</td>
+                                <td colspan="2" id="Bridgeφ2" class="Bridgeφ2" style="font-weight:lighter; text-align:center; font-size: 7px;">` + Bridge2 + `</td>
+                                <td colspan="2" id="Bridgeφ3" class="Bridgeφ3" style="font-weight:lighter; text-align:center; font-size: 7px;">` + Bridge3 + `</td>
+                                <td colspan="2" id="Bridgeφ4" class="Bridgeφ4" style="font-weight:lighter; text-align:center; font-size: 7px;">` + Bridge4 + `</td>
                                 <td colspan="2" style="display:none;" id="Bridgeφ5" style="font-weight:lighter; text-align:center"></td>
                                 <td colspan="2" style="display:none;" id="Bridgeφ6" style="font-weight:lighter; text-align:center"></td>
                             </tr>
@@ -2482,11 +2479,11 @@
     </script>
 
     <container><span>
-        <h3 id="criterias" style="margin-top: 7%; font-size: 7px; padding-left: 2%; font-weight: normal; letter-spacing: 2px; font-style:italic;"></h3>
+        <h3 id="criterias" style="margin-top: 3%; font-size: 7px; padding-left: 2%; font-weight: normal; letter-spacing: 2px; font-style:italic;"></h3>
     </span></container>
 
     <container><span>
-        <h3 id="results" style="margin-bottom: 7%; font-size: 7px; padding-left: 2%; font-weight: normal; letter-spacing: 2px; font-style:italic"></h3>
+        <h3 id="results" style="margin-bottom: 3%; font-size: 7px; padding-left: 2%; font-weight: normal; letter-spacing: 2px; font-style:italic"></h3>
     </span></container>
 
     <container id="posts"></container>
@@ -2494,7 +2491,7 @@
     <!--- Loading --->
     <section id="loading" style="padding-top:18%; padding-bottom:29%; padding-right: 8%; visibility: hidden; text-align: center; font-style:italic">
         <span>
-            <h5 style="post">Loading...</h5>
+            <h5 style="post"></h5>
         </span>
     </section>
 

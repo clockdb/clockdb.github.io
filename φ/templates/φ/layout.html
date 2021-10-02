@@ -73,7 +73,7 @@
                 background-color: #E5E4E2;
                 transition: all 0.2s ease-out;
             }
-            @media (max-width: 599px) {
+            @media (max-width: 799px) {
                 td {
                     padding-top: 1.5%;
                 }
@@ -103,7 +103,7 @@
             ul a:hover {
                 color: #696969;
             }
-            @media (max-width: 599px) {
+            @media (max-width: 799px) {
                 ul a {
                     font-size: 9px;
                     margin-top: 13%;
@@ -123,7 +123,6 @@
                 font-size: 9px;
                 letter-spacing: 2px;
                 text-align:center;
-                padding: 1%;
             }
             .post h3 {
                 font-family: 'Verdana', sans-serif;
@@ -137,27 +136,24 @@
                 font-size: 21px;
                 letter-spacing: 0.05rem;
                 text-align: center;
-                vertical-align: bottom;
             }
             .post h5 {
-                font-size: 10px;
+                font-size: 9px;
                 letter-spacing: 0.05rem;
                 margin-left: 2%;
                 margin-right: 2%;
                 text-align: left;
             }
             .post h6 {
-                font-size: 10px;
+                font-size: 9px;
                 letter-spacing: 0.05rem;
                 text-align: left;
-                vertical-align: bottom;
                 font-weight: normal;
             }
             .post a {
                 font-size: 11px;
                 letter-spacing: 0.02rem;
                 text-align: left;
-                vertical-align: bottom;
                 font-weight: normal;
                 outline: none;
             }
@@ -165,7 +161,6 @@
                 font-size: 13px;
                 letter-spacing: 0.05rem;
                 text-align: left;
-                vertical-align: bottom;
                 font-weight: normal;
             }
             .post sup {
@@ -175,16 +170,14 @@
                 table-layout: fixed;
                 width: 90%;
                 font-size: 13px;
-                margin-right: auto;
-                margin-left: auto;
                 text-align: right;
                 border-right: 1px;
-                z-index: 9;
+                margin-right: auto;
+                margin-left: auto;
             }
-            .post td {
-                font-size: 9px;
-                padding-top: 1%;
-                padding-bottom: 1%;
+            .post tr, td {
+                font-size: 10px;
+                padding: 0.5%;
             }
             .post select {
                 width: 100%;
@@ -198,7 +191,7 @@
             }
             .post button {
                 font-weight:bold;
-                padding: 3%;
+                padding: 2%;
                 cursor: pointer;
                 font-family: 'Verdana', sans-serif;
                 font-size: 11px;
@@ -206,6 +199,7 @@
             }
             .post button:hover {
                 background-color: #f5f4f4;
+                border-radius: 15px;
             }
             .post button:active {
                 background-color: #E5E4E2;
@@ -213,7 +207,7 @@
             }
             .post input {
                 font-family: 'Verdana', sans-serif;
-                font-size: 10px;
+                font-size: 9px;
                 text-align: right;
                 border-collapse: separate;
                 border: 2px;
@@ -258,28 +252,21 @@
                 0% {
                     opacity: 1;
                     height: 100%;
-                    line-height: 100%;
                 }
                 75% {
                     opacity: 0;
                     height: 100%;
-                    line-height: 100%;
                 }
                 100% {
                     opacity: 0;
-                    height: 0px;
-                    line-height: 0px;
-                    padding: 0px;
-                    margin-bottom: 0px;
                 }
             }
             .hide {
                 float: right;
             }
             .post {         
-                width: 100%;  
+                width: 100%;
                 border-top: 10px solid #E5E4E2;
-                background-color:white;
                 animation-name: hide;
                 animation-duration: 2s;
                 animation-fill-mode: forwards;
@@ -289,7 +276,7 @@
             .main {
                 z-index: 1;
             }
-            @media (max-width: 599px) {
+            @media (max-width: 799px) {
                 .post h1 {
                     font-size: 11px;
                 }
@@ -322,7 +309,7 @@
                 }
                 .post button {
                     font-size: 7px;
-                    padding: 3%;
+                    padding: 7%;
                 }
                 .post input {
                     font-size: 7px;
@@ -360,27 +347,24 @@
                 font-size: 21px;
                 letter-spacing: 0.05rem;
                 text-align: center;
-                vertical-align: bottom;
             }
             #φ h5 {
-                font-size: 10px;
+                font-size: 9px;
                 letter-spacing: 0.05rem;
                 margin-left: 2%;
                 margin-right: 2%;
                 text-align: left;
             }
             #φ h6 {
-                font-size: 10px;
+                font-size: 9px;
                 letter-spacing: 0.05rem;
                 text-align: left;
-                vertical-align: bottom;
                 font-weight: normal;
             }
             #φ a {
                 font-size: 11px;
                 letter-spacing: 0.02rem;
                 text-align: left;
-                vertical-align: bottom;
                 font-weight: normal;
                 outline: none;
             }
@@ -388,7 +372,6 @@
                 font-size: 13px;
                 letter-spacing: 0.05rem;
                 text-align: left;
-                vertical-align: bottom;
                 font-weight: normal;
             }
             #φ sup {
@@ -398,14 +381,15 @@
                 table-layout: fixed;
                 width: 90%;
                 font-size: 13px;
-                margin-right: auto;
-                margin-left: auto;
                 text-align: right;
                 border-right: 1px;
+                margin-right: auto;
+                margin-left: auto;
             }
 
-            #φ td {
-                font-size: 9px;
+            #φ tr, td {
+                font-size: 10px;
+                padding: 0.5%;
             }
 
             #φ select {
@@ -438,7 +422,7 @@
             }
             #φ input {
                 font-family: 'Verdana', sans-serif;
-                font-size: 10px;
+                font-size: 9px;
                 text-align: right;
                 border-collapse: separate;
                 border: 2px;
@@ -494,24 +478,14 @@
             #φ @keyframes hide {
                 0% {
                     opacity: 1;
-                    height: 100%;
-                    line-height: 100%;
-                    padding: 7%;
-                    margin-bottom: 10px;
                 }
                 75% {
                     opacity: 0;
                     height: 100%;
-                    line-height: 100%;
-                    padding: 7%;
-                    margin-bottom: 10px;
                 }
                 100% {
                     opacity: 0;
                     height: 0px;
-                    line-height: 0px;
-                    padding: 0px;
-                    margin-bottom: 0px;
                 }
             }
             φ hide {
@@ -524,7 +498,7 @@
                 animation-fill-mode: forwards;
                 animation-play-state: paused;
             }
-            @media (max-width: 599px) {
+            @media (max-width: 799px) {
                 #φ h1 {
                     font-size: 15px;
                 }
@@ -538,10 +512,10 @@
                     font-size: 15px;
                 }
                 #φ h5 {
-                    font-size: 9px;
+                    font-size: 7px;
                 }
                 #φ h6 {
-                    font-size: 9px;
+                    font-size: 7px;
                 }
                 #φ a {
                     font-size: 7px;
@@ -651,7 +625,7 @@
             .text button {
                 width: 90%;
             }
-            @media (max-width: 599px) {
+            @media (max-width: 799px) {
                 .text h1 {
                     font-size: 13px;
                 }
