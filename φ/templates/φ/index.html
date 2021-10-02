@@ -5873,6 +5873,7 @@
                 .then(data => {
                     data.posts.forEach(add_post);
                     LineChart();
+                    Puck();
                     //
                     criterias.innerHTML = cc;
                     //
@@ -6018,7 +6019,7 @@
                         <tbody>
                             <tr>
                                 <td style="padding-top: 11%; padding-bottom: 2%;">
-                                    <h4 id='o' style="color:Black; font-weight:bold; text-shadow: 1px 1px rgb(73, 73, 73); display:inline; padding-right:27px;"></h4>
+                                    <h4 id='o' class='o' style="color:Black; font-weight:bold; text-shadow: 1px 1px rgb(73, 73, 73); display:inline; padding-right:27px;"></h4>
                                     <h4 id="EntityRegistrantName" class="EntityRegistrantName" style="color:Black; font-weight:bold; text-shadow: 1px 1px rgb(73, 73, 73); display:inline;">${contents.entity} (${contents.tradingSymbol})</h4>
                                 </td>
                             </tr>
@@ -6126,10 +6127,10 @@
                                     <input type="checkbox" id="OpinionφCheckbox"></input>
                                     <input type="checkbox" id="OpinionφCheckbox2"></input>
                                 </td>
-                                <td colspan="2" id="Opinionφ1" style="font-weight:bold; text-align: center;">` + Opinion1 + `</td>
-                                <td colspan="2" id="Opinionφ2" style="font-weight:lighter; text-align:center;">` + Opinion2 + `</td>
-                                <td colspan="2" id="Opinionφ3" style="font-weight:lighter; text-align:center;">` + Opinion3 + `</td>
-                                <td colspan="2" id="Opinionφ4" style="font-weight:lighter; text-align:center;">` + Opinion4 + `</td>
+                                <td colspan="2" id="Opinionφ1" class="Opinionφ1" style="font-weight:bold; text-align: center;">` + Opinion1 + `</td>
+                                <td colspan="2" id="Opinionφ2" class="Opinionφ2" style="font-weight:lighter; text-align:center;">` + Opinion2 + `</td>
+                                <td colspan="2" id="Opinionφ3" class="Opinionφ3" style="font-weight:lighter; text-align:center;">` + Opinion3 + `</td>
+                                <td colspan="2" id="Opinionφ4" class="Opinionφ4" style="font-weight:lighter; text-align:center;">` + Opinion4 + `</td>
                                 <td colspan="2" style="display:none;" id="Opinionφ5" style="font-weight:lighter; text-align:center;"></td>
                                 <td colspan="2" style="display:none;" id="Opinionφ6" style="font-weight:lighter; text-align:center;"></td>
                             </tr>
@@ -6143,10 +6144,10 @@
                                     <input type="checkbox" id="ClockφCheckbox"></input>
                                     <input type="checkbox" id="ClockφCheckbox2"></input>
                                 </td>
-                                <td colspan="2" class="ClockRate" id="Clockφ1" style="border-bottom:double black; font-weight:bold; text-align:fight;">` + Clock1 + `</td>
-                                <td colspan="2" class="ClockRate" id="Clockφ2" style="border-bottom:double black; font-weight:lighter; text-align:fight;">` + Clock2 + `</td>
-                                <td colspan="2" class="ClockRate" id="Clockφ3" style="border-bottom:double black; font-weight:lighter; text-align:fight;">` + Clock3 + `</td>
-                                <td colspan="2" class="ClockRate" id="Clockφ4" style="border-bottom:double black; font-weight:lighter; text-align:fight;">` + Clock4 + `</td>
+                                <td colspan="2" class="ClockRate" id="Clockφ1" class="Clockφ1" style="border-bottom:double black; font-weight:bold; text-align:fight;">` + Clock1 + `</td>
+                                <td colspan="2" class="ClockRate" id="Clockφ2" class="Clockφ2" style="border-bottom:double black; font-weight:lighter; text-align:fight;">` + Clock2 + `</td>
+                                <td colspan="2" class="ClockRate" id="Clockφ3" class="Clockφ3" style="border-bottom:double black; font-weight:lighter; text-align:fight;">` + Clock3 + `</td>
+                                <td colspan="2" class="ClockRate" id="Clockφ4" class="Clockφ4" style="border-bottom:double black; font-weight:lighter; text-align:fight;">` + Clock4 + `</td>
                                 <td colspan="2" style="display:none;" id="Clockφ5" style="font-weight:lighter; text-align:fight;"></td>
                                 <td colspan="2" style="display:none;" id="Clockφ6" style="font-weight:lighter; text-align:fight;"></td>
                             </tr>
@@ -6160,10 +6161,10 @@
                                     <input type="checkbox" id="BridgeφCheckbox"></input>
                                     <input type="checkbox" id="BridgeφCheckbox2"></input>
                                 </td>
-                                <td colspan="2" id="Bridgeφ1" style="font-weight:bold; text-align:center;">` + Bridge1 + `</td>
-                                <td colspan="2" id="Bridgeφ2" style="font-weight:lighter; text-align:center">` + Bridge2 + `</td>
-                                <td colspan="2" id="Bridgeφ3" style="font-weight:lighter; text-align:center">` + Bridge3 + `</td>
-                                <td colspan="2" id="Bridgeφ4" style="font-weight:lighter; text-align:center">` + Bridge4 + `</td>
+                                <td colspan="2" id="Bridgeφ1" class="Bridgeφ1" style="font-weight:bold; text-align:center;">` + Bridge1 + `</td>
+                                <td colspan="2" id="Bridgeφ2" class="Bridgeφ2" style="font-weight:lighter; text-align:center">` + Bridge2 + `</td>
+                                <td colspan="2" id="Bridgeφ3" class="Bridgeφ3" style="font-weight:lighter; text-align:center">` + Bridge3 + `</td>
+                                <td colspan="2" id="Bridgeφ4" class="Bridgeφ4" style="font-weight:lighter; text-align:center">` + Bridge4 + `</td>
                                 <td colspan="2" style="display:none;" id="Bridgeφ5" style="font-weight:lighter; text-align:center"></td>
                                 <td colspan="2" style="display:none;" id="Bridgeφ6" style="font-weight:lighter; text-align:center"></td>
                             </tr>
@@ -6496,46 +6497,33 @@
         };
         //
         // puck
-        document.addEventListener('DOMContentLoaded', function() {
-            //
+        function Puck() {
             l = document.querySelectorAll('.EntityRegistrantName').length
-            //
-            for (let i = 0; i < l; i++) {
-                    //
-                a = document.getElementsByClassName('Opinionφ1')[i].innerHTML
-                //
-                b = document.getElementsByClassName('Bridgeφ1')[i].innerHTML
-                c = document.getElementsByClassName('Bridgeφ2')[i].innerHTML
-                d = document.getElementsByClassName('Bridgeφ3')[i].innerHTML
-                //
-                if (b.length === 98) {
-                    if (c.length === 98) {
-                        if (d.length === 98) {
-                            document.getElementsByClassName('o')[i].innerHTML = '⬤';
-                            f = document.getElementsByClassName('Phase')[i].innerHTML;
-                            if (f == 21) {
-                                document.getElementsByClassName('p')[i].innerHTML = 'Audited.';
+            for (let i = parseInt(localStorage.counter) - 1; i < l; i++) {
+                    a = document.getElementsByClassName('Opinionφ1')[i].innerHTML
+                    b = document.getElementsByClassName('Bridgeφ1')[i].innerHTML
+                    c = document.getElementsByClassName('Bridgeφ2')[i].innerHTML
+                    d = document.getElementsByClassName('Bridgeφ3')[i].innerHTML
+                    if (b.length === 98) {
+                        if (c.length === 98) {
+                            if (d.length === 98) {
+                                document.getElementsByClassName('o')[i].innerHTML = '⬤';
                             }
                         }
                     }
+                    m = ''
+                    if (a == 'Hedge For A Loss In Value') {
+                        m = 'red';
+                    }
+                    if (a == 'Buy') {
+                        m = '#0D47A1'
+                    }
+                    if (a == 'None') {
+                        m = 'gold'
+                    }
+                    document.getElementsByClassName('o')[i].style.color = m;
                 }
-                //
-                m = ''
-                //
-                if (a == 'Hedge For A Loss In Value') {
-                    m = 'red';
-                }
-                //
-                if (a == 'Buy') {
-                    m = '#0D47A1'
-                }
-                if (a == 'None') {
-                    m = 'gold'
-                }
-                //
-                document.getElementsByClassName('o')[i].style.color = m;
             }
-        })
     </script>
 
     <container><span>
