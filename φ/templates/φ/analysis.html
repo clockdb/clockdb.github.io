@@ -648,12 +648,6 @@
                 //
                 if (url == null) {
                 } else {
-                    if (skip.includes(url)) {
-                    } else {
-                        try {
-                            history.pushState({page: url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
-                        } catch {}
-                    }
                     try {
                         if (url == 'Opinion') { 
                             page = url
@@ -870,6 +864,16 @@
                             }
                         }
                     } catch {}
+                    if (skip.includes(url)) {
+                        a = document.getElementById(url).style.display;
+                        if (a == 'block') {
+                            document.getElementById(url).style.display = 'none';
+                        }
+                    } else {
+                        try {
+                            history.pushState({page: url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
+                        } catch {}
+                    }
                     ShortCut = [
                         'Context',
                         'IntrinsicValues',
@@ -926,6 +930,7 @@
         document.getElementById('Bridge').style.display = 'none';
         document.getElementById('Clock').style.display = 'none';
         document.getElementById('Options').style.display = 'none';
+        document.getElementById('General').style.display = 'none';
         document.getElementById('Import').style.display = 'none';
         document.getElementById('Procedures').style.display = 'none';
         document.getElementById('search').value = '';
@@ -1122,7 +1127,7 @@
         </table>
 
         <!--- OPTIONS --->
-        <div id="Options" style="margin-left:19%; width:24%; position: absolute;">
+        <div id="Options" style="margin-left:19%; width:48%; position: absolute;">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -1197,7 +1202,7 @@
         </div>
 
         <!--- GENERAL --->
-        <div id="General" style="margin-left:11% ;width:24%; position: absolute;">
+        <div id="General" style="margin-left:11% ;width:48%; position: absolute;">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -1265,7 +1270,7 @@
         </table>
 
         <!--- OPEN --->
-        <div id="Import" style="margin-left:4% ;width:24%; position: absolute;">
+        <div id="Import" style="margin-left:4% ;width:48%; position: absolute;">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -1394,7 +1399,7 @@
         </div>
 
         <!--- FINANCIALS --->
-        <div id="Arch" style="margin-left:4.2%; width:24%; position: absolute;">
+        <div id="Arch" style="margin-left:4.2%; width:48%; position: absolute;">
 
             <!--- ANNUAL FINANCIAL --->
             <table style="
@@ -1450,7 +1455,7 @@
         </div>    
 
         <!--- BUSINESS VALUATION --->
-        <div id="Clock" style="margin-left:48.8%; width:24%; position: absolute; z-index: 1">
+        <div id="Clock" style="margin-left:48.8%; width:48%; position: absolute; z-index: 1">
 
             <!--- FINANCIAL RATIOS, INTRINSIC VALUES AND SUMMARY --->
             <!--- CAPITALIZED INCOME, CAPITALIZED CASH FLOW, CAPITALIZED FORECAST & FAIR MARKET VALUE --->
@@ -1514,7 +1519,7 @@
         </div>
 
         <!--- AUDIT --->
-        <div id="Bridge" style="margin-left:27%; width:24%; position: absolute; z-index: 1">
+        <div id="Bridge" style="margin-left:27%; width:48%; position: absolute; z-index: 1">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -1561,7 +1566,7 @@
         </div>
 
         <!--- PROCEDURES --->
-        <div id="Procedures" style="margin-left:19.7%; width:24%; position: absolute; z-index: 1">      
+        <div id="Procedures" style="margin-left:27%; width:48%; position: absolute; z-index: 1">   
 
             <!--- PROCEDURES ANNUAL FINANCIAL STATEMENTS --->
             <table style="
@@ -1611,7 +1616,7 @@
         </div>
 
         <!--- COMMUNITY --->
-        <div id="Community" style="width:24%; position: absolute;">
+        <div id="Community" style="width:48%; position: absolute;">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
