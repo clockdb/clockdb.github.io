@@ -864,10 +864,19 @@
                             }
                         }
                     } catch {}
+                    //
                     if (skip.includes(url)) {
+                        console.log(document.getElementById(url))
                         a = document.getElementById(url).style.display;
+                        console.log(a)
                         if (a == 'block') {
                             document.getElementById(url).style.display = 'none';
+                            if(url == 'Procedures') {
+                                document.getElementById(url).style.display = 'block';
+                            }
+                            if(url == 'Import') {
+                                document.getElementById(url).style.display = 'block';
+                            }
                         }
                     } else {
                         try {
@@ -1200,77 +1209,9 @@
                 </tbody>
             </table>
         </div>
-
-        <!--- GENERAL --->
-        <div id="General" style="margin-left:11% ;width:48%; position: absolute;">
-            <table style="
-                border: 2px solid #E5E4E2;
-                background-color:white;
-                box-shadow: 1px 1px 1px 1px #000009;
-                border-radius: 15px;">
-                <tbody>
-                    <tr>
-                        <td>
-                            <button data-page="General">
-                                <a href="/commands/" target="_blank"><h3 style="font-size: 9px;">Commands</h3></a>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button data-page="General">
-                                <a href="/documentation/" target="_blank"><h3 style="font-size: 9px;">Documentation</h3></a>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button data-page="General">
-                                <a href="/disclaimer/" target="_blank"><h3 style="font-size: 9px;">Disclaimer</h3></a>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button data-page="General">
-                                <a href="/about/" target="_blank"><h3 style="font-size: 9px;">About</h3></a>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
         
-        <table>
-            <body>
-                <tr>
-                    <td colspan='3' style="padding-top: 2%">
-                        <button data-page="Arch">
-                            <h2 style="font-size: 9px;">Financials</h2>
-                        </button>
-                    </td>
-                    <td colspan='3' style="padding-top: 2%">
-                        <button data-page="Bridge" name="Bridge">
-                            <h2 style="font-size: 9px;">Audit</h2>
-                        </button>
-                    </td>
-                    <td colspan='3' style="padding-top: 2%">
-                        <button data-page="Clock">
-                            <h2 style="font-size: 9px;">Valuation</h2>
-                        </button>
-                    </td>
-                    <td colspan='3' style="padding-top: 2%">
-                        <button data-page="Opinion" name="Opinion">
-                            <h2 style="font-size: 9px;">Opinion</h2>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
         <!--- OPEN --->
-        <div id="Import" style="margin-left:4% ;width:48%; position: absolute;">
+        <div id="Import" style="margin-left:19% ;width:48%; position: absolute;">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -1397,6 +1338,73 @@
                 </tbody>
             </table>
         </div>
+
+        <!--- GENERAL --->
+        <div id="General" style="margin-left:11% ;width:48%; position: absolute;">
+            <table style="
+                border: 2px solid #E5E4E2;
+                background-color:white;
+                box-shadow: 1px 1px 1px 1px #000009;
+                border-radius: 15px;">
+                <tbody>
+                    <tr>
+                        <td>
+                            <button data-page="General">
+                                <a href="/commands/" target="_blank"><h3 style="font-size: 9px;">Commands</h3></a>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button data-page="General">
+                                <a href="/documentation/" target="_blank"><h3 style="font-size: 9px;">Documentation</h3></a>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button data-page="General">
+                                <a href="/disclaimer/" target="_blank"><h3 style="font-size: 9px;">Disclaimer</h3></a>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button data-page="General">
+                                <a href="/about/" target="_blank"><h3 style="font-size: 9px;">About</h3></a>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <table>
+            <body>
+                <tr>
+                    <td colspan='3' style="padding-top: 2%">
+                        <button data-page="Arch">
+                            <h2 style="font-size: 9px;">Financials</h2>
+                        </button>
+                    </td>
+                    <td colspan='3' style="padding-top: 2%">
+                        <button data-page="Bridge" name="Bridge">
+                            <h2 style="font-size: 9px;">Audit</h2>
+                        </button>
+                    </td>
+                    <td colspan='3' style="padding-top: 2%">
+                        <button data-page="Clock">
+                            <h2 style="font-size: 9px;">Valuation</h2>
+                        </button>
+                    </td>
+                    <td colspan='3' style="padding-top: 2%">
+                        <button data-page="Opinion" name="Opinion">
+                            <h2 style="font-size: 9px;">Opinion</h2>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
         <!--- FINANCIALS --->
         <div id="Arch" style="margin-left:4.2%; width:48%; position: absolute;">
