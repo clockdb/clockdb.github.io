@@ -21,6 +21,7 @@
     function escape() {
         document.getElementById('General').style.display = 'none';
         document.getElementById('Options').style.display = 'none';
+        document.getElementById('SortButton').style.display = 'none';
         document.getElementById('IndustryButton').style.display = 'none';
         document.getElementById('RegionButton').style.display = 'none';
         document.getElementById('PeriodEndDateButton').style.display = 'none';
@@ -34,11 +35,7 @@
             a = div.style.display
             skip = [
                 'General',
-                'IndustryButton',
                 'Options',
-                'PeriodEndDateButton',
-                'PhaseButton',
-                'RegionButton',
                 'SearchButton',
             ]
             if (a == 'block') {
@@ -61,15 +58,12 @@
             button.onmouseover = function() {
                 menus = [
                     'General',
-                    'IndustryButton',
                     'Options',
-                    'PeriodEndDateButton',
-                    'PhaseButton',
-                    'RegionButton',
                 ]
                 const url = this.dataset.page;
                 if (menus.includes(url)) {
                     try {
+                        escape();
                         showPage(this.dataset.page);
                     } catch {}
                 } else {}
@@ -82,11 +76,7 @@
             button.onclick = function() {
                 skip = [
                     'General',
-                    'IndustryButton',
                     'Options',
-                    'PeriodEndDateButton',
-                    'PhaseButton',
-                    'RegionButton',
                     'SearchButton',
                 ]
                 const url = this.dataset.page;
@@ -154,37 +144,12 @@
                     <tr>
                         <td>
                             <button data-page="General" name="General">
-                                <h2>≀</h2>
+                                <h1>≀</h1>
                             </button>
                         </td>
                         <td>
                             <button data-page="Options" name="Options">
-                                <h2>≡</h2>
-                            </button>
-                        </td>
-                        <td colspan='3'>
-                            <button data-page="IndustryButton" name="Industry" for="IndustryForm">
-                                <h2>Industry</h2>
-                            </button>
-                        </td>
-                        <td colspan='3'>
-                            <button data-page="RegionButton" name="Region">
-                                <h2>Region</h2>
-                            </button>
-                        </td>
-                        <td colspan='3'>
-                            <button data-page="PeriodEndDateButton" name="PeriodEndDate">
-                                <h2>Period</h2>
-                            </button>
-                        </td>
-                        <td colspan='3'>
-                            <button data-page="PhaseButton" name="Phase">
-                                <h2>WIP</h2>
-                            </button>
-                        </td>
-                        <td>
-                            <button data-page="SearchButton" id="SearchButton">
-                                <h2>φ</h2>
+                                <h1>≡</h1>
                             </button>
                         </td>
                         <td colspan='9'>
@@ -285,7 +250,7 @@
             </table>
         </container>
         <!--- GENERAL --->
-        <div id="General" style="position: fixed; top: 5%; margin-left:1%; width:24%; z-index: 1">
+        <div id="General" style="position: fixed; top: 5%; margin-left:4%; width:48%; z-index: 1">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -324,7 +289,7 @@
             </table>
         </div>
         <!--- OPTIONS --->
-        <div id="Options" style="position: fixed; top: 5%; margin-left:3%; width:24%; z-index: 1">
+        <div id="Options" style="position: fixed; top: 5%; margin-left:9%; width:48%; z-index: 1">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -332,6 +297,58 @@
                 border-radius: 15px;">
                 <tbody>
                     <tr>
+                        <td colspan='3'>
+                            <button data-page="SortButton" name="SortButton">
+                                <h3>Sort</h3>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan='3'>
+                            <button data-page="IndustryButton" name="Industry">
+                                <h3>Industry</h3>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan='3'>
+                            <button data-page="RegionButton" name="Region">
+                                <h3>Region</h3>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan='3'>
+                            <button data-page="PeriodEndDateButton" name="PeriodEndDate">
+                                <h3>Period</h3>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan='3'>
+                            <button data-page="PhaseButton" name="Phase">
+                                <h3>WIP</h3>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan='3'>
+                            <button data-page="SearchButton" id="SearchButton">
+                                <h3><b>Search</b></h3>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--- Sort --->
+        <div id="SortButton" style="position: fixed; top: 5%; margin-left:9%; width:48%; z-index: 1">
+            <table style="
+                border: 2px solid #E5E4E2;
+                background-color:white;
+                box-shadow: 1px 1px 1px 1px #000009;
+                border-radius: 15px;">
+                <tbody>
                         <td>
                             <form>
                                 <select id="Sort" name="Sort" style="
@@ -370,7 +387,7 @@
             </table>
         </div>
         <!--- INDUSTRY --->
-        <div id="IndustryButton" style="position: fixed; top: 5%; margin-left:8%; width:24%; z-index: 1">
+        <div id="IndustryButton" style="position: fixed; top: 5%; margin-left:9%; width:48%; z-index: 1">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -1318,7 +1335,7 @@
             </table>
         </div>
         <!--- REGION --->
-        <div id="RegionButton" style="position: fixed; top: 5%; margin-left:19.7%; width:24%; z-index: 1">
+        <div id="RegionButton" style="position: fixed; top: 5%; margin-left:9%; width:48%; z-index: 1">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -1649,7 +1666,7 @@
                 </tbody>
             </table>
         </div>        <!--- PERIOD --->
-        <div id="PeriodEndDateButton" style="position: fixed; top: 5%; margin-left:31.5%; width:24%; z-index: 1">
+        <div id="PeriodEndDateButton" style="position: fixed; top: 5%; margin-left:8%; width:48%; z-index: 1">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -1685,7 +1702,7 @@
             </table>
         </div>
         <!--- PHASE --->
-        <div id="PhaseButton" style="position: fixed; top: 5%; margin-left:43%; width:24%; z-index: 1">
+        <div id="PhaseButton" style="position: fixed; top: 5%; margin-left:9%; width:48%; z-index: 1">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -2433,7 +2450,7 @@
     </script>
 
     <container><span>
-        <h3 id="criterias" style="margin-top: 9%; font-size: 7px; padding-left: 2%; font-weight: normal; letter-spacing: 2px; font-style:italic;"></h3>
+        <h3 id="criterias" style="margin-top: 58px; font-size: 7px; padding-left: 2%; font-weight: normal; letter-spacing: 2px; font-style:italic;"></h3>
     </span></container>
 
     <container><span>
