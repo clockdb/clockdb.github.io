@@ -1971,27 +1971,29 @@
                     <!--- ENTITIES, INDUSTRY AND REGION --->
                     <table>
                         <tbody>
-                            <tr>
-                                <td style="padding-top: 11%;">
-                                    <h4 id='o' class='o' style="color:Black; font-weight:bold; text-shadow: 1px 1px rgb(73, 73, 73); display:inline; padding-right:27px;"></h4>
-                                    <h4 id="EntityRegistrantName" class="EntityRegistrantName" style="color:Black; font-weight:bold; text-shadow: 1px 1px rgb(73, 73, 73); display:inline;">${contents.entity} (${contents.tradingSymbol})</h4>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h3 id="Industry_SEC" style="color:rgb(73, 73, 73); font-weight:bold; text-align: right;">${contents.industry_sec}</h3>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h3 id="Industry" style="color:rgb(73, 73, 73); font-weight:bold; text-align: right;">${contents.industry}</h3>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="padding-bottom: 3%">
-                                    <h3 id="Region" style="color:rgb(73, 73, 73); font-weight:bold; text-align: right;">${contents.region}</h3>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td style="padding-top: 11%;">
+                                        <a href="/${contents.tradingSymbol}" target="_blank">
+                                            <h4 id='o' class='o' style="color:Black; font-weight:bold; text-shadow: 1px 1px rgb(73, 73, 73); display:inline; padding-right:27px;"></h4>
+                                            <h4 id="EntityRegistrantName" class="EntityRegistrantName" style="color:Black; font-weight:bold; text-shadow: 1px 1px rgb(73, 73, 73); display:inline;">${contents.entity} (${contents.tradingSymbol})</h4>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h3 id="Industry_SEC" style="color:rgb(73, 73, 73); font-weight:bold; text-align: right;">${contents.industry_sec}</h3>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h3 id="Industry" style="color:rgb(73, 73, 73); font-weight:bold; text-align: right;">${contents.industry}</h3>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-bottom: 3%">
+                                        <h3 id="Region" style="color:rgb(73, 73, 73); font-weight:bold; text-align: right;">${contents.region}</h3>
+                                    </td>
+                                </tr>
                         </tbody>
                     </table>
                     <table>
@@ -2006,7 +2008,6 @@
                             </tr>
                         </tbody>
                     </table>
-            <a href="/${contents.tradingSymbol}" target="_blank">
                 <span style="display: block;" id="LineChart${contents.tradingSymbol}">
                     <table>
                         <tbody>
@@ -2035,7 +2036,6 @@
                         </tbody>
                     </table>
                 </span>
-            </a>
                 <span style="display: none" id="Opinion${contents.tradingSymbol}">
                     <table style="padding-bottom: 11%">
                         <tbody>
@@ -2045,7 +2045,7 @@
                             <tr></tr>
                             <tr></tr>
                             <tr>
-                                <td colspan="5"></td>
+                                <td colspan="2"></td>
                                 <td colspan="2" style="padding-top:2%;"><h5 id="DateSummary1" class="DateSummary1" style="text-align:center">` + lastyear + `</h4></td>
                                 <td colspan="2" style="padding-top:2%;"><h5 id="DateSummary2" class="DateSummary2" style="text-align:center">` + secondlastyear + `</h4></td>
                                 <td colspan="2" style="display:none; padding-top:2%;"><h5 id="DateSummary3" class="DateSummary3" style="text-align:center">` + thirdlastyear + `</h4></td>
@@ -2055,7 +2055,7 @@
                             </tr>
                             <tr></tr>
                             <tr>
-                                <td colspan="5"></td>
+                                <td colspan="2"></td>
                                 <td colspan='2'><h5 id="SummaryAmend1" style="font-weight:bold; text-align:center; padding-bottom:1%">` + amendlastyear + `</td>
                                 <td colspan='2'><h5 id="SummaryAmend2" style="font-weight:bold; text-align:center; padding-bottom:1%">` + amendsecondlastyear + `</td>
                                 <td colspan='2'style="display:none;"><h5 id="SummaryAmend3" style="font-weight:bold; text-align:center; padding-bottom:1%">` + amendthirdlastyear + `</td>
@@ -2068,19 +2068,13 @@
                             <tr></tr>
                             <tr></tr>
                             <tr>
-                                <td colspan="5"></td>
+                                <td colspan="2"></td>
                                 <td colspan="2"><h6 style="text-align: center;" id='SharePriceUpdate'>` + securitiesupdate + `</h6></td>
                             </tr>
                             <tr></tr>
                             <tr></tr>
                             <tr id="OpinionφRow" class="Context">
                                 <td colspan="2"><h5 style="margin-left:0px;">OPINION</h5></td>
-                                <td style="color:#0d47a1; text-align:center; font-weight:bold;">(a)</td>
-                                <td></td>
-                                <td>
-                                    <input type="checkbox" id="OpinionφCheckbox"></input>
-                                    <input type="checkbox" id="OpinionφCheckbox2"></input>
-                                </td>
                                 <td colspan="2" id="Opinionφ1" class="Opinionφ1" style="font-weight:bold; text-align: center;">` + Opinion1 + `</td>
                                 <td colspan="2" id="Opinionφ2" class="Opinionφ2" style="font-weight:lighter; text-align:center;">` + Opinion2 + `</td>
                                 <td colspan="2" style="display:none;" id="Opinionφ3" class="Opinionφ3" style="font-weight:lighter; text-align:center;">` + Opinion3 + `</td>
@@ -2092,12 +2086,6 @@
                             <tr></tr>
                             <tr id="ClockφRow" class="ClockRate">
                                 <td colspan="2"><h5 style="margin-left:0px;">VALUATION</h5></td></td>
-                                <td style="color:#0d47a1; text-align:center; font-weight:bold;">(b)</td>
-                                <td></td>
-                                <td>
-                                    <input type="checkbox" id="ClockφCheckbox"></input>
-                                    <input type="checkbox" id="ClockφCheckbox2"></input>
-                                </td>
                                 <td colspan="2" class="ClockRate" id="Clockφ1" class="Clockφ1" style="border-bottom:double black; font-weight:bold; text-align:fight;">` + Clock1 + `</td>
                                 <td colspan="2" class="ClockRate" id="Clockφ2" class="Clockφ2" style="border-bottom:double black; font-weight:lighter; text-align:fight;">` + Clock2 + `</td>
                                 <td colspan="2" style="display:none;" class="ClockRate" id="Clockφ3" class="Clockφ3" style="border-bottom:double black; font-weight:lighter; text-align:fight;">` + Clock3 + `</td>
@@ -2109,12 +2097,6 @@
                             <tr></tr>
                             <tr id="BridgeφRow" class="Context">
                                 <td colspan="2"><h5 style="margin-left:0px;">AUDIT</h5></td>
-                                <td style="text-align:center"><button id="AnomaliesWorstCaseScenarioShortCut" data-page="AuditSummary" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white; box-shadow: none;">AS</button></td>
-                                <td></td>
-                                <td>
-                                    <input type="checkbox" id="BridgeφCheckbox"></input>
-                                    <input type="checkbox" id="BridgeφCheckbox2"></input>
-                                </td>
                                 <td colspan="2" id="Bridgeφ1" class="Bridgeφ1" style="font-weight:bold; text-align:center; font-size: 7px;">` + Bridge1 + `</td>
                                 <td colspan="2" id="Bridgeφ2" class="Bridgeφ2" style="font-weight:lighter; text-align:center; font-size: 7px;">` + Bridge2 + `</td>
                                 <td colspan="2" style="display:none;" id="Bridgeφ3" class="Bridgeφ3" style="font-weight:lighter; text-align:center; font-size: 7px;">` + Bridge3 + `</td>
@@ -2138,12 +2120,6 @@
                             <tr></tr>
                             <tr id="IntrinsicValuesRow" class="OpinionFour">
                                 <td colspan="2"><h6>Common Shares' Intrinsic Value</h6></td>
-                                <td style="text-align:center"><button id="WeightedIVShortCut" data-page="IntrinsicValues" style="text-align:center; font-weight:bold; width:75%; box-shadow: none; background-color: white; box-shadow: none;">IV</button></td>
-                                <td><button style="font-weight:bold; text-align:center;  box-shadow: none; color:#0D47A1; background-color: white;" data-page="OpinionFiles" class="OpinionFiles">db</button></td>
-                                <td>
-                                    <input type="checkbox" id="IntrinsicValuesCheckbox"></input>
-                                    <input type="checkbox" id="IntrinsicValuesCheckbox2"></input>
-                                </td>
                                 <td colspan="2"><input id="IntrinsicValues1" class="IntrinsicValues1" style="font-weight:bold;" onfocusout="Compile()" value="` + IV1 + `"></input></td>
                                 <td colspan="2"><input id="IntrinsicValues2" class="IntrinsicValues2"  onfocusout="Compile()" value="` + IV2 + `"></input></td>
                                 <td colspan="2" style="display:none;" ><input id="IntrinsicValues3" class="IntrinsicValues3"  onfocusout="Compile()" value="` + IV3 + `"></input></td>
@@ -2154,12 +2130,6 @@
                             <tr></tr>
                             <tr id="MarketCapitalizationRow" class="OpinionFour">
                                 <td colspan="2"><h6>Market Capitalization Attributable To Common Shares</h6></td>
-                                <td style="color:#0d47a1; text-align:center; font-weight:bold;">(c)</td>
-                                <td></td>
-                                <td>
-                                    <input type="checkbox" id="MarketCapitalizationCheckbox"></input>
-                                    <input type="checkbox" id="MarketCapitalizationCheckbox2"></input>
-                                </td>
                                 <td colspan="2"><input id="MarketCapitalization1" class="MarketCapitalization1" style="font-weight:bold;" onfocusout="Compile()" value="` + MC1 + `"></input></td>
                                 <td colspan="2"><input id="MarketCapitalization2" class="MarketCapitalization2" onfocusout="Compile()" value="` + MC2 + `"></input></td>
                                 <td colspan="2" style="display:none;" ><input id="MarketCapitalization3" class="MarketCapitalization3" onfocusout="Compile()" value="` + MC3 + `"></input></td>
@@ -2169,12 +2139,6 @@
                             <tr></tr>
                             <tr id="IntrinsicValueOfACommonSharesRow" class="Price">
                                 <td colspan="2"><h6 id="CommonShareIntrinsicValuePerUnit">${contents.tradingSymbol} Common Share Intrinsic Value Per Unit</h6></td>
-                                <td style="color:#0d47a1; text-align:center; font-weight:bold;">(d)</td>
-                                <td></td>
-                                <td>
-                                    <input type="checkbox" id="IntrinsicValueOfACommonSharesCheckbox"></input>
-                                    <input type="checkbox" id="IntrinsicValueOfACommonSharesCheckbox2"></input>
-                                </td>
                                 <td colspan="2"><input id="IntrinsicValueOfACommonShares1" class="IntrinsicValueOfACommonShares1" style="font-weight:bold;" value="` + iv1 + `"></td>
                                 <td colspan="2"><input id="IntrinsicValueOfACommonShares2" class="IntrinsicValueOfACommonShares1" value="` + iv2 + `"></td>
                                 <td colspan="2" style="display:none;" ><input id="IntrinsicValueOfACommonShares3" class="IntrinsicValueOfACommonShares1" value="` + iv3 + `"></td>
@@ -2185,12 +2149,6 @@
                             <tr></tr>
                             <tr id="SharePriceRow" class="Price">
                                 <td colspan="2"><h6 id="CommonSharePricePerUnit">${contents.tradingSymbol} Common Share Price Per Unit</h6></td>
-                                <td style="color:#0d47a1; text-align:center; font-weight:bold;">(e)</td>
-                                <td></td>
-                                <td>
-                                    <input type="checkbox" id="SharePriceCheckbox"></input>
-                                    <input type="checkbox" id="SharePriceCheckbox2"></input>
-                                </td>
                                 <td colspan="2"><input class="Price" id="SharePrice1" style="font-weight:bold;" onfocusout="Compile()" onchange='FormatCell()' value="` + price1 + `"></input></td>
                                 <td colspan="2"><input class="Price" id="SharePrice2" onfocusout="Compile()" onchange='FormatCell()' value="` + price2 + `"></input></td>
                                 <td colspan="2" style="display:none;" ><input class="Price" id="SharePrice3" onfocusout="Compile()" onchange='FormatCell()' value="` + price3 + `"></input></td>
@@ -2201,12 +2159,6 @@
                             <tr></tr>
                             <tr id="CommonSharesOutstandingRow" class="OpinionFour">
                                 <td colspan="2"><h6>Adjusted Number Of Common Shares Outstanding</h6></td>
-                                <td style="color:#0d47a1; text-align:center; font-weight:bold;">(f)</td>
-                                <td></td>
-                                <td>
-                                    <input type="checkbox" id="CommonSharesOutstandingCheckbox"></input>
-                                    <input type="checkbox" id="CommonSharesOutstandingCheckbox2"></input>
-                                </td>
                                 <td colspan="2"><input class='Clock' id="CommonSharesOutstanding1" class="CommonSharesOutstanding1" style="font-weight:bold;" onfocusout="Compile()" onchange='FormatCell()' value="` + shares1 + `"></input></td>
                                 <td colspan="2"><input class='Clock' id="CommonSharesOutstanding2" class="CommonSharesOutstanding2" onfocusout="Compile()" onchange='FormatCell()' value="` + shares2 + `"></input></td>
                                 <td colspan="2" style="display:none;" ><input class='Clock' id="CommonSharesOutstanding3" class="CommonSharesOutstanding3" onfocusout="Compile()" onchange='FormatCell()' value="` + shares3 + `"></input></td>
@@ -2481,7 +2433,7 @@
     </script>
 
     <container><span>
-        <h3 id="criterias" style="margin-top: 3%; font-size: 7px; padding-left: 2%; font-weight: normal; letter-spacing: 2px; font-style:italic;"></h3>
+        <h3 id="criterias" style="margin-top: 9%; font-size: 7px; padding-left: 2%; font-weight: normal; letter-spacing: 2px; font-style:italic;"></h3>
     </span></container>
 
     <container><span>
