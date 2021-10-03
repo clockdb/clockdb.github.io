@@ -2206,19 +2206,6 @@
             document.getElementById(a).style.display = 'none';
         }
         //
-        window.addEventListener('resize', function() {
-            //
-            l = document.querySelectorAll('.EntityRegistrantName').length
-            //
-            for (let q = 0; q < l; q++) {
-                console.log(q)
-                var charty = document.getElementsByClassName('LineChart')[q];
-                charty.width = window.innerWidth * 0.6;
-                charty.height = 400;
-                document.getElementsByClassName('LineChart')[q] = charty;
-            }
-        });
-        //
         // line chart
         function LineChart() {
             //
@@ -2354,7 +2341,7 @@
                 //
                 const charty = document.getElementsByClassName('LineChart')[q];
                 charty.width = window.innerWidth * 0.6;
-                charty.height = 400;
+                charty.height = window.innerHeight * 0.3;
                 //
                 let lineChart = new Chart(charty, {
                     type: 'line',
