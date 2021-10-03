@@ -21791,30 +21791,28 @@
                 <tbody>
                     </tr>
                     <tr id="TargetLevelOfAssuranceRow" class="Proportion">
-                        <td colspan='5' style="padding-top:30px;"><h6><b>Target level of assurance</b></h6></td>
+                        <td colspan='2' style="padding-top:30px;"><h6><b>Target level of assurance</b></h6></td>
                         <td></td>
-                        <td><input id="TargetLevelOfAssurance1"  style="display:none" onfocusout="Compile()"></input></td>
-                        <td><input id="TargetLevelOfAssurance2"  style="display:none" onfocusout="Compile()"></input></td>
-                        <td><input id="TargetLevelOfAssurance3"  style="display:none" onfocusout="Compile()"></input></td>
-                        <td><input id="TargetLevelOfAssurance4"  style="display:none" onfocusout="Compile()"></input></td>
-                        <td><input id="TargetLevelOfAssurance5"  style="display:none" onfocusout="Compile()"></input></td>
-                        <td></td>
+                        <td style="display:none"><input id="TargetLevelOfAssurance1" onfocusout="Compile()"></input></td>
+                        <td style="display:none"><input id="TargetLevelOfAssurance2" onfocusout="Compile()"></input></td>
+                        <td style="display:none"><input id="TargetLevelOfAssurance3" onfocusout="Compile()"></input></td>
+                        <td style="display:none"><input id="TargetLevelOfAssurance4" onfocusout="Compile()"></input></td>
+                        <td style="display:none"><input id="TargetLevelOfAssurance5" onfocusout="Compile()"></input></td>
                         <td>
                             <input type="checkbox" id="TargetLevelOfAssuranceCheckbox" style="margin-top:30px;"></input>
                             <input type="checkbox" id="TargetLevelOfAssuranceCheckbox2"></input>
                         </td>
-                        <td colspan='5' style="padding-top:30px;"><input id="TargetLevelOfAssurance6" class="ClockRate" style="font-weight:bold;" value="0.95" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan='2' style="padding-top:30px;"><input id="TargetLevelOfAssurance6" class="ClockRate" style="font-weight:bold;" value="0.95" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
                     <tr>
-                        <td colspan='10' style="padding-top: 30px;"><h6><b>Calculation Basis</b></h6></td>
+                        <td colspan='5' style="padding-top: 30px;"><h6><b>Calculation Basis</b></h6></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
                     <tr id="ContinuingOperationsMaterialityThresholdRow" class="TrialBalance">
-                        <td colspan="5" id="PercentageOfIncomeFromContinuingOperations" style="text-align: left"></td>
-                        <td></td>
+                        <td colspan="2" id="PercentageOfIncomeFromContinuingOperations" style="text-align: left"></td>
                         <script>
                             function BalanceContinuingOperationsMaterialityThreshold(BalanceContinuingOperationsMaterialityThreshold) {
 
@@ -21832,20 +21830,20 @@
                                 document.getElementById('ContinuingOperationsMaterialityThreshold6').value = numUSD.format(Math.round(Math.abs(a) * percentage/100));
                             };
                         </script>
-                        <td><input id="ContinuingOperationsMaterialityThreshold1" style="display:none" onfocusout="Compile()"></input></td>
-                        <td><input id="ContinuingOperationsMaterialityThreshold2" style="display:none" onfocusout="Compile()"></input></td>
-                        <td><input id="ContinuingOperationsMaterialityThreshold3" style="display:none" onfocusout="Compile()"></input></td>
-                        <td><input id="ContinuingOperationsMaterialityThreshold4" style="display:none" onfocusout="Compile()"></input></td>
-                        <td><input id="ContinuingOperationsMaterialityThreshold5" style="display:none" onfocusout="Compile()"></input></td>
-                        <td><button style="font-weight:bold; text-align:center;  box-shadow: none; color:#0D47A1; background-color: white" data-page="MaterialityFiles" class="MaterialityFiles">{</button></td>
+                        <td style="display:none"><input id="ContinuingOperationsMaterialityThreshold1" onfocusout="Compile()"></input></td>
+                        <td style="display:none" ><input id="ContinuingOperationsMaterialityThreshold2" onfocusout="Compile()"></input></td>
+                        <td style="display:none" ><input id="ContinuingOperationsMaterialityThreshold3" onfocusout="Compile()"></input></td>
+                        <td style="display:none" ><input id="ContinuingOperationsMaterialityThreshold4" onfocusout="Compile()"></input></td>
+                        <td style="display:none" ><input id="ContinuingOperationsMaterialityThreshold5" onfocusout="Compile()"></input></td>
+                        <td ><button style="font-weight:bold; text-align:center;  box-shadow: none; color:#0D47A1; background-color: white" data-page="MaterialityFiles" class="MaterialityFiles">{</button></td>
                         <td>
                             <input type="checkbox" id="ContinuingOperationsMaterialityThresholdCheckbox"></input>
                             <input type="checkbox" id="ContinuingOperationsMaterialityThresholdCheckbox2"></input>
                         </td>
-                        <td colspan='5'><input id="ContinuingOperationsMaterialityThreshold6" onfocusout="Compile()"></input></td>
+                        <td colspan='2'><input id="ContinuingOperationsMaterialityThreshold6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="NetAssetMaterialityThresholdRow" class="TrialBalance">
-                        <td colspan="5" id="PercentageNetAssetValue" style="text-align: left"></td>
+                        <td colspan="2" id="PercentageNetAssetValue" style="text-align: left"></td>
                         <td></td>
                         <script>
                             function BalanceNetAssetMaterialityThreshold(BalanceNetAssetMaterialityThreshold) {
@@ -21864,20 +21862,19 @@
                                 document.getElementById('NetAssetMaterialityThreshold6').value = numUSD.format(Math.round(Math.abs(a * percentage/100)));
                             };
                         </script>
-                        <td><input id="NetAssetMaterialityThreshold1" style="display:none" onfocusout="Compile()"></input></td>
-                        <td><input id="NetAssetMaterialityThreshold2" style="display:none" onfocusout="Compile()"></input></td>
-                        <td><input id="NetAssetMaterialityThreshold3" style="display:none" onfocusout="Compile()"></input></td>
-                        <td><input id="NetAssetMaterialityThreshold4" style="display:none" onfocusout="Compile()"></input></td>
-                        <td><input id="NetAssetMaterialityThreshold5" style="display:none" onfocusout="Compile()"></input></td>
-                        <td></td>
+                        <td style="display:none"><input id="NetAssetMaterialityThreshold1" onfocusout="Compile()"></input></td>
+                        <td style="display:none"><input id="NetAssetMaterialityThreshold2" onfocusout="Compile()"></input></td>
+                        <td style="display:none"><input id="NetAssetMaterialityThreshold3" onfocusout="Compile()"></input></td>
+                        <td style="display:none"><input id="NetAssetMaterialityThreshold4" onfocusout="Compile()"></input></td>
+                        <td style="display:none"><input id="NetAssetMaterialityThreshold5" onfocusout="Compile()"></input></td>
                         <td>
                             <input type="checkbox" id="NetAssetMaterialityThresholdCheckbox"></input>
                             <input type="checkbox" id="NetAssetMaterialityThresholdCheckbox2"></input>
                         </td>
-                        <td colspan='5'><input id="NetAssetMaterialityThreshold6"></td>
+                        <td colspan='2'><input id="NetAssetMaterialityThreshold6"></td>
                     </tr>
                     <tr id="RevenuesMaterialityThresholdRow" class="TrialBalance">
-                        <td colspan="5" id="PercentageOfRevenues" style="text-align: left"></td>
+                        <td colspan="2" id="PercentageOfRevenues" style="text-align: left"></td>
                         <td></td>
                         <script>
                             function BalanceRevenuesMaterialityThreshold(BalanceRevenuesMaterialityThreshold) {
@@ -21896,20 +21893,19 @@
                                 document.getElementById('RevenuesMaterialityThreshold6').value = numUSD.format(Math.round(a * percentage/100));
                             };
                         </script>
-                        <td><input id="RevenuesMaterialityThreshold1" style="display:none" onfocusout="Compile()"></input></td>
-                        <td><input id="RevenuesMaterialityThreshold2" style="display:none" onfocusout="Compile()"></input></td>
-                        <td><input id="RevenuesMaterialityThreshold3" style="display:none" onfocusout="Compile()"></input></td>
-                        <td><input id="RevenuesMaterialityThreshold4" style="display:none" onfocusout="Compile()"></input></td>
-                        <td><input id="RevenuesMaterialityThreshold5" style="display:none" onfocusout="Compile()"></input></td>
-                        <td></td>
+                        <td style="display:none"><input id="RevenuesMaterialityThreshold1" onfocusout="Compile()"></input></td>
+                        <td style="display:none"><input id="RevenuesMaterialityThreshold2" onfocusout="Compile()"></input></td>
+                        <td style="display:none"><input id="RevenuesMaterialityThreshold3" onfocusout="Compile()"></input></td>
+                        <td style="display:none"><input id="RevenuesMaterialityThreshold4" onfocusout="Compile()"></input></td>
+                        <td style="display:none"><input id="RevenuesMaterialityThreshold5" onfocusout="Compile()"></input></td>
                         <td>
                             <input type="checkbox" id="RevenuesMaterialityThresholdCheckbox"></input>
                             <input type="checkbox" id="RevenuesMaterialityThresholdCheckbox2"></input>
                         </td>
-                        <td colspan='5'><input id="RevenuesMaterialityThreshold6" onfocusout="Compile()"></input></td>
+                        <td colspan='2'><input id="RevenuesMaterialityThreshold6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="IntrinsicValueMaterialityThresholdRow" class="Opinion">
-                        <td colspan="5" id="PercentageOfTheIntrinsicValue" style="text-align: left"></td>
+                        <td colspan="2" id="PercentageOfTheIntrinsicValue" style="text-align: left"></td>
                         <td></td>
                         <script>
                             function BalanceIntrinsicValueMaterialityThreshold(BalanceIntrinsicValueMaterialityThreshold) {
@@ -21930,20 +21926,19 @@
                                 document.getElementById('IntrinsicValueMaterialityThreshold6').value = numUSD.format(a * percentage/100);
                             };
                         </script>
-                        <td><input id="IntrinsicValueMaterialityThreshold1" style="display:none" onfocusout="Compile()"></input></td>
-                        <td><input id="IntrinsicValueMaterialityThreshold2" style="display:none" onfocusout="Compile()"></input></td>
-                        <td><input id="IntrinsicValueMaterialityThreshold3" style="display:none" onfocusout="Compile()"></input></td>
-                        <td><input id="IntrinsicValueMaterialityThreshold4" style="display:none" onfocusout="Compile()"></input></td>
-                        <td><input id="IntrinsicValueMaterialityThreshold5" style="display:none" onfocusout="Compile()"></input></td>
-                        <td></td>
+                        <td style="display:none"><input id="IntrinsicValueMaterialityThreshold1" onfocusout="Compile()"></input></td>
+                        <td style="display:none"><input id="IntrinsicValueMaterialityThreshold2" onfocusout="Compile()"></input></td>
+                        <td style="display:none"><input id="IntrinsicValueMaterialityThreshold3" onfocusout="Compile()"></input></td>
+                        <td style="display:none"><input id="IntrinsicValueMaterialityThreshold4" onfocusout="Compile()"></input></td>
+                        <td style="display:none"><input id="IntrinsicValueMaterialityThreshold5" onfocusout="Compile()"></input></td>
                         <td>
                             <input type="checkbox" id="IntrinsicValueMaterialityThresholdCheckbox"></input>
                             <input type="checkbox" id="IntrinsicValueMaterialityThresholdCheckbox2"></input>
                         </td>
-                        <td colspan='5'><input id="IntrinsicValueMaterialityThreshold6" onfocusout="Compile()"></input></td>
+                        <td colspan='2'><input id="IntrinsicValueMaterialityThreshold6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr id="MarketCapMaterialityThresholdRow" class="Opinion">
-                        <td colspan="5" id="PercentageOfTheMarketCapitalization" style="text-align: left"></td>
+                        <td colspan="2" id="PercentageOfTheMarketCapitalization" style="text-align: left"></td>
                         <td></td>
                         <script>
                             function MarketCapMaterialityThreshold(MarketCapMaterialityThreshold) {
@@ -21964,21 +21959,21 @@
                                 document.getElementById('MarketCapMaterialityThreshold6').value = numUSD.format(a * percentage/100);
                             };
                         </script>
-                        <td><input id="MarketCapMaterialityThreshold1" style="display:none" onfocusout="Compile()"></input></td>
-                        <td><input id="MarketCapMaterialityThreshold2" style="display:none" onfocusout="Compile()"></input></td>
-                        <td><input id="MarketCapMaterialityThreshold3" style="display:none" onfocusout="Compile()"></input></td>
-                        <td><input id="MarketCapMaterialityThreshold4" style="display:none" onfocusout="Compile()"></input></td>
-                        <td><input id="MarketCapMaterialityThreshold5" style="display:none" onfocusout="Compile()"></input></td>
-                        <td></td>
+                        <td style="display:none"><input id="MarketCapMaterialityThreshold1" onfocusout="Compile()"></input></td>
+                        <td style="display:none"><input id="MarketCapMaterialityThreshold2" onfocusout="Compile()"></input></td>
+                        <td style="display:none"><input id="MarketCapMaterialityThreshold3" onfocusout="Compile()"></input></td>
+                        <td style="display:none"><input id="MarketCapMaterialityThreshold4" onfocusout="Compile()"></input></td>
+                        <td style="display:none"><input id="MarketCapMaterialityThreshold5" onfocusout="Compile()"></input></td>
+                        <td style="display:none"></td>
                         <td>
                             <input type="checkbox" id="MarketCapMaterialityThresholdCheckbox"></input>
                             <input type="checkbox" id="MarketCapMaterialityThresholdCheckbox2"></input>
                         </td>
-                        <td colspan='5'><input id="MarketCapMaterialityThreshold6" onfocusout="Compile()"></input></td>
+                        <td colspan='2'><input id="MarketCapMaterialityThreshold6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr></tr>
                     <tr id="MaterialityThresholdValueRow" class="TrialBalance">
-                        <td colspan="5" style="text-align: left"><h6><b>Materiality Threshold</b></h6></td>
+                        <td colspan="2" style="text-align: left"><h6><b>Materiality Threshold</b></h6></td>
                         <td></td>
                         <script>
                             function BalanceMaterialityThresholdValue(BalanceMaterialityThresholdValue) {
@@ -21997,17 +21992,16 @@
                                 document.getElementById('MaterialityThresholdValue6').value = numUSD.format(a);
                             };
                         </script>
-                        <td><input colspan="1" id="MaterialityThresholdValue1" style="display:none" onfocusout="Compile()"></input></td>
-                        <td><input colspan="1" id="MaterialityThresholdValue2" style="display:none" onfocusout="Compile()"></input></td>
-                        <td><input colspan="1" id="MaterialityThresholdValue3" style="display:none" onfocusout="Compile()"></input></td>
-                        <td><input colspan="1" id="MaterialityThresholdValue4" style="display:none" onfocusout="Compile()"></input></td>
-                        <td><input colspan="1" id="MaterialityThresholdValue5" style="display:none" onfocusout="Compile()"></input></td>
-                        <td></td>
+                        <td style="display:none"><input colspan="1" id="MaterialityThresholdValue1" onfocusout="Compile()"></input></td>
+                        <td style="display:none"><input colspan="1" id="MaterialityThresholdValue2" onfocusout="Compile()"></input></td>
+                        <td style="display:none"><input colspan="1" id="MaterialityThresholdValue3" onfocusout="Compile()"></input></td>
+                        <td style="display:none"><input colspan="1" id="MaterialityThresholdValue4" onfocusout="Compile()"></input></td>
+                        <td style="display:none"><input colspan="1" id="MaterialityThresholdValue5" onfocusout="Compile()"></input></td>
                         <td>
                             <input type="checkbox" id="MaterialityThresholdValueCheckbox"></input>
                             <input type="checkbox" id="MaterialityThresholdValueCheckbox2"></input>
                         </td>
-                        <td colspan="5" style="border-top-style:ridge; border-bottom:double black;"><input class='Clock' id="MaterialityThresholdValue6" style="font-weight:bold;" onfocusout="Compile()"></input></td>
+                        <td colspan="2" style="border-top-style:ridge; border-bottom:double black;"><input class='Clock' id="MaterialityThresholdValue6" style="font-weight:bold;" onfocusout="Compile()"></input></td>
                     </tr>
                 </tbody>
             </table>
