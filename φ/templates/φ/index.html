@@ -1999,12 +1999,12 @@
                     <table>
                         <tbody>
                             <tr>
+                                <td colspan="2"><button class="hide" style="letter-spacing: 2px;">Hide</button></td>
                                 <td colspan="3"><button onClick="LineChartButton()" data-page="LineChart${contents.tradingSymbol}" id="LineChartButton${contents.tradingSymbol}" style="letter-spacing: 2px;">Line Chart</button></td>
                                 <td colspan="3"><button onClick="OpinionButton()" data-page="Opinion${contents.tradingSymbol}" id="OpinionButton${contents.tradingSymbol}" style="letter-spacing: 2px;">Opinion</button></td>
-                                <td><a href="https://www.facebook.com/sharer/sharer.php?u=www.clockdb.com/${contents.tradingSymbol}/" target="_blank"><button style="background-color:white"><img src="./static/φ/img/facebook.png" style="max-width: 18px; border-radius: 5px"></button></a></td>
-                                <td><a href="https://twitter.com/share?url=www.clockdb.com/${contents.tradingSymbol}/" target="_blank"><button style="background-color:white"><img src="./static/φ/img/twitter.png" style="max-width: 18px; border-radius: 5px"></button></a></td>
-                                <td><a href="http://www.reddit.com/submit?url=https://stackoverflow.com/questions/24823114/www.clockdb.com/${contents.tradingSymbol}/&title=www.clockdb.com/${contents.tradingSymbol}/" target="_blank"><button style="background-color:white"><img src="./static/φ/img/reddit.png" style="max-width: 18px; border-radius: 5px"></button></a></td>
-                                <td colspan="2"><button class="hide" style="letter-spacing: 2px;">Hide</button></td>
+                                <td style="display:none"><a href="https://www.facebook.com/sharer/sharer.php?u=www.clockdb.com/${contents.tradingSymbol}/" target="_blank"><button style="background-color:white"><img src="./static/φ/img/facebook.png" style="max-width: 18px; border-radius: 5px"></button></a></td>
+                                <td style="display:none"><a href="https://twitter.com/share?url=www.clockdb.com/${contents.tradingSymbol}/" target="_blank"><button style="background-color:white"><img src="./static/φ/img/twitter.png" style="max-width: 18px; border-radius: 5px"></button></a></td>
+                                <td style="display:none"><a href="http://www.reddit.com/submit?url=https://stackoverflow.com/questions/24823114/www.clockdb.com/${contents.tradingSymbol}/&title=www.clockdb.com/${contents.tradingSymbol}/" target="_blank"><button style="background-color:white"><img src="./static/φ/img/reddit.png" style="max-width: 18px; border-radius: 5px"></button></a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -2206,6 +2206,19 @@
             document.getElementById(a).style.display = 'none';
         }
         //
+        window.addEventListener('resize', function() {
+            //
+            l = document.querySelectorAll('.EntityRegistrantName').length
+            //
+            for (let q = 0; q < l; q++) {
+                console.log(q)
+                var charty = document.getElementsByClassName('LineChart')[q];
+                charty.width = window.innerWidth * 0.6;
+                charty.height = 400;
+                document.getElementsByClassName('LineChart')[q] = charty;
+            }
+        });
+        //
         // line chart
         function LineChart() {
             //
@@ -2340,8 +2353,8 @@
                 let fourthlastyearMarketCap = Math.round(a * 1000)/1000
                 //
                 const charty = document.getElementsByClassName('LineChart')[q];
-                charty.width = window.innerWidth*0.8;   
-                charty.height = window.innerHeight/2.2;
+                charty.width = window.innerWidth * 0.6;
+                charty.height = 400;
                 //
                 let lineChart = new Chart(charty, {
                     type: 'line',

@@ -51,6 +51,11 @@
             }
             button:hover {
                 text-shadow: 0.1px 0.2 px 0.3px #0D47A1;
+                background-color: #f5f4f4;
+                transition: all 0.2s ease-out;
+            }
+            button:active {
+                text-shadow: 0.1px 0.2 px 0.3px #0D47A1;
                 background-color: #E5E4E2;
                 transition: all 0.2s ease-out;
             }
@@ -184,6 +189,7 @@
             }
             .post button:active {
                 background-color: #E5E4E2;
+                border-radius: 15px;
                 transition: all 0.1s ease-out;
             }
             .post input {
@@ -212,12 +218,6 @@
                 height: 13px; 
                 box-shadow: none; 
                 margin: 1px;
-            }
-            .post canvas {
-                margin-right: auto;
-                margin-left: auto;
-                border-spacing: 20%;
-                vertical-align: middle;
             }
             .post select {
                 font-family: Verdana;
@@ -382,7 +382,7 @@
                 padding: 2%;
                 border: none;
                 border-radius: 4px;
-                background-color: #f1f1f1; 
+                background-color: #f5f4f4; 
             }
 
             #φ select:focus {
@@ -402,6 +402,7 @@
             }
             #φ button:active {
                 background-color: #E5E4E2;
+                border-radius: 15px;
                 transition: all 0.1s ease-out;
             }
             #φ input {
@@ -444,10 +445,6 @@
                 margin: 0;
                 width: 100%;
                 display: none;
-            }
-            #φ canvas {
-                border-spacing: 20%;
-                vertical-align: middle;
             }
             #φ select {
                 font-family: Verdana;
@@ -531,10 +528,6 @@
                 }
                 #φ div {
                     font-size: 11px;
-                }
-                #φ canvas {
-                    width: 80% ;
-                    border-spacing: 20%;
                 }
                 #φ select {
                     font-size: 10px;
