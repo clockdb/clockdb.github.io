@@ -1010,41 +1010,21 @@
             <tbody>
                 <tr>
                     <td>
+                        <a href="{% url 'φ:index' %}" style="outline:none">
+                            <button data-page="Graph">
+                                <h1>φ</h1>
+                            </button>
+                        </a>
+                    </td>
+                    <td>
                         <button data-page="General" name="General">
-                            <h2 style="font-size: 9px;">≀</h2>
+                            <h1>≀</h1>
                         </button>
                     </td>
                     <td>
                         <button data-page="Options" name="Options">
-                            <h2 style="font-size: 9px;">≡</h2>
+                            <h1>≡</h1>
                         </button>
-                    </td>
-                    <td colspan='3'>
-                        <button data-page="Arch">
-                            <h2 style="font-size: 9px;">Financials</h2>
-                        </button>
-                    </td>
-                    <td colspan='3'>
-                        <button data-page="Bridge" name="Bridge">
-                            <h2 style="font-size: 9px;">Audit</h2>
-                        </button>
-                    </td>
-                    <td colspan='3'>
-                        <button data-page="Clock">
-                            <h2 style="font-size: 9px;">Valuation</h2>
-                        </button>
-                    </td>
-                    <td colspan='3'>
-                        <button data-page="Opinion" name="Opinion">
-                            <h2 style="font-size: 9px;">Opinion</h2>
-                        </button>
-                    </td>
-                    <td>
-                        <a href="{% url 'φ:index' %}" style="outline:none">
-                            <button data-page="Graph">
-                                <h2 style="font-size: 9px;">φ</h2>
-                            </button>
-                        </a>
                     </td>
                     <td colspan='9'>
                         <input 
@@ -1057,7 +1037,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="margin-left:58.2%; position:absolute; width:31.8%; background-color:white">
+                    <td style="margin-left:24%; position:fixed; width:65%; background-color:white">
                         <!-- Search results -->
                         <ul id="SearchResults" style="
                             border: 2px solid #E5E4E2;
@@ -1141,258 +1121,8 @@
             </tbody>
         </table>
 
-        <!--- FINANCIALS --->
-        <div id="Arch" style="margin-left:8%; width:24%; position: absolute;">
-
-            <!--- ANNUAL FINANCIAL --->
-            <table style="
-                border: 2px solid #E5E4E2;
-                background-color:white;
-                box-shadow: 1px 1px 1px 1px #000009;
-                border-radius: 15px;">
-                <tbody>
-                    <tr>
-                        <td>
-                            <button data-page="AnnualCashFlow">
-                                <h3 style="font-size: 9px;">Cash Flow</h3>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button data-page="AnnualTrialBalances">
-                                <h3 style="font-size: 9px;">Trial Balances</h3>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button data-page="AnnualBalanceSheets">
-                                <h3 style="font-size: 9px;">Balance Sheets</h3>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button data-page="AnnualIncomeStatements">
-                                <h3 style="font-size: 9px;">Income Statements</h3>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button data-page="AnnualComprehensiveIncome">
-                                <h3 style="font-size: 9px;">Comprehensive Income</h3>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button data-page="AnnualShareholdersEquity">
-                                <h3 style="font-size: 9px;">Shareholders' Equity</h3>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>    
-
-        <!--- BUSINESS VALUATION --->
-        <div id="Clock" style="margin-left:31.5%; width:24%; position: absolute;">
-
-            <!--- FINANCIAL RATIOS, INTRINSIC VALUES AND SUMMARY --->
-            <!--- CAPITALIZED INCOME, CAPITALIZED CASH FLOW, CAPITALIZED FORECAST & FAIR MARKET VALUE --->
-            <table style="
-                border: 2px solid #E5E4E2;
-                background-color:white;
-                box-shadow: 1px 1px 1px 1px #000009;
-                border-radius: 15px;">
-                <tbody>
-                    <tr>
-                        <td>
-                            <button data-page="Graph">
-                                <h3 style="font-size: 9px;">Graph</h3>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button data-page="IntrinsicValues">
-                                <h3 style="font-size: 9px;">Intrinsic Values</h3>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button data-page="CapitalizationRate">
-                                <h3 style="font-size: 9px;">Capitalization Rates</h3>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button data-page="CapitalizedCashFlow">
-                                <h3 style="font-size: 9px;">Capitalized Cash Flow</h3>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button data-page="CapitalizedIncome">
-                                <h3 style="font-size: 9px;">Capitalized Income</h3>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button data-page="AnnualFinancialRatios">
-                                <h3 style="font-size: 9px;">Financial Ratios</h3>
-                            </button>   
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button data-page="AdditionalInformation">
-                                <h3 style="font-size: 9px;">Additional Information</h3>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!--- AUDIT --->
-        <div id="Bridge" style="margin-left:19.7%; width:24%; position: absolute;">
-            <table style="
-                border: 2px solid #E5E4E2;
-                background-color:white;
-                box-shadow: 1px 1px 1px 1px #000009;
-                border-radius: 15px;">
-                <tbody>
-                    <tr>
-                        <td>
-                            <button data-page="Procedures">
-                                <h3 style="font-size: 9px;">Procedures</h3>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button data-page="AuditDetailed">
-                                <h3 style="font-size: 9px;">Anomalies</h3>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button data-page="AuditSummary" name="AuditSummary">
-                                <h3 style="font-size: 9px;">Summary</h3>
-                            </button>   
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button data-page="MaterialityThreshold">
-                                <h3 style="font-size: 9px;">Materiality</h3>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button data-page="Mission">
-                                <h3 style="font-size: 9px;">Mission</h3>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!--- PROCEDURES --->
-        <div id="Procedures" style="margin-left:19.7%; width:24%; position: absolute;">      
-
-            <!--- PROCEDURES ANNUAL FINANCIAL STATEMENTS --->
-            <table style="
-                border: 2px solid #E5E4E2;
-                background-color:white;
-                box-shadow: 1px 1px 1px 1px #000009;
-                border-radius: 15px;">
-                <tbody>
-                    <tr>
-                        <td>
-                            <button data-page="ProcedureAnnualBalanceSheets">
-                                <h3 style="font-size: 9px;">Balance Sheets</h3>
-                            </button>   
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button data-page="ProcedureAnnualIncomeStatements">
-                                <h3 style="font-size: 9px;">Income Statements</h3>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button data-page="ProcedureAnnualComprehensiveIncome">
-                                <h3 style="font-size: 9px;">Comprehensive Income</h3>
-                            </button>   
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button data-page="ProcedureAnnualShareholdersEquity">
-                                <h3 style="font-size: 9px;">Shareholders Equity</h3>
-                            </button>   
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button data-page="ProcedureAnnualCashFlow">
-                                <h3 style="font-size: 9px;">Cash Flow</h3>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-
-        </div>
-
-        <!--- COMMUNITY --->
-        <div id="Community" style="width:24%; position: absolute;">
-            <table style="
-                border: 2px solid #E5E4E2;
-                background-color:white;
-                box-shadow: 1px 1px 1px 1px #000009;
-                border-radius: 15px;">
-                <tbody>
-                    <tr>
-                        <td>
-                            <button data-page="Transactional">
-                                <h3 style="font-size: 9px;">Transactional</h3>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button data-page="SocialPlatform">
-                                <h3 style="font-size: 9px;">Social Platform</h3>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button data-page="Media">
-                                <h3 style="font-size: 9px;">Media News</h3>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
         <!--- OPTIONS --->
-        <div id="Options" style="margin-left:4% ;width:24%; position: absolute;">
+        <div id="Options" style="margin-left:19%; width:24%; position: absolute;">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -1467,7 +1197,7 @@
         </div>
 
         <!--- GENERAL --->
-        <div id="General" style="margin-left:1% ;width:24%; position: absolute;">
+        <div id="General" style="margin-left:11% ;width:24%; position: absolute;">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -1505,6 +1235,34 @@
                 </tbody>
             </table>
         </div>
+
+        
+        <table>
+            <body>
+                <tr>
+                    <td colspan='3' style="padding-top: 2%">
+                        <button data-page="Arch">
+                            <h2 style="font-size: 9px;">Financials</h2>
+                        </button>
+                    </td>
+                    <td colspan='3' style="padding-top: 2%">
+                        <button data-page="Bridge" name="Bridge">
+                            <h2 style="font-size: 9px;">Audit</h2>
+                        </button>
+                    </td>
+                    <td colspan='3' style="padding-top: 2%">
+                        <button data-page="Clock">
+                            <h2 style="font-size: 9px;">Valuation</h2>
+                        </button>
+                    </td>
+                    <td colspan='3' style="padding-top: 2%">
+                        <button data-page="Opinion" name="Opinion">
+                            <h2 style="font-size: 9px;">Opinion</h2>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
         <!--- OPEN --->
         <div id="Import" style="margin-left:4% ;width:24%; position: absolute;">
@@ -1635,6 +1393,255 @@
             </table>
         </div>
 
+        <!--- FINANCIALS --->
+        <div id="Arch" style="margin-left:4.2%; width:24%; position: absolute;">
+
+            <!--- ANNUAL FINANCIAL --->
+            <table style="
+                border: 2px solid #E5E4E2;
+                background-color:white;
+                box-shadow: 1px 1px 1px 1px #000009;
+                border-radius: 15px;">
+                <tbody>
+                    <tr>
+                        <td>
+                            <button data-page="AnnualCashFlow">
+                                <h3 style="font-size: 9px;">Cash Flow</h3>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button data-page="AnnualTrialBalances">
+                                <h3 style="font-size: 9px;">Trial Balances</h3>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button data-page="AnnualBalanceSheets">
+                                <h3 style="font-size: 9px;">Balance Sheets</h3>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button data-page="AnnualIncomeStatements">
+                                <h3 style="font-size: 9px;">Income Statements</h3>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button data-page="AnnualComprehensiveIncome">
+                                <h3 style="font-size: 9px;">Comprehensive Income</h3>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button data-page="AnnualShareholdersEquity">
+                                <h3 style="font-size: 9px;">Shareholders' Equity</h3>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>    
+
+        <!--- BUSINESS VALUATION --->
+        <div id="Clock" style="margin-left:48.8%; width:24%; position: absolute; z-index: 1">
+
+            <!--- FINANCIAL RATIOS, INTRINSIC VALUES AND SUMMARY --->
+            <!--- CAPITALIZED INCOME, CAPITALIZED CASH FLOW, CAPITALIZED FORECAST & FAIR MARKET VALUE --->
+            <table style="
+                border: 2px solid #E5E4E2;
+                background-color:white;
+                box-shadow: 1px 1px 1px 1px #000009;
+                border-radius: 15px;">
+                <tbody>
+                    <tr>
+                        <td>
+                            <button data-page="Graph">
+                                <h3 style="font-size: 9px;">Graph</h3>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button data-page="IntrinsicValues">
+                                <h3 style="font-size: 9px;">Intrinsic Values</h3>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button data-page="CapitalizationRate">
+                                <h3 style="font-size: 9px;">Capitalization Rates</h3>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button data-page="CapitalizedCashFlow">
+                                <h3 style="font-size: 9px;">Capitalized Cash Flow</h3>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button data-page="CapitalizedIncome">
+                                <h3 style="font-size: 9px;">Capitalized Income</h3>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button data-page="AnnualFinancialRatios">
+                                <h3 style="font-size: 9px;">Financial Ratios</h3>
+                            </button>   
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button data-page="AdditionalInformation">
+                                <h3 style="font-size: 9px;">Additional Information</h3>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--- AUDIT --->
+        <div id="Bridge" style="margin-left:27%; width:24%; position: absolute; z-index: 1">
+            <table style="
+                border: 2px solid #E5E4E2;
+                background-color:white;
+                box-shadow: 1px 1px 1px 1px #000009;
+                border-radius: 15px;">
+                <tbody>
+                    <tr>
+                        <td>
+                            <button data-page="Procedures">
+                                <h3 style="font-size: 9px;">Procedures</h3>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button data-page="AuditDetailed">
+                                <h3 style="font-size: 9px;">Anomalies</h3>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button data-page="AuditSummary" name="AuditSummary">
+                                <h3 style="font-size: 9px;">Summary</h3>
+                            </button>   
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button data-page="MaterialityThreshold">
+                                <h3 style="font-size: 9px;">Materiality</h3>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button data-page="Mission">
+                                <h3 style="font-size: 9px;">Mission</h3>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--- PROCEDURES --->
+        <div id="Procedures" style="margin-left:19.7%; width:24%; position: absolute; z-index: 1">      
+
+            <!--- PROCEDURES ANNUAL FINANCIAL STATEMENTS --->
+            <table style="
+                border: 2px solid #E5E4E2;
+                background-color:white;
+                box-shadow: 1px 1px 1px 1px #000009;
+                border-radius: 15px;">
+                <tbody>
+                    <tr>
+                        <td>
+                            <button data-page="ProcedureAnnualBalanceSheets">
+                                <h3 style="font-size: 9px;">Balance Sheets</h3>
+                            </button>   
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button data-page="ProcedureAnnualIncomeStatements">
+                                <h3 style="font-size: 9px;">Income Statements</h3>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button data-page="ProcedureAnnualComprehensiveIncome">
+                                <h3 style="font-size: 9px;">Comprehensive Income</h3>
+                            </button>   
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button data-page="ProcedureAnnualShareholdersEquity">
+                                <h3 style="font-size: 9px;">Shareholders Equity</h3>
+                            </button>   
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button data-page="ProcedureAnnualCashFlow">
+                                <h3 style="font-size: 9px;">Cash Flow</h3>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <!--- COMMUNITY --->
+        <div id="Community" style="width:24%; position: absolute;">
+            <table style="
+                border: 2px solid #E5E4E2;
+                background-color:white;
+                box-shadow: 1px 1px 1px 1px #000009;
+                border-radius: 15px;">
+                <tbody>
+                    <tr>
+                        <td>
+                            <button data-page="Transactional">
+                                <h3 style="font-size: 9px;">Transactional</h3>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button data-page="SocialPlatform">
+                                <h3 style="font-size: 9px;">Social Platform</h3>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button data-page="Media">
+                                <h3 style="font-size: 9px;">Media News</h3>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
 <!--- HEADER --->
         
