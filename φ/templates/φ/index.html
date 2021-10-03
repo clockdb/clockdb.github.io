@@ -82,6 +82,10 @@
                 const url = this.dataset.page;
                 //
                 if (skip.includes(url)) {
+                    a = document.getElementById(url).style.display;
+                    if (a == 'block') {
+                        document.getElementById(url).style.display = 'none';
+                    }
                 } else {
                     showPage(this.dataset.page);
                 }
@@ -250,7 +254,7 @@
             </table>
         </container>
         <!--- GENERAL --->
-        <div id="General" style="position: fixed;  top: 7%;; margin-left:2%; width:48%; z-index: 1">
+        <div id="General" style="position: fixed;  top: 5%;; margin-left:2%; width:48%; z-index: 1">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -289,7 +293,7 @@
             </table>
         </div>
         <!--- OPTIONS --->
-        <div id="Options" style="position: fixed;  top: 7%;; margin-left:9%; width:48%; z-index: 1">
+        <div id="Options" style="position: fixed;  top: 5%;; margin-left:9%; width:48%; z-index: 1">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
