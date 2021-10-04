@@ -15,7 +15,18 @@
             event.preventDefault();
             if (event.keyCode == i) {
                 escape();
-            }
+            };
+        };
+    });
+    //
+    // ctrrl + M
+    document.addEventListener('keydown', (event) => {
+        i = 77
+        keys = [i]
+        if (keys.includes(event.keyCode) && (event.ctrlKey || event.metaKey)) {
+            event.preventDefault();
+            lsc = 1;
+            LineChart(lsc)
         }
     });
     function closeMenus() {
@@ -32,8 +43,6 @@
     }
     function escape() {
         closeMenus();
-        lsc = 1;
-        LineChart(lsc)
     };
     function showPage(page) {
         document.querySelectorAll('div').forEach(div => {
