@@ -67,7 +67,6 @@
         //
         for(let i = 0; i < rows.length; i++) {
             trid = rows[i].id
-            console.log(trid)
             trclass = rows[i].className
             if(RowClass.includes(trclass)) {
                 row = trid.slice(0, -3);
@@ -866,9 +865,7 @@
                     } catch {}
                     //
                     if (skip.includes(url)) {
-                        console.log(document.getElementById(url))
                         a = document.getElementById(url).style.display;
-                        console.log(a)
                         if (a == 'block') {
                             document.getElementById(url).style.display = 'none';
                             if(url == 'Procedures') {
@@ -1083,7 +1080,7 @@
                             autofocus placeholder="clockdb.com" 
                             type="text" 
                             autocomplete="off"  
-                            style="outline: 0ch;">
+                            style="outline: 0ch; font-size:11px; font-weight: bold; padding:0.7%;">
                         </input>
                     </td>
                 </tr>
