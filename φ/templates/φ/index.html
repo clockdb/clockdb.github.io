@@ -29,6 +29,8 @@
         document.getElementById('search').value = '';
         clearList();
         document.getElementById('SearchResults').style.display = 'none';
+        lsc = 1;
+        LineChart(lsc)
     };
     function showPage(page) {
         document.querySelectorAll('div').forEach(div => {
@@ -1856,7 +1858,8 @@
                 .then(response => response.json())
                 .then(data => {
                     data.posts.forEach(add_post);
-                    LineChart();
+                    lsc = parseInt(localStorage.counter)
+                    LineChart(lsc);
                     Puck();
                     //
                     criterias.innerHTML = cc;
@@ -2237,11 +2240,11 @@
         }
         //
         // line chart
-        function LineChart() {
+        function LineChart(lsc) {
             //
             l = document.querySelectorAll('.EntityRegistrantName').length
             //
-            for (let q = parseInt(localStorage.counter) - 1; q < l; q++) {
+            for (let q = lsc - 1; q < l; q++) {
                 //
                 a = 0
                 a = Math.max(a, parseInt(document.getElementsByClassName('IntrinsicValues1')[q].value.replaceAll(/,/g, '')));
