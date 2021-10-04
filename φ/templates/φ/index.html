@@ -18,7 +18,7 @@
             }
         }
     });
-    function escape() {
+    function closeMenus() {
         document.getElementById('General').style.display = 'none';
         document.getElementById('Options').style.display = 'none';
         document.getElementById('SortButton').style.display = 'none';
@@ -29,6 +29,9 @@
         document.getElementById('search').value = '';
         clearList();
         document.getElementById('SearchResults').style.display = 'none';
+    }
+    function escape() {
+        closeMenus();
         lsc = 1;
         LineChart(lsc)
     };
@@ -65,6 +68,7 @@
                 const url = this.dataset.page;
                 if (menus.includes(url)) {
                     try {
+                        closeMenus();
                         showPage(this.dataset.page);
                     } catch {}
                 } else {}
