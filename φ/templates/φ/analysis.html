@@ -607,6 +607,7 @@
                     'Arch',
                     'Clock',
                     'Bridge',
+                    'borderright',
                     'Opinion',
                     'Procedures',
                     'Community',
@@ -1016,8 +1017,45 @@
 </script>
 
 <Section id="φ">
-    
+
 <!--- buttons --->
+
+    <button id="borderleft" style="position: fixed; height:100%; width: 4%; margin-left: 0%;"></button>
+    <button id="borderright" style="position: fixed; height:100%; width: 4%; margin-left: 96%;"></button>
+
+    <script>
+        document.getElementById('borderright').addEventListener('click', function() {
+            var a = parseInt(localStorage.Column)
+            if (a == 6) {
+                var d = 1
+            } else {
+                var d = a + 1
+            }
+            border(a, d);
+        });
+        document.getElementById('borderleft').addEventListener('click', function() {
+            var a = parseInt(localStorage.Column)
+            if (a == 1) {
+                var d = 6
+            } else {
+                var d = a - 1
+            }
+            border(a, d);
+        });
+        function border(a, d) {
+            var b = "C" + a
+            var c = document.getElementsByClassName(b);
+            for(let i = 0; i < c.length; i++) { 
+                document.getElementsByClassName(b)[i].style.display = 'none';
+            };
+            b = "C" + d
+            c = document.getElementsByClassName(b);
+            for(let i = 0; i < c.length; i++) { 
+                document.getElementsByClassName(b)[i].style.display = '';
+            };
+            localStorage.setItem('Column', d)
+        }
+    </script>
 
         <!--- MAIN --->
         <table id='Main'>
@@ -27981,6 +28019,7 @@
                 document.getElementById('Bridgeφ2').style.display = disp;
                 document.getElementById('Bridgeφ3').style.display = disp;
                 document.getElementById('Bridgeφ4').style.display = disp;
+                localStorage.setItem('Column', 1)
             }
         </script>
         
