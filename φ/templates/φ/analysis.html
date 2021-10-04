@@ -27927,14 +27927,16 @@
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 var w = window.innerWidth;
-                if (w < 799) {
+                var h = window.innerHeight;
+                if (w < h) {
                     disp = 'none';
                     Columns(disp);
                 }
             });
             window.addEventListener('resize', function() {
                 var w = window.innerWidth;
-                if (w < 799) {
+                var h = window.innerHeight;
+                if (w < h) {
                     disp = 'none';
                 } else {
                     disp = '';
