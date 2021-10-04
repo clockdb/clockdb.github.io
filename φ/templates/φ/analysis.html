@@ -1057,30 +1057,35 @@
         <table id='Main'>
             <tbody>
                 <tr>
-                    <td>
+                    <td style="padding-bottom: 0px">
                         <a href="{% url 'φ:index' %}" style="outline:none">
                             <button data-page="Graph">
                                 <h1>φ</h1>
                             </button>
                         </a>
                     </td>
-                    <td>
+                    <td style="padding-bottom: 0px">
                         <button data-page="General" name="General">
                             <h1>≀</h1>
                         </button>
                     </td>
-                    <td>
+                    <td style="padding-bottom: 0px">
                         <button data-page="Options" name="Options">
                             <h1>≡</h1>
                         </button>
                     </td>
-                    <td colspan='9'>
+                    <td colspan='9' style="padding-bottom: 0px">
                         <input 
                             id="search"
                             autofocus placeholder="clockdb.com" 
                             type="text" 
                             autocomplete="off"  
-                            style="outline: 0ch; font-size:11px; font-weight: bold; padding:0.7%;">
+                            style="outline: 0ch;
+                            font-size:11px;
+                            font-weight: bold;
+                            padding:0.7%;
+                            padding-bottom: 0;
+                            background-color: #E5E4E2;">
                         </input>
                     </td>
                 </tr>

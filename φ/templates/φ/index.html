@@ -143,37 +143,46 @@
         <!--- buttons --->
         <!--- MAIN --->
         <container id="Main" style="position: fixed; top: 0px; background-color: white; z-index: 1; width: 100%;">
-            <table style="table-layout: auto;">
+            <table>
                 <tbody>
                     <tr>
-                        <td>
+                        <td style="padding-bottom: 0px">
                             <button data-page="General" name="General">
                                 <h1 style="padding-left:5%; padding-right:5%">≀</h1>
                             </button>
                         </td>
-                        <td>
+                        <td style="padding-bottom: 0px">
                             <button data-page="Options" name="Options">
                                 <h1 style="padding-left:5%; padding-right:5%">≡</h1>
                             </button>
                         </td>
-                        <td colspan='9'>
+                        <td colspan='9' style="padding-bottom: 0px">
                             <input 
                                 id="search"
                                 autofocus placeholder="clockdb.com" 
                                 type="text" 
                                 autocomplete="off"  
-                                style="outline: 0ch; font-size:11px; font-weight: bold; padding:0.7%;">
+                                style="outline: 0ch;
+                                font-size:11px;
+                                font-weight: bold;
+                                padding:0.7%;
+                                padding-bottom: 0;
+                                background-color: #E5E4E2;">
                             </input>
                         </td>
                     </tr>
                     <tr>
-                        <td style="margin-left:19%; position:absolute; width:70%; background-color:white; z-index: 1; padding-top:0%">
+                        <td style="margin-left:22%;
+                        position:absolute;
+                        width:65.5%;
+                        background-color:transparent;
+                        z-index: 1; padding-top: 0;">
                             <!-- Search results -->
                             <ul id="SearchResults" style="
                                 border: 2px solid #E5E4E2;
                                 box-shadow: 1px 1px 1px 1px #000009;
                                 border-radius: 7px; display:none;
-                                z-index: 1"></ul>
+                                z-index: 1; background-color: white;"></ul>
                             </ul>
                             <script>
                                 // List of entities
@@ -229,14 +238,15 @@
                                     let value = event.target.value;
                                     if (value && value.trim().length > 0) {
                                         value = value.trim().toUpperCase();
-                                        setList(entities.filter(entity => {
-                                            return entity.name.includes(value);
-                                        }).sort((entityA, entityB) => {
-                                            return getRelevancy(entityB.name, value) - getRelevancy(entityA.name, value);
-                                        }));
+                                        try {
+                                            setList(entities.filter(entity => {
+                                                return entity.name.includes(value);
+                                            }).sort((entityA, entityB) => {
+                                                return getRelevancy(entityB.name, value) - getRelevancy(entityA.name, value);
+                                            }));
+                                        } catch {}
                                     } else {
                                         clearList();
-                                        document.getElementById('SearchResults').style.marginBottom = '0%';
                                         document.getElementById('SearchResults').style.display = 'none'
                                     }
                                 });
@@ -244,7 +254,6 @@
                                 document.addEventListener('click', function() {
                                     document.getElementById('search').value = '';
                                     clearList();
-                                    document.getElementById('SearchResults').style.marginBottom = '0%';
                                     document.getElementById('SearchResults').style.display = 'none'
                                 })
                             </script>
@@ -254,7 +263,7 @@
             </table>
         </container>
         <!--- GENERAL --->
-        <div id="General" style="position: fixed;  top: 6%;; margin-left:2%; width:48%; z-index: 1">
+        <div id="General" style="position: fixed;  top: 6%; margin-left:2%; width:48%; z-index: 1">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -293,7 +302,7 @@
             </table>
         </div>
         <!--- OPTIONS --->
-        <div id="Options" style="position: fixed;  top: 6%;; margin-left:9%; width:48%; z-index: 1">
+        <div id="Options" style="position: fixed;  top: 6%; margin-left: 11%; width:48%; z-index: 1">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -346,7 +355,7 @@
             </table>
         </div>
         <!--- Sort --->
-        <div id="SortButton" style="position: fixed;  top: 6%;; margin-left:9%; width:48%; z-index: 1">
+        <div id="SortButton" style="position: fixed;  top: 6%; margin-left: 11%; width:48%; z-index: 1">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -391,7 +400,7 @@
             </table>
         </div>
         <!--- INDUSTRY --->
-        <div id="IndustryButton" style="position: fixed;  top: 6%;; margin-left:9%; width:48%; z-index: 1">
+        <div id="IndustryButton" style="position: fixed;  top: 6%; margin-left: 11%; width:48%; z-index: 1">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -1339,7 +1348,7 @@
             </table>
         </div>
         <!--- REGION --->
-        <div id="RegionButton" style="position: fixed;  top: 6%;; margin-left:9%; width:48%; z-index: 1">
+        <div id="RegionButton" style="position: fixed;  top: 6%; margin-left: 11%; width:48%; z-index: 1">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -1670,7 +1679,7 @@
                 </tbody>
             </table>
         </div>        <!--- PERIOD --->
-        <div id="PeriodEndDateButton" style="position: fixed;  top: 6%;; margin-left:9%; width:48%; z-index: 1">
+        <div id="PeriodEndDateButton" style="position: fixed;  top: 6%; margin-left: 11%; width:48%; z-index: 1">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -1706,7 +1715,7 @@
             </table>
         </div>
         <!--- PHASE --->
-        <div id="PhaseButton" style="position: fixed;  top: 6%;; margin-left:9%; width:48%; z-index: 1">
+        <div id="PhaseButton" style="position: fixed;  top: 6%; margin-left: 11%; width:48%; z-index: 1">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
