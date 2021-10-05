@@ -2054,14 +2054,7 @@
                         </tbody>
                     </table>
                 <span style="display: block;" id="LineChart${contents.tradingSymbol}">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td><h3 style="font-weight:bold; margin-left:0px;"></h3></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table style="padding-bottom: 5%">
+                    <table style="padding-top: 5%; padding-bottom: 5%">
                         <tbody>
                             <tr>
                                 <td style='text-align:center;'>
@@ -2072,7 +2065,7 @@
                     </table>
                 </span>
                 <span style="display: none" id="Opinion${contents.tradingSymbol}">
-                    <table style="padding-bottom: 5%">
+                    <table style="padding-top: 5%; padding-bottom: 5%">
                         <tbody>
                             <tr></tr>
                             <tr></tr>
@@ -2203,11 +2196,62 @@
                         </tbody>
                     </table>
                 </span>
+                <span style="display: none;" id="Share${contents.tradingSymbol}">
+                    <table style="padding-top: 5%; padding-bottom: 5%">
+                        <tbody>
+                            <tr>
+                                <td style='text-align:center;'>
+                                    <button style="letter-spacing: 2px; font-weight: lighter">Facebook</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style='text-align:center;'>
+                                    <button style="letter-spacing: 2px; font-weight: lighter">Messenger</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style='text-align:center;'>
+                                    <button style="letter-spacing: 2px; font-weight: lighter">Twitter</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style='text-align:center;'>
+                                    <button style="letter-spacing: 2px; font-weight: lighter">LinkedIn</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style='text-align:center;'>
+                                    <button style="letter-spacing: 2px; font-weight: lighter">Reddit</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style='text-align:center;'>
+                                    <button style="letter-spacing: 2px; font-weight: lighter">Instagram</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style='text-align:center;'>
+                                    <button style="letter-spacing: 2px; font-weight: lighter">Messages</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style='text-align:center;'>
+                                    <button style="letter-spacing: 2px; font-weight: lighter">E-mail</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style='text-align:center;'>
+                                    <button style="letter-spacing: 2px; font-weight: lighter">Copy Link</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </span>
                 <table>
                     </tbody>
                         <tr>
                             <td>
-                                <h6 class="like" id="views${contents.tradingSymbol}" style="
+                                <h6 class="views" id="views${contents.tradingSymbol}" style="
                                 letter-spacing: 2px;
                                 padding: 9%">
                                     Views
@@ -2217,23 +2261,23 @@
                         <tr>
                             <td>
                                 <button class="like" id="like${contents.tradingSymbol}" style="
-                                letter-spacing: 2px;
-                                padding: 9%">
+                                letter-spacing: 2px;">
                                     Like
                                 </button>
                             </td>
                             <td>
-                                <button class="share" id="share${contents.tradingSymbol}" style="
-                                letter-spacing: 2px;
-                                padding: 9%">
+                                <button onClick="ShareButton()"
+                                data-page="Share${contents.tradingSymbol}"
+                                id="ShareButton${contents.tradingSymbol}"
+                                style="
+                                letter-spacing: 2px;">
                                     Share
                                 </button>
                             </td>
                             <td>
-                                <button class="share" id="share${contents.tradingSymbol}" style="
-                                letter-spacing: 2px;
-                                padding: 9%">
-                                    ...
+                                <button class="..." id="Comment${contents.tradingSymbol}" style="
+                                letter-spacing: 2px;">
+                                    Comment
                                 </button>
                             </td>
                         </tr>
@@ -2263,12 +2307,26 @@
             document.getElementById(a).style.display = 'block';
             a = a.replace('LineChart','Opinion')
             document.getElementById(a).style.display = 'none';
+            a = a.replace('Opinion','Share')
+            document.getElementById(a).style.display = 'none';
         }
         function OpinionButton() {
             a = event.target.id
             a = a.replace('Button','')
             document.getElementById(a).style.display = 'block';
             a = a.replace('Opinion','LineChart')
+            document.getElementById(a).style.display = 'none';
+            a = a.replace('LineChart','Share')
+            document.getElementById(a).style.display = 'none';
+        }
+        function ShareButton() {
+            a = event.target.id
+            a = a.replace('Button','')
+            console.log(a)
+            document.getElementById(a).style.display = 'block';
+            a = a.replace('Share','LineChart')
+            document.getElementById(a).style.display = 'none';
+            a = a.replace('LineChart','Opinion')
             document.getElementById(a).style.display = 'none';
         }
         //
@@ -2498,13 +2556,13 @@
             }
     </script>
 
-    <container><span>
+    <span>
         <h3 id="criterias" style="margin-top: 58px; font-size: 7px; padding-left: 2%; font-weight: normal; letter-spacing: 2px; font-style:italic;"></h3>
-    </span></container>
+    </span>
 
-    <container><span>
+    <span>
         <h3 id="results" style="margin-bottom: 3%; font-size: 7px; padding-left: 2%; font-weight: normal; letter-spacing: 2px; font-style:italic"></h3>
-    </span></container>
+    </span>
 
     <container id="posts"></container>
 
