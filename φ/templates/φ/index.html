@@ -2061,30 +2061,19 @@
                             </tr>
                         </tbody>
                     </table>
-                    <table style="padding-bottom: 11%">
+                    <table style="padding-bottom: 5%">
                         <tbody>
-                            <tr></tr>
-                            <tr></tr>
-                            <tr></tr>
-                            <tr></tr>
-                            <tr></tr>
                             <tr>
                                 <td style='text-align:center;'>
                                     <canvas id='LineChart' class='LineChart'></canvas>
                                 </td>
                             </tr>
-                            <tr></tr>
-                            <tr></tr>
-                            <tr></tr>
-                            <tr></tr>
-                            <tr></tr>
                         </tbody>
                     </table>
                 </span>
                 <span style="display: none" id="Opinion${contents.tradingSymbol}">
-                    <table style="padding-bottom: 11%">
+                    <table style="padding-bottom: 5%">
                         <tbody>
-                            <tr></tr>
                             <tr></tr>
                             <tr></tr>
                             <tr></tr>
@@ -2211,27 +2200,42 @@
                                 <td colspan="2" style="display:none;"><input id="CommonSharesOutstanding5" onfocusout="Compile()"></input></td>
                                 <td colspan="2" style="display:none;"><input id="CommonSharesOutstanding6" onfocusout="Compile()"></input></td>
                             </tr>
-                            <tr></tr>
-                            <tr></tr>
-                            <tr></tr>
-                            <tr></tr>
                         </tbody>
                     </table>
                 </span>
                 <table>
                     </tbody>
                         <tr>
-                            <td colspan="5"><button class="share" id="share${contents.tradingSymbol}" style="letter-spacing: 2px;">Share</button></td>
-                        </tr>
-                        <tr id="shareRow${contents.tradingSymbol}" style="display:none">
-                            <td><a href="https://www.facebook.com/sharer/sharer.php?u=www.clockdb.com/${contents.tradingSymbol}/" target="_blank"><button style="background-color:white"><img src="./static/φ/img/facebook.png" style="max-width: 18px; border-radius: 5px"></button></a></td>
-                            <td><a href="" target="_blank"><button style="background-color:white"><img src="./static/φ/img/messenger.png" style="max-width: 18px; border-radius: 5px"></button></a></td>
-                            <td><a href="https://twitter.com/share?url=www.clockdb.com/${contents.tradingSymbol}/" target="_blank"><button style="background-color:white"><img src="./static/φ/img/twitter.png" style="max-width: 18px; border-radius: 5px"></button></a></td>
-                            <td><a href="http://www.reddit.com/submit?url=https://stackoverflow.com/questions/24823114/www.clockdb.com/${contents.tradingSymbol}/&title=www.clockdb.com/${contents.tradingSymbol}/" target="_blank"><button style="background-color:white"><img src="./static/φ/img/reddit.png" style="max-width: 18px; border-radius: 5px"></button></a></td>
-                            <td><button>Copy Link</button></td>
+                            <td>
+                                <h6 class="like" id="views${contents.tradingSymbol}" style="
+                                letter-spacing: 2px;
+                                padding: 9%">
+                                    Views
+                                </h6>
+                            </td>
                         </tr>
                         <tr>
-                            <td colspan="5" style="padding-bottom: 2%;"><button class="cancel" id="cancel${contents.tradingSymbol}" style="display:none; letter-spacing: 2px;">Cancel</button></td>
+                            <td>
+                                <button class="like" id="like${contents.tradingSymbol}" style="
+                                letter-spacing: 2px;
+                                padding: 9%">
+                                    Like
+                                </button>
+                            </td>
+                            <td>
+                                <button class="share" id="share${contents.tradingSymbol}" style="
+                                letter-spacing: 2px;
+                                padding: 9%">
+                                    Share
+                                </button>
+                            </td>
+                            <td>
+                                <button class="share" id="share${contents.tradingSymbol}" style="
+                                letter-spacing: 2px;
+                                padding: 9%">
+                                    ...
+                                </button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -2251,22 +2255,6 @@
                 c.addEventListener('animationend', () =>  {
                     c.remove();
                 });
-            }
-            if (element.className === 'share') {
-                c = element.id;
-                shareRow = c.replace('share', 'shareRow')
-                cancel = c.replace('share', 'cancel')
-                document.getElementById(shareRow).style.display = '';
-                document.getElementById(cancel).style.display = '';
-                document.getElementById(c).style.display = 'none';
-            }
-            if (element.className === 'cancel') {
-                cancel = element.id;
-                c = cancel.replace('cancel', 'share')
-                shareRow = c.replace('share', 'shareRow')
-                document.getElementById(shareRow).style.display = 'none';
-                document.getElementById(cancel).style.display = 'none';
-                document.getElementById(c).style.display = '';
             }
         });
         function LineChartButton() {
