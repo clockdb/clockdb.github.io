@@ -2202,32 +2202,32 @@
                 </span>
                 <span class="share" style="display: none; padding: 2%"
                 id="Share${contents.tradingSymbol}">
-                    <button style="width:25%; letter-spacing: 2px; font-weight: lighter;  background-color: white">
-                        <img src="/static/φ/img/facebook.png" style="heigth:30%; width:30%; border-radius: 15px; background-color: white;">
+                    <button class="facebook" style="width:25%; letter-spacing: 2px; font-weight: lighter;  background-color: white">
+                        <img class="facebook" src="/static/φ/img/facebook.png" style="heigth:30%; width:30%; border-radius: 15px; background-color: white;">
                     </button>
-                    <button style="width:25%; letter-spacing: 2px;  font-weight: lighter;  background-color: white">
-                        <img src="/static/φ/img/messenger.png" style="heigth:30%; width:30%; border-radius: 15px; background-color: white;">
+                    <button class="messenger" style="width:25%; letter-spacing: 2px;  font-weight: lighter;  background-color: white">
+                        <img class="messenger"  src="/static/φ/img/messenger.png" style="heigth:30%; width:30%; border-radius: 15px; background-color: white;">
                     </button>
-                    <button style="width:25%; letter-spacing: 2px;  font-weight: lighter;  background-color: white">
-                        <img src="/static/φ/img/twitter.png" style="heigth:30%; width:30%; border-radius: 15px; background-color: white;">
+                    <button class="twitter" style="width:25%; letter-spacing: 2px;  font-weight: lighter;  background-color: white">
+                        <img class="twitter"  src="/static/φ/img/twitter.png" style="heigth:30%; width:30%; border-radius: 15px; background-color: white;">
                     </button>
-                    <button style="width:25%; letter-spacing: 2px;  font-weight: lighter;  background-color: white">
-                        <img src="/static/φ/img/linkedin.png" style="heigth:30%; width:30%; border-radius: 15px; background-color: white;">
+                    <button class="linkedin" style="width:25%; letter-spacing: 2px;  font-weight: lighter;  background-color: white">
+                        <img class="linkedin"  src="/static/φ/img/linkedin.png" style="heigth:30%; width:30%; border-radius: 15px; background-color: white;">
                     </button>
-                    <button style="width:25%; letter-spacing: 2px;  font-weight: lighter;  background-color: white">
-                        <img src="/static/φ/img/reddit.png" style="heigth:30%; width:30%; border-radius: 15px; background-color: white;">
+                    <button class="reddit" style="width:25%; letter-spacing: 2px;  font-weight: lighter;  background-color: white">
+                        <img class="reddit"  src="/static/φ/img/reddit.png" style="heigth:30%; width:30%; border-radius: 15px; background-color: white;">
                     </button>
-                    <button style="width:25%; letter-spacing: 2px;  font-weight: lighter;  background-color: white">
-                        <img src="/static/φ/img/instagram.png" style="heigth:30%; width:30%; border-radius: 15px; background-color: white;">
+                    <button class="instagram" style="width:25%; letter-spacing: 2px;  font-weight: lighter;  background-color: white">
+                        <img class="instagram"  src="/static/φ/img/instagram.png" style="heigth:30%; width:30%; border-radius: 15px; background-color: white;">
                     </button>
-                    <button style="width:25%; letter-spacing: 2px;  font-weight: lighter;  background-color: white">
-                        <img src="/static/φ/img/messages.png" style="heigth:30%; width:30%; border-radius: 15px; background-color: white;">
+                    <button class="messages" style="width:25%; letter-spacing: 2px;  font-weight: lighter;  background-color: white">
+                        <img class="messages"  src="/static/φ/img/messages.png" style="heigth:30%; width:30%; border-radius: 15px; background-color: white;">
                     </button>
-                    <button style="width:25%; letter-spacing: 2px;  font-weight: lighter;  background-color: white">
-                        <img src="/static/φ/img/email.png" style="heigth:30%; width:30%; border-radius: 15px; background-color: white;">
+                    <button class="email" style="width:25%; letter-spacing: 2px;  font-weight: lighter;  background-color: white">
+                        <img class="email"  src="/static/φ/img/email.png" style="heigth:30%; width:30%; border-radius: 15px; background-color: white;">
                     </button>
-                    <button style="width:25%; letter-spacing: 2px;  font-weight: lighter;  background-color: white">
-                        <img src="/static/φ/img/copylink.jpg" style="heigth:30%; width:30%; border-radius: 15px; background-color: white;">
+                    <button class="copylink" style="width:25%; letter-spacing: 2px;  font-weight: lighter;  background-color: white">
+                        <img class="copylink"  src="/static/φ/img/copylink.jpg" style="heigth:30%; width:30%; border-radius: 15px; background-color: white;">
                     </button>
                 </span>
                 <span class="Comments" style="display: none; height: 240px; width: 60%; margin-left: 20%; padding-top: 2%; padding-bottom: 2%;"
@@ -2324,6 +2324,95 @@
                 c.addEventListener('animationend', () =>  {
                     c.remove();
                 });
+            }
+            if (element.className === 'facebook') {
+                a = element.parentElement.id
+                if (a == '') {
+                    a = element.parentElement.parentElement.id
+                }
+                a = a.replace('Share', '')
+                sharer = 'https://www.facebook.com/sharer/sharer.php?u='
+                app = 'www.clockdb.com/' + a + '/'
+                window.open(sharer + app)
+            }
+            if (element.className === 'messenger') {
+                a = element.parentElement.id
+                if (a == '') {
+                    a = element.parentElement.parentElement.id
+                }
+                a = a.replace('Share', '')
+                sharer = ''
+                app = 'www.clockdb.com/' + a + '/'
+                window.open(sharer + app)
+            }
+            if (element.className === 'twitter') {
+                a = element.parentElement.id
+                if (a == '') {
+                    a = element.parentElement.parentElement.id
+                }
+                a = a.replace('Share', '')
+                sharer = 'http://www.twitter.com/share?url='
+                app = 'www.clockdb.com/' + a + '/'
+                window.open(sharer + app)
+            }
+            if (element.className === 'linkedin') {
+                a = element.parentElement.id
+                if (a == '') {
+                    a = element.parentElement.parentElement.id
+                }
+                a = a.replace('Share', '')
+                sharer = 'https://www.linkedin.com/sharing/share-offsite/?url={'
+                app = 'www.clockdb.com/' + a + '/' + '}'
+                window.open(sharer + app)
+            }
+            if (element.className === 'reddit') {
+                a = element.parentElement.id
+                if (a == '') {
+                    a = element.parentElement.parentElement.id
+                }
+                a = a.replace('Share', '')
+                sharer = 'http://www.reddit.com/submit?url='
+                app = 'www.clockdb.com/' + a + '/'
+                window.open(sharer + app)
+            }
+            if (element.className === 'instagram') {
+                a = element.parentElement.id
+                if (a == '') {
+                    a = element.parentElement.parentElement.id
+                }
+                a = a.replace('Share', '')
+                sharer = ''
+                app = 'www.clockdb.com/' + a + '/'
+                window.open(sharer + app)
+            }
+            if (element.className === 'messages') {
+                a = element.parentElement.id
+                if (a == '') {
+                    a = element.parentElement.parentElement.id
+                }
+                a = a.replace('Share', '')
+                sharer = ''
+                app = 'www.clockdb.com/' + a + '/'
+                window.open(sharer + app)
+            }
+            if (element.className === 'email') {
+                a = element.parentElement.id
+                if (a == '') {
+                    a = element.parentElement.parentElement.id
+                }
+                a = a.replace('Share', '')
+                sharer = ''
+                app = 'www.clockdb.com/' + a + '/'
+                location.href = "mailto:"
+            }
+            if (element.className === 'copylink') {
+                a = element.parentElement.id
+                if (a == '') {
+                    a = element.parentElement.parentElement.id
+                }
+                a = a.replace('Share', '')
+                app = 'www.clockdb.com/' + a + '/'
+                navigator.clipboard.writeText(app)
             }
         });
         function LineChartButton() {
