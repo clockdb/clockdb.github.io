@@ -253,8 +253,13 @@
                 text-align: center;
             }
             .share {
-                float: left;
-                width: auto;
+                display: inline-block;
+                overflow-x: scroll;
+                overflow-y: hidden;
+                white-space: nowrap
+            }
+            .share::-webkit-scrollbar {
+                display: none;
             }
             .post {         
                 width: 100%;
