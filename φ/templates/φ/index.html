@@ -141,16 +141,20 @@
     })
 
     function EnterSearch(EnterSearch) {
-        escape();
-        c = document.getElementsByClassName('post');
-        l = c.length;
-        for (let i = 0; i < l; i++) {
-            c[i].style.display = 'none';
-        }
-        localStorage.setItem('counter', 1)
-        localStorage.setItem('quantity', 10)
-        load();
-    }
+        a = event.target.id
+        if (a == 'Comment') {
+        } else {
+            escape();
+            c = document.getElementsByClassName('post');
+            l = c.length;
+            for (let i = 0; i < l; i++) {
+                c[i].style.display = 'none';
+            }
+            localStorage.setItem('counter', 1)
+            localStorage.setItem('quantity', 10)
+            load();
+        };
+    };
 
     </script>
     <Section id="φ">
@@ -2044,7 +2048,7 @@
                                 </tr>
                         </tbody>
                     </table>
-                    <table>
+                    <table style="padding-bottom: 2%">
                         <tbody>
                             <tr>
                                 <td colspan="2"><button class="hide" style="letter-spacing: 2px;">Hide</button></td>
@@ -2196,7 +2200,7 @@
                         </tbody>
                     </table>
                 </span>
-                <span class="share" style="display: none; padding: 15%"
+                <span class="share" style="display: none; padding: 2%"
                 id="Share${contents.tradingSymbol}">
                     <button style="width:25%; letter-spacing: 2px; font-weight: lighter;  background-color: white">
                         <img src="/static/φ/img/facebook.png" style="heigth:30%; width:30%; border-radius: 15px; background-color: white;">
@@ -2226,42 +2230,93 @@
                         <img src="/static/φ/img/copylink.jpg" style="heigth:30%; width:30%; border-radius: 15px; background-color: white;">
                     </button>
                 </span>
-                <table style="padding-top: 5%; padding-top: 5%; padding-bottom: 5%">
-                    </tbody>
-                        <tr>
-                            <td>
-                                <h6 class="views" id="views${contents.tradingSymbol}" style="
-                                letter-spacing: 2px;
-                                padding-bottom: 5%">
-                                    Views
-                                </h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <button class="like" id="like${contents.tradingSymbol}" style="
-                                letter-spacing: 2px;">
-                                    Like
-                                </button>
-                            </td>
-                            <td>
-                                <button onClick="ShareButton()"
-                                data-page="Share${contents.tradingSymbol}"
-                                id="ShareButton${contents.tradingSymbol}"
-                                style="
-                                letter-spacing: 2px;">
-                                    Share
-                                </button>
-                            </td>
-                            <td>
-                                <button class="..." id="Comment${contents.tradingSymbol}" style="
-                                letter-spacing: 2px;">
-                                    Comment
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <span class="Comments" style="display: none; height: 240px; width: 60%; margin-left: 20%; padding-top: 2%; padding-bottom: 2%;"
+                id="Comments${contents.tradingSymbol}">
+                    <table style="text-align: center">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h2 style="text-align: left;">User 1</h2>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p style="margin-bottom: 2%;"> Comment 1</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h2 style="text-align: left;">User 1</h2>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p style="margin-bottom: 2%;"> Comment 1</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h2 style="text-align: left;">User 1</h2>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p style="margin-bottom: 2%;"> Comment 1</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="Comment" style="margin-top: 2%; background-color: #E5E4E2" value=""></input>
+                                    <button 
+                                    style="
+                                    margin-bottom: 2%;
+                                    letter-spacing: 2px;">
+                                        Comment
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </span>
+                    <table style="padding-top: 2%; padding-bottom: 2%">
+                        </tbody>
+                            <tr>
+                                <td>
+                                    <h6 class="views" id="views${contents.tradingSymbol}" style="
+                                    letter-spacing: 2px;
+                                    padding-bottom: 5%">
+                                        Views
+                                    </h6>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button class="like" id="like${contents.tradingSymbol}" style="
+                                    letter-spacing: 2px;">
+                                        Like
+                                    </button>
+                                </td>
+                                <td>
+                                    <button onClick="ShareButton()"
+                                    data-page="Share${contents.tradingSymbol}"
+                                    id="ShareButton${contents.tradingSymbol}"
+                                    style="
+                                    letter-spacing: 2px;">
+                                        Share
+                                    </button>
+                                </td>
+                                <td>
+                                    <button onClick="CommentsButton()"
+                                    data-page="Comments${contents.tradingSymbol}"
+                                    id="CommentsButton${contents.tradingSymbol}"
+                                    style="
+                                    letter-spacing: 2px;">
+                                        Comments
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 `;
                 document.querySelector('#posts').append(post);
         }   ;
@@ -2284,28 +2339,49 @@
             a = event.target.id
             a = a.replace('Button','')
             document.getElementById(a).style.display = 'block';
-            a = a.replace('LineChart','Opinion')
-            document.getElementById(a).style.display = 'none';
-            a = a.replace('Opinion','Share')
-            document.getElementById(a).style.display = 'none';
+            a = a.replace('LineChart','')
+            b = 'Opinion' + a
+            document.getElementById(b).style.display = 'none';
+            b = 'Share' + a
+            document.getElementById(b).style.display = 'none';
+            b = 'Comments' + a
+            document.getElementById(b).style.display = 'none';
         }
         function OpinionButton() {
             a = event.target.id
             a = a.replace('Button','')
             document.getElementById(a).style.display = 'block';
-            a = a.replace('Opinion','LineChart')
-            document.getElementById(a).style.display = 'none';
-            a = a.replace('LineChart','Share')
-            document.getElementById(a).style.display = 'none';
+            a = a.replace('Opinion','')
+            b = 'LineChart' + a
+            document.getElementById(b).style.display = 'none';
+            b = 'Share' + a
+            document.getElementById(b).style.display = 'none';
+            b = 'Comments' + a
+            document.getElementById(b).style.display = 'none';
         }
         function ShareButton() {
             a = event.target.id
             a = a.replace('Button','')
             document.getElementById(a).style.display = 'block';
-            a = a.replace('Share','LineChart')
-            document.getElementById(a).style.display = 'none';
-            a = a.replace('LineChart','Opinion')
-            document.getElementById(a).style.display = 'none';
+            a = a.replace('Share','')
+            b = 'LineChart' + a
+            document.getElementById(b).style.display = 'none';
+            b = 'Opinion' + a
+            document.getElementById(b).style.display = 'none';
+            b = 'Comments' + a
+            document.getElementById(b).style.display = 'none';
+        }
+        function CommentsButton() {
+            a = event.target.id
+            a = a.replace('Button','')
+            document.getElementById(a).style.display = 'block';
+            a = a.replace('Comments','')
+            b = 'LineChart' + a
+            document.getElementById(b).style.display = 'none';
+            b = 'Opinion' + a
+            document.getElementById(b).style.display = 'none';
+            b = 'Share' + a
+            document.getElementById(b).style.display = 'none';
         }
         //
         // line chart
@@ -2545,7 +2621,7 @@
     <container id="posts"></container>
 
     <!--- Loading --->
-    <section id="loading" style="padding-top:18%; padding-bottom:29%; padding-right: 8%; visibility: hidden; text-align: center; font-style:italic">
+    <section id="loading" style="padding-top:18%; padding-bottom:22%; padding-right: 8%; visibility: hidden; text-align: center; font-style:italic">
         <span>
             <h5 style="post"></h5>
         </span>
