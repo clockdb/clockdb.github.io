@@ -6098,19 +6098,19 @@
                                 //
                                 InterestRate = parseFloat(document.getElementById('TheoricalInterestRate1').value) / 100;
                                 Interest = (Debt1 + Debt2 + Debt3)/3 * InterestRate;
-                                document.getElementById('InterestPaidWeightedAverageCostOfTotalAssets1').value = numUSD.format(Interest) ;
+                                document.getElementById('InterestPaidWeightedAverageCostOfTotalAssets1').value = numUSD.format(Math.round(Interest)) ;
                                 // second last year
                                 InterestRate = parseFloat(document.getElementById('TheoricalInterestRate2').value) / 100;
                                 Interest = (Debt2 + Debt3 + Debt4)/3 * InterestRate;
-                                document.getElementById('InterestPaidWeightedAverageCostOfTotalAssets2').value = numUSD.format(Interest) ;
+                                document.getElementById('InterestPaidWeightedAverageCostOfTotalAssets2').value = numUSD.format(Math.round(Interest)) ;
                                 // third last year
                                 InterestRate = parseFloat(document.getElementById('TheoricalInterestRate3').value) / 100;
                                 Interest = (Debt3 + Debt4 + Debt5)/3 * InterestRate;
-                                document.getElementById('InterestPaidWeightedAverageCostOfTotalAssets3').value = numUSD.format(Interest) ;
+                                document.getElementById('InterestPaidWeightedAverageCostOfTotalAssets3').value = numUSD.format(Math.round(Interest)) ;
                                 // fourth last year
                                 InterestRate = parseFloat(document.getElementById('TheoricalInterestRate4').value) / 100;
                                 Interest = (Debt4 + Debt5 + Debt6)/3 * InterestRate;
-                                document.getElementById('InterestPaidWeightedAverageCostOfTotalAssets4').value = numUSD.format(Interest) ;
+                                document.getElementById('InterestPaidWeightedAverageCostOfTotalAssets4').value = numUSD.format(Math.round(Interest)) ;
                             };
                         </script>
                         <td colspan='2' class='C1'><input class='Clock' id="InterestPaidWeightedAverageCostOfTotalAssets1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
@@ -6137,19 +6137,19 @@
                                 // last year
                                 a = Math.round(parseInt(document.getElementById('InterestPaidWeightedAverageCostOfTotalAssets1').value.replaceAll(/,/g, '')))
                                 a = -a * parseFloat(document.getElementById('TheoricalTaxRate1').value) / 100
-                                document.getElementById('TaxDeductionWeightedAverageCostOfTotalAssets1').value = numUSD.format(a);
+                                document.getElementById('TaxDeductionWeightedAverageCostOfTotalAssets1').value = numUSD.format(Math.round(a));
                                 // second last year
                                 a = Math.round(parseInt(document.getElementById('InterestPaidWeightedAverageCostOfTotalAssets2').value.replaceAll(/,/g, '')))
                                 a = -a * parseFloat(document.getElementById('TheoricalTaxRate2').value) / 100
-                                document.getElementById('TaxDeductionWeightedAverageCostOfTotalAssets2').value = numUSD.format(a);
+                                document.getElementById('TaxDeductionWeightedAverageCostOfTotalAssets2').value = numUSD.format(Math.round(a));
                                 // third last year
                                 a = Math.round(parseInt(document.getElementById('InterestPaidWeightedAverageCostOfTotalAssets3').value.replaceAll(/,/g, '')))
                                 a = -a * parseFloat(document.getElementById('TheoricalTaxRate3').value) / 100
-                                document.getElementById('TaxDeductionWeightedAverageCostOfTotalAssets3').value = numUSD.format(a);
+                                document.getElementById('TaxDeductionWeightedAverageCostOfTotalAssets3').value = numUSD.format(Math.round(a));
                                 // fourth last year
                                 a = Math.round(parseInt(document.getElementById('InterestPaidWeightedAverageCostOfTotalAssets4').value.replaceAll(/,/g, '')))
                                 a = -a * parseFloat(document.getElementById('TheoricalTaxRate4').value) / 100
-                                document.getElementById('TaxDeductionWeightedAverageCostOfTotalAssets4').value = numUSD.format(a);
+                                document.getElementById('TaxDeductionWeightedAverageCostOfTotalAssets4').value = numUSD.format(Math.round(a));
                             };
                         </script>
                         <td colspan='2' class='C1'><input class='Clock' id="TaxDeductionWeightedAverageCostOfTotalAssets1" style="font-weight:bold;" onfocusout="Compile()"></input></td>

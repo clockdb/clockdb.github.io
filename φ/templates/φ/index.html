@@ -2050,9 +2050,6 @@
                                 <td colspan="2"><button class="hide" style="letter-spacing: 2px;">Hide</button></td>
                                 <td colspan="3"><button onClick="LineChartButton()" data-page="LineChart${contents.tradingSymbol}" id="LineChartButton${contents.tradingSymbol}" style="letter-spacing: 2px;">Line Chart</button></td>
                                 <td colspan="3"><button onClick="OpinionButton()" data-page="Opinion${contents.tradingSymbol}" id="OpinionButton${contents.tradingSymbol}" style="letter-spacing: 2px;">Opinion</button></td>
-                                <td style="display:none"><a href="https://www.facebook.com/sharer/sharer.php?u=www.clockdb.com/${contents.tradingSymbol}/" target="_blank"><button style="background-color:white"><img src="./static/φ/img/facebook.png" style="max-width: 18px; border-radius: 5px"></button></a></td>
-                                <td style="display:none"><a href="https://twitter.com/share?url=www.clockdb.com/${contents.tradingSymbol}/" target="_blank"><button style="background-color:white"><img src="./static/φ/img/twitter.png" style="max-width: 18px; border-radius: 5px"></button></a></td>
-                                <td style="display:none"><a href="http://www.reddit.com/submit?url=https://stackoverflow.com/questions/24823114/www.clockdb.com/${contents.tradingSymbol}/&title=www.clockdb.com/${contents.tradingSymbol}/" target="_blank"><button style="background-color:white"><img src="./static/φ/img/reddit.png" style="max-width: 18px; border-radius: 5px"></button></a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -2221,6 +2218,23 @@
                         </tbody>
                     </table>
                 </span>
+                <table>
+                    </tbody>
+                        <tr>
+                            <td colspan="5"><button class="share" id="share${contents.tradingSymbol}" style="letter-spacing: 2px;">Share</button></td>
+                        </tr>
+                        <tr id="shareRow${contents.tradingSymbol}" style="display:none">
+                            <td><a href="https://www.facebook.com/sharer/sharer.php?u=www.clockdb.com/${contents.tradingSymbol}/" target="_blank"><button style="background-color:white"><img src="./static/φ/img/facebook.png" style="max-width: 18px; border-radius: 5px"></button></a></td>
+                            <td><a href="" target="_blank"><button style="background-color:white"><img src="./static/φ/img/messenger.png" style="max-width: 18px; border-radius: 5px"></button></a></td>
+                            <td><a href="https://twitter.com/share?url=www.clockdb.com/${contents.tradingSymbol}/" target="_blank"><button style="background-color:white"><img src="./static/φ/img/twitter.png" style="max-width: 18px; border-radius: 5px"></button></a></td>
+                            <td><a href="http://www.reddit.com/submit?url=https://stackoverflow.com/questions/24823114/www.clockdb.com/${contents.tradingSymbol}/&title=www.clockdb.com/${contents.tradingSymbol}/" target="_blank"><button style="background-color:white"><img src="./static/φ/img/reddit.png" style="max-width: 18px; border-radius: 5px"></button></a></td>
+                            <td><button>Copy Link</button></td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" style="padding-bottom: 2%;"><button class="cancel" id="cancel${contents.tradingSymbol}" style="display:none; letter-spacing: 2px;">Cancel</button></td>
+                        </tr>
+                    </tbody>
+                </table>
                 `;
                 document.querySelector('#posts').append(post);
         }   ;
@@ -2237,6 +2251,22 @@
                 c.addEventListener('animationend', () =>  {
                     c.remove();
                 });
+            }
+            if (element.className === 'share') {
+                c = element.id;
+                shareRow = c.replace('share', 'shareRow')
+                cancel = c.replace('share', 'cancel')
+                document.getElementById(shareRow).style.display = '';
+                document.getElementById(cancel).style.display = '';
+                document.getElementById(c).style.display = 'none';
+            }
+            if (element.className === 'cancel') {
+                cancel = element.id;
+                c = cancel.replace('cancel', 'share')
+                shareRow = c.replace('share', 'shareRow')
+                document.getElementById(shareRow).style.display = 'none';
+                document.getElementById(cancel).style.display = 'none';
+                document.getElementById(c).style.display = '';
             }
         });
         function LineChartButton() {
