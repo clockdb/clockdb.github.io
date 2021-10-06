@@ -578,26 +578,6 @@
         document.getElementById('Graph').style.display = 'block';
         window.scrollTo(0, 0);
     });
-    // mouseover button
-    document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('button').forEach(button => {
-            button.onmouseover = function() {
-                menus = [
-                    'Arch',
-                    'Clock',
-                    'Bridge',
-                    'Options',
-                    'General',
-                ]
-                const url = this.dataset.page;
-                if (menus.includes(url)) {
-                    try {
-                        showPage(this.dataset.page);
-                    } catch {}
-                } else {}
-            };
-        });
-    });
     // button click
     document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('button').forEach(button => {
@@ -917,6 +897,34 @@
                     } catch {}
                 }
             }
+        });
+    });
+    // main button
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('button').forEach(button => {
+            button.onclick = function() {
+                menus = [
+                    'Arch',
+                    'Clock',
+                    'Bridge',
+                    'Options',
+                    'General',
+                ]
+                const url = this.dataset.page;
+                if (menus.includes(url)) {
+                    a = document.getElementById(url).style.display
+                    if (a == 'block') {
+                        document.getElementById(url).style.display = 'none';
+                        showPage(this.dataset.page);
+                        escape();
+                    } else {
+                        escape();
+                        document.getElementById(url).style.display = 'block';
+                    }
+                } else {
+                    showPage(this.dataset.page);
+                }
+            };
         });
     });
     //
@@ -1699,7 +1707,7 @@
 <!--- HEADER --->
         
         <!--- ENTITIES, INDUSTRY AND REGION --->
-        <table style="padding-top:77px; padding-bottom:30px;">
+        <table style="padding-top:21px; padding-bottom:21px;">
             <tbody>
                 <tr>
                     <td>
@@ -1946,7 +1954,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="padding-bottom: 9%">
+            <table style="padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td colspan="5"></td>
@@ -1960,12 +1968,12 @@
                                 document.getElementById('DateSummary6').innerHTML = document.getElementById('ContextDate6').value;
                             };
                         </script>
-                        <td colspan='2' class='C1' style="padding-top: 9%;"><h5 id="DateSummary1" style="text-align:center"></h4></td>
-                        <td colspan='2' class='C2' style="padding-top: 9%;"><h5 id="DateSummary2" style="text-align:center"></h4></td>
-                        <td colspan='2' class='C3' style="padding-top: 9%;"><h5 id="DateSummary3" style="text-align:center"></h4></td>
-                        <td colspan='2' class='C4' style="padding-top: 9%;"><h5 id="DateSummary4" style="text-align:center"></h4></td>
-                        <td colspan='2' class='D5' style="padding-top: 9%; display:none;"><h5 id="DateSummary5" style="text-align:center"></h4></td>
-                        <td colspan='2' class='D6' style="padding-top: 9%; display:none;"><h5 id="DateSummary6" style="text-align:center"></h4></td>
+                        <td colspan='2' class='C1' style="padding-top: 21px;"><h5 id="DateSummary1" style="text-align:center"></h4></td>
+                        <td colspan='2' class='C2' style="padding-top: 21px;"><h5 id="DateSummary2" style="text-align:center"></h4></td>
+                        <td colspan='2' class='C3' style="padding-top: 21px;"><h5 id="DateSummary3" style="text-align:center"></h4></td>
+                        <td colspan='2' class='C4' style="padding-top: 21px;"><h5 id="DateSummary4" style="text-align:center"></h4></td>
+                        <td colspan='2' class='D5' style="padding-top: 21px; display:none;"><h5 id="DateSummary5" style="text-align:center"></h4></td>
+                        <td colspan='2' class='D6' style="padding-top: 21px; display:none;"><h5 id="DateSummary6" style="text-align:center"></h4></td>
                     </tr>
                     <tr></tr>
                     <tr>
@@ -2393,7 +2401,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-bottom:9%">
+            <table style="border-bottom:solid #0D47A1; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td colspan="9"></td>
@@ -2409,7 +2417,7 @@
                         <td colspan="4" style="display:none;"></td>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-top: 9%; padding-bottom:9%">
+            <table style="border-bottom:solid #0D47A1; padding-top: 21px; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold; vertical-align:top;">(a)</td>
@@ -2448,7 +2456,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-bottom: 9%">
+            <table style="border-bottom:solid #0D47A1; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td colspan="5"></td>
@@ -2462,12 +2470,12 @@
                                 document.getElementById('DateIntrinsicValues6').innerHTML = document.getElementById('ContextDate6').value;
                             };
                         </script>
-                        <td colspan='2' class='C1' style="padding-top: 9%;"><h5 id="DateIntrinsicValues1" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C2' style="padding-top: 9%;"><h5 id="DateIntrinsicValues2" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C3' style="padding-top: 9%;"><h5 id="DateIntrinsicValues3" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C4' style="padding-top: 9%;"><h5 id="DateIntrinsicValues4" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='D5' style="padding-top: 9%; display:none;"><h5 id="DateIntrinsicValues5" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='D6' style="padding-top: 9%; display:none;"><h5 id="DateIntrinsicValues6" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C1' style="padding-top: 21px;"><h5 id="DateIntrinsicValues1" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C2' style="padding-top: 21px;"><h5 id="DateIntrinsicValues2" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C3' style="padding-top: 21px;"><h5 id="DateIntrinsicValues3" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C4' style="padding-top: 21px;"><h5 id="DateIntrinsicValues4" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='D5' style="padding-top: 21px; display:none;"><h5 id="DateIntrinsicValues5" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='D6' style="padding-top: 21px; display:none;"><h5 id="DateIntrinsicValues6" style="text-align:center;"></h5></td>
                     </tr>
                     <tr></tr>
                     <tr>
@@ -2699,7 +2707,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-top: 9%; padding-bottom:9%">
+            <table style="border-bottom:solid #0D47A1; padding-top: 21px; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">CCF</td>
@@ -2722,7 +2730,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-bottom: 9%">
+            <table style="border-bottom:solid #0D47A1; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td colspan="5"></td>
@@ -2736,12 +2744,12 @@
                                 document.getElementById('DateCapitalizedCashFlow6').innerHTML = document.getElementById('ContextDate6').value;
                             };
                         </script>
-                        <td colspan='2' class='C1' style="padding-top: 9%;"><h5 id="DateCapitalizedCashFlow1" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C2' style="padding-top: 9%;"><h5 id="DateCapitalizedCashFlow2" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C3' style="padding-top: 9%;"><h5 id="DateCapitalizedCashFlow3" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C4' style="padding-top: 9%;"><h5 id="DateCapitalizedCashFlow4" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C5' style="padding-top: 9%;"><h5 id="DateCapitalizedCashFlow5" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C6' style="padding-top: 9%;"><h5 id="DateCapitalizedCashFlow6" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C1' style="padding-top: 21px;"><h5 id="DateCapitalizedCashFlow1" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C2' style="padding-top: 21px;"><h5 id="DateCapitalizedCashFlow2" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C3' style="padding-top: 21px;"><h5 id="DateCapitalizedCashFlow3" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C4' style="padding-top: 21px;"><h5 id="DateCapitalizedCashFlow4" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C5' style="padding-top: 21px;"><h5 id="DateCapitalizedCashFlow5" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C6' style="padding-top: 21px;"><h5 id="DateCapitalizedCashFlow6" style="text-align:center;"></h5></td>
                     </tr>
                     <tr></tr>
                     <tr>
@@ -4187,7 +4195,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-top: 9%; padding-bottom:9%">
+            <table style="border-bottom:solid #0D47A1; padding-top: 21px; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">AI</td>
@@ -4282,7 +4290,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-bottom: 9%">
+            <table style="border-bottom:solid #0D47A1; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td colspan="5"></td>
@@ -4296,12 +4304,12 @@
                                 document.getElementById('DateCapitalizedIncome6').innerHTML = document.getElementById('ContextDate6').value;
                             };
                         </script>
-                        <td colspan='2' class='C1' style="padding-top: 9%;"><h5 id="DateCapitalizedIncome1" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C2' style="padding-top: 9%;"><h5 id="DateCapitalizedIncome2" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C3' style="padding-top: 9%;"><h5 id="DateCapitalizedIncome3" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C4' style="padding-top: 9%;"><h5 id="DateCapitalizedIncome4" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C5' style="padding-top: 9%;"><h5 id="DateCapitalizedIncome5" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C6' style="padding-top: 9%;"><h5 id="DateCapitalizedIncome6" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C1' style="padding-top: 21px;"><h5 id="DateCapitalizedIncome1" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C2' style="padding-top: 21px;"><h5 id="DateCapitalizedIncome2" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C3' style="padding-top: 21px;"><h5 id="DateCapitalizedIncome3" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C4' style="padding-top: 21px;"><h5 id="DateCapitalizedIncome4" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C5' style="padding-top: 21px;"><h5 id="DateCapitalizedIncome5" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C6' style="padding-top: 21px;"><h5 id="DateCapitalizedIncome6" style="text-align:center;"></h5></td>
                     </tr>
                     <tr></tr>
                     <tr>
@@ -5476,7 +5484,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-top: 9%; padding-bottom:9%">
+            <table style="border-bottom:solid #0D47A1; padding-top: 21px; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">AI</td>
@@ -5571,7 +5579,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-bottom: 9%">
+            <table style="border-bottom:solid #0D47A1; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td colspan="5"></td>
@@ -5585,12 +5593,12 @@
                                 document.getElementById('DateCapitalizationRate6').innerHTML = document.getElementById('ContextDate6').value;
                             };
                         </script>
-                        <td colspan='2' class='C1' style="padding-top: 9%;"><h5 id="DateCapitalizationRate1" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C2' style="padding-top: 9%;"><h5 id="DateCapitalizationRate2" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C3' style="padding-top: 9%;"><h5 id="DateCapitalizationRate3" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C4' style="padding-top: 9%;"><h5 id="DateCapitalizationRate4" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='D5' style="padding-top: 9%; display:none;"><h5 id="DateCapitalizationRate5" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='D6' style="padding-top: 9%; display:none;"><h5 id="DateCapitalizationRate6" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C1' style="padding-top: 21px;"><h5 id="DateCapitalizationRate1" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C2' style="padding-top: 21px;"><h5 id="DateCapitalizationRate2" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C3' style="padding-top: 21px;"><h5 id="DateCapitalizationRate3" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C4' style="padding-top: 21px;"><h5 id="DateCapitalizationRate4" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='D5' style="padding-top: 21px; display:none;"><h5 id="DateCapitalizationRate5" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='D6' style="padding-top: 21px; display:none;"><h5 id="DateCapitalizationRate6" style="text-align:center;"></h5></td>
                     </tr>
                     <tr></tr>
                     <tr>
@@ -5918,7 +5926,7 @@
                         <td colspan='2' class='D6' style="display:none;"><input id="CapitalizationRate6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr>
-                        <td colspan="6" style="padding-top: 9%;"><h6><b>NOTE 1: WEIGHTED COST OF TOTAL ASSETS</b></h6></td>
+                        <td colspan="6" style="padding-top: 21px;"><h6><b>NOTE 1: WEIGHTED COST OF TOTAL ASSETS</b></h6></td>
                     </tr>
                     <tr></tr>
                     <tr id='DividendPaidWeightedAverageCostOfTotalAssetsRow' class="TrialBalance">
@@ -6282,7 +6290,7 @@
                         <td colspan='2' class='D6' style="display:none;"><input class='Clock' id="WeightedAverageCostOfTotalAssetsNote6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr>
-                        <td colspan="6" style="padding-top: 9%;"><h6><b>NOTE 2: RISK RELATED TO VOLATILITY OF RETURN ON TOTAL ASSETS</b></h6></td>
+                        <td colspan="6" style="padding-top: 21px;"><h6><b>NOTE 2: RISK RELATED TO VOLATILITY OF RETURN ON TOTAL ASSETS</b></h6></td>
                     </tr>
                     <tr></tr>
                     <tr id='ReturnOnAssetsVolatilityRow' class="ClockRate">
@@ -6698,7 +6706,7 @@
                         <td colspan='2' class='D6' style="display:none;"><input class='ClockRate' id="RiskRelatedToVolatilityOfReturnOnTotalAssetsNote6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr>
-                        <td colspan="6" style="padding-top: 9%;"><h6><b>NOTE 3: EXPECTED GROWTH (DECLINE) OF RETURN ON TOTAL ASSETS</b></h6></td>
+                        <td colspan="6" style="padding-top: 21px;"><h6><b>NOTE 3: EXPECTED GROWTH (DECLINE) OF RETURN ON TOTAL ASSETS</b></h6></td>
                     </tr>
                     <tr></tr>
                     <tr id='GrossMarginExpectedGrowthOnReturnOnAssetsRow' class="TrialBalance">
@@ -6913,7 +6921,7 @@
                         <td colspan='2' class='D6' style="display:none;"><input class='Clock' id="ExpectedGrowthNote6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr>
-                        <td colspan="6" style="padding-top: 9%;"><h6><b>NOTE 4: COST OF TOTAL ASSETS ACCRUING TO COMMON SHAREHOLDERS</b></h6></td>
+                        <td colspan="6" style="padding-top: 21px;"><h6><b>NOTE 4: COST OF TOTAL ASSETS ACCRUING TO COMMON SHAREHOLDERS</b></h6></td>
                     </tr>
                     <tr></tr>
                     <tr id='DividendPaidCostOfTotalAssetsAccruingToCommonShareholdersRow' class="TrialBalance">
@@ -7103,7 +7111,7 @@
                         <td colspan='2' class='D6' style="display:none;"><input class='Clock' id="CostOfTotalAssetsAccruingToCommonShareholdersNote6" onfocusout="Compile()"></input></td>
                     </tr>
                     <tr>
-                        <td colspan="6" style="padding-top: 9%;"><h6><b>NOTE 5: CAPITALIZATION RATES FLOOR</b></h6></td>
+                        <td colspan="6" style="padding-top: 21px;"><h6><b>NOTE 5: CAPITALIZATION RATES FLOOR</b></h6></td>
                     </tr>
                     <tr></tr>
                     <tr id='CapitalizationRateBeforeProvisionRow' class="TrialBalance">
@@ -7207,7 +7215,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-top: 9%; padding-bottom:9%">
+            <table style="border-bottom:solid #0D47A1; padding-top: 21px; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">(a)</td>
@@ -7260,7 +7268,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-bottom: 9%">
+            <table style="border-bottom:solid #0D47A1; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td colspan="5"></td>
@@ -7274,12 +7282,12 @@
                                 document.getElementById('DateRatios6').innerHTML = document.getElementById('ContextDate6').value;
                             };
                         </script>
-                        <td colspan='2' class='C1' style="padding-top: 9%;"><h5 id="DateRatios1" style="text-align:center;"></h4></td>
-                        <td colspan='2' class='C2' style="padding-top: 9%;"><h5 id="DateRatios2" style="text-align:center;"></h4></td>
-                        <td colspan='2' class='C3' style="padding-top: 9%;"><h5 id="DateRatios3" style="text-align:center;"></h4></td>
-                        <td colspan='2' class='C4' style="padding-top: 9%;"><h5 id="DateRatios4" style="text-align:center;"></h4></td>
-                        <td colspan='2' class='C5' style="padding-top: 9%;"><h5 id="DateRatios5" style="text-align:center;"></h4></td>
-                        <td colspan='2' class='C6' style="padding-top: 9%;"><h5 id="DateRatios6" style="text-align:center;"></h4></td>
+                        <td colspan='2' class='C1' style="padding-top: 21px;"><h5 id="DateRatios1" style="text-align:center;"></h4></td>
+                        <td colspan='2' class='C2' style="padding-top: 21px;"><h5 id="DateRatios2" style="text-align:center;"></h4></td>
+                        <td colspan='2' class='C3' style="padding-top: 21px;"><h5 id="DateRatios3" style="text-align:center;"></h4></td>
+                        <td colspan='2' class='C4' style="padding-top: 21px;"><h5 id="DateRatios4" style="text-align:center;"></h4></td>
+                        <td colspan='2' class='C5' style="padding-top: 21px;"><h5 id="DateRatios5" style="text-align:center;"></h4></td>
+                        <td colspan='2' class='C6' style="padding-top: 21px;"><h5 id="DateRatios6" style="text-align:center;"></h4></td>
                     </tr>
                     <tr></tr>
                     <tr>
@@ -7341,7 +7349,6 @@
                     <tr>
                         <td colspan="4"><h5 style="margin-left:0px; padding-top: 25px; padding-bottom: 15px">Market Value</h5>
                     </tr>
-                    <tr></tr>
                     <tr id="PERow" class="Proportion">
                         <td colspan="2"><h6>Price / Earnings</h6></td>
                         <td style="color:#0d47a1; text-align:center; font-weight:bold;">(a)</td>
@@ -7375,7 +7382,7 @@
                     <tr></tr>
                     <tr></tr>
                     <tr>
-                        <td colspan="4"><h5 style="margin-left:0px; padding-top: 9%;">Profitability & Growth</h5></td>
+                        <td colspan="4"><h5 style="margin-left:0px; padding-top: 21px;">Profitability & Growth</h5></td>
                     </tr>
                     <tr></tr>
                     <tr id="ReturnOnEquityRow" class="ClockRate">
@@ -7774,7 +7781,7 @@
                     <tr></tr>
                     <tr></tr>
                     <tr>
-                        <td colspan="2"><h5 style="margin-left:0px; padding-top: 9%;">Leverage</h5></td>
+                        <td colspan="2"><h5 style="margin-left:0px; padding-top: 21px;">Leverage</h5></td>
                     </tr>
                     <tr></tr>
                     <tr id="DebtToEquityRow" class="Proportion">
@@ -8234,7 +8241,7 @@
                     <tr></tr>
                     <tr></tr>
                     <tr>
-                        <td colspan="2"><h5 style="margin-left:0px; padding-top: 9%;">Liquidity</h5></td>
+                        <td colspan="2"><h5 style="margin-left:0px; padding-top: 21px;">Liquidity</h5></td>
                     </tr>
                     <tr></tr>
                     <tr id="CurrentRow" class="ClockRate">
@@ -8332,7 +8339,7 @@
                     <tr></tr>
                     <tr></tr>
                     <tr>
-                        <td colspan="2"><h5 style="margin-left:0px; padding-top: 9%;">Operating</h5></td>
+                        <td colspan="2"><h5 style="margin-left:0px; padding-top: 21px;">Operating</h5></td>
                     </tr>
                     <tr></tr>
                     <tr id="InventoryTurnoverRow" class="Proportion">
@@ -8581,7 +8588,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-top: 9%; padding-bottom:9%">
+            <table style="border-bottom:solid #0D47A1; padding-top: 21px; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold; vertical-align:top">(a)</td>
@@ -8698,7 +8705,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-bottom: 9%">
+            <table style="border-bottom:solid #0D47A1; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td colspan="5"></td>
@@ -8712,12 +8719,12 @@
                                 document.getElementById('DateAdditionalInformation6').innerHTML = document.getElementById('ContextDate6').value;
                             };
                         </script>
-                        <td colspan='2' class='C1' style="padding-top: 9%;"><h5 id="DateAdditionalInformation1" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C2' style="padding-top: 9%;"><h5 id="DateAdditionalInformation2" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C3' style="padding-top: 9%;"><h5 id="DateAdditionalInformation3" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C4' style="padding-top: 9%;"><h5 id="DateAdditionalInformation4" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C5' style="padding-top: 9%;"><h5 id="DateAdditionalInformation5" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C6' style="padding-top: 9%;"><h5 id="DateAdditionalInformation6" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C1' style="padding-top: 21px;"><h5 id="DateAdditionalInformation1" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C2' style="padding-top: 21px;"><h5 id="DateAdditionalInformation2" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C3' style="padding-top: 21px;"><h5 id="DateAdditionalInformation3" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C4' style="padding-top: 21px;"><h5 id="DateAdditionalInformation4" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C5' style="padding-top: 21px;"><h5 id="DateAdditionalInformation5" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C6' style="padding-top: 21px;"><h5 id="DateAdditionalInformation6" style="text-align:center;"></h5></td>
                     </tr>
                     <tr></tr>
                     <tr>
@@ -8886,7 +8893,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-top: 9%; padding-bottom:9%">
+            <table style="border-bottom:solid #0D47A1; padding-top: 21px; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">(a)</td>
@@ -8966,12 +8973,12 @@
                                 document.getElementById('DateBalanceSheets6').innerHTML = document.getElementById('ContextDate6').value;
                             };
                         </script>
-                        <td colspan='2' class='C1' style="padding-top: 9%;"><h5 id="DateBalanceSheets1" style="text-align:center"></h5></td>
-                        <td colspan='2' class='C2' style="padding-top: 9%;"><h5 id="DateBalanceSheets2" style="text-align:center"></h5></td>
-                        <td colspan='2' class='C3' style="padding-top: 9%;"><h5 id="DateBalanceSheets3" style="text-align:center"></h5></td>
-                        <td colspan='2' class='C4' style="padding-top: 9%;"><h5 id="DateBalanceSheets4" style="text-align:center"></h5></td>
-                        <td colspan='2' class='C5' style="padding-top: 9%;"><h5 id="DateBalanceSheets5" style="text-align:center"></h5></td>
-                        <td colspan='2' class='C6' style="padding-top: 9%;"><h5 id="DateBalanceSheets6" style="text-align:center"></h5></td>
+                        <td colspan='2' class='C1' style="padding-top: 21px;"><h5 id="DateBalanceSheets1" style="text-align:center"></h5></td>
+                        <td colspan='2' class='C2' style="padding-top: 21px;"><h5 id="DateBalanceSheets2" style="text-align:center"></h5></td>
+                        <td colspan='2' class='C3' style="padding-top: 21px;"><h5 id="DateBalanceSheets3" style="text-align:center"></h5></td>
+                        <td colspan='2' class='C4' style="padding-top: 21px;"><h5 id="DateBalanceSheets4" style="text-align:center"></h5></td>
+                        <td colspan='2' class='C5' style="padding-top: 21px;"><h5 id="DateBalanceSheets5" style="text-align:center"></h5></td>
+                        <td colspan='2' class='C6' style="padding-top: 21px;"><h5 id="DateBalanceSheets6" style="text-align:center"></h5></td>
                     </tr>
                     <tr></tr>
                     <tr>
@@ -9151,7 +9158,7 @@
                     <tr></tr>
                     <tr></tr>
                     <tr>
-                        <td colspan="6" style="padding-top: 9%;"><h6><b>NOTE 1: CURRENT ASSETS</b></h6></td>
+                        <td colspan="6" style="padding-top: 21px;"><h6><b>NOTE 1: CURRENT ASSETS</b></h6></td>
                     </tr>
                     <tr></tr>
                     <tr id='CashRow' class="TrialBalance">
@@ -10088,7 +10095,7 @@
                     <tr></tr>
                     <tr></tr>
                     <tr>
-                        <td colspan="6" style="padding-top: 9%;"><h6><b>NOTE 2: NON-CURRENT ASSETS</b></h6></td>
+                        <td colspan="6" style="padding-top: 21px;"><h6><b>NOTE 2: NON-CURRENT ASSETS</b></h6></td>
                     </tr>
                     <tr></tr>
                     <tr id='LongTermReceivablesRow' class="TrialBalance">
@@ -11126,7 +11133,7 @@
                     <tr></tr>
                     <tr></tr>
                     <tr>
-                        <td colspan="6" style="padding-top: 9%;"><h6><b>NOTE 3: CURRENT LIABILITIES</b></h6></td>
+                        <td colspan="6" style="padding-top: 21px;"><h6><b>NOTE 3: CURRENT LIABILITIES</b></h6></td>
                     </tr>
                     <tr></tr>
                     <tr id='AccountsPayableAndAccruedLiabilitiesRow' class="TrialBalance">
@@ -12135,7 +12142,7 @@
                     <tr></tr>
                     <tr></tr>
                     <tr>
-                        <td colspan="6" style="padding-top: 9%;"><h6><b>NOTE 4: NON-CURRENT LIABILITIES</b></h6></td>
+                        <td colspan="6" style="padding-top: 21px;"><h6><b>NOTE 4: NON-CURRENT LIABILITIES</b></h6></td>
                     </tr>
                     <tr></tr>
                     <tr id='LongTermDebtRow' class="TrialBalance">
@@ -13173,7 +13180,7 @@
                     <tr></tr>
                     <tr></tr>
                     <tr>
-                        <td colspan="6" style="padding-top: 9%;"><h6><b>NOTE 5: SHAREHOLDERS' EQUITY</b></h6></td>
+                        <td colspan="6" style="padding-top: 21px;"><h6><b>NOTE 5: SHAREHOLDERS' EQUITY</b></h6></td>
                     </tr>
                     <tr></tr>
                     <tr id='ConvertibleDebtRow' class="TrialBalance">
@@ -13296,7 +13303,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-top: 9%; padding-bottom:9%">
+            <table style="border-bottom:solid #0D47A1; padding-top: 21px; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">TB</td>
@@ -13329,12 +13336,12 @@
                                 document.getElementById('DateStatementsOfIncome6').innerHTML = document.getElementById('ContextDate6').value;
                             };
                         </script>
-                        <td colspan='2' class='C1' style="padding-top: 9%;"><h5 id="DateStatementsOfIncome1" style="text-align:center"></h4></td>
-                        <td colspan='2' class='C2' style="padding-top: 9%;"><h5 id="DateStatementsOfIncome2" style="text-align:center"></h4></td>
-                        <td colspan='2' class='C3' style="padding-top: 9%;"><h5 id="DateStatementsOfIncome3" style="text-align:center"></h4></td>
-                        <td colspan='2' class='C4' style="padding-top: 9%;"><h5 id="DateStatementsOfIncome4" style="text-align:center"></h4></td>
-                        <td colspan='2' class='C5' style="padding-top: 9%;"><h5 id="DateStatementsOfIncome5" style="text-align:center"></h4></td>
-                        <td colspan='2' class='C6' style="padding-top: 9%;"><h5 id="DateStatementsOfIncome6" style="text-align:center"></h4></td>
+                        <td colspan='2' class='C1' style="padding-top: 21px;"><h5 id="DateStatementsOfIncome1" style="text-align:center"></h4></td>
+                        <td colspan='2' class='C2' style="padding-top: 21px;"><h5 id="DateStatementsOfIncome2" style="text-align:center"></h4></td>
+                        <td colspan='2' class='C3' style="padding-top: 21px;"><h5 id="DateStatementsOfIncome3" style="text-align:center"></h4></td>
+                        <td colspan='2' class='C4' style="padding-top: 21px;"><h5 id="DateStatementsOfIncome4" style="text-align:center"></h4></td>
+                        <td colspan='2' class='C5' style="padding-top: 21px;"><h5 id="DateStatementsOfIncome5" style="text-align:center"></h4></td>
+                        <td colspan='2' class='C6' style="padding-top: 21px;"><h5 id="DateStatementsOfIncome6" style="text-align:center"></h4></td>
                     </tr>
                     <tr></tr>
                     <tr>
@@ -14180,7 +14187,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-top: 9%; padding-bottom:9%">
+            <table style="border-bottom:solid #0D47A1; padding-top: 21px; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">TB</td>
@@ -14213,12 +14220,12 @@
                                 document.getElementById('DateStatementsOfComprehensiveIncome6').innerHTML = document.getElementById('ContextDate6').value;
                             };
                         </script>
-                        <td colspan='2' class='C1' style="padding-top: 9%;"><h5 id="DateStatementsOfComprehensiveIncome1" style="text-align:center"></h5></td>
-                        <td colspan='2' class='C2' style="padding-top: 9%;"><h5 id="DateStatementsOfComprehensiveIncome2" style="text-align:center"></h5></td>
-                        <td colspan='2' class='C3' style="padding-top: 9%;"><h5 id="DateStatementsOfComprehensiveIncome3" style="text-align:center"></h5></td>
-                        <td colspan='2' class='C4' style="padding-top: 9%;"><h5 id="DateStatementsOfComprehensiveIncome4" style="text-align:center"></h5></td>
-                        <td colspan='2' class='C5' style="padding-top: 9%;"><h5 id="DateStatementsOfComprehensiveIncome5" style="text-align:center"></h5></td>
-                        <td colspan='2' class='C6' style="padding-top: 9%;"><h5 id="DateStatementsOfComprehensiveIncome6" style="text-align:center"></h5></td>
+                        <td colspan='2' class='C1' style="padding-top: 21px;"><h5 id="DateStatementsOfComprehensiveIncome1" style="text-align:center"></h5></td>
+                        <td colspan='2' class='C2' style="padding-top: 21px;"><h5 id="DateStatementsOfComprehensiveIncome2" style="text-align:center"></h5></td>
+                        <td colspan='2' class='C3' style="padding-top: 21px;"><h5 id="DateStatementsOfComprehensiveIncome3" style="text-align:center"></h5></td>
+                        <td colspan='2' class='C4' style="padding-top: 21px;"><h5 id="DateStatementsOfComprehensiveIncome4" style="text-align:center"></h5></td>
+                        <td colspan='2' class='C5' style="padding-top: 21px;"><h5 id="DateStatementsOfComprehensiveIncome5" style="text-align:center"></h5></td>
+                        <td colspan='2' class='C6' style="padding-top: 21px;"><h5 id="DateStatementsOfComprehensiveIncome6" style="text-align:center"></h5></td>
                     </tr>
                     <tr></tr>
                     <tr>
@@ -14702,7 +14709,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-top: 9%; padding-bottom:9%">
+            <table style="border-bottom:solid #0D47A1; padding-top: 21px; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold; vertical-align:top;">IS</td>
@@ -16328,7 +16335,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-top: 9%; padding-bottom:9%">
+            <table style="border-bottom:solid #0D47A1; padding-top: 21px; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">\</td>
@@ -16369,12 +16376,12 @@
                                 document.getElementById('DateStatementsOfCashFlow6').innerHTML = document.getElementById('ContextDate6').value;
                             };
                         </script>
-                        <td colspan='2' class='C1' style="padding-top: 9%;"><h5 id="DateStatementsOfCashFlow1" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C2' style="padding-top: 9%;"><h5 id="DateStatementsOfCashFlow2" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C3' style="padding-top: 9%;"><h5 id="DateStatementsOfCashFlow3" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C4' style="padding-top: 9%;"><h5 id="DateStatementsOfCashFlow4" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C5' style="padding-top: 9%;"><h5 id="DateStatementsOfCashFlow5" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C6' style="padding-top: 9%;"><h5 id="DateStatementsOfCashFlow6" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C1' style="padding-top: 21px;"><h5 id="DateStatementsOfCashFlow1" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C2' style="padding-top: 21px;"><h5 id="DateStatementsOfCashFlow2" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C3' style="padding-top: 21px;"><h5 id="DateStatementsOfCashFlow3" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C4' style="padding-top: 21px;"><h5 id="DateStatementsOfCashFlow4" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C5' style="padding-top: 21px;"><h5 id="DateStatementsOfCashFlow5" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C6' style="padding-top: 21px;"><h5 id="DateStatementsOfCashFlow6" style="text-align:center;"></h5></td>
                     </tr>
                     <tr></tr>
                     <tr>
@@ -16557,7 +16564,7 @@
                     <tr></tr>
                     <tr></tr>
                     <tr>
-                        <td colspan="7" style="padding-top: 9%;"><h6><b>NOTE 1: OPERATING ACTIVITIES</b></h6></td>
+                        <td colspan="7" style="padding-top: 21px;"><h6><b>NOTE 1: OPERATING ACTIVITIES</b></h6></td>
                     </tr>
                     <tr></tr>
                     <tr id="NetIncomeCashFlowRow" class="TrialBalance">
@@ -17802,7 +17809,7 @@
                     <tr></tr>
                     <tr></tr>
                     <tr>
-                        <td colspan="7" style="padding-top: 9%;"><h6><b>NOTE 2: INVESTING ACTIVITIES</b></h6></td>
+                        <td colspan="7" style="padding-top: 21px;"><h6><b>NOTE 2: INVESTING ACTIVITIES</b></h6></td>
                     </tr>
                     <tr></tr>
                     <tr id='PaymentsToAcquireInvestmentsRow' class="TrialBalance">
@@ -18616,7 +18623,7 @@
                     <tr></tr>
                     <tr></tr>
                     <tr>
-                        <td colspan="7" style="padding-top: 9%;"><h6><b>NOTE 3: FINANCING ACTIVITIES</b></h6></td>
+                        <td colspan="7" style="padding-top: 21px;"><h6><b>NOTE 3: FINANCING ACTIVITIES</b></h6></td>
                     </tr>
                     <tr></tr>
                     <tr id='FinanceLeasePrincipalPaymentsRow' class="TrialBalance">
@@ -19795,7 +19802,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-top: 9%; padding-bottom:9%">
+            <table style="border-bottom:solid #0D47A1; padding-top: 21px; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">BS</td>
@@ -19832,12 +19839,12 @@
                                 document.getElementById('DateTrialBalance6').innerHTML = document.getElementById('ContextDate6').value;
                             };
                         </script>
-                        <td colspan='2' class='C1' style="padding-top: 9%;"><h5 id="DateTrialBalance1" style="text-align:center"></h5></td>
-                        <td colspan='2' class='C2' style="padding-top: 9%;"><h5 id="DateTrialBalance2" style="text-align:center"></h5></td>
-                        <td colspan='2' class='C3' style="padding-top: 9%;"><h5 id="DateTrialBalance3" style="text-align:center"></h5></td>
-                        <td colspan='2' class='C4' style="padding-top: 9%;"><h5 id="DateTrialBalance4" style="text-align:center"></h5></td>
-                        <td colspan='2' class='C5' style="padding-top: 9%;"><h5 id="DateTrialBalance5" style="text-align:center"></h5></td>
-                        <td colspan='2' class='C6' style="padding-top: 9%;"><h5 id="DateTrialBalance6" style="text-align:center"></h5></td>
+                        <td colspan='2' class='C1' style="padding-top: 21px;"><h5 id="DateTrialBalance1" style="text-align:center"></h5></td>
+                        <td colspan='2' class='C2' style="padding-top: 21px;"><h5 id="DateTrialBalance2" style="text-align:center"></h5></td>
+                        <td colspan='2' class='C3' style="padding-top: 21px;"><h5 id="DateTrialBalance3" style="text-align:center"></h5></td>
+                        <td colspan='2' class='C4' style="padding-top: 21px;"><h5 id="DateTrialBalance4" style="text-align:center"></h5></td>
+                        <td colspan='2' class='C5' style="padding-top: 21px;"><h5 id="DateTrialBalance5" style="text-align:center"></h5></td>
+                        <td colspan='2' class='C6' style="padding-top: 21px;"><h5 id="DateTrialBalance6" style="text-align:center"></h5></td>
                     </tr>
                     <tr></tr>
                     <tr>
@@ -21685,14 +21692,14 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-bottom: 9%">
+            <table style="border-bottom:solid #0D47A1; padding-bottom: 21px;">
                 <tbody>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
                     <tr>
-                        <td style="padding-top: 9%;">
+                        <td style="padding-top: 21px;">
                             <h6><b>USERS</b></h6>
                         </td>
                     </tr>
@@ -21769,11 +21776,11 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-bottom: 9%">
+            <table style="border-bottom:solid #0D47A1; padding-bottom: 21px;">
                 <tbody>
                     </tr>
                     <tr id="TargetLevelOfAssuranceRow" class="Proportion">
-                        <td colspan='2' style="padding-top: 9%;"><h6><b>Target level of assurance</b></h6></td>
+                        <td colspan='2' style="padding-top: 21px;"><h6><b>Target level of assurance</b></h6></td>
                         <td></td>
                         <td style="display:none"><input id="TargetLevelOfAssurance1" onfocusout="Compile()"></input></td>
                         <td style="display:none"><input id="TargetLevelOfAssurance2" onfocusout="Compile()"></input></td>
@@ -21784,12 +21791,12 @@
                             <input type="checkbox" id="TargetLevelOfAssuranceCheckbox" style="margin-top:30px;"></input>
                             <input type="checkbox" id="TargetLevelOfAssuranceCheckbox2"></input>
                         </td>
-                        <td colspan='2' style="padding-top: 9%;"><input id="TargetLevelOfAssurance6" class="ClockRate" style="font-weight:bold;" value="0.95" onfocusout="Compile()" onchange='FormatCell()'></input></td>
+                        <td colspan='2' style="padding-top: 21px;"><input id="TargetLevelOfAssurance6" class="ClockRate" style="font-weight:bold;" value="0.95" onfocusout="Compile()" onchange='FormatCell()'></input></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
                     <tr>
-                        <td colspan='5' style="padding-top: 9%;"><h6><b>Calculation Basis</b></h6></td>
+                        <td colspan='5' style="padding-top: 21px;"><h6><b>Calculation Basis</b></h6></td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -21998,7 +22005,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-bottom: 9%">
+            <table style="border-bottom:solid #0D47A1; padding-bottom: 21px;">
                 <tbody>
                     <tr></tr>
                     <tr></tr>
@@ -22016,12 +22023,12 @@
                                 document.getElementById('DateAuditSummary6').innerHTML = document.getElementById('ContextDate6').value;
                             };
                         </script>
-                        <td colspan='2' class='C1' style="padding-top: 9%;"><h5 id="DateAuditSummary1" style="text-align:center"></h4></td>
-                        <td colspan='2' class='C2' style="padding-top: 9%;"><h5 id="DateAuditSummary2" style="text-align:center"></h4></td>
-                        <td colspan='2' class='C3' style="padding-top: 9%;"><h5 id="DateAuditSummary3" style="text-align:center"></h4></td>
-                        <td colspan='2' class='C4' style="padding-top: 9%;"><h5 id="DateAuditSummary4" style="text-align:center"></h4></td>
-                        <td colspan='2' class='C5' style="padding-top: 9%;"><h5 id="DateAuditSummary5" style="text-align:center"></h4></td>
-                        <td colspan='2' class='C6' style="padding-top: 9%;"><h5 id="DateAuditSummary6" style="text-align:center"></h4></td>
+                        <td colspan='2' class='C1' style="padding-top: 21px;"><h5 id="DateAuditSummary1" style="text-align:center"></h4></td>
+                        <td colspan='2' class='C2' style="padding-top: 21px;"><h5 id="DateAuditSummary2" style="text-align:center"></h4></td>
+                        <td colspan='2' class='C3' style="padding-top: 21px;"><h5 id="DateAuditSummary3" style="text-align:center"></h4></td>
+                        <td colspan='2' class='C4' style="padding-top: 21px;"><h5 id="DateAuditSummary4" style="text-align:center"></h4></td>
+                        <td colspan='2' class='C5' style="padding-top: 21px;"><h5 id="DateAuditSummary5" style="text-align:center"></h4></td>
+                        <td colspan='2' class='C6' style="padding-top: 21px;"><h5 id="DateAuditSummary6" style="text-align:center"></h4></td>
                     </tr>
                     <tr></tr>
                     <tr>
@@ -23065,7 +23072,7 @@
                     </tr>
                 </tbody>
             </table>            
-            <table style="border-bottom:solid #0D47A1; padding-top: 9%; padding-bottom:9%">
+            <table style="border-bottom:solid #0D47A1; padding-top: 21px; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">MT</td>
@@ -23096,7 +23103,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-bottom: 9%">
+            <table style="border-bottom:solid #0D47A1; padding-bottom: 21px;">
                 <tbody>
                     <tr></tr>
                     <tr></tr>
@@ -23114,12 +23121,12 @@
                                 document.getElementById('DateAnomalies6').innerHTML = document.getElementById('ContextDate6').value;
                             };
                         </script>
-                        <td colspan='2' class='C1' style="padding-top: 9%;"><h5 id="DateAnomalies1" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C2' style="padding-top: 9%;"><h5 id="DateAnomalies2" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C3' style="padding-top: 9%;"><h5 id="DateAnomalies3" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C4' style="padding-top: 9%;"><h5 id="DateAnomalies4" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C5' style="padding-top: 9%;"><h5 id="DateAnomalies5" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C6' style="padding-top: 9%;"><h5 id="DateAnomalies6" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C1' style="padding-top: 21px;"><h5 id="DateAnomalies1" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C2' style="padding-top: 21px;"><h5 id="DateAnomalies2" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C3' style="padding-top: 21px;"><h5 id="DateAnomalies3" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C4' style="padding-top: 21px;"><h5 id="DateAnomalies4" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C5' style="padding-top: 21px;"><h5 id="DateAnomalies5" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C6' style="padding-top: 21px;"><h5 id="DateAnomalies6" style="text-align:center;"></h5></td>
                     </tr>
                     <tr></tr>
                     <tr>
@@ -23928,7 +23935,7 @@
                     <tr></tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-top: 9%; padding-bottom:9%">
+            <table style="border-bottom:solid #0D47A1; padding-top: 21px; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">P</td>
@@ -23978,12 +23985,12 @@
                                 document.getElementById('DateProcedureAnnualBalanceSheets6').innerHTML = document.getElementById('ContextDate6').value;
                             };
                         </script>
-                        <td colspan='2' class='C1' style="padding-top: 9%;"><h5 id="DateProcedureAnnualBalanceSheets1" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C2' style="padding-top: 9%;"><h5 id="DateProcedureAnnualBalanceSheets2" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C3' style="padding-top: 9%;"><h5 id="DateProcedureAnnualBalanceSheets3" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C4' style="padding-top: 9%;"><h5 id="DateProcedureAnnualBalanceSheets4" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C5' style="padding-top: 9%;"><h5 id="DateProcedureAnnualBalanceSheets5" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C6' style="padding-top: 9%;"><h5 id="DateProcedureAnnualBalanceSheets6" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C1' style="padding-top: 21px;"><h5 id="DateProcedureAnnualBalanceSheets1" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C2' style="padding-top: 21px;"><h5 id="DateProcedureAnnualBalanceSheets2" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C3' style="padding-top: 21px;"><h5 id="DateProcedureAnnualBalanceSheets3" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C4' style="padding-top: 21px;"><h5 id="DateProcedureAnnualBalanceSheets4" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C5' style="padding-top: 21px;"><h5 id="DateProcedureAnnualBalanceSheets5" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C6' style="padding-top: 21px;"><h5 id="DateProcedureAnnualBalanceSheets6" style="text-align:center;"></h5></td>
                     </tr>
                     <tr></tr>
                     <tr>
@@ -24181,7 +24188,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-bottom: 9%">
+            <table style="border-bottom:solid #0D47A1; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td colspan="5"></td>
@@ -24195,12 +24202,12 @@
                                 document.getElementById('DateProcedureAnnualBalanceSheetsii6').innerHTML = document.getElementById('ContextDate6').value;
                             };
                         </script>
-                        <td colspan='2' class='C1' style="padding-top: 9%;"><h5 id="DateProcedureAnnualBalanceSheetsii1" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C2' style="padding-top: 9%;"><h5 id="DateProcedureAnnualBalanceSheetsii2" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C3' style="padding-top: 9%;"><h5 id="DateProcedureAnnualBalanceSheetsii3" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C4' style="padding-top: 9%;"><h5 id="DateProcedureAnnualBalanceSheetsii4" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C5' style="padding-top: 9%;"><h5 id="DateProcedureAnnualBalanceSheetsii5" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C6' style="padding-top: 9%;"><h5 id="DateProcedureAnnualBalanceSheetsii6" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C1' style="padding-top: 21px;"><h5 id="DateProcedureAnnualBalanceSheetsii1" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C2' style="padding-top: 21px;"><h5 id="DateProcedureAnnualBalanceSheetsii2" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C3' style="padding-top: 21px;"><h5 id="DateProcedureAnnualBalanceSheetsii3" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C4' style="padding-top: 21px;"><h5 id="DateProcedureAnnualBalanceSheetsii4" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C5' style="padding-top: 21px;"><h5 id="DateProcedureAnnualBalanceSheetsii5" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C6' style="padding-top: 21px;"><h5 id="DateProcedureAnnualBalanceSheetsii6" style="text-align:center;"></h5></td>
                     </tr>
                     <tr></tr>
                     <tr>
@@ -25092,7 +25099,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table id="ProcedureAnnualBalanceSheets2" style="border-bottom:solid #0D47A1; padding-bottom: 9%">
+            <table id="ProcedureAnnualBalanceSheets2" style="border-bottom:solid #0D47A1; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td colspan="5"></td>
@@ -25106,12 +25113,12 @@
                                 document.getElementById('DateProcedureAnnualBalanceSheetsiii6').innerHTML = document.getElementById('ContextDate6').value;
                             };
                         </script>
-                        <td colspan='2' class='C1' style="padding-top: 9%;"><h5 id="DateProcedureAnnualBalanceSheetsiii1" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C2' style="padding-top: 9%;"><h5 id="DateProcedureAnnualBalanceSheetsiii2" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C3' style="padding-top: 9%;"><h5 id="DateProcedureAnnualBalanceSheetsiii3" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C4' style="padding-top: 9%;"><h5 id="DateProcedureAnnualBalanceSheetsiii4" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C5' style="padding-top: 9%;"><h5 id="DateProcedureAnnualBalanceSheetsiii5" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C6' style="padding-top: 9%;"><h5 id="DateProcedureAnnualBalanceSheetsiii6" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C1' style="padding-top: 21px;"><h5 id="DateProcedureAnnualBalanceSheetsiii1" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C2' style="padding-top: 21px;"><h5 id="DateProcedureAnnualBalanceSheetsiii2" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C3' style="padding-top: 21px;"><h5 id="DateProcedureAnnualBalanceSheetsiii3" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C4' style="padding-top: 21px;"><h5 id="DateProcedureAnnualBalanceSheetsiii4" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C5' style="padding-top: 21px;"><h5 id="DateProcedureAnnualBalanceSheetsiii5" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C6' style="padding-top: 21px;"><h5 id="DateProcedureAnnualBalanceSheetsiii6" style="text-align:center;"></h5></td>
                     </tr>
                     <tr></tr>
                     <tr>
@@ -25436,7 +25443,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-top: 9%; padding-bottom:9%">
+            <table style="border-bottom:solid #0D47A1; padding-top: 21px; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">BS</td>
@@ -25472,7 +25479,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-bottom: 9%">
+            <table style="border-bottom:solid #0D47A1; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td colspan="5"></td>
@@ -25486,12 +25493,12 @@
                                 document.getElementById('DateProcedureAnnualIncomeStatements6').innerHTML = document.getElementById('ContextDate6').value;
                             };
                         </script>
-                        <td colspan='2' class='C1' style="padding-top: 9%;"><h5 id="DateProcedureAnnualIncomeStatements1" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C2' style="padding-top: 9%;"><h5 id="DateProcedureAnnualIncomeStatements2" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C3' style="padding-top: 9%;"><h5 id="DateProcedureAnnualIncomeStatements3" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C4' style="padding-top: 9%;"><h5 id="DateProcedureAnnualIncomeStatements4" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C5' style="padding-top: 9%;"><h5 id="DateProcedureAnnualIncomeStatements5" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C6' style="padding-top: 9%;"><h5 id="DateProcedureAnnualIncomeStatements6" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C1' style="padding-top: 21px;"><h5 id="DateProcedureAnnualIncomeStatements1" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C2' style="padding-top: 21px;"><h5 id="DateProcedureAnnualIncomeStatements2" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C3' style="padding-top: 21px;"><h5 id="DateProcedureAnnualIncomeStatements3" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C4' style="padding-top: 21px;"><h5 id="DateProcedureAnnualIncomeStatements4" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C5' style="padding-top: 21px;"><h5 id="DateProcedureAnnualIncomeStatements5" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C6' style="padding-top: 21px;"><h5 id="DateProcedureAnnualIncomeStatements6" style="text-align:center;"></h5></td>
                     </tr>
                     <tr></tr>
                     <tr>
@@ -26020,7 +26027,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-bottom: 9%">
+            <table style="border-bottom:solid #0D47A1; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td colspan="5"></td>
@@ -26034,12 +26041,12 @@
                                 document.getElementById('DateProcedureAnnualIncomeStatementsi6').innerHTML = document.getElementById('ContextDate6').value;
                             };
                         </script>
-                        <td colspan='2' class='C1' style="padding-top: 9%;"><h5 id="DateProcedureAnnualIncomeStatementsi1" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C2' style="padding-top: 9%;"><h5 id="DateProcedureAnnualIncomeStatementsi2" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C3' style="padding-top: 9%;"><h5 id="DateProcedureAnnualIncomeStatementsi3" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C4' style="padding-top: 9%;"><h5 id="DateProcedureAnnualIncomeStatementsi4" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C5' style="padding-top: 9%;"><h5 id="DateProcedureAnnualIncomeStatementsi5" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C6' style="padding-top: 9%;"><h5 id="DateProcedureAnnualIncomeStatementsi6" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C1' style="padding-top: 21px;"><h5 id="DateProcedureAnnualIncomeStatementsi1" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C2' style="padding-top: 21px;"><h5 id="DateProcedureAnnualIncomeStatementsi2" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C3' style="padding-top: 21px;"><h5 id="DateProcedureAnnualIncomeStatementsi3" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C4' style="padding-top: 21px;"><h5 id="DateProcedureAnnualIncomeStatementsi4" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C5' style="padding-top: 21px;"><h5 id="DateProcedureAnnualIncomeStatementsi5" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C6' style="padding-top: 21px;"><h5 id="DateProcedureAnnualIncomeStatementsi6" style="text-align:center;"></h5></td>
                     </tr>
                     <tr></tr>
                     <tr>
@@ -26308,7 +26315,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-top: 9%; padding-bottom:9%">
+            <table style="border-bottom:solid #0D47A1; padding-top: 21px; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">IS</td>
@@ -26344,7 +26351,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-bottom: 9%">
+            <table style="border-bottom:solid #0D47A1; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td colspan="5"></td>
@@ -26358,12 +26365,12 @@
                                 document.getElementById('DateProcedureAnnualComprehensiveIncome6').innerHTML = document.getElementById('ContextDate6').value;
                             };
                         </script>
-                        <td colspan='2' class='C1' style="padding-top: 9%;"><h5 id="DateProcedureAnnualComprehensiveIncome1" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C2' style="padding-top: 9%;"><h5 id="DateProcedureAnnualComprehensiveIncome2" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C3' style="padding-top: 9%;"><h5 id="DateProcedureAnnualComprehensiveIncome3" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C4' style="padding-top: 9%;"><h5 id="DateProcedureAnnualComprehensiveIncome4" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C5' style="padding-top: 9%;"><h5 id="DateProcedureAnnualComprehensiveIncome5" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C6' style="padding-top: 9%;"><h5 id="DateProcedureAnnualComprehensiveIncome6" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C1' style="padding-top: 21px;"><h5 id="DateProcedureAnnualComprehensiveIncome1" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C2' style="padding-top: 21px;"><h5 id="DateProcedureAnnualComprehensiveIncome2" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C3' style="padding-top: 21px;"><h5 id="DateProcedureAnnualComprehensiveIncome3" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C4' style="padding-top: 21px;"><h5 id="DateProcedureAnnualComprehensiveIncome4" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C5' style="padding-top: 21px;"><h5 id="DateProcedureAnnualComprehensiveIncome5" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C6' style="padding-top: 21px;"><h5 id="DateProcedureAnnualComprehensiveIncome6" style="text-align:center;"></h5></td>
                     </tr>
                     <tr></tr>
                     <tr>
@@ -26553,7 +26560,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-bottom: 9%">
+            <table style="border-bottom:solid #0D47A1; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td colspan="5"></td>
@@ -26567,12 +26574,12 @@
                                 document.getElementById('DateProcedureAnnualComprehensiveIncomeStatements6').innerHTML = document.getElementById('ContextDate6').value;
                             };
                         </script>
-                        <td colspan='2' class='C1' style="padding-top: 9%;"><h5 id="DateProcedureAnnualComprehensiveIncomeStatements1" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C2' style="padding-top: 9%;"><h5 id="DateProcedureAnnualComprehensiveIncomeStatements2" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C3' style="padding-top: 9%;"><h5 id="DateProcedureAnnualComprehensiveIncomeStatements3" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C4' style="padding-top: 9%;"><h5 id="DateProcedureAnnualComprehensiveIncomeStatements4" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C5' style="padding-top: 9%;"><h5 id="DateProcedureAnnualComprehensiveIncomeStatements5" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C6' style="padding-top: 9%;"><h5 id="DateProcedureAnnualComprehensiveIncomeStatements6" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C1' style="padding-top: 21px;"><h5 id="DateProcedureAnnualComprehensiveIncomeStatements1" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C2' style="padding-top: 21px;"><h5 id="DateProcedureAnnualComprehensiveIncomeStatements2" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C3' style="padding-top: 21px;"><h5 id="DateProcedureAnnualComprehensiveIncomeStatements3" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C4' style="padding-top: 21px;"><h5 id="DateProcedureAnnualComprehensiveIncomeStatements4" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C5' style="padding-top: 21px;"><h5 id="DateProcedureAnnualComprehensiveIncomeStatements5" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C6' style="padding-top: 21px;"><h5 id="DateProcedureAnnualComprehensiveIncomeStatements6" style="text-align:center;"></h5></td>
                     </tr>
                     <tr></tr>
                     <tr>
@@ -26675,7 +26682,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-top: 9%; padding-bottom:9%">
+            <table style="border-bottom:solid #0D47A1; padding-top: 21px; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">CI</td>
@@ -26718,7 +26725,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-bottom: 9%">
+            <table style="border-bottom:solid #0D47A1; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td colspan="5"></td>
@@ -26732,12 +26739,12 @@
                                 document.getElementById('DateProcedureAnnualShareholdersEquityiii6').innerHTML = document.getElementById('ContextDate6').value;
                             };
                         </script>
-                        <td colspan='2' class='C1' style="padding-top: 9%;"><h5 id="DateProcedureAnnualShareholdersEquityiii1" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C2' style="padding-top: 9%;"><h5 id="DateProcedureAnnualShareholdersEquityiii2" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C3' style="padding-top: 9%;"><h5 id="DateProcedureAnnualShareholdersEquityiii3" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C4' style="padding-top: 9%;"><h5 id="DateProcedureAnnualShareholdersEquityiii4" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C5' style="padding-top: 9%;"><h5 id="DateProcedureAnnualShareholdersEquityiii5" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C6' style="padding-top: 9%;"><h5 id="DateProcedureAnnualShareholdersEquityiii6" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C1' style="padding-top: 21px;"><h5 id="DateProcedureAnnualShareholdersEquityiii1" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C2' style="padding-top: 21px;"><h5 id="DateProcedureAnnualShareholdersEquityiii2" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C3' style="padding-top: 21px;"><h5 id="DateProcedureAnnualShareholdersEquityiii3" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C4' style="padding-top: 21px;"><h5 id="DateProcedureAnnualShareholdersEquityiii4" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C5' style="padding-top: 21px;"><h5 id="DateProcedureAnnualShareholdersEquityiii5" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C6' style="padding-top: 21px;"><h5 id="DateProcedureAnnualShareholdersEquityiii6" style="text-align:center;"></h5></td>
                     </tr>
                     <tr></tr>
                     <tr>
@@ -26930,7 +26937,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-bottom: 9%">
+            <table style="border-bottom:solid #0D47A1; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td colspan="5"></td>
@@ -26944,12 +26951,12 @@
                                 document.getElementById('DateProcedureAnnualShareholdersEquity6').innerHTML = document.getElementById('ContextDate6').value;
                             };
                         </script>
-                        <td colspan='2' class='C1' style="padding-top: 9%;"><h5 id="DateProcedureAnnualShareholdersEquity1" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C2' style="padding-top: 9%;"><h5 id="DateProcedureAnnualShareholdersEquity2" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C3' style="padding-top: 9%;"><h5 id="DateProcedureAnnualShareholdersEquity3" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C4' style="padding-top: 9%;"><h5 id="DateProcedureAnnualShareholdersEquity4" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C5' style="padding-top: 9%;"><h5 id="DateProcedureAnnualShareholdersEquity5" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C6' style="padding-top: 9%;"><h5 id="DateProcedureAnnualShareholdersEquity6" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C1' style="padding-top: 21px;"><h5 id="DateProcedureAnnualShareholdersEquity1" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C2' style="padding-top: 21px;"><h5 id="DateProcedureAnnualShareholdersEquity2" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C3' style="padding-top: 21px;"><h5 id="DateProcedureAnnualShareholdersEquity3" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C4' style="padding-top: 21px;"><h5 id="DateProcedureAnnualShareholdersEquity4" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C5' style="padding-top: 21px;"><h5 id="DateProcedureAnnualShareholdersEquity5" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C6' style="padding-top: 21px;"><h5 id="DateProcedureAnnualShareholdersEquity6" style="text-align:center;"></h5></td>
                     </tr>
                     <tr></tr>
                     <tr>
@@ -27196,7 +27203,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-bottom: 9%"> 
+            <table style="border-bottom:solid #0D47A1; padding-bottom: 21px;"> 
                 <tbody>
                     <tr>
                         <td colspan="5"></td>
@@ -27210,12 +27217,12 @@
                                 document.getElementById('DateProcedureAnnualShareholdersEquityi6').innerHTML = document.getElementById('ContextDate6').value;
                             };
                         </script>
-                        <td colspan='2' class='C1' style="padding-top: 9%;"><h5 id="DateProcedureAnnualShareholdersEquityi1" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C2' style="padding-top: 9%;"><h5 id="DateProcedureAnnualShareholdersEquityi2" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C3' style="padding-top: 9%;"><h5 id="DateProcedureAnnualShareholdersEquityi3" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C4' style="padding-top: 9%;"><h5 id="DateProcedureAnnualShareholdersEquityi4" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C5' style="padding-top: 9%;"><h5 id="DateProcedureAnnualShareholdersEquityi5" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C6' style="padding-top: 9%;"><h5 id="DateProcedureAnnualShareholdersEquityi6" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C1' style="padding-top: 21px;"><h5 id="DateProcedureAnnualShareholdersEquityi1" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C2' style="padding-top: 21px;"><h5 id="DateProcedureAnnualShareholdersEquityi2" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C3' style="padding-top: 21px;"><h5 id="DateProcedureAnnualShareholdersEquityi3" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C4' style="padding-top: 21px;"><h5 id="DateProcedureAnnualShareholdersEquityi4" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C5' style="padding-top: 21px;"><h5 id="DateProcedureAnnualShareholdersEquityi5" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C6' style="padding-top: 21px;"><h5 id="DateProcedureAnnualShareholdersEquityi6" style="text-align:center;"></h5></td>
                     </tr>
                     <tr></tr>
                     <tr>
@@ -27396,7 +27403,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-top: 9%; padding-bottom:9%">
+            <table style="border-bottom:solid #0D47A1; padding-top: 21px; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">SE</td>
@@ -27439,7 +27446,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-bottom: 9%"> 
+            <table style="border-bottom:solid #0D47A1; padding-bottom: 21px;"> 
                 <tbody>
                     <tr>
                         <td colspan="5"></td>
@@ -27453,12 +27460,12 @@
                                 document.getElementById('DateProcedureAnnualCashFlow6').innerHTML = document.getElementById('ContextDate6').value;
                             };
                         </script>
-                        <td colspan='2' class='C1' style="padding-top: 9%;"><h5 id="DateProcedureAnnualCashFlow1" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C2' style="padding-top: 9%;"><h5 id="DateProcedureAnnualCashFlow2" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C3' style="padding-top: 9%;"><h5 id="DateProcedureAnnualCashFlow3" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C4' style="padding-top: 9%;"><h5 id="DateProcedureAnnualCashFlow4" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C5' style="padding-top: 9%;"><h5 id="DateProcedureAnnualCashFlow5" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C6' style="padding-top: 9%;"><h5 id="DateProcedureAnnualCashFlow6" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C1' style="padding-top: 21px;"><h5 id="DateProcedureAnnualCashFlow1" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C2' style="padding-top: 21px;"><h5 id="DateProcedureAnnualCashFlow2" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C3' style="padding-top: 21px;"><h5 id="DateProcedureAnnualCashFlow3" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C4' style="padding-top: 21px;"><h5 id="DateProcedureAnnualCashFlow4" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C5' style="padding-top: 21px;"><h5 id="DateProcedureAnnualCashFlow5" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C6' style="padding-top: 21px;"><h5 id="DateProcedureAnnualCashFlow6" style="text-align:center;"></h5></td>
                     </tr>
                     <tr></tr>
                     <tr>
@@ -27678,7 +27685,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-bottom: 9%"> 
+            <table style="border-bottom:solid #0D47A1; padding-bottom: 21px;"> 
                 <tbody>
                     <tr>
                         <td colspan="5"></td>
@@ -27692,12 +27699,12 @@
                                 document.getElementById('DateProcedureAnnualCashFlowClassification6').innerHTML = document.getElementById('ContextDate6').value;
                             };
                         </script>
-                        <td colspan='2' class='C1' style="padding-top: 9%;"><h5 id="DateProcedureAnnualCashFlowClassification1" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C2' style="padding-top: 9%;"><h5 id="DateProcedureAnnualCashFlowClassification2" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C3' style="padding-top: 9%;"><h5 id="DateProcedureAnnualCashFlowClassification3" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C4' style="padding-top: 9%;"><h5 id="DateProcedureAnnualCashFlowClassification4" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C5' style="padding-top: 9%;"><h5 id="DateProcedureAnnualCashFlowClassification5" style="text-align:center;"></h5></td>
-                        <td colspan='2' class='C6' style="padding-top: 9%;"><h5 id="DateProcedureAnnualCashFlowClassification6" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C1' style="padding-top: 21px;"><h5 id="DateProcedureAnnualCashFlowClassification1" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C2' style="padding-top: 21px;"><h5 id="DateProcedureAnnualCashFlowClassification2" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C3' style="padding-top: 21px;"><h5 id="DateProcedureAnnualCashFlowClassification3" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C4' style="padding-top: 21px;"><h5 id="DateProcedureAnnualCashFlowClassification4" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C5' style="padding-top: 21px;"><h5 id="DateProcedureAnnualCashFlowClassification5" style="text-align:center;"></h5></td>
+                        <td colspan='2' class='C6' style="padding-top: 21px;"><h5 id="DateProcedureAnnualCashFlowClassification6" style="text-align:center;"></h5></td>
                     </tr>
                     <tr></tr>
                     <tr>
@@ -27912,7 +27919,7 @@
                     <tr></tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-top: 9%; padding-bottom:9%">
+            <table style="border-bottom:solid #0D47A1; padding-top: 21px; padding-bottom: 21px;">
                 <tbody>
                     <tr>
                         <td style="color:#0d47a1; text-align:left; font-weight:bold;">BS</td>
@@ -28287,7 +28294,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="padding-bottom: 9%">
+            <table style="padding-bottom: 21px;">
                 <tbody>
                     <tr></tr>
                     <tr></tr>
@@ -28312,7 +28319,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-bottom: 9%" id="FilesSection">
+            <table style="border-bottom:solid #0D47A1; padding-bottom: 21px;" id="FilesSection">
                 <tbody id="FilesButtons">
                     <tr style="display:none" id="header">
                         <td colspan="3" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" data-page="ReferenceHeader">Description</button></td>
@@ -28513,7 +28520,7 @@
                 </tr>
             </tbody>
         </table>
-        <table style="border-bottom:solid #0D47A1; padding-top: 9%; padding-bottom: 9%">
+        <table style="border-bottom:solid #0D47A1; padding-top: 21px; padding-bottom: 21px;">
             <tbody>
                 <tr></tr>
                 <tr></tr>

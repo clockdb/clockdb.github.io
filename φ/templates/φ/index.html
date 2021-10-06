@@ -66,39 +66,26 @@
         })
         document.querySelector(`#${page}`).style.display = 'block';
     }
-    // mouseover button
-    document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('button').forEach(button => {
-            button.onmouseover = function() {
-                menus = [
-                    'General',
-                    'Options',
-                ]
-                const url = this.dataset.page;
-                if (menus.includes(url)) {
-                    try {
-                        closeMenus();
-                        showPage(this.dataset.page);
-                    } catch {}
-                } else {}
-            };
-        });
-    });
     // button click
     document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('button').forEach(button => {
             button.onclick = function() {
-                skip = [
+                menus = [
                     'General',
                     'Options',
                     'SearchButton',
                 ]
                 const url = this.dataset.page;
                 //
-                if (skip.includes(url)) {
-                    a = document.getElementById(url).style.display;
+                if (menus.includes(url)) {
+                    closeMenus();
+                    a = document.getElementById(url).style.display
                     if (a == 'block') {
                         document.getElementById(url).style.display = 'none';
+                        showPage(this.dataset.page);
+                        closeMenus();
+                    } else {
+                        document.getElementById(url).style.display = 'block';
                     }
                 } else {
                     showPage(this.dataset.page);
