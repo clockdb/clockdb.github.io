@@ -186,13 +186,18 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="position:fixed; width:100%; margin-left: 0">
+        </container>
+        <span style="background-color: white; z-index: 1; width: 100%;">
+            <table>
                 <tbody>
                     <tr>
+                        <td style="padding-bottom: 21px">
+                            spacer
+                        </td>
+                    </tr>
+                    <tr>
                         <td>
-    
                             <ul id="SearchResults" style="
-                                position: sticky;
                                 border: 2px solid #E5E4E2;
                                 box-shadow: 1px 1px 1px 1px #000009;
                                 border-radius: 7px;
@@ -252,6 +257,7 @@
                                     // Search
                                     let value = event.target.value;
                                     if (value && value.trim().length > 0) {
+                                        window.scrollTo(0, 0)
                                         value = value.trim().toUpperCase();
                                         try {
                                             setList(entities.filter(entity => {
@@ -277,7 +283,7 @@
                     </tr>
                 </tbody>
             </table>
-        </container>
+        </span>
 
         <!--- SIGN IN --->
         <div id="SignIn" style="position: fixed;  top: 6%; margin-left:77%; width:18%; z-index: 1">  
