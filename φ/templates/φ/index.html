@@ -78,13 +78,13 @@
                 const url = this.dataset.page;
                 //
                 if (menus.includes(url)) {
-                    closeMenus();
                     a = document.getElementById(url).style.display
                     if (a == 'block') {
                         document.getElementById(url).style.display = 'none';
                         showPage(this.dataset.page);
                         closeMenus();
                     } else {
+                        closeMenus();
                         document.getElementById(url).style.display = 'block';
                     }
                 } else {
