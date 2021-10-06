@@ -30,6 +30,7 @@
         }
     });
     function closeMenus() {
+        document.getElementById('SignIn').style.display = 'none';
         document.getElementById('General').style.display = 'none';
         document.getElementById('Options').style.display = 'none';
         document.getElementById('SortButton').style.display = 'none';
@@ -50,6 +51,7 @@
             skip = [
                 'General',
                 'Options',
+                'SignIn',
                 'SearchButton',
             ]
             if (a == 'block') {
@@ -73,6 +75,7 @@
                 menus = [
                     'General',
                     'Options',
+                    'SignIn',
                     'SearchButton',
                 ]
                 const url = this.dataset.page;
@@ -161,7 +164,7 @@
                                 <h1 style="padding-left:5%; padding-right:5%">≡</h1>
                             </button>
                         </td>
-                        <td colspan='9' style="padding-bottom: 0px">
+                        <td colspan='7' style="padding-bottom: 0px">
                             <input 
                                 id="search"
                                 autofocus placeholder="clockdb.com" 
@@ -174,6 +177,11 @@
                                 padding-bottom: 0;
                                 background-color: #E5E4E2;">
                             </input>
+                        </td>
+                        <td colspan='2' style="padding-bottom: 0px">
+                            <button data-page="SignIn" name="SignIn">
+                                <h1 style="padding-left:5%; padding-right:5%">φ</h1>                                
+                            </button>
                         </td>
                     </tr>
                     <tr>
@@ -270,6 +278,26 @@
                 </tbody>
             </table>
         </container>
+
+        <!--- SIGN IN --->
+        <div id="SignIn" style="position: fixed;  top: 6%; margin-left:77%; width:18%; z-index: 1">  
+            <table style="
+                border: 2px solid #E5E4E2;
+                background-color:white;
+                box-shadow: 1px 1px 1px 1px #000009;
+                border-radius: 15px;">
+                <tbody>
+                    <tr>
+                        <td>
+                            <button data-page="SignInButton">
+                                <h3>Sign In</h3>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
         <!--- GENERAL --->
         <div id="General" style="position: fixed;  top: 6%; margin-left:2%; width:48%; z-index: 1">
             <table style="

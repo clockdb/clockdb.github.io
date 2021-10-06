@@ -293,7 +293,6 @@
             'Bridge',
             'Procedures',
             'Community',
-            'Options',
             'General',
             'Import',
             'Save',
@@ -332,6 +331,8 @@
                 'Procedures',
                 'Community',
                 'Options',
+                'SignIn',
+                'SignInButton',
                 'General',
                 'Import',
                 'Save',
@@ -590,6 +591,7 @@
                     'Procedures',
                     'Community',
                     'Options',
+                    'SignIn',
                     'General',
                     'Import',
                     'Save',
@@ -909,6 +911,7 @@
                     'Bridge',
                     'Options',
                     'General',
+                    'SignIn',
                 ]
                 const url = this.dataset.page;
                 if (menus.includes(url)) {
@@ -944,6 +947,7 @@
         document.getElementById('Bridge').style.display = 'none';
         document.getElementById('Clock').style.display = 'none';
         document.getElementById('Options').style.display = 'none';
+        document.getElementById('SignIn').style.display = 'none';
         document.getElementById('General').style.display = 'none';
         document.getElementById('Import').style.display = 'none';
         document.getElementById('Procedures').style.display = 'none';
@@ -1066,13 +1070,6 @@
             <tbody>
                 <tr>
                     <td style="padding-bottom: 0px">
-                        <a href="{% url 'φ:index' %}" style="outline:none">
-                            <button data-page="Graph">
-                                <h1>φ</h1>
-                            </button>
-                        </a>
-                    </td>
-                    <td style="padding-bottom: 0px">
                         <button data-page="General" name="General">
                             <h1>≀</h1>
                         </button>
@@ -1082,7 +1079,7 @@
                             <h1>≡</h1>
                         </button>
                     </td>
-                    <td colspan='9' style="padding-bottom: 0px">
+                    <td colspan='7' style="padding-bottom: 0px">
                         <input 
                             id="search"
                             autofocus placeholder="clockdb.com" 
@@ -1095,6 +1092,11 @@
                             padding-bottom: 0;
                             background-color: #E5E4E2;">
                         </input>
+                    </td>
+                    <td colspan='2' style="padding-bottom: 0px">
+                        <button data-page="SignIn" name="SignIn">
+                            <h1 style="padding-left:5%; padding-right:5%">φ</h1>                                
+                        </button>
                     </td>
                 </tr>
                 <tr>
@@ -1183,8 +1185,27 @@
             </tbody>
         </table>
 
+        <!--- SIGN IN --->
+        <div id="SignIn" style="margin-left:77.5%; width:17%; position: absolute; z-index: 1">   
+            <table style="
+                border: 2px solid #E5E4E2;
+                background-color:white;
+                box-shadow: 1px 1px 1px 1px #000009;
+                border-radius: 15px;">
+                <tbody>
+                    <tr>
+                        <td>
+                            <button data-page="SignInButton">
+                                <h3>Sign In</h3>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
         <!--- OPTIONS --->
-        <div id="Options" style="margin-left:18.5%; width:48%; position: absolute;">
+        <div id="Options" style="margin-left:11%; width:48%; position: absolute;">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -1259,7 +1280,7 @@
         </div>
 
         <!--- OPEN --->
-        <div id="Import" style="margin-left:18.5% ;width:48%; position: absolute;">
+        <div id="Import" style="margin-left:11% ;width:48%; position: absolute;">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -1388,7 +1409,7 @@
         </div>
 
         <!--- GENERAL --->
-        <div id="General" style="margin-left:11% ;width:48%; position: absolute;">
+        <div id="General" style="margin-left:2% ;width:48%; position: absolute;">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -1455,7 +1476,7 @@
         </table>
 
         <!--- FINANCIALS --->
-        <div id="Arch" style="margin-left:4%; width:48%; position: absolute;">
+        <div id="Arch" style="margin-left:2%; width:48%; position: absolute;">
 
             <!--- ANNUAL FINANCIAL --->
             <table style="
@@ -1511,7 +1532,7 @@
         </div>    
 
         <!--- BUSINESS VALUATION --->
-        <div id="Clock" style="margin-left:48.5%; width:48%; position: absolute; z-index: 1">
+        <div id="Clock" style="margin-left:46%; width:48%; position: absolute; z-index: 1">
 
             <!--- FINANCIAL RATIOS, INTRINSIC VALUES AND SUMMARY --->
             <!--- CAPITALIZED INCOME, CAPITALIZED CASH FLOW, CAPITALIZED FORECAST & FAIR MARKET VALUE --->
@@ -1575,7 +1596,7 @@
         </div>
 
         <!--- AUDIT --->
-        <div id="Bridge" style="margin-left:26%; width:48%; position: absolute; z-index: 1">
+        <div id="Bridge" style="margin-left:24%; width:48%; position: absolute; z-index: 1">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -1622,7 +1643,7 @@
         </div>
 
         <!--- PROCEDURES --->
-        <div id="Procedures" style="margin-left:26%; width:48%; position: absolute; z-index: 1">   
+        <div id="Procedures" style="margin-left:24%; width:48%; position: absolute; z-index: 1">   
 
             <!--- PROCEDURES ANNUAL FINANCIAL STATEMENTS --->
             <table style="
@@ -1669,39 +1690,6 @@
                 </tbody>
             </table>
 
-        </div>
-
-        <!--- COMMUNITY --->
-        <div id="Community" style="width:48%; position: absolute;">
-            <table style="
-                border: 2px solid #E5E4E2;
-                background-color:white;
-                box-shadow: 1px 1px 1px 1px #000009;
-                border-radius: 15px;">
-                <tbody>
-                    <tr>
-                        <td>
-                            <button data-page="Transactional">
-                                <h3>Transactional</h3>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button data-page="SocialPlatform">
-                                <h3>Social Platform</h3>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button data-page="Media">
-                                <h3>Media News</h3>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
 
 <!--- HEADER --->
