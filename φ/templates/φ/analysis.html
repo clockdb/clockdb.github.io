@@ -1105,11 +1105,6 @@
             <table>
                 <tbody>
                     <tr>
-                        <td style="padding-bottom: 21px">
-                            spacer
-                        </td>
-                    </tr>
-                    <tr>
                         <td>
                             <!-- Search results -->
                             <ul id="SearchResults" style="
@@ -1427,6 +1422,13 @@
                 box-shadow: 1px 1px 1px 1px #000009;
                 border-radius: 15px;">
                 <tbody>
+                    <tr>
+                        <td>
+                            <button data-page="General">
+                                <a href="/" target="_blank"><h3>Home</h3></a>
+                            </button>
+                        </td>
+                    </tr>
                     <tr>
                         <td>
                             <button data-page="General">
@@ -28007,7 +28009,6 @@
                         <td colspan='2' style="padding-top:30px" class="C5"><input id="ContextDate5" style="font-weight:bold; text-align:center;" value="{{ entity.fifthlastyear }}" onfocusout="Compile()"></input></td>
                         <td colspan='2' style="padding-top:30px" class="C6"><input id="ContextDate6" style="font-weight:bold; text-align:center;" value="{{ entity.sixthlastyear }}" onfocusout="Compile()"></input></td>
                     </tr>
-                    <tr></tr>
                     <tr id="AmendRow" class="Context">
                         <td colspan='3'></td>
                         <td style="text-align:center; font-weight:bold;"></td>
@@ -28022,8 +28023,6 @@
                         <td colspan='2' style="padding-bottomp: 3%;" class="C5"><input id="Amend5" style="font-weight:bold; text-align:center;" value="{{ entity.amendfifthlastyear }}" onfocusout="Compile()"></input></td>
                         <td colspan='2' style="padding-bottomp: 3%;" class="C6"><input id="Amend6" style="font-weight:bold; text-align:center;" value="{{ entity.amendsixthlastyear }}" onfocusout="Compile()"></input></td>
                     </tr>
-                    <tr></tr>
-                    <tr></tr>
                     <script>
                         function FilingsHref() {
                             var z = 0
@@ -28080,8 +28079,6 @@
                         <td colspan='2' class='C5' style="text-align:center"><a target="_blank" id="Filings5" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottomp: 3%;;">Filings</h6></a>
                         <td colspan='2' class='C6' style="text-align:center"><a target="_blank" id="Filings6" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottomp: 3%;;">Filings</h6></a>   
                     </tr>
-                    <tr></tr>
-                    <tr></tr>
                     <tr id="CIKRow" class="Context">
                         <td colspan="4"><h6>Entity Central Index Key</h6></td>
                         <td>
@@ -28295,10 +28292,6 @@
             </table>
             <table style="padding-bottom: 21px;">
                 <tbody>
-                    <tr></tr>
-                    <tr></tr>
-                    <tr></tr>
-                    <tr></tr>
                     <tr>
                         <td><label for="AddLineInputFile" >Add</label></td>
                         <td><label onclick="New()">New</label></td>
@@ -28309,12 +28302,6 @@
                         <td colspan="5"><input id="Directory"></input></td>
                         <script>
                         </script>
-                    </tr>
-                    <tr></tr>
-                    <tr></tr>
-                    <tr></tr>
-                    <tr></tr>
-                    <tr>
                     </tr>
                 </tbody>
             </table>
@@ -28521,10 +28508,6 @@
         </table>
         <table style="border-bottom:solid #0D47A1; padding-top: 21px; padding-bottom: 21px;">
             <tbody>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
                 <tr id="CurrentAssetsREFRow" class="REF">
                     <td colspan="5" style="text-align: left"><h3>Current Assets</h3></td>
                     <td></td>
@@ -29066,11 +29049,6 @@
         </table>
         <table style="border-bottom:solid #0D47A1; padding-top:37px; padding-bottom:30px;">
             <tbody>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
                 <tr>
                     <td colspan="7"><h6>Unhide Empty Rows</h6></td>
                     <td colspan="1" style="font-weight:bold;"><input type="checkbox" id="UnhideCheckbox" style="visibility: visible" onchange="CheckUnhideCheckbox()" onfocusout="Compile()"></input></td>
@@ -29094,11 +29072,6 @@
                         }
                     </script>
                 </tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
                 <tr>
                     <td colspan="7"><h6>Open Editor</h6></td>
                     <td colspan="1" style="font-weight:bold;"><input type="checkbox" id="OpenEditor" style="visibility: visible" onchange="OpenEditor()" onfocusout="Compile()"></input></td>
@@ -29106,11 +29079,6 @@
                 <script>
                     function OpenEditor() {}
                 </script>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
                 <tr>
                     <td colspan="7"><h6>Clear Checkbox On Rollover</h6></td>
                     <td colspan="1" style="font-weight:bold;"><input type="checkbox" id="ClearCheckboxes" style="visibility: visible" onchange="CheckClearCheckboxes()" onfocusout="Compile()"></input></td>
