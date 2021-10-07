@@ -2640,18 +2640,6 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="border-bottom:solid #0D47A1; padding-top: 21px; padding-bottom: 21px;">
-                <tbody>
-                    <tr>
-                        <td style="color:#0d47a1; text-align:left; font-weight:bold;">CCF</td>
-                        <td style="text-align:justify;" colspan="20" ><b>Capitalized Cash Flows</b></td>
-                    </tr>
-                    <tr>
-                        <td style="color:#0d47a1; text-align:left; font-weight:bold;">CI</td>
-                        <td style="text-align:justify;" colspan="20" ><b>Capitalized Income</b></td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
 
         <!--- CAPITALIZED CASH FLOW --->
@@ -27865,7 +27853,6 @@
                 </tbody>
             </table>
         </div>
-
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 var w = window.innerWidth;
@@ -27888,8 +27875,8 @@
             });
             function ButtonsTop() {
                 w = window.innerWidth;
-                w = w * 0.23
-                w = Math.min(w, 101)
+                w = w * 0.15 - 79
+                w = Math.max(w, 79)
                 console.log(w)
                 document.getElementById('Arch').style.top = w + 'px'
                 document.getElementById('Bridge').style.top = w + 'px'
@@ -28233,36 +28220,36 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="padding-bottom: 21px;">
-                <tbody>
-                    <tr>
-                        <td><label for="AddLineInputFile" >Add</label></td>
-                        <td><label onclick="New()">New</label></td>
-                        <td><label style="visibility:hidden" id="New" for="Files1" onclick="HideNewDirectoryButton()">Confirm?</label></td>
-                        <td><input type='file' id="Files1" style="visibility: hidden" multiple onchange="Files()"></input></td>
-                        <td><input type='file' id="AddLineInputFile" style="visibility: hidden" multiple onchange="AddLine()"></input></td>
-                        <td style="text-align:right;"><h5>Directory</h5></td>
-                        <td colspan="5"><input id="Directory"></input></td>
-                        <script>
-                        </script>
-                    </tr>
-                </tbody>
-            </table>
-            <table style="border-bottom:solid #0D47A1; padding-bottom: 21px;" id="FilesSection">
-                <tbody id="FilesButtons">
-                    <tr style="display:none" id="header">
-                        <td colspan="3" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" data-page="ReferenceHeader">Description</button></td>
-                        <td colspan="1" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" data-page="ReferenceHeader">Reference</button></td>
-                        <td colspan="1" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" data-page="ReferenceHeader">Status</button></td>
-                        <td colspan="1" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" data-page="ReferenceHeader">Work In Progress</button></td>
-                        <td colspan="1" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" data-page="ReferenceHeader">Prepared</button></td>
-                        <td colspan="1" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" data-page="ReferenceHeader">Date Prepared</button></td>
-                        <td colspan="1" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" data-page="ReferenceHeader">Reviewed</button></td>
-                        <td colspan="1" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" data-page="ReferenceHeader">Date Reviewed</button></td>
-                    <tr>
-                </tbody>
-                <tbody id="FilesDetails"></tbody>
-            </table>
+            <span class="Files" style="width:95%">
+                <table class="Files" style="padding-bottom: 21px;">
+                    <tbody>
+                        <tr>
+                            <td><label for="AddLineInputFile" >Add</label></td>
+                            <td><label onclick="New()">New</label></td>
+                            <td><label style="visibility:hidden" id="New" for="Files1" onclick="HideNewDirectoryButton()">Confirm?</label></td>
+                            <td><input type='file' id="Files1" style="visibility: hidden" multiple onchange="Files()"></input></td>
+                            <td><input type='file' id="AddLineInputFile" style="visibility: hidden" multiple onchange="AddLine()"></input></td>
+                            <td style="text-align:right;"><h5>Directory</h5></td>
+                            <td colspan="5"><input id="Directory"></input></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="Files" style="border-bottom:solid #0D47A1; padding-bottom: 21px;" id="FilesSection">
+                    <tbody id="FilesButtons">
+                        <tr style="display:none" id="header">
+                            <td colspan="3" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" data-page="ReferenceHeader">Description</button></td>
+                            <td colspan="1" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" data-page="ReferenceHeader">Reference</button></td>
+                            <td colspan="1" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" data-page="ReferenceHeader">Status</button></td>
+                            <td colspan="1" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" data-page="ReferenceHeader">Work In Progress</button></td>
+                            <td colspan="1" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" data-page="ReferenceHeader">Prepared</button></td>
+                            <td colspan="1" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" data-page="ReferenceHeader">Date Prepared</button></td>
+                            <td colspan="1" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" data-page="ReferenceHeader">Reviewed</button></td>
+                            <td colspan="1" style="text-align:center; padding-bottom:30px"><button style="text-align:center; font-weight:bold;" data-page="ReferenceHeader">Date Reviewed</button></td>
+                        <tr>
+                    </tbody>
+                    <tbody id="FilesDetails"></tbody>
+                </table>
+            </span>
         </div>
     
     <script>
