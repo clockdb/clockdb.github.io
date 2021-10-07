@@ -294,7 +294,7 @@
             'Procedures',
             'Community',
             'General',
-            'Import',
+            'Open',
             'Save',
         ]
         escape();
@@ -557,7 +557,7 @@
                 'SignIn',
                 'SignInButton',
                 'General',
-                'Import',
+                'Open',
                 'Save',
                 'borderright',
                 'borderleft',
@@ -580,48 +580,28 @@
     document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('button').forEach(button => {
             button.onclick = function() {
-                skip = [
-                    'Arch',
-                    'Clock',
-                    'Bridge',
-                    'Opinion',
-                    'Community',
-                    'Options',
-                    'SignIn',
-                    'General',
-                    'Import',
-                    'Save',
-                    'uploadconfirm',
-                ]
                 //
                 const url = this.dataset.page;
                 //
                 if (url == null) {
                 } else {
                     try {
-                        if (skip.includes(url)) {
-                            menus = [
-                                'Arch',
-                                'Clock',
-                                'Bridge',
-                                'Options',
-                                'General',
-                                'SignIn',
-                            ]
-                            borders = [
-                                'borderright',
-                                'borderleft',
-                            ]
-                            const url = this.dataset.page;
-                            if (menus.includes(url)) {
-                                a = document.getElementById(url).style.display
-                                if (a == 'block') {
-                                    document.getElementById(url).style.display = 'none';
-                                    escape();
-                                } else {
-                                    escape();
-                                    document.getElementById(url).style.display = 'block';
-                                }
+                        menus = [
+                            'Arch',
+                            'Clock',
+                            'Bridge',
+                            'Options',
+                            'General',
+                            'SignIn',
+                        ]
+                        if (menus.includes(url)) {
+                            a = document.getElementById(url).style.display
+                            if (a == 'block') {
+                                document.getElementById(url).style.display = 'none';
+                                escape();
+                            } else {
+                                escape();
+                                document.getElementById(url).style.display = 'block';
                             }
                         } else {
                             if (url == 'Opinion') { 
@@ -901,7 +881,7 @@
         document.getElementById('Options').style.display = 'none';
         document.getElementById('SignIn').style.display = 'none';
         document.getElementById('General').style.display = 'none';
-        document.getElementById('Import').style.display = 'none';
+        document.getElementById('Open').style.display = 'none';
         document.getElementById('Procedures').style.display = 'none';
         document.getElementById('search').value = '';
         clearList();
@@ -1144,7 +1124,7 @@
         </span>
 
         <!--- SIGN IN --->
-        <div id="SignIn" style="margin-left:77.5%; width:17%; position: absolute; z-index: 1">   
+        <div id="SignIn" style="top: 39px; margin-left:77.5%; width:17%; position: absolute; z-index: 1">   
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -1163,7 +1143,7 @@
         </div>
 
         <!--- OPTIONS --->
-        <div id="Options" style="margin-left:11%; width:48%; position: absolute;">
+        <div id="Options" style="top: 39px; margin-left:11%; width:48%; position: absolute;">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -1207,7 +1187,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <button data-page="Import">
+                            <button data-page="Open">
                                 <h3>Open</h3>
                             </button>
                         </td>
@@ -1238,7 +1218,7 @@
         </div>
 
         <!--- OPEN --->
-        <div id="Import" style="margin-left:11% ;width:48%; position: absolute;">
+        <div id="Open" style="top: 39px; margin-left:11%; width:48%; position: absolute;">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -1367,7 +1347,7 @@
         </div>
 
         <!--- GENERAL --->
-        <div id="General" style="margin-left:2% ;width:48%; position: absolute;">
+        <div id="General" style="top: 39px; margin-left:2%; width:48%; position: absolute;">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -1441,7 +1421,7 @@
         </table>
 
         <!--- FINANCIALS --->
-        <div id="Arch" style="margin-left:2%; width:48%; position: absolute;">
+        <div id="Arch" style="top: 101px; margin-left:2%; width:48%; position: absolute;">
 
             <!--- ANNUAL FINANCIAL --->
             <table style="
@@ -1497,7 +1477,7 @@
         </div>    
 
         <!--- BUSINESS VALUATION --->
-        <div id="Clock" style="margin-left:46%; width:48%; position: absolute; z-index: 1">
+        <div id="Clock" style="top: 100px; margin-left:46%; width:48%; position: absolute; z-index: 1">
 
             <!--- FINANCIAL RATIOS, INTRINSIC VALUES AND SUMMARY --->
             <!--- CAPITALIZED INCOME, CAPITALIZED CASH FLOW, CAPITALIZED FORECAST & FAIR MARKET VALUE --->
@@ -1561,7 +1541,7 @@
         </div>
 
         <!--- AUDIT --->
-        <div id="Bridge" style="margin-left:24%; width:48%; position: absolute; z-index: 1">
+        <div id="Bridge" style="top: 100px; margin-left:24%; width:48%; position: absolute; z-index: 1">
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -1608,7 +1588,7 @@
         </div>
 
         <!--- PROCEDURES --->
-        <div id="Procedures" style="margin-left:24%; width:48%; position: absolute; z-index: 1">   
+        <div id="Procedures" style="top: 100px; margin-left:24%; width:48%; position: absolute; z-index: 1">   
 
             <!--- PROCEDURES ANNUAL FINANCIAL STATEMENTS --->
             <table style="
@@ -27891,20 +27871,33 @@
                 var w = window.innerWidth;
                 var h = window.innerHeight;
                 if (w < h) {
+                    ButtonsTop();
                     disp = 'none';
                     Columns(disp);
                 }
             });
             window.addEventListener('resize', function() {
                 var w = window.innerWidth;
-                var h = window.innerHeight;
-                if (w < h) {
+                if (w < 799) {
                     disp = 'none';
                 } else {
                     disp = '';
                 }
+                ButtonsTop();
+                console.log('resize to smaller hide all rows')
+                console.log(disp)
                 Columns(disp);
             });
+            function ButtonsTop() {
+                w = window.innerWidth;
+                w = w * 0.23
+                w = Math.min(w, 101)
+                console.log(w)
+                document.getElementById('Arch').style.top = w + 'px'
+                document.getElementById('Bridge').style.top = w + 'px'
+                document.getElementById('Clock').style.top = w + 'px'
+                document.getElementById('Procedures').style.top = w + 'px'
+            }
             function Columns(disp) {
                 a = document.getElementsByClassName('C2');
                 for(let i = 0; i < a.length; i++) { 

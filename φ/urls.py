@@ -66,6 +66,7 @@ urlpatterns = [
     #
     path("<str:entity_TradingSymbol>/Files", views.analysis, name="analysis"),
     path("<str:entity_TradingSymbol>/ReferenceMap", views.analysis, name="analysis"),
+    path("<str:entity_TradingSymbol>/Open", views.analysis, name="analysis"),
     
     #
 ]
