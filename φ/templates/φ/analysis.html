@@ -585,7 +585,6 @@
                     'Clock',
                     'Bridge',
                     'Opinion',
-                    'Procedures',
                     'Community',
                     'Options',
                     'SignIn',
@@ -593,32 +592,6 @@
                     'Import',
                     'Save',
                     'uploadconfirm',
-                    'CurrentAssetsFiles',
-                    'NonCurrentAssetsFiles',
-                    'CurrentLiabilitiesFiles',
-                    'NonCurrentLiabilitiesFiles',
-                    'ShareholdersEquityFiles',
-                    'GrossMarginFiles',
-                    'OperatingExpensesFiles',
-                    'ImpairmentAndRestructuringFiles',
-                    'NonOperatingExpensesFiles',
-                    'EquityMethodInvesteesIncomeFiles',
-                    'DiscontinuedOperationsFiles',
-                    'IncomeTaxFiles',
-                    'OtherComprehensiveIncomeFiles',
-                    'OperatingActivitiesFiles',
-                    'InvestingActivitiesFiles',
-                    'FinancingActivitiesFiles',
-                    'EffectOfExchangeRateOnCashFiles',
-                    'MissionFiles',
-                    'MaterialityFiles',
-                    'BalanceSheetsProcedureFiles',
-                    'IncomeStatementsProcedureFiles',
-                    'ComprehensiveIncomeProcedureFiles',
-                    'ShareholdersEquityProcedureFiles',
-                    'CashFlowProcedureFiles',
-                    'AnomaliesFiles',
-                    'OpinionFiles',
                     'ReferenceHeader',
                 ]
                 //
@@ -627,238 +600,250 @@
                 if (url == null) {
                 } else {
                     try {
-                        if (url == 'Opinion') { 
-                            page = url
-                            Opinion();
-                        }
-                        if (url == 'ReferenceHeader') {
-                            Rows = document.getElementsByClassName('Reference')
-                            References = []
-                            for (let i = 0; i < Rows.length; i++) {
-                                try {
-                                    //
-                                    a = Rows[i].id.replace('.Row', '.1');
-                                    b = Rows[i].id.replace('.Row', '.2');
-                                    c = Rows[i].id.replace('.Row', '.3');
-                                    d = Rows[i].id.replace('.Row', '.4');
-                                    e = Rows[i].id.replace('.Row', '.5');
-                                    f = Rows[i].id.replace('.Row', '.6');
-                                    g = Rows[i].id.replace('.Row', '.7');
-                                    h = Rows[i].id.replace('.Row', '.8');
-                                    //
-                                    aa = document.getElementById(a).value;
-                                    bb = document.getElementById(b).value;
-                                    cc = document.getElementById(c).value;
-                                    dd = document.getElementById(d).value;
-                                    ee = document.getElementById(e).value;
-                                    ff = document.getElementById(f).value;
-                                    gg = document.getElementById(g).value;
-                                    hh = document.getElementById(h).value;
-                                    ii = Rows[i].style.display;
-                                    //
-                                    a = [Rows[i].id, aa, 'Reference', bb, cc, dd, ee, ff, gg, hh, ii]
-                                    //
-                                    References.push(a)
-                                } catch {}
+                        if (skip.includes(url)) {
+                            menus = [
+                                'Arch',
+                                'Clock',
+                                'Bridge',
+                                'Options',
+                                'General',
+                                'SignIn',
+                            ]
+                            borders = [
+                                'borderright',
+                                'borderleft',
+                            ]
+                            const url = this.dataset.page;
+                            if (menus.includes(url)) {
+                                a = document.getElementById(url).style.display
+                                if (a == 'block') {
+                                    document.getElementById(url).style.display = 'none';
+                                    escape();
+                                } else {
+                                    escape();
+                                    document.getElementById(url).style.display = 'block';
+                                }
                             }
-                            header = []
-                            for (let i = 0; i < Rows.length; i++) {
-                                //
-                                if (this.innerHTML == 'Description') {
-                                    r = Rows[i].id.replace('.Row', '.1')
-                                    s = document.getElementById(r).value
-                                    gg = 1
-                                }
-                                if (this.innerHTML == 'Reference') {
-                                    r = Rows[i].id.replace('.Row', '.2')
-                                    s = document.getElementById(r).value
-                                    gg = 3
-                                }
-                                if (this.innerHTML == 'Status') {
-                                    r = Rows[i].id.replace('.Row', '.3')
-                                    s = document.getElementById(r).value
-                                    gg = 4
-                                }
-                                if (this.innerHTML == 'Work In Progress') {
-                                    r = Rows[i].id.replace('.Row', '.4')
-                                    s = document.getElementById(r).value
-                                    gg = 5
-                                }
-                                if (this.innerHTML == 'Prepared') {
-                                    r = Rows[i].id.replace('.Row', '.5')
-                                    s = document.getElementById(r).value
-                                    gg = 6
-                                }
-                                if (this.innerHTML == 'Date Prepared') {
-                                    r = Rows[i].id.replace('.Row', '.6')
-                                    s = document.getElementById(r).value
-                                    gg = 7
-                                }
-                                if (this.innerHTML == 'Reviewed') {
-                                    r = Rows[i].id.replace('.Row', '.7')
-                                    s = document.getElementById(r).value
-                                    gg = 8
-                                }
-                                if (this.innerHTML == 'Date Reviewed') {
-                                    r = Rows[i].id.replace('.Row', '.8')
-                                    s = document.getElementById(r).value
-                                    gg = 9
-                                }
-                                header.push(s)
-                            }
-                            header = header.sort()
-                            //
-                            //
-                            for (let i = 0; i < Rows.length; i++) {
-                                z = 0
-                                for (let j = 0; j < Rows.length; j++) {
-                                    if (z == 1) {
-                                    } else {
-                                        if (References[i][gg] == header[j]) {
-                                            References[i].push(j)
-                                            header[j] = 'sorted'
-                                            z = 1
+                        } else {
+                            if (url == 'Opinion') { 
+                                page = url
+                                Opinion();
+                            } else {
+                                if (url == 'ReferenceHeader') {
+                                    Rows = document.getElementsByClassName('Reference')
+                                    References = []
+                                    for (let i = 0; i < Rows.length; i++) {
+                                        try {
+                                            //
+                                            a = Rows[i].id.replace('.Row', '.1');
+                                            b = Rows[i].id.replace('.Row', '.2');
+                                            c = Rows[i].id.replace('.Row', '.3');
+                                            d = Rows[i].id.replace('.Row', '.4');
+                                            e = Rows[i].id.replace('.Row', '.5');
+                                            f = Rows[i].id.replace('.Row', '.6');
+                                            g = Rows[i].id.replace('.Row', '.7');
+                                            h = Rows[i].id.replace('.Row', '.8');
+                                            //
+                                            aa = document.getElementById(a).value;
+                                            bb = document.getElementById(b).value;
+                                            cc = document.getElementById(c).value;
+                                            dd = document.getElementById(d).value;
+                                            ee = document.getElementById(e).value;
+                                            ff = document.getElementById(f).value;
+                                            gg = document.getElementById(g).value;
+                                            hh = document.getElementById(h).value;
+                                            ii = Rows[i].style.display;
+                                            //
+                                            a = [Rows[i].id, aa, 'Reference', bb, cc, dd, ee, ff, gg, hh, ii]
+                                            //
+                                            References.push(a)
+                                        } catch {}
+                                    }
+                                    header = []
+                                    for (let i = 0; i < Rows.length; i++) {
+                                        //
+                                        if (this.innerHTML == 'Description') {
+                                            r = Rows[i].id.replace('.Row', '.1')
+                                            s = document.getElementById(r).value
+                                            gg = 1
+                                        }
+                                        if (this.innerHTML == 'Reference') {
+                                            r = Rows[i].id.replace('.Row', '.2')
+                                            s = document.getElementById(r).value
+                                            gg = 3
+                                        }
+                                        if (this.innerHTML == 'Status') {
+                                            r = Rows[i].id.replace('.Row', '.3')
+                                            s = document.getElementById(r).value
+                                            gg = 4
+                                        }
+                                        if (this.innerHTML == 'Work In Progress') {
+                                            r = Rows[i].id.replace('.Row', '.4')
+                                            s = document.getElementById(r).value
+                                            gg = 5
+                                        }
+                                        if (this.innerHTML == 'Prepared') {
+                                            r = Rows[i].id.replace('.Row', '.5')
+                                            s = document.getElementById(r).value
+                                            gg = 6
+                                        }
+                                        if (this.innerHTML == 'Date Prepared') {
+                                            r = Rows[i].id.replace('.Row', '.6')
+                                            s = document.getElementById(r).value
+                                            gg = 7
+                                        }
+                                        if (this.innerHTML == 'Reviewed') {
+                                            r = Rows[i].id.replace('.Row', '.7')
+                                            s = document.getElementById(r).value
+                                            gg = 8
+                                        }
+                                        if (this.innerHTML == 'Date Reviewed') {
+                                            r = Rows[i].id.replace('.Row', '.8')
+                                            s = document.getElementById(r).value
+                                            gg = 9
+                                        }
+                                        header.push(s)
+                                    }
+                                    header = header.sort()
+                                    //
+                                    //
+                                    for (let i = 0; i < Rows.length; i++) {
+                                        z = 0
+                                        for (let j = 0; j < Rows.length; j++) {
+                                            if (z == 1) {
+                                            } else {
+                                                if (References[i][gg] == header[j]) {
+                                                    References[i].push(j)
+                                                    header[j] = 'sorted'
+                                                    z = 1
+                                                };
+                                            };
                                         };
                                     };
-                                };
-                            };
-                            //
-                            var list = document.createElement('tbody');
-                            for (let i = 0; i < Rows.length; i++) {
-                                for (let j = 0; j < Rows.length; j++) {
-                                    if (References[j][11] == [i]) {
-                                        var name = References[j][1];
-                                        var tr = document.createElement('tr');
-                                        tr.className = "Reference";
-                                        tr.style.display = References[j][10];
-                                        c = i + 1
-                                        var r = "FileProperty" + c;
-                                        tr.id = r + '.Row';
-                                        b = 1 
-                                        var Reference = References[j][3];
-                                        var Status = References[j][4];
-                                        var WorkInProgress = References[j][5];
-                                        var Prepared = References[j][6];
-                                        var DatePrepared = References[j][7];
-                                        var Reviewed = References[j][8];
-                                        var DateReviewed = References[j][9];
-                                        AddFile(name, tr, b, r, list, Reference, Status, WorkInProgress, Prepared, DatePrepared, Reviewed, DateReviewed);
-                                        list.appendChild(tr)
-                                        //                                        
+                                    //
+                                    var list = document.createElement('tbody');
+                                    for (let i = 0; i < Rows.length; i++) {
+                                        for (let j = 0; j < Rows.length; j++) {
+                                            if (References[j][11] == [i]) {
+                                                var name = References[j][1];
+                                                var tr = document.createElement('tr');
+                                                tr.className = "Reference";
+                                                tr.style.display = References[j][10];
+                                                c = i + 1
+                                                var r = "FileProperty" + c;
+                                                tr.id = r + '.Row';
+                                                b = 1 
+                                                var Reference = References[j][3];
+                                                var Status = References[j][4];
+                                                var WorkInProgress = References[j][5];
+                                                var Prepared = References[j][6];
+                                                var DatePrepared = References[j][7];
+                                                var Reviewed = References[j][8];
+                                                var DateReviewed = References[j][9];
+                                                AddFile(name, tr, b, r, list, Reference, Status, WorkInProgress, Prepared, DatePrepared, Reviewed, DateReviewed);
+                                                list.appendChild(tr)
+                                                //                                        
+                                            }
+                                        }
                                     }
-                                }
-                            }
-                            document.getElementById('FilesDetails').innerHTML = list.innerHTML;
-                        } else {
-                            if (url.slice(-5) == 'Files') {
-                                if (url == 'Files') {
-                                    showPage(this.dataset.page);
-                                    ReferenceVisibility();
-                                    document.getElementById('FilesLabel').innerHTML = "Files";
+                                    document.getElementById('FilesDetails').innerHTML = list.innerHTML;
                                 } else {
-                                    if (url == 'CurrentAssetsFiles') {
-                                        SupportingDocumentsCurrentAssets();
+                                    if (url.slice(-5) == 'Files') {
+                                        if (url == 'Files') {
+                                            showPage(this.dataset.page);
+                                            ReferenceVisibility();
+                                            document.getElementById('FilesLabel').innerHTML = "Files";
+                                        } else {
+                                            if (url == 'CurrentAssetsFiles') {
+                                                SupportingDocumentsCurrentAssets();
+                                            }
+                                            if (url == 'NonCurrentAssetsFiles') {
+                                                SupportingDocumentsNonCurrentAssets();
+                                            }
+                                            if (url == 'CurrentLiabilitiesFiles') {
+                                                SupportingDocumentsCurrentLiabilities();
+                                            }
+                                            if (url == 'NonCurrentLiabilitiesFiles') {
+                                                SupportingDocumentsNonCurrentLiabilities();
+                                            }
+                                            if (url == 'ShareholdersEquityFiles') {
+                                                SupportingDocumentsShareholdersEquity();
+                                            }
+                                            if (url == 'GrossMarginFiles') {
+                                                SupportingDocumentsGrossMargin();
+                                            }
+                                            if (url == 'OperatingExpensesFiles') {
+                                                SupportingDocumentsOperatingExpenses();
+                                            }
+                                            if (url == 'ImpairmentAndRestructuringFiles') {
+                                                SupportingDocumentsImpairmentAndRestructuringFiles();
+                                            }
+                                            if (url == 'NonOperatingExpensesFiles') {
+                                                SupportingDocumentsNonOperatingExpenses();
+                                            }
+                                            if (url == 'EquityMethodInvesteesIncomeFiles') {
+                                                SupportingDocumentsEquityMethodInvesteesIncome();
+                                            }
+                                            if (url == 'DiscontinuedOperationsFiles') {
+                                                SupportingDocumentsDiscontinuedOperations();
+                                            }
+                                            if (url == 'IncomeTaxFiles') {
+                                                SupportingDocumentsIncomeTax();
+                                            }
+                                            if (url == 'OtherComprehensiveIncomeFiles') {
+                                                SupportingDocumentsOtherComprehensiveIncome();
+                                            }
+                                            if (url == 'OperatingActivitiesFiles') {
+                                                SupportingDocumentsOperatingActivities();
+                                            }
+                                            if (url == 'InvestingActivitiesFiles') {
+                                                SupportingDocumentsInvestingActivities();
+                                            }
+                                            if (url == 'FinancingActivitiesFiles') {
+                                                SupportingDocumentsFinancingActivities();
+                                            }
+                                            if (url == 'EffectOfExchangeRateOnCashFiles') {
+                                                SupportingDocumentsEffectOfExchangeRateOnCash();
+                                            }
+                                            if (url == 'MissionFiles') {
+                                                SupportingDocumentsMission();
+                                            }
+                                            if (url == 'MaterialityFiles') {
+                                                SupportingDocumentsMateriality();
+                                            }
+                                            if (url == 'BalanceSheetsProcedureFiles') {
+                                                SupportingDocumentsBalanceSheetsProcedure();
+                                            }
+                                            if (url == 'IncomeStatementsProcedureFiles') {
+                                                SupportingDocumentsIncomeStatementsProcedure();
+                                            }
+                                            if (url == 'ComprehensiveIncomeProcedureFiles') {
+                                                SupportingDocumentsComprehensiveIncomeProcedure();
+                                            }
+                                            if (url == 'ShareholdersEquityProcedureFiles') {
+                                                SupportingDocumentsShareholdersEquityProcedure();
+                                            }
+                                            if (url == 'CashFlowProcedureFiles') {
+                                                SupportingDocumentsCashFlowProcedure();
+                                            }
+                                            if (url == 'AnomaliesFiles') {
+                                                SupportingDocumentsAnomalies();
+                                            }
+                                            if (url == 'OpinionFiles') {
+                                                SupportingDocumentsOpinion();
+                                            }
+                                            showPage('Files');
+                                            history.pushState({page: url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/Files`);
+                                        }
+                                    } else {
+                                        history.pushState({page: url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/` + url);
+                                        showPage(this.dataset.page);
                                     }
-                                    if (url == 'NonCurrentAssetsFiles') {
-                                        SupportingDocumentsNonCurrentAssets();
-                                    }
-                                    if (url == 'CurrentLiabilitiesFiles') {
-                                        SupportingDocumentsCurrentLiabilities();
-                                    }
-                                    if (url == 'NonCurrentLiabilitiesFiles') {
-                                        SupportingDocumentsNonCurrentLiabilities();
-                                    }
-                                    if (url == 'ShareholdersEquityFiles') {
-                                        SupportingDocumentsShareholdersEquity();
-                                    }
-                                    if (url == 'GrossMarginFiles') {
-                                        SupportingDocumentsGrossMargin();
-                                    }
-                                    if (url == 'OperatingExpensesFiles') {
-                                        SupportingDocumentsOperatingExpenses();
-                                    }
-                                    if (url == 'ImpairmentAndRestructuringFiles') {
-                                        SupportingDocumentsImpairmentAndRestructuringFiles();
-                                    }
-                                    if (url == 'NonOperatingExpensesFiles') {
-                                        SupportingDocumentsNonOperatingExpenses();
-                                    }
-                                    if (url == 'EquityMethodInvesteesIncomeFiles') {
-                                        SupportingDocumentsEquityMethodInvesteesIncome();
-                                    }
-                                    if (url == 'DiscontinuedOperationsFiles') {
-                                        SupportingDocumentsDiscontinuedOperations();
-                                    }
-                                    if (url == 'IncomeTaxFiles') {
-                                        SupportingDocumentsIncomeTax();
-                                    }
-                                    if (url == 'OtherComprehensiveIncomeFiles') {
-                                        SupportingDocumentsOtherComprehensiveIncome();
-                                    }
-                                    if (url == 'OperatingActivitiesFiles') {
-                                        SupportingDocumentsOperatingActivities();
-                                    }
-                                    if (url == 'InvestingActivitiesFiles') {
-                                        SupportingDocumentsInvestingActivities();
-                                    }
-                                    if (url == 'FinancingActivitiesFiles') {
-                                        SupportingDocumentsFinancingActivities();
-                                    }
-                                    if (url == 'EffectOfExchangeRateOnCashFiles') {
-                                        SupportingDocumentsEffectOfExchangeRateOnCash();
-                                    }
-                                    if (url == 'MissionFiles') {
-                                        SupportingDocumentsMission();
-                                    }
-                                    if (url == 'MaterialityFiles') {
-                                        SupportingDocumentsMateriality();
-                                    }
-                                    if (url == 'BalanceSheetsProcedureFiles') {
-                                        SupportingDocumentsBalanceSheetsProcedure();
-                                    }
-                                    if (url == 'IncomeStatementsProcedureFiles') {
-                                        SupportingDocumentsIncomeStatementsProcedure();
-                                    }
-                                    if (url == 'ComprehensiveIncomeProcedureFiles') {
-                                        SupportingDocumentsComprehensiveIncomeProcedure();
-                                    }
-                                    if (url == 'ShareholdersEquityProcedureFiles') {
-                                        SupportingDocumentsShareholdersEquityProcedure();
-                                    }
-                                    if (url == 'CashFlowProcedureFiles') {
-                                        SupportingDocumentsCashFlowProcedure();
-                                    }
-                                    if (url == 'AnomaliesFiles') {
-                                        SupportingDocumentsAnomalies();
-                                    }
-                                    if (url == 'OpinionFiles') {
-                                        SupportingDocumentsOpinion();
-                                    }
-                                    showPage('Files');
-                                    history.pushState({page: url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/Files`);
                                 }
-                            } else {
-                                showPage(this.dataset.page);
                             }
                         }
                     } catch {}
                     //
-                    if (skip.includes(url)) {
-                        a = document.getElementById(url).style.display;
-                        if (a == 'block') {
-                            document.getElementById(url).style.display = 'none';
-                            if(url == 'Procedures') {
-                                document.getElementById(url).style.display = 'block';
-                            }
-                            if(url == 'Import') {
-                                document.getElementById(url).style.display = 'block';
-                            }
-                        }
-                    } else {
-                        try {
-                            history.pushState({page: url}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${url}`);
-                        } catch {}
-                    }
                     ShortCut = [
                         'Context',
                         'IntrinsicValues',
@@ -896,42 +881,6 @@
                     } catch {}
                 }
             }
-        });
-    });
-    // main button
-    document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('button').forEach(button => {
-            button.onclick = function() {
-                menus = [
-                    'Arch',
-                    'Clock',
-                    'Bridge',
-                    'Options',
-                    'General',
-                    'SignIn',
-                ]
-                borders = [
-                    'borderright',
-                    'borderleft',
-                ]
-                const url = this.dataset.page;
-                if (menus.includes(url)) {
-                    a = document.getElementById(url).style.display
-                    if (a == 'block') {
-                        document.getElementById(url).style.display = 'none';
-                        showPage(this.dataset.page);
-                        escape();
-                    } else {
-                        escape();
-                        document.getElementById(url).style.display = 'block';
-                    }
-                } else {
-                    if (borders.includes(button.id)) {
-                    } else {
-                        showPage(this.dataset.page);
-                    }
-                }
-            };
         });
     });
     //
