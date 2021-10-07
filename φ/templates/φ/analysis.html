@@ -294,6 +294,9 @@
             'Procedures',
             'Community',
             'General',
+            'SignIn',
+            'ForgotPassword',
+            'CreateAccount',
             'Open',
             'Save',
         ]
@@ -555,8 +558,9 @@
                 'Community',
                 'Options',
                 'SignIn',
-                'SignInButton',
                 'General',
+                'ForgotPassword',
+                'CreateAccount',
                 'Open',
                 'Save',
                 'borderright',
@@ -592,6 +596,8 @@
                             'Bridge',
                             'Options',
                             'General',
+                            'ForgotPassword',
+                            'CreateAccount',
                             'SignIn',
                         ]
                         if (menus.includes(url)) {
@@ -881,6 +887,8 @@
         document.getElementById('Options').style.display = 'none';
         document.getElementById('SignIn').style.display = 'none';
         document.getElementById('General').style.display = 'none';
+        document.getElementById('CreateAccount').style.display = 'none';
+        document.getElementById('ForgotPassword').style.display = 'none';
         document.getElementById('Open').style.display = 'none';
         document.getElementById('Procedures').style.display = 'none';
         document.getElementById('search').value = '';
@@ -888,46 +896,66 @@
         document.getElementById('SearchResults').style.display = 'none';
     };
     //
-    // enter
+    // enter();
     document.addEventListener('keydown', (event) => {
         keys = [13, 38, 40]
         up = [38]
         if (keys.includes(event.keyCode)) {
-            //
-            try {
-                cells = document.querySelectorAll('input');
-                cell = event.target;
-                column = cell.id.slice(-1);
-                for(let i = 0; i < cells.length; i++) {
-                    if (cell === cells[i]) {
-                        cellrank = i;
-                    }
-                }
-                g = 1;
-                if (up.includes(event.keyCode)) {
-                    g = -1;
-                }
-                if (event.shiftKey) {
-                    o = -8 * g;
-                } else {
-                    o = 8 * g;
-                }
-                p = cellrank + o
-                visiblerow = 0
-                while (visiblerow === 0) {
-                    nextcell = cells[p].id
-                    a = nextcell.slice(0, -1) + 'Row';
-                    a = document.getElementById(a).style.display;
-                    if (a == 'none') {
-                        visiblerow = 0;
-                        p = p + o
+            user = document.getElementById('User');
+            password = document.getElementById('Password');
+            if (event.target.id == 'User') {
+                password.select();
+                password.focus();
+            } else {
+                if (event.target.id == 'Password') {
+                    if (event.shiftKey) {
+                        user.select();
+                        user.focus();
                     } else {
-                        visiblerow = 1;
+                        if (event.keyCode == up) {
+                            user.select();
+                            user.focus();
+                        } else {
+                            SignIn();
+                        }
                     }
+                } else {
+                    try {
+                        cells = document.querySelectorAll('input');
+                        cell = event.target;
+                        column = cell.id.slice(-1);
+                        for(let i = 0; i < cells.length; i++) {
+                            if (cell === cells[i]) {
+                                cellrank = i;
+                            }
+                        }
+                        g = 1;
+                        if (up.includes(event.keyCode)) {
+                            g = -1;
+                        }
+                        if (event.shiftKey) {
+                            o = -8 * g;
+                        } else {
+                            o = 8 * g;
+                        }
+                        p = cellrank + o
+                        visiblerow = 0
+                        while (visiblerow === 0) {
+                            nextcell = cells[p].id
+                            a = nextcell.slice(0, -1) + 'Row';
+                            a = document.getElementById(a).style.display;
+                            if (a == 'none') {
+                                visiblerow = 0;
+                                p = p + o
+                            } else {
+                                visiblerow = 1;
+                            }
+                        }
+                        cells[p].focus()
+                        cells[p].select()
+                    } catch {}
                 }
-                cells[p].focus()
-                cells[p].select()
-            } catch {}
+            }
         }
     })
     //
@@ -1124,7 +1152,7 @@
         </span>
 
         <!--- SIGN IN --->
-        <div id="SignIn" style="top: 39px; margin-left:77.5%; width:17%; position: absolute; z-index: 1">   
+        <div id="SignIn" style="top: 43px; margin-left:61%; width:36%; position: absolute; z-index: 1">   
             <table style="
                 border: 2px solid #E5E4E2;
                 background-color:white;
@@ -1133,9 +1161,134 @@
                 <tbody>
                     <tr>
                         <td>
-                            <button data-page="SignInButton">
-                                <h3>Sign In</h3>
+
+                            <form id="login" class="form">
+
+                                <span class="IncorrectUsernamePassword">
+                                    <h6 style="text-align:center; "></h6>
+                                </span>
+
+                                <span class="form">
+                                    <input class="User" placeholder="Username" style="letter-spacing: 1px;"></input>
+                                    <span class="UserError">
+                                        <h6 style="text-align:center; "></h6>
+                                    </span>
+                                </span>
+
+                                <span class="form">
+                                    <input class="Password" placeholder="Password" style="letter-spacing: 1px;"></input>
+                                    <span class="PasswordError">
+                                        <h6 style="text-align:center; ">
+                                            <i></i>
+                                        </h6>
+                                    </span>
+                                </span>
+
+                                <button id="SignInButton" style="letter-spacing: 1px;">
+                                    Sign In
+                                </button>
+
+                                <script>
+                                    function SignIn() {
+                                        console.log('SignIn')
+                                        escape();
+                                    }
+                                    document.getElementById('SignInButton').addEventListener('click', function() {
+                                        SignIn();
+                                    });
+                                </script>
+    
+                            </form>
+
+                            <button data-page="ForgotPassword" style="letter-spacing: 1px;">
+                                Forgot your password?
                             </button>
+
+                            <button data-page="CreateAccount" style="letter-spacing: 1px;">
+                                Create Account
+                            </button>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--- CREATE ACCOUNT --->
+        <div id="CreateAccount" style="top: 43px; margin-left:61%; width:36%; position: absolute; z-index: 1">   
+            <table style="
+                border: 2px solid #E5E4E2;
+                background-color:white;
+                box-shadow: 1px 1px 1px 1px #000009;
+                border-radius: 15px;">
+                <tbody>
+                    <tr>
+                        <td>
+
+                            <form id="createAccount" class="form">
+
+                                <span class="form">
+                                    <input class="CreateUser" placeholder="Username" style="letter-spacing: 1px;"></input>
+                                </span>
+
+                                <span class="form">
+                                    <input class="CreateEmail" placeholder="Email" style="letter-spacing: 1px;"></input>
+                                </span>
+
+                                <span class="form">
+                                    <input class="CreatePassword" placeholder="Password" style="letter-spacing: 1px;"></input>
+                                    <span class="CreatePasswordError">
+                                        <h6 style="text-align:center; ">
+                                            <i></i>
+                                        </h6>
+                                    </span>
+                                </span>
+
+                                <span class="form">
+                                    <input class="ConfirmPassword" placeholder="Confirm Password" style="letter-spacing: 1px;"></input>
+                                    <span class="ConfirmPasswordError">
+                                        <h6 style="text-align:center; ">
+                                            <i></i>
+                                        </h6>
+                                    </span>
+                                </span>
+
+                                <button class="CreateAccountButton" style="letter-spacing: 1px;">
+                                    Create
+                                </button>
+
+                            </form>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <!--- FORGOT PASSWORD --->
+        <div id="ForgotPassword" style="top: 43px; margin-left:61%; width:36%; position: absolute; z-index: 1">   
+            <table style="
+                border: 2px solid #E5E4E2;
+                background-color:white;
+                box-shadow: 1px 1px 1px 1px #000009;
+                border-radius: 15px;">
+                <tbody>
+                    <tr>
+                        <td>
+
+                            <form id="ForgotPassword" class="form">
+
+                                <span class="form">
+                                    <input class="ForgotPasswordEmail" placeholder="Email" style="letter-spacing: 1px;"></input>
+                                </span>
+
+                                <button class="RetreiveAccountButton" style="letter-spacing: 1px;">
+                                    Retreive Account
+                                </button>
+
+                            </form>
+
                         </td>
                     </tr>
                 </tbody>
