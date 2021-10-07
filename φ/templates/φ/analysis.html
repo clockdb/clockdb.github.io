@@ -312,45 +312,6 @@
         showPage(page)
         history.pushState({page}, ``, `/` + document.getElementById('TradingSymbol1').value + `/${page}`);
     };
-    //    
-    // URL on load
-    document.addEventListener('DOMContentLoaded', function() {
-        Graph();
-    })
-    // pages
-    window.onpopstate = function(event) {
-        showPage(event.state.page);
-    }
-    function showPage(page) {
-        document.querySelectorAll('div').forEach(div => {
-            a = div.style.display
-            skip = [
-                'Arch',
-                'Clock',
-                'Bridge',
-                'Procedures',
-                'Community',
-                'Options',
-                'SignIn',
-                'SignInButton',
-                'General',
-                'Import',
-                'Save',
-            ]
-            if (a == 'block') {
-                if (skip.includes(page)) {
-                    if (skip.includes(div.id)) {
-                        div.style.display = 'none';
-                    } else {
-                        div.style.display = 'block';
-                    }
-                } else {
-                    div.style.display = 'none';
-                }
-            }
-        })
-        document.querySelector(`#${page}`).style.display = 'block';
-    }
     //
     // keys
     document.addEventListener('keydown', (event) => {
@@ -579,6 +540,42 @@
         document.getElementById('Graph').style.display = 'block';
         window.scrollTo(0, 0);
     });
+    // pages
+    window.onpopstate = function(event) {
+        showPage(event.state.page);
+    }
+    function showPage(page) {
+        document.querySelectorAll('div').forEach(div => {
+            a = div.style.display
+            skip = [
+                'Arch',
+                'Clock',
+                'Bridge',
+                'Procedures',
+                'Community',
+                'Options',
+                'SignIn',
+                'SignInButton',
+                'General',
+                'Import',
+                'Save',
+                'borderright',
+                'borderleft',
+            ]
+            if (a == 'block') {
+                if (skip.includes(page)) {
+                    if (skip.includes(div.id)) {
+                        div.style.display = 'none';
+                    } else {
+                        div.style.display = 'block';
+                    }
+                } else {
+                    div.style.display = 'none';
+                }
+            }
+        })
+        document.querySelector(`#${page}`).style.display = 'block';
+    };
     // button click
     document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('button').forEach(button => {
@@ -913,6 +910,10 @@
                     'General',
                     'SignIn',
                 ]
+                borders = [
+                    'borderright',
+                    'borderleft',
+                ]
                 const url = this.dataset.page;
                 if (menus.includes(url)) {
                     a = document.getElementById(url).style.display
@@ -925,7 +926,10 @@
                         document.getElementById(url).style.display = 'block';
                     }
                 } else {
-                    showPage(this.dataset.page);
+                    if (borders.includes(button.id)) {
+                    } else {
+                        showPage(this.dataset.page);
+                    }
                 }
             };
         });

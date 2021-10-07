@@ -1801,6 +1801,7 @@
         function load() {
             //
             const results = document.getElementById('results');
+            const postBorder = document.getElementById('postBorder');
             const criterias = document.getElementById('criterias');
             const loading = document.getElementById('loading');
             //
@@ -1905,6 +1906,7 @@
                     resultsLength = data.posts[0].resultsLength;
                     results.innerHTML = resultsLength + ' Trading Symbols';
                     loading.style.visibility = 'hidden';
+                    postBorder.style.display = 'block';
                 });
             //
         };
@@ -2714,7 +2716,18 @@
     </span>
 
     <span>
-        <h3 id="results" style="margin-bottom: 3%; font-size: 7px; padding-left: 2%; font-weight: normal; letter-spacing: 2px; font-style:italic"></h3>
+        <h3 id="results" style="
+            margin-bottom: 3%; 
+            font-size: 7px; 
+            padding-left: 2%; 
+            font-weight: normal; 
+            letter-spacing: 2px; 
+            font-style:italic">
+        </h3>
+    </span>
+
+    <span>
+        <h3 id="postBorder" style="display: none; border-bottom: 5px solid #E5E4E2;"></h3>
     </span>
 
     <container id="posts"></container>
@@ -2722,7 +2735,6 @@
     <!--- Loading --->
     <section id="loading" style="padding-top:18%; padding-bottom:22%; padding-right: 8%; visibility: hidden; text-align: center; font-style:italic">
         <span>
-            <h5 style="post"></h5>
         </span>
     </section>
 
