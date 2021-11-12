@@ -16,6 +16,7 @@ constantly==15.1.0
 cryptography==35.0.0
 daphne==2.5.0
 Django==2.2.15
+gunicorn==19.0.0
 h11==0.12.0
 hiredis==2.0.0
 html5lib==1.1
@@ -54,6 +55,7 @@ sqlparse==0.4.2
 trio==0.19.0
 trio-websocket==0.9.2
 Twisted==21.7.0
+twisted-iocpsupport==1.0.2
 txaio==21.2.1
 typing-extensions==3.10.0.2
 urllib3==1.26.7
