@@ -3,7 +3,7 @@ asgiref==3.4.1
 async-generator==1.10
 async-timeout==3.0.1
 attrs==21.2.0
-autobahn==21.3.1
+autobahn==21.2.1
 Automat==20.2.0
 beautifulsoup4==4.10.0
 bleach==3.1.5
