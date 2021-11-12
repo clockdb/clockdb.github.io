@@ -25,7 +25,13 @@ SECRET_KEY = 'e@na7$!qpuycqglslqocu+e($xo1znbab##xu+pnzgukb$bl6o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'clockdb.herokuapp.com',
+    'www.clockdb.herokuapp.com',
+    'clockdb.com',
+    'www.clockdb.com',
+    '127.0.0.1',
+    ]
 
 if DEBUG:
      EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
