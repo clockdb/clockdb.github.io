@@ -34,8 +34,6 @@ WSGI_APPLICATION = f'{config("PROJECT_NAME")}.wsgi.application'
 
 ASGI_APPLICATION = f'{config("PROJECT_NAME")}.routing.application'
 
-ALLOWED_HOSTS = []
-
 #ALLOWED_HOSTS = [
 #    'clockdb.herokuapp.com',
 #    'www.clockdb.herokuapp.com',
