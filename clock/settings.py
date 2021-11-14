@@ -19,7 +19,7 @@ from decouple import config
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'e@na7$!qpuycqglslqocu+e($xo1znbab##xu+pnzgukb$bl6o'
+SECRET_KEY = config("SECRET_KEY")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -28,11 +28,11 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = ["159.223.105.198",]
 
-ROOT_URLCONF = f'{config("clock")}.urls'
+ROOT_URLCONF = f'{config("PROJECT_NAME")}.urls'
 
-WSGI_APPLICATION = f'{config("clock")}.wsgi.application'
+WSGI_APPLICATION = f'{config("PROJECT_NAME")}.wsgi.application'
 
-ASGI_APPLICATION = f'{config("clock")}.routing.application'
+ASGI_APPLICATION = f'{config("PROJECT_NAME")}.routing.application'
 
 ALLOWED_HOSTS = []
 
