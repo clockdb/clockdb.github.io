@@ -14,7 +14,6 @@ import os
 from pathlib import Path
 from decouple import config
 
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -55,7 +54,8 @@ AUTHENTICATION_BACKENDS = (
 
 INSTALLED_APPS = [
     #
-    'φ',
+    'WorkingPaper',
+    #
     'account',
     'chat',
     'friend',
@@ -81,6 +81,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+ROOT_URLCONF = 'clock.urls'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -96,6 +98,10 @@ TEMPLATES = [
         },
     },
 ]
+
+WSGI_APPLICATION = 'clock.wsgi.application'
+
+ASGI_APPLICATION = 'clock.routing.application'
 
 CHANNEL_LAYERS = {
     'default': {
@@ -155,6 +161,8 @@ USE_TZ = True
 
 DATA_UPLOAD_MAX_MEMORY_SIZE = 10485760 # 10mb = 10 * 1024 *1024
 
+#######################################################
+
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
@@ -168,7 +176,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 STATIC_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
 TEMP = os.path.join(BASE_DIR, 'temp')
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
@@ -183,3 +191,20 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'Clockdb Team <noreply@clockdb.com>'
 
 BASE_URL = 'http://159.223.105.198/'
+
+#######################################################
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/2.2/howto/static-files/
+#STATICFILES_DIRS = [
+#    os.path.join(BASE_DIR, 'static'),
+#    os.path.join(BASE_DIR, 'media'),
+#]
+#STATIC_URL = '/static/'
+#MEDIA_URL = '/media/'
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
+
+#TEMP = os.path.join(BASE_DIR, 'media_cdn/temp')
+
+#BASE_URL = "http://127.0.0.1:8000"

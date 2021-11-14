@@ -6,6 +6,7 @@ from decouple import config
 
 
 def main():
+    #os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'clock.settings')
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', f'{config("PROJECT_NAME")}.settings')
     try:
         from django.core.management import execute_from_command_line

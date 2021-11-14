@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from django.urls import path
 
-from φ.views import *
+from WorkingPaper.views import *
 from account.views import *
 from friend.views import *
 from chat.views import *
