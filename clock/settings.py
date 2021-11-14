@@ -97,10 +97,6 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'clock.wsgi.application'
-
-ASGI_APPLICATION = 'clock.routing.application'
-
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
