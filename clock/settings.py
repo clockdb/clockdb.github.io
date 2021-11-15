@@ -35,7 +35,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     #
     # production
-    "159.223.105.198",
+    "159.223.151.96",
 ]
 
 ROOT_URLCONF = f'{config("PROJECT_NAME")}.urls'
@@ -204,4 +204,4 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'Clockdb Team <clockdb@gmail.com>'
 
-BASE_URL = 'http://159.223.105.198/'
+BASE_URL = 'http://159.223.151.96/'
