@@ -28,16 +28,16 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = [
     #
     # development
-    'clockdb.herokuapp.com',
-    'www.clockdb.herokuapp.com',
-    'clockdb.ca',
-    'www.clockdb.ca',
-    'clockdb.com',
-    'www.clockdb.com',
     '127.0.0.1',
     #
     # production
     "159.223.151.96",
+    'clockdb.ca',
+    'www.clockdb.ca',
+    'clockdb.com',
+    'www.clockdb.com',
+    'clockdb.herokuapp.com',
+    'www.clockdb.herokuapp.com',
 ]
 
 ROOT_URLCONF = f'{config("PROJECT_NAME")}.urls'
