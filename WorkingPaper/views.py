@@ -208,22 +208,6 @@ def analysis_view(request, user_id, entity_TradingSymbol):
 	#
 	return render(request, "base/clockdb.html", context)
 
-def fiscal_year_end_view(request, db, start, end):
-    e = Entity.objects.all().filter(PeriodEndDate_db=db)
-    data = []
-    end = min(len(e), int(end))
-    for i in range(int(start), end):
-        json = {
-            "EntityRegistrantName1": e[i].EntityRegistrantName,
-            "TradingSymbol1": e[i].TradingSymbol,
-            "ContextDate1": e[i].lastyear,
-        }
-        data.append(json)    
-    time.sleep(1)
-    return JsonResponse({
-        "entities": data
-    })
-
 def home_screen_view(request):
 	user = request.user
 	context = {}
@@ -233,77 +217,6 @@ def home_screen_view(request):
 	if user.is_authenticated: 
 		return redirect("posts", user_id=user.id)
 	return redirect("login")
-
-def phase_view(request, db, start, end):
-    e = Entity.objects.all().filter(db=db)
-    data = []
-    end = min(len(e), int(end))
-    for i in range(int(start), end):
-        json = {
-            "EntityRegistrantName1": e[i].EntityRegistrantName,
-            "TradingSymbol1": e[i].TradingSymbol,
-            "CIK1": e[i].EntityCentralIndexKey,
-            "db1": e[i].db,
-            "Industry_SEC1": e[i].Industry_SEC,
-            "Industry_SEC_db1": e[i].Industry_SEC_db,
-            "Industry1": e[i].Industry,
-            "Industrydb1": e[i].Industry_db,
-            "Region1": e[i].Region,
-            "Regiondb1": e[i].Region_db,
-            "ContextDate1": e[i].lastyear,
-            "ContextDate2": e[i].secondlastyear,
-            "ContextDate3": e[i].thirdlastyear,
-            "ContextDate4": e[i].fourthlastyear,
-            "ContextDate5": e[i].fifthlastyear,
-            "ContextDate6": e[i].sixthlastyear,
-            "Amend1": e[i].amendlastyear,
-            "Amend2": e[i].amendlastyear,
-            "Amend3": e[i].amendlastyear,
-            "Amend4": e[i].amendlastyear,
-            "Amend5": e[i].amendlastyear,
-            "Amend6": e[i].amendlastyear,
-            "AccessionNumber1": e[i].accessionnumberlastyear,
-            "AccessionNumber2": e[i].accessionnumbersecondlastyear,
-            "AccessionNumber3": e[i].accessionnumberthirdlastyear,
-            "AccessionNumber4": e[i].accessionnumberfourthlastyear,
-            "AccessionNumber5": e[i].accessionnumberfifthlastyear,
-            "AccessionNumber6": e[i].accessionnumbersixthlastyear,
-            "urlbalancesheet1": e[i].urlbalancesheetlastyear,
-            "urlbalancesheet2": e[i].urlbalancesheetsecondlastyear,
-            "urlbalancesheet3": e[i].urlbalancesheetthirdlastyear,
-            "urlbalancesheet4": e[i].urlbalancesheetfourthlastyear,
-            "urlbalancesheet5": e[i].urlbalancesheetfifthlastyear,
-            "urlbalancesheet6": e[i].urlbalancesheetsixthlastyear,
-            "urlincomestatement1": e[i].urlincomestatementlastyear,
-            "urlincomestatement2": e[i].urlincomestatementsecondlastyear,
-            "urlincomestatement3": e[i].urlincomestatementthirdlastyear,
-            "urlincomestatement4": e[i].urlincomestatementfourthlastyear,
-            "urlincomestatement5": e[i].urlincomestatementfifthlastyear,
-            "urlincomestatement6": e[i].urlincomestatementsixthlastyear,
-            "urlcomprehensiveincome1": e[i].urlcomprehensiveincomelastyear,           
-            "urlcomprehensiveincome2": e[i].urlcomprehensiveincomesecondlastyear,           
-            "urlcomprehensiveincome3": e[i].urlcomprehensiveincomethirdlastyear,           
-            "urlcomprehensiveincome4": e[i].urlcomprehensiveincomefourthlastyear,           
-            "urlcomprehensiveincome5": e[i].urlcomprehensiveincomefifthlastyear,           
-            "urlcomprehensiveincome6": e[i].urlcomprehensiveincomesixthlastyear,
-            "urlshareholdersequity1": e[i].urlshareholdersequitylastyear,
-            "urlshareholdersequity2": e[i].urlshareholdersequitysecondlastyear,
-            "urlshareholdersequity3": e[i].urlshareholdersequitythirdlastyear,
-            "urlshareholdersequity4": e[i].urlshareholdersequityfourthlastyear,
-            "urlshareholdersequity5": e[i].urlshareholdersequityfifthlastyear,
-            "urlshareholdersequity6": e[i].urlshareholdersequitysixthlastyear,
-            "urlcashflow1": e[i].urlcashflowlastyear,
-            "urlcashflow2": e[i].urlcashflowsecondlastyear,
-            "urlcashflow3": e[i].urlcashflowthirdlastyear,
-            "urlcashflow4": e[i].urlcashflowfourthlastyear,
-            "urlcashflow5": e[i].urlcashflowfifthlastyear,
-            "urlcashflow6": e[i].urlcashflowsixthlastyear,
-        }
-        data.append(json)    
-    time.sleep(1)
-    return JsonResponse({
-        "entities": data
-    })
 
 def posts_screen_view(request, user_id):
 	context = {}

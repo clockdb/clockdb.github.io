@@ -86,12 +86,6 @@ urlpatterns = [
     path("<str:user_id>/display/", posts_screen_view, name="display"),
     path('<str:user_id>/database/', posts_screen_view, name="database"),
     path("<str:user_id>/documentation/", posts_screen_view, name="documentation"),
-    path('<str:user_id>/fiscalYearEnd/', posts_screen_view, name="fiscalYearEnd"),
-    path('<str:user_id>/fiscalYearEnd/<str:db>/<str:start>/<str:end>/', fiscal_year_end_view, name="fiscalYearEndJson"),
-    path('<str:user_id>/fiscalYearEnds/', posts_screen_view, name="fiscalYearEnds"),
-    path("<str:user_id>/phase/", posts_screen_view, name="phase"),
-    path("<str:user_id>/phase/<str:db>/<str:start>/<str:end>/", phase_view, name="phaseJson"),
-    path('<str:user_id>/phases/', posts_screen_view, name="phases"),
     path('<str:user_id>/Posts/', posts_screen_view, name="Posts"),
     path('<str:user_id>/settings/', posts_screen_view, name="settings"),
     #
