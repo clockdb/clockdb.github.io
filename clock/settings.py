@@ -204,4 +204,4 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'Clockdb Team <clockdb@gmail.com>'
 
-BASE_URL = 'http://159.223.151.96/'
+BASE_URL = 'http://159.223.151.96'
