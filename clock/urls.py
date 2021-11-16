@@ -95,7 +95,7 @@ urlpatterns = [
     #
     path("<str:user_id>/WorkingPaper/<str:entity_TradingSymbol>/profile/", analysis_view, name="analysis"),
     path("<str:user_id>/WorkingPaper/<str:entity_TradingSymbol>/edit_profile/", analysis_view, name="analysis"),
-	path('<str:user_id>/WorkingPaper/<str:entity_TradingSymbol>/edit_profile/cropImage/', crop_image, name="crop_image"),
+	#path('<str:user_id>/WorkingPaper/<str:entity_TradingSymbol>/edit_profile/cropImage/', crop_image, name="crop_image"),
     path("<str:user_id>/WorkingPaper/<str:entity_TradingSymbol>/Entities/", analysis_view, name="analysis"),
     path("<str:user_id>/WorkingPaper/<str:entity_TradingSymbol>/Network/", analysis_view, name="analysis"),
     path("<str:user_id>/WorkingPaper/<str:entity_TradingSymbol>/messages/", analysis_view, name="analysis"),
