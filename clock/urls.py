@@ -72,7 +72,7 @@ urlpatterns = [
     #
     path("<str:user_id>/profile/", posts_screen_view, name="profile"),
     path("<str:user_id>/edit/", posts_screen_view, name="edit"),
-	path('<user_id>/edit/cropImage/', crop_image, name="crop_image"),
+	#path('<user_id>/edit/cropImage/', crop_image, name="crop_image"),
     #
 	path('<str:user_id>/Entities/', posts_screen_view, name="entities"),
 	path('<str:user_id>/Network/', posts_screen_view, name="network"),
