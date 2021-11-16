@@ -30,6 +30,8 @@ ALLOWED_HOSTS = [
     # development
     'clockdb.herokuapp.com',
     'www.clockdb.herokuapp.com',
+    'clockdb.ca',
+    'www.clockdb.ca',
     'clockdb.com',
     'www.clockdb.com',
     '127.0.0.1',
