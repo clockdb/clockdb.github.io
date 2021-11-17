@@ -33,7 +33,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     #
     # production
-    "159.223.151.96",
+    '159.223.151.96',
     'clockdb.ca',
     'www.clockdb.ca',
     'clockdb.com',
