@@ -38,5 +38,17 @@ from chat.utils import find_or_create_private_chat
 
 DEBUG = False
 
+def analysis_view(request, user_id, entity_TradingSymbol):
+	return render(request, "home.html")
+
 def home_screen_view(request):
+	return render(request, "home.html")
+
+def posts_screen_view(request, user_id):
+	return render(request, "home.html")
+
+def posts_view(request, industry_db, industry_SEC_db, year_end, db, region_db, order_db, sort_db, start, end):
+	return render(request, "home.html")
+
+def entities_view(request, search, start, end):
 	return render(request, "home.html")
