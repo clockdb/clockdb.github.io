@@ -159,24 +159,9 @@ USE_TZ = True
 
 DATA_UPLOAD_MAX_MEMORY_SIZE = 10485760 # 10mb = 10 * 1024 *1024
 
-#######################################################
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.2/howto/static-files/
-#STATICFILES_DIRS = [
-#    os.path.join(BASE_DIR, 'static'),
-#    os.path.join(BASE_DIR, 'media'),
-#]
-#STATIC_URL = '/static/'
-#MEDIA_URL = '/media/'
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
-#MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
-
-#TEMP = os.path.join(BASE_DIR, 'media_cdn/temp')
-
-#BASE_URL = "http://127.0.0.1:8000"
-
-#######################################################
+# https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
@@ -191,11 +176,12 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 STATIC_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
-TEMP = os.path.join(BASE_DIR, 'temp')
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+TEMP = os.path.join(BASE_DIR, 'temp')
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
