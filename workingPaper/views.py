@@ -223,9 +223,6 @@ def posts_screen_view(request, user_id):
 	context['debug'] = DEBUG
 	context['DATA_UPLOAD_MAX_MEMORY_SIZE'] = settings.DATA_UPLOAD_MAX_MEMORY_SIZE
 	#
-	# entities
-	context['entities'] = Entity.objects.all().order_by('TradingSymbol')
-	#
 	return render(request, "base/clockdb.html", context)
 
 def posts_view(request, industry_db, industry_SEC_db, year_end, db, region_db, order_db, sort_db, start, end):
