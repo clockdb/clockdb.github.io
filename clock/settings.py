@@ -65,14 +65,17 @@ INSTALLED_APPS = [
     'notification',
     'public_chat',
     #
+#    'channels',
+    #
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.messages',
     'django.contrib.sessions',
     'django.contrib.staticfiles',
-#    'channels',
     'django.contrib.humanize',
+    #
+    'storages',
 ]
 
 MIDDLEWARE = [
