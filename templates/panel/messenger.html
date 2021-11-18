@@ -195,11 +195,13 @@
 		margin-left: 21px;
 	}
 </style>
-
 <div class="messengerContainer">
 	<div class="messengerView">	
 		<div class="messengerFriendList">
-			<div class="messengerContent">	
+			<div class="messengerContent">
+
+				<!-- ###################################################################################### -->
+
 				{#% for x in m_and_f %#}
 				<div class="d-flex flex-row p-2 friend-container flex-grow-1" onclick="onSelectFriend('{{x.friend.id}}')" id="id_friend_container_{{x.friend.id}}">
 					<img class="profile-image-messages rounded-circle img-fluid" id="id_friend_img_{{x.friend.id}}" src="/static/clockdb/dummy_image.png/" >
@@ -209,6 +211,9 @@
 					</div>
 				</div>
 				{#% endfor %#}
+
+				<!-- ###################################################################################### -->
+
 			</div>
 		</div>
 		<div class="messengerHeader" id="id_chatroom_card">
