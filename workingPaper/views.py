@@ -39,4 +39,4 @@ from chat.utils import find_or_create_private_chat
 DEBUG = False
 
 def home_screen_view(request):
-    return HttpResponse('Hello, world!')
+	return render(request, "home.html")
