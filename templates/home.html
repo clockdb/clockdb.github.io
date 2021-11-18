@@ -51,9 +51,36 @@
 				{% include 'panel/messengerNotifications.html' %}
 			</div>
 			<div class="Notifications">
-				{% include 'panel/notifications.html' %}
+				{% include 'panel/Notifications.html' %}
 			</div>	
 		</div>
+
+		<!-- Clockdb -->
+		<div class="main">
+
+			<div class="content">
+				
+				{#% block content %#}
+				{#% endblock content %#}
+
+				<!-- Loading -->
+				<div class="loading">
+					<div id="id_loading_spinner">
+						<span class="d-flex flex-row mx-auto flex-grow-1 justify-content-center">
+							<span class="spinner-border text-primary" role="status">
+								<span class="sr-only">Loading...</span>
+							</span>
+						</span>
+					</div>
+				</div>
+
+			</div>
+
+			{#% include 'base/footer.html' %#}
+
+		</div>
+
+		<!-- JavaScript -->
 
 	</body>
 
