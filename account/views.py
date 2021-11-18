@@ -11,17 +11,14 @@ import base64
 import requests
 from django.core import files
 
-
 from account.forms import RegistrationForm, AccountAuthenticationForm, AccountUpdateForm
 from account.models import Account
 from friend.utils import get_friend_request_or_false
 from friend.friend_request_status import FriendRequestStatus
 from friend.models import FriendList, FriendRequest
 
-
 TEMP_PROFILE_IMAGE_NAME = "temp_profile_image.png"
 
-# This is basically almost exactly the same as friends/friend_list_view
 def account_search_view(request, *args, **kwargs):
 	context = {}
 	if request.method == "GET":

@@ -26,15 +26,9 @@ SECRET_KEY = config("SECRET_KEY")
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = [
-    #
-    # development
-    'clockdb.herokuapp.com',
-    'www.clockdb.herokuapp.com',
     'clockdb.com',
     'www.clockdb.com',
     '127.0.0.1',
-    #
-    # production
     '137.184.159.93',
 ]
 
@@ -56,17 +50,9 @@ AUTHENTICATION_BACKENDS = (
 # Application definition
 
 INSTALLED_APPS = [
-    #
-    'workingPaper',
-    #
     'account',
+    'channels',
     'chat',
-    'friend',
-    'notification',
-    'public_chat',
-    #
-#    'channels',
-    #
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -74,8 +60,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-    #
+    'friend',
+    'notification',
+    'public_chat',
     'storages',
+    'workingPaper',
 ]
 
 MIDDLEWARE = [
