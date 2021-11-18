@@ -10,6 +10,9 @@ from django.shortcuts import render, redirect
 from itertools import chain
 from urllib.parse import urlencode
 
+from django.core.files.storage import default_storage
+from django.core.files.storage import FileSystemStorage
+
 import os
 import json
 import base64
@@ -32,39 +35,8 @@ from chat.models import PrivateChatRoom, RoomChatMessage
 from chat.utils import find_or_create_private_chat
 
 
-TEMP_PROFILE_IMAGE_NAME = "temp_profile_image.png"
-
-
 
 DEBUG = False
 
-def home_screen_view(request, *args, **kwargs):
-	context = {}
-	user = request.user
-	if user.is_authenticated: 
-		return redirect("posts", user_id=user.id)
-	destination = get_redirect_if_exists(request)
-	print("destination: " + str(destination))
-	if request.POST:
-		form = AccountAuthenticationForm(request.POST)
-		if form.is_valid():
-			email = request.POST['email']
-			password = request.POST['password']
-			user = authenticate(email=email, password=password)
-
-			if user:
-				login(request, user)
-				if destination:
-					return redirect(destination)
-				return render(request, "home.html")
-	else:
-		form = AccountAuthenticationForm()
-	context['login_form'] = form
-	return render(request, "profile/login.html", context)
-
-def get_redirect_if_exists(request):
-	redirect = None
-	if request.GET:
-		if request.GET.get("next"):
-			redirect = str(request.GET.get("next"))
-	return redirect
+def home_screen_view(request):
+	return render(request, "home.html")
