@@ -10,9 +10,6 @@ from django.shortcuts import render, redirect
 from itertools import chain
 from urllib.parse import urlencode
 
-from django.core.files.storage import default_storage
-from django.core.files.storage import FileSystemStorage
-
 import os
 import json
 import base64
@@ -33,6 +30,9 @@ import json
 
 from chat.models import PrivateChatRoom, RoomChatMessage
 from chat.utils import find_or_create_private_chat
+
+
+TEMP_PROFILE_IMAGE_NAME = "temp_profile_image.png"
 
 
 
@@ -56,7 +56,7 @@ def home_screen_view(request, *args, **kwargs):
 				login(request, user)
 				if destination:
 					return redirect(destination)
-				return redirect("posts", user_id=user.id)
+				return render(request, "home.html")
 	else:
 		form = AccountAuthenticationForm()
 	context['login_form'] = form
