@@ -52,6 +52,12 @@ INSTALLED_APPS = [
     #
     'workingPaper',
     #
+    'account',
+    'chat',
+    'friend',
+    'notification',
+    'public_chat',
+    #
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
