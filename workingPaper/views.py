@@ -2,6 +2,7 @@ from .models import *
 
 from django.contrib.auth import login, authenticate, logout
 from django.conf import settings
+from django.conf.urls.static import static
 from django.core.files.storage import default_storage
 from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse, JsonResponse
