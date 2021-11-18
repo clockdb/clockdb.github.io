@@ -3,7 +3,7 @@ from django.urls import path
 from account.views import (
 	account_view,
 	edit_account_view,
-	#crop_image,
+	crop_image,
 )
 
 app_name = 'account'
