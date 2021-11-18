@@ -38,5 +38,33 @@ from chat.utils import find_or_create_private_chat
 
 DEBUG = False
 
-def home_screen_view(request):
-	return render(request, "profile/login.html")
+def home_screen_view(request, *args, **kwargs):
+	context = {}
+	user = request.user
+	if user.is_authenticated: 
+		return redirect("posts", user_id=user.id)
+	destination = get_redirect_if_exists(request)
+	print("destination: " + str(destination))
+	if request.POST:
+		form = AccountAuthenticationForm(request.POST)
+		if form.is_valid():
+			email = request.POST['email']
+			password = request.POST['password']
+			user = authenticate(email=email, password=password)
+
+			if user:
+				login(request, user)
+				if destination:
+					return redirect(destination)
+				return redirect("posts", user_id=user.id)
+	else:
+		form = AccountAuthenticationForm()
+	context['login_form'] = form
+	return render(request, "profile/login.html", context)
+
+def get_redirect_if_exists(request):
+	redirect = None
+	if request.GET:
+		if request.GET.get("next"):
+			redirect = str(request.GET.get("next"))
+	return redirect
