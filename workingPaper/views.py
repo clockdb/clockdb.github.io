@@ -226,7 +226,7 @@ def posts_screen_view(request, user_id):
 	# entities
 	context['entities'] = Entity.objects.all().order_by('TradingSymbol')
 	#
-	return render(request, "templabase/clockdb.html", context)
+	return render(request, "base/clockdb.html", context)
 
 def posts_view(request, industry_db, industry_SEC_db, year_end, db, region_db, order_db, sort_db, start, end):
     #
