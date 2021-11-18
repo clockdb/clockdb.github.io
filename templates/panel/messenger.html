@@ -199,9 +199,28 @@
 	<div class="messengerView">	
 		<div class="messengerFriendList">
 			<div class="messengerContent">
+				{#% for x in m_and_f %#}
+				<div class="d-flex flex-row p-2 friend-container flex-grow-1" onclick="onSelectFriend('{{x.friend.id}}')" id="id_friend_container_{{x.friend.id}}">
+					<img class="profile-image-messages rounded-circle img-fluid" id="id_friend_img_{{x.friend.id}}" src="" >
+					<div style="border-bottom-left-radius: 15px;">
+						<span class="username-span-messages-friend" id="{{x.friend.id}}">{{x.friend.username}}</span>
+						<span class="friend-message-span">{{x.message|truncatechars:20}}</span>
+					</div>
+				</div>
+				{#% endfor %#}
 			</div>
 		</div>
 		<div class="messengerHeader" id="id_chatroom_card">
+			<div class="messengerTitle" id="id_room_title">
+				<a class="id_user_info_container" id="id_user_info_container">
+					<div class="profile_image_messages_">
+						<img class="profile-image-messages rounded-circle img-fluid" id="id_other_user_profile_image" src="">
+					</div>
+					<div class="id_other_username">
+						<h6 id="id_other_username"></h6>
+					</div>
+				</a>
+			</div>
 			<div class='messengerHeaderPanel'>
 				<button class="virgin" id="CloseMessenger" data-page="CloseMessenger">
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
