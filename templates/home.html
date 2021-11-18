@@ -29,7 +29,62 @@
 
 	<body>
 
-        sup bod
+		<!-- Header -->
+		<div class="header" style="display: none">
+			{% include 'base/base_css.html' %}
+			{% include 'base/header.html' %}	
+		</div>
+
+		<i id="user_id" style="display: none;">{{request.user.id}}</i>
+
+		<div class="Panel">
+			<div class="panelHeader">
+				{% include 'base/panelHeader.html' %}
+			</div>
+			<div class="Control">
+				{% include 'panel/control.html' %}
+			</div>
+			<div class="Messenger">
+				{% include 'panel/messenger.html' %}
+			</div>
+			<div class="MessengerNotifications">
+				{% include 'panel/messengerNotifications.html' %}
+			</div>
+			<div class="Notifications">
+				{% include 'panel/Notifications.html' %}
+			</div>	
+		</div>
+
+		<!-- Clockdb -->
+		<div class="main">
+
+			<div class="content">
+				
+				{#% block content %#}
+				{#% endblock content %#}
+
+				<!-- Loading -->
+				<div class="loading">
+					<div id="id_loading_spinner">
+						<span class="d-flex flex-row mx-auto flex-grow-1 justify-content-center">
+							<span class="spinner-border text-primary" role="status">
+								<span class="sr-only">Loading...</span>
+							</span>
+						</span>
+					</div>
+				</div>
+
+			</div>
+
+			{#% include 'base/footer.html' %#}
+
+		</div>
+
+		<script src="{% static 'bootstrap/js/jquery.min.js' %}"></script>
+		<script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+		<script type="module" src="{% static 'cropperjs/dist/cropper.min.js' %}"></script>
+
+		<!-- JavaScript -->
 
 	</body>
 
