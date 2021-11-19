@@ -38,13 +38,11 @@ document.addEventListener('DOMContentLoaded', function() {
     setChatInitialTimestamp() 
 });
 
-
 // onePageApp buttons
 
 document.querySelectorAll('button').forEach(button => {
     onePageApp(button);
 });
-
 
 // escape key
 document.addEventListener('keydown', (event) => {
@@ -53,7 +51,6 @@ document.addEventListener('keydown', (event) => {
         event.preventDefault();
     }
 })
-
 
 // shortcut keys
 document.addEventListener('keydown', (event) => {
@@ -112,6 +109,7 @@ document.addEventListener('keydown', (event) => {
         }
     }
 });
+
 // alt + arrows
 document.addEventListener('keydown', (event) => {
     b = window.location.href.replace(window.location.origin,'')
@@ -299,3 +297,24 @@ document.addEventListener('keydown', (event) => {
         }
     }
 });
+
+// tabulation key
+document.addEventListener('keydown', (event) => {
+    keys = [9]
+    if (keys.includes(event.keyCode)) {
+        a = event.target.id
+        //
+        if (a == 'SearchBar') {
+            event.preventDefault();
+            b = document.getElementById('SearchUsersBar')
+            b.select()
+            document.getElementsByClassName('HeaderMenu')[0].scrollTo(9999, 0)
+        }
+        if (a == 'SearchUsersBar') {
+            event.preventDefault();
+            b = document.getElementById('SearchBar')
+            b.select()
+            document.getElementsByClassName('HeaderMenu')[0].scrollTo(0, 9999)
+        }
+    }
+})
