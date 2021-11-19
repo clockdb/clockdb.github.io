@@ -19433,6 +19433,521 @@
 				document.getElementById('EntityRegistrantNameContext').innerHTML = document.getElementById('EntityRegistrantName1').value;
 			}
 						
+			// analysis/compile.js
+			console.log('analysis/compile.js')
+
+			function Compile() {
+				b = window.location.href.replace(window.location.origin,'')
+				b = b.split('/')[2]
+				if (b == 'WorkingPaper') {
+					Context();
+					TrialBalances();		
+					BalanceSheets();
+					IncomeStatements();
+					ComprehensiveIncome();
+					ShareholdersEquity();
+					CashFlow();
+					FinancialRatios();
+					AdditionalInformation();
+					CapitalizationRates();
+					CapitalizedCashFlow();
+					CapitalizedIncome();
+					IntrinsicValues();
+					Opinion();
+					Mission();
+					Materiality();
+					ProceduresBalanceSheets();
+					ProceduresIncomeStatements();
+					ProceduresComprehensiveIncome();
+					ProceduresShareholdersEquity();
+					ProceduresCashFlow();
+					Anomalies();
+					Summary();
+					Graph();
+					FilingsReferences();
+					FilesHeader();
+				}
+				LineChart();
+			}
+
+			// Open
+
+			function UploadConfirm() {
+				var numUSD = new Intl.NumberFormat("en-US", {
+					format: "number"
+				});
+				document.getElementById('UnhideCheckbox').checked = true
+				CheckUnhideCheckbox();
+				try {
+					var list = document.getElementById('FilesDetails');
+					list.innerHTML = '';
+					Rows = document.getElementsByClassName('Reference');
+					Row = 1
+					Papa.parse(document.getElementById('Upload').files[0], 
+						{
+						download: true,
+						header: true,
+						skipEmptyLines: true, 
+						complete: function(results) {
+							for (var k in results.data) {
+								var a = results.data[k].Value
+								var b = results.data[k].Reference
+								var c = results.data[k].Type
+								var Reference = results.data[k].FileReference
+								var Status = results.data[k].Status
+								var WorkInProgress = results.data[k].WorkInProgress
+								var Prepared = results.data[k].Prepared
+								var DatePrepared = results.data[k].DatePrepared
+								var Reviewed = results.data[k].Reviewed
+								var DateReviewed = results.data[k].DateReviewed
+								if (a == 'NaN') {
+									a = '';
+								}
+								if (c == 'Checkbox') {
+									if (a == 'true') {
+										document.getElementById(b).checked = true;
+										document.getElementById(b).style.visibility = 'visible';
+									} else {}
+								}
+								if (c == 'ClockRate') {
+									document.getElementById(b).value = a;
+								}
+								if (c == 'Context') {
+									document.getElementById(b).value = a;
+								}
+								if (c == 'ContextDate') {
+									document.getElementById(b).value = a;
+								}
+								if (c == 'Date') {
+									document.getElementById(b).value = a;
+								}
+								if (c == 'Directory') {
+									document.getElementById(b).value = a;
+								}
+								if (c == 'Header') {
+									document.getElementById(b).value = a;
+								}
+								if (c == 'Opinion') {
+									document.getElementById(b).value = numUSD.format(a);
+								}
+								if (c == 'OpinionThree') {
+									document.getElementById(b).value = numUSD.format(a);
+								}
+								if (c == 'OpinionFour') {
+									document.getElementById(b).value = numUSD.format(a);
+								}
+								if (c == 'Proportion') {
+									document.getElementById(b).value = a;
+								}
+								if (c == 'Price') {
+									document.getElementById(b).value = a;
+								}
+								if (c == 'REF') {
+									document.getElementById(b).value = a;
+								}
+								if (c == 'Reference') {
+									var tr = document.createElement('tr');
+									tr.className = "Reference"
+									var r = "FileProperty" + Row;
+									tr.id = r + '.Row'
+									var name = a;
+									var b = 1
+									AddFile(name, tr, b, r, list, Reference, Status, WorkInProgress, Prepared, DatePrepared, Reviewed, DateReviewed);
+									tr.innerHTML = html
+									list.appendChild(tr) 
+									Row = Row + 1
+								}
+								if (c == 'ShareholdersEquityBeginningBalance') {
+									document.getElementById(b).value = numUSD.format(a);
+								}
+								if (c == 'TrialBalance') {
+									document.getElementById(b).value = numUSD.format(a);
+								}
+							}
+						}
+					});
+					document.getElementById('FilesDetails').innerHTML = list.innerHTML;
+				} catch {}
+				showPage('Context')
+				historyPush('Context')
+				Compile();
+				document.getElementById('UploadConfirm').style.display = 'none';
+			};
+
+			// Rollover
+
+			function Rollover() {
+				var numUSD = new Intl.NumberFormat("en-US", {
+					format: "number"
+				});
+				Save();
+				var d = document.getElementById('ContextDate1').value
+				d = new Date(d)
+				day = d.getDate();
+				month = d.getMonth();
+				year = d.getFullYear() + 1
+				d = new Date(year, month, day).toDateString()
+				d = d.split(' ')
+				d = d[1] + '. ' + d[2] + ', ' + d[3]
+				document.getElementById('ContextDate6').value = document.getElementById('ContextDate5').value
+				document.getElementById('ContextDate5').value = document.getElementById('ContextDate4').value
+				document.getElementById('ContextDate4').value = document.getElementById('ContextDate3').value
+				document.getElementById('ContextDate3').value = document.getElementById('ContextDate2').value
+				document.getElementById('ContextDate2').value = document.getElementById('ContextDate1').value
+				document.getElementById('ContextDate1').value = d
+				//
+				rows = document.querySelectorAll('tr');
+				//
+				RowClass = [
+					'Date',
+					'Clock',
+					'ClockRate',
+					'Context',
+					'Opinion',
+					'OpinionThree',
+					'OpinionFour',
+					'Price',
+					'Proportion',
+					'TrialBalance',
+					'ShareholdersEquityBeginningBalance',
+				]
+				//
+				for(let i = 0; i < rows.length; i++) {
+					trid = rows[i].id
+					trclass = rows[i].className
+					if(RowClass.includes(trclass)) {
+						row = trid.slice(0, -3);
+						//
+						input1 = row + 1
+						input2 = row + 2
+						input3 = row + 3
+						input4 = row + 4
+						input5 = row + 5
+						input6 = row + 6
+						//
+						if (trclass == 'OpinionFour') {
+						} else {
+							document.getElementById(input6).value = document.getElementById(input5).value;
+							document.getElementById(input5).value = document.getElementById(input4).value;
+						}
+						if (trclass == 'OpinionThree') {
+						} else {
+							document.getElementById(input4).value = document.getElementById(input3).value;
+							document.getElementById(input3).value = document.getElementById(input2).value;
+							document.getElementById(input2).value = document.getElementById(input1).value;
+						}
+						try {
+							var a = parseInt(document.getElementById(input1).value.replaceAll(/,/g, ''));
+						} catch {}
+						if (Math.abs(a) > 1) {
+							document.getElementById(input1).value = 0
+						}
+						var a = document.getElementById(trid).className
+						//
+						if (a == 'Context') {
+							document.getElementById(input1).value = '';
+						}
+						if (a == 'Date') {
+							document.getElementById(input1).value = '';
+						}
+						if (a == 'ShareholdersEquityBeginningBalance') {
+							b = input1.replace('TrialBalance','')
+							b = document.getElementById(b).value.replaceAll(/,/g, '');
+							document.getElementById(input1).value = numUSD.format(-b);
+						}
+					}
+				};
+				Compile();
+			};
+
+			// Open File Name
+
+			function OpenFileName() {
+				a = document.getElementById('Upload').files[0].name
+				document.getElementById('OpenFileName').innerHTML = a;
+				document.getElementById('UploadConfirm').style.display = 'block';
+			}
+
+			// Save
+
+			function Save() {
+				//
+				var FileData = [  
+					//
+					// settings
+					['UnhideCheckbox', document.getElementById('UnhideCheckbox').checked, 'Checkbox'],
+					['OpenEditor', document.getElementById('OpenEditor').checked, 'Checkbox'],
+				];  
+				RowClass = [
+					'Checkbox',
+					'ClockRate',
+					'Context',
+					'ContextDate',
+					'Date',
+					'Header',
+					'Opinion',
+					'OpinionThree',
+					'OpinionFour',
+					'Price',
+					'Proportion',
+					'REF',
+					'ShareholdersEquityBeginningBalance',
+					'TrialBalance',
+				]
+				ClockClass = [
+					'Opinion',
+					'OpinionFour',
+					'ShareholdersEquityBeginningBalance',
+					'TrialBalance',
+				]
+				FourColumns = [
+					'OpinionFour',
+				]
+				ThreeColumns = [
+					'OpinionThree',
+				]
+				rows = document.querySelectorAll('tr');
+				FileDataExtension = []
+				//
+				for(let i = 0; i < rows.length; i++) {
+					trid = rows[i].id
+					trclass = rows[i].className
+					if(RowClass.includes(trclass)) {
+						row = trid.slice(0, -3);
+						input1 = row + 1
+						input2 = row + 2
+						input3 = row + 3
+						input4 = row + 4
+						input5 = row + 5
+						input6 = row + 6
+						checkbox1 = row + 'Checkbox'
+						checkbox2 = row + 'Checkbox' + 2
+						a = document.getElementById(input1).value;
+						b = document.getElementById(input2).value;
+						c = document.getElementById(input3).value;
+						d = document.getElementById(input4).value;
+						e = document.getElementById(input5).value;
+						f = document.getElementById(input6).value;
+						try {
+							g = document.getElementById(checkbox1).checked;
+							h = document.getElementById(checkbox2).checked;
+						} catch {}
+						if (ClockClass.includes(trclass)) {
+							a = parseInt(a.replaceAll(/,/g, ''));
+							b = parseInt(b.replaceAll(/,/g, ''));
+							c = parseInt(c.replaceAll(/,/g, ''));
+							d = parseInt(d.replaceAll(/,/g, ''));
+							e = parseInt(e.replaceAll(/,/g, ''));
+							f = parseInt(f.replaceAll(/,/g, ''));
+						}
+						a = [input1, a, trclass]
+						b = [input2, b, trclass]
+						c = [input3, c, trclass]
+						d = [input4, d, trclass]
+						e = [input5, e, trclass]
+						f = [input6, f, trclass]
+						try {
+							g = [checkbox1, g, 'Checkbox']
+							h = [checkbox2, h, 'Checkbox']
+						} catch {}
+						FileDataExtension.push(a)
+						FileDataExtension.push(b)
+						FileDataExtension.push(c)
+						try {
+							FileDataExtension.push(g)
+							FileDataExtension.push(h)
+						} catch {}
+
+						if (FourColumns.includes(trclass)) {
+							FileDataExtension.push(d)
+						} else {
+							if (ThreeColumns.includes(trclass)) {
+							} else {
+								FileDataExtension.push(d)
+								FileDataExtension.push(e)
+								FileDataExtension.push(f)
+							};
+						};
+					};
+				};
+				ReferenceFileDataExtension = []
+				Rows = document.getElementsByClassName('Reference')
+					for (let i = 0; i < Rows.length; i++) {
+						try {
+							//
+							a = Rows[i].id.replace('.Row', '.1');
+							b = Rows[i].id.replace('.Row', '.2');
+							c = Rows[i].id.replace('.Row', '.3');
+							d = Rows[i].id.replace('.Row', '.4');
+							e = Rows[i].id.replace('.Row', '.5');
+							f = Rows[i].id.replace('.Row', '.6');
+							g = Rows[i].id.replace('.Row', '.7');
+							h = Rows[i].id.replace('.Row', '.8');
+							//
+							aa = document.getElementById(a).value;
+							bb = document.getElementById(b).value;
+							cc = document.getElementById(c).value;
+							dd = document.getElementById(d).value;
+							ee = document.getElementById(e).value;
+							ff = document.getElementById(f).value;
+							gg = document.getElementById(g).value;
+							hh = document.getElementById(h).value;
+							//
+							a = [Rows[i].id, aa, 'Reference', bb, cc, dd, ee, ff, gg, hh]
+							//
+							ReferenceFileDataExtension.push(a)
+						} catch {}
+					}
+				//
+				var db = 'Reference|Value|Type|FileReference|Status|WorkInProgress|Prepared|DatePrepared|Reviewed|DateReviewed\n';  
+
+				FileData.forEach(function(row) {  
+					db += row.join('|');  
+					db += "\n";  
+				});  
+				FileDataExtension.forEach(function(row) {  
+					db += row.join('|');  
+					db += "\n";  
+				});  
+				ReferenceFileDataExtension.forEach(function(row) {  
+					db += row.join('|');  
+					db += "\n";  
+				});  
+				var hiddenElement = document.createElement('a');  
+				hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(db);  
+				hiddenElement.target = '_blank';  
+				//
+				var d = document.getElementById('ContextDate1').value
+				var d = new Date(d)
+				//
+				var month = '' + (d.getMonth() + 1);
+				var day = '' + d.getDate();
+				var year = d.getFullYear();
+				//
+				if (month.length < 2) 
+					month = '0' + month;
+				if (day.length < 2) 
+					day = '0' + day;
+				var formateddate = year + '-' + month + '-' + day;
+				//
+				b = document.getElementById('Amend1').value
+				if (b == "") {
+					a = ""
+				}
+				//
+				var file_name = document.getElementById('TradingSymbol1').value + " " + formateddate + a + b + ".db"
+				hiddenElement.download = file_name;
+				hiddenElement.click();
+			}
+
+			// Print
+
+			function Print() {
+				Control('Off')
+				LineChart();
+				document.getElementsByClassName('header')[0].style.display = 'none';
+				window.print();
+				document.getElementsByClassName('header')[0].style.display = '';
+				showPage('Graph');
+				historyPush('Graph');
+				Control('On')
+			};
+
+			// Unhide Rows
+
+			function UnhideRows() {
+				rows = document.querySelectorAll('tr');
+				for(let i = 1; i <= rows.length; i++) {
+					try {
+						row = rows[i];
+						row.style.display = '';
+					} catch {}
+				}
+			}
+
+			function CheckUnhideCheckbox() {
+				var a = document.getElementById("UnhideCheckbox").checked
+				if (a == true) {
+					UnhideRows();
+					document.getElementById('UnhideCheckboxOff').style.display = 'contents';
+					document.getElementById('UnhideCheckboxOn').style.display = 'none';
+				} else {
+					document.getElementById('UnhideCheckboxOff').style.display = 'none';
+					document.getElementById('UnhideCheckboxOn').style.display = 'contents';
+				}
+				Compile();
+			}
+
+			function UnhideCheckbox() {
+				a = document.getElementById('UnhideCheckbox').checked
+				if (a == true) {
+					a = false
+				} else {
+					a = true
+				}
+				document.getElementById('UnhideCheckbox').checked = a
+				CheckUnhideCheckbox();
+			}
+
+			// open editor
+
+			function OpenEditor() {
+				a = document.getElementById('OpenEditor').checked
+				if (a == true) {
+					a = false
+					b = 'none';
+				} else {
+					a = true
+					b = 'contents';
+				}
+				document.getElementById('OpenEditor').checked = a;
+				document.getElementById('OpenEditorIcon').style.display = b;
+			}
+
+			// clear checkboxes
+
+			function ClearCheckboxes() {
+				a = document.querySelectorAll('input')
+				for(let i = 0; i < a.length; i++) {
+					b = a[i].id
+					if (b != 'UnhideCheckbox') {
+						c = b.slice(b.length - 8)
+						if (c == 'Checkbox') {
+							a[i].checked = false
+							a[i].style.visibility = 'hidden'
+						}
+						c = b.slice(b.length - 9)
+						if (c == 'Checkbox2') {
+							a[i].checked = false
+							a[i].style.visibility = 'hidden'
+						}
+					}
+				}
+			}
+
+			// checkboxes
+			document.addEventListener('keydown', (event) => {
+				keys = [49, 50]
+				if (keys.includes(event.keyCode)) {
+					position = event.target
+					row = position.id.slice(0, -1)
+					if (event.keyCode == 49 && (event.altKey || event.metaKey)) {
+						event.preventDefault();
+						checkbox = document.getElementById(row + 'Checkbox')
+					}
+					if (event.keyCode == 50 && (event.altKey || event.metaKey)) {
+						event.preventDefault();
+						checkbox = document.getElementById(row + 'Checkbox2')
+					}
+					if (checkbox.checked == true) {
+						checkbox.checked = false;
+						checkbox.style.visibility = 'hidden'
+					} else {
+						checkbox.checked = true;
+						checkbox.style.visibility = 'visible'
+					}
+				}
+			});
 
 			// dom
 			document.addEventListener('DOMContentLoaded', function() {
