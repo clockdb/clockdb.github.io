@@ -186,3 +186,12 @@ function BalanceClock(BalanceClock) {
     }
     document.getElementById('IntrinsicValueOfACommonShares4').value = numUSD.format(g)
 };
+
+function CommonShareIntrinsicValuePerUnitAndPricePerUnit() {
+
+    var a = document.getElementById('TradingSymbol1').value
+
+    document.getElementById('CommonShareIntrinsicValuePerUnit').innerHTML = a + ' Common Shares Intrinsic Value Per Unit'
+    document.getElementById('CommonSharePricePerUnit').innerHTML = a + ' Common Shares Price Per Unit'
+
+};
