@@ -307,7 +307,6 @@ function onChatNotificationsPaginationTriggerListener(){
 }
 
 function setOnChatNotificationScrollListener(){
-    console.log('tried')
     var menu = document.getElementById("id_chat_notifications_container")
     if(menu != null ){
         menu.addEventListener("scroll", function(e){
