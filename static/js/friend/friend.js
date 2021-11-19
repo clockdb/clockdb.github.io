@@ -5,30 +5,34 @@ console.log('friend/friend.js')
 function onFriendRequestAccepted(){
     location.reload();
 }
-
+console.log('1')
 function onFriendRequestDeclined(){
     location.reload();
 }
-
+console.log('2')
 function triggerAcceptFriendRequest(friend_request_id){
     acceptFriendRequest(friend_request_id, onFriendRequestAccepted)
 }
-
+console.log('3')
 function triggerDeclineFriendRequest(friend_request_id){
     declineFriendRequest(friend_request_id, onFriendRequestDeclined)
 }
+console.log('4')
 
 function onFriendRemoved(){
     location.reload();
 }
+console.log('5')
 
 function onFriendRequestAccepted(){
     location.reload();
 }
+console.log('6')
 
 function onFriendRequestDeclined(){
     location.reload();
 }
+console.log('7')
 
 function sendFriendRequest(id){
     payload = {
