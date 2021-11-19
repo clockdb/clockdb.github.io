@@ -3368,1657 +3368,6 @@
 				controlPanelTitles();
 			}
 
-			// Open
-
-			function UploadConfirm() {
-				var numUSD = new Intl.NumberFormat("en-US", {
-					format: "number"
-				});
-				document.getElementById('UnhideCheckbox').checked = true
-				CheckUnhideCheckbox();
-				try {
-					var list = document.getElementById('FilesDetails');
-					list.innerHTML = '';
-					Rows = document.getElementsByClassName('Reference');
-					Row = 1
-					Papa.parse(document.getElementById('Upload').files[0], 
-						{
-						download: true,
-						header: true,
-						skipEmptyLines: true, 
-						complete: function(results) {
-							for (var k in results.data) {
-								var a = results.data[k].Value
-								var b = results.data[k].Reference
-								var c = results.data[k].Type
-								var Reference = results.data[k].FileReference
-								var Status = results.data[k].Status
-								var WorkInProgress = results.data[k].WorkInProgress
-								var Prepared = results.data[k].Prepared
-								var DatePrepared = results.data[k].DatePrepared
-								var Reviewed = results.data[k].Reviewed
-								var DateReviewed = results.data[k].DateReviewed
-								if (a == 'NaN') {
-									a = '';
-								}
-								if (c == 'Checkbox') {
-									if (a == 'true') {
-										document.getElementById(b).checked = true;
-										document.getElementById(b).style.visibility = 'visible';
-									} else {}
-								}
-								if (c == 'ClockRate') {
-									document.getElementById(b).value = a;
-								}
-								if (c == 'Context') {
-									document.getElementById(b).value = a;
-								}
-								if (c == 'ContextDate') {
-									document.getElementById(b).value = a;
-								}
-								if (c == 'Date') {
-									document.getElementById(b).value = a;
-								}
-								if (c == 'Directory') {
-									document.getElementById(b).value = a;
-								}
-								if (c == 'Header') {
-									document.getElementById(b).value = a;
-								}
-								if (c == 'Opinion') {
-									document.getElementById(b).value = numUSD.format(a);
-								}
-								if (c == 'OpinionThree') {
-									document.getElementById(b).value = numUSD.format(a);
-								}
-								if (c == 'OpinionFour') {
-									document.getElementById(b).value = numUSD.format(a);
-								}
-								if (c == 'Proportion') {
-									document.getElementById(b).value = a;
-								}
-								if (c == 'Price') {
-									document.getElementById(b).value = a;
-								}
-								if (c == 'REF') {
-									document.getElementById(b).value = a;
-								}
-								if (c == 'Reference') {
-									var tr = document.createElement('tr');
-									tr.className = "Reference"
-									var r = "FileProperty" + Row;
-									tr.id = r + '.Row'
-									var name = a;
-									var b = 1
-									AddFile(name, tr, b, r, list, Reference, Status, WorkInProgress, Prepared, DatePrepared, Reviewed, DateReviewed);
-									tr.innerHTML = html
-									list.appendChild(tr) 
-									Row = Row + 1
-								}
-								if (c == 'ShareholdersEquityBeginningBalance') {
-									document.getElementById(b).value = numUSD.format(a);
-								}
-								if (c == 'TrialBalance') {
-									document.getElementById(b).value = numUSD.format(a);
-								}
-							}
-						}
-					});
-					document.getElementById('FilesDetails').innerHTML = list.innerHTML;
-				} catch {}
-				showPage('Context')
-				historyPush('Context')
-				Compile();
-				document.getElementById('UploadConfirm').style.display = 'none';
-			};
-
-			// Rollover
-
-			function Rollover() {
-				var numUSD = new Intl.NumberFormat("en-US", {
-					format: "number"
-				});
-				Save();
-				var d = document.getElementById('ContextDate1').value
-				d = new Date(d)
-				day = d.getDate();
-				month = d.getMonth();
-				year = d.getFullYear() + 1
-				d = new Date(year, month, day).toDateString()
-				d = d.split(' ')
-				d = d[1] + '. ' + d[2] + ', ' + d[3]
-				document.getElementById('ContextDate6').value = document.getElementById('ContextDate5').value
-				document.getElementById('ContextDate5').value = document.getElementById('ContextDate4').value
-				document.getElementById('ContextDate4').value = document.getElementById('ContextDate3').value
-				document.getElementById('ContextDate3').value = document.getElementById('ContextDate2').value
-				document.getElementById('ContextDate2').value = document.getElementById('ContextDate1').value
-				document.getElementById('ContextDate1').value = d
-				//
-				rows = document.querySelectorAll('tr');
-				//
-				RowClass = [
-					'Date',
-					'Clock',
-					'ClockRate',
-					'Context',
-					'Opinion',
-					'OpinionThree',
-					'OpinionFour',
-					'Price',
-					'Proportion',
-					'TrialBalance',
-					'ShareholdersEquityBeginningBalance',
-				]
-				//
-				for(let i = 0; i < rows.length; i++) {
-					trid = rows[i].id
-					trclass = rows[i].className
-					if(RowClass.includes(trclass)) {
-						row = trid.slice(0, -3);
-						//
-						input1 = row + 1
-						input2 = row + 2
-						input3 = row + 3
-						input4 = row + 4
-						input5 = row + 5
-						input6 = row + 6
-						//
-						if (trclass == 'OpinionFour') {
-						} else {
-							document.getElementById(input6).value = document.getElementById(input5).value;
-							document.getElementById(input5).value = document.getElementById(input4).value;
-						}
-						if (trclass == 'OpinionThree') {
-						} else {
-							document.getElementById(input4).value = document.getElementById(input3).value;
-							document.getElementById(input3).value = document.getElementById(input2).value;
-							document.getElementById(input2).value = document.getElementById(input1).value;
-						}
-						try {
-							var a = parseInt(document.getElementById(input1).value.replaceAll(/,/g, ''));
-						} catch {}
-						if (Math.abs(a) > 1) {
-							document.getElementById(input1).value = 0
-						}
-						var a = document.getElementById(trid).className
-						//
-						if (a == 'Context') {
-							document.getElementById(input1).value = '';
-						}
-						if (a == 'Date') {
-							document.getElementById(input1).value = '';
-						}
-						if (a == 'ShareholdersEquityBeginningBalance') {
-							b = input1.replace('TrialBalance','')
-							b = document.getElementById(b).value.replaceAll(/,/g, '');
-							document.getElementById(input1).value = numUSD.format(-b);
-						}
-					}
-				};
-				Compile();
-			};
-
-			// Open File Name
-
-			function OpenFileName() {
-				a = document.getElementById('Upload').files[0].name
-				document.getElementById('OpenFileName').innerHTML = a;
-				document.getElementById('UploadConfirm').style.display = 'block';
-			}
-
-			// Save
-
-			function Save() {
-				//
-				var FileData = [  
-					//
-					// settings
-					['UnhideCheckbox', document.getElementById('UnhideCheckbox').checked, 'Checkbox'],
-					['OpenEditor', document.getElementById('OpenEditor').checked, 'Checkbox'],
-				];  
-				RowClass = [
-					'Checkbox',
-					'ClockRate',
-					'Context',
-					'ContextDate',
-					'Date',
-					'Header',
-					'Opinion',
-					'OpinionThree',
-					'OpinionFour',
-					'Price',
-					'Proportion',
-					'REF',
-					'ShareholdersEquityBeginningBalance',
-					'TrialBalance',
-				]
-				ClockClass = [
-					'Opinion',
-					'OpinionFour',
-					'ShareholdersEquityBeginningBalance',
-					'TrialBalance',
-				]
-				FourColumns = [
-					'OpinionFour',
-				]
-				ThreeColumns = [
-					'OpinionThree',
-				]
-				rows = document.querySelectorAll('tr');
-				FileDataExtension = []
-				//
-				for(let i = 0; i < rows.length; i++) {
-					trid = rows[i].id
-					trclass = rows[i].className
-					if(RowClass.includes(trclass)) {
-						row = trid.slice(0, -3);
-						input1 = row + 1
-						input2 = row + 2
-						input3 = row + 3
-						input4 = row + 4
-						input5 = row + 5
-						input6 = row + 6
-						checkbox1 = row + 'Checkbox'
-						checkbox2 = row + 'Checkbox' + 2
-						a = document.getElementById(input1).value;
-						b = document.getElementById(input2).value;
-						c = document.getElementById(input3).value;
-						d = document.getElementById(input4).value;
-						e = document.getElementById(input5).value;
-						f = document.getElementById(input6).value;
-						try {
-							g = document.getElementById(checkbox1).checked;
-							h = document.getElementById(checkbox2).checked;
-						} catch {}
-						if (ClockClass.includes(trclass)) {
-							a = parseInt(a.replaceAll(/,/g, ''));
-							b = parseInt(b.replaceAll(/,/g, ''));
-							c = parseInt(c.replaceAll(/,/g, ''));
-							d = parseInt(d.replaceAll(/,/g, ''));
-							e = parseInt(e.replaceAll(/,/g, ''));
-							f = parseInt(f.replaceAll(/,/g, ''));
-						}
-						a = [input1, a, trclass]
-						b = [input2, b, trclass]
-						c = [input3, c, trclass]
-						d = [input4, d, trclass]
-						e = [input5, e, trclass]
-						f = [input6, f, trclass]
-						try {
-							g = [checkbox1, g, 'Checkbox']
-							h = [checkbox2, h, 'Checkbox']
-						} catch {}
-						FileDataExtension.push(a)
-						FileDataExtension.push(b)
-						FileDataExtension.push(c)
-						try {
-							FileDataExtension.push(g)
-							FileDataExtension.push(h)
-						} catch {}
-
-						if (FourColumns.includes(trclass)) {
-							FileDataExtension.push(d)
-						} else {
-							if (ThreeColumns.includes(trclass)) {
-							} else {
-								FileDataExtension.push(d)
-								FileDataExtension.push(e)
-								FileDataExtension.push(f)
-							};
-						};
-					};
-				};
-				ReferenceFileDataExtension = []
-				Rows = document.getElementsByClassName('Reference')
-					for (let i = 0; i < Rows.length; i++) {
-						try {
-							//
-							a = Rows[i].id.replace('.Row', '.1');
-							b = Rows[i].id.replace('.Row', '.2');
-							c = Rows[i].id.replace('.Row', '.3');
-							d = Rows[i].id.replace('.Row', '.4');
-							e = Rows[i].id.replace('.Row', '.5');
-							f = Rows[i].id.replace('.Row', '.6');
-							g = Rows[i].id.replace('.Row', '.7');
-							h = Rows[i].id.replace('.Row', '.8');
-							//
-							aa = document.getElementById(a).value;
-							bb = document.getElementById(b).value;
-							cc = document.getElementById(c).value;
-							dd = document.getElementById(d).value;
-							ee = document.getElementById(e).value;
-							ff = document.getElementById(f).value;
-							gg = document.getElementById(g).value;
-							hh = document.getElementById(h).value;
-							//
-							a = [Rows[i].id, aa, 'Reference', bb, cc, dd, ee, ff, gg, hh]
-							//
-							ReferenceFileDataExtension.push(a)
-						} catch {}
-					}
-				//
-				var db = 'Reference|Value|Type|FileReference|Status|WorkInProgress|Prepared|DatePrepared|Reviewed|DateReviewed\n';  
-
-				FileData.forEach(function(row) {  
-					db += row.join('|');  
-					db += "\n";  
-				});  
-				FileDataExtension.forEach(function(row) {  
-					db += row.join('|');  
-					db += "\n";  
-				});  
-				ReferenceFileDataExtension.forEach(function(row) {  
-					db += row.join('|');  
-					db += "\n";  
-				});  
-				var hiddenElement = document.createElement('a');  
-				hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(db);  
-				hiddenElement.target = '_blank';  
-				//
-				var d = document.getElementById('ContextDate1').value
-				var d = new Date(d)
-				//
-				var month = '' + (d.getMonth() + 1);
-				var day = '' + d.getDate();
-				var year = d.getFullYear();
-				//
-				if (month.length < 2) 
-					month = '0' + month;
-				if (day.length < 2) 
-					day = '0' + day;
-				var formateddate = year + '-' + month + '-' + day;
-				//
-				b = document.getElementById('Amend1').value
-				if (b == "") {
-					a = ""
-				}
-				//
-				var file_name = document.getElementById('TradingSymbol1').value + " " + formateddate + a + b + ".db"
-				hiddenElement.download = file_name;
-				hiddenElement.click();
-			}
-
-			// Print
-
-			function Print() {
-				Control('Off')
-				LineChart();
-				document.getElementsByClassName('header')[0].style.display = 'none';
-				window.print();
-				document.getElementsByClassName('header')[0].style.display = '';
-				showPage('Graph');
-				historyPush('Graph');
-				Control('On')
-			};
-
-			// Unhide Rows
-
-			function UnhideRows() {
-				rows = document.querySelectorAll('tr');
-				for(let i = 1; i <= rows.length; i++) {
-					try {
-						row = rows[i];
-						row.style.display = '';
-					} catch {}
-				}
-			}
-
-			function CheckUnhideCheckbox() {
-				var a = document.getElementById("UnhideCheckbox").checked
-				if (a == true) {
-					UnhideRows();
-					document.getElementById('UnhideCheckboxOff').style.display = 'contents';
-					document.getElementById('UnhideCheckboxOn').style.display = 'none';
-				} else {
-					document.getElementById('UnhideCheckboxOff').style.display = 'none';
-					document.getElementById('UnhideCheckboxOn').style.display = 'contents';
-				}
-				Compile();
-			}
-
-			function UnhideCheckbox() {
-				a = document.getElementById('UnhideCheckbox').checked
-				if (a == true) {
-					a = false
-				} else {
-					a = true
-				}
-				document.getElementById('UnhideCheckbox').checked = a
-				CheckUnhideCheckbox();
-			}
-
-			// open editor
-
-			function OpenEditor() {
-				a = document.getElementById('OpenEditor').checked
-				if (a == true) {
-					a = false
-					b = 'none';
-				} else {
-					a = true
-					b = 'contents';
-				}
-				document.getElementById('OpenEditor').checked = a;
-				document.getElementById('OpenEditorIcon').style.display = b;
-			}
-
-			// clear checkboxes
-
-			function ClearCheckboxes() {
-				a = document.querySelectorAll('input')
-				for(let i = 0; i < a.length; i++) {
-					b = a[i].id
-					if (b != 'UnhideCheckbox') {
-						c = b.slice(b.length - 8)
-						if (c == 'Checkbox') {
-							a[i].checked = false
-							a[i].style.visibility = 'hidden'
-						}
-						c = b.slice(b.length - 9)
-						if (c == 'Checkbox2') {
-							a[i].checked = false
-							a[i].style.visibility = 'hidden'
-						}
-					}
-				}
-			}
-
-			// checkboxes
-			document.addEventListener('keydown', (event) => {
-				keys = [49, 50]
-				if (keys.includes(event.keyCode)) {
-					position = event.target
-					row = position.id.slice(0, -1)
-					if (event.keyCode == 49 && (event.altKey || event.metaKey)) {
-						event.preventDefault();
-						checkbox = document.getElementById(row + 'Checkbox')
-					}
-					if (event.keyCode == 50 && (event.altKey || event.metaKey)) {
-						event.preventDefault();
-						checkbox = document.getElementById(row + 'Checkbox2')
-					}
-					if (checkbox.checked == true) {
-						checkbox.checked = false;
-						checkbox.style.visibility = 'hidden'
-					} else {
-						checkbox.checked = true;
-						checkbox.style.visibility = 'visible'
-					}
-				}
-			});
-
-			// edit profile
-
-			try {
-				var cropper;
-				var imageFile;
-				var base64ImageString;
-				var cropX;
-				var cropX;
-				var cropWidth;
-				var cropHeight;
-				enableImageOverlay()
-			} catch {}
-
-			function enableImageOverlay(){
-				var text = document.getElementById("id_text")
-				text.style.backgroundColor = "#0D47A1"
-				text.style.color = "white"
-				text.style.fontSize = "16px"
-				text.style.padding = "16px 32px"
-				text.style.cursor = "pointer"
-
-				var profileImage = document.getElementById("id_profile_image_edit_profile")
-				profileImage.style.opacity = "1"
-				profileImage.style.display = "block"
-				profileImage.style.width = "100%"
-				profileImage.style.height = "auto"
-				profileImage.style.transition = ".5s ease"
-				profileImage.style.backfaceVisibility  = "hidden"
-				profileImage.style.cursor = "pointer"
-
-				var middleContainer = document.getElementById("id_middle_container")
-				middleContainer.style.transition = ".5s ease"
-				middleContainer.style.opacity = "0"
-				middleContainer.style.position = "absolute"
-				middleContainer.style.top = "50%"
-				middleContainer.style.left = "50%"
-				middleContainer.style.transform = "translate(-50%, -50%)"
-				middleContainer.style.textAlign = "center"
-
-				var imageContainer = document.getElementById("id_image_container")
-				imageContainer.addEventListener("mouseover", function( event ) { 
-					profileImage.style.opacity = "0.3"
-					middleContainer.style.opacity = "1"
-				})
-
-				imageContainer.addEventListener("mouseout", function( event ) { 
-					profileImage.style.opacity = "1"
-					middleContainer.style.opacity = "0"
-				})
-
-				imageContainer.addEventListener("click", function(event){
-					document.getElementById('id_profile_image_edit_profile').click();
-				});
-
-				var cropConfirm = document.getElementById("id_image_crop_confirm")
-				cropConfirm.classList.remove("d-flex")
-				cropConfirm.classList.remove("flex-row")
-				cropConfirm.classList.remove("justify-content-between")
-				cropConfirm.classList.add("d-none")
-				
-			}
-
-			function disableImageOverlay(){
-				var profileImage = document.getElementById("id_profile_image_edit_profile_display")
-				var middleContainer = document.getElementById("id_middle_container")
-				var imageContainer = document.getElementById("id_image_container")
-				var text = document.getElementById("id_text")
-
-				imageContainer.removeEventListener("mouseover", function( event ) { 
-					profileImage.style.opacity = "0.3"
-					middleContainer.style.opacity = "1"
-				})
-
-				imageContainer.removeEventListener("mouseout", function( event ) { 
-					profileImage.style.opacity = "1"
-					middleContainer.style.opacity = "0"
-				})
-
-				profileImage.style.opacity = "1"
-				middleContainer.style.opacity = "0"
-				text.style.cursor = "default"
-				text.style.opacity = "0"
-
-				document.getElementById('id_image_container').removeEventListener("click", function(event){
-					event.preventDefault();
-					// do nothing
-				});
-				document.getElementById('id_profile_image_edit_profile').addEventListener("click", function(event){
-					event.preventDefault();
-					// do nothing
-				});
-
-				var cropConfirm = document.getElementById("id_image_crop_confirm")
-				cropConfirm.classList.remove("d-none")
-				cropConfirm.classList.add("d-flex")
-				cropConfirm.classList.add("flex-row")
-				cropConfirm.classList.add("justify-content-between")
-
-				var confirm = document.getElementById("id_confirm")
-				confirm.addEventListener("click", function(event){
-					//console.log("Sending crop data for processing...")
-					cropImage(
-						imageFile, 
-						cropX, 
-						cropY, 
-						cropWidth,
-						cropHeight
-					)
-					document.getElementById('edit').style.display = 'none';
-					document.getElementById('CloseMessenger').click()
-				})
-
-				var cancel = document.getElementById("id_cancel")
-				cancel.addEventListener("click", function(event){
-					console.log("Reloading window...")
-					window.location.reload();
-				})
-			}
-
-			function isImageSizeValid(image){
-				console.log("max size: {{DATA_UPLOAD_MAX_MEMORY_SIZE}}")
-				var startIndex = image.indexOf("base64,") + 7;
-				var base64str = image.substr(startIndex);
-				var decoded = atob(base64str);
-				console.log("FileSize: " + decoded.length);
-				if(decoded.length>= "{{DATA_UPLOAD_MAX_MEMORY_SIZE}}"){
-					return null
-				}
-				return base64str
-			}
-
-			function cropImage(image, x, y, width, height){
-				base64ImageString = isImageSizeValid(image)
-				if(base64ImageString != null){
-					var requestData = {
-						"csrfmiddlewaretoken": "{{ csrf_token }}",
-						"image": base64ImageString,
-						"cropX": cropX,
-						"cropY": cropY,
-						"cropWidth": cropWidth,
-						"cropHeight": cropHeight
-					}
-					displayLoadingSpinner(true)
-					$.ajax({
-						type: 'POST',
-						dataType: "json",
-						url: "{% url 'crop_image' user_id=form.initial.id %}",
-						data: requestData,
-						timeout: 10000,
-						success: function(data) {
-							if(data.result == "success"){
-								document.getElementById("id_cancel").click()
-								// window.location.reload()
-							}
-							else if(data.result == "error"){
-								alert(data.exception)
-								document.getElementById("id_cancel").click()
-							}
-						},
-						error: function(data) {
-							console.error("ERROR...", data)
-						},
-						complete: function(data){
-							displayLoadingSpinner(false)
-						}
-					});
-				}
-				else{
-					alert("Upload an image smaller than 10 MB");
-					document.getElementById("id_cancel").click()
-				}
-			}
-
-			function readURL(input) {
-				if (input.files && input.files[0]) {
-					var reader = new FileReader();
-
-					reader.onload = function (e) {
-						disableImageOverlay()
-						var image = e.target.result
-						var imageField = document.getElementById('id_profile_image_edit_profile_display')
-						imageField.src = image
-						cropper = new Cropper(imageField, {
-							aspectRatio: 1/1,
-							crop(event) {
-								//console.log("CROP START")
-								//console.log("x: " + event.detail.x);
-								//console.log("y: " + event.detail.y);
-								//console.log("width: " + event.detail.width);
-								//console.log("height: " + event.detail.height);
-								setImageCropProperties(
-									image,
-									event.detail.x,
-									event.detail.y,
-									event.detail.width,
-									event.detail.height
-								)
-							},
-						});
-					};
-					reader.readAsDataURL(input.files[0]);
-				}
-			};
-
-			function setImageCropProperties(image, x, y, width, height){
-				imageFile = image
-				cropX = x
-				cropY = y
-				cropWidth = width
-				cropHeight = height
-			}
-
-			// redirect
-
-			function redirect(page, user_id, this_user_id) {
-				z = 0
-				b = window.location.href.replace(window.location.origin,'')
-				a = b.split('/')[1]
-				b = b.split('/')[2]
-				if (a == user_id) {
-					if (page == 'profile') {
-						z = 1
-					}
-				} else {
-					if (a == user_id) {
-						z = 1
-					}
-				}
-				if (page == 'messages') {
-					onSelectFriend(this_user_id)
-					Messenger('On')
-				} else {
-					if (z == 1) {
-						showPage(page)
-						historyPush(page)
-					} else {
-						url = window.location.origin + '/' + user_id + '/' + page;
-						window.open(url, '_self');
-						showPage(page)
-						historyPush(page)
-					}
-				}
-			}
-
-			// history push
-
-			function historyPush(page) {
-				user_id = window.location.href.replace(window.location.origin,'');
-				user_id = user_id.split('/')[1];
-				a = 1
-				try {
-					ts = document.getElementById('TradingSymbol1').value
-					w = window.location.href
-					o = window.location.origin
-					w = w.replace(o, '')
-					o = w.split('/')[2]
-				} catch {}
-				try {
-					if (o == 'WorkingPaper') {
-						history.pushState({page}, ``, `/${user_id}/WorkingPaper/${ts}/${page}/`);
-						document.title = 'Clockdb | ' + ts + ' | ' + page;
-						a = 0
-					}
-					else {}
-				} catch {}
-				if (a == 1) {
-					history.pushState({page}, ``, `/${user_id}/${page}/`);
-					document.title = 'Clockdb | ' + page;
-				}
-			}
-
-			// onScroll posts & entities
-
-			window.onscroll = () => {
-				var loading = document.getElementById('id_loading_spinner')
-				if (loading.style.display == 'none') {
-					//
-					if (document.getElementById('Posts').style.display != 'none') {
-						Posts_Offset = document.getElementsByClassName('post')[0].getElementsByClassName('φ')[0].offsetHeight * (parseInt(localStorage.counter) + 6);
-						if (window.scrollY >= Posts_Offset) {
-							counter = parseInt(localStorage.counter) + 10
-							localStorage.setItem('counter', counter)
-							localStorage.setItem('quantity', 10)
-							load(url);
-						}
-					}
-					if (document.getElementById('Entities').style.display != 'none') {
-						Entities_Offset = parseInt(document.getElementsByClassName('Entity-main')[0].offsetHeight) * (parseInt(localStorage.entities_counter) + 6);
-						if (window.scrollY >= Entities_Offset) {
-							entities_counter = parseInt(localStorage.entities_counter) + 10
-							localStorage.setItem('entities_counter', entities_counter)
-							localStorage.setItem('entities_quantity', 10)
-							entities_load(url, 'skip');
-						}
-					}
-				}
-			};
-
-			// Posts
-
-			function Posts() {
-				url = '/entities/'
-				PostsUrl(url)
-				localStorage.setItem('counter', 1);
-				localStorage.setItem('quantity', 10);
-				load(url)
-			}
-
-			function ClearPosts() {
-				document.getElementById('main_posts').innerHTML = '';
-			}
-
-			function PostsUrl() {
-				p = 0
-				url = '/posts/'
-				cc = '/'
-				a = document.getElementById('Industry')
-				a = a.options[a.selectedIndex];
-				url = url + a.value + '/'
-				if (a.value != 'any') {
-					cc = a.innerHTML + '/'
-				}
-				g = document.getElementsByName('Industry_SEC')
-				z = 0
-				for(let i = 0; i < g.length; i++) {
-					if (g[i].style.display == 'block') {
-						a = g[i].getElementsByClassName('select')[0]
-						a = a.options[a.selectedIndex];
-						url = url + a.value + '/'
-						if (a.value != 'any') {
-							cc = cc + a.innerHTML + '/'
-						}
-						z = 1
-					}
-				}
-				if (z == 0) {
-					url = url + 'any' + '/'
-				}
-				a = document.getElementById('Period')
-				a = a.options[a.selectedIndex];
-				url = url + a.value + '/'
-				if (a.value != 'any') {
-					cc = cc + a.innerHTML + '/'
-				}
-				a = document.getElementById('WorkInProgress')
-				a = a.options[a.selectedIndex];
-				url = url + a.value + '/'
-				if (a.value != 'any') {
-					cc = cc + a.innerHTML + '/'
-				}
-				a = document.getElementById('Region')
-				a = a.options[a.selectedIndex];
-				url = url + a.value + '/'
-				if (a.value != 'any') {
-					cc = cc + a.innerHTML + '/'
-				}
-				a = document.getElementById('Order')
-				a = a.options[a.selectedIndex];
-				url = url + a.value + '/'
-				if (a.value != 'any') {
-					cc = cc + a.innerHTML + '/'
-				}
-				a = document.getElementById('Sort')
-				a = a.options[a.selectedIndex];
-				url = url + a.value + '/'
-				if (a.value != 'any') {
-					cc = cc + a.innerHTML + '/'
-				}
-				if (cc == '/') {
-					cc = ''
-				}
-				document.getElementsByClassName('posts_search_criterias')[0].innerHTML = cc;
-			}
-
-			function load(url) {
-				const loading = document.getElementById('id_loading_spinner');
-				loading.style.display = 'block';
-				counter = parseInt(localStorage.counter)
-				quantity = parseInt(localStorage.quantity)
-				const start = counter;
-				var end = start + quantity - 1;
-				url = url + start + '/' + end + '/'
-				fetch(url)
-					.then(response => response.json())
-					.then(data => {
-						d = data.len
-						if (d > 1) {
-							a = d + ' results'
-						} else {
-							if (d == 0) {
-								a = 'No result'
-							} else {
-								a = d + ' result'
-							}
-						}
-						document.getElementsByClassName('posts_search_len')[0].innerHTML = a
-						data.posts.forEach(add_post);
-						LineChart();
-						Puck();
-						loading.style.display = 'none';
-					});
-				};
-			
-			function add_post(contents) {
-				var numUSD = new Intl.NumberFormat("en-US", {
-					format: "number"
-				})
-				var Price = new Intl.NumberFormat("en-US", {
-					format: "currency",
-					minimumFractionDigits: 2,
-					maximumFractionDigits: 2
-				});
-				const post = document.createElement('span');
-				post.className = 'post';
-				//
-				date(contents.lastyear);
-				lastyear = d;
-				date(contents.secondlastyear);
-				secondlastyear = d;
-				date(contents.thirdlastyear);
-				thirdlastyear = d;
-				date(contents.fourthlastyear)
-				fourthlastyear = d;
-				//
-				amendlastyear = contents.amendlastyear
-				amendsecondlastyear = contents.amendsecondlastyear
-				amendthirdlastyear = contents.amendthirdlastyear
-				amendfourthlastyear = contents.amendfourthlastyear
-				//
-				datetime(contents.SecuritiesUpdate);
-				securitiesupdate = 'Shares Price as of ' + d;
-				//
-				Opinion1 = contents.OpinionφLastYear
-				if (Opinion1 == null) {
-					Opinion1 = ''
-				}
-				Opinion2 = contents.OpinionφSecondLastYear
-				if (Opinion2 == null) {
-					Opinion2 = ''
-				}
-				Opinion3 = contents.OpinionφThirdLastYear
-				if (Opinion3 == null) {
-					Opinion3 = ''
-				}
-				Opinion4 = contents.OpinionφFourthLastYear
-				if (Opinion4 == null) {
-					Opinion4 = ''
-				}
-				Clock1 = contents.ClockφLastYear
-				if (Clock1 == null) {
-					Clock1 = ''
-				} else {
-					Clock1 = Clock1 + '%'
-				}
-				Clock2 = contents.ClockφSecondLastYear
-				if (Clock2 == null) {
-					Clock2 = ''
-				} else {
-					Clock2 = Clock2 + '%'
-				}
-				Clock3 = contents.ClockφThirdLastYear
-				if (Clock3 == null) {
-					Clock3 = ''
-				} else {
-					Clock3 = Clock3 + '%'
-				}
-				Clock4 = contents.ClockφFourthLastYear
-				if (Clock4 == null) {
-					Clock4 = ''
-				} else {
-					Clock4 = Clock4 + '%'
-				}
-				//
-				Bridge1 = contents.BridgeφLastYear
-				Bridge2 = contents.BridgeφSecondLastYear
-				Bridge3 = contents.BridgeφThirdLastYear
-				Bridge4 = contents.BridgeφFourthLastYear
-				//
-				IV1 = numUSD.format(contents.CommonSharesIntrinsicValueLastYear);
-				IV2 = numUSD.format(contents.CommonSharesIntrinsicValueSecondLastYear);
-				IV3 = numUSD.format(contents.CommonSharesIntrinsicValueThirdLastYear);
-				IV4 = numUSD.format(contents.CommonSharesIntrinsicValueFourthLastYear);
-				//
-				MC1 = numUSD.format(contents.MarketCapitalizationLastYear);
-				MC2 = numUSD.format(contents.MarketCapitalizationSecondLastYear);
-				MC3 = numUSD.format(contents.MarketCapitalizationThirdLastYear);
-				MC4 = numUSD.format(contents.MarketCapitalizationFourthLastYear);
-				//
-				iv1 = Price.format(contents.CommonShareIntrinsicValueLastYear);
-				iv2 = Price.format(contents.CommonShareIntrinsicValueSecondLastYear);
-				iv3 = Price.format(contents.CommonShareIntrinsicValueThirdLastYear);
-				iv4 = Price.format(contents.CommonShareIntrinsicValueFourthLastYear);
-				//
-				price1 = Price.format(contents.CommonSharePriceLastYear);
-				price2 = Price.format(contents.CommonSharePriceSecondLastYear);
-				price3 = Price.format(contents.CommonSharePriceThirdLastYear);
-				price4 = Price.format(contents.CommonSharePriceFourthLastYear);
-				//
-				shares1 = numUSD.format(contents.CommonSharesOutstandingLastYear);
-				shares2 = numUSD.format(contents.CommonSharesOutstandingSecondLastYear);
-				shares3 = numUSD.format(contents.CommonSharesOutstandingThirdLastYear);
-				shares4 = numUSD.format(contents.CommonSharesOutstandingFourthLastYear);
-				//
-				post.id = contents.tradingSymbol;
-				post.innerHTML = `
-					{% include 'search/Post.html' %}
-				`;
-				document.querySelector('#main_posts').append(post);
-			};
-			
-			document.addEventListener('click', event => {
-				const element = event.target;
-				if (element.className === 'hide') {
-					c = element.parentElement.parentElement.parentElement.parentElement.parentElement;
-					c.style.animationPlayState = 'running';
-					c.addEventListener('animationend', () =>  {
-						c.remove();
-					});
-				}
-				if (element.className === 'facebook') {
-					a = element.parentElement.id
-					if (a == '') {
-						a = element.parentElement.parentElement.id
-					}
-					a = a.replace('Share', '')
-					sharer = 'https://www.facebook.com/sharer/sharer.php?u='
-					app = 'www.clockdb.com/' + a + '/'
-					window.open(sharer + app)
-				}
-				if (element.className === 'messenger') {
-					a = element.parentElement.id
-					if (a == '') {
-						a = element.parentElement.parentElement.id
-					}
-					a = a.replace('Share', '')
-					sharer = ''
-					app = 'www.clockdb.com/' + a + '/'
-					window.open(sharer + app)
-				}
-				if (element.className === 'twitter') {
-					a = element.parentElement.id
-					if (a == '') {
-						a = element.parentElement.parentElement.id
-					}
-					a = a.replace('Share', '')
-					sharer = 'http://www.twitter.com/share?url='
-					app = 'www.clockdb.com/' + a + '/'
-					window.open(sharer + app)
-				}
-				if (element.className === 'linkedin') {
-					a = element.parentElement.id
-					if (a == '') {
-						a = element.parentElement.parentElement.id
-					}
-					a = a.replace('Share', '')
-					sharer = 'https://www.linkedin.com/sharing/share-offsite/?url={'
-					app = 'www.clockdb.com/' + a + '/' + '}'
-					window.open(sharer + app)
-				}
-				if (element.className === 'reddit') {
-					a = element.parentElement.id
-					if (a == '') {
-						a = element.parentElement.parentElement.id
-					}
-					a = a.replace('Share', '')
-					sharer = 'http://www.reddit.com/submit?url='
-					app = 'www.clockdb.com/' + a + '/'
-					window.open(sharer + app)
-				}
-				if (element.className === 'instagram') {
-					a = element.parentElement.id
-					if (a == '') {
-						a = element.parentElement.parentElement.id
-					}
-					a = a.replace('Share', '')
-					sharer = ''
-					app = 'www.clockdb.com/' + a + '/'
-					window.open(sharer + app)
-				}
-				if (element.className === 'messages') {
-					a = element.parentElement.id
-					if (a == '') {
-						a = element.parentElement.parentElement.id
-					}
-					a = a.replace('Share', '')
-					sharer = ''
-					app = 'www.clockdb.com/' + a + '/'
-					window.open(sharer + app)
-				}
-				if (element.className === 'email') {
-					a = element.parentElement.id
-					if (a == '') {
-						a = element.parentElement.parentElement.id
-					}
-					a = a.replace('Share', '')
-					sharer = ''
-					app = 'www.clockdb.com/' + a + '/'
-					location.href = "mailto:"
-				}
-				if (element.className === 'copylink') {
-					a = element.parentElement.id
-					if (a == '') {
-						a = element.parentElement.parentElement.id
-					}
-					a = a.replace('Share', '')
-					app = 'www.clockdb.com/' + a + '/'
-					navigator.clipboard.writeText(app)
-				}
-			});
-
-			function LineChartButton() {
-				a = event.target.id
-				a = a.replace('Button','')
-				document.getElementById(a).style.display = 'block';
-				a = a.replace('LineChart','')
-				b = 'Opinion' + a
-				document.getElementById(b).style.display = 'none';
-				b = 'Share' + a
-				document.getElementById(b).style.display = 'none';
-				b = 'Comments' + a
-				document.getElementById(b).style.display = 'none';
-			}
-
-			function OpinionButton() {
-				a = event.target.id
-				a = a.replace('Button','')
-				document.getElementById(a).style.display = 'block';
-				a = a.replace('Opinion','')
-				b = 'LineChart' + a
-				document.getElementById(b).style.display = 'none';
-				b = 'Share' + a
-				document.getElementById(b).style.display = 'none';
-				b = 'Comments' + a
-				document.getElementById(b).style.display = 'none';
-			}
-
-			function date(date) {
-				d = new Date(date)
-				day = d.getDate();
-				month = d.getMonth();
-				year = d.getFullYear()
-				d = new Date(year, month, day).toDateString()
-				d = d.split(' ')
-				d = d[1] + '. ' + d[2] + ', ' + d[3]
-			};
-
-			function datetime(datetime) {
-				//
-				date(datetime);
-				//
-				t = new Date(datetime);
-				hours = t.getHours();
-				if (hours > 12) {
-					hours = hours - 12;
-					z = 'p.m.';
-				} else {
-					z = 'a.m.';
-				}
-				minutes = t.getMinutes();
-				//
-				if (minutes.toString().length == 1) {
-					minutes = '0' + minutes;
-				}
-				d = d + ', ' + hours + ':' + minutes + ' ' + z;
-			}
-
-			function LineChart(lsc) {
-				//
-				a = window.location.href.replace(window.location.origin, '').split('/')[2]
-				if (a != 'WorkingPaper') {
-					//
-					lsc = parseInt(localStorage.counter) - 1
-					//
-					l = document.querySelectorAll('.EntityRegistrantNamePosts')
-					//
-					//
-					for (let q = lsc; q < l.length; q++) {
-						//
-						a = 0
-						a = Math.max(a, parseInt(document.getElementsByClassName('IntrinsicValuesPosts1')[q].value.replaceAll(/,/g, '')));
-						if (Number.isNaN(Number(a))) {
-							a = 1
-						}
-						//
-						b = 0
-						b = Math.max(b, parseInt(document.getElementsByClassName('IntrinsicValuesPosts2')[q].value.replaceAll(/,/g, '')));
-						if (Number.isNaN(Number(b))) {
-							b = 1
-						}
-						//
-						c = 0
-						c = Math.max(c, parseInt(document.getElementsByClassName('IntrinsicValuesPosts3')[q].value.replaceAll(/,/g, '')));
-						if (Number.isNaN(Number(c))) {
-							c = 1
-						}
-						//
-						d = 0
-						d = Math.max(d, parseInt(document.getElementsByClassName('IntrinsicValuesPosts4')[q].value.replaceAll(/,/g, '')));
-						if (Number.isNaN(Number(d))) {
-							d = 1
-						}
-						//
-						e = 0
-						e = Math.max(e, parseInt(document.getElementsByClassName('MarketCapitalizationPosts1')[q].value.replaceAll(/,/g, '')));
-						if (Number.isNaN(Number(e))) {
-							e = 1
-						}
-						//
-						f = 0
-						f = Math.max(f, parseInt(document.getElementsByClassName('MarketCapitalizationPosts2')[q].value.replaceAll(/,/g, '')));
-						if (Number.isNaN(Number(f))) {
-							f = 1
-						}
-						//
-						g = 0
-						g = Math.max(g, parseInt(document.getElementsByClassName('MarketCapitalizationPosts3')[q].value.replaceAll(/,/g, '')));
-						if (Number.isNaN(Number(g))) {
-							g = 1
-						}
-						//
-						h = 0
-						h = Math.max(h, parseInt(document.getElementsByClassName('MarketCapitalizationPosts4')[q].value.replaceAll(/,/g, '')));
-						if (Number.isNaN(Number(h))) {
-							h = 1
-						}
-						//
-						i = Math.max(a, b, c, d, e, f, g, h)
-						//
-						if (i/1000000000 > 1) {
-							dad = 1000000000;
-							scale = '(in billions)';
-						} else {
-							if (i/1000000 > 1) {
-								dad = 1000000;
-								scale = '(in millions)';
-							} else {
-								dad = 1000;
-								scale = '(in thousands)';
-							}
-						}
-						//
-						const lastyear = document.getElementsByClassName('DateSummary1')[q].innerHTML.replaceAll(/,/g, '');
-						const secondlastyear = document.getElementsByClassName('DateSummary2')[q].innerHTML.replaceAll(/,/g, '');
-						const thirdlastyear = document.getElementsByClassName('DateSummary3')[q].innerHTML.replaceAll(/,/g, '');
-						const fourthlastyear = document.getElementsByClassName('DateSummary4')[q].innerHTML.replaceAll(/,/g, '');
-						//
-						if (a == 0) {
-							a = NaN
-						} else {
-							a = a / dad;
-						}
-						let lastyearIntrinsicValue = Math.round(a * 1000)/1000
-						//
-						if (b == 0) {
-							a = NaN
-						} else {
-							a = b / dad;
-						}
-						let secondlastyearIntrinsicValue = Math.round(a * 1000)/1000
-						//
-						if (c == 0) {
-							a = NaN
-						} else {
-							a = c / dad;
-						}
-						let thirdlastyearIntrinsicValue = Math.round(a * 1000)/1000
-						//
-						if (d == 0) {
-							a = NaN
-						} else {
-							a = d / dad;
-						}
-						let fourthlastyearIntrinsicValue = Math.round(a * 1000)/1000
-						//
-						if (e == 0) {
-							a = NaN
-						} else {
-							a = e / dad;
-						}
-						let lastyearMarketCap = Math.round(a * 1000)/1000
-						//
-						if (f == 0) {
-							a = NaN
-						} else {
-							a = f / dad;
-						}
-						let secondlastyearMarketCap = Math.round(a * 1000)/1000
-						//
-						if (g == 0) {
-							a = NaN
-						} else {
-							a = g / dad;
-						}
-						let thirdlastyearMarketCap = Math.round(a * 1000)/1000
-						//
-						if (h == 0) {
-							a = NaN
-						} else {
-							a = h / dad;
-						}
-						let fourthlastyearMarketCap = Math.round(a * 1000)/1000
-						//
-						const charty = document.getElementsByClassName('LineChartPosts')[q];
-						charty.width = window.innerWidth * 0.6;
-						charty.height = window.innerHeight * 0.3;
-						//
-						let lineChart = new Chart(charty, {
-							type: 'line',
-							options: {
-								scales: {
-									yAxes: [{
-										ticks: {
-											beginAtZero: true,
-										}
-									}]
-								}
-							},
-							data: {
-								labels: [lastyear, secondlastyear, thirdlastyear, fourthlastyear],
-								datasets: [
-									{
-										label: 'intrinsic value ' + scale,
-										fill: false,
-										lineTension: 0.5,
-										borderColor: '#0D47A1',
-										borderCapStyle: 'butt',
-										borderDash: [],
-										borderDashOffset: 0.0,
-										borderJoinStyle: 'miter',
-										pointBorderColor: 'rgba(75,192,192,1)',
-										pointBackgroundColor: '#fff',
-										pointBorderWidth: 1,
-										pointBorderRadius: 5,
-										pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-										pointHoverBorderColor: 'rgba(75,192,192,1)',
-										pointHoverBorderWidth: 2,
-										pointHitRadius: 10,
-										data: [lastyearIntrinsicValue, secondlastyearIntrinsicValue, thirdlastyearIntrinsicValue, fourthlastyearIntrinsicValue],
-									},
-									{
-										label: 'market capitalization ' + scale,
-										fill: false,
-										lineTension: 0.5,
-										borderColor: 'red',
-										borderCapStyle: 'butt', 
-										borderDash: [],
-										borderDashOffset: 0.0,
-										borderJoinStyle: 'miter',
-										pointBorderColor: 'rgba(75,192,192,1)',
-										pointBackgroundColor: '#fff',
-										pointBorderWidth: 1,
-										pointBorderRadius: 5,
-										pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-										pointHoverBorderColor: 'rgba(75,192,192,1)',
-										pointHoverBorderWidth: 2,
-										pointRadius: 1,
-										pointHitRadius: 10,
-										data: [lastyearMarketCap, secondlastyearMarketCap, thirdlastyearMarketCap, fourthlastyearMarketCap],
-									},
-								]
-							}
-						});
-					}
-				} else {
-					//
-					a = 0
-					a = Math.max(a, parseInt(document.getElementById('IntrinsicValues1').value.replaceAll(/,/g, '')));
-					if (Number.isNaN(Number(a))) {
-						a = 1
-					}
-					//
-					b = 0
-					b = Math.max(b, parseInt(document.getElementById('IntrinsicValues2').value.replaceAll(/,/g, '')));
-					if (Number.isNaN(Number(b))) {
-						b = 1
-					}
-					//
-					c = 0
-					c = Math.max(c, parseInt(document.getElementById('IntrinsicValues3').value.replaceAll(/,/g, '')));
-					if (Number.isNaN(Number(c))) {
-						c = 1
-					}
-					//
-					d = 0
-					d = Math.max(d, parseInt(document.getElementById('IntrinsicValues4').value.replaceAll(/,/g, '')));
-					if (Number.isNaN(Number(d))) {
-						d = 1
-					}
-					//
-					e = 0
-					e = Math.max(e, parseInt(document.getElementById('MarketCapitalization1').value.replaceAll(/,/g, '')));
-					if (Number.isNaN(Number(e))) {
-						e = 1
-					}
-					//
-					f = 0
-					f = Math.max(f, parseInt(document.getElementById('MarketCapitalization2').value.replaceAll(/,/g, '')));
-					if (Number.isNaN(Number(f))) {
-						f = 1
-					}
-					//
-					g = 0
-					g = Math.max(g, parseInt(document.getElementById('MarketCapitalization3').value.replaceAll(/,/g, '')));
-					if (Number.isNaN(Number(g))) {
-						g = 1
-					}
-					//
-					h = 0
-					h = Math.max(h, parseInt(document.getElementById('MarketCapitalization4').value.replaceAll(/,/g, '')));
-					if (Number.isNaN(Number(h))) {
-						h = 1
-					}
-					//
-					i = Math.max(a, b, c, d, e, f, g, h)
-					//
-					if (i/1000000000 > 1) {
-						dad = 1000000000;
-						scale = '(in billions)';
-					} else {
-						if (i/1000000 > 1) {
-							dad = 1000000;
-							scale = '(in millions)';
-						} else {
-							dad = 1000;
-							scale = '(in thousands)';
-						}
-					}
-					//
-					const lastyear = document.getElementById('DateSummary1').innerHTML.replaceAll(/,/g, '');
-					const secondlastyear = document.getElementById('DateSummary2').innerHTML.replaceAll(/,/g, '');
-					const thirdlastyear = document.getElementById('DateSummary3').innerHTML.replaceAll(/,/g, '');
-					const fourthlastyear = document.getElementById('DateSummary4').innerHTML.replaceAll(/,/g, '');
-					//
-					if (a == 0) {
-						a = NaN
-					} else {
-						a = a / dad;
-					}
-					let lastyearIntrinsicValue = Math.round(a * 1000)/1000
-					//
-					if (b == 0) {
-						a = NaN
-					} else {
-						a = b / dad;
-					}
-					let secondlastyearIntrinsicValue = Math.round(a * 1000)/1000
-					//
-					if (c == 0) {
-						a = NaN
-					} else {
-						a = c / dad;
-					}
-					let thirdlastyearIntrinsicValue = Math.round(a * 1000)/1000
-					//
-					if (d == 0) {
-						a = NaN
-					} else {
-						a = d / dad;
-					}
-					let fourthlastyearIntrinsicValue = Math.round(a * 1000)/1000
-					//
-					if (e == 0) {
-						a = NaN
-					} else {
-						a = e / dad;
-					}
-					let lastyearMarketCap = Math.round(a * 1000)/1000
-					//
-					if (f == 0) {
-						a = NaN
-					} else {
-						a = f / dad;
-					}
-					let secondlastyearMarketCap = Math.round(a * 1000)/1000
-					//
-					if (g == 0) {
-						a = NaN
-					} else {
-						a = g / dad;
-					}
-					let thirdlastyearMarketCap = Math.round(a * 1000)/1000
-					//
-					if (h == 0) {
-						a = NaN
-					} else {
-						a = h / dad;
-					}
-					let fourthlastyearMarketCap = Math.round(a * 1000)/1000
-					//
-					const chart = document.getElementById('LineChart');
-					chart.width = window.innerWidth * 0.6;
-					chart.height = window.innerHeight * 0.3;
-					//
-					let lineChart = new Chart(chart, {
-						type: 'line',
-						options: {
-							scales: {
-								yAxes: [{
-									ticks: {
-										beginAtZero: true,
-									}
-								}]
-							}
-						},
-						data: {
-							labels: [lastyear, secondlastyear, thirdlastyear, fourthlastyear],
-							datasets: [
-								{
-									label: 'intrinsic value ' + scale,
-									fill: false,
-									lineTension: 0.5,
-									borderColor: '#0D47A1',
-									borderCapStyle: 'butt',
-									borderDash: [],
-									borderDashOffset: 0.0,
-									borderJoinStyle: 'miter',
-									pointBorderColor: 'rgba(75,192,192,1)',
-									pointBackgroundColor: '#fff',
-									pointBorderWidth: 1,
-									pointBorderRadius: 5,
-									pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-									pointHoverBorderColor: 'rgba(75,192,192,1)',
-									pointHoverBorderWidth: 2,
-									pointHitRadius: 10,
-									data: [lastyearIntrinsicValue, secondlastyearIntrinsicValue, thirdlastyearIntrinsicValue, fourthlastyearIntrinsicValue],
-								},
-								{
-									label: 'market capitalization ' + scale,
-									fill: false,
-									lineTension: 0.5,
-									borderColor: 'red',
-									borderCapStyle: 'butt', 
-									borderDash: [],
-									borderDashOffset: 0.0,
-									borderJoinStyle: 'miter',
-									pointBorderColor: 'rgba(75,192,192,1)',
-									pointBackgroundColor: '#fff',
-									pointBorderWidth: 1,
-									pointBorderRadius: 5,
-									pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-									pointHoverBorderColor: 'rgba(75,192,192,1)',
-									pointHoverBorderWidth: 2,
-									pointRadius: 1,
-									pointHitRadius: 10,
-									data: [lastyearMarketCap, secondlastyearMarketCap, thirdlastyearMarketCap, fourthlastyearMarketCap],
-								},
-							]
-						}
-					});
-				}
-			};
-
-			function Puck() {
-				//
-				a = window.location.href.replace(window.location.origin, '').split('/')[2]
-				if (a != 'WorkingPaper') {
-					l = document.querySelectorAll('.EntityRegistrantNamePosts').length
-					for (let i = parseInt(localStorage.counter) - 1; i < l; i++) {
-						a = document.getElementsByClassName('Opinionφ1')[i].innerHTML
-						b = document.getElementsByClassName('Bridgeφ1')[i].innerHTML
-						if (b.length === 98) {
-							m = ''
-							if (a == 'Hedge For A Loss In Value') {
-								m = 'red';
-							}
-							if (a == 'Buy') {
-								m = '#0D47A1'
-							}
-							if (a == 'None') {
-								m = 'gold'
-							}
-							document.getElementsByClassName('o')[i].style.color = m;
-						}
-					}
-				} else {
-					a = document.getElementById('Opinionφ1').innerHTML;
-					b = document.getElementById('Bridgeφ1').innerHTML;
-					if (b.length === 98) {
-						if (a == 'Hedge For A Loss In Value') {
-							m = 'red';
-						}
-						if (a == 'Buy') {
-							m = '#0D47A1';
-						}
-						if (a == '') {
-							m = 'gold';
-						}
-						document.getElementById('o').style.color = m;
-					}
-				}
-			}
-				
-			// Entities
-
-			function Entities(search) {
-				if (search != '') {
-					search = search.toLowerCase()
-					document.getElementById('entities_posts').innerHTML = ''
-					showPage('Entities')
-					historyPush('Entities')
-					url = '/entities/' + search
-					localStorage.setItem('entities_counter', 1);
-					localStorage.setItem('entities_quantity', 10);
-					entities_load(url, search)
-				}
-			}
-
-			function entities_load(url, search) {
-				const loading = document.getElementById('id_loading_spinner');
-				loading.style.display = 'block';
-				entities_counter = parseInt(localStorage.entities_counter)
-				entities_quantity = parseInt(localStorage.entities_quantity)
-				const start = entities_counter;
-				var end = start + entities_quantity - 1;
-				url = url + '/' + start + '/' + end
-				fetch(url)
-					.then(response => response.json())
-					.then(data => {
-						d = data.len
-						if (d > 1) {
-							a = d + ' results'
-						} else {
-							if (d == 0) {
-								a = 'No result'
-							} else {
-								a = d + ' result'
-							}
-						}
-						if (search != 'skip') {
-							a = a + " for " + "<b><i>" + search + "</i></b>"
-							document.getElementsByClassName('entities_search_len')[0].innerHTML = a
-						}
-						data.entities.forEach(add_entities_post);
-						loading.style.display = 'none';
-					});
-				};
-
-			function add_entities_post(contents) {
-				const entities_post = document.createElement('div');
-				try {
-					entities_post.innerHTML = `
-						{% include 'search/Entity.html' %}
-					`;
-				} catch {}
-				document.querySelector('#entities_posts').append(entities_post);
-			};
-
-			// popstate
-			
-			function positionpopstate() {
-				try {
-					a = document.getElementById(localStorage.position)
-					a.focus()
-					a.select()
-				} catch {}
-			}
-
-			window.onpopstate = function(event) {
-				showPage(event.state.page);
-				positionpopstate();
-			}
-
-			function historyBack() {
-				window.history.back();
-				positionpopstate();
-			}
-
-			function historyForward() {
-				window.history.forward();
-				positionpopstate();		
-			}
-
 			// analysis/audit/procedures/balancesheets.js
 
 			function DateProcedureAnnualBalanceSheets(DateProcedureAnnualBalanceSheets) {
@@ -6373,7 +4722,6 @@
                 document.getElementById('ProcedureAnnualIncomeStatementsiFilings5').href = document.getElementById('Filings5').href
                 document.getElementById('ProcedureAnnualIncomeStatementsiFilings6').href = document.getElementById('Filings6').href
             };
-
 			
             // analysis/audit/procedures/shareholdersequity.js
 
@@ -6665,7 +5013,6 @@
                 document.getElementById('ProcedureAnnualShareholdersEquityiFilings6').href = document.getElementById('Filings6').href
             };
 
-			
             // analysis/audit/anomalies.js
 
             function DateAnomaliesi(DateAnomaliesi) {
@@ -7302,7 +5649,6 @@
 				document.getElementById('MaterialityThresholdValue6').value = numUSD.format(a);
 			};
 
-			
             // analysis/audit/summary.js
 
             function DateAnomaliesii(DateAnomaliesii) {
@@ -8277,7 +6623,6 @@
 				document.getElementById('Scope').innerHTML = document.getElementById('ContextDate1').value + ' and the five years prior.'
 			}
 
-			
             // analysis/financials/balancesheets.js
 
             function DateBalanceSheets(DateBalanceSheets) {
@@ -12622,7 +10967,6 @@
 				}
 			};
 
-
 			function ProceedsFromDisposalsOfBusinessesAndIntangiblesRow(ProceedsFromDisposalsOfBusinessesAndIntangiblesRow) {
 				z = 0
 				// last year
@@ -12790,7 +11134,6 @@
 					document.getElementById('EquityInvesteeAdvancesRepaymentsRow').style.display = a
 				}
 			};
-
 
 			function PaymentOfLicenseFeeRow(PaymentOfLicenseFeeRow) {
 				z = 0
@@ -13859,8 +12202,6 @@
 				document.getElementById('CashEndingBalance6').value = numUSD.format(Math.round(a));
 			};
 
-			
-
             // analysis/financials/comprehensiveincome.js
 
             function DateStatementsOfComprehensiveIncome(DateStatementsOfComprehensiveIncome) {
@@ -14215,8 +12556,6 @@
                 a = a + parseInt(document.getElementById('IncomeTaxOnOtherComprehensiveIncome6').value.replaceAll(/,/g, ''));
                 document.getElementById('ComprehensiveIncome6').value = numUSD.format(Math.round(a));
             };
-
-			
 
             // analysis/financials/incomestatements.js
 
@@ -16166,8 +14505,6 @@
 				document.getElementById('LiabilitiesAndShareholdersShareholdersEquity6').value = numUSD.format(Math.round(a));
 			};
 
-			
-
             // analysis/financials/trialbalances.js
 
             function DateTrialBalances(DateTrialBalances) {
@@ -16808,7 +15145,189 @@
                 document.getElementById('TrialBalance6').value = numUSD.format(Math.round(a));
             };
 
-			
+			// analysis/financials.js
+			console.log('analysis/financials.js')
+
+			function TrialBalances() {
+				document.getElementById('EntityRegistrantNameTrialBalances').innerHTML = document.getElementById('EntityRegistrantName1').value;
+				DateTrialBalances();
+				TrialBalancesAmend();
+				Balance();	
+			}
+
+			function BalanceSheets() {
+				document.getElementById('EntityRegistrantNameBalanceSheets').innerHTML = document.getElementById('EntityRegistrantName1').value;
+				DateBalanceSheets();
+				BalanceSheetsAmend();
+				BalanceCash();
+				BalanceShortTermInvestments();
+				BalanceAccountsReceivable();
+				BalanceWorkInProgress();
+				BalanceInventories();
+				BalancePrepaidExpenses();
+				BalanceNonTradeReceivables();
+				BalancePrepaidTaxAssetsCurrent();
+				BalanceDeferredTaxAssetsCurrent();
+				BalanceRightOfUseAssetsCurrent();
+				BalanceOtherCurrentAssets();
+				BalanceDiscontinuedOperationsCurrent();
+				BalanceCurrentAssets();
+				BalanceLongTermReceivables();
+				BalanceDeferredCharges();
+				BalanceInvestments();
+				BalancePropertyPlantAndEquipment();
+				BalanceOperatingLeaseRightOfUseAssets();
+				BalanceFinanceLeaseRightOfUseAssets();
+				BalanceIntangibleAssets();
+				BalanceGoodwill();
+				BalanceRefundableTaxAssetsNonCurrent();
+				BalanceDeferredTaxAssetsNonCurrent();
+				BalanceDefinedBenefitPensionAndOtherSimilarPlans();
+				BalanceOtherNonCurrentAssets();
+				BalanceDiscontinuedOperationsNonCurrent();
+				BalanceNonCurrentAssets();
+				BalanceAccountsPayableAndAccruedLiabilities();
+				BalanceEmployeeCompensationCurrent();
+				BalanceOperatingLeasesCurrent();
+				BalanceFinanceLeasesCurrent();
+				BalanceDeferredRevenueAndDepositsCurrent();
+				BalanceAccruedTaxLiabilities();
+				BalanceDeferredTaxLiabilitiesCurrent();
+				BalanceCommercialPapers();
+				BalanceShortTermBorrowings();
+				BalanceOtherCurrentLiabilities();
+				BalanceDiscontinuedOperationsLiabilitiesCurrent();
+				BalanceDividendsPayable();
+				BalanceShortTermPortionOfLongTermDebt();
+				BalanceCurrentLiabilities();
+				BalanceLongTermDebt();
+				BalancePreferredSharesLiability();
+				BalanceRetirementBenefits();
+				BalanceOperatingLeasesNonCurrent();
+				BalanceFinanceLeasesNonCurrent();
+				BalanceLeaseIncentiveObligation();
+				BalanceContingentConsideration();
+				BalanceAccruedTaxLiabilitiesNonCurrent();
+				BalanceDeferredTaxLiabilitiesNonCurrent();
+				BalanceDeferredRevenueAndDepositsNonCurrent();
+				BalanceOtherNonCurrentLiabilities();
+				BalanceRedeemableNonControllingInterests();
+				BalanceDiscontinuedOperationsLiabilitiesNonCurrent();
+				BalanceNonCurrentLiabilities();		
+			}
+
+			function IncomeStatements() {
+				document.getElementById('EntityRegistrantNameIncomeStatements').innerHTML = document.getElementById('EntityRegistrantName1').value;
+				DateStatementsOfIncome();
+				IncomeStatementsAmend();
+				BalanceSales();
+				BalanceCostOfSales();
+				BalanceGrossMargin();
+				BalanceResearchAndDevelopment();
+				BalanceSellingGeneralAdministrativeAndMarketing();
+				BalanceOperatingIncome();
+				BalanceImpairmentRestructuringAndOtherSpecialCharges();
+				BalanceNonOperatingIncomeExpense();
+				BalanceIncomeBeforeTaxes();
+				BalanceIncomeTaxExpenseBenefit();
+				BalanceEquityMethodInvesteesIncome();
+				BalanceNetIncomeFromDiscontinuedOperations();
+				BalanceNetIncome();
+			}
+
+			function ComprehensiveIncome() {
+				document.getElementById('EntityRegistrantNameComprehensiveIncome').innerHTML = document.getElementById('EntityRegistrantName1').value;
+				DateStatementsOfComprehensiveIncome();
+				StatementsOfComprehensiveAmend();
+				BalanceNetIncomeLossComprehensiveIncome();
+				BalanceChangeInForeignCurrencyTranslationAdjustment();
+				BalanceChangeInUnrealizedGainsLossesOnDerivativeInstruments();
+				BalanceChangeInUnrealizedGainsLossesOnInvestments();
+				BalanceChangeInDefinedBenefitPensionAndOtherSimilarPlans();
+				BalanceIncomeTaxOnOtherComprehensiveIncome();
+				BalanceComprehensiveIncome();
+			}
+
+			function ShareholdersEquity() {
+				document.getElementById('EntityRegistrantNameShareholdersEquity').innerHTML = document.getElementById('EntityRegistrantName1').value;
+				DateStatementsOfShareholdersEquity();
+				StatementsOfShareholdersAmend();
+				BalanceShareholdersEquityBeginning();
+				BalanceCommonSharesIssued();
+				BalanceShareBasedCompensation();
+				BalanceShareBasedCompensationRetainedEarnings();
+				BalanceDividendsAndDividendEquivalentsDeclared();
+				BalanceCommonSharesRepurchasedAndRetired();
+				BalanceEffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts();
+				BalanceRetainedEarningsOthers();
+				BalancePurchaseAndSellOfTreasuryShares();
+				BalanceDividendsDeclaredToNonControllingInterests();
+				BalanceAcquisitionOfNonControllingInterests();
+				BalanceNonControllingInterestsOthers();
+				BalanceComprehensiveIncomeShareholdersEquity();
+				BalanceNetIncomeLossShareholdersEquity();
+				BalanceShareholdersEquity();
+			}
+
+			function CashFlow() {
+				document.getElementById('EntityRegistrantNameCashFlow').innerHTML = document.getElementById('EntityRegistrantName1').value;
+				DateStatementsOfCashFlow();
+				StatementsOfCashFlowAmend();
+				EffectOfExchangeRateOnCashRow();
+				NetIncomeCashFlow();
+				DepreciationDepletionAndAmortizationRow();
+				GainRelatedToDisposalOrSaleRow();
+				RestructuringAndOtherSpecialChargesRow();
+				AccruedEmployeeCompensationRow();
+				ShareBasedCompensationOperatingActivitiesRow();
+				IncreaseDecreaseInIncomeTaxExpenseBenefitRow();
+				OtherNonCashIncomeExpenseRow();
+				IncreaseDecreaseInAccountsReceivableRow();
+				IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssetsRow();
+				IncreaseDecreaseInInventoriesRow();
+				IncreaseDecreaseInOtherReceivablesRow();
+				IncreaseDecreaseInAccountsPayableRow();
+				IncreaseDecreaseInContractWithCustomerLiabilityRow();
+				IncreaseDecreaseInRetirementBenefitsRow();
+				IncreaseDecreaseFinanceLeaseCurrentRow();
+				IncreaseDecreaseOperatingLeaseCurrentRow();
+				IncreaseDecreaseInFairValueOfDerivativesOperatingRow();
+				IncreaseDecreaseInOtherOperatingActivitiesRow();
+				OperatingActivities();
+				PaymentsToAcquireInvestmentsRow();
+				ProceedsOfInvestmentsRow();
+				PaymentsToAcquirePropertyPlantAndEquipmentRow();
+				ProceedsFromDisposalsOfPropertyAndEquipmentRow();
+				PaymentsToAcquireBusinessesAndIntangiblesRow();
+				ProceedsFromDisposalsOfBusinessesAndIntangiblesRow();
+				ProceedsRelatedToInsuranceSettlementRow();
+				ReveiptOfGovernmentGrantsRow();
+				EquityInvesteeAdvancesRepaymentsRow();
+				PaymentOfLicenseFeeRow();
+				OtherInvestingActivitiesRow();
+				InvestingActivitiesInDiscontinuedOperationsRow();
+				InvestingActivities();
+				FinanceLeasePrincipalPaymentsRow();
+				ProceedsFromIssuanceOfCommonSharesRow();
+				ProceedsFromSharePurchasePlanAndOptionsExerciceRow();
+				PaymentsRelatedToTaxWithholdingForShareBasedCompensationRow();
+				PaymentsForRepurchaseOfCommonSharesRow();
+				PaymentsOfDividendsRow();
+				IncreaseDecreaseDeferredContingentConsiderationRow();
+				ProceedsFromIssuanceOfLongTermDebtRow();
+				RepaymentsOfLongTermDebtRow();
+				FinancingCostsRow();
+				NetChangeInShortTermBorrowingsRow();
+				NetChangeInForwardAndHedgesClassifiedAsFinancingActivitiesRow();
+				NetChangeInNonControllingInterestsRow();
+				ProceedsFromRepaymentsOfCommercialPaperRow();
+				RepaymentsOfConvertibleRow();
+				IssuanceOfConvertibleRow();
+				OtherFinancingActivitiesRow();
+				FinancingActivities();
+				CashEndingBalance();
+			}
+
             // analysis/valuation/additionalinformation.js
 
             function DateAdditionalInformation(DateAdditionalInformation) {
@@ -16837,7 +15356,6 @@
                 document.getElementById('AdditionalInformationFilings5').href = document.getElementById('Filings5').href
                 document.getElementById('AdditionalInformationFilings6').href = document.getElementById('Filings6').href
             };
-
 			
             // analysis/valuation/capitalizationrates.js
 
@@ -17733,8 +16251,6 @@
                 document.getElementById('GrowthRelatedRiskProvision4').value = numUSD.format(a / 100);
             };
 
-
-			
             // analysis/valuation/capitalizedcashflow.js
 
             function DateCapitalizedCashFlow(DateCapitalizedCashFlow) {
@@ -18338,7 +16854,6 @@
                 document.getElementById('ExcessWorkingCapitalCCFRow').style.display = a;
             };
 
-
             function BalanceInvestmentsExcessAssetsCCF(BalanceInvestmentsExcessAssetsCCF) {
                 var numUSD = new Intl.NumberFormat("en-US", {
                     format: "number"
@@ -18751,7 +17266,6 @@
                 a = Math.max(0, a)
                 document.getElementById('GoodwillFairValueCCF4').value = numUSD.format(Math.round(a));
             };
-
 			
             // analysis/valuation/capitalizedincome.js
 
@@ -19527,7 +18041,6 @@
                 document.getElementById('GoodwillFairValueCI4').value = numUSD.format(Math.round(a));
             };
 
-
             // analysis/valuation/financialratios.js
 
             function DateRatios(DateRatios) {
@@ -19539,7 +18052,6 @@
                 document.getElementById('DateRatios6').innerHTML = document.getElementById('ContextDate6').value;
             };
 
-
             function RatiosAmend(RatiosAmend) {
                 document.getElementById('RatiosAmend1').innerHTML = document.getElementById('Amend1').value;
                 document.getElementById('RatiosAmend2').innerHTML = document.getElementById('Amend2').value;
@@ -19548,7 +18060,6 @@
                 document.getElementById('RatiosAmend5').innerHTML = document.getElementById('Amend5').value;
                 document.getElementById('RatiosAmend6').innerHTML = document.getElementById('Amend6').value;
             };
-
 
             function FilingsHrefRatios() {
                 document.getElementById('RatiosFilings1').href = document.getElementById('Filings1').href
@@ -19562,7 +18073,6 @@
             function SharePriceUpdateRatio(SharePriceUpdateRatio) {
                 document.getElementById('SharePriceUpdateRatio').innerHTML = 'Shares Price as of ' + document.getElementById('SharePriceAsOf1').value;
             };
-
 
             function PriceEarnings(PriceEarnings) {
                 var numUSD = new Intl.NumberFormat("en-US", {
@@ -19612,7 +18122,6 @@
                 a = a / parseInt(document.getElementById('ShareholdersEquity4').value.replaceAll(/,/g, ''));
                 document.getElementById('MarketToBook4').value = numUSD.format(Math.round(a));
             };
-
 
             function ReturnOnEquity(ReturnOnEquity) {
                 var numUSD = new Intl.NumberFormat("en-US", {
@@ -19821,7 +18330,6 @@
                 document.getElementById('EarningsRetention6').value = numUSD.format((a + b) / a);
             };
 
-
             function BasicEarningPower(BasicEarningPower) {
                 var numUSD = new Intl.NumberFormat("en-US", {
                     style: 'percent',
@@ -19895,7 +18403,6 @@
                 a = EBIT / Assets
                 document.getElementById('BasicEarningPower6').value = numUSD.format(a);
             };
-
 
             function DebtToEquity(DebtToEquity) {
                 var numUSD = new Intl.NumberFormat("en-US", {
@@ -20267,7 +18774,6 @@
                 document.getElementById('Current6').value = Math.round(a * 10) / 10;
             };
 
-
             function Quick(Quick) {                             
                 // Last Year
                 a = parseInt(document.getElementById('CurrentAssets1').value.replaceAll(/,/g, ''));
@@ -20466,7 +18972,6 @@
                 document.getElementById('DuPont6').value = Math.round(a * 10) / 10;
             };
 
-			
             // analysis/valuation/intrinsicvalues.js
 
             function DateIntrinsicValues(DateIntrinsicValues) {
@@ -20568,7 +19073,6 @@
                 document.getElementById('GoodwillFairValueCIIV4').value = numUSD.format(a);
             };
 
-			
             // analysis/valuation/opinion.js
 
             function DateSummary(DateSummary) {
@@ -20922,189 +19426,6 @@
 				Puck();
 			}
 
-			// analysis/financials.js
-			console.log('analysis/financials.js')
-
-			function TrialBalances() {
-				document.getElementById('EntityRegistrantNameTrialBalances').innerHTML = document.getElementById('EntityRegistrantName1').value;
-				DateTrialBalances();
-				TrialBalancesAmend();
-				Balance();	
-			}
-
-			function BalanceSheets() {
-				document.getElementById('EntityRegistrantNameBalanceSheets').innerHTML = document.getElementById('EntityRegistrantName1').value;
-				DateBalanceSheets();
-				BalanceSheetsAmend();
-				BalanceCash();
-				BalanceShortTermInvestments();
-				BalanceAccountsReceivable();
-				BalanceWorkInProgress();
-				BalanceInventories();
-				BalancePrepaidExpenses();
-				BalanceNonTradeReceivables();
-				BalancePrepaidTaxAssetsCurrent();
-				BalanceDeferredTaxAssetsCurrent();
-				BalanceRightOfUseAssetsCurrent();
-				BalanceOtherCurrentAssets();
-				BalanceDiscontinuedOperationsCurrent();
-				BalanceCurrentAssets();
-				BalanceLongTermReceivables();
-				BalanceDeferredCharges();
-				BalanceInvestments();
-				BalancePropertyPlantAndEquipment();
-				BalanceOperatingLeaseRightOfUseAssets();
-				BalanceFinanceLeaseRightOfUseAssets();
-				BalanceIntangibleAssets();
-				BalanceGoodwill();
-				BalanceRefundableTaxAssetsNonCurrent();
-				BalanceDeferredTaxAssetsNonCurrent();
-				BalanceDefinedBenefitPensionAndOtherSimilarPlans();
-				BalanceOtherNonCurrentAssets();
-				BalanceDiscontinuedOperationsNonCurrent();
-				BalanceNonCurrentAssets();
-				BalanceAccountsPayableAndAccruedLiabilities();
-				BalanceEmployeeCompensationCurrent();
-				BalanceOperatingLeasesCurrent();
-				BalanceFinanceLeasesCurrent();
-				BalanceDeferredRevenueAndDepositsCurrent();
-				BalanceAccruedTaxLiabilities();
-				BalanceDeferredTaxLiabilitiesCurrent();
-				BalanceCommercialPapers();
-				BalanceShortTermBorrowings();
-				BalanceOtherCurrentLiabilities();
-				BalanceDiscontinuedOperationsLiabilitiesCurrent();
-				BalanceDividendsPayable();
-				BalanceShortTermPortionOfLongTermDebt();
-				BalanceCurrentLiabilities();
-				BalanceLongTermDebt();
-				BalancePreferredSharesLiability();
-				BalanceRetirementBenefits();
-				BalanceOperatingLeasesNonCurrent();
-				BalanceFinanceLeasesNonCurrent();
-				BalanceLeaseIncentiveObligation();
-				BalanceContingentConsideration();
-				BalanceAccruedTaxLiabilitiesNonCurrent();
-				BalanceDeferredTaxLiabilitiesNonCurrent();
-				BalanceDeferredRevenueAndDepositsNonCurrent();
-				BalanceOtherNonCurrentLiabilities();
-				BalanceRedeemableNonControllingInterests();
-				BalanceDiscontinuedOperationsLiabilitiesNonCurrent();
-				BalanceNonCurrentLiabilities();		
-			}
-
-			function IncomeStatements() {
-				document.getElementById('EntityRegistrantNameIncomeStatements').innerHTML = document.getElementById('EntityRegistrantName1').value;
-				DateStatementsOfIncome();
-				IncomeStatementsAmend();
-				BalanceSales();
-				BalanceCostOfSales();
-				BalanceGrossMargin();
-				BalanceResearchAndDevelopment();
-				BalanceSellingGeneralAdministrativeAndMarketing();
-				BalanceOperatingIncome();
-				BalanceImpairmentRestructuringAndOtherSpecialCharges();
-				BalanceNonOperatingIncomeExpense();
-				BalanceIncomeBeforeTaxes();
-				BalanceIncomeTaxExpenseBenefit();
-				BalanceEquityMethodInvesteesIncome();
-				BalanceNetIncomeFromDiscontinuedOperations();
-				BalanceNetIncome();
-			}
-
-			function ComprehensiveIncome() {
-				document.getElementById('EntityRegistrantNameComprehensiveIncome').innerHTML = document.getElementById('EntityRegistrantName1').value;
-				DateStatementsOfComprehensiveIncome();
-				StatementsOfComprehensiveAmend();
-				BalanceNetIncomeLossComprehensiveIncome();
-				BalanceChangeInForeignCurrencyTranslationAdjustment();
-				BalanceChangeInUnrealizedGainsLossesOnDerivativeInstruments();
-				BalanceChangeInUnrealizedGainsLossesOnInvestments();
-				BalanceChangeInDefinedBenefitPensionAndOtherSimilarPlans();
-				BalanceIncomeTaxOnOtherComprehensiveIncome();
-				BalanceComprehensiveIncome();
-			}
-
-			function ShareholdersEquity() {
-				document.getElementById('EntityRegistrantNameShareholdersEquity').innerHTML = document.getElementById('EntityRegistrantName1').value;
-				DateStatementsOfShareholdersEquity();
-				StatementsOfShareholdersAmend();
-				BalanceShareholdersEquityBeginning();
-				BalanceCommonSharesIssued();
-				BalanceShareBasedCompensation();
-				BalanceShareBasedCompensationRetainedEarnings();
-				BalanceDividendsAndDividendEquivalentsDeclared();
-				BalanceCommonSharesRepurchasedAndRetired();
-				BalanceEffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts();
-				BalanceRetainedEarningsOthers();
-				BalancePurchaseAndSellOfTreasuryShares();
-				BalanceDividendsDeclaredToNonControllingInterests();
-				BalanceAcquisitionOfNonControllingInterests();
-				BalanceNonControllingInterestsOthers();
-				BalanceComprehensiveIncomeShareholdersEquity();
-				BalanceNetIncomeLossShareholdersEquity();
-				BalanceShareholdersEquity();
-			}
-
-			function CashFlow() {
-				document.getElementById('EntityRegistrantNameCashFlow').innerHTML = document.getElementById('EntityRegistrantName1').value;
-				DateStatementsOfCashFlow();
-				StatementsOfCashFlowAmend();
-				EffectOfExchangeRateOnCashRow();
-				NetIncomeCashFlow();
-				DepreciationDepletionAndAmortizationRow();
-				GainRelatedToDisposalOrSaleRow();
-				RestructuringAndOtherSpecialChargesRow();
-				AccruedEmployeeCompensationRow();
-				ShareBasedCompensationOperatingActivitiesRow();
-				IncreaseDecreaseInIncomeTaxExpenseBenefitRow();
-				OtherNonCashIncomeExpenseRow();
-				IncreaseDecreaseInAccountsReceivableRow();
-				IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssetsRow();
-				IncreaseDecreaseInInventoriesRow();
-				IncreaseDecreaseInOtherReceivablesRow();
-				IncreaseDecreaseInAccountsPayableRow();
-				IncreaseDecreaseInContractWithCustomerLiabilityRow();
-				IncreaseDecreaseInRetirementBenefitsRow();
-				IncreaseDecreaseFinanceLeaseCurrentRow();
-				IncreaseDecreaseOperatingLeaseCurrentRow();
-				IncreaseDecreaseInFairValueOfDerivativesOperatingRow();
-				IncreaseDecreaseInOtherOperatingActivitiesRow();
-				OperatingActivities();
-				PaymentsToAcquireInvestmentsRow();
-				ProceedsOfInvestmentsRow();
-				PaymentsToAcquirePropertyPlantAndEquipmentRow();
-				ProceedsFromDisposalsOfPropertyAndEquipmentRow();
-				PaymentsToAcquireBusinessesAndIntangiblesRow();
-				ProceedsFromDisposalsOfBusinessesAndIntangiblesRow();
-				ProceedsRelatedToInsuranceSettlementRow();
-				ReveiptOfGovernmentGrantsRow();
-				EquityInvesteeAdvancesRepaymentsRow();
-				PaymentOfLicenseFeeRow();
-				OtherInvestingActivitiesRow();
-				InvestingActivitiesInDiscontinuedOperationsRow();
-				InvestingActivities();
-				FinanceLeasePrincipalPaymentsRow();
-				ProceedsFromIssuanceOfCommonSharesRow();
-				ProceedsFromSharePurchasePlanAndOptionsExerciceRow();
-				PaymentsRelatedToTaxWithholdingForShareBasedCompensationRow();
-				PaymentsForRepurchaseOfCommonSharesRow();
-				PaymentsOfDividendsRow();
-				IncreaseDecreaseDeferredContingentConsiderationRow();
-				ProceedsFromIssuanceOfLongTermDebtRow();
-				RepaymentsOfLongTermDebtRow();
-				FinancingCostsRow();
-				NetChangeInShortTermBorrowingsRow();
-				NetChangeInForwardAndHedgesClassifiedAsFinancingActivitiesRow();
-				NetChangeInNonControllingInterestsRow();
-				ProceedsFromRepaymentsOfCommercialPaperRow();
-				RepaymentsOfConvertibleRow();
-				IssuanceOfConvertibleRow();
-				OtherFinancingActivitiesRow();
-				FinancingActivities();
-				CashEndingBalance();
-			}
-
 			// analysis/context.js
 			console.log('analysis/context.js')
 
@@ -21112,43 +19433,7 @@
 				document.getElementById('EntityRegistrantNameContext').innerHTML = document.getElementById('EntityRegistrantName1').value;
 			}
 						
-			// analysis/compile.js
-			console.log('analysis/compile.js')
 
-			function Compile() {
-				b = window.location.href.replace(window.location.origin,'')
-				b = b.split('/')[2]
-				if (b == 'WorkingPaper') {
-					Context();
-					TrialBalances();		
-					BalanceSheets();
-					IncomeStatements();
-					ComprehensiveIncome();
-					ShareholdersEquity();
-					CashFlow();
-					FinancialRatios();
-					AdditionalInformation();
-					CapitalizationRates();
-					CapitalizedCashFlow();
-					CapitalizedIncome();
-					IntrinsicValues();
-					Opinion();
-					Mission();
-					Materiality();
-					ProceduresBalanceSheets();
-					ProceduresIncomeStatements();
-					ProceduresComprehensiveIncome();
-					ProceduresShareholdersEquity();
-					ProceduresCashFlow();
-					Anomalies();
-					Summary();
-					Graph();
-					FilingsReferences();
-					FilesHeader();
-				}
-				LineChart();
-			}
-		
 			// dom
 			document.addEventListener('DOMContentLoaded', function() {
 				var loading = document.getElementById('id_loading_spinner')
