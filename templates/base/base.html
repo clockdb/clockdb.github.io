@@ -19949,68 +19949,8 @@
 				}
 			});
 
-			// edit profile
+			// edit profile //
 
-			try {
-				var cropper;
-				var imageFile;
-				var base64ImageString;
-				var cropX;
-				var cropX;
-				var cropWidth;
-				var cropHeight;
-				enableImageOverlay()
-			} catch {}
-
-			function enableImageOverlay(){
-				try {
-					var text = document.getElementById("id_text")
-					text.style.backgroundColor = "#0D47A1"
-					text.style.color = "white"
-					text.style.fontSize = "16px"
-					text.style.padding = "16px 32px"
-					text.style.cursor = "pointer"
-
-					var profileImage = document.getElementById("id_profile_image_edit_profile")
-					profileImage.style.opacity = "1"
-					profileImage.style.display = "block"
-					profileImage.style.width = "100%"
-					profileImage.style.height = "auto"
-					profileImage.style.transition = ".5s ease"
-					profileImage.style.backfaceVisibility  = "hidden"
-					profileImage.style.cursor = "pointer"
-
-					var middleContainer = document.getElementById("id_middle_container")
-					middleContainer.style.transition = ".5s ease"
-					middleContainer.style.opacity = "0"
-					middleContainer.style.position = "absolute"
-					middleContainer.style.top = "50%"
-					middleContainer.style.left = "50%"
-					middleContainer.style.transform = "translate(-50%, -50%)"
-					middleContainer.style.textAlign = "center"
-
-					var imageContainer = document.getElementById("id_image_container")
-					imageContainer.addEventListener("mouseover", function( event ) { 
-						profileImage.style.opacity = "0.3"
-						middleContainer.style.opacity = "1"
-					})
-
-					imageContainer.addEventListener("mouseout", function( event ) { 
-						profileImage.style.opacity = "1"
-						middleContainer.style.opacity = "0"
-					})
-
-					imageContainer.addEventListener("click", function(event){
-						document.getElementById('id_profile_image_edit_profile').click();
-					});
-
-					var cropConfirm = document.getElementById("id_image_crop_confirm")
-					cropConfirm.classList.remove("d-flex")
-					cropConfirm.classList.remove("flex-row")
-					cropConfirm.classList.remove("justify-content-between")
-					cropConfirm.classList.add("d-none")
-				} catch {}
-			}
 			// redirect
 
 			function redirect(page, user_id, this_user_id) {
