@@ -423,11 +423,11 @@ setChatInitialTimestamp()
 var chatSocket = null;
 var roomId = null;
 
-function ChatMessagesAndNotificationsOnStart(){
-    {% if m_and_f %}
-        onSelectFriend("{{m_and_f.0.friend.id}}")
-    {% endif %}
-    {% for x in m_and_f %}
-        preloadImage("{{x.friend.profile_image.url|safe}}", "id_friend_img_{{x.friend.id}}")
-    {% endfor %}
-}
+//function ChatMessagesAndNotificationsOnStart(){
+//    {% if m_and_f %}
+//        onSelectFriend("{{m_and_f.0.friend.id}}")
+//    {% endif %}
+//    {% for x in m_and_f %}
+//        preloadImage("{{x.friend.profile_image.url|safe}}", "id_friend_img_{{x.friend.id}}")
+//    {% endfor %}
+//}
