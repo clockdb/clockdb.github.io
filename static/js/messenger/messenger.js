@@ -387,7 +387,7 @@ function clearHighlightedFriend(){
         {% endfor %}
     {% endif %}
     document.getElementById("id_other_user_profile_image").classList.add("d-none")
-    document.getElementById("id_other_user_profile_image").src = "/static/clockdb/dummy_image.png/"
+    document.getElementById("id_other_user_profile_image").src = "{% static 'codingwithmitch/dummy_image.png' %}"
     document.getElementById("id_other_username").innerHTML = ""
 }
 
