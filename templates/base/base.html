@@ -1,24 +1,23 @@
 {% load static %}
-
+<!-- html -->
 <!DOCTYPE html>
 <html lang=en>
-
+	<!-- head -->
 	<head>
-
-		<!-- Required meta tags -->
+		<!-- Required meta tags
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-		<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-		
-		<!-- favicon -->
+		<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet"> -->
+
+		<!-- favicon
 		<link rel="shortcut icon" href="{% static 'clockdb/favicon.ico' %}">
-		<link rel="icon" href="{% static 'clockdb/favicon.ico' %}" type="image/x-icon">
+		<link rel="icon" href="{% static 'clockdb/favicon.ico' %}" type="image/x-icon"> -->
 
-		<!-- Cropperjs -->
-		<link rel="stylesheet" href="{% static 'cropperjs/dist/cropper.min.css' %}">
+		<!-- Cropperjs
+		<link rel="stylesheet" href="{% static 'cropperjs/dist/cropper.min.css' %}"> -->
 
-		<!-- Markdown-it -->
+		<!-- Markdown-it
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/11.0.1/markdown-it.min.js"
 			integrity="sha512-hW0KbtvDnXCHbh2UCNP/6R+oXxCKiOfm9ciuUekdGBCQF1+57bGqZAk3sAFir7PMQstyRW0UecsSc2HQotH2vg=="
 			crossorigin="anonymous"></script>
@@ -31,47 +30,41 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/kotlin.min.js"
 			integrity="sha512-8aYTnyDstX39PHxorDD+6ROknf98Vqr5KTOjwRCl/442uAVKOpCJ5wY9I3VQ6y46rdDJKYBIglIfE2+GQk8U5Q=="
 			crossorigin="anonymous"></script>
-		<script> hljs.initHighlightingOnLoad(); </script>
-
+		<script> hljs.initHighlightingOnLoad(); </script> -->
 	</head>
-
 	<body>
-
-		<!-- Header -->
+		<!-- header -->
 		<div class="header" style="display: none">
-			{% include 'base/base_css.html' %}
-			{% include 'base/header.html' %}	
+			{#% include 'base/base_css.html' %#}
+			{#% include 'base/header.html' %#}
 		</div>
-
+		<!-- user id -->
 		<i id="user_id" style="display: none;">{{request.user.id}}</i>
-
+		<!-- panel
 		<div class="Panel">
 			<div class="panelHeader">
-				{% include 'base/panelHeader.html' %}
+				{#% include 'base/panelHeader.html' %#}
 			</div>
 			<div class="Control">
-				{% include 'panel/control.html' %}
+				{#% include 'panel/control.html' %#}
 			</div>
 			<div class="Messenger">
-				{% include 'panel/messenger.html' %}
+				{#% include 'panel/messenger.html' %#}
 			</div>
 			<div class="MessengerNotifications">
-				{% include 'panel/messengerNotifications.html' %}
+				{#% include 'panel/messengerNotifications.html' %#}
 			</div>
 			<div class="Notifications">
-				{% include 'panel/notifications.html' %}
+				{#% include 'panel/notifications.html' %#}
 			</div>	
-		</div>
-
-		<!-- Clockdb -->
+		</div> -->
+		<!-- main -->
 		<div class="main">
-
 			<div class="content">
-				
+				<!-- block content -->
 				{% block content %}
 				{% endblock content %}
-
-				<!-- Loading -->
+				<!-- loading -->
 				<div class="loading">
 					<div id="id_loading_spinner">
 						<span class="d-flex flex-row mx-auto flex-grow-1 justify-content-center">
@@ -81,26 +74,15 @@
 						</span>
 					</div>
 				</div>
-
 			</div>
-
-			{% include 'base/footer.html' %}
-
+			{#% include 'base/footer.html' %#}
 		</div>
-
-		<!-- web based base js -->
-
+		<!-- bootstrap -->
 		<script src="{% static 'bootstrap/js/jquery.min.js' %}"></script>
 		<script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-
-		<!-- base js
-
-		<script src="base/base-dom.js"></script>
-
-		{% include 'js/onePageApp.html' %}
-
-		 -->
-
+		<!-- js -->
+		{#% include 'js/onePageApp.html' %#}
+		<!-- dom
+		<script src="/base/base-dom.js"></script> -->
 	</body>
-
 </html>
