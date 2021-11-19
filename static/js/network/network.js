@@ -3,10 +3,10 @@
 console.log('network/network.js')
 
 function Network(search) {
-    search = search.toLowerCase()
+    var search = search.toLowerCase()
     showPage('Network')
     historyPush('Network')
-    network = document.getElementsByClassName('profile-container')
+    var network = document.getElementsByClassName('profile-container')
     for(let i = 0; i < network.length; i++) {
         r = '';
         profile = network[i].getElementsByClassName('card-title')[0]
