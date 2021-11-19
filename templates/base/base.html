@@ -9,14 +9,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
 		<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-
 		<!-- favicon -->
 		<link rel="shortcut icon" href="{% static 'clockdb/favicon.ico' %}">
 		<link rel="icon" href="{% static 'clockdb/favicon.ico' %}" type="image/x-icon">
-
 		<!-- Cropperjs -->
 		<link rel="stylesheet" href="{% static 'cropperjs/dist/cropper.min.css' %}">
-
 		<!-- Markdown-it -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/11.0.1/markdown-it.min.js"
 			integrity="sha512-hW0KbtvDnXCHbh2UCNP/6R+oXxCKiOfm9ciuUekdGBCQF1+57bGqZAk3sAFir7PMQstyRW0UecsSc2HQotH2vg=="
@@ -33,6 +30,9 @@
 		<script> hljs.initHighlightingOnLoad(); </script>
 	</head>
 	<body>
+		<!-- bootstrap -->
+		<script src="{% static 'bootstrap/js/jquery.min.js' %}"></script>
+		<script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 		<!-- header -->
 		<div class="header" style="display: none">
 			{% include 'base/base_css.html' %}
@@ -60,8 +60,8 @@
 		</div>
 		<!-- main -->
 		<div class="main">
+			<!-- block content -->
 			<div class="content">
-				<!-- block content -->
 				{% block content %}
 				{% endblock content %}
 				<!-- loading -->
@@ -78,12 +78,9 @@
 			<!-- footer -->
 			{% include 'base/footer.html' %}
 		</div>
-		<!-- bootstrap -->
-		<script src="{% static 'bootstrap/js/jquery.min.js' %}"></script>
-		<script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 		<!-- js -->
 		{% include 'js/onePageApp.html' %}
-		<!-- dom
-		<script src="/base/base-dom.js"></script> -->
+		<!-- dom -->
+		<script src="/base/base-dom.js"></script>
 	</body>
 </html>

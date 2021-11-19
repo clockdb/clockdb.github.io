@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-// opnePageApp buttons
+// onePageApp buttons
 
 document.querySelectorAll('button').forEach(button => {
     onePageApp(button);
