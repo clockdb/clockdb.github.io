@@ -1,6 +1,6 @@
 
 // messengerNotification/messengerNotification.js
-console.log('messengerNotification/messengerNotification.js/messengerNotification/messengerNotification.js.js')
+console.log('messengerNotification/messengerNotification.js')
 
 setOnChatNotificationScrollListener()
 onChatNotificationsPaginationTriggerListener()
@@ -417,8 +417,6 @@ function setChatInitialTimestamp(){
     var date = today.getFullYear() + "-01-01 01:00:00.000000"
     document.getElementById("id_chat_newest_timestamp").innerHTML = date
 }
-
-setChatInitialTimestamp() 
 
 var chatSocket = null;
 var roomId = null;
