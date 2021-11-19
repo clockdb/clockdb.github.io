@@ -1,5 +1,6 @@
 
 // graph/linechart.js
+console.log('graph/linechart.js')
 
 function LineChart(lsc) {
     //

@@ -1,5 +1,6 @@
 
 // js/onePageApp.js
+console.log('js/onePageApp.js')
 
 // on load
 

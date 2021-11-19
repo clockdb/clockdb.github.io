@@ -1,5 +1,6 @@
 
 // analysis/financials.js
+console.log('analysis/financials.js')
 
 function TrialBalances() {
     document.getElementById('EntityRegistrantNameTrialBalances').innerHTML = document.getElementById('EntityRegistrantName1').value;

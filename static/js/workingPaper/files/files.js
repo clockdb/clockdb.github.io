@@ -1,5 +1,6 @@
 
 // files/files.js
+console.log('files/files.js')
 
 // header
 

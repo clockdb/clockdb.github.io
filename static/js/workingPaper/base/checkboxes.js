@@ -1,5 +1,6 @@
 
 // base/checkboxes.js
+console.log('base/checkboxes.js')
 
 // clear checkboxes
 

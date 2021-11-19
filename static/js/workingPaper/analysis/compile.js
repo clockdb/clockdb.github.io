@@ -1,5 +1,6 @@
 
 // analysis/compile.js
+console.log('analysis/compile.js')
 
 function Compile() {
     b = window.location.href.replace(window.location.origin,'')

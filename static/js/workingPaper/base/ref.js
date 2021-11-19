@@ -1,5 +1,6 @@
 
 // base/ref.js
+console.log('base/ref.js')
 
 function REF() {
     CurrentAssetsREF();

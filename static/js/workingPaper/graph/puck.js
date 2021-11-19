@@ -1,5 +1,6 @@
 
 // graph/puck.js
+console.log('graph/puck.js')
 
 function Puck() {
     //

@@ -1,5 +1,6 @@
 
 // analysis/valuation.js
+console.log('analysis/valuation.js')
 
 function FinancialRatios() {
     document.getElementById('EntityRegistrantNameFinancialRatios').innerHTML = document.getElementById('EntityRegistrantName1').value;

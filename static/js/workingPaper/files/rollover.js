@@ -1,5 +1,6 @@
 
 // op/rollover.js
+console.log('files/rollover.js')
 
 function Rollover() {
     var numUSD = new Intl.NumberFormat("en-US", {

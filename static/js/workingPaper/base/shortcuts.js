@@ -1,5 +1,6 @@
 
-// op/shortcuts.js
+// base/shortcuts.js
+console.log('base/shortcuts.js')
 
 // escape key
 document.addEventListener('keydown', (event) => {

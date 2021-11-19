@@ -1,5 +1,6 @@
 
 // files/print.js
+console.log('files/print.js')
 
 function Print() {
     Control('Off')

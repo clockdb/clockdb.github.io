@@ -1,5 +1,6 @@
 
-// op/openEditor.js
+// base/openEditor.js
+console.log('base/openEditor.js')
 
 function OpenEditor() {
     a = document.getElementById('OpenEditor').checked

@@ -1,4 +1,5 @@
 // base/unhideRows.js
+console.log('base/unhideRows.js')
 
 function UnhideRows() {
     rows = document.querySelectorAll('tr');

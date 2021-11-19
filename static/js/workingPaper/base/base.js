@@ -1,4 +1,5 @@
-// base/display.js
+// base/base.js
+console.log('base/base.js')
 
 function DisplayWorkingPaper() {
     for (let i = 0; i < document.querySelectorAll('.Clock').length; i++) {
