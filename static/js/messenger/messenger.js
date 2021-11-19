@@ -380,16 +380,16 @@ function highlightFriend(userId){
     document.getElementById("id_friend_container_" + userId).style.background = "#f2f2f2"
 }
 
-//function clearHighlightedFriend(){
-//    {% if m_and_f %}
-//        {% for x in m_and_f %}
-//            document.getElementById("id_friend_container_{{x.friend.id}}").style.background = ""
-//        {% endfor %}
-//    {% endif %}
-//    document.getElementById("id_other_user_profile_image").classList.add("d-none")
-//    document.getElementById("id_other_user_profile_image").src = "/static/clockdb/dummy_image.png/"
-//    document.getElementById("id_other_username").innerHTML = ""
-//}
+function clearHighlightedFriend(){
+    {% if m_and_f %}
+        {% for x in m_and_f %}
+            document.getElementById("id_friend_container_{{x.friend.id}}").style.background = ""
+        {% endfor %}
+    {% endif %}
+    document.getElementById("id_other_user_profile_image").classList.add("d-none")
+    document.getElementById("id_other_user_profile_image").src = "/static/clockdb/dummy_image.png/"
+    document.getElementById("id_other_username").innerHTML = ""
+}
 
 function messageInputFocus() {
     a = document.getElementById('id_chat_message_input')

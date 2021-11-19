@@ -389,8 +389,6 @@ function setOnGeneralNotificationScrollListener(){
     }
 }
 
-setOnGeneralNotificationScrollListener()
-
 function setGeneralPaginationExhausted(){
     //console.log("general pagination exhausted.")
     setGeneralPageNumber("-1")
@@ -503,8 +501,6 @@ function startGeneralNotificationService(){
     }
 }
 
-startGeneralNotificationService()
-
 function getNewGeneralNotifications(){
     newestTimestamp = document.getElementById("id_general_newest_timestamp").innerHTML
     if("{{request.user.is_authenticated}}"){
@@ -580,5 +576,4 @@ function setInitialTimestamp(){
     document.getElementById("id_general_newest_timestamp").innerHTML = date
 }
 
-setInitialTimestamp()
 

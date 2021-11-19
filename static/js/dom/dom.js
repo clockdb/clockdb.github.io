@@ -38,6 +38,8 @@ document.addEventListener('DOMContentLoaded', function() {
         onChatNotificationsPaginationTriggerListener()
         startChatNotificationService()
         setChatInitialTimestamp()
+        friendRequestButtonsOnStart();
+        ChatMessagesAndNotificationsOnStart();
         Control('On')
         b = window.location.href.replace(window.location.origin,'')
         b = b.split('/')[2]
@@ -59,8 +61,6 @@ document.querySelectorAll('button').forEach(button => {
 // clockdb dom
 function clockdbdom() {
     try {
-        friendRequestButtonsOnStart();
-        ChatMessagesAndNotificationsOnStart();
         controlPanel();
         document.getElementsByClassName('header')[0].style.position = 'absolute';
         document.getElementsByClassName('panelHeader')[0].style.position = 'absolute';
