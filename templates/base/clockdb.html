@@ -633,11 +633,7 @@
 
     // header	
 	var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
-	{% if debug_mode %}
-		var ws_path = ws_scheme + '://' + window.location.host + "/"; // development
-	{% else %}
-		var ws_path = ws_scheme + '://' + window.location.host + ":8001"; // production
-	{% endif %}
+	var ws_path = ws_scheme + '://' + window.location.host + ":8001"; // production
 
 	var notificationSocket = new WebSocket(ws_path);
 
