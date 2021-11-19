@@ -2,11 +2,6 @@
 // notification/notification.js
 console.log('notification/notification.js')
 
-const GENERAL_NOTIFICATION_INTERVAL = 4000
-const GENERAL_NOTIFICATION_TIMEOUT = 5000
-
-var generalCachedNotifList = new List([])
-
 function submitGeneralNotificationToCache(notification){
     var result = generalCachedNotifList.filter(function(n){ 
         return n['notification_id'] === notification['notification_id']

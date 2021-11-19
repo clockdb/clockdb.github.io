@@ -32,6 +32,9 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementsByClassName('HeaderMenu')[0].style.width = '100%';
     } else {
         removeFriendBtn();
+        const GENERAL_NOTIFICATION_INTERVAL = 4000
+        const GENERAL_NOTIFICATION_TIMEOUT = 5000
+        var generalCachedNotifList = new List([])
         setOnGeneralNotificationScrollListener();
         startGeneralNotificationService();
         setInitialTimestamp();
