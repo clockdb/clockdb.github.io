@@ -93,6 +93,7 @@ function removeFriendBtn() {
             removeFriend("{{id}}", onFriendRemoved)
         })
     }
+}
 
 function removeFriend(id, uiUpdateFunction){
     payload = {
