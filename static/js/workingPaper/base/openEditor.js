@@ -13,4 +13,4 @@ function OpenEditor() {
     }
     document.getElementById('OpenEditor').checked = a;
     document.getElementById('OpenEditorIcon').style.display = b;
-}
+};
