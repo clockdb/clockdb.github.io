@@ -284,6 +284,24 @@
 				onePageApp(button);
 			});
 
+			// showPage
+			function showPage(page) {
+				const loading = document.getElementById('id_loading_spinner')
+				const searchBar = document.getElementById('SearchBar')
+				const searchUsersBar = document.getElementById('SearchUsersBar')
+				loading.style.display = 'block';
+				searchBar.value = '';
+				searchUsersBar.value = '';
+				document.querySelectorAll('div').forEach(div => {
+					hideDiv(div)
+				})
+				try {
+					document.getElementById(page).style.display = 'block';
+					window.scrollTo(0, 0)
+				} catch {}
+				loading.style.display = 'none';
+			}
+
 			// buttons
 			function onePageApp(button) {
 				button.onclick = function() {
