@@ -31,17 +31,23 @@ document.addEventListener('DOMContentLoaded', function() {
     if (a != undefined) {
         document.getElementsByClassName('HeaderMenu')[0].style.width = '100%';
     } else {
+        setOnGeneralNotificationScrollListener()
+        startGeneralNotificationService()
+        setInitialTimestamp()
+        setOnChatNotificationScrollListener()
+        onChatNotificationsPaginationTriggerListener()
+        startChatNotificationService()
         setChatInitialTimestamp()
         Control('On')
-    }
-    b = window.location.href.replace(window.location.origin,'')
-    b = b.split('/')[2]
-    if (b == 'WorkingPaper') {
-        clockdbdom()
-    } else {
-        controlPanelTitles();
-        hideIndustrySEC();
-        Posts();    
+        b = window.location.href.replace(window.location.origin,'')
+        b = b.split('/')[2]
+        if (b == 'WorkingPaper') {
+            clockdbdom()
+        } else {
+            controlPanelTitles();
+            hideIndustrySEC();
+            Posts();    
+        }
     }
 });
 
