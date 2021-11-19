@@ -31,13 +31,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (a != undefined) {
         document.getElementsByClassName('HeaderMenu')[0].style.width = '100%';
     } else {
-        setOnGeneralNotificationScrollListener()
-        startGeneralNotificationService()
-        setInitialTimestamp()
-        setOnChatNotificationScrollListener()
-        onChatNotificationsPaginationTriggerListener()
-        startChatNotificationService()
-        setChatInitialTimestamp()
+        removeFriendBtn();
+        setOnGeneralNotificationScrollListener();
+        startGeneralNotificationService();
+        setInitialTimestamp();
+        setOnChatNotificationScrollListener();
+        onChatNotificationsPaginationTriggerListener();
+        startChatNotificationService();
+        setChatInitialTimestamp();
         friendRequestButtonsOnStart();
         ChatMessagesAndNotificationsOnStart();
         Control('On')

@@ -86,14 +86,13 @@ function cancelFriendRequest(id){
     });
 }
 
-try {
+function removeFriendBtn() {
     var removeFriendBtn = document.getElementById("id_unfriend_btn")
     if (removeFriendBtn != null){
         removeFriendBtn.addEventListener("click", function(){
             removeFriend("{{id}}", onFriendRemoved)
         })
     }
-} catch {}
 
 function removeFriend(id, uiUpdateFunction){
     payload = {
