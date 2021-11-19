@@ -1,9 +1,10 @@
 
-// base/base.js
+// dom/base.js
 
 // dom
 
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('dom/base.js')
     var loading = document.getElementById('id_loading_spinner')
     loading.style.display = 'block'
     hideIf = [

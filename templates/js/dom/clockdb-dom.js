@@ -1,5 +1,5 @@
 
-// base/dom.js
+// dom/clockdb-dom.js
 
 // dom
 
