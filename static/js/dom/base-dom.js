@@ -3,7 +3,6 @@
 console.log('dom/base.js')
 
 // dom
-
 document.addEventListener('DOMContentLoaded', function() {
     console.log('dom/base.js')
     var loading = document.getElementById('id_loading_spinner')
@@ -39,10 +38,50 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // onePageApp buttons
-
 document.querySelectorAll('button').forEach(button => {
     onePageApp(button);
 });
+
+// clockdb dom
+function clockdbdom() {
+    try {
+        friendRequestButtonsOnStart();
+        ChatMessagesAndNotificationsOnStart();
+        controlPanel();
+    } catch {}
+    try {
+        b = window.location.href.replace(window.location.origin,'')
+        b = b.split('/')[2]
+        if (b == 'WorkingPaper') {
+            document.getElementsByClassName('header')[0].style.position = 'absolute';
+            document.getElementsByClassName('panelHeader')[0].style.position = 'absolute';
+            DisplayWorkingPaper();
+            REF();
+            innerWidthColumn();
+            Compile();
+        } else {
+            controlPanelTitles();
+            hideIndustrySEC();
+            Posts();
+        }
+    } catch {}
+}
+
+// resize event 
+window.addEventListener('resize', function() {
+    c = document.getElementsByClassName('Control')[0].style.display;
+    m = document.getElementsByClassName('Messenger')[0].style.display
+    g = document.getElementsByClassName('MessengerNotifications')[0].style.display
+    t = document.getElementsByClassName('Notifications')[0].style.display
+    resize(c, m, g, t)
+    try {
+        b = window.location.href.replace(window.location.origin,'')
+        b = b.split('/')[2]
+        if (b == 'WorkingPaper') {
+            innerWidthColumn();
+        }
+    } catch {}
+})
 
 // escape key
 document.addEventListener('keydown', (event) => {
@@ -318,3 +357,4 @@ document.addEventListener('keydown', (event) => {
         }
     }
 })
+
