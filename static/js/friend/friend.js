@@ -186,7 +186,6 @@ function declineFriendRequest(friend_request_id, uiUpdateFunction){
 }
     
 function friendRequestButtonsOnStart() {
-    console.log('is it?')
     FR = "{{ friends_requests }}"
     FR = FR.replace('[','')
     FR = FR.replace(']','')
