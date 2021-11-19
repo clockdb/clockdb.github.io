@@ -34,7 +34,16 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         Control('On')
     }
-    setChatInitialTimestamp() 
+    setChatInitialTimestamp()
+    b = window.location.href.replace(window.location.origin,'')
+    b = b.split('/')[2]
+    if (b == 'WorkingPaper') {
+        clockdbdom()
+    } else {
+        controlPanelTitles();
+        hideIndustrySEC();
+        Posts();    
+    }
 });
 
 // onePageApp buttons
@@ -48,24 +57,14 @@ function clockdbdom() {
         friendRequestButtonsOnStart();
         ChatMessagesAndNotificationsOnStart();
         controlPanel();
+        document.getElementsByClassName('header')[0].style.position = 'absolute';
+        document.getElementsByClassName('panelHeader')[0].style.position = 'absolute';
+        DisplayWorkingPaper();
+        REF();
+        innerWidthColumn();
+        Compile();
     } catch {}
-    try {
-        b = window.location.href.replace(window.location.origin,'')
-        b = b.split('/')[2]
-        if (b == 'WorkingPaper') {
-            document.getElementsByClassName('header')[0].style.position = 'absolute';
-            document.getElementsByClassName('panelHeader')[0].style.position = 'absolute';
-            DisplayWorkingPaper();
-            REF();
-            innerWidthColumn();
-            Compile();
-        } else {
-            controlPanelTitles();
-            hideIndustrySEC();
-            Posts();
-        }
-    } catch {}
-}
+};
 
 // resize event 
 window.addEventListener('resize', function() {
