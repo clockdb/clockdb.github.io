@@ -1,5 +1,6 @@
 
 // dom/clockdb-dom.js
+console.log('dom/clockdb-dom.js')
 
 // dom
 

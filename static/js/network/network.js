@@ -1,5 +1,6 @@
 
 // network/network.js
+console.log('network/network.js')
 
 function Network(search) {
     search = search.toLowerCase()

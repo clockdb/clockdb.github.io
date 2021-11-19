@@ -1,5 +1,6 @@
 
 // base/date.js
+console.log('base/date.js')
 
 function date(date) {
     d = new Date(date)

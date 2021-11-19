@@ -1,5 +1,6 @@
 
 // base/resize.js
+console.log('base/resize.js')
 
 function resize(c, m, g, t) {
     a = ''

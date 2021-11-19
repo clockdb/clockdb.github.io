@@ -1,5 +1,6 @@
 
-// acount/account.js
+// account/account.js
+console.log('account/account.js')
 
 try {
     var cropper;

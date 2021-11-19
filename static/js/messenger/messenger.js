@@ -1,5 +1,6 @@
 
 // messenger/messenger.js
+console.log('messenger/messenger.js')
 
 function messagesSend() {
     const messageInputDom = document.getElementById('id_chat_message_input');

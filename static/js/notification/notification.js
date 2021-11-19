@@ -1,5 +1,6 @@
 
 // notification/notification.js
+console.log('notification/notification.js')
 
 const GENERAL_NOTIFICATION_INTERVAL = 4000
 const GENERAL_NOTIFICATION_TIMEOUT = 5000

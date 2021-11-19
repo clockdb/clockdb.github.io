@@ -1,5 +1,6 @@
 
 // dom/base.js
+console.log('dom/base.js')
 
 // dom
 

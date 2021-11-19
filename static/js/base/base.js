@@ -1,5 +1,6 @@
 
 // base/base.js
+console.log('base/base.js')
 
 // redirect
 

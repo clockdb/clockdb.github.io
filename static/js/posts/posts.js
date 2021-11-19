@@ -1,5 +1,6 @@
 
 // posts/posts.js
+console.log('posts/posts.js')
 
 // onScroll
 

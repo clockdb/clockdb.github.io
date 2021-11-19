@@ -1,5 +1,6 @@
 
 // base/header.js
+console.log('base/header.js')
 
 var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
 var ws_path = ws_scheme + '://' + window.location.host + ":8001";

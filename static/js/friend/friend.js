@@ -1,5 +1,6 @@
 
 // friend/friend.js
+console.log('friend/friend.js')
 
 function onFriendRequestAccepted(){
     location.reload();

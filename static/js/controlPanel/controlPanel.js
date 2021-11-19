@@ -1,5 +1,6 @@
 
 // controlPanel/controlPanel.js
+console.log('controlPanel/controlPanel.js')
 
 function hideIndustrySEC() {
     g = document.getElementsByName('Industry_SEC')
