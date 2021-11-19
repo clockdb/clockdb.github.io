@@ -30,7 +30,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/kotlin.min.js"
 			integrity="sha512-8aYTnyDstX39PHxorDD+6ROknf98Vqr5KTOjwRCl/442uAVKOpCJ5wY9I3VQ6y46rdDJKYBIglIfE2+GQk8U5Q=="
 			crossorigin="anonymous"></script>
-		<script> hljs.initHighlightingOnLoad(); </script> -->
+		<script> hljs.initHighlightingOnLoad(); </script>
 	</head>
 	<body>
 		<!-- header -->
@@ -43,19 +43,19 @@
 		<!-- panel -->
 		<div class="Panel">
 			<div class="panelHeader">
-				{#% include 'base/panelHeader.html' %#}
+				{% include 'base/panelHeader.html' %}
 			</div>
 			<div class="Control">
-				{#% include 'panel/control.html' %#}
+				{% include 'panel/control.html' %}
 			</div>
 			<div class="Messenger">
-				{#% include 'panel/messenger.html' %#}
+				{% include 'panel/messenger.html' %}
 			</div>
 			<div class="MessengerNotifications">
-				{#% include 'panel/messengerNotifications.html' %#}
+				{% include 'panel/messengerNotifications.html' %}
 			</div>
 			<div class="Notifications">
-				{#% include 'panel/notifications.html' %#}
+				{% include 'panel/notifications.html' %}
 			</div>	
 		</div>
 		<!-- main -->
