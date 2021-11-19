@@ -8,14 +8,14 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-		<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet"> -->
+		<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 
 		<!-- favicon -->
 		<link rel="shortcut icon" href="{% static 'clockdb/favicon.ico' %}">
-		<link rel="icon" href="{% static 'clockdb/favicon.ico' %}" type="image/x-icon"> -->
+		<link rel="icon" href="{% static 'clockdb/favicon.ico' %}" type="image/x-icon">
 
 		<!-- Cropperjs -->
-		<link rel="stylesheet" href="{% static 'cropperjs/dist/cropper.min.css' %}"> -->
+		<link rel="stylesheet" href="{% static 'cropperjs/dist/cropper.min.css' %}">
 
 		<!-- Markdown-it -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/11.0.1/markdown-it.min.js"
@@ -35,8 +35,8 @@
 	<body>
 		<!-- header -->
 		<div class="header" style="display: none">
-			{#% include 'base/base_css.html' %#}
-			{#% include 'base/header.html' %#}
+			{% include 'base/base_css.html' %}
+			{% include 'base/header.html' %}
 		</div>
 		<!-- user id -->
 		<i id="user_id" style="display: none;">{{request.user.id}}</i>
