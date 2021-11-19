@@ -36,23 +36,6 @@
             <tr></tr>
             <tr id="ContinuingOperationsMaterialityThresholdRow" class="TrialBalance">
                 <td colspan="2" id="PercentageOfIncomeFromContinuingOperations" style="text-align: left"></td>
-                <script>
-                    function BalanceContinuingOperationsMaterialityThreshold(BalanceContinuingOperationsMaterialityThreshold) {
-
-                        percentage = 100 - Math.round(parseFloat(document.getElementById('TargetLevelOfAssurance6').value) * 10) / 10
-
-                        document.getElementById('PercentageOfIncomeFromContinuingOperations').innerHTML = percentage + " % of income from continuing operations"
-
-                        var numUSD = new Intl.NumberFormat("en-US", {
-                            format: "number"
-                        })
-                        a = parseInt(document.getElementById('OperatingIncome1').value.replaceAll(/,/g, ''));
-                        if (isNaN(a)) {
-                            a = 0
-                        }
-                        document.getElementById('ContinuingOperationsMaterialityThreshold6').value = numUSD.format(Math.round(Math.abs(a) * percentage/100));
-                    };
-                </script>
                 <td style="display:none"><input id="ContinuingOperationsMaterialityThreshold1" onfocusout="Compile()"></input></td>
                 <td style="display:none" ><input id="ContinuingOperationsMaterialityThreshold2" onfocusout="Compile()"></input></td>
                 <td style="display:none" ><input id="ContinuingOperationsMaterialityThreshold3" onfocusout="Compile()"></input></td>
@@ -68,22 +51,7 @@
             <tr id="NetAssetMaterialityThresholdRow" class="TrialBalance">
                 <td colspan="2" id="PercentageNetAssetValue" style="text-align: left"></td>
                 <td></td>
-                <script>
-                    function BalanceNetAssetMaterialityThreshold(BalanceNetAssetMaterialityThreshold) {
 
-                        percentage = 100 - Math.round(parseFloat(document.getElementById('TargetLevelOfAssurance6').value) * 10) / 10
-
-                        document.getElementById('PercentageNetAssetValue').innerHTML = percentage + " % of net asset value"
-
-                        var numUSD = new Intl.NumberFormat("en-US", {
-                            format: "number"
-                        })
-                        a = parseInt(document.getElementById('BalanceSheetsShareholdersEquity1').value.replaceAll(/,/g, ''));
-                        if (isNaN(a)) {
-                            a = 0
-                        }
-                        document.getElementById('NetAssetMaterialityThreshold6').value = numUSD.format(Math.round(Math.abs(a * percentage/100)));
-                    };
                 </script>
                 <td style="display:none"><input id="NetAssetMaterialityThreshold1" onfocusout="Compile()"></input></td>
                 <td style="display:none"><input id="NetAssetMaterialityThreshold2" onfocusout="Compile()"></input></td>
@@ -99,23 +67,6 @@
             <tr id="RevenuesMaterialityThresholdRow" class="TrialBalance">
                 <td colspan="2" id="PercentageOfRevenues" style="text-align: left"></td>
                 <td></td>
-                <script>
-                    function BalanceRevenuesMaterialityThreshold(BalanceRevenuesMaterialityThreshold) {
-
-                        percentage = Math.round((100 - parseFloat(document.getElementById('TargetLevelOfAssurance6').value)) / 3 * 10) /10
-
-                        document.getElementById('PercentageOfRevenues').innerHTML = percentage + " % of revenues"
-
-                        var numUSD = new Intl.NumberFormat("en-US", {
-                            format: "number"
-                        })
-                        a = parseInt(document.getElementById('Sales1').value.replaceAll(/,/g, ''));
-                        if (isNaN(a)) {
-                            a = 0
-                        }
-                        document.getElementById('RevenuesMaterialityThreshold6').value = numUSD.format(Math.round(a * percentage/100));
-                    };
-                </script>
                 <td style="display:none"><input id="RevenuesMaterialityThreshold1" onfocusout="Compile()"></input></td>
                 <td style="display:none"><input id="RevenuesMaterialityThreshold2" onfocusout="Compile()"></input></td>
                 <td style="display:none"><input id="RevenuesMaterialityThreshold3" onfocusout="Compile()"></input></td>
@@ -130,25 +81,6 @@
             <tr id="IntrinsicValueMaterialityThresholdRow" class="Opinion">
                 <td colspan="2" id="PercentageOfTheIntrinsicValue" style="text-align: left"></td>
                 <td></td>
-                <script>
-                    function BalanceIntrinsicValueMaterialityThreshold(BalanceIntrinsicValueMaterialityThreshold) {
-
-                        percentage = Math.round((100 - parseFloat(document.getElementById('TargetLevelOfAssurance6').value))) / 10
-
-                        document.getElementById('PercentageOfTheIntrinsicValue').innerHTML = percentage + " % of the intrinsic value"
-
-                        var numUSD = new Intl.NumberFormat("en-US", {
-                                format: "number",
-                                minimumFractionDigits: 0,
-                                maximumFractionDigits: 0
-                            })
-                        a = parseInt(document.getElementById('IntrinsicValues1').value.replaceAll(/,/g, ''));
-                        if (isNaN(a)) {
-                            a = 0
-                        }
-                        document.getElementById('IntrinsicValueMaterialityThreshold6').value = numUSD.format(a * percentage/100);
-                    };
-                </script>
                 <td style="display:none"><input id="IntrinsicValueMaterialityThreshold1" onfocusout="Compile()"></input></td>
                 <td style="display:none"><input id="IntrinsicValueMaterialityThreshold2" onfocusout="Compile()"></input></td>
                 <td style="display:none"><input id="IntrinsicValueMaterialityThreshold3" onfocusout="Compile()"></input></td>
@@ -163,25 +95,6 @@
             <tr id="MarketCapMaterialityThresholdRow" class="Opinion">
                 <td colspan="2" id="PercentageOfTheMarketCapitalization" style="text-align: left"></td>
                 <td></td>
-                <script>
-                    function MarketCapMaterialityThreshold(MarketCapMaterialityThreshold) {
-
-                        percentage = Math.round((100 - parseFloat(document.getElementById('TargetLevelOfAssurance6').value)))/ 10
-
-                        document.getElementById('PercentageOfTheMarketCapitalization').innerHTML = percentage + " % of the market capitalization"
-
-                        var numUSD = new Intl.NumberFormat("en-US", {
-                                format: "number",
-                                minimumFractionDigits: 0,
-                                maximumFractionDigits: 0
-                            })
-                        a = parseInt(document.getElementById('MarketCapitalization1').value.replaceAll(/,/g, ''));
-                        if (isNaN(a)) {
-                            a = 0
-                        }
-                        document.getElementById('MarketCapMaterialityThreshold6').value = numUSD.format(a * percentage/100);
-                    };
-                </script>
                 <td style="display:none"><input id="MarketCapMaterialityThreshold1" onfocusout="Compile()"></input></td>
                 <td style="display:none"><input id="MarketCapMaterialityThreshold2" onfocusout="Compile()"></input></td>
                 <td style="display:none"><input id="MarketCapMaterialityThreshold3" onfocusout="Compile()"></input></td>
@@ -198,23 +111,6 @@
             <tr id="MaterialityThresholdValueRow" class="TrialBalance">
                 <td colspan="2" style="text-align: left"><h6><b>Materiality Threshold</b></h6></td>
                 <td></td>
-                <script>
-                    function BalanceMaterialityThresholdValue(BalanceMaterialityThresholdValue) {
-                        var numUSD = new Intl.NumberFormat("en-US", {
-                            format: "number",
-                            minimumFractionDigits: 0,
-                            maximumFractionDigits: 0
-                        })
-                        a = parseInt(document.getElementById('IntrinsicValueMaterialityThreshold6').value.replaceAll(/,/g, ''));
-                        b = parseInt(document.getElementById('ContinuingOperationsMaterialityThreshold6').value.replaceAll(/,/g, ''));
-                        c = parseInt(document.getElementById('MarketCapMaterialityThreshold6').value.replaceAll(/,/g, ''));
-                        d = parseInt(document.getElementById('RevenuesMaterialityThreshold6').value.replaceAll(/,/g, ''));
-                        e = parseInt(document.getElementById('NetAssetMaterialityThreshold6').value.replaceAll(/,/g, ''));
-                        a = (a + b + c + d + e) / 5
-                        a = Math.max(a, b)
-                        document.getElementById('MaterialityThresholdValue6').value = numUSD.format(a);
-                    };
-                </script>
                 <td style="display:none"><input colspan="1" id="MaterialityThresholdValue1" onfocusout="Compile()"></input></td>
                 <td style="display:none"><input colspan="1" id="MaterialityThresholdValue2" onfocusout="Compile()"></input></td>
                 <td style="display:none"><input colspan="1" id="MaterialityThresholdValue3" onfocusout="Compile()"></input></td>
