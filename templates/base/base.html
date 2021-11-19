@@ -93,14 +93,7 @@
 		<!--
 		<script type="module" src="{% static 'cropperjs/dist/cropper.min.js' %}"></script>
 		-->
-
 		<!-- js -->
-		{#% include 'js/onePageApp.html' %#}
-		<!-- <script src="/js/onePageApp.js"></script> -->
-		<!-- dom 
-		<script src="/js/dom/base-dom.js"></script> -->
-
-		<script src="{% static 'js/test.js' %}"></script>
-
+		{% include 'base/onePageApp.html' %}
 	</body>
 </html>
