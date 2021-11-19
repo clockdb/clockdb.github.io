@@ -1,10 +1,9 @@
 
 // dom/base.js
-console.log('dom/base.js')
+console.log('dom/dom.js')
 
 // dom
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('dom/base.js')
     var loading = document.getElementById('id_loading_spinner')
     loading.style.display = 'block'
     hideIf = [
@@ -32,9 +31,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (a != undefined) {
         document.getElementsByClassName('HeaderMenu')[0].style.width = '100%';
     } else {
+        setChatInitialTimestamp()
         Control('On')
     }
-    setChatInitialTimestamp()
     b = window.location.href.replace(window.location.origin,'')
     b = b.split('/')[2]
     if (b == 'WorkingPaper') {
