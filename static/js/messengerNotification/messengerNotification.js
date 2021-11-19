@@ -2,9 +2,6 @@
 // messengerNotification/messengerNotification.js
 console.log('messengerNotification/messengerNotification.js')
 
-setOnChatNotificationScrollListener()
-onChatNotificationsPaginationTriggerListener()
-
 const CHAT_NOTIFICATION_INTERVAL = 4000
 var chatCachedNotifList = new List([])
 
