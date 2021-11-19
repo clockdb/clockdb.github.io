@@ -204,7 +204,7 @@
 
 				{#% for x in m_and_f %#}
 				<div class="d-flex flex-row p-2 friend-container flex-grow-1" onclick="onSelectFriend('{{x.friend.id}}')" id="id_friend_container_{{x.friend.id}}">
-					<img class="profile-image-messages rounded-circle img-fluid" id="id_friend_img_{{x.friend.id}}" src="/static/clockdb/dummy_image.png/" >
+					<img class="profile-image-messages rounded-circle img-fluid" id="id_friend_img_{{x.friend.id}}" src="{% static 'clockdb/dummy_image.png' %}" >
 					<div style="border-bottom-left-radius: 15px;">
 						<span class="username-span-messages-friend" id="{{x.friend.id}}">{{x.friend.username}}</span>
 						<span class="friend-message-span">{{x.message|truncatechars:20}}</span>
@@ -220,7 +220,7 @@
 			<div class="messengerTitle" id="id_room_title">
 				<a class="id_user_info_container" id="id_user_info_container">
 					<div class="profile_image_messages_">
-						<img class="profile-image-messages rounded-circle img-fluid" id="id_other_user_profile_image" src="/static/clockdb/dummy_image.png/">
+						<img class="profile-image-messages rounded-circle img-fluid" id="id_other_user_profile_image" src="{% static 'clockdb/dummy_image.png' %}">
 					</div>
 					<div class="id_other_username">
 						<h6 id="id_other_username"></h6>
