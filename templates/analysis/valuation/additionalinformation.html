@@ -10,10 +10,20 @@
             </tr>
         </tbody>
     </table>
-    <table class='margin'>
+    <table class='margin'> 
         <tbody>
             <tr>
                 <td colspan="5"></td>
+                <script>
+                    function DateAdditionalInformation(DateAdditionalInformation) {
+                        document.getElementById('DateAdditionalInformation1').innerHTML = document.getElementById('ContextDate1').value;
+                        document.getElementById('DateAdditionalInformation2').innerHTML = document.getElementById('ContextDate2').value;
+                        document.getElementById('DateAdditionalInformation3').innerHTML = document.getElementById('ContextDate3').value;
+                        document.getElementById('DateAdditionalInformation4').innerHTML = document.getElementById('ContextDate4').value;
+                        document.getElementById('DateAdditionalInformation5').innerHTML = document.getElementById('ContextDate5').value;
+                        document.getElementById('DateAdditionalInformation6').innerHTML = document.getElementById('ContextDate6').value;
+                    };
+                </script>
                 <td colspan='2' class='C1' style="padding-top: 21px;"><h5 id="DateAdditionalInformation1" style="text-align:center;"></h5></td>
                 <td colspan='2' class='C2' style="padding-top: 21px;"><h5 id="DateAdditionalInformation2" style="text-align:center;"></h5></td>
                 <td colspan='2' class='C3' style="padding-top: 21px;"><h5 id="DateAdditionalInformation3" style="text-align:center;"></h5></td>
@@ -24,6 +34,16 @@
             <tr></tr>
             <tr>
                 <td colspan='5'></td>
+                <script>
+                    function AdditionalInformationAmend(AdditionalInformationAmend) {
+                        document.getElementById('AdditionalInformationAmend1').innerHTML = document.getElementById('Amend1').value;
+                        document.getElementById('AdditionalInformationAmend2').innerHTML = document.getElementById('Amend2').value;
+                        document.getElementById('AdditionalInformationAmend3').innerHTML = document.getElementById('Amend3').value;
+                        document.getElementById('AdditionalInformationAmend4').innerHTML = document.getElementById('Amend4').value;
+                        document.getElementById('AdditionalInformationAmend5').innerHTML = document.getElementById('Amend5').value;
+                        document.getElementById('AdditionalInformationAmend6').innerHTML = document.getElementById('Amend6').value;
+                    };
+                </script>
                 <td colspan='2' class='C1'><h5 id="AdditionalInformationAmend1" style="font-weight:bold; text-align:center; padding-bottom: 3%;"></td>
                 <td colspan='2' class='C2'><h5 id="AdditionalInformationAmend2" style="font-weight:bold; text-align:center; padding-bottom: 3%;"></td>
                 <td colspan='2' class='C3'><h5 id="AdditionalInformationAmend3" style="font-weight:bold; text-align:center; padding-bottom: 3%;"></td>
@@ -35,6 +55,16 @@
             <tr></tr>
             <tr id="AdditionalInformationFilingsRow" class="Filings">
                 <td colspan='5'></td>
+                <script>
+                    function FilingsHrefAdditionalInformation() {
+                        document.getElementById('AdditionalInformationFilings1').href = document.getElementById('Filings1').href
+                        document.getElementById('AdditionalInformationFilings2').href = document.getElementById('Filings2').href
+                        document.getElementById('AdditionalInformationFilings3').href = document.getElementById('Filings3').href
+                        document.getElementById('AdditionalInformationFilings4').href = document.getElementById('Filings4').href
+                        document.getElementById('AdditionalInformationFilings5').href = document.getElementById('Filings5').href
+                        document.getElementById('AdditionalInformationFilings6').href = document.getElementById('Filings6').href
+                    }
+                </script>
                 <td colspan='2' class='C1' style="text-align:center"><a target="_blank" id="AdditionalInformationFilings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom: 3%;;">Filings</h6></a>
                 <td colspan='2' class='C2' style="text-align:center"><a target="_blank" id="AdditionalInformationFilings2" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom: 3%;;">Filings</h6></a>
                 <td colspan='2' class='C3' style="text-align:center"><a target="_blank" id="AdditionalInformationFilings3" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom: 3%;;">Filings</h6></a>
