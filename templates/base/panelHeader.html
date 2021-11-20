@@ -1,9 +1,12 @@
+{% load static %}
+
 <style>
     .notifications_count{
         font-size: 11px;
         color: red;
     }
 </style>
+
 {% if request.user.is_authenticated %}
 <span class="Authenticated" id="Authenticated">
     <span class="menuItem" id="ControlSpan">
@@ -50,5 +53,7 @@
         </button>
     </span>
 </span>
+
 {% else %}
+
 {% endif %}
