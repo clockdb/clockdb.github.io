@@ -704,9 +704,16 @@
 
 			setInitialTimestamp()
 
-			// header	
+			// HEADER
+
+			// Correctly decide between ws:// and wss://
 			var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
-			var ws_path = ws_scheme + '://' + window.location.host + ":8001"; // production
+			{% if debug_mode %}
+				var ws_path = ws_scheme + '://' + window.location.host + "/";
+			{% else %}
+				var ws_path = ws_scheme + '://' + window.location.host + ":8001/"; // PRODUCTION
+			{% endif %}
+
 			var notificationSocket = new WebSocket(ws_path);
 
 			notificationSocket.onmessage = function(message) {
@@ -1293,7 +1300,11 @@
 
 				// Correctly decide between ws:// and wss://
 				var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
-				var ws_path = ws_scheme + '://' + window.location.host + ":8001/chat/" + roomId + "/"; // production
+				{% if debug_mode %}
+					var ws_path = ws_scheme + '://' + window.location.host + "/chat/" + roomId + "/"; // development
+				{% else %}
+					var ws_path = ws_scheme + '://' + window.location.host + ":8001/chat/" + roomId + "/"; // production
+				{% endif %}
 				
 				// console.log("Connecting to " + ws_path);
 				chatSocket = new WebSocket(ws_path);
