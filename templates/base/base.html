@@ -1,27 +1,148 @@
+{% load static %}
+<!-- html -->
 <!DOCTYPE html>
 <html lang=en>
-
+	<!-- head -->
 	<head>
-
 		<!-- Required meta tags -->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+		<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+		<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+		<!-- favicon -->
+		<link rel="shortcut icon" href="{% static 'clockdb/favicon.ico' %}">
+		<link rel="icon" href="{% static 'clockdb/favicon.ico' %}" type="image/x-icon">
+		<!-- Cropperjs -->
+		<!--
+		<link rel="stylesheet" href="{% static 'cropperjs/dist/cropper.min.css' %}">
+		 -->
+		<!-- Markdown-it -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/11.0.1/markdown-it.min.js"
+			integrity="sha512-hW0KbtvDnXCHbh2UCNP/6R+oXxCKiOfm9ciuUekdGBCQF1+57bGqZAk3sAFir7PMQstyRW0UecsSc2HQotH2vg=="
+			crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/default.min.css"
+			integrity="sha512-kZqGbhf9JTB4bVJ0G8HCkqmaPcRgo88F0dneK30yku5Y/dep7CZfCnNml2Je/sY4lBoqoksXz4PtVXS4GHSUzQ=="
+			crossorigin="anonymous" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js"
+			integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw=="
+			crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/kotlin.min.js"
+			integrity="sha512-8aYTnyDstX39PHxorDD+6ROknf98Vqr5KTOjwRCl/442uAVKOpCJ5wY9I3VQ6y46rdDJKYBIglIfE2+GQk8U5Q=="
+			crossorigin="anonymous"></script>
+		<script> hljs.initHighlightingOnLoad(); </script>
 	</head>
-
 	<body>
-
-		<!-- Clockdb -->
+		<!-- header -->
+		<div class="header" style="display: none">
+			{% include 'base/base_css.html' %}
+			{% include 'base/header.html' %}
+		</div>
+		<!-- user id -->
+		<i id="user_id" style="display: none;">{{request.user.id}}</i>
+		<!-- panel -->
+		<div class="Panel">
+			<div class="panelHeader">
+				{% include 'base/panelHeader.html' %}
+			</div>
+			<div class="Control">
+				{% include 'panel/control.html' %}
+			</div>
+			<div class="Messenger">
+				{% include 'panel/messenger.html' %}
+			</div>
+			<div class="MessengerNotifications">
+				{% include 'panel/messengerNotifications.html' %}
+			</div>
+			<div class="Notifications">
+				{% include 'panel/notifications.html' %}
+			</div>	
+		</div>
+		<!-- main -->
 		<div class="main">
-
+			<!-- block content -->
 			<div class="content">
-				
 				{% block content %}
 				{% endblock content %}
-
+				<!-- loading -->
+				<div class="loading">
+					<div id="id_loading_spinner">
+						<span class="d-flex flex-row mx-auto flex-grow-1 justify-content-center">
+							<span class="spinner-border text-primary" role="status">
+								<span class="sr-only">Loading...</span>
+							</span>
+						</span>
+					</div>
+				</div>
 			</div>
-
+			<!-- footer -->
+			{% include 'base/footer.html' %}
 		</div>
+		<!-- collections -->
+		<script src="{% static 'collections/collections.min.js' %}"></script>
+		<!-- jquery -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
+			integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
+			crossorigin="anonymous"></script>
+		<!-- ajax chart -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.3/Chart.min.js"></script>
+		<!-- papaparse -->
+		<script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.1/papaparse.min.js"></script>
+		<!-- bootstrap -->
+		<script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+		<!--
+		<script type="module" src="{% static 'cropperjs/dist/cropper.min.js' %}"></script>
+		-->
+		<!-- onePageApp -->
+		<script src="{% static 'js/onePageApp.js' %}"></script>
+		<!-- account -->
+		<script src="{% static 'js/account/account.js' %}"></script>
+		<!-- base -->
+		<script src="{% static 'js/base/base.js' %}"></script>
+		<script src="{% static 'js/base/date.js' %}"></script>
+		<script src="{% static 'js/base/header.js' %}"></script>
+		<script src="{% static 'js/base/resize.js' %}"></script>
+		<!-- controlPanel -->
+		<script src="{% static 'js/controlPanel/controlPanel.js' %}"></script>
+		<!-- friend -->
+		<script src="{% static 'js/friend/friend.js' %}"></script>
+		<!-- messenger -->
+		<script src="{% static 'js/messenger/messenger.js' %}"></script>
+		<!-- messenger notifications -->
+		<script src="{% static 'js/messengerNotification/messengerNotification.js' %}"></script>
+		<!-- network -->
+		<script src="{% static 'js/network/network.js' %}"></script>
+		<!-- notification -->
+		<script src="{% static 'js/notification/notification.js' %}"></script>
+		<!-- posts -->
+		<script src="{% static 'js/posts/posts.js' %}"></script>
+		<!-- workingPaper -->
+		<!-- analysis -->
+		<script src="{% static 'js/workingPaper/analysis/audit.js' %}"></script>
+		<script src="{% static 'js/workingPaper/analysis/compile.js' %}"></script>
+		<script src="{% static 'js/workingPaper/analysis/context.js' %}"></script>
+		<script src="{% static 'js/workingPaper/analysis/financials.js' %}"></script>
+		<script src="{% static 'js/workingPaper/analysis/valuation.js' %}"></script>
+		<!-- base -->
+		<script src="{% static 'js/workingPaper/base/base.js' %}"></script>
+		<script src="{% static 'js/workingPaper/base/checkboxes.js' %}"></script>
+		<script src="{% static 'js/workingPaper/base/enter.js' %}"></script>
+		<script src="{% static 'js/workingPaper/base/openEditor.js' %}"></script>
+		<script src="{% static 'js/workingPaper/base/ref.js' %}"></script>
+		<script src="{% static 'js/workingPaper/base/shortcuts.js' %}"></script>
+		<script src="{% static 'js/workingPaper/base/tabulation.js' %}"></script>
+		<script src="{% static 'js/workingPaper/base/unhideRows.js' %}"></script>
+		<!-- files -->
+		<script src="{% static 'js/workingPaper/files/enter.js' %}"></script>
+		<script src="{% static 'js/workingPaper/files/files.js' %}"></script>
+		<script src="{% static 'js/workingPaper/files/open.js' %}"></script>
+		<script src="{% static 'js/workingPaper/files/print.js' %}"></script>
+		<script src="{% static 'js/workingPaper/files/rollover.js' %}"></script>
+		<script src="{% static 'js/workingPaper/files/save.js' %}"></script>
+		<!-- graph -->
+		<script src="{% static 'js/workingPaper/graph/linechart.js' %}"></script>
+		<script src="{% static 'js/workingPaper/graph/puck.js' %}"></script>
+		<!-- dom -->
+		<script src="{% static 'js/dom/dom.js' %}"></script>
 	</body>
-
 </html>

@@ -14,16 +14,6 @@
         <tbody>
             <tr>
                 <td colspan="5"></td>
-                <script>
-                    function DateIntrinsicValues(DateIntrinsicValues) {
-                        document.getElementById('DateIntrinsicValues1').innerHTML = document.getElementById('ContextDate1').value;
-                        document.getElementById('DateIntrinsicValues2').innerHTML = document.getElementById('ContextDate2').value;
-                        document.getElementById('DateIntrinsicValues3').innerHTML = document.getElementById('ContextDate3').value;
-                        document.getElementById('DateIntrinsicValues4').innerHTML = document.getElementById('ContextDate4').value;
-                        document.getElementById('DateIntrinsicValues5').innerHTML = document.getElementById('ContextDate5').value;
-                        document.getElementById('DateIntrinsicValues6').innerHTML = document.getElementById('ContextDate6').value;
-                    };
-                </script>
                 <td colspan='2' class='C1' style="padding-top: 21px;"><h5 id="DateIntrinsicValues1" style="text-align:center;"></h5></td>
                 <td colspan='2' class='C2' style="padding-top: 21px;"><h5 id="DateIntrinsicValues2" style="text-align:center;"></h5></td>
                 <td colspan='2' class='C3' style="padding-top: 21px;"><h5 id="DateIntrinsicValues3" style="text-align:center;"></h5></td>
@@ -34,16 +24,6 @@
             <tr></tr>
             <tr>
                 <td colspan='3'></td>
-                <script>
-                    function IntrinsicValuesAmend(IntrinsicValuesAmend) {
-                        document.getElementById('IntrinsicValuesAmend1').innerHTML = document.getElementById('Amend1').value;
-                        document.getElementById('IntrinsicValuesAmend2').innerHTML = document.getElementById('Amend2').value;
-                        document.getElementById('IntrinsicValuesAmend3').innerHTML = document.getElementById('Amend3').value;
-                        document.getElementById('IntrinsicValuesAmend4').innerHTML = document.getElementById('Amend4').value;
-                        document.getElementById('IntrinsicValuesAmend5').innerHTML = document.getElementById('Amend5').value;
-                        document.getElementById('IntrinsicValuesAmend6').innerHTML = document.getElementById('Amend6').value;
-                    };
-                </script>
                 <td colspan='2' class='C1'><h5 id="IntrinsicValuesAmend1" style="font-weight:bold; text-align:center; padding-bottom: 3%;"></td>
                 <td colspan='2' class='C2'><h5 id="IntrinsicValuesAmend2" style="font-weight:bold; text-align:center; padding-bottom: 3%;"></td>
                 <td colspan='2' class='C3'><h5 id="IntrinsicValuesAmend3" style="font-weight:bold; text-align:center; padding-bottom: 3%;"></td>
@@ -55,16 +35,6 @@
             <tr></tr>
             <tr id="IntrinsicValuesFilingsRow" class="Filings">
                 <td colspan='5'></td>
-                <script>
-                    function FilingsHrefIntrinsicValues() {
-                        document.getElementById('IntrinsicValuesFilings1').href = document.getElementById('Filings1').href
-                        document.getElementById('IntrinsicValuesFilings2').href = document.getElementById('Filings2').href
-                        document.getElementById('IntrinsicValuesFilings3').href = document.getElementById('Filings3').href
-                        document.getElementById('IntrinsicValuesFilings4').href = document.getElementById('Filings4').href
-                        document.getElementById('IntrinsicValuesFilings5').href = document.getElementById('Filings5').href
-                        document.getElementById('IntrinsicValuesFilings6').href = document.getElementById('Filings6').href
-                    }
-                </script>
                 <td colspan='2' class='C1' style="text-align:center"><a target="_blank" id="IntrinsicValuesFilings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom: 3%;;">Filings</h6></a>
                 <td colspan='2' class='C2' style="text-align:center"><a target="_blank" id="IntrinsicValuesFilings2" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom: 3%;;">Filings</h6></a>
                 <td colspan='2' class='C3' style="text-align:center"><a target="_blank" id="IntrinsicValuesFilings3" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom: 3%;;">Filings</h6></a>
@@ -84,25 +54,6 @@
                     <input type="checkbox" id="IntrinsicValuesCCFCheckbox"></input>
                     <input type="checkbox" id="IntrinsicValuesCCFCheckbox2"></input>
                 </td>
-                <script>
-                    function BalanceIntrinsicValuesCCF(BalanceIntrinsicValuesCCF) {
-                        var numUSD = new Intl.NumberFormat("en-US", {
-                                format: "number"
-                        })
-                        // Column 1
-                        a = parseInt(document.getElementById('CommonSharesValueCCF1').value.replaceAll(/,/g, ''));
-                        document.getElementById('IntrinsicValuesCCF1').value = numUSD.format(a);
-                        // Column 2
-                        a = parseInt(document.getElementById('CommonSharesValueCCF2').value.replaceAll(/,/g, ''));
-                        document.getElementById('IntrinsicValuesCCF2').value = numUSD.format(a);
-                        // Column 3
-                        a = parseInt(document.getElementById('CommonSharesValueCCF3').value.replaceAll(/,/g, ''));
-                        document.getElementById('IntrinsicValuesCCF3').value = numUSD.format(a);
-                        // Column 4
-                        a = parseInt(document.getElementById('CommonSharesValueCCF4').value.replaceAll(/,/g, ''));
-                        document.getElementById('IntrinsicValuesCCF4').value = numUSD.format(a);
-                    };
-                </script>
                 <td colspan='2' class='C1'><input id="IntrinsicValuesCCF1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
                 <td colspan='2' class='C2'><input id="IntrinsicValuesCCF2" onfocusout="Compile()"></input></td>
                 <td colspan='2' class='C3'><input id="IntrinsicValuesCCF3" onfocusout="Compile()"></input></td>
@@ -118,25 +69,6 @@
                     <input type="checkbox" id="GoodwillFairValueCCFIVCheckbox"></input>
                     <input type="checkbox" id="GoodwillFairValueCCFIVCheckbox2"></input>
                 </td>
-                <script>
-                    function BalanceGoowillFairValueCCF(BalanceGoowillFairValueCCF) {
-                        var numUSD = new Intl.NumberFormat("en-US", {
-                                format: "number"
-                        })
-                        // Column 1
-                        a = parseInt(document.getElementById('GoodwillFairValueCCF1').value.replaceAll(/,/g, ''));
-                        document.getElementById('GoodwillFairValueCCFIV1').value = numUSD.format(a);
-                        // Column 2
-                        a = parseInt(document.getElementById('GoodwillFairValueCCF2').value.replaceAll(/,/g, ''));
-                        document.getElementById('GoodwillFairValueCCFIV2').value = numUSD.format(a);
-                        // Column 3
-                        a = parseInt(document.getElementById('GoodwillFairValueCCF3').value.replaceAll(/,/g, ''));
-                        document.getElementById('GoodwillFairValueCCFIV3').value = numUSD.format(a);
-                        // Column 4
-                        a = parseInt(document.getElementById('GoodwillFairValueCCF4').value.replaceAll(/,/g, ''));
-                        document.getElementById('GoodwillFairValueCCFIV4').value = numUSD.format(a);
-                    };
-                </script>
                 <td colspan='2' class='C1'><input id="GoodwillFairValueCCFIV1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
                 <td colspan='2' class='C2'><input id="GoodwillFairValueCCFIV2"  onfocusout="Compile()"></input></td>
                 <td colspan='2' class='C3'><input id="GoodwillFairValueCCFIV3"  onfocusout="Compile()"></input></td>
@@ -169,25 +101,6 @@
                     <input type="checkbox" id="IntrinsicValuesCICheckbox"></input>
                     <input type="checkbox" id="IntrinsicValuesCICheckbox2"></input>
                 </td>
-                <script>
-                    function BalanceIntrinsicValuesCI(BalanceIntrinsicValuesCI) {
-                        var numUSD = new Intl.NumberFormat("en-US", {
-                            format: "number"
-                        })
-                        // Column 1
-                        a = parseInt(document.getElementById('CommonSharesValueCI1').value.replaceAll(/,/g, ''));
-                        document.getElementById('IntrinsicValuesCI1').value = numUSD.format(a);
-                        // Column 2
-                        a = parseInt(document.getElementById('CommonSharesValueCI2').value.replaceAll(/,/g, ''));
-                        document.getElementById('IntrinsicValuesCI2').value = numUSD.format(a);
-                        // Column 3
-                        a = parseInt(document.getElementById('CommonSharesValueCI3').value.replaceAll(/,/g, ''));
-                        document.getElementById('IntrinsicValuesCI3').value = numUSD.format(a);
-                        // Column 4
-                        a = parseInt(document.getElementById('CommonSharesValueCI4').value.replaceAll(/,/g, ''));
-                        document.getElementById('IntrinsicValuesCI4').value = numUSD.format(a);
-                    };
-                </script>
                 <td colspan='2' class='C1'><input id="IntrinsicValuesCI1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
                 <td colspan='2' class='C2'><input id="IntrinsicValuesCI2" onfocusout="Compile()"></input></td>
                 <td colspan='2' class='C3'><input id="IntrinsicValuesCI3" onfocusout="Compile()"></input></td>
@@ -203,25 +116,6 @@
                     <input type="checkbox" id="GoodwillFairValueCIIVCheckbox"></input>
                     <input type="checkbox" id="GoodwillFairValueCIIVCheckbox2"></input>
                 </td>
-                <script>
-                    function BalanceGoowillFairValueCI(BalanceGoowillFairValueCI) {
-                        var numUSD = new Intl.NumberFormat("en-US", {
-                            format: "number"
-                        })
-                        // Column 1
-                        a = parseInt(document.getElementById('GoodwillFairValueCI1').value.replaceAll(/,/g, ''));
-                        document.getElementById('GoodwillFairValueCIIV1').value = numUSD.format(a);
-                        // Column 2
-                        a = parseInt(document.getElementById('GoodwillFairValueCI2').value.replaceAll(/,/g, ''));
-                        document.getElementById('GoodwillFairValueCIIV2').value = numUSD.format(a);
-                        // Column 3
-                        a = parseInt(document.getElementById('GoodwillFairValueCI3').value.replaceAll(/,/g, ''));
-                        document.getElementById('GoodwillFairValueCIIV3').value = numUSD.format(a);
-                        // Column 4
-                        a = parseInt(document.getElementById('GoodwillFairValueCI4').value.replaceAll(/,/g, ''));
-                        document.getElementById('GoodwillFairValueCIIV4').value = numUSD.format(a);
-                    };
-                </script>
                 <td colspan='2' class='C1'><input id="GoodwillFairValueCIIV1" style="font-weight:bold;" onfocusout="Compile()"></input></td>
                 <td colspan='2' class='C2'><input id="GoodwillFairValueCIIV2"  onfocusout="Compile()"></input></td>
                 <td colspan='2' class='C3'><input id="GoodwillFairValueCIIV3"  onfocusout="Compile()"></input></td>
