@@ -1397,7 +1397,7 @@
 			function handleUserInfoPayload(user_info){
 				document.getElementById("id_other_username").innerHTML = user_info['username']
 				document.getElementById("id_other_user_profile_image").classList.remove("d-none")
-				document.getElementById("id_user_info_container").href= "/" + user_info['id'] + '/profile/'
+				document.getElementById("id_user_info_container").href= "{% url 'account:view' user_id=53252623623632623 %}".replace("53252623623632623", user_info['id'])
 				preloadImage(user_info['profile_image'], "id_other_user_profile_image")
 			}
 
@@ -1581,8 +1581,9 @@
 
 			function selectUser(user_id){
 				// Weird work-around for passing arg to url
-				//var win = window.open(url, "_blank")
-				//win.focus()
+				var url = "{% url 'account:view' user_id=53252623623632623 %}".replace("53252623623632623", user_id)
+				var win = window.open(url, "_blank")
+				win.focus()
 			}
 
 			function chatLogScrollListener(e) {
@@ -1627,6 +1628,33 @@
 				document.getElementById("id_other_user_profile_image").classList.add("d-none")
 				document.getElementById("id_other_user_profile_image").src = "/static/clockdb/dummy_image.png/"
 				document.getElementById("id_other_username").innerHTML = ""
+			}
+
+			function createOrReturnPrivateChat(id){
+				payload = {
+					"csrfmiddlewaretoken": "{{ csrf_token }}",
+					"user2_id": id,
+				}
+				$.ajax({
+					type: 'POST',
+					dataType: "json",
+					url: "{% url 'chat:create-or-return-private-chat' %}", // production
+					data: payload,
+					timeout: 5000,
+					success: function(data) {
+						console.log("SUCCESS", data)
+						if(data['response'] == "Successfully got the chat."){
+							setupWebSocket(data['chatroom_id'])
+						}
+						else if(data['response'] != null){
+							alert(data['response'])
+						}
+					},
+					error: function(data) {
+						console.error("ERROR...", data)
+						alert("Something went wrong.")
+					},
+				});
 			}
 
 			function messageInputFocus() {
