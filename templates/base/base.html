@@ -1624,6 +1624,8 @@
 			}
 
 			// friends requests
+
+			preloadImage("{{ profile|safe }}", 'id_profile_image')
 			
 			function onFriendRequestAccepted(){
 				location.reload();
@@ -1650,6 +1652,14 @@
 			}
 
 			function onFriendRequestDeclined(){
+				location.reload();
+			}
+
+			function onFriendRequestSent(){
+				location.reload();
+			}
+
+			function onFriendRequestCancelled(){
 				location.reload();
 			}
 
