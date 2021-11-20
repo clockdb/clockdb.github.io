@@ -48,10 +48,6 @@ urlpatterns = [
         auth_views.PasswordChangeDoneView.as_view(template_name='profile/password_reset/password_change_done.html'), 
         name='password_change_done'),
 
-    path('<str:user_id>/change_password/',
-        auth_views.PasswordChangeView.as_view(template_name='profile/password_reset/change_password.html'), 
-        name='change_password'),
-
     path('password_reset/done/',
         auth_views.PasswordResetCompleteView.as_view(template_name='profile/password_reset/password_reset_done.html'),
         name='password_reset_done'),
@@ -71,6 +67,7 @@ urlpatterns = [
     path("<str:user_id>/Home/", posts_screen_view, name="posts"),
     #
     path("<str:user_id>/profile/", posts_screen_view, name="profile"),
+    path('<str:user_id>/change_password/', posts_screen_view, name="change_password"),
     path("<str:user_id>/edit/", posts_screen_view, name="edit"),
 	#path('<user_id>/edit/cropImage/', crop_image, name="crop_image"),
     #
@@ -94,6 +91,7 @@ urlpatterns = [
     path("<str:user_id>/WorkingPaper/<str:entity_TradingSymbol>/Home/", analysis_view, name="analysis"),
     #
     path("<str:user_id>/WorkingPaper/<str:entity_TradingSymbol>/profile/", analysis_view, name="analysis"),
+    path('<str:user_id>/WorkingPaper/<str:entity_TradingSymbol>/change_password/', posts_screen_view, name="change_password"),
     path("<str:user_id>/WorkingPaper/<str:entity_TradingSymbol>/edit_profile/", analysis_view, name="analysis"),
 	#path('<str:user_id>/WorkingPaper/<str:entity_TradingSymbol>/edit_profile/cropImage/', crop_image, name="crop_image"),
     path("<str:user_id>/WorkingPaper/<str:entity_TradingSymbol>/Entities/", analysis_view, name="analysis"),
