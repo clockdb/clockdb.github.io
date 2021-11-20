@@ -119,7 +119,9 @@
 
 		<!-- js/onePageApp.js -->
 		<script>
+
 			console.log('js/onePageApp.js')
+			
 			// on load
 			function onePageAppOnLoad(hideIf) {
 				const user_id = document.getElementById('user_id').innerHTML
@@ -186,6 +188,7 @@
 					}
 				}
 			};
+			
 			// buttons
 			function onePageApp(button) {
 				button.onclick = function() {
@@ -362,6 +365,7 @@
 					}
 				}
 			};
+
 		</script>
 
 		<!-- js/account/account.js -->
@@ -369,7 +373,9 @@
 
 		<!-- base/base.js -->
 		<script>
+
 			console.log('base/base.js')
+			
 			// redirect
 			function redirect(page, user_id, this_user_id) {
 				z = 0
@@ -400,6 +406,7 @@
 					}
 				}
 			}
+			
 			// history push
 			function historyPush(page) {
 				user_id = window.location.href.replace(window.location.origin,'');
@@ -425,7 +432,9 @@
 					document.title = 'Clockdb | ' + page;
 				}
 			}
+			
 			// popstate
+
 			function positionpopstate() {
 				try {
 					a = document.getElementById(localStorage.position)
@@ -433,18 +442,22 @@
 					a.select()
 				} catch {}
 			}
+
 			window.onpopstate = function(event) {
 				showPage(event.state.page);
 				positionpopstate();
 			}
+
 			function historyBack() {
 				window.history.back();
 				positionpopstate();
 			}
+
 			function historyForward() {
 				window.history.forward();
 				positionpopstate();		
 			}
+			
 			// showPage
 			function showPage(page) {
 				const loading = document.getElementById('id_loading_spinner')
@@ -462,6 +475,7 @@
 				} catch {}
 				loading.style.display = 'none';
 			}
+			
 			// hide div
 			function hideDiv(div) {
 				skip = [
@@ -498,7 +512,9 @@
 					}
 				}
 			}
+			
 			// display
+
 			function display(hideIf) {
 				const user_id = document.getElementById('user_id').innerHTML
 				const loading = document.getElementById('id_loading_spinner')
@@ -564,10 +580,12 @@
 				document.getElementsByClassName('panelHeader')[0].style.display = 'block';
 				loading.style.display = 'none';
 			}
+
 			function preloadCallback(src, elementId){
 				var img = document.getElementById(elementId)
 				img.src = src
 			}
+
 			function preloadImage(imgSrc, elementId){
 				// console.log("attempting to load " + imgSrc + " on element " + elementId)
 				var objImagePreloader = new Image();
@@ -584,6 +602,7 @@
 					}
 				}
 			}
+
 			function validateText(str)
 			{
 				var md = window.markdownit({
@@ -602,6 +621,7 @@
 				var result = md.render(str);
 				return result
 			}
+
 			function displayLoadingSpinner(isDisplayed){
 				var spinner = document.getElementById("id_loading_spinner")
 				if(isDisplayed){
@@ -611,14 +631,20 @@
 					spinner.style.display = "none"
 				}
 			}
+
 		</script>
 
 		<!-- base/header.js -->
-		<script>			
+		<script>
+
 			console.log('base/header.js')
+			
 			var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+			
 			var ws_path = ws_scheme + '://' + window.location.host + ":8001";
+			
 			var notificationSocket = new WebSocket(ws_path);
+			
 			notificationSocket.onmessage = function(message) {
 				var data = JSON.parse(message.data);
 				//console.log(data)
@@ -667,9 +693,11 @@
 					setChatNotificationsCount(data['count'])
 				}
 			}
+			
 			notificationSocket.onclose = function(e) {
 				console.error('Notification Socket closed unexpectedly');
 			};
+			
 			notificationSocket.onopen = function(e){
 				//console.log("Notification Socket on open: " + e)
 				setupGeneralNotificationsMenu()
@@ -678,59 +706,726 @@
 				setupChatNotificationsMenu()
 				getFirstChatNotificationsPage()
 			}
+			
 			notificationSocket.onerror = function(e){
 				console.log('Notification Socket error', e)
 			}
+			
 			if (notificationSocket.readyState == WebSocket.OPEN) {
 				//console.log("Notification Socket OPEN complete.")
 			} 
 			else if (notificationSocket.readyState == WebSocket.CONNECTING){
 				//console.log("Notification Socket connecting..")
 			}
+
 		</script>
 
-		<script src="{% static 'js/base/resize.js' %}"></script>
-		<!-- controlPanel -->
-		<script src="{% static 'js/controlPanel/controlPanel.js' %}"></script>
-		<!-- friend -->
-		<script src="{% static 'js/friend/friend.js' %}"></script>
-		<!-- messenger -->
+		<!-- base/resize.js -->
+		<script>
+
+			console.log('base/resize.js')
+
+			function resize(c, m, g, t) {
+				a = ''
+				if (c == 'none') {
+					if (m == 'none') {
+						if (g == 'none') {
+							if (t == 'none') {
+								a = '100%';
+							}
+						}
+					} else {
+						a = ''
+					}
+				} else {
+					a = ''
+				}
+				if (a == '') {
+					if (window.innerWidth > 799) {
+						a = '80%';
+					} else {
+						a = '60%';
+					}
+				}
+				document.getElementsByClassName('clockdb')[0].style.width = a;
+				document.getElementsByClassName('loading')[0].style.width = a;
+			}
+
+			function innerWidthColumn() {
+				var w = window.innerWidth;
+				if (w < 799) {
+					disp = 'none';
+				} else {
+					disp = '';
+				}
+				Columns(disp);
+			}
+
+			function Columns(disp) {
+				a = document.getElementsByClassName('C2');
+				for(let i = 0; i < a.length; i++) { 
+					document.getElementsByClassName('C2')[i].style.display = disp;
+				};
+				a = document.getElementsByClassName('C3');
+				for(let i = 0; i < a.length; i++) { 
+					document.getElementsByClassName('C3')[i].style.display = disp;
+				};
+				a = document.getElementsByClassName('C4');
+				for(let i = 0; i < a.length; i++) { 
+					document.getElementsByClassName('C4')[i].style.display = disp;
+				};
+				a = document.getElementsByClassName('C5');
+				for(let i = 0; i < a.length; i++) { 
+					document.getElementsByClassName('C5')[i].style.display = disp;
+				};
+				a = document.getElementsByClassName('C6');
+				for(let i = 0; i < a.length; i++) { 
+					document.getElementsByClassName('C6')[i].style.display = disp;
+				};
+				document.getElementById('Clockφ2').style.display = disp;
+				document.getElementById('Clockφ3').style.display = disp;
+				document.getElementById('Clockφ4').style.display = disp;
+				document.getElementById('Bridgeφ2').style.display = disp;
+				document.getElementById('Bridgeφ3').style.display = disp;
+				document.getElementById('Bridgeφ4').style.display = disp;
+				localStorage.setItem('Column', 1)
+			}
+
+		</script>
+
+		<!-- controlPanel/controlPanel.js -->
+		<script>
+
+			console.log('controlPanel/controlPanel.js')
+
+			function hideIndustrySEC() {
+				g = document.getElementsByName('Industry_SEC')
+				for(let i = 0; i < g.length; i++) {
+					g[i].style.display = 'none';
+				}
+			}
+
+			function controlPanelTitles() {
+				// marker
+				marker = `
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
+					<path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
+					<path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
+				</svg>
+				`
+				// Sort
+				try {
+					a = document.getElementById('Sort')
+					a = a.options[a.selectedIndex].text
+					if (a == '') {
+						a = 'Sort';
+					} else {
+						a = marker + 'Sort by ' + a;
+					}
+					c = document.getElementById('SortButton')
+					c.innerHTML = a;
+				} catch {}
+				// Order
+				try {
+					a = document.getElementById('Order')
+					a = a.options[a.selectedIndex].text
+					if (a == '') {
+						a = 'Order'
+					} else {
+						a = marker + a;
+					}
+					c = document.getElementById('OrderButton')
+					c.innerHTML = a;
+				} catch {}
+				// Industry
+				try {
+					a = document.getElementById('Industry')
+					a = a.options[a.selectedIndex].text
+					if (a == '') {
+						a = 'Industry'
+					} else {
+						a = marker + a;
+					}
+					c = document.getElementById('IndustryButton')
+					c.innerHTML = a;
+				} catch {}
+				// Region
+				try {
+					a = document.getElementById('Region')
+					a = a.options[a.selectedIndex].text
+					if (a == '') {
+						a = 'Region'
+					} else {
+						a = marker + a;
+					}
+					c = document.getElementById('RegionButton')
+					c.innerHTML = a;
+				} catch {}
+				// Period
+				try {
+					a = document.getElementById('Period')
+					a = a.options[a.selectedIndex].text
+					if (a == '') {
+						a = 'Year Ending'
+					} else {
+						a = marker + a;
+					}
+					c = document.getElementById('PeriodButton')
+					c.innerHTML = a;
+				} catch {}
+				// Work In Progress
+				try {		
+					a = document.getElementById('WorkInProgress')
+					a = a.options[a.selectedIndex].text
+					if (a == 'Include Work In Progress') {
+						a = 'Include Work In Progress'
+					} else {
+						a = marker + a;
+					}
+					c = document.getElementById('WorkInProgressButton')
+					c.innerHTML = a;
+				} catch {}
+			}
+
+			function IndustryChange() {
+				try {
+					controlPanelTitles();
+					hideIndustrySEC();
+					e = document.getElementById('Industry').value
+					e = document.getElementById(e)
+					e = e.parentElement
+					e = e.parentElement
+					e = e.parentElement
+					e.style.display = 'block';
+				} catch {}
+			}
+
+			function IndustrySECChange(e) {
+				id = e.id.replace('m','')
+				a = document.getElementById(id)
+				for(let i = 0; i < a.length; i++) {
+					if (a.options[i].value == a.value) {
+						gg = a.options[i].innerHTML
+					}
+				}
+				if (gg != '') {
+					gg = `
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
+							<path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
+							<path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
+						</svg>
+					` + gg
+					id = 'IndustryButton_' + id
+					document.getElementById(id).innerHTML = gg
+				}
+			}
+
+			function OptionsSelection() {
+				e = event.target
+				a = document.getElementById(e.name)
+				a.value = e.id.replace('Option', '')
+				e.parentElement.style.display = 'none';
+				controlPanelTitles();
+				hideIndustrySEC();
+				try {
+					IndustryChange();
+					IndustrySECChange(e);
+				} catch {}
+			}
+
+			function OptionsSection(c) {
+				f = c + 'OptionsSection'
+				f = document.getElementsByClassName(f)[0]
+				d = f.style.display
+				if (d == 'none') {
+					d = 'block';
+				} else {
+					d = 'none';
+				}
+				f.style.display = d;
+				//
+				a = document.getElementById(c).options
+				//
+				for(let i = 0; i < a.length; i++) {
+					o = a[i].innerHTML
+					if (o == '') {
+						o = 'any'
+					}
+					option = `<button id="` + a[i].value + `Option` + `" class="` + `options` + `" name="` + c + `" onclick="OptionsSelection()">` + o + `</button>`
+					optionsO = optionsO + option
+				}
+			}
+
+			function SortAndOrderOptions(c) {
+				optionsO = ''
+				OptionsSection(c, optionsO)
+				a = c + 'OptionsSection'
+				a = document.getElementsByClassName(a)[0]
+				a.innerHTML = optionsO
+			}
+
+			function SortAndOrder(id) {
+				c = id.replace('Button','')
+				if (c == 'Sort') {
+					SortAndOrderOptions(c)
+				}
+				if (c == 'Order') {
+					SortAndOrderOptions(c)
+				}
+				if (c == 'filterFor') {
+					filterForRefresh();
+				}
+				if (c == 'Industry') {
+					SortAndOrderOptions(c)
+				}
+				if (c == 'Region') {
+					SortAndOrderOptions(c)
+				}
+				if (c == 'Period') {
+					SortAndOrderOptions(c)
+				}
+				if (c == 'WorkInProgress') {
+					WorkInProgressToggle()
+				}
+				c = id.slice(15)
+				if (id.replace(c,'') == 'IndustryButton_') {
+					SortAndOrderOptions(c)
+				}
+			}
+
+			function filterForRefresh() {
+				document.getElementById('Industry').value = 'any'
+				document.getElementById('Region').value = 'any'
+				document.getElementById('Period').value = 'any'
+				controlPanelTitles();
+				hideIndustrySEC();
+			}
+
+			function WorkInProgressToggle() {
+				a = document.getElementById('WorkInProgress').value
+				if (a == '21') {
+					a = 'any';
+				} else {
+					a = '21';
+				}
+				document.getElementById('WorkInProgress').value = a;
+				controlPanelTitles();
+			}
+
+			function controlPanel() {
+				try {
+					a = window.location.href.replace(window.location.origin,'').split('/')[2]
+					if (a == 'WorkingPaper') {
+						a = 'Working Paper'
+						wp = 'block'
+						p = 'none'
+					} else {
+						a = 'Posts'
+						wp = 'none'
+						p = 'block'
+					}
+					document.getElementsByClassName('controlWorkingPaper')[0].style.display = wp;
+					document.getElementsByClassName('controlPosts')[0].style.display = p;
+					document.getElementsByClassName('controlHeaderTitle')[0].innerHTML = a;
+				} catch {}
+			};
+
+			function closePanel() {
+				c = 'none'
+				m = 'none'
+				g = 'none'
+				t = 'none'
+				document.getElementsByClassName('Control')[0].style.display = c;
+				document.getElementsByClassName('Messenger')[0].style.display = m;
+				document.getElementsByClassName('MessengerNotifications')[0].style.display = g;
+				document.getElementsByClassName('Notifications')[0].style.display = t;
+				document.getElementsByClassName('clockdb')[0].style.width = '100%';
+				document.getElementsByClassName('loading')[0].style.width = '100%';
+				localStorage.setItem('Control', 'Off')
+				localStorage.setItem('Messenger', 'Off')
+				localStorage.setItem('MessengerNotifications', 'Off')
+				localStorage.setItem('Notifications', 'Off')
+			}
+
+			function toggleButton(id, classB) {
+				if (classB == 'btn btn-danger') {
+					classA = 'btn btn-primary'
+					innerHTML = 'Send Friend Request'
+				} else {
+					classA = 'btn btn-danger'
+					innerHTML = 'Cancel Friend Request'
+				}
+				a = document.getElementsByName(id)[0].className = classA
+				a = document.getElementsByName(id)[0].innerHTML = innerHTML
+				b = document.getElementsByName(id)[1].className = classA
+				a = document.getElementsByName(id)[1].innerHTML = innerHTML
+			}
+
+			function Notifications(Arg) {
+				if (Arg == 'On') {
+					c = 'none'
+					m = 'none'
+					g = 'none'
+					t = 'block'
+					Panel(c, m, g, t, 'Notifications')
+				} else {
+					closePanel()
+				}
+			}
+
+			function MessengerNotifications(Arg) {
+				if (Arg == 'On') {
+					c = 'none'
+					m = 'none'
+					g = 'block'
+					t = 'none'
+					Panel(c, m, g, t, 'MessengerNotifications')
+				} else {
+					closePanel()
+				}
+			}
+
+			function Messenger(Arg) {
+				if (Arg == 'On') {
+					c = 'none'
+					m = 'block'
+					g = 'none'
+					t = 'none'
+					Panel(c, m, g, t, 'Messenger')
+				} else {
+					closePanel()
+				}
+				messageInputFocus();
+			}
+
+			function Control(Arg) {
+				if (Arg == 'On') {
+					c = 'block'
+					m = 'none'
+					g = 'none'
+					t = 'none'
+					Panel(c, m, g, t, 'Control')
+				} else {
+					closePanel()
+				}
+			}
+
+			function Panel(c, m, g, t, r) {
+				z = 'border-bottom: solid #0D47A1;'
+				s = 'border-bottom: solid white;'
+				document.getElementsByClassName('Control')[0].style.display = c;
+				document.getElementsByClassName('Messenger')[0].style.display = m;
+				document.getElementsByClassName('MessengerNotifications')[0].style.display = g;
+				document.getElementsByClassName('Notifications')[0].style.display = t;
+				resize(c, m, g, t)
+				document.getElementById('ControlButton').style = s
+				document.getElementById('MessengerButton').style = s
+				document.getElementById('MessengerNotificationsButton').style = s
+				document.getElementById('NotificationsButton').style = s
+				document.getElementById(r + 'Button').style = z
+				localStorage.setItem('Control', 'Off')
+				localStorage.setItem('Messenger', 'Off')
+				localStorage.setItem('MessengerNotifications', 'Off')
+				localStorage.setItem('Notifications', 'Off')
+				localStorage.setItem(r, 'On')
+			}
+
+
+		</script>
+
+		<!-- js/friend/friend.js -->
+		<script>
+			
+			console.log('friend/friend.js')
+
+			function onFriendRequestAccepted(){
+				location.reload();
+			}
+
+			function onFriendRequestDeclined(){
+				location.reload();
+			}
+
+			function triggerAcceptFriendRequest(friend_request_id){
+				acceptFriendRequest(friend_request_id, onFriendRequestAccepted)
+			}
+
+			function triggerDeclineFriendRequest(friend_request_id){
+				declineFriendRequest(friend_request_id, onFriendRequestDeclined)
+			}
+
+			function onFriendRemoved(){
+				location.reload();
+			}
+
+			function onFriendRequestAccepted(){
+				location.reload();
+			}
+
+			function onFriendRequestDeclined(){
+				location.reload();
+			}
+
+			function sendFriendRequest(id){
+				payload = {
+					"csrfmiddlewaretoken": "{{ csrf_token }}",
+					"receiver_user_id": id,
+				}
+				$.ajax({
+					type: 'POST',
+					dataType: "json",
+					url: "{% url 'friend-request' %}",
+					timeout: 5000,
+					data: payload,
+					success: function(data) {
+						//console.log("SUCCESS", data)
+						if(data['response'] == "Friend request sent."){
+							// ui is updated
+						}
+						else if(data['response'] != null){
+							alert(data['response'])
+						}
+					},
+					error: function(data) {
+						console.error("ERROR...", data)
+						alert("Something went wrong.")
+					},
+					complete: function(data){}
+				});
+			}
+
+			function cancelFriendRequest(id){
+				payload = {
+					"csrfmiddlewaretoken": "{{ csrf_token }}",
+					"receiver_user_id": id,
+				}
+				$.ajax({
+					type: 'POST',
+					dataType: "json",
+					url: "{% url 'friend-request-cancel' %}",
+					data: payload,
+					timeout: 5000,
+					success: function(data) {
+						//console.log("SUCCESS", data)
+						if(data['response'] == "Friend request canceled."){
+							// ui is updated
+						}
+						else if(data['response'] != null){
+							alert(data['response'])
+						}
+					},
+					error: function(data) {
+						console.error("ERROR...", data)
+						alert("Something went wrong.")
+					},
+					complete: function(data){}
+				});
+			}
+
+			try {
+				var removeFriendBtn = document.getElementById("id_unfriend_btn")
+				if (removeFriendBtn != null){
+					removeFriendBtn.addEventListener("click", function(){
+						removeFriend("{{id}}", onFriendRemoved)
+					})
+				}
+			} catch {}
+
+			function removeFriend(id, uiUpdateFunction){
+				payload = {
+					"csrfmiddlewaretoken": "{{ csrf_token }}",
+					"receiver_user_id": id,
+				}
+				$.ajax({
+					type: 'POST',
+					dataType: "json",
+					timeout: 5000,
+					url: "{% url 'remove-friend' %}",
+					data: payload,
+					success: function(data) {
+						//console.log("SUCCESS", data)
+						if(data.response == "Successfully removed that friend."){
+							// UI gets updated
+						}
+						else if(data.response != null){
+							alert(data.response)
+						}
+					},
+					error: function(data) {
+						console.error("ERROR...", data)
+						alert("Something went wrong." + data)
+					},
+					complete: function(data){
+						uiUpdateFunction()
+					}
+				});
+			}
+
+			function triggerAcceptFriendRequest(friend_request_id){
+				acceptFriendRequest(friend_request_id, onFriendRequestAccepted)
+			}
+
+			function acceptFriendRequest(friend_request_id, uiUpdateFunction){
+				var url = "{% url 'friend-request-accept' friend_request_id=53252623623632623 %}".replace("53252623623632623", friend_request_id)
+				$.ajax({
+					type: 'GET',
+					dataType: "json",
+					url: url,
+					timeout: 5000,
+					success: function(data) {
+						//console.log("SUCCESS", data)
+						if(data['response'] == "Friend request accepted."){
+							// ui is updated
+						}
+						else if(data['response'] != null){
+							alert(data['response'])
+						}
+					},
+					error: function(data) {
+						console.error("ERROR...", data)
+						alert("Something went wrong: " + data)
+					},
+					complete: function(data){
+						uiUpdateFunction()
+					}
+				});
+			}
+
+			function triggerDeclineFriendRequest(friend_request_id){
+				declineFriendRequest(friend_request_id, onFriendRequestDeclined)
+			}
+
+			function declineFriendRequest(friend_request_id, uiUpdateFunction){
+				var url = "{% url 'friend-request-decline' friend_request_id=53252623623632623 %}".replace("53252623623632623", friend_request_id)
+				$.ajax({
+					type: 'GET',
+					dataType: "json",
+					url: url,
+					timeout: 5000,
+					success: function(data) {
+						//console.log("SUCCESS", data)
+						if(data['response'] == "Friend request declined."){
+							// ui is updated
+						}
+						else if(data['response'] != null){
+							alert(data['response'])
+						}
+					},
+					error: function(data) {
+						console.error("ERROR...", data)
+						alert("Something went wrong: " + data)
+					},
+					complete: function(data){
+						uiUpdateFunction()
+					}
+				});
+			}
+				
+			function friendRequestButtonsOnStart() {
+				FR = "{{ friends_requests }}"
+				FR = FR.replace('[','')
+				FR = FR.replace(']','')
+				i = 0
+				id = 0
+				while (id != undefined) {
+					try {
+						id = FR.split(', ')[i]
+						document.getElementsByName(id)[0].innerHTML = 'Cancel Friend Request';
+						document.getElementsByName(id)[0].id = 'id_cancel_friend_request_btn_profiles';
+						document.getElementsByName(id)[0].className = 'btn btn-danger';
+						document.getElementsByName(id)[1].innerHTML = 'Cancel Friend Request';
+						document.getElementsByName(id)[1].id = 'id_cancel_friend_request_btn_profiles';
+						document.getElementsByName(id)[1].className = 'btn btn-danger';
+					} catch {}
+					i = i + 1
+				}
+			}
+
+		</script>
+
+		<!-- js/messenger/messenger.js -->
 		<script src="{% static 'js/messenger/messenger.js' %}"></script>
-		<!-- messenger notifications -->
+
+		<!-- js/messengerNotification/messengerNotification.js -->
 		<script src="{% static 'js/messengerNotification/messengerNotification.js' %}"></script>
-		<!-- network -->
+
+		<!-- js/network/network.js -->
 		<script src="{% static 'js/network/network.js' %}"></script>
-		<!-- notification -->
+
+		<!-- js/notification/notification.js -->
 		<script src="{% static 'js/notification/notification.js' %}"></script>
-		<!-- posts -->
+
+		<!-- js/posts/posts.js -->
 		<script src="{% static 'js/posts/posts.js' %}"></script>
+
 		<!-- workingPaper -->
-		<!-- analysis -->
+
+		<!-- js/workingPaper/analysis/audit.js -->
 		<script src="{% static 'js/workingPaper/analysis/audit.js' %}"></script>
+
+		<!-- js/workingPaper/analysis/compile.js -->
 		<script src="{% static 'js/workingPaper/analysis/compile.js' %}"></script>
+
+		<!-- js/workingPaper/analysis/context.js -->
 		<script src="{% static 'js/workingPaper/analysis/context.js' %}"></script>
+
+		<!-- js/workingPaper/analysis/financials.js -->
 		<script src="{% static 'js/workingPaper/analysis/financials.js' %}"></script>
+
+		<!-- js/workingPaper/analysis/valuation.js -->
 		<script src="{% static 'js/workingPaper/analysis/valuation.js' %}"></script>
-		<!-- base -->
+
+		<!-- js/workingPaper/base/base.js -->
 		<script src="{% static 'js/workingPaper/base/base.js' %}"></script>
+
+		<!-- js/workingPaper/base/checkboxes.js -->
 		<script src="{% static 'js/workingPaper/base/checkboxes.js' %}"></script>
+
+		<!-- js/workingPaper/base/enter.js -->
 		<script src="{% static 'js/workingPaper/base/enter.js' %}"></script>
+
+		<!-- js/workingPaper/base/openEditor.js -->
 		<script src="{% static 'js/workingPaper/base/openEditor.js' %}"></script>
+
+		<!-- js/workingPaper/base/ref.js -->
 		<script src="{% static 'js/workingPaper/base/ref.js' %}"></script>
+
+		<!-- js/workingPaper/base/shortcuts -->
 		<script src="{% static 'js/workingPaper/base/shortcuts.js' %}"></script>
+
+		<!-- js/workingPaper/base/tabulation.js -->
 		<script src="{% static 'js/workingPaper/base/tabulation.js' %}"></script>
+
+		<!-- js/workingPaper/base/unhideRows.js -->
 		<script src="{% static 'js/workingPaper/base/unhideRows.js' %}"></script>
-		<!-- files -->
+
+		<!-- js/workingPaper/files/enter.js -->
 		<script src="{% static 'js/workingPaper/files/enter.js' %}"></script>
+
+		<!-- js/workingPaper/files/files.js -->
 		<script src="{% static 'js/workingPaper/files/files.js' %}"></script>
+
+		<!-- js/workingPaper/files/open.js -->
 		<script src="{% static 'js/workingPaper/files/open.js' %}"></script>
+
+		<!-- js/workingPaper/files/print.js -->
 		<script src="{% static 'js/workingPaper/files/print.js' %}"></script>
+
+		<!-- js/workingPaper/files/rollover.js -->
 		<script src="{% static 'js/workingPaper/files/rollover.js' %}"></script>
+
+		<!-- js/workingPaper/files/save.js -->
 		<script src="{% static 'js/workingPaper/files/save.js' %}"></script>
-		<!-- graph -->
+
+		<!-- js/workingPaper/graph/linechart.js -->
 		<script src="{% static 'js/workingPaper/graph/linechart.js' %}"></script>
+
+		<!-- js/workingPaper/graph/puck.js -->
 		<script src="{% static 'js/workingPaper/graph/puck.js' %}"></script>
+
 		<!-- dom -->
 		<script src="{% static 'js/dom/dom.js' %}"></script>
+
 	</body>
+
 </html>
