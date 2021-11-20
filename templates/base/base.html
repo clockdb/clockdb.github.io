@@ -1,21 +1,28 @@
+
 {% load static %}
+
 <!-- html -->
 <!DOCTYPE html>
 <html lang=en>
+
 	<!-- head -->
 	<head>
+
 		<!-- Required meta tags -->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
 		<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+
 		<!-- favicon -->
 		<link rel="shortcut icon" href="{% static 'clockdb/favicon.ico' %}">
 		<link rel="icon" href="{% static 'clockdb/favicon.ico' %}" type="image/x-icon">
+
 		<!-- Cropperjs -->
 		<!--
 		<link rel="stylesheet" href="{% static 'cropperjs/dist/cropper.min.css' %}">
 		 -->
+
 		<!-- Markdown-it -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/11.0.1/markdown-it.min.js"
 			integrity="sha512-hW0KbtvDnXCHbh2UCNP/6R+oXxCKiOfm9ciuUekdGBCQF1+57bGqZAk3sAFir7PMQstyRW0UecsSc2HQotH2vg=="
@@ -30,15 +37,20 @@
 			integrity="sha512-8aYTnyDstX39PHxorDD+6ROknf98Vqr5KTOjwRCl/442uAVKOpCJ5wY9I3VQ6y46rdDJKYBIglIfE2+GQk8U5Q=="
 			crossorigin="anonymous"></script>
 		<script> hljs.initHighlightingOnLoad(); </script>
+
 	</head>
+
 	<body>
+
 		<!-- header -->
 		<div class="header" style="display: none">
 			{% include 'base/base_css.html' %}
 			{% include 'base/header.html' %}
 		</div>
+
 		<!-- user id -->
 		<i id="user_id" style="display: none;">{{request.user.id}}</i>
+
 		<!-- panel -->
 		<div class="Panel">
 			<div class="panelHeader">
@@ -57,12 +69,15 @@
 				{% include 'panel/notifications.html' %}
 			</div>	
 		</div>
+
 		<!-- main -->
 		<div class="main">
+
 			<!-- block content -->
 			<div class="content">
 				{% block content %}
 				{% endblock content %}
+
 				<!-- loading -->
 				<div class="loading">
 					<div id="id_loading_spinner">
@@ -74,28 +89,36 @@
 					</div>
 				</div>
 			</div>
+
 			<!-- footer -->
 			{% include 'base/footer.html' %}
+
 		</div>
+
 		<!-- collections -->
 		<script src="{% static 'collections/collections.min.js' %}"></script>
+
 		<!-- jquery -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
 			integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
 			crossorigin="anonymous"></script>
+
 		<!-- ajax chart -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.3/Chart.min.js"></script>
+
 		<!-- papaparse -->
 		<script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.1/papaparse.min.js"></script>
+
 		<!-- bootstrap -->
 		<script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
 		<!--
 		<script type="module" src="{% static 'cropperjs/dist/cropper.min.js' %}"></script>
 		-->
-		<!-- onePageApp -->
+
+		<!-- js/onePageApp.js -->
 		<script>
-			// js/onePageApp.js
 			console.log('js/onePageApp.js')
 			// on load
 			function onePageAppOnLoad(hideIf) {
@@ -340,11 +363,12 @@
 				}
 			};
 		</script>
-		<!-- account -->
+
+		<!-- js/account/account.js -->
 		<script src="{% static 'js/account/account.js' %}"></script>
-		<!-- base -->
+
+		<!-- base/base.js -->
 		<script>
-			// base/base.js
 			console.log('base/base.js')
 			// redirect
 			function redirect(page, user_id, this_user_id) {
@@ -588,7 +612,83 @@
 				}
 			}
 		</script>
-		<script src="{% static 'js/base/header.js' %}"></script>
+
+		<!-- base/header.js -->
+		<script>			
+			console.log('base/header.js')
+			var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+			var ws_path = ws_scheme + '://' + window.location.host + ":8001";
+			var notificationSocket = new WebSocket(ws_path);
+			notificationSocket.onmessage = function(message) {
+				var data = JSON.parse(message.data);
+				//console.log(data)
+				//console.log("Got general notification websocket message. " + data.general_msg_type);
+				//console.log("Got chat notification websocket message. " + data.chat_msg_type);
+				/*
+					GENERAL NOTIFICATIONS
+				*/
+				// new 'general' notifications data payload
+				if(data.general_msg_type == 0){
+					handleGeneralNotificationsData(data['notifications'], data['new_page_number'])
+				}
+				// "General" Pagination exhausted. No more results.
+				if(data.general_msg_type == 1){
+					setGeneralPaginationExhausted()
+				}
+				// Refresh [newest_timestamp >= NOTIFICATIONS >= oldest_timestamp]
+				if(data.general_msg_type == 2){
+					refreshGeneralNotificationsData(data['notifications'])
+				}
+				if(data.general_msg_type == 3){
+					handleNewGeneralNotificationsData(data['notifications'])
+				}
+				if(data.general_msg_type == 4){
+					setUnreadGeneralNotificationsCount(data['count'])
+				}
+				if(data.general_msg_type == 5){
+					updateGeneralNotificationDiv(data['notification'])
+				}
+				/*
+					CHAT NOTIFICATIONS
+				*/
+				// new 'chat' notifications data payload
+				if(data.chat_msg_type == 10){
+					handleChatNotificationsData(data['notifications'], data['new_page_number'])
+				}
+				// "Chat" Pagination exhausted. No more results.
+				if(data.chat_msg_type == 11){
+					setChatPaginationExhausted()
+				}
+				// refreshed chat notifications
+				if(data.chat_msg_type == 13){
+					handleNewChatNotificationsData(data['notifications'])
+				}
+				if(data.chat_msg_type == 14){
+					setChatNotificationsCount(data['count'])
+				}
+			}
+			notificationSocket.onclose = function(e) {
+				console.error('Notification Socket closed unexpectedly');
+			};
+			notificationSocket.onopen = function(e){
+				//console.log("Notification Socket on open: " + e)
+				setupGeneralNotificationsMenu()
+				getFirstGeneralNotificationsPage()
+				getUnreadGeneralNotificationsCount()
+				setupChatNotificationsMenu()
+				getFirstChatNotificationsPage()
+			}
+			notificationSocket.onerror = function(e){
+				console.log('Notification Socket error', e)
+			}
+			if (notificationSocket.readyState == WebSocket.OPEN) {
+				//console.log("Notification Socket OPEN complete.")
+			} 
+			else if (notificationSocket.readyState == WebSocket.CONNECTING){
+				//console.log("Notification Socket connecting..")
+			}
+		</script>
+
 		<script src="{% static 'js/base/resize.js' %}"></script>
 		<!-- controlPanel -->
 		<script src="{% static 'js/controlPanel/controlPanel.js' %}"></script>
