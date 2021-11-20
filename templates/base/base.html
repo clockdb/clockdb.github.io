@@ -3123,19 +3123,548 @@
 		<!-- workingPaper -->
 
 		<!-- js/workingPaper/analysis/audit.js -->
-		<script src="{% static 'js/workingPaper/analysis/audit.js' %}"></script>
+		<script>
+			
+			console.log('analysis/audit.js')
+
+			function Mission() {
+				document.getElementById('EntityRegistrantNameMission').innerHTML = document.getElementById('EntityRegistrantName1').value;
+				Scope();
+			}
+
+			function Materiality() {
+				document.getElementById('EntityRegistrantNameMateriality').innerHTML = document.getElementById('EntityRegistrantName1').value;
+				Scope();
+				BalanceContinuingOperationsMaterialityThreshold();
+				BalanceNetAssetMaterialityThreshold();
+				BalanceRevenuesMaterialityThreshold();
+				BalanceIntrinsicValueMaterialityThreshold();
+				MarketCapMaterialityThreshold();
+				BalanceMaterialityThresholdValue();
+			}
+
+			function ProceduresBalanceSheets() {
+				document.getElementById('EntityRegistrantNameProceduresBalanceSheets').innerHTML = document.getElementById('EntityRegistrantName1').value;
+				DateProcedureAnnualBalanceSheets();
+				ProcedureAnnualBalanceSheetsAmend();
+				BalancePROAssets();
+				BalancePROLiabilitiesAndShareholdersEquity();
+				BalancePROAssetsLessLiabilitiesAndShareholdersEquity();
+				DateProcedureAnnualBalanceSheetsii();
+				ProcedureAnnualBalanceSheetsiiAmend();
+				BalancePROCurrentAssetsComponents();
+				BalancePROCurrentAssetsAnomaly();
+				BalancePRONonCurrentAssetsComponents();
+				BalancePRONonCurrentAssetsAnomaly();
+				BalancePROCurrentLiabilitiesComponents();
+				BalancePROCurrentLiabilitiesAnomalies();
+				BalancePRONonCurrentLiabilitiesComponents();
+				BalancePRONonCurrentLiabilitiesAnomalies();
+				BalancePROShareholdersEquityComponents();
+				BalancePROShareholdersEquityAnomalies();
+				DateProcedureAnnualBalanceSheetsiii();
+				ProcedureAnnualBalanceSheetsiiiAmend();
+			}
+
+			function ProceduresIncomeStatements() {
+				document.getElementById('EntityRegistrantNameProceduresIncomeStatements').innerHTML = document.getElementById('EntityRegistrantName1').value;
+				DateProcedureAnnualIncomeStatements();
+				ProcedureAnnualIncomeStatementsAmend();
+				BalancePROGrossMarginComponents();
+				BalancePROGrossMarginAnomalies();
+				BalancePROOperatingIncomeComponents();
+				BalancePROOperatingIncomeAnomalies();
+				BalancePROIncomeLossBeforeTaxesComponents();
+				BalancePROIncomeLossBeforeTaxesAnomalies();
+				BalancePRONetIncomeComponents();
+				BalancePRONetIncomeAnomalies();
+				DateProcedureAnnualIncomeStatementsi();
+				ProcedureAnnualIncomeStatementsiAmend();
+			}
+
+			function ProceduresComprehensiveIncome() {
+				document.getElementById('EntityRegistrantNameProceduresComprehensiveIncome').innerHTML = document.getElementById('EntityRegistrantName1').value;
+				DateProcedureAnnualComprehensiveIncome();
+				ProcedureAnnualComprehensiveIncomeAmend();
+				BalanceOtherComprehensiveIncomeComponents();
+				BalanceComprehensiveIncomeAnomalies();
+				DateProcedureAnnualComprehensiveIncomeStatements();
+				ProcedureAnnualComprehensiveIncomeStatementsAmend();
+			}
+
+			function ProceduresShareholdersEquity() {
+				document.getElementById('EntityRegistrantNameProceduresShareholdersEquity').innerHTML = document.getElementById('EntityRegistrantName1').value;
+				DateProcedureAnnualShareholdersEquityiii();
+				ProcedureAnnualShareholdersEquityiiiAmend();
+				BalanceShareholdersEquityBeginningi();
+				BalanceShareholdersEquityComponents();
+				BalanceShareholdersEquityAnomaliesi();
+				DateProcedureAnnualShareholdersEquity();
+				ProcedureAnnualShareholdersEquityAmend();
+				BalanceShareholdersEquityComponentsi();
+				BalanceShareholdersEquityAnomalies();
+				DateProcedureAnnualShareholdersEquityi();
+				ProcedureAnnualShareholdersEquityiAmend();
+			}
+
+			function ProceduresCashFlow() {
+				document.getElementById('EntityRegistrantNameProceduresCashFlow').innerHTML = document.getElementById('EntityRegistrantName1').value;	
+				DateProcedureAnnualCashFlow();
+				ProcedureAnnualCashFlowAmend();
+				CashFlowCashBeginning();
+				CashBalanceSheetsAudit();
+				CashFlowCashAnomaly();
+				DateProcedureAnnualCashFlowClassification();
+				ProcedureAnnualCashFlowClassificationAmend();	
+			}
+
+			function Anomalies() {
+				document.getElementById('EntityRegistrantNameAnomalies').innerHTML = document.getElementById('EntityRegistrantName1').value;
+				DateAnomaliesi();
+				AnomaliesAmend();
+				BalanceAnomaliesCurrentAssets();
+				BalanceAnomaliesNonCurrentAssets();
+				BalanceAnomaliesCurrentLiabilities();
+				BalanceAnomaliesNonCurrentLiabilities();
+				AnomaliesShareholdersEquityi();
+				BalanceAnomaliesBalanceSheets();
+				BalanceAnomaliesGrossMargin();
+				BalanceAnomaliesOperatingIncome();
+				BalanceAnomaliesIncomeBeforeTaxes();
+				BalanceAnomaliesNetIncome();
+				BalanceAnomaliesIncomeStatements();
+				BalanceAnomaliesComprehensiveIncome();
+				BalanceAnomaliesShareholdersEquity();
+				BalanceAnomaliesCash();
+				DateAnomaliesii();
+			}
+
+			function Summary() {
+				document.getElementById('EntityRegistrantNameSummary').innerHTML = document.getElementById('EntityRegistrantName1').value;	
+				AuditSummaryAmend();
+				TrialBalanceAnomalySummary();
+				AccountingEquationAnomalySummary();
+				BalanceSheetsAnomalySummary();
+				IncomeAnomalySummary();
+				ComprehensiveIncomeAnomalySummary();
+				ShareholdersEquityAnomalySummary();
+				CashFlowAnomalySummary();
+				MarketCapitalizationAnomalySummary();
+				WorstCaseScenario();
+				BalanceAnomaliesMatherialityThreshold();
+				AnomaliesRatio();
+				AuditOpinion();
+				BalanceBridgeφ();
+			}
+
+			function Signatory() {
+				document.getElementById('SignatoryShortCut').innerHTML = document.getElementById('Signatory1').value;
+			}
+
+			function Scope() {
+				document.getElementById('Scope').innerHTML = document.getElementById('ContextDate1').value + ' and the five years prior.'
+			}
+
+		</script>
 
 		<!-- js/workingPaper/analysis/compile.js -->
-		<script src="{% static 'js/workingPaper/analysis/compile.js' %}"></script>
+		<script>
+
+			console.log('analysis/compile.js')
+
+			function Compile() {
+				b = window.location.href.replace(window.location.origin,'')
+				b = b.split('/')[2]
+				if (b == 'WorkingPaper') {
+					Context();
+					TrialBalances();		
+					BalanceSheets();
+					IncomeStatements();
+					ComprehensiveIncome();
+					ShareholdersEquity();
+					CashFlow();
+					FinancialRatios();
+					AdditionalInformation();
+					CapitalizationRates();
+					CapitalizedCashFlow();
+					CapitalizedIncome();
+					IntrinsicValues();
+					Opinion();
+					Mission();
+					Materiality();
+					ProceduresBalanceSheets();
+					ProceduresIncomeStatements();
+					ProceduresComprehensiveIncome();
+					ProceduresShareholdersEquity();
+					ProceduresCashFlow();
+					Anomalies();
+					Summary();
+					Graph();
+					FilingsReferences();
+					FilesHeader();
+				}
+				LineChart();
+			}
+
+		</script>
 
 		<!-- js/workingPaper/analysis/context.js -->
-		<script src="{% static 'js/workingPaper/analysis/context.js' %}"></script>
+		<script>
+						
+			// analysis/context.js
+			console.log('analysis/context.js')
+
+			function Context() {
+				document.getElementById('EntityRegistrantNameContext').innerHTML = document.getElementById('EntityRegistrantName1').value;
+			}
+
+		</script>
 
 		<!-- js/workingPaper/analysis/financials.js -->
-		<script src="{% static 'js/workingPaper/analysis/financials.js' %}"></script>
+		<script>
+
+			console.log('analysis/financials.js')
+
+			function TrialBalances() {
+				document.getElementById('EntityRegistrantNameTrialBalances').innerHTML = document.getElementById('EntityRegistrantName1').value;
+				DateTrialBalances();
+				TrialBalancesAmend();
+				Balance();	
+			}
+
+			function BalanceSheets() {
+				document.getElementById('EntityRegistrantNameBalanceSheets').innerHTML = document.getElementById('EntityRegistrantName1').value;
+				DateBalanceSheets();
+				BalanceSheetsAmend();
+				BalanceCash();
+				BalanceShortTermInvestments();
+				BalanceAccountsReceivable();
+				BalanceWorkInProgress();
+				BalanceInventories();
+				BalancePrepaidExpenses();
+				BalanceNonTradeReceivables();
+				BalancePrepaidTaxAssetsCurrent();
+				BalanceDeferredTaxAssetsCurrent();
+				BalanceRightOfUseAssetsCurrent();
+				BalanceOtherCurrentAssets();
+				BalanceDiscontinuedOperationsCurrent();
+				BalanceCurrentAssets();
+				BalanceLongTermReceivables();
+				BalanceDeferredCharges();
+				BalanceInvestments();
+				BalancePropertyPlantAndEquipment();
+				BalanceOperatingLeaseRightOfUseAssets();
+				BalanceFinanceLeaseRightOfUseAssets();
+				BalanceIntangibleAssets();
+				BalanceGoodwill();
+				BalanceRefundableTaxAssetsNonCurrent();
+				BalanceDeferredTaxAssetsNonCurrent();
+				BalanceDefinedBenefitPensionAndOtherSimilarPlans();
+				BalanceOtherNonCurrentAssets();
+				BalanceDiscontinuedOperationsNonCurrent();
+				BalanceNonCurrentAssets();
+				BalanceAccountsPayableAndAccruedLiabilities();
+				BalanceEmployeeCompensationCurrent();
+				BalanceOperatingLeasesCurrent();
+				BalanceFinanceLeasesCurrent();
+				BalanceDeferredRevenueAndDepositsCurrent();
+				BalanceAccruedTaxLiabilities();
+				BalanceDeferredTaxLiabilitiesCurrent();
+				BalanceCommercialPapers();
+				BalanceShortTermBorrowings();
+				BalanceOtherCurrentLiabilities();
+				BalanceDiscontinuedOperationsLiabilitiesCurrent();
+				BalanceDividendsPayable();
+				BalanceShortTermPortionOfLongTermDebt();
+				BalanceCurrentLiabilities();
+				BalanceLongTermDebt();
+				BalancePreferredSharesLiability();
+				BalanceRetirementBenefits();
+				BalanceOperatingLeasesNonCurrent();
+				BalanceFinanceLeasesNonCurrent();
+				BalanceLeaseIncentiveObligation();
+				BalanceContingentConsideration();
+				BalanceAccruedTaxLiabilitiesNonCurrent();
+				BalanceDeferredTaxLiabilitiesNonCurrent();
+				BalanceDeferredRevenueAndDepositsNonCurrent();
+				BalanceOtherNonCurrentLiabilities();
+				BalanceRedeemableNonControllingInterests();
+				BalanceDiscontinuedOperationsLiabilitiesNonCurrent();
+				BalanceNonCurrentLiabilities();		
+			}
+
+			function IncomeStatements() {
+				document.getElementById('EntityRegistrantNameIncomeStatements').innerHTML = document.getElementById('EntityRegistrantName1').value;
+				DateStatementsOfIncome();
+				IncomeStatementsAmend();
+				BalanceSales();
+				BalanceCostOfSales();
+				BalanceGrossMargin();
+				BalanceResearchAndDevelopment();
+				BalanceSellingGeneralAdministrativeAndMarketing();
+				BalanceOperatingIncome();
+				BalanceImpairmentRestructuringAndOtherSpecialCharges();
+				BalanceNonOperatingIncomeExpense();
+				BalanceIncomeBeforeTaxes();
+				BalanceIncomeTaxExpenseBenefit();
+				BalanceEquityMethodInvesteesIncome();
+				BalanceNetIncomeFromDiscontinuedOperations();
+				BalanceNetIncome();
+			}
+
+			function ComprehensiveIncome() {
+				document.getElementById('EntityRegistrantNameComprehensiveIncome').innerHTML = document.getElementById('EntityRegistrantName1').value;
+				DateStatementsOfComprehensiveIncome();
+				StatementsOfComprehensiveAmend();
+				BalanceNetIncomeLossComprehensiveIncome();
+				BalanceChangeInForeignCurrencyTranslationAdjustment();
+				BalanceChangeInUnrealizedGainsLossesOnDerivativeInstruments();
+				BalanceChangeInUnrealizedGainsLossesOnInvestments();
+				BalanceChangeInDefinedBenefitPensionAndOtherSimilarPlans();
+				BalanceIncomeTaxOnOtherComprehensiveIncome();
+				BalanceComprehensiveIncome();
+			}
+
+			function ShareholdersEquity() {
+				document.getElementById('EntityRegistrantNameShareholdersEquity').innerHTML = document.getElementById('EntityRegistrantName1').value;
+				DateStatementsOfShareholdersEquity();
+				StatementsOfShareholdersAmend();
+				BalanceShareholdersEquityBeginning();
+				BalanceCommonSharesIssued();
+				BalanceShareBasedCompensation();
+				BalanceShareBasedCompensationRetainedEarnings();
+				BalanceDividendsAndDividendEquivalentsDeclared();
+				BalanceCommonSharesRepurchasedAndRetired();
+				BalanceEffectOfAdoptionOfNewAccountingPronouncementOrTaxCuts();
+				BalanceRetainedEarningsOthers();
+				BalancePurchaseAndSellOfTreasuryShares();
+				BalanceDividendsDeclaredToNonControllingInterests();
+				BalanceAcquisitionOfNonControllingInterests();
+				BalanceNonControllingInterestsOthers();
+				BalanceComprehensiveIncomeShareholdersEquity();
+				BalanceNetIncomeLossShareholdersEquity();
+				BalanceShareholdersEquity();
+			}
+
+			function CashFlow() {
+				document.getElementById('EntityRegistrantNameCashFlow').innerHTML = document.getElementById('EntityRegistrantName1').value;
+				DateStatementsOfCashFlow();
+				StatementsOfCashFlowAmend();
+				EffectOfExchangeRateOnCashRow();
+				NetIncomeCashFlow();
+				DepreciationDepletionAndAmortizationRow();
+				GainRelatedToDisposalOrSaleRow();
+				RestructuringAndOtherSpecialChargesRow();
+				AccruedEmployeeCompensationRow();
+				ShareBasedCompensationOperatingActivitiesRow();
+				IncreaseDecreaseInIncomeTaxExpenseBenefitRow();
+				OtherNonCashIncomeExpenseRow();
+				IncreaseDecreaseInAccountsReceivableRow();
+				IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssetsRow();
+				IncreaseDecreaseInInventoriesRow();
+				IncreaseDecreaseInOtherReceivablesRow();
+				IncreaseDecreaseInAccountsPayableRow();
+				IncreaseDecreaseInContractWithCustomerLiabilityRow();
+				IncreaseDecreaseInRetirementBenefitsRow();
+				IncreaseDecreaseFinanceLeaseCurrentRow();
+				IncreaseDecreaseOperatingLeaseCurrentRow();
+				IncreaseDecreaseInFairValueOfDerivativesOperatingRow();
+				IncreaseDecreaseInOtherOperatingActivitiesRow();
+				OperatingActivities();
+				PaymentsToAcquireInvestmentsRow();
+				ProceedsOfInvestmentsRow();
+				PaymentsToAcquirePropertyPlantAndEquipmentRow();
+				ProceedsFromDisposalsOfPropertyAndEquipmentRow();
+				PaymentsToAcquireBusinessesAndIntangiblesRow();
+				ProceedsFromDisposalsOfBusinessesAndIntangiblesRow();
+				ProceedsRelatedToInsuranceSettlementRow();
+				ReveiptOfGovernmentGrantsRow();
+				EquityInvesteeAdvancesRepaymentsRow();
+				PaymentOfLicenseFeeRow();
+				OtherInvestingActivitiesRow();
+				InvestingActivitiesInDiscontinuedOperationsRow();
+				InvestingActivities();
+				FinanceLeasePrincipalPaymentsRow();
+				ProceedsFromIssuanceOfCommonSharesRow();
+				ProceedsFromSharePurchasePlanAndOptionsExerciceRow();
+				PaymentsRelatedToTaxWithholdingForShareBasedCompensationRow();
+				PaymentsForRepurchaseOfCommonSharesRow();
+				PaymentsOfDividendsRow();
+				IncreaseDecreaseDeferredContingentConsiderationRow();
+				ProceedsFromIssuanceOfLongTermDebtRow();
+				RepaymentsOfLongTermDebtRow();
+				FinancingCostsRow();
+				NetChangeInShortTermBorrowingsRow();
+				NetChangeInForwardAndHedgesClassifiedAsFinancingActivitiesRow();
+				NetChangeInNonControllingInterestsRow();
+				ProceedsFromRepaymentsOfCommercialPaperRow();
+				RepaymentsOfConvertibleRow();
+				IssuanceOfConvertibleRow();
+				OtherFinancingActivitiesRow();
+				FinancingActivities();
+				CashEndingBalance();
+			}
+
+		</script>
 
 		<!-- js/workingPaper/analysis/valuation.js -->
-		<script src="{% static 'js/workingPaper/analysis/valuation.js' %}"></script>
+		<script>
+			
+			console.log('analysis/valuation.js')
+
+			function FinancialRatios() {
+				document.getElementById('EntityRegistrantNameFinancialRatios').innerHTML = document.getElementById('EntityRegistrantName1').value;
+				DateRatios();
+				RatiosAmend();
+				SharePriceUpdateRatio();
+				ReturnOnEquity();
+				ReturnOnAssets();
+				ProfitMargin();
+				OperatingMargin();
+				DividendPayments();
+				EarningsRetention();
+				BasicEarningPower();
+				DebtToEquity();
+				EquityMultiplier();
+				DegreeOfFinancialLeverage();
+				DebtToEBITDA();
+				InterestCoverage();
+				FixedChargeCoverage();
+				Current();
+				Quick();
+				InventoryTurnover();
+				DaysOfInventoryOnHand();
+				NumberOfDaysPayable();
+				FixedAssetsTurnover();
+				TotalAssetsTurnover();
+				DuPont();
+			}
+
+			function AdditionalInformation() {
+				document.getElementById('EntityRegistrantNameAdditionalInformation').innerHTML = document.getElementById('EntityRegistrantName1').value;
+				DateAdditionalInformation();
+				AdditionalInformationAmend();		
+			}
+
+			function CapitalizationRates() {
+				document.getElementById('EntityRegistrantNameCapitalizationRates').innerHTML = document.getElementById('EntityRegistrantName1').value;
+				DateCapitalizationRate();
+				CapitalizationRateAmend();
+				TotalAssetsExpectedReturn();
+				BalanceDividendPaidWeightedAverageCostOfTotalAssets();
+				BalanceAssetsWeightedAverageCostOfTotalAssets();
+				BalanceCostOfAssetsWeightedAverageCostOfTotalAssets();
+				BalanceInterestPaidWeightedAverageCostOfTotalAssets();
+				BalanceTaxDeductionWeightedAverageCostOfTotalAssets();
+				BalanceAssets2WeightedAverageCostOfTotalAssets();
+				BalanceCostOfLiabilitiesWeightedAverageCostOfTotalAssets();
+				BalanceWeightedAverageCostOfTotalAssets();
+				BalanceAverageReturnOnAssets();
+				BalanceDifferenceReturnOnAssetsVSAverage();
+				BalanceDifferenceReturnOnAssetsPriorYearVSAverage();
+				BalanceDifferenceReturnOnAssetsSecondPriorYearVSAverage();
+				BalanceSquareDifferenceReturnOnAssetsVSAverage();
+				BalanceSquareDifferenceReturnOnAssetsVSAveragePriorYear();
+				BalanceSquareDifferenceReturnOnAssetsVSAverageSecondPriorYear();
+				BalanceVariance();
+				BalanceStandardDeviation();
+				GrossMarginExpectedGrowthOnReturnOnAssetsPriorYear();
+				GrossMarginExpectedGrowthOnReturnOnAssetsSecondPriorYear();
+				GrossMarginGrowth();
+				GrossMarginGrowthPriorYear();
+				ExpectedGrowthNote();
+				BalanceDividendPaidCostOfTotalAssetsAccruingToCommonShareholders();
+				BalanceDividendPaidToMinorityInterestCostOfTotalAssetsAccruingToCommonShareholders();
+				BalanceDividendPaidToPreferredShareholdersCostOfTotalAssetsAccruingToCommonShareholders();
+				CostOfTotalAssetsAccruingToCommonShareholders();
+				BalanceCapitalizationRateBeforeGrowth();
+				BalancePreliminaryCapitalizationRate();
+				CapitalizationRateFloor();
+				GrowthRelatedRiskProvision();
+				BalanceCapitalizationRate();
+			}
+
+			function CapitalizedCashFlow() {
+				document.getElementById('EntityRegistrantNameCapitalizedCashFlow').innerHTML = document.getElementById('EntityRegistrantName1').value;
+				DateCapitalizedCashFlow();
+				CapitalizedCashFlowAmend();
+				OperatingIncomeCCF();
+				DepreciationDepletionAndAmortizationCCF();
+				AnnualReinvestmentOfMaintenanceCCF();
+				TaxesCCF();
+				EquityMethodInvesteesIncomeCCF();
+				BalanceNormalizedOperatingCashFlowCCF();
+				BalanceNormalizedWeightedOperatingCashFlow();
+				BalanceCharacteristicCashFlow();
+				BalanceCapitalizationRateCCF();
+				BalanceCapitalizedCharacteristicCashFlowCCF();
+				BalanceExcessWorkingCapitalCCF();
+				BalanceInvestmentsExcessAssetsCCF();
+				BalanceDiscontinuedOperationsExcessAssetsCCF();
+				BalancePresentvalueOfTaxProtectionCCF();
+				BalanceBusinessValueCCF();
+				BalanceLongTermDebtAndLeaseObligation();
+				BalanceValueOfAllCategoryOfSharesCCF();
+				BalanceCommonSharesValueCCF();
+				BalanceNetAssetsCCF();
+				BalanceGoodwillFairValueCCF();
+			}
+
+			function CapitalizedIncome() {
+				document.getElementById('EntityRegistrantNameCapitalizedIncome').innerHTML = document.getElementById('EntityRegistrantName1').value;
+				DateCapitalizedIncome();
+				CapitalizedIncomeAmend();
+				OperatingIncomeCI();
+				TaxesCI();
+				EquityMethodInvesteesIncomeCI();
+				BalanceNormalizedCashFlowBeforeTaxesCI();
+				BalanceNormalizedWeightedCashFlowBeforeTaxes();
+				BalanceCharacteristicIncomeBeforeInterestAfterTaxes();
+				BalanceCapitalizationRateCI();
+				BalanceCapitalizedCharacteristicCashFlowCI();
+				BalanceExcessWorkingCapitalCI();
+				BalanceInvestmentsExcessAssetsCI();
+				BalanceDiscontinuedOperationsExcessAssetsCI();
+				UnrealizedCapitalGainOnRealEstateNetOfTaxesCI();
+				BalancePresentvalueOfTaxProtectionCI();
+				BalanceBusinessValueCI();
+				BalanceLongTermDebtAndLeaseObligationCI();
+				BalanceValueOfAllCategoryOfSharesCI();
+				BalanceCommonSharesValueCI();
+				BalanceShareholdersEquityCI();
+				BalanceNetAssetsCI();
+				BalanceGoodwillFairValueCI();
+			}
+
+			function IntrinsicValues() {
+				document.getElementById('EntityRegistrantNameIntrinsicValues').innerHTML = document.getElementById('EntityRegistrantName1').value;
+				DateIntrinsicValues();
+				IntrinsicValuesAmend();
+				BalanceIntrinsicValuesCCF();
+				BalanceGoowillFairValueCCF();
+				BalanceIntrinsicValuesCI();
+				BalanceGoowillFairValueCI();		
+			}
+
+			function Opinion() {
+				document.getElementById('EntityRegistrantNameOpinion').innerHTML = document.getElementById('EntityRegistrantName1').value;
+				DateSummary();
+				SummaryAmend();
+				SharePriceUpdate();
+				BalanceIntrinsicValues();
+				BalanceMarketCapitalization();
+				PriceEarnings();
+				MarketToBook();
+				BalanceClock();
+				CommonShareIntrinsicValuePerUnitAndPricePerUnit();	
+			}
+
+			function Graph() {
+				document.getElementById('EntityRegistrantNameGraph').innerHTML = document.getElementById('EntityRegistrantName1').value;
+				LineChart();
+				Puck();
+			}
+		</script>
 
 		<!-- js/workingPaper/base/base.js -->
 		<script src="{% static 'js/workingPaper/base/base.js' %}"></script>
