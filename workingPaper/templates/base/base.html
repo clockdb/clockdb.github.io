@@ -711,10 +711,8 @@
 			{% if debug_mode %}
 				var ws_path = ws_scheme + '://' + window.location.host + "/";
 			{% else %}
-				var ws_path = ws_scheme + '://' + window.location.host + "/"; // PRODUCTION
+				var ws_path = ws_scheme + '://' + window.location.host + "/l"; // PRODUCTION
 			{% endif %}
-
-			console.log('k')
 
 			var notificationSocket = new WebSocket(ws_path);
 
