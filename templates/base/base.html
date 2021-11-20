@@ -6040,6 +6040,33 @@
 				display(hideIf);
 				onePageAppOnLoad(hideIf);
 				try {
+					friendRequestButtonsOnStart();
+					ChatMessagesAndNotificationsOnStart();
+					controlPanel();
+				} catch {}
+				try {
+					b = window.location.href.replace(window.location.origin,'')
+					b = b.split('/')[2]
+					if (b == 'WorkingPaper') {
+						document.getElementsByClassName('header')[0].style.position = 'absolute';
+						document.getElementsByClassName('panelHeader')[0].style.position = 'absolute';
+						DisplayWorkingPaper();
+						REF();
+						innerWidthColumn();
+						Compile();
+					} else {
+						controlPanelTitles();
+						hideIndustrySEC();
+						Posts();
+					}
+				} catch {}
+				a = document.getElementsByClassName('NotAuthenticated')[0]
+				if (a != undefined) {
+					document.getElementsByClassName('HeaderMenu')[0].style.width = '100%';
+				} else {
+					Control('On')
+				}
+				try {
 					document.getElementById('SearchBar').select()            
 				} catch {
 					try {
@@ -6049,12 +6076,6 @@
 							document.getElementById('id_email').select()            
 						} catch {}
 					}
-				}
-				a = document.getElementsByClassName('NotAuthenticated')[0]
-				if (a != undefined) {
-					document.getElementsByClassName('HeaderMenu')[0].style.width = '100%';
-				} else {
-					Control('On')
 				}
 			});
 
@@ -6066,9 +6087,6 @@
 			// clockdb dom
 			function clockdbdom() {
 				try {
-					friendRequestButtonsOnStart();
-					ChatMessagesAndNotificationsOnStart();
-					controlPanel();
 					document.getElementsByClassName('header')[0].style.position = 'absolute';
 					document.getElementsByClassName('panelHeader')[0].style.position = 'absolute';
 					DisplayWorkingPaper();
