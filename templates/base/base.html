@@ -1445,7 +1445,7 @@
 				profileImage.classList.add("profile-image-messages")
 				profileImage.classList.add("rounded-circle")
 				profileImage.classList.add("img-fluid")
-				profileImage.src = "{% static 'clockdb/dummy_image.png' %}".replace("&amp;", "&")
+				profileImage.src = "{% static 'clockdb/dummy_image.png' %}".replace("&amp;/g", "&")
 				var profile_image_id = "id_profile_image_" + msg_id
 				profileImage.id = profile_image_id
 				newMessageDiv.appendChild(profileImage)
@@ -1514,7 +1514,7 @@
 				profileImage.classList.add("profile-image-messages")
 				profileImage.classList.add("rounded-circle")
 				profileImage.classList.add("img-fluid")
-				profileImage.src = "{% static 'clockdb/dummy_image.png' %}".replace("&amp;", "&")
+				profileImage.src = "{% static 'clockdb/dummy_image.png' %}".replace("&amp;/g", "&")
 				var profile_image_id = "id_profile_image_" + msg_id
 				profileImage.id = profile_image_id
 				newMessageDiv.appendChild(profileImage)
