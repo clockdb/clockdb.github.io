@@ -1619,8 +1619,6 @@
 			}
 
 			// friends requests
-
-			preloadImage("{{ profile|safe }}", 'id_profile_image')
 			
 			function onFriendRequestAccepted(){
 				location.reload();
@@ -6034,6 +6032,7 @@
 			document.addEventListener('DOMContentLoaded', function() {
 				var loading = document.getElementById('id_loading_spinner')
 				loading.style.display = 'block'
+				preloadImage("{{ profile|safe }}", 'id_profile_image')
 				hideIf = [
 					'',
 					'login',
