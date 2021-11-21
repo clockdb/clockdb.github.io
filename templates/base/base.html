@@ -357,10 +357,11 @@
 				//
 				card.addEventListener("click", function(){
 					a = notification['actions'].redirect_url
+					console.log(a)
 					a = a.replace(window.location.origin,'')
-					a = a.replaceAll('/','')
-					a = a.replaceAll('account','')
-					a = a.replaceAll('profile','')
+					a = a.replace(/\//g, 'ForwardSlash')
+					a = a.replace(/account/g, '')
+					a = a.replace(/profile/g, '')
 					url = '/' + a + '/profile/'
 					window.open(url, '_self');
 				})
@@ -469,7 +470,7 @@
 			function createGeneralProfileImageThumbnail(notification){
 				var img = document.createElement("img")
 				img.classList.add("notification-thumbnail-image", "img-fluid", "rounded-circle", "mr-2")
-				img.src = "{% static 'clockdb/dummy_image.png' %}".replaceAll(/&amp;/g, "&")
+				img.src = "{% static 'clockdb/dummy_image.png' %}".replace(/&amp;/g, "&")
 				img.id = assignGeneralImgId(notification)
 				return img
 			}
@@ -1453,7 +1454,7 @@
 				profileImage.classList.add("profile-image-messages")
 				profileImage.classList.add("rounded-circle")
 				profileImage.classList.add("img-fluid")
-				var profileImageSrc = "{% static 'clockdb/dummy_image.png' %}".replaceAll(/&amp;/g, "&")
+				var profileImageSrc = "{% static 'clockdb/dummy_image.png' %}".replace(/&amp;/g, "&")
 				profileImage.src = profileImageSrc
 				var profile_image_id = "id_profile_image_" + msg_id
 				profileImage.id = profile_image_id
@@ -1523,7 +1524,7 @@
 				profileImage.classList.add("profile-image-messages")
 				profileImage.classList.add("rounded-circle")
 				profileImage.classList.add("img-fluid")
-				var profileImageSrc = "{% static 'clockdb/dummy_image.png' %}".replaceAll(/&amp;/g, "&")
+				var profileImageSrc = "{% static 'clockdb/dummy_image.png' %}".replace(/&amp;/g, "&")
 				profileImage.src = profileImageSrc
 				var profile_image_id = "id_profile_image_" + msg_id
 				profileImage.id = profile_image_id
@@ -1624,7 +1625,7 @@
 
 				// clear the profile image and username of current chat
 				document.getElementById("id_other_user_profile_image").classList.add("d-none")
-				var profileImageSrc = "{% static 'clockdb/dummy_image.png' %}".replaceAll(/&amp;/g, "&")
+				var profileImageSrc = "{% static 'clockdb/dummy_image.png' %}".replace(/&amp;/g, "&")
 				document.getElementById("id_other_user_profile_image").src = profileImageSrc
 				document.getElementById("id_other_username").innerHTML = ""
 			}
@@ -1917,7 +1918,6 @@
 			// buttons
 			function onePageApp(button) {
 				button.onclick = function() {
-					console.log('yeah')
 					user_id = document.getElementById('user_id').innerHTML;
 					page = this.dataset.page;
 					gg = 0
