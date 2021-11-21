@@ -323,9 +323,13 @@
 				card = createGeneralNotificationCard()
 				card.id = assignGeneralCardId(notification)
 				card.addEventListener("click", function(){
-					var redirect = notification['actions']['redirect_url'] 
-					console.log(redirect)
-					//generalRedirect(redirect)
+					a = notification['actions'].redirect_url
+					a = a.replace(window.location.origin,'')
+					a = a.replace(/\//g, '')
+					a = a.replace(/account/g, '')
+					a = a.replace(/profile/g, '')
+					url = '/' + a + '/profile/'
+					window.open(url, '_self');
 				})
 
 				var div1 = document.createElement("div")
