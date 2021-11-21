@@ -69,7 +69,7 @@ urlpatterns = [
     path("<str:user_id>/profile/", posts_screen_view, name="profile"),
     path('<str:user_id>/change_password/', posts_screen_view, name="change_password"),
     path("<str:user_id>/edit/", posts_screen_view, name="edit"),
-	#path('<user_id>/edit/cropImage/', crop_image, name="crop_image"),
+	path('<user_id>/edit/cropImage/', crop_image, name="crop_image"),
     #
 	path('<str:user_id>/Entities/', posts_screen_view, name="entities"),
 	path('<str:user_id>/Network/', posts_screen_view, name="network"),
@@ -93,7 +93,7 @@ urlpatterns = [
     path("<str:user_id>/WorkingPaper/<str:entity_TradingSymbol>/profile/", analysis_view, name="analysis"),
     path('<str:user_id>/WorkingPaper/<str:entity_TradingSymbol>/change_password/', posts_screen_view, name="change_password"),
     path("<str:user_id>/WorkingPaper/<str:entity_TradingSymbol>/edit_profile/", analysis_view, name="analysis"),
-	#path('<str:user_id>/WorkingPaper/<str:entity_TradingSymbol>/edit_profile/cropImage/', crop_image, name="crop_image"),
+	path('<str:user_id>/WorkingPaper/<str:entity_TradingSymbol>/edit_profile/cropImage/', crop_image, name="crop_image"),
     path("<str:user_id>/WorkingPaper/<str:entity_TradingSymbol>/Entities/", analysis_view, name="analysis"),
     path("<str:user_id>/WorkingPaper/<str:entity_TradingSymbol>/Network/", analysis_view, name="analysis"),
     path("<str:user_id>/WorkingPaper/<str:entity_TradingSymbol>/messages/", analysis_view, name="analysis"),
