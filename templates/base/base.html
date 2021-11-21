@@ -1979,8 +1979,10 @@
 								cropHeight
 							)
 							document.getElementById('edit').style.display = 'none';
-						} catch {}
-						window.location.reload();
+							window.location.reload();
+						} catch {
+							document.getElementsByClassName('mt-4 btn btn-primary flex-grow-1')[0].click()
+						}
 					})
 
 					var cancel = document.getElementById("id_cancel")
