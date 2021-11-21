@@ -1453,7 +1453,8 @@
 				profileImage.classList.add("profile-image-messages")
 				profileImage.classList.add("rounded-circle")
 				profileImage.classList.add("img-fluid")
-				profileImage.src = "{% static 'clockdb/dummy_image.png' %}".replace("&amp;/g", "&")
+				var profileImageSrc = "{% static 'clockdb/dummy_image.png' %}".replace("&amp;/g", "&")
+				profileImage.src = profileImageSrc
 				var profile_image_id = "id_profile_image_" + msg_id
 				profileImage.id = profile_image_id
 				newMessageDiv.appendChild(profileImage)
@@ -1522,7 +1523,8 @@
 				profileImage.classList.add("profile-image-messages")
 				profileImage.classList.add("rounded-circle")
 				profileImage.classList.add("img-fluid")
-				profileImage.src = "{% static 'clockdb/dummy_image.png' %}".replace("&amp;/g", "&")
+				var profileImageSrc = "{% static 'clockdb/dummy_image.png' %}".replace("&amp;/g", "&")
+				profileImage.src = profileImageSrc
 				var profile_image_id = "id_profile_image_" + msg_id
 				profileImage.id = profile_image_id
 				newMessageDiv.appendChild(profileImage)
@@ -1622,7 +1624,8 @@
 
 				// clear the profile image and username of current chat
 				document.getElementById("id_other_user_profile_image").classList.add("d-none")
-				document.getElementById("id_other_user_profile_image").src = "{% static 'clockdb/dummy_image.png' %}".replace("&amp;/g", "&")
+				var profileImageSrc = "{% static 'clockdb/dummy_image.png' %}".replace("&amp;/g", "&")
+				document.getElementById("id_other_user_profile_image").src = profileImageSrc
 				document.getElementById("id_other_username").innerHTML = ""
 			}
 
