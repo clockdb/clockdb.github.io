@@ -66,7 +66,6 @@ def friends_list_view(request, *args, **kwargs):
 	context['debug_mode'] = settings.DEBUG
 	return render(request, "friend/friend_list.html", context)
 
-
 def friend_requests(request, *args, **kwargs):
 	context = {}
 	user = request.user
@@ -81,7 +80,6 @@ def friend_requests(request, *args, **kwargs):
 	else:
 		redirect("login")
 	return render(request, "friend/friend_requests.html", context)
-
 
 def send_friend_request(request, *args, **kwargs):
 	user = request.user
@@ -114,7 +112,6 @@ def send_friend_request(request, *args, **kwargs):
 		payload['response'] = "You must be authenticated to send a friend request."
 	return HttpResponse(json.dumps(payload), content_type="application/json")
 
-
 def accept_friend_request(request, *args, **kwargs):
 	user = request.user
 	payload = {}
@@ -142,7 +139,6 @@ def accept_friend_request(request, *args, **kwargs):
 		payload['response'] = "You must be authenticated to accept a friend request."
 	return HttpResponse(json.dumps(payload), content_type="application/json")
 
-
 def remove_friend(request, *args, **kwargs):
 	user = request.user
 	payload = {}
@@ -162,7 +158,6 @@ def remove_friend(request, *args, **kwargs):
 		# should never happen
 		payload['response'] = "You must be authenticated to remove a friend."
 	return HttpResponse(json.dumps(payload), content_type="application/json")
-
 
 def decline_friend_request(request, *args, **kwargs):
 	user = request.user
@@ -188,7 +183,6 @@ def decline_friend_request(request, *args, **kwargs):
 		# should never happen
 		payload['response'] = "You must be authenticated to decline a friend request."
 	return HttpResponse(json.dumps(payload), content_type="application/json")
-
 
 def cancel_friend_request(request, *args, **kwargs):
 	user = request.user
