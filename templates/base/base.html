@@ -356,14 +356,16 @@
 				card.id = assignGeneralCardId(notification)
 				//
 				card.addEventListener("click", function(){
+					console.log('this')
 					a = notification['actions'].redirect_url
 					console.log(a)
 					a = a.replace(window.location.origin,'')
-					a = a.replace(/\//g, 'ForwardSlash')
+					a = a.replace(/\//g, '')
 					a = a.replace(/account/g, '')
 					a = a.replace(/profile/g, '')
 					url = a + '/profile/'
-					window.open(url, '_self');
+					console.log(url)
+					//window.open(url, '_self');
 				})
 
 				// Is the friend request PENDING? (not answered yet)
