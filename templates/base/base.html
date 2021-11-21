@@ -469,7 +469,7 @@
 			function createGeneralProfileImageThumbnail(notification){
 				var img = document.createElement("img")
 				img.classList.add("notification-thumbnail-image", "img-fluid", "rounded-circle", "mr-2")
-				img.src = "{% static 'clockdb/dummy_image.png' %}".replace("&amp;/g", "&")"
+				img.src = "{% static 'clockdb/dummy_image.png' %}".replace("&amp;/g", "&")
 				img.id = assignGeneralImgId(notification)
 				return img
 			}
@@ -1622,7 +1622,7 @@
 
 				// clear the profile image and username of current chat
 				document.getElementById("id_other_user_profile_image").classList.add("d-none")
-				document.getElementById("id_other_user_profile_image").src = "{% static 'clockdb/dummy_image.png' %}".replace("&amp;/g", "&")"
+				document.getElementById("id_other_user_profile_image").src = "{% static 'clockdb/dummy_image.png' %}".replace("&amp;/g", "&")
 				document.getElementById("id_other_username").innerHTML = ""
 			}
 
