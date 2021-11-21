@@ -19,7 +19,9 @@
 		<link rel="icon" href="{% static 'clockdb/favicon.ico' %}" type="image/x-icon">
 
 		<!-- Cropperjs -->
+		<!-- 
 		<link rel="stylesheet" href="{% static 'cropperjs/dist/cropper.min.css' %}">
+		-->
 
 		<!-- Markdown-it -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/11.0.1/markdown-it.min.js"
@@ -117,7 +119,9 @@
 		<script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
 		<!-- crooperjs -->
+		<!-- 
 		<script type="module" src="{% static 'cropperjs/dist/cropper.min.js' %}"></script>
+		-->
 
 		<!-- js/onePageApp.js -->
 		<script>
@@ -6258,6 +6262,83 @@
 					}
 				}
 			}
+
+		</script>
+
+		<!-- js/dom/dom -->
+		<script>
+			
+			console.log('dom/dom.js')
+
+			// dom
+			document.addEventListener('DOMContentLoaded', function() {
+				var loading = document.getElementById('id_loading_spinner')
+				loading.style.display = 'block'
+				hideIf = [
+					'',
+					'login',
+					'register',
+					'password_reset',
+					'done',
+				]
+				display(hideIf);
+				onePageAppOnLoad(hideIf);
+				try {
+					friendRequestButtonsOnStart();
+					ChatMessagesAndNotificationsOnStart();
+					controlPanel();
+				} catch {}
+				try {
+					b = window.location.href.replace(window.location.origin,'')
+					b = b.split('/')[2]
+					if (b == 'WorkingPaper') {
+						document.getElementsByClassName('header')[0].style.position = 'absolute';
+						document.getElementsByClassName('panelHeader')[0].style.position = 'absolute';
+						DisplayWorkingPaper();
+						REF();
+						innerWidthColumn();
+						Compile();
+					} else {
+						controlPanelTitles();
+						hideIndustrySEC();
+						Posts();
+					}
+				} catch {}
+				a = document.getElementsByClassName('NotAuthenticated')[0]
+				if (a != undefined) {
+					document.getElementsByClassName('HeaderMenu')[0].style.width = '100%';
+				} else {
+					Control('On')
+				}
+				try {
+					document.getElementById('SearchBar').select()            
+				} catch {
+					try {
+						document.getElementById('inputEmail').select()            
+					} catch {
+						try {
+							document.getElementById('id_email').select()            
+						} catch {}
+					}
+				}
+			});
+
+			// onePageApp buttons
+			document.querySelectorAll('button').forEach(button => {
+				onePageApp(button);
+			});
+
+			// clockdb dom
+			function clockdbdom() {
+				try {
+					document.getElementsByClassName('header')[0].style.position = 'absolute';
+					document.getElementsByClassName('panelHeader')[0].style.position = 'absolute';
+					DisplayWorkingPaper();
+					REF();
+					innerWidthColumn();
+					Compile();
+				} catch {}
+			};
 
 		</script>
 
