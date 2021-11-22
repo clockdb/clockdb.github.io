@@ -43,7 +43,7 @@ entities = Entity.objects.all().order_by(
     'TradingSymbol',
 )
 
-base_url = './mine/json/'
+base_url = '/home/django/clock/src/mine/json/'
 
 for e in entities:
     #
