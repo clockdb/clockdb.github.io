@@ -31,6 +31,7 @@ urlpatterns = [
 	path('Home', home_screen_view, name='home'),
 	path('admin/', admin.site.urls),
     path("entities/<str:search>/<str:start>/<str:end>/", entities_view, name="entities"),
+    path("entities/<str:ts>/", entities_view_all, name="entities_all"),
     path("posts/<str:industry_db>/<str:industry_SEC_db>/<str:year_end>/<str:db>/<str:region_db>/<str:order_db>/<str:sort_db>/<str:start>/<str:end>/", posts_view, name="posts"),
     path('login/', login_view, name="login"),
     path('logout/', logout_view, name="logout"),
