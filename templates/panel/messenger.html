@@ -200,6 +200,9 @@
 		vertical-align: middle;
 		margin-left: 21px;
 	}
+	.id_friend_container{
+		width: 100%;
+	}
 </style>
 
 <div class="messengerContainer">
@@ -207,7 +210,7 @@
 		<div class="messengerFriendList">
 			<div class="messengerContent">
 				{% for x in m_and_f %}
-				<div class="d-flex flex-row p-2 friend-container flex-grow-1" onclick="onSelectFriend('{{x.friend.id}}')" id="id_friend_container_{{x.friend.id}}">
+				<div class="id_friend_container" onclick="onSelectFriend('{{x.friend.id}}')" id="id_friend_container_{{x.friend.id}}">
 					<img class="profile-image-messages rounded-circle img-fluid" id="id_friend_img_{{x.friend.id}}" src="{% static 'clockdb/dummy_image.png' %}" >
 					<div style="border-bottom-left-radius: 15px;">
 						<span class="username-span-messages-friend" id="{{x.friend.id}}">{{x.friend.username}}</span>
