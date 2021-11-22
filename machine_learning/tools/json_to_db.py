@@ -39,8 +39,8 @@ periods = [
     'sixthlastyear',
 ]
 
-#files = glob.glob("./mine/json/*.json")
-files = glob.glob("./mine/json/FB.json")
+files = glob.glob("./mine/json/*.json")
+#files = glob.glob("./mine/json/FB.json")
 
 for file in files:
     #
@@ -828,10 +828,7 @@ for file in files:
                     # General - Trial Balance,
                     #
                     if key == 'AccessionNumber':
-                        print('Access')
-                        print(c.get(rplcmt + key))
                         tb1.AccessionNumber = c.get(rplcmt + key)
-                        print('saved.')
                     if key == 'AmendmentFlag':
                         tb1.AmendmentFlag = c.get(rplcmt + key)
                     if key == 'EntityRegistrantName':
