@@ -40,53 +40,6 @@
                 <td colspan='2' style="padding-bottom: 3%;" class="C5"><input id="Amend5" style="font-weight:bold; text-align:center;" value="{{ entity.amendfifthlastyear }}" onfocusout="Compile()"></input></td>
                 <td colspan='2' style="padding-bottom: 3%;" class="C6"><input id="Amend6" style="font-weight:bold; text-align:center;" value="{{ entity.amendsixthlastyear }}" onfocusout="Compile()"></input></td>
             </tr>
-            <script>
-                function FilingsHref() {
-                    var z = 0
-                    var a = document.getElementById('url1').value;
-                    document.getElementById('Filings1').href = a;
-                    if (a.length < 5) {
-                        z = z + 1
-                    }
-                    var a = document.getElementById('url2').value;
-                    document.getElementById('Filings2').href = a;
-                    if (a.length < 5) {
-                        z = z + 1
-                    }
-                    var a = document.getElementById('url3').value;
-                    document.getElementById('Filings3').href = a;
-                    if (a.length < 5) {
-                        z = z + 1
-                    }
-                    var a = document.getElementById('url4').value;
-                    document.getElementById('Filings4').href = a;
-                    if (a.length < 5) {
-                        z = z + 1
-                    }
-                    var a = document.getElementById('url5').value;
-                    document.getElementById('Filings5').href = a;
-                    if (a.length < 5) {
-                        z = z + 1
-                    }
-                    var a = document.getElementById('url6').value;
-                    document.getElementById('Filings6').href = a;
-                    if (a.length < 5) {
-                        z = z + 1
-                    }
-                    if (z == 6) {
-                        a = 'none';
-                    } else {
-                        a = '';
-                    }
-                    FilingsUrl = document.getElementsByClassName('Filings');
-                    //
-                    for(let i = 0; i <= FilingsUrl.length; i++) { 
-                        try {
-                            FilingsUrl[i].style.display = a;
-                        } catch {}
-                    }
-                }
-            </script>
             <tr id="FilingsRow" class="Filings">
                 <td colspan="5"></td>
                 <td colspan='2' class='C1' style="text-align:center"><a target="_blank" id="Filings1" style="color:#0D47A1;"><h6 style="text-align:center; padding-bottom: 3%;;">Filings</h6></a>
