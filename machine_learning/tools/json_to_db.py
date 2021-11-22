@@ -39,8 +39,8 @@ periods = [
     'sixthlastyear',
 ]
 
-files = glob.glob("./mine/json/*.json")
-#files = glob.glob("./mine/json/FB.json")
+#files = glob.glob("./mine/json/*.json")
+files = glob.glob("./mine/json/FB.json")
 
 for file in files:
     #
@@ -302,14 +302,14 @@ for file in files:
     #
     # audit
     for period in periods:
+        try:
+            ad1 = AuditData.objects.get(TradingSymbol=ts, Period=period)
+        except:
+            ad1 = AuditData()
+            ad1.Period = period
+            ad1.TradingSymbol = ts
         for key in c:
             try:
-                try:
-                    ad1 = AuditData.objects.get(TradingSymbol=ts, Period=period)
-                except:
-                    ad1 = AuditData()
-                    ad1.Period = period
-                    ad1.TradingSymbol = ts
                 #
                 if period == 'lastyear':
                     rplcmt = 'ad1.'
@@ -628,20 +628,20 @@ for file in files:
                         ad1.CapitalizationRateFloor = c.get(rplcmt + key)
                 except:
                     pass
-                ad1.save()
             except:
                 pass
+        ad1.save()
     #
     # cash fow
     for period in periods:
+        try:
+            cf1 = CashFlow.objects.get(TradingSymbol=ts, Period=period)
+        except:
+            cf1 = CashFlow()
+            cf1.Period = period
+            cf1.TradingSymbol = ts
         for key in c:
             try:
-                try:
-                    cf1 = CashFlow.objects.get(TradingSymbol=ts, Period=period)
-                except:
-                    cf1 = CashFlow()
-                    cf1.Period = period
-                    cf1.TradingSymbol = ts
                 #
                 if period == 'lastyear':
                     rplcmt = 'cf1.'
@@ -791,20 +791,20 @@ for file in files:
                         cf1.CashPaidForInterest = c.get(rplcmt + key)
                 except:
                     pass
-                cf1.save()
             except:
                 pass
+        cf1.save()
     #
     # trial balances
     for period in periods:
+        try:
+            tb1 = TrialBalance.objects.get(TradingSymbol=ts, Period=period)
+        except:
+            tb1 = TrialBalance()
+            tb1.Period = period
+            tb1.TradingSymbol = ts
         for key in c:
             try:
-                try:
-                    tb1 = TrialBalance.objects.get(TradingSymbol=ts, Period=period)
-                except:
-                    tb1 = TrialBalance()
-                    tb1.Period = period
-                    tb1.TradingSymbol = ts
                 #
                 if period == 'lastyear':
                     rplcmt = 'tb1.'
@@ -819,7 +819,6 @@ for file in files:
                 if period == 'sixthlastyear':
                     rplcmt = 'tb6.'
                 key = key.replace(rplcmt,'')
-                #
                 #
                 # TRIAL BALANCE 1
                 try:
@@ -871,10 +870,10 @@ for file in files:
                         tb1.OtherCurrentAssets = c.get(rplcmt + key)
                     if key == 'DiscontinuedOperationsCurrent':
                         tb1.DiscontinuedOperationsCurrent = c.get(rplcmt + key)
-                        #
-                        #
-                        # Non-Current Assets - Trial Balance,
-                        #
+                    #
+                    #
+                    # Non-Current Assets - Trial Balance,
+                    #
                     if key == 'LongTermReceivables':
                         tb1.LongTermReceivables = c.get(rplcmt + key)
                     if key == 'DeferredCharges':
@@ -1004,12 +1003,12 @@ for file in files:
                         tb1.TreasurySharesBeginning = c.get(rplcmt + key)
                     if key == 'PurchaseAndSellOfTreasuryShares':
                         tb1.PurchaseAndSellOfTreasuryShares = c.get(rplcmt + key)
-                        #
-                        # employee benefit trust,
+                    #
+                    # employee benefit trust,
                     if key == 'EmployeeBenefitTrustBeginning':
                         tb1.EmployeeBenefitTrustBeginning = c.get(rplcmt + key)
-                        #
-                        # non controlling interests,
+                    #
+                    # non controlling interests,
                     if key == 'NonControllingInterestsBeginning':
                         tb1.NonControllingInterestsBeginning = c.get(rplcmt + key)
                     if key == 'DividendsDeclaredToNonControllingInterests':
@@ -1057,11 +1056,10 @@ for file in files:
                     #
                 except:
                     pass
-                tb1.save()
             except:
                 pass
+        tb1.save()
     #
     f.close()
-
 
 
