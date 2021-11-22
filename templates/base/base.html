@@ -4139,6 +4139,52 @@
 					document.getElementsByClassName('OpinionFiles')[i].innerHTML = document.getElementById("OpinionREF6").value
 				}
 			}
+			
+			function FilingsHref() {
+				var z = 0
+				var a = document.getElementById('url1').value;
+				document.getElementById('Filings1').href = a;
+				if (a.length < 5) {
+					z = z + 1
+				}
+				var a = document.getElementById('url2').value;
+				document.getElementById('Filings2').href = a;
+				if (a.length < 5) {
+					z = z + 1
+				}
+				var a = document.getElementById('url3').value;
+				document.getElementById('Filings3').href = a;
+				if (a.length < 5) {
+					z = z + 1
+				}
+				var a = document.getElementById('url4').value;
+				document.getElementById('Filings4').href = a;
+				if (a.length < 5) {
+					z = z + 1
+				}
+				var a = document.getElementById('url5').value;
+				document.getElementById('Filings5').href = a;
+				if (a.length < 5) {
+					z = z + 1
+				}
+				var a = document.getElementById('url6').value;
+				document.getElementById('Filings6').href = a;
+				if (a.length < 5) {
+					z = z + 1
+				}
+				if (z == 6) {
+					a = 'none';
+				} else {
+					a = '';
+				}
+				FilingsUrl = document.getElementsByClassName('Filings');
+				//
+				for(let i = 0; i <= FilingsUrl.length; i++) { 
+					try {
+						FilingsUrl[i].style.display = a;
+					} catch {}
+				}
+			}
 
 			function FilingsReferences() {
 				document.getElementById('EntityRegistrantNameReferenceMap').innerHTML = document.getElementById('EntityRegistrantName1').value;

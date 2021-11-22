@@ -39,8 +39,8 @@ periods = [
     'sixthlastyear',
 ]
 
-#files = glob.glob("./mine/json/*.json")
-files = glob.glob("./mine/json/FB.json")
+files = glob.glob("./mine/json/*.json")
+#files = glob.glob("./mine/json/FB.json")
 
 for file in files:
     #

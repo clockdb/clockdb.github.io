@@ -207,6 +207,19 @@
 
 <div class="messengerContainer">
 	<div class="messengerView">
+		<div class="messengerFriendList">
+			<div class="messengerContent">
+				{% for x in m_and_f %}
+				<div class="id_friend_container" onclick="onSelectFriend('{{x.friend.id}}')" id="id_friend_container_{{x.friend.id}}">
+					<img class="profile-image-messages rounded-circle img-fluid" id="id_friend_img_{{x.friend.id}}" src="{% static 'clockdb/dummy_image.png' %}" >
+					<div style="border-bottom-left-radius: 15px;">
+						<span class="username-span-messages-friend" id="{{x.friend.id}}">{{x.friend.username}}</span>
+						<span class="friend-message-span">{{x.message|truncatechars:20}}</span>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
 		<div class="messengerHeader" id="id_chatroom_card">
 			<div class="messengerTitle" id="id_room_title">
 				<a class="id_user_info_container" id="id_user_info_container">
@@ -245,19 +258,6 @@
 						</span>
 					</button>
 				</div>
-			</div>
-		</div>
-		<div class="messengerFriendList">
-			<div class="messengerContent">
-				{% for x in m_and_f %}
-				<div class="id_friend_container" onclick="onSelectFriend('{{x.friend.id}}')" id="id_friend_container_{{x.friend.id}}">
-					<img class="profile-image-messages rounded-circle img-fluid" id="id_friend_img_{{x.friend.id}}" src="{% static 'clockdb/dummy_image.png' %}" >
-					<div style="border-bottom-left-radius: 15px;">
-						<span class="username-span-messages-friend" id="{{x.friend.id}}">{{x.friend.username}}</span>
-						<span class="friend-message-span">{{x.message|truncatechars:20}}</span>
-					</div>
-				</div>
-				{% endfor %}
 			</div>
 		</div>
 	</div>
