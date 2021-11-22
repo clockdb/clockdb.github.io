@@ -50,7 +50,173 @@ def home_screen_view(request):
 	return redirect("login")
 
 def analysis_view(request, user_id, entity_TradingSymbol):
-	return render(request, "home.html")
+	#
+	context = {}
+	context['debug_mode'] = settings.DEBUG
+	context['debug'] = DEBUG
+	context['room_id'] = "1"
+	context['DATA_UPLOAD_MAX_MEMORY_SIZE'] = settings.DATA_UPLOAD_MAX_MEMORY_SIZE
+	context['BASE_URL'] = settings.BASE_URL
+	#
+	context['entity'] = Entity.objects.get(TradingSymbol=entity_TradingSymbol)
+	context['TrialBalance_lastyear'] = TrialBalance.objects.get(TradingSymbol=entity_TradingSymbol, Period="lastyear")
+	context['TrialBalance_secondlastyear'] = TrialBalance.objects.get(TradingSymbol=entity_TradingSymbol, Period="secondlastyear")
+	context['TrialBalance_thirdlastyear'] = TrialBalance.objects.get(TradingSymbol=entity_TradingSymbol, Period="thirdlastyear")
+	context['TrialBalance_fourthlastyear'] = TrialBalance.objects.get(TradingSymbol=entity_TradingSymbol, Period="fourthlastyear")
+	context['TrialBalance_fifthlastyear'] = TrialBalance.objects.get(TradingSymbol=entity_TradingSymbol, Period="fifthlastyear")
+	context['TrialBalance_sixthlastyear'] = TrialBalance.objects.get(TradingSymbol=entity_TradingSymbol, Period="sixthlastyear")
+	context['CashFlow_lastyear'] = CashFlow.objects.get(TradingSymbol=entity_TradingSymbol, Period="lastyear")
+	context['CashFlow_secondlastyear'] = CashFlow.objects.get(TradingSymbol=entity_TradingSymbol, Period="secondlastyear")
+	context['CashFlow_thirdlastyear'] = CashFlow.objects.get(TradingSymbol=entity_TradingSymbol, Period="thirdlastyear")
+	context['CashFlow_fourthlastyear'] = CashFlow.objects.get(TradingSymbol=entity_TradingSymbol, Period="fourthlastyear")
+	context['CashFlow_fifthlastyear'] = CashFlow.objects.get(TradingSymbol=entity_TradingSymbol, Period="fifthlastyear")
+	context['CashFlow_sixthlastyear'] = CashFlow.objects.get(TradingSymbol=entity_TradingSymbol, Period="sixthlastyear")
+	context['AuditData_lastyear'] = AuditData.objects.get(TradingSymbol=entity_TradingSymbol, Period="lastyear")
+	context['AuditData_secondlastyear'] = AuditData.objects.get(TradingSymbol=entity_TradingSymbol, Period="secondlastyear")
+	context['AuditData_thirdlastyear'] = AuditData.objects.get(TradingSymbol=entity_TradingSymbol, Period="thirdlastyear")
+	context['AuditData_fourthlastyear'] = AuditData.objects.get(TradingSymbol=entity_TradingSymbol, Period="fourthlastyear")
+	context['AuditData_fifthlastyear'] = AuditData.objects.get(TradingSymbol=entity_TradingSymbol, Period="fifthlastyear")
+	context['AuditData_sixthlastyear'] = AuditData.objects.get(TradingSymbol=entity_TradingSymbol, Period="sixthlastyear")
+	try:
+		account = Account.objects.get(pk=user_id)
+	except:
+		return redirect('login')
+	if account:
+		context['id'] = account.id
+		context['username'] = account.username
+		context['email'] = account.email
+		context['profile_image'] = account.profile_image.url
+		context['hide_email'] = account.hide_email
+
+		try:
+			friend_list = FriendList.objects.get(user=account)
+		except FriendList.DoesNotExist:
+			friend_list = FriendList(user=account)
+			friend_list.save()
+		friends = friend_list.friends.all()
+		context['friends'] = friends
+		is_self = True
+		is_friend = False
+		request_sent = FriendRequestStatus.NO_REQUEST_SENT.value
+		friend_requests = None
+		user = request.user
+		if user.is_authenticated and user != account:
+			is_self = False
+			if friends.filter(pk=user.id):
+				is_friend = True
+			else:
+				is_friend = False
+				if get_friend_request_or_false(sender=account, receiver=user) != False:
+					request_sent = FriendRequestStatus.THEM_SENT_TO_YOU.value
+					context['pending_friend_request_id'] = get_friend_request_or_false(sender=account, receiver=user).id
+				elif get_friend_request_or_false(sender=user, receiver=account) != False:
+					request_sent = FriendRequestStatus.YOU_SENT_TO_THEM.value
+				else:
+					request_sent = FriendRequestStatus.NO_REQUEST_SENT.value
+		elif not user.is_authenticated:
+			is_self = False
+		else:
+			try:
+				friend_requests = FriendRequest.objects.filter(receiver=user, is_active=True)
+			except:
+				pass
+		context['is_self'] = is_self
+		context['is_friend'] = is_friend
+		context['request_sent'] = request_sent
+		context['friend_requests'] = friend_requests
+		#
+		friends_requests = []
+		FR = FriendRequest.objects.all()
+		for friend_request in FR:
+			if (friend_request.sender.id == user.id):
+				if (friend_request.is_active == True):
+					friends_requests.append(friend_request.receiver.id)
+		context['friends_requests'] = friends_requests
+	#
+	# edit account
+	if request.POST:
+		form = AccountUpdateForm(request.POST, request.FILES, instance=user)
+		if form.is_valid():
+			form.save()
+			return redirect("posts", user_id=user.id)
+		else:
+			form = AccountUpdateForm(request.POST, instance=user,
+				initial={
+					"id": account.id,
+					"email": account.email, 
+					"username": account.username,
+					"profile_image": account.profile_image,
+					"hide_email": account.hide_email,
+				}
+			)
+			context['form'] = form
+	else:
+		form = AccountUpdateForm(
+			initial={
+					"id": account.id,
+					"email": account.email, 
+					"username": account.username,
+					"profile_image": account.profile_image,
+					"hide_email": account.hide_email,
+				}
+			)
+		context['form'] = form
+	#
+	# messages
+	room_id = request.GET.get("room_id")
+	if room_id:
+		room = PrivateChatRoom.objects.get(pk=room_id)
+		context["room"] = room
+	rooms1 = PrivateChatRoom.objects.filter(user1=user, is_active=True)
+	rooms2 = PrivateChatRoom.objects.filter(user2=user, is_active=True)
+	rooms = list(chain(rooms1, rooms2))
+	m_and_f = [] 
+	for room in rooms:
+		if room.user1 == user:
+			friend = room.user2
+		else:
+			friend = room.user1
+		m_and_f.append({
+			'message': "", 
+			'friend': friend
+		})
+	context['m_and_f'] = m_and_f
+	#
+	# friends
+	if user.is_authenticated:
+		user_id = account.id
+		if user_id:
+			try:
+				this_user = Account.objects.get(pk=user_id)
+				context['this_user'] = this_user
+			except Account.DoesNotExist:
+				return HttpResponse("That user does not exist.")
+			try:
+				friend_list = FriendList.objects.get(user=this_user)
+			except FriendList.DoesNotExist:
+				return HttpResponse(f"Could not find a friends list for {this_user.username}")
+			friends = []
+			auth_user_friend_list = FriendList.objects.get(user=user)
+			for friend in friend_list.friends.all():
+				friends.append((friend, auth_user_friend_list.is_mutual_friend(friend)))
+			context['friends'] = friends
+	else:		
+		return HttpResponse("You must be friends to view their friends list.")
+	#
+	# profiles
+	if user.is_authenticated:
+		user_id = account.id
+		if user_id:
+			friends = [] 
+			auth_user_friend_list = FriendList.objects.get(user=user)
+			for friend in friend_list.friends.all():
+				friends.append((friend, auth_user_friend_list.is_mutual_friend(friend)))
+			context['profileUsers'] = friends
+	#
+	# entities
+	context['entities'] = Entity.objects.all().order_by('TradingSymbol')
+	#
+	return render(request, "base/clockdb.html", context)
 
 def posts_screen_view(request, user_id):
 	context = {}
