@@ -2188,8 +2188,10 @@
 				const searchBar = document.getElementById('SearchBar')
 				const searchUsersBar = document.getElementById('SearchUsersBar')
 				loading.style.display = 'block';
-				searchBar.value = '';
-				searchUsersBar.value = '';
+				try {
+					searchBar.value = '';
+					searchUsersBar.value = '';
+				} catch {}
 				document.querySelectorAll('div').forEach(div => {
 					hideDiv(div)
 				})
