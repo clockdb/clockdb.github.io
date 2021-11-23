@@ -4396,7 +4396,7 @@
 				iii = 38
 				v = 40
 				vi = 13
-				keys = [i, ii, iii, iv, v, vi]
+				keys = [i, iii, v, vi]
 				if (keys.includes(event.keyCode) && (event.ctrlKey || event.metaKey)) {
 					event.preventDefault();
 					a = 0
@@ -6251,6 +6251,9 @@
 						if (page == 'SortAndOrder') {
 							SortAndOrder(button.id);
 							gg = 1
+						}
+						if (page == 'id_submit_btn') {
+							page = 'Login'
 						}
 						if (page == 'Print') {
 							Print();
