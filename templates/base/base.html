@@ -2248,7 +2248,7 @@
 				document.getElementById('clockdbSpan').style.display = 'inline-block';
 				document.getElementById('HomeSpan').style.display = 'inline-block';
 				try {
-					if (page != 'password_change') {
+					if (page != 'change_password') {
 						document.getElementById('NotAuthenticated').style.display = 'inline-block';
 					}
 				} catch {
@@ -2274,11 +2274,6 @@
 					document.getElementById('MoreSpan').style.display = a;
 					//
 					document.getElementById('PostsSpan').style.display = b;
-					//document.getElementById('DatabaseSpan').style.display = b;
-					//
-					//document.getElementById('ControlSpan').style.display = c;
-					//document.getElementById('MessengerNotificationsSpan').style.display = c;
-					//document.getElementById('NotificationsSpan').style.display = c;
 					document.getElementById('SearchBarSpan').style.display = c;
 					document.getElementById('SearchUsersBarSpan').style.display = c;
 					try {
@@ -2496,7 +2491,6 @@
 			}
 
 			function controlPanelTitles() {
-				console.log('laucnh')
 				// marker
 				marker = `
 				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
@@ -2706,6 +2700,7 @@
 			function controlPanel() {
 				try {
 					a = window.location.href.replace(window.location.origin,'').split('/')[2]
+					console.log(a)
 					if (a == 'WorkingPaper') {
 						a = 'Working Paper'
 						wp = 'block'
@@ -2715,6 +2710,9 @@
 						wp = 'none'
 						p = 'block'
 					}
+					console.log(a)
+					console.log(wp)
+					console.log(p)
 					document.getElementsByClassName('controlWorkingPaper')[0].style.display = wp;
 					document.getElementsByClassName('controlPosts')[0].style.display = p;
 					document.getElementsByClassName('controlHeaderTitle')[0].innerHTML = a;
@@ -6166,11 +6164,6 @@
 						history.pushState({page}, ``, `/${user_id}/WorkingPaper/${ts}/${page}/`);
 					// Posts
 					} else {
-						// phase
-						if (page == 'phase') {
-							url = window.location.origin + '/'
-							window.open(url, '_self');
-						}
 						// home
 						home = [
 							undefined,
@@ -6215,6 +6208,14 @@
 					page = this.dataset.page;
 					gg = 0
 					if (page != "#") {
+						if (page == 'Control') {
+							if (localStorage.Control == 'On') {
+								Control('Off');
+							} else {
+								Control('On');
+							}
+							gg = 1
+						}
 						if (page == 'Messenger') {
 							if (localStorage.Messenger == 'On') {
 								Messenger('Off');
@@ -6300,14 +6301,6 @@
 							historyPush('Posts');
 							ClearPosts();
 							Posts();
-							gg = 1
-						}
-						if (page == 'Control') {
-							if (localStorage.Control == 'On') {
-								Control('Off');
-							} else {
-								Control('On');
-							}
 							gg = 1
 						}
 						if (page == 'change_password') {
