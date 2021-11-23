@@ -2727,11 +2727,13 @@
 				t = 'none'
 				document.getElementsByClassName('Control')[0].style.display = c;
 				document.getElementsByClassName('Messenger')[0].style.display = m;
+				document.getElementsByClassName('Friends')[0].style.display = m;
 				document.getElementsByClassName('MessengerNotifications')[0].style.display = g;
 				document.getElementsByClassName('Notifications')[0].style.display = t;
 				document.getElementsByClassName('clockdb')[0].style.width = '100%';
 				document.getElementsByClassName('loading')[0].style.width = '100%';
 				localStorage.setItem('Control', 'Off')
+				localStorage.setItem('Friends', 'Off')
 				localStorage.setItem('Messenger', 'Off')
 				localStorage.setItem('MessengerNotifications', 'Off')
 				localStorage.setItem('Notifications', 'Off')
