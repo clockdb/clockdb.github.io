@@ -4393,9 +4393,7 @@
 				b = window.location.href.replace(window.location.origin,'')
 				b = b.split('/')[2]
 				i = 110
-				ii = 37
 				iii = 38
-				iv = 39
 				v = 40
 				vi = 13
 				keys = [i, ii, iii, iv, v, vi]
@@ -4408,24 +4406,10 @@
 							page = 'Context';
 						}
 					}
-					// left
-					if (event.keyCode == ii) {
-						if (b == 'WorkingPaper') {
-							historyBack()
-							a = 1
-						}
-					}
 					// Up
 					if (event.keyCode == iii) {
 						TogglePanel('up')
 						a = 1
-					}
-					// right
-					if (event.keyCode == iv) {
-						if (b == 'WorkingPaper') {
-							historyForward()
-							a = 1
-						}
 					}
 					// down
 					if (event.keyCode == v) {
@@ -4595,6 +4579,8 @@
 					vii = 'Numpad6'
 					viii = 'Numpad7'
 					ix = 'Numpad8'
+					x = 'ArrowLeft'
+					xi = 'ArrowRight'
 					keys = [i, ii, iii, iv, v, vi, vii, viii, ix]
 					if (keys.includes(event.code) && (event.ctrlKey || event.metaKey) && (event.altKey || event.metaKey)) {
 						if (event.code == i) {
@@ -4628,6 +4614,20 @@
 							showPage(page)
 							historyPush(page)
 							window.scrollTo(0, 0);
+						}
+						// left
+						if (event.keyCode == x) {
+							if (b == 'WorkingPaper') {
+								historyBack()
+								a = 1
+							}
+						}
+						// right
+						if (event.keyCode == xi) {
+							if (b == 'WorkingPaper') {
+								historyForward()
+								a = 1
+							}
 						}
 					}
 				}
