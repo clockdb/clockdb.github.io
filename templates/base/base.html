@@ -2243,8 +2243,7 @@
 				const user_id = document.getElementById('user_id').innerHTML
 				const loading = document.getElementById('id_loading_spinner')
 				loading.style.display = 'block';
-				var page = window.location.pathname
-				page = page.split('/')[2];
+				var page = window.location.pathname.split('/')[2];
 				document.getElementById('clockdbSpan').style.display = 'inline-block';
 				document.getElementById('HomeSpan').style.display = 'inline-block';
 				try {
@@ -2831,7 +2830,7 @@
 				document.getElementById('FriendsButton').style = s
 				document.getElementById('MessengerNotificationsButton').style = s
 				document.getElementById('NotificationsButton').style = s
-				document.getElementById(r + 'Button').style = z
+				try { document.getElementById(r + 'Button').style = z } catch {}
 				localStorage.setItem('Control', 'Off')
 				localStorage.setItem('Friends', 'Off')
 				localStorage.setItem('Messenger', 'Off')
