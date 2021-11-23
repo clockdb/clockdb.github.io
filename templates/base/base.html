@@ -2398,20 +2398,18 @@
 
 			console.log('base/resize.js')
 
-			function resize(c, m, g, t) {
+			function resize(c, m, g, t, f) {
 				a = ''
 				if (c == 'none') {
 					if (m == 'none') {
 						if (g == 'none') {
 							if (t == 'none') {
-								a = '100%';
+								if (f == 'none') {
+									a = '100%';
+								}
 							}
 						}
-					} else {
-						a = ''
 					}
-				} else {
-					a = ''
 				}
 				if (a == '') {
 					if (window.innerWidth > 799) {
@@ -2756,7 +2754,8 @@
 					m = 'none'
 					g = 'none'
 					t = 'block'
-					Panel(c, m, g, t, 'Notifications')
+					f = 'none'
+					Panel(c, m, g, t, f, 'Notifications')
 				} else {
 					closePanel()
 				}
@@ -2768,7 +2767,8 @@
 					m = 'none'
 					g = 'block'
 					t = 'none'
-					Panel(c, m, g, t, 'MessengerNotifications')
+					f = 'none'
+					Panel(c, m, g, t, f, 'MessengerNotifications')
 				} else {
 					closePanel()
 				}
@@ -2780,11 +2780,25 @@
 					m = 'block'
 					g = 'none'
 					t = 'none'
-					Panel(c, m, g, t, 'Messenger')
+					f = 'none'
+					Panel(c, m, g, t, f, 'Messenger')
 				} else {
 					closePanel()
 				}
 				messageInputFocus();
+			}
+
+			function Friends(Arg) {
+				if (Arg == 'On') {
+					c = 'none'
+					m = 'none'
+					g = 'none'
+					t = 'none'
+					f = 'block'
+					Panel(c, m, g, t, f, 'Friends')
+				} else {
+					closePanel()
+				}
 			}
 
 			function Control(Arg) {
@@ -2793,26 +2807,30 @@
 					m = 'none'
 					g = 'none'
 					t = 'none'
-					Panel(c, m, g, t, 'Control')
+					f = 'none'
+					Panel(c, m, g, t, f, 'Control')
 				} else {
 					closePanel()
 				}
 			}
 
-			function Panel(c, m, g, t, r) {
+			function Panel(c, m, g, t, f, r) {
 				z = 'border-bottom: solid #0D47A1;'
 				s = 'border-bottom: solid white;'
 				document.getElementsByClassName('Control')[0].style.display = c;
+				document.getElementsByClassName('Friends')[0].style.display = f;
 				document.getElementsByClassName('Messenger')[0].style.display = m;
 				document.getElementsByClassName('MessengerNotifications')[0].style.display = g;
 				document.getElementsByClassName('Notifications')[0].style.display = t;
-				resize(c, m, g, t)
+				resize(c, m, g, t, f)
 				document.getElementById('ControlButton').style = s
+				document.getElementById('FriendsButton').style = s
 				document.getElementById('MessengerButton').style = s
 				document.getElementById('MessengerNotificationsButton').style = s
 				document.getElementById('NotificationsButton').style = s
 				document.getElementById(r + 'Button').style = z
 				localStorage.setItem('Control', 'Off')
+				localStorage.setItem('Friends', 'Off')
 				localStorage.setItem('Messenger', 'Off')
 				localStorage.setItem('MessengerNotifications', 'Off')
 				localStorage.setItem('Notifications', 'Off')
@@ -4240,7 +4258,7 @@
 					if (direction == 'up') {
 						Notifications('On')
 					} else {
-						Messenger('On')
+						Friends('On')
 					}
 				} else {
 					if (localStorage.Messenger == 'On') {
@@ -4252,7 +4270,7 @@
 					} else {
 						if (localStorage.MessengerNotifications == 'On') {
 							if (direction == 'up') {
-								Messenger('On')
+								Friends('On')
 							} else {
 								Notifications('On')
 							}
@@ -4267,7 +4285,7 @@
 								if (direction == 'up') {
 									Control('On')
 								} else {
-									Messenger('On')
+									Friends('On')
 								}
 
 							}
@@ -6197,6 +6215,14 @@
 								Messenger('Off');
 							} else {
 								Messenger('On')
+							}
+							gg = 1
+						}
+						if (page == 'Friends') {
+							if (localStorage.Friends == 'On') {
+								Friends('Off');
+							} else {
+								Friends('On')
 							}
 							gg = 1
 						}

@@ -133,7 +133,7 @@
 		float: left;
 		overflow: hidden;
 	}
-	.messengerHeader{
+	.friendsHeader{
 		width : 100%;
 		height: 55px;
 		border-top-left-radius: 15px;
@@ -143,7 +143,7 @@
 		vertical-align: middle;
 		background-color: white;
 	}
-	.messengerTitle{
+	.friendsTitle{
 		color: #696969;
 		width: 72%;
 		vertical-align: middle;
@@ -152,7 +152,7 @@
 		vertical-align: middle;
 		margin-top:3%;
 	}
-	.messengerHeaderPanel{
+	.friendsHeaderPanel{
 		width: 25%;
 		text-align: right;
 		float: left;
@@ -161,14 +161,14 @@
 		margin-top:2%;
 		margin-bottom:2%;
 	}
-	.messengerMain{
+	.friendsMain{
 		width: 100%;
 		border: solid 1.5px rgb(242, 242, 242);
 	}
-	.messengerContent{
+	.friendsContent{
 		border-bottom-left-radius: 0px;
 	}
-	.messengerInput{
+	.friendsInput{
 		height: 100%;
 		font-size: 11px;
 		width: 83%;
@@ -179,18 +179,18 @@
 		background-color: rgb(242, 242, 242);
 		padding-left: 10px;
 	}
-	.messengerFriendList{
+	.friendsFriendList{
 		width: 100%;
 		max-height: 300px;
 		overflow-y: scroll;
 	}
-	.messengerContainer{
+	.friendsContainer{
 		text-align: left;
 		border-bottom-left-radius: 15px;
 		overflow: hidden;
 	    white-space: nowrap;
 	}
-	.messengerView{
+	.friendsView{
 		width: 100%;
 		display: flex;
 		flex-wrap: wrap;
@@ -201,46 +201,19 @@
 	}
 </style>
 
-<div class="messengerContainer">
-	<div class="messengerView">	
-		<div class="messengerHeader" id="id_chatroom_card">
-			<div class="messengerTitle" id="id_room_title">
-				<a class="id_user_info_container" id="id_user_info_container">
-					<div class="profile_image_messages_">
-						<img class="profile-image-messages rounded-circle img-fluid" id="id_other_user_profile_image" src="{% static 'clockdb/dummy_image.png' %}">
-					</div>
-					<div class="id_other_username">
-						<h6 id="id_other_username"></h6>
-					</div>
-				</a>
-			</div>
-			<div class='messengerHeaderPanel'>
-				<button class="virgin" id="CloseMessenger" data-page="CloseMessenger">
-					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-						<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-					</svg>
-				</button>
-			</div>
-		</div>
-		<div class="messengerMain">
-			<div id="id_chat_log_container">
-				<div class="d-flex flex-row justify-content-center" id="id_chatroom_loading_spinner_container">
-					<div class="spinner-border text-primary"  id="id_chatroom_loading_spinner" role="status"  style="display: none; ">
-						<span class="sr-only">Loading...</span>
+<div class="friendsContainer">
+	<div class="friendsView">
+		<div class="friendsFriendList">
+			<div class="friendsContent">
+				{% for x in m_and_f %}
+				<div class="d-flex flex-row p-2 friend-container flex-grow-1" onclick="onSelectFriend('{{x.friend.id}}')" id="id_friend_container_{{x.friend.id}}">
+					<img class="profile-image-messages rounded-circle img-fluid" id="id_friend_img_{{x.friend.id}}" src="{% static 'clockdb/dummy_image.png' %}" >
+					<div style="border-bottom-left-radius: 15px;">
+						<span class="username-span-messages-friend" id="{{x.friend.id}}">{{x.friend.username}}</span>
+						<span class="friend-message-span">{{x.message|truncatechars:20}}</span>
 					</div>
 				</div>
-				<div class="d-flex chat-log" id="id_chat_log"></div>
-				<span class="{% if not debug %}d-none{% endif %} page-number" id="id_page_number">1</span>
-				<div class="messengerContent" style="background-color: rgb(242, 242, 242);">
-					<input class="messengerInput" id="id_chat_message_input"></input>
-					<button class="virgin" data-page="send_message">
-						<span id="id_chat_message_submit">
-							<svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
-								<path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
-							  </svg>
-						</span>
-					</button>
-				</div>
+				{% endfor %}
 			</div>
 		</div>
 	</div>
