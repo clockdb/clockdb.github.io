@@ -6304,10 +6304,6 @@
 							Posts();
 							gg = 1
 						}
-						if (page == 'change_password') {
-							url = window.location.origin + '/' + user_id + '/change_password/';
-							window.open(url, '_self');
-						}
 						if (page == 'messages') {
 							const user_id = document.getElementById('user_id').innerHTML
 							const this_user_id = button.name.replace('messageTo','')
