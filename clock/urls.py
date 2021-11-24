@@ -70,7 +70,7 @@ urlpatterns = [
     path("<str:user_id>/Home/", posts_screen_view, name="posts"),
     #
     path("<str:user_id>/profile/", posts_screen_view, name="posts"),
-    path('<str:user_id>/change_password/', posts_screen_view, name="posts"),
+    path('<str:user_id>/password_change/', posts_screen_view, name="posts"),
     path("<str:user_id>/edit/", posts_screen_view, name="posts"),
 	path('<user_id>/edit/cropImage/', crop_image, name="crop_image"),
     #
@@ -93,7 +93,7 @@ urlpatterns = [
     path("<str:user_id>/WorkingPaper/<str:entity_TradingSymbol>/Home/", analysis_view, name="analysis"),
     #
     path("<str:user_id>/WorkingPaper/<str:entity_TradingSymbol>/profile/", analysis_view, name="analysis"),
-    path('<str:user_id>/WorkingPaper/<str:entity_TradingSymbol>/change_password/', posts_screen_view, name="change_password"),
+    path('<str:user_id>/WorkingPaper/<str:entity_TradingSymbol>/password_change/', posts_screen_view, name="password_change"),
     path("<str:user_id>/WorkingPaper/<str:entity_TradingSymbol>/edit_profile/", analysis_view, name="analysis"),
 	path('<str:user_id>/WorkingPaper/<str:entity_TradingSymbol>/edit_profile/cropImage/', crop_image, name="crop_image"),
     path("<str:user_id>/WorkingPaper/<str:entity_TradingSymbol>/Entities/", analysis_view, name="analysis"),
