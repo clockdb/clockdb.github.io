@@ -69,25 +69,24 @@ urlpatterns = [
     #
     path("<str:user_id>/Home/", posts_screen_view, name="posts"),
     #
-    path("<str:user_id>/profile/", posts_screen_view, name="profile"),
-    path('<str:user_id>/change_password/', posts_screen_view, name="change_password"),
-    path("<str:user_id>/edit/", posts_screen_view, name="edit"),
+    path("<str:user_id>/profile/", posts_screen_view, name="posts"),
+    path('<str:user_id>/change_password/', posts_screen_view, name="posts"),
+    path("<str:user_id>/edit/", posts_screen_view, name="posts"),
 	path('<user_id>/edit/cropImage/', crop_image, name="crop_image"),
     #
-	path('<str:user_id>/Entities/', posts_screen_view, name="entities"),
-	path('<str:user_id>/Network/', posts_screen_view, name="network"),
-    path("<str:user_id>/messages/", posts_screen_view, name="messages"),
+	path('<str:user_id>/Entities/', posts_screen_view, name="Posts"),
+	path('<str:user_id>/Network/', posts_screen_view, name="Posts"),
     path("<str:user_id>/friend_requests/", posts_screen_view, name="friend-requests"),
     #
-    path("<str:user_id>/about/", posts_screen_view, name="about"),
-    path('<str:user_id>/AdvancedSearch/', posts_screen_view, name='AdvancedSearch'),
-    path("<str:user_id>/commands/", posts_screen_view, name="commands"),
-    path("<str:user_id>/disclaimer/", posts_screen_view, name="disclaimer"),
-    path("<str:user_id>/display/", posts_screen_view, name="display"),
-    path('<str:user_id>/database/', posts_screen_view, name="database"),
-    path("<str:user_id>/documentation/", posts_screen_view, name="documentation"),
+    path("<str:user_id>/about/", posts_screen_view, name="Posts"),
+    path('<str:user_id>/AdvancedSearch/', posts_screen_view, name='Posts'),
+    path("<str:user_id>/commands/", posts_screen_view, name="Posts"),
+    path("<str:user_id>/disclaimer/", posts_screen_view, name="Posts"),
+    path("<str:user_id>/display/", posts_screen_view, name="Posts"),
+    path('<str:user_id>/database/', posts_screen_view, name="Posts"),
+    path("<str:user_id>/documentation/", posts_screen_view, name="Posts"),
     path('<str:user_id>/Posts/', posts_screen_view, name="Posts"),
-    path('<str:user_id>/settings/', posts_screen_view, name="settings"),
+    path('<str:user_id>/settings/', posts_screen_view, name="Posts"),
     #
     path("<str:user_id>/WorkingPaper/<str:entity_TradingSymbol>/", analysis_view, name="analysis"),
     #
