@@ -22,7 +22,7 @@ class LazyNotificationEncoder(Serializer):
 			dump_object.update({'timestamp': str(obj.timestamp)})
 			dump_object.update({
 				'actions': {
-					'redirect_url': str(obj.pk) + '/profile/',
+					'redirect_url': str(obj.redirect_url),
 				},
 				"from": {
 					"image_url": str(obj.from_user.profile_image.url)
@@ -37,7 +37,7 @@ class LazyNotificationEncoder(Serializer):
 			dump_object.update({'timestamp': str(obj.timestamp)})
 			dump_object.update({
 				'actions': {
-					'redirect_url': str(obj.pk) + '/profile/',
+					'redirect_url': str(obj.redirect_url),
 				},
 				"from": {
 					"image_url": str(obj.from_user.profile_image.url)
@@ -51,7 +51,7 @@ class LazyNotificationEncoder(Serializer):
 			dump_object.update({'timestamp': str(obj.timestamp)})
 			dump_object.update({
 				'actions': {
-					'redirect_url': str(obj.pk) + '/profile/',
+					'redirect_url': str(obj.redirect_url),
 				},
 				"from": {
 					"title": str(obj.content_object.get_other_user.username),
