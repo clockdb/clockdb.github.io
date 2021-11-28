@@ -6148,61 +6148,62 @@
 				var page = gg.split('/')[1];
 				var this_user = gg.split('/')[0];
 				if (user_id != '') {
-					if (user_id != this_user) {
-						page = 'profile';
-					}
 					document.querySelectorAll('div').forEach(div => {
 						hideDiv(div);
 					});
 					document.querySelectorAll('button').forEach(button => {
 						onePageApp(button);
 					})
-					// φ
-					if (page == 'WorkingPaper') {
-						var subpage = window.location.href.replace(window.location.origin,'').split('/')[4]
-						if (subpage == '') {
-							subpage = 'Opinion'
-						}
-						showPage(subpage)
-						Compile();
-						ts = document.getElementById('TradingSymbol1').value;
-						document.title = 'Clockdb | ' + ts + ' | '+ subpage;
-						page = subpage
-						history.pushState({page}, ``, `/${user_id}/WorkingPaper/${ts}/${page}/`);
-					// Posts
+					if (user_id != this_user) {
+						showPage('profile')
 					} else {
-						// home
-						home = [
-							undefined,
-							'',
-							'home',
-							'Home',
-						]
-						if (home.includes(page)) {
-							try {
-								a = document.getElementById('user_id').innerHTML
-								if (a != 'None') {
-									activeurl = window.location.href.replace(window.location.origin,'').replaceAll('/','')
-									activeurlsub = window.location.href.split('/')[1]
-									url = window.location.origin + '/' + a + '/Posts/'
-									if (activeurl != a) {
-										window.open(url, '_self');
-									} else {
-										page = 'Posts'
-										document.title = 'Clockdb | ' + page;
-										history.pushState({page}, ``, `/${user_id}/${page}/`);
-										showPage(page)
-									}
-								}
-							} catch {
-								url = window.location.origin + '/login'
-								window.open(url, '_self');
+						// φ
+						if (page == 'WorkingPaper') {
+							var subpage = window.location.href.replace(window.location.origin,'').split('/')[4]
+							if (subpage == '') {
+								subpage = 'Opinion'
 							}
-						// others
+							showPage(subpage)
+							Compile();
+							ts = document.getElementById('TradingSymbol1').value;
+							document.title = 'Clockdb | ' + ts + ' | '+ subpage;
+							page = subpage
+							history.pushState({page}, ``, `/${user_id}/WorkingPaper/${ts}/${page}/`);
+						// Posts
 						} else {
-							document.title = 'Clockdb | ' + page;
-							history.pushState({page}, ``, ``);
-							showPage(page)
+							// home
+							home = [
+								undefined,
+								'',
+								'home',
+								'Home',
+							]
+							if (home.includes(page)) {
+								try {
+									a = document.getElementById('user_id').innerHTML
+									if (a != 'None') {
+										activeurl = window.location.href.replace(window.location.origin,'').replaceAll('/','')
+										activeurlsub = window.location.href.split('/')[1]
+										url = window.location.origin + '/' + a + '/Posts/'
+										if (activeurl != a) {
+											window.open(url, '_self');
+										} else {
+											page = 'Posts'
+											document.title = 'Clockdb | ' + page;
+											history.pushState({page}, ``, `/${user_id}/${page}/`);
+											showPage(page)
+										}
+									}
+								} catch {
+									url = window.location.origin + '/login'
+									window.open(url, '_self');
+								}
+							// others
+							} else {
+								document.title = 'Clockdb | ' + page;
+								history.pushState({page}, ``, ``);
+								showPage(page)
+							}
 						}
 					}
 				}
