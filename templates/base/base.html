@@ -331,6 +331,7 @@
 					card.addEventListener("click", function(){
 						a = notification['actions'].redirect_url
 						a = a.replace(window.location.origin,'')
+						a = a.replace('137.184.159.93','')
 						a = a.replace(/\//g, '')
 						a = a.replace(/account/g, '')
 						a = a.replace(/profile/g, '')
@@ -371,6 +372,7 @@
 					card.addEventListener("click", function(){
 						a = notification['actions'].redirect_url
 						a = a.replace(window.location.origin,'')
+						a = a.replace('137.184.159.93','')
 						a = a.replace(/\//g, '')
 						a = a.replace(/account/g, '')
 						a = a.replace(/profile/g, '')
@@ -962,6 +964,7 @@
 						user_id = document.getElementById('user_id').innerHTML
 						a = notification['from'].image_url
 						a = a.replace(window.location.origin,'')
+						a = a.replace('137.184.159.93','')
 						this_user_id = a.split('/')[3]
 						redirect('messages', user_id, this_user_id)
 						Messenger('On');
