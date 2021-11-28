@@ -332,12 +332,12 @@
 						a = notification['actions'].redirect_url
 						a = a.replace(window.location.origin,'')
 						a = a.replace('137.184.159.93','')
+						a = a.replace('/http:','')
 						a = a.replace(/\//g, '')
 						a = a.replace(/account/g, '')
 						a = a.replace(/profile/g, '')
 						url = '/' + a + '/profile/'
-						console.log(url)
-						//window.open(url, '_self');
+						window.open(url, '_self');
 					})
 
 					var div1 = document.createElement("div")
@@ -373,12 +373,12 @@
 						a = notification['actions'].redirect_url
 						a = a.replace(window.location.origin,'')
 						a = a.replace('137.184.159.93','')
+						a = a.replace('/http:','')
 						a = a.replace(/\//g, '')
 						a = a.replace(/account/g, '')
 						a = a.replace(/profile/g, '')
 						url = '/' + a + '/profile/'
-						console.log(url)
-						//window.open(url, '_self');
+						window.open(url, '_self');
 					})
 
 					// Is the friend request PENDING? (not answered yet)
@@ -965,6 +965,7 @@
 						a = notification['from'].image_url
 						a = a.replace(window.location.origin,'')
 						a = a.replace('137.184.159.93','')
+						a = a.replace('/http:','')
 						this_user_id = a.split('/')[3]
 						redirect('messages', user_id, this_user_id)
 						Messenger('On');
