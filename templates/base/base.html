@@ -1858,10 +1858,10 @@
 							id = FR.split(', ')[i]
 							document.getElementsByName(id)[0].innerHTML = 'Cancel Friend Request';
 							document.getElementsByName(id)[0].id = 'id_cancel_friend_request_btn_profiles';
-							document.getElementsByName(id)[0].className = 'btn btn-danger';
+							document.getElementsByName(id)[0].className = 'btn btn-light';
 							document.getElementsByName(id)[1].innerHTML = 'Cancel Friend Request';
 							document.getElementsByName(id)[1].id = 'id_cancel_friend_request_btn_profiles';
-							document.getElementsByName(id)[1].className = 'btn btn-danger';
+							document.getElementsByName(id)[1].className = 'btn btn-light';
 						} catch {}
 						i = i + 1
 					}
@@ -2740,11 +2740,11 @@
 			}
 
 			function toggleButton(id, classB) {
-				if (classB == 'btn btn-danger') {
+				if (classB == 'btn btn-light') {
 					classA = 'btn btn-primary'
 					innerHTML = 'Send Friend Request'
 				} else {
-					classA = 'btn btn-danger'
+					classA = 'btn btn-light'
 					innerHTML = 'Cancel Friend Request'
 				}
 				a = document.getElementsByName(id)[0].className = classA
@@ -6325,7 +6325,7 @@
 							if (classB == 'btn btn-primary') {
 								sendFriendRequest(id)
 							}
-							if (classB == 'btn btn-danger') {
+							if (classB == 'btn btn-light') {
 								cancelFriendRequest(id)
 							}
 							toggleButton(id, classB)

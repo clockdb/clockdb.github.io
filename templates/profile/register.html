@@ -41,7 +41,7 @@
 					<img class="img-fluid mx-auto d-block" src="{% static 'clockdb/logo_250_250_transparent.png' %}" alt="clockdb logo" width="72" height="72">
 				</div>
 				<input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-				<input type="text" name="username" id="inputUsername" class="form-control" placeholder="Username" pattern="[^()/><\][\\\x22,;|]+" required>
+				<input type="text" name="username" id="inputUsername" class="form-control" placeholder="Username" required>
 				<input type="password" name="password1" id="inputPassword1" class="form-control" placeholder="Password" required>
 				<input type="password" name="password2" id="inputPassword2" class="form-control" placeholder="Confirm password" required>
 				{% for field in registration_form %}
