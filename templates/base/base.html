@@ -6144,8 +6144,13 @@
 			// on load
 			function onePageAppOnLoad(hideIf) {
 				const user_id = document.getElementById('user_id').innerHTML
-				var page = window.location.pathname.replace('/','').split('/')[1];
+				var gg = window.location.pathname.replace('/','')
+				var page = gg.split('/')[1];
+				var this_user = gg.split('/')[0];
 				if (user_id != '') {
+					if (user_id != this_user) {
+						page = 'profile';
+					}
 					document.querySelectorAll('div').forEach(div => {
 						hideDiv(div);
 					});
